@@ -1,39 +1,3 @@
----
-license: cc-by-nc-4.0
-
-extra_gated_prompt: "You agree to our [Responsible Use Guidelines](https://www.etrialstestbed.org/mathnet57963-guidelines)."
-    
-extra_gated_fields:
-  First and Last Name: text
-  Affiliation(university, company, etc): text
-  Country: country
-  Why are you asking to use this dataset?: text
-  How are you going to use this dataset?: text
-  How will you store and secure this data?: text
-  Do you have a university-affiliated email we could use to verify your request? If so, please enter it, if not, please explain why: text
-  
-  I agree to use this dataset for non-commercial use ONLY: checkbox
-  While we think it's impossible for you to identify a student from these answers, you need to agree to not try to do so, and you also need to inform us if you find any PII in any of the images with the filenames: checkbox
-  Check box - I agree that this data will be stored on secured institutional systems, will not be shared with unauthorized parties and will deleted or returned to ASSISTments when my research is complete: checkbox
-
-configs:
-  - config_name: Foundational ASSIST Dataset
-    data_files: Data/Problems.csv
-  - config_name: Interactions
-    data_files: Data/Interactions.csv
-  - config_name: Skills
-    data_files: Data/Skills.csv
-    
----
-
-**Access requests will be faster if you have a university or research-affiliated email associated with your Hugging Face account**
-
-**Unfortunate news:** Please note that this project is primarily supported by federal grants from the US government. As such, we need to follow certain regulations. Sadly, one is that we cannot share data with researchers from countries designated as ["Countries of concern"](https://www.state.gov/countries-of-particular-concern-special-watch-list-countries-entities-of-particular-concern). We hope to soon share this dataset with the many fabulous researchers from these countries, but as of today, we are not legally permitted to do so.
-
-**IMPORTANT UPDATE ON 3/19:** Due to an issue with git LFS 700k rows in interactions.csv were missing. Please redownload the dataset to use these rows.
-
-**Note:** Access requests are reviewed Monday. You may need to verify your email or use case, plesae monitor your email.
-
 # Overview of Foundational ASSIST
 Foundational ASSIST is a dataset containing all natural text of problems and student answers as recorded by ASSISTments. The problems are from  from Illustrative Mathematics 6th - 8th grade math curriculum, a common core aligned curriculum popular in the United States. 
 
