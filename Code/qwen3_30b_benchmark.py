@@ -45,6 +45,11 @@ Usage:
     # Whole pipeline on the GPU server
     CUDA_VISIBLE_DEVICES=0,1 python qwen3_30b_benchmark.py all --num-gpus 2 --cache-dir /data1/
 
+    # Other students: --user-ids-file (one user_id per line) and --run-name for separate outputs
+    # (qwen3_30b_all_practice_both.py builds such a list and runs both benchmarks on it)
+    python qwen3_30b_benchmark.py all --user-ids-file ../Results/student_lists/allpractices_paper.txt \
+        --run-name allpractices_paper --no-ped
+
     # Check the evaluator against a published result file (no GPU needed)
     python qwen3_30b_benchmark.py evaluate --no-ped --label GPT-OSS-120B \
         --kt-results ../Results/inference_data_kt_results.zip::inference_data_kt_results/gptoss120b_n500_bin10_hist50.jsonl
@@ -78,6 +83,7 @@ PAPER_ZIP = os.path.join(REPO_DIR, "Results", "inference_data_kt_results.zip")
 PAPER_REF_MEMBER = "inference_data_kt_results/gptoss120b_n500_bin10_hist50.jsonl"
 DEFAULT_OUT_DIR = os.path.join(REPO_DIR, "Results", "qwen3_30b")
 DEFAULT_CSV = os.path.join(REPO_DIR, "Results", "qwen_30b_results.csv")
+PAPER_REF_DIR = os.path.join(REPO_DIR, "Results", "paper_reference")
 
 sys.path.insert(0, CODE_DIR)
 sys.path.insert(0, PED_DIR)
@@ -218,16 +224,24 @@ def markdown_table(header, rows):
     return "\n".join(lines)
 
 
+def num_selected(args):
+    """How many students a run uses (for file names)."""
+    available = len(read_user_ids(args.user_ids_file)) if args.user_ids_file else 500
+    return min(args.students, available) if args.students else available
+
+
 def paths(args):
     out_dir = os.path.abspath(args.out_dir)
     return {
         "out": out_dir,
-        "user_ids": os.path.join(out_dir, "paper_user_ids.txt"),
+        # The paper's users and correct answers don't depend on the run: one shared cache
+        "user_ids": os.path.join(PAPER_REF_DIR, "paper_user_ids.txt"),
+        "paper_answers": os.path.join(PAPER_REF_DIR, "paper_correct_answers.json"),
         "kt_data": os.path.join(out_dir, "kt_data"),
         "ped_data": os.path.join(out_dir, "ped_data"),
         "kt_results": os.path.abspath(args.kt_results) if args.kt_results and "::" not in args.kt_results
         else (args.kt_results or os.path.join(
-            out_dir, f"qwen3_30b_a3b_instruct_n{args.students or 500}_bin{BIN_SIZE}_hist{MIN_HISTORY}.jsonl")),
+            out_dir, f"qwen3_30b_a3b_instruct_n{num_selected(args)}_bin{BIN_SIZE}_hist{MIN_HISTORY}.jsonl")),
         # One results file per pedagogical task, so each task's GPU time can be measured
         "ped_results": {
             task: os.path.join(out_dir, f"qwen3_30b_a3b_pedagogical_{task}_n{args.num_samples}_{args.sampling_mode}.jsonl")
@@ -243,8 +257,9 @@ def read_user_ids(path):
 
 
 def selected_user_ids(p, args):
-    """The paper's users, or only the first --students of them for a test run."""
-    users = sorted(read_user_ids(p["user_ids"]))
+    """The paper's users, or the users in --user-ids-file; only the first --students of them
+    for a test run."""
+    users = sorted(read_user_ids(args.user_ids_file or p["user_ids"]))
     return users[:args.students] if args.students else users
 
 
@@ -257,7 +272,7 @@ def cmd_extract_users(args):
     if os.path.exists(p["user_ids"]) and not args.force:
         print(f"User ids already extracted: {p['user_ids']}")
         return
-    os.makedirs(p["out"], exist_ok=True)
+    os.makedirs(PAPER_REF_DIR, exist_ok=True)
 
     print(f"Reading user ids from {PAPER_ZIP}::{PAPER_REF_MEMBER} ...")
     users = {line_user_id(line) for line in iter_lines(f"{PAPER_ZIP}::{PAPER_REF_MEMBER}")}
@@ -280,6 +295,7 @@ def interaction_sequences(interactions_path, problems_path, user_ids):
     """Each user's (problem_id, end_time) in the order kt_inference_base builds `user_records`
     (same sorts and inner merge with the staged problems; no skills)."""
     student_df = pd.read_csv(interactions_path, usecols=["id", "problem_id", "user_id", "end_time"])
+    student_df = student_df.drop_duplicates("id")  # as staged: each interaction once
     student_df = student_df.sort_values(["user_id", "id"]).reset_index(drop=True)
     student_df = student_df.sort_values("id").reset_index(drop=True)
     problems_df = pd.read_csv(problems_path, usecols=["problem_id"])
@@ -332,27 +348,71 @@ def harvest_paper_answers(sequences):
     return {pid: v.pop() for pid, v in answers.items() if len(v) == 1}
 
 
+def mc_correct_letters(kt):
+    """Correct letter(s) of each Problems.csv row (None for non-MC rows), computed like the
+    base's `correct_answers` column."""
+    problems_df = pd.read_csv(os.path.join(DATA_DIR, "Problems.csv"))
+    options = problems_df["Multiple Choice Options"].apply(kt.label_answer_options)
+    return [
+        kt.get_correct_option_letters(opts, answers) if ptype in MC_TYPES else None
+        for opts, answers, ptype in zip(options, problems_df["Multiple Choice Answers"], problems_df["Problem Type"])
+    ]
+
+
 def write_staged_problems(dst, answers=None):
     """Copy Data/Problems.csv to dst; with `answers` ({problem_id: text}), set 'Fill-in Answers'
     to the text the paper's prompts showed as "Correct Answer" (letters for MC, pre-Excel values
     for fill-in). Rows are copied with the csv module so no other cell text is re-formatted.
-    Duplicate problem rows are kept: the paper's run had them too."""
+    Duplicate problem rows are kept: the paper's run had them too.
+
+    MC problems the paper's prompts never showed (only seen by students outside the paper's
+    500) get their correct letters computed from the MC columns, so their prompts don't show
+    'Correct Answer: nan'.
+    """
     src = os.path.join(DATA_DIR, "Problems.csv")
-    n_set = 0
+    letters = mc_correct_letters(import_kt_base()) if answers else None
+    n_set = n_letters = 0
     with open(src, newline="", encoding="utf-8") as fin, open(dst, "w", newline="", encoding="utf-8") as fout:
         reader, writer = csv.reader(fin), csv.writer(fout)
         header = next(reader)
         writer.writerow(header)
         fill_col, pid_col = header.index("Fill-in Answers"), header.index("problem_id")
-        for row in reader:
+        rows = list(reader)
+        if letters is not None and len(rows) != len(letters):
+            raise RuntimeError(f"Problems.csv row count mismatch: csv={len(rows)} pandas={len(letters)}")
+        for i, row in enumerate(rows):
             problem_id = int(row[pid_col])
             if answers and problem_id in answers:
                 # The base printed a missing answer as 'nan'; an empty cell reads back as NaN
                 row[fill_col] = "" if answers[problem_id] == "nan" else answers[problem_id]
                 n_set += 1
+            elif letters is not None and letters[i] is not None and not is_missing(letters[i]):
+                row[fill_col] = letters[i]
+                n_letters += 1
             writer.writerow(row)
     if answers:
-        print(f"Problems: paper correct answers set for {n_set} rows")
+        print(f"Problems: paper correct answers set for {n_set} rows; "
+              f"MC letters computed for {n_letters} rows the paper's prompts never showed")
+
+
+def load_paper_answers(p, args):
+    """problem_id -> correct answer shown in the paper's prompts, from all 500 paper users."""
+    if os.path.exists(p["paper_answers"]) and not args.force:
+        with open(p["paper_answers"], encoding="utf-8") as f:
+            answers = {int(pid): value for pid, value in json.load(f).items()}
+        print(f"Loaded {len(answers)} paper correct answers from {p['paper_answers']}")
+        return answers
+    if not os.path.exists(p["user_ids"]):
+        cmd_extract_users(args)
+    print(f"Reading correct answers from the published prompts ({PAPER_REF_MEMBER}) ...")
+    sequences = interaction_sequences(os.path.join(DATA_DIR, "Interactions.csv"),
+                                      os.path.join(DATA_DIR, "Problems.csv"),
+                                      set(read_user_ids(p["user_ids"])))
+    answers = harvest_paper_answers(sequences)
+    os.makedirs(PAPER_REF_DIR, exist_ok=True)
+    with open(p["paper_answers"], "w", encoding="utf-8") as f:
+        json.dump({str(pid): value for pid, value in sorted(answers.items())}, f, indent=0)
+    return answers
 
 
 STAGED_MARKER = ".staged"
@@ -396,24 +456,14 @@ def cmd_stage_kt(args):
             writer.writerow(row)
             found.add(row[user_col])
             n_rows += 1
-    print(f"Interactions: {len(found)}/{len(user_ids)} paper users found, {n_rows:,} rows "
+    print(f"Interactions: {len(found)}/{len(user_ids)} users found, {n_rows:,} rows "
           f"({n_dups:,} repeated rows dropped)")
     if len(found) != len(user_ids):
-        print("  WARNING: some paper users are missing from Data/Interactions.csv")
+        print("  WARNING: some users are missing from Data/Interactions.csv")
 
-    # Problems: correct answers as the paper's prompts showed them (cached after the first harvest)
-    answers_path = os.path.join(p["out"], "paper_correct_answers.json")
-    if os.path.exists(answers_path) and not args.force:
-        with open(answers_path, encoding="utf-8") as f:
-            answers = {int(pid): value for pid, value in json.load(f).items()}
-        print(f"Loaded {len(answers)} paper correct answers from {answers_path}")
-    else:
-        write_staged_problems(problems_dst)
-        print(f"Reading correct answers from the published prompts ({PAPER_REF_MEMBER}) ...")
-        answers = harvest_paper_answers(interaction_sequences(interactions_dst, problems_dst, user_ids))
-        with open(answers_path, "w", encoding="utf-8") as f:
-            json.dump({str(pid): value for pid, value in sorted(answers.items())}, f, indent=0)
-    write_staged_problems(problems_dst, answers)
+    # Problems: correct answers as the paper's prompts showed them, harvested once from all 500
+    # paper users (whatever users this run has) and cached in Results/paper_reference/
+    write_staged_problems(problems_dst, load_paper_answers(p, args))
 
     # Skills: every published prompt says "Skill: Undefined" and has no duplicated interactions,
     # i.e. the skill merge matched nothing in the paper's run. A Skills.csv whose only row matches
@@ -619,9 +669,17 @@ def cmd_check_prompts(args, system_suffix="", normalize=None, show_example=None)
     if not is_staged(p):
         cmd_stage_kt(args)
     kt = import_kt_base()
-    users = selected_user_ids(p, args)
+    paper_users = set(read_user_ids(p["user_ids"]))
+    selected = selected_user_ids(p, args)
+    # Only the paper's users have published prompts to compare with
+    users = [user for user in selected if user in paper_users]
+    if len(users) < len(selected):
+        print(f"Skipping {len(selected) - len(users)} selected users who are not among the paper's 500")
     if args.check_users > 0:
         users = users[:args.check_users]
+    if not users:
+        print("No selected user has published prompts to compare with.")
+        return
     wanted = set(users)
 
     print(f"Hashing published prompts of {len(users)} paper users ({PAPER_REF_MEMBER}) ...")
@@ -1013,7 +1071,8 @@ def cmd_all(args):
     cmd_extract_users(args)
     cmd_stage_kt(args)
     cmd_infer_kt(args)
-    cmd_infer_ped(args)
+    if not args.no_ped:  # --no-ped: knowledge tracing only (Tasks 1-2)
+        cmd_infer_ped(args)
     cmd_evaluate(args)
 
 
@@ -1034,6 +1093,10 @@ def build_parser(commands, description=__doc__):
     parser.add_argument("--students", type=int, default=0,
                         help="Test run on only the first N paper students; also uses --num-samples 12 "
                              "and a separate _testN output folder and CSV unless given")
+    parser.add_argument("--user-ids-file", default=None,
+                        help="Run on the user_ids in this file (one per line) instead of the paper's 500")
+    parser.add_argument("--run-name", default=None,
+                        help="Added to the default output folder and CSV names, e.g. for a --user-ids-file group")
     parser.add_argument("--out-dir", default=None, help="Directory for staged data and results")
     parser.add_argument("--force", action="store_true", help="Re-extract user ids even if the file exists")
     parser.add_argument("--with-skills", action="store_true",
@@ -1066,19 +1129,25 @@ def build_parser(commands, description=__doc__):
                         help="A single pedagogical results JSONL (default: the per-task files in <out>)")
     parser.add_argument("--csv", default=None, help="Results CSV")
     parser.add_argument("--no-kt", action="store_true", help="Skip Tables 2 and 3")
-    parser.add_argument("--no-ped", action="store_true", help="Skip Table 4")
+    parser.add_argument("--no-ped", action="store_true",
+                        help="Skip the pedagogical tasks (Table 4); with `all`, run only Tasks 1-2")
     parser.add_argument("--label", default=MODEL_LABEL, help="Row label for this model")
     return parser
 
 
-def test_suffix(args):
-    return f"_test{args.students}" if args.students else ""
+def run_suffix(args):
+    """'_<run-name>' and/or '_testN', added to default folder and CSV names."""
+    name = f"_{args.run_name}" if args.run_name else ""
+    return name + (f"_test{args.students}" if args.students else "")
 
 
 def resolve_defaults(args, out_dir=DEFAULT_OUT_DIR, csv_path=DEFAULT_CSV):
-    """Fill in defaults. A test run (--students N) gets its own folder and CSV, so it never
-    mixes with the full run: <out_dir>_testN and <csv name>_testN.csv."""
-    suffix = test_suffix(args)
+    """Fill in defaults. A test run (--students N) or a named run (--run-name) gets its own
+    folder and CSV, so it never mixes with the full run: <out_dir>_<name>_testN and
+    <csv name>_<name>_testN.csv."""
+    if args.user_ids_file:
+        args.user_ids_file = os.path.abspath(args.user_ids_file)
+    suffix = run_suffix(args)
     if args.out_dir is None:
         args.out_dir = out_dir + suffix
     if args.csv is None:
@@ -1093,5 +1162,7 @@ def parse_args():
 
 
 if __name__ == "__main__":
+    # Write each line right away, also when output goes to a log file (nohup ... > log)
+    sys.stdout.reconfigure(line_buffering=True)
     args = parse_args()
     COMMANDS[args.command](args)

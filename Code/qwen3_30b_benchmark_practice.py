@@ -54,7 +54,6 @@ Usage (from the Code/ directory):
 import json
 import os
 import re
-import shutil
 import sys
 
 import pandas as pd
@@ -200,22 +199,13 @@ WORKERS = {"_kt-worker": kt_worker, "_ped-worker": ped_worker}
 # Subcommands
 # ---------------------------------------------------------------------------
 
-def baseline_args(args):
-    """The baseline's folder and CSV for the same --students, to reuse its caches and compare."""
-    suffix = B.test_suffix(args)
-    return B.DEFAULT_OUT_DIR + suffix, B.DEFAULT_CSV.replace(".csv", f"{suffix}.csv")
+def baseline_csv(args):
+    """The baseline's CSV for the same --run-name and --students, to compare with."""
+    return B.DEFAULT_CSV.replace(".csv", f"{B.run_suffix(args)}.csv")
 
 
 def cmd_extract_users(args):
-    p = B.paths(args)
-    baseline_dir, _ = baseline_args(args)
-    # The paper's user list and correct answers don't depend on the prompts: reuse the baseline's
-    os.makedirs(p["out"], exist_ok=True)
-    for name in ("paper_user_ids.txt", "paper_correct_answers.json"):
-        source, target = os.path.join(baseline_dir, name), os.path.join(p["out"], name)
-        if os.path.exists(source) and not os.path.exists(target) and not args.force:
-            shutil.copy(source, target)
-            print(f"Copied {name} from {baseline_dir}")
+    # The paper's user list and correct answers are shared with the baseline (Results/paper_reference/)
     B.cmd_extract_users(args)
 
 
@@ -363,7 +353,8 @@ def cmd_all(args):
     cmd_stage_kt(args)  # includes extract-users
     cmd_check_length(args)
     cmd_infer_kt(args)
-    cmd_infer_ped(args)
+    if not args.no_ped:  # --no-ped: knowledge tracing only (Tasks 1-2)
+        cmd_infer_ped(args)
     cmd_evaluate(args)
 
 
@@ -385,16 +376,18 @@ def parse_args():
                         help="Baseline results CSV to compare with (default: the baseline CSV for the same --students)")
     parser.set_defaults(label=MODEL_LABEL)
     args = parser.parse_args()
-    # Default CSV: Results/qwen_30b_results[_testN]_practice.csv
+    # Default CSV: Results/qwen_30b_results[_<run-name>][_testN]_practice.csv
     B.resolve_defaults(args, out_dir=DEFAULT_OUT_DIR, csv_path=B.DEFAULT_CSV)
-    if args.csv == B.DEFAULT_CSV.replace(".csv", f"{B.test_suffix(args)}.csv"):
+    if args.csv == baseline_csv(args):
         args.csv = args.csv.replace(".csv", "_practice.csv")
     if args.compare_csv is None:
-        args.compare_csv = baseline_args(args)[1]
+        args.compare_csv = baseline_csv(args)
     return args
 
 
 if __name__ == "__main__":
+    # Write each line right away, also when output goes to a log file (nohup ... > log)
+    sys.stdout.reconfigure(line_buffering=True)
     if len(sys.argv) > 1 and sys.argv[1] in WORKERS:
         WORKERS[sys.argv[1]](sys.argv[2:])
     else:
