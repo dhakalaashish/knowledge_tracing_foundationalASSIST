@@ -355,8 +355,18 @@ def write_staged_problems(dst, answers=None):
         print(f"Problems: paper correct answers set for {n_set} rows")
 
 
+STAGED_MARKER = ".staged"
+
+
+def is_staged(p, marker=STAGED_MARKER):
+    """True once stage-kt has finished (an interrupted staging leaves no marker)."""
+    return os.path.exists(os.path.join(p["kt_data"], marker))
+
+
 def cmd_stage_kt(args):
     p = paths(args)
+    if os.path.exists(os.path.join(p["kt_data"], STAGED_MARKER)):
+        os.remove(os.path.join(p["kt_data"], STAGED_MARKER))
     if not os.path.exists(p["user_ids"]):
         cmd_extract_users(args)
     user_ids = set(selected_user_ids(p, args))
@@ -415,6 +425,8 @@ def cmd_stage_kt(args):
     else:
         pd.DataFrame({"problem_id": [-1]}).to_csv(skills_dst, index=False)
         print("Skills: none, as in the paper's run (use --with-skills to include them)")
+    with open(os.path.join(p["kt_data"], STAGED_MARKER), "w") as f:
+        f.write("done\n")
     print(f"Staged KT data in {p['kt_data']}")
 
 
@@ -509,7 +521,7 @@ def args_num_gpus(cmd):
 
 def cmd_infer_kt(args):
     p = paths(args)
-    if not os.path.exists(os.path.join(p["kt_data"], "Interactions.csv")):
+    if not is_staged(p):
         cmd_stage_kt(args)
     cmd = [sys.executable, KT_SCRIPT,
            "--data-dir", p["kt_data"],
@@ -596,9 +608,15 @@ def prompt_hash(prompt):
     return hashlib.sha1(prompt.encode("utf-8")).hexdigest()
 
 
-def cmd_check_prompts(args):
+def cmd_check_prompts(args, system_suffix="", normalize=None, show_example=None):
+    """Compare our prompts with the published ones.
+
+    system_suffix is appended to the system prompt, and normalize(prompt) is applied before
+    comparing; together they let a variant (e.g. with practice text) check that it adds only
+    what it means to. show_example(prompt) is called with our first prompt.
+    """
     p = paths(args)
-    if not os.path.exists(os.path.join(p["kt_data"], "Interactions.csv")):
+    if not is_staged(p):
         cmd_stage_kt(args)
     kt = import_kt_base()
     users = selected_user_ids(p, args)
@@ -615,12 +633,16 @@ def cmd_check_prompts(args):
 
     print(f"Building our prompts from {p['kt_data']} ...")
     # The reference file is GPT-OSS, whose config prepends "Reasoning: medium"
-    system_prompt = "Reasoning: medium\n\n" + kt.BASE_SYSTEM_PROMPT
+    system_prompt = "Reasoning: medium\n\n" + kt.BASE_SYSTEM_PROMPT + system_suffix
     ours, differing_users = set(), set()
     n_identical = 0
     first_mismatch = None
     for pid, prompt in iter_prompts(kt, p["kt_data"], users, system_prompt, legacy_clean=args.legacy_clean):
+        if show_example and not ours:
+            show_example(prompt)
         ours.add(pid)
+        if normalize:
+            prompt = normalize(prompt)
         if published.get(pid) == prompt_hash(prompt):
             n_identical += 1
         else:
@@ -889,7 +911,7 @@ def cmd_evaluate(args):
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump({"table2": t2, "table3": t3, "table4": t4, "timings": timings}, f, indent=2)
     csv_path = os.path.abspath(args.csv)
-    write_results_csv(csv_path, args.label, t2, t3, t4, timings)
+    write_results_csv(csv_path, args.label, t2, t3, t4, timings, compare_csv=getattr(args, "compare_csv", None))
     print(f"Saved {md_path}\nSaved {json_path}\nSaved {csv_path}")
 
 
@@ -906,17 +928,30 @@ def timing_summary(runs):
     return total
 
 
-CSV_COLUMNS = ["task", "metric", "value", "n", "random_baseline",
+CSV_COLUMNS = ["track", "task", "metric", "value", "n", "random_baseline",
                "wall_seconds", "data_prep_seconds", "model_load_seconds", "generation_seconds",
                "prompts", "seconds_per_prompt", "num_gpus", "gpus", "runs", "note"]
+COMPARE_COLUMNS = ["baseline_value", "change_vs_baseline"]
 
 
-def write_results_csv(path, label, t2, t3, t4, timings):
-    """One row per result, with the GPU time of the inference run that produced it."""
+def read_csv_values(path):
+    """(task, metric) -> value from a results CSV written by write_results_csv."""
+    with open(path, newline="", encoding="utf-8") as f:
+        return {(row["task"], row["metric"]): float(row["value"])
+                for row in csv.DictReader(f) if row.get("value") not in (None, "")}
+
+
+def write_results_csv(path, label, t2, t3, t4, timings, compare_csv=None):
+    """One row per result, with the GPU time of the inference run that produced it.
+
+    With compare_csv (another results CSV), each row also gets that file's value for the same
+    task and metric, and the difference in percentage points.
+    """
     rows = []
 
     def add(task, metric, value, n=None, baseline=None, stage=None, note=""):
-        row = {"task": task, "metric": metric, "n": n, "note": note,
+        track = "Knowledge Tracing" if task.startswith(("Task 1", "Task 2")) else "Pedagogical Grounding"
+        row = {"track": track, "task": task, "metric": metric, "n": n, "note": note,
                "value": None if value is None else round(100 * value, 2),
                "random_baseline": baseline}
         summary = timing_summary(timings.get(stage)) if stage else None
@@ -956,8 +991,19 @@ def write_results_csv(path, label, t2, t3, t4, timings):
                 add(names[task], "Accuracy (%)", t4[task]["accuracy"], t4[task]["total"],
                     round(100 * t4[task]["baseline"], 2), f"ped_{task}")
 
+    columns = ["model"] + CSV_COLUMNS
+    if compare_csv:
+        columns[columns.index("value") + 1:columns.index("value") + 1] = COMPARE_COLUMNS
+        compare = read_csv_values(compare_csv) if os.path.exists(compare_csv) else {}
+        print(f"Comparing with {compare_csv}" if compare else f"No comparison file yet: {compare_csv}")
+        for row in rows:
+            other = compare.get((row["task"], row["metric"]))
+            if other is not None and row["value"] is not None:
+                row["baseline_value"] = other
+                row["change_vs_baseline"] = round(row["value"] - other, 2)
+
     with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["model"] + CSV_COLUMNS)
+        writer = csv.DictWriter(f, fieldnames=columns)
         writer.writeheader()
         for row in rows:
             writer.writerow({"model": label, **row})
@@ -982,14 +1028,13 @@ COMMANDS = {
 }
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", choices=COMMANDS)
+def build_parser(commands, description=__doc__):
+    parser = argparse.ArgumentParser(description=description, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("command", choices=commands)
     parser.add_argument("--students", type=int, default=0,
-                        help="Test run on only the first N paper students; also uses --num-samples 12, "
-                             f"--out-dir {DEFAULT_OUT_DIR}_testN and --csv ..._testN.csv unless given")
-    parser.add_argument("--out-dir", default=None,
-                        help=f"Directory for staged data and results (default: {DEFAULT_OUT_DIR})")
+                        help="Test run on only the first N paper students; also uses --num-samples 12 "
+                             "and a separate _testN output folder and CSV unless given")
+    parser.add_argument("--out-dir", default=None, help="Directory for staged data and results")
     parser.add_argument("--force", action="store_true", help="Re-extract user ids even if the file exists")
     parser.add_argument("--with-skills", action="store_true",
                         help="stage-kt: include skill names (the paper's prompts had none)")
@@ -1019,21 +1064,32 @@ def parse_args():
                         help="KT results JSONL, or 'archive.zip::member' (default: <out>/" + KT_OUTPUT + ")")
     parser.add_argument("--ped-results", default=None,
                         help="A single pedagogical results JSONL (default: the per-task files in <out>)")
-    parser.add_argument("--csv", default=None, help=f"Results CSV (default: {DEFAULT_CSV})")
+    parser.add_argument("--csv", default=None, help="Results CSV")
     parser.add_argument("--no-kt", action="store_true", help="Skip Tables 2 and 3")
     parser.add_argument("--no-ped", action="store_true", help="Skip Table 4")
     parser.add_argument("--label", default=MODEL_LABEL, help="Row label for this model")
-    args = parser.parse_args()
+    return parser
 
-    # A test run (--students N) gets its own folder and CSV, so it never mixes with the full run
-    test_suffix = f"_test{args.students}" if args.students else ""
+
+def test_suffix(args):
+    return f"_test{args.students}" if args.students else ""
+
+
+def resolve_defaults(args, out_dir=DEFAULT_OUT_DIR, csv_path=DEFAULT_CSV):
+    """Fill in defaults. A test run (--students N) gets its own folder and CSV, so it never
+    mixes with the full run: <out_dir>_testN and <csv name>_testN.csv."""
+    suffix = test_suffix(args)
     if args.out_dir is None:
-        args.out_dir = DEFAULT_OUT_DIR + test_suffix
+        args.out_dir = out_dir + suffix
     if args.csv is None:
-        args.csv = DEFAULT_CSV.replace(".csv", f"{test_suffix}.csv")
+        args.csv = csv_path.replace(".csv", f"{suffix}.csv")
     if args.num_samples is None:
         args.num_samples = 12 if args.students else 1000
     return args
+
+
+def parse_args():
+    return resolve_defaults(build_parser(COMMANDS).parse_args())
 
 
 if __name__ == "__main__":
