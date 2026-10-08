@@ -103,19 +103,17 @@ STOCHASTIC_SAMPLING = {
 #
 # ---------------------------------------------------------------------------
 
+
 PROMPT_INTRO = """You are an expert in mathematics assessment. You have years of experience reviewing test items and deciding which mathematical practices each item assesses.
 
-Your task: read ONE item from an online middle-school mathematics item bank and estimate, for each of six practices, the probability that an expert reviewer would say the item assesses that practice.
+Your task: read ONE item from an online k-12 mathematics item bank and estimate, for each of six practices, the probability that an expert reviewer would say the item assesses that practice.
 
 ---
 
-About the items
-
-- The items come from Illustrative Mathematics, a grades 6-8 curriculum, delivered in ASSISTments, an online learning platform.
-- Each item is scored automatically from a single response: a typed number or expression, a selected choice, a dropdown selection, or an ordering. Students cannot submit written explanations, and they work alone.
-- The problem text was converted from HTML. Images appear only as [image], answer blanks appear as ____, and dropdowns appear as [dropdown].
-- Many items are one part of a multi-part problem. The text may refer to a figure, table, or earlier part that you cannot see. Rate what the visible text and answer format require; do not guess at hidden content.
-- You also see the item's answer choices (if any), its correct answer, and its skill tag. The correct answer tells you what the student must produce. The skill tag describes the mathematics content, not the practice.
+Assess the item's practice probability using:
+    - Practice definition: defines what the practice measures 
+    - Practice descriptors: non-comprehensive list of descriptions of what the practice could entail
+Both the definition and the descriptor are important in identifying which practice the item belongs to.
 
 ---
 
@@ -127,116 +125,200 @@ PROMPT_REPRESENTING = """
 ===
 1. Representing   (JSON key: "representing")
 
-Official definition:
+Practice definition:
 Recognizing, using, creating, interpreting, or translating among representations appropriate for the grade level and the mathematics being assessed.
 
-Broader discussion:
-Representing mathematical ideas and using mathematical representations to make sense of and solve problems is central to mathematics. Students create representations themselves, or in collaboration with other students, and they reason from or translate between standard representations (e.g., graphs, tables, geometric drawings). Variety in representations "is like examining a concept through a variety of lenses, with each lens providing a different perspective that makes the picture (concept) richer and deeper."
-
-Students, especially young ones, benefit from using physical objects or acting out processes during problem solving. Base 10 blocks (or blocks/tiles representing other bases), fraction strips/bars, red-black integer tiles, and algebra tiles are all examples of physical representations of number and operation that are used to enhance students' understanding of concepts in elementary and middle grades. These visual and physical representations connect, eventually, to symbolic representations as well. Visual representations also play a particularly powerful role in helping students make sense of problems and understand mathematical concepts and procedures. For instance, arrays of squares in a grid can be used to represent area models for mathematical operations such as multiplication and division in early elementary grades, then later for multiplication of algebraic expressions. Additionally, students create, use, and reason about multiple representations for a given mathematical idea or relationship in contextually relevant ways.
+Practice descriptors:
+    - Represent numbers, operations, or word problems using visual models (e.g., base 10, number lines, fraction strips).
+    - Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers (e.g., thousands).
+    - Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).
+    - Create and justify solutions to word problems through numeric representations and operations.
+    - Represent, interpret, or compare expressions or problem situations involving absolute values.
+    - Select or use appropriate units or measurement instruments to represent or determine the attributes of an object.
+    - Create visual representation of measurements or relationships between measurements.
+    - Draw or sketch figures from a written description.
+    - Represent, describe, or visualize figures from different views, including using 2-D representations of 3-D objects to solve problems.
+    - Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.
+    - Create a visual, graphical, or tabular representation of a given data set.
+    - Compare and contrast different visual and graphical representations of univariate and bivariate data.
+    - Justify the use of a particular representation of data over another.
+    - Interpret visual representations to compare data sets, to draw inferences, or to make conclusions across two or more distinct data sets.
+    - Create and use scatterplots to represent the relationship between two variables and to estimate the strength of the relationship (strong, weak, none).
+    - Recognize, describe, or extend numerical and geometric patterns using tables, graphs, words, or symbols.
+    - Express linear and exponential sequences in recursive or explicit forms given a table.
+    - Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.
+    - Use or create a graphical representation of a situation to draw conclusions.
 """
 
 PROMPT_ABSTRACTING = """
 ===
 2. Abstracting and Generalizing   (JSON key: "abstracting_and_generalizing")
 
-Official definition:
+Practice definition:
 Decontextualizing, identifying commonality across cases, items, problems, or representations, and extending one's reasoning to a broader domain appropriate for the grade level and the mathematics being assessed.
 
-Broader discussion:
-Abstracting: Students learning and doing mathematics also engage in the practice of abstracting and generalizing. An essential element of mathematical learning and problem solving is the ability to reason abstractly and to develop, test, and refine generalizations. In reasoning abstractly, students engage in the process of decontextualizing: Students abstract ideas in a given problem or context and express and manipulate them in a manner independent of their contextual references. Decontextualizing can foster an understanding of the relationships among problem contexts and written or symbolic forms, as well as an understanding of how mathematical expressions might be transformed to facilitate a solution strategy. Abstracting is also a critical activity for fostering generalizing; it enables a consideration of concepts and relationships decontextualized from specific examples or cases, which can support the formation of a more general rule or relationship.
+Practice descriptors:
+    - Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.
+    - Describe or extend a pattern, sequence, or relationship to a larger set of numbers, including from a given description.
+    - Determine a generalized expression for a recursive pattern.
+    - Find and generate structural relationships among sets of numbers.
+    - Generalize understanding of place value.
+    - Generalize findings about rational and irrational numbers.
+    - Generalize, describe, compare, or extend numerical properties and operations across different domains or number systems (e.g., extend the properties of exponents to rational exponents).
+    - Make generalizations about areas of squares or rectangles.
+    - Generalize the effect of proportions and scaling for area and volume.
+    - Extend quantified attributes to a larger set.
+    - Make connections between representations of different measurement systems.
+    - Extend trigonometric formulas to determine triangle unknowns.
+    - Identify common elements and generalize geometric properties across different figures and families of figures (e.g., triangles, quadrilaterals, polygons, polyhedra).
+    - Extend a geometric relationship from one or more figures to a family of figures.
+    - Describe and generalize the effects of transformations (e.g., dilations, translations, rotations) and the relationships (e.g., congruence, similarity, orientation) between figures and their images.
+    - Develop generalizations about transformations that preserve the area or volume of figures.
+    - Make general conclusions from graphical or tabular representations of data (e.g., pictographs, bar graphs, dot plots) in terms of generalized phenomena (e.g., median, mode, range, shape, center, spread, clusters).
+    - Organize and display data, and generalize patterns or trends in the data to suggest interpretations or infer conclusions.
+    - Notice patterns of outcomes in a probability situation.
+    - Develop generalizations about how linear transformations of one-variable data affect mean, median, mode, range, interquartile range, and standard deviation.
+    - Extend and generalize numerical patterns, including arithmetic and geometric progressions.
+    - Identify commonalities and compare and generalize properties within and across function families (e.g., linear, quadratic, rational, and exponential functions).
+    - Develop general rules for translating functions and graphs.
+    - Create connections across representations.
 
-Young students, for instance, can notice patterns of additive commutativity, such as 3 + 7 yielding the same sum as 7 + 3. In this instance, decontextualization would include finding a way to represent this relation independent of particular numbers, as a more general identity. Younger students might express this general identity verbally or with pictures, or with the use of a generic example. Older students might express this identity algebraically as a + b = b + a. Reasoning abstractly can also support recognizing similar mathematical structures across different problems or domains. For example, one could see the multiplication of two binomials (2x + 7)(3x + 2) as a more general version of multiplying 27 by 32.
-
-Abstracting can occur across different domains. It can be addressed in reasoning about figures and their relationships in geometry, about number theory in number properties and operations, or about equivalence or functional relationships in algebra. How one decontextualizes or reasons with structure will differ across the domains, but these are processes students can employ in all mathamtical content areas. 
-
-Generalizing: Historically, generalization has been defined as an individual, cognitive construct, where generalization is the act of identifying a property that holds for a larger set of mathematical objects or conditions than the number of individually verified cases. It has been described as the process of "applying a given argument in a broader context," and as identifying a commonality based on particulars and then extending it to all terms. More recently, researchers have begun to address generalizing as a construct that is both social and cognitive; that is, it can occur either individually or collectively. Therefore, generalizing is an individual or collective practice of (a) identifying commonality across cases, (b) extending reasoning beyond the domain in which it originated, and/or (c) deriving broader results from particular cases.
-
-Several aspects of mathematical reasoning can foster generalizing. Abstracting and decontextualizing are important mental actions that support generalizing. Other actions that support generalizing include visualizing, focusing, reflecting, connecting, and expressing. Visualizing involves seeing patterns or structural relationships, as well as imagining a set of relationships beyond what is perceptually available. Focusing is attending to particular details, characteristics, properties, or relationships above others. This can include examining a particular case in a pattern or attending to figural or numerical cues. Reflecting involves actions such as thinking back on the operations one has carried out, observing one's method in solving problems, or examining the rules that govern a given pattern. Connecting is the identification of relationships among tasks, representations, or properties. Making connections between representations or identifying and operating on structural similarities can foster the development of generalizations. Finally, expressing involves depicting a generalization verbally or in writing. Describing generalizations in words can support the subsequent development of algebraically represented generalizations.
-
-Like abstracting, generalizing can occur across the content areas and grade bands. Existing problems contain a number of generalization tasks in which students are asked to determine a rule guiding the pattern of number terms in a sequence. In some items, potential rules are provided for students who are prompted only to attend to the action required to move from one term in the sequence to the next. In other items, students must determine a rule themselves. Students can also be challenged to engage in the processes of generalizing in items that do not rely on pattern sequences. One aspect of generalizing is identifying commonality across cases.
 """
 
 PROMPT_JUSTIFYING = """
 ===
 3. Justifying and Proving   (JSON key: "justifying_and_proving")
 
-Official definition:
+Practice definition:
 Creating, evaluating, showing, or refuting mathematical claims in developmentally and mathematically appropriate ways.
 
-Broader discussion:
-Justifying and proving are essential in all content areas and grade levels. State standards highlight the activities students engage in as they learn to create valid mathematical arguments: making and investigating conjectures, developing particular forms of argument (e.g., deductive), and using a variety of proof methods (e.g., direct, counterexample). These are all considered components of the practice of justifying and proving.
+Practice descriptors:
+    - Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.
+    - Find a counterexample to refute a claim about number properties or operations.
+    - Evaluate the appropriateness or validity of a provided argument about properties or operations.
+    - Prove numerical or algebraic relationships through developing deductive arguments, finding counterexamples, engaging in proof by exhaustion, or employing mathematical induction.
+    - Analyze or interpret a proof by mathematical induction about the properties of numbers.
+    - Justify relationships between properties of number systems, including natural numbers, integers, rational numbers, real numbers, and complex numbers.
+    - Defend, justify, or prove a claim about physical attributes, comparisons, or measurement properties.
+    - Find or choose a counterexample to disprove a claim about properties such as area, length, or volume.
+    - Evaluate the validity of a provided argument making use of measurement.
+    - Explain why a given attribute can be appropriately measured by the chosen quantity and unit.
+    - Prove conjectures about trigonometric identities.
+    - Create, test, and validate geometric conjectures (e.g., distinguish which objects in a collection satisfy a given geometric property or definition and defend choices).
+    - Verify properties of rotations, reflections, or translations.
+    - Justify relationships of congruence and similarity of two-dimensional figures; apply these relationships using scaling and proportional reasoning.
+    - Analyze a provided argument about geometric attributes or relationships.
+    - Use given definitions and theorems to prove geometric conjectures.
+    - Develop justifications and proofs that rely on a variety of representational modes (e.g., two-column, paragraph).
+    - Discuss the implications that a definition of a type of figure has on the figure properties.
+    - Evaluate the characteristics of a good survey or well-designed experiment, and justify or critique the validity of surveys or experiments.
+    - Defend or counter conjectures offered based on a data set, including conjectures about bivariate data.
+    - Justify or prove conjectures about probability.
+    - Create and explore counting arguments in order to develop and justify conjectures.
+    - Given a pattern or sequence, construct, explain, or justify a rule to generate the terms of the pattern or sequence.
+    - Develop a valid mathematical argument based on properties of slope and intercept for linear functions.
+    - Justify functional relationships across different representational forms, such as tables, equations, verbal descriptions, or graphs.
+    - Create, validate, and justify conclusions and generalizations about functional relationships.
+    - Verify a conclusion using algebraic properties.
 
-Mathematical justification includes creating arguments, explaining why conjectures must be true or demonstrating that they are false, exploring special cases or searching for counterexamples, understanding the role of definitions and counterexamples, and evaluating arguments. A valid justification should show why a statement or conjecture is true or not true generally (i.e., for all cases) and, especially by grades 8 and 12, should do so by providing a logical sequence of statements, each building on already established statements, ideas, or relationships.
-
-A justification is not based on authority, perception, popular consensus, or examples alone. As students engage in justifying, they may be tempted to rely on external sources to verify their ideas, such as their teacher or a textbook. Students may also want to use examples to support their claims, concluding that a conjecture must be true because it holds for several different cases. Examples can and do play an important role in justifying and proving, particularly in terms of helping students make sense of statements, gain a sense of conviction, or revealing an underlying structure that could lead to a proof. But they do not suffice as a mathematical justification or proof except for proofs by exhaustion or counterexample.
-
-A proof can have many different forms, including narrative, pictorial, diagram, two-column, or algebraic forms. The form used to represent a mathematical proof is valid as long as it communicates the proof's essential features, namely, that it contains logically connected mathematical statements that are based on valid definitions and theorems.
-
-In addition to the various formats one can use to develop or present proofs, there are other ways of mathematically proving, disproving, or justifying a mathematical answer. These include developing deductive arguments, finding counterexamples, proving by exhaustion (i.e., verifying every possible case), and employing mathematical induction. Often, it may be easier to use a particular mode of argumentation based on the nature of the claim.
-
-The process of refuting (demonstrating that a statement is false) is a key element of justification because conjecturing can produce both true and false statements. Students must understand that a single counterexample disproves a conjectured generalization. Understanding that a single counterexample undermines a general claim is an important but difficult aspect of justification. Learning to search for counterexamples and explaining why they are justifications is only one aspect of refutation. Attempting to prove that a conjecture is false can also lead to the development of new insights or ideas, as well as to the formation of different conjectures that can then be explored, refuted, or proved. Knowing a variety of approaches to generating a proof and knowing which one to select for a particular circumstance is an important aspect of justifying and proving.
-
-Another element of justifying and proving is evaluating the validity of a purported proof. This involves not only deciding whether a proof is valid in terms of its conclusion, but also deciding whether a given proof relies on correct assumptions, makes use of merited conclusions and logic, and explains the entire statement or conclusion. These skills can be fostered by challenging students to judge the appropriateness of a given argument (e.g., a formal or informal proof).
-
-Engaging in justifying and proving is a way for students to explore why a particular assertion must be true. While investigating the reasons a conjecture might be true, students attend to particular features and consider relationships, examine multiple factors that are relevant to the problem statement, return to the meanings of terms and operations, or notice similarity or difference across cases. By exploring these factors, students gain new insight into the conjecture or deepen their understanding of fundamental mathematical ideas.
 """
 
 PROMPT_MODELING = """
 ===
 4. Mathematical Modeling   (JSON key: "mathematical_modeling")
 
-Official Definition:
+Practice Definition:
 Making sense of a scenario, identifying a problem to be solved, mathematizing it, applying the mathematization to reach a solution, and checking the viability of the solution in developmentally and mathematically appropriate ways.
 
-Broader discussion:
-Mathematical modeling involves student choice, including the assumptions made in the posing of answerable questions in an open-ended situation. The practice of modeling requires students to make sense of a scenario, identify a problem to be solved, mathematize it, and apply the mathematization to reach a solution and check the viability of the solution. Mathematical modeling also requires discussions and decisions about what is valuable.
+Practice descriptors:
+    - Use physical or virtual materials to build a model of a number pattern or to predict or estimate results of a continued pattern.
+    - Build a model of a situation for an estimation problem, and select and defend an appropriate method of estimation.
+    - Select appropriate properties or operations that can be used to build a model of a situation or solve a problem.
+    - Identify a mathematical problem from a given situation that could be modeled numerically or algebraically.
+    - Create a physical or virtual model involving number and/or operation, and communicate and defend decisions about the model to an audience for feedback.
+    - Identify the attribute(s) appropriate to measure in a given situation.
+    - Mathematize a contextual measurement situation to lead to a solution.
+    - Select, use, or evaluate the reasonableness of a model unit for an attribute in a real context, and defend the use of that unit.
+    - Create a model to convert between two measurement systems.
+    - Construct scale drawings to be used as measurement models of objects in problem situations.
+    - Use existing geometric models to solve mathematical or real-world problems.
+    - Create or construct geometric models of physical objects or situations, using physical or virtual materials, to solve mathematical or real-world problems.
+    - Visually model the effects of successive (or composite) transformations of figures in the plane.
+    - Predict the results of combining, subdividing, and transforming geometric figures.
+    - Discuss differences in solutions caused by having used a simplified model.
+    - Identify a statistical question to investigate in a given, open-ended or data-rich situation.
+    - Create or use a statistical model to answer a statistical question or make a prediction about a data set.
+    - Create or use a statistical model to assess the validity of a statistical claim.
+    - Create a probability model to calculate or estimate the probability of an event.
+    - Compare and contrast theoretical probabilities with results from experimental probabilities in a simulation.
+    - Identify the variables needed to create an algebraic model of a situation.
+    - Write algebraic relationships, expressions, equations, or inequalities to model real-world situations.
+    - Revise an existing algebraic model based on introducing new variables or parameters.
+    - Build or apply a mathematical model of a financial situation (e.g., a monthly family budget, or a car loan).
 
-At an introductory level, modeling involves steps such as selecting and applying mathematical processes or expressing mathematical concepts and processes (such as mathematical operations) using visual, physical, or symbolic representations. At a more advanced level, a series of processes may be needed to mathematize a messy real-world situation prior to selecting and applying the mathematics. Follow-up work can involve analyzing and evaluating the results obtained from doing the mathematics. A full cycle in the mathematical modeling process includes: (a) identifying the problem; (b) making assumptions that often simplify the problem and then identifying variables; (c) mathematizing the situation; (d) analyzing and assessing solutions; and (e) translating the solution(s) back into the real world and examining their feasibility, and, if not feasible, changing the simplifying assumptions and iterating the process. Finally, if there seems to be a feasible real-world solution, there are two additional steps: (f) implementing the model; and (g) reporting out results.
-
-It is important to distinguish between the process of mathematical modeling and the noun "model," which is an object and a term sometimes used as a synonym for a mathematical representation. For example, when a line or other function is fitted to a bivariate scatterplot, the function is referred to as a model for the data, meaning a representation of the data. However, the practice of mathematical modeling involves far more than just using a representation. As previously described, mathematical modeling is a multistep process, which may involve aspects of representing, particularly building or interpreting a representation. However, Mathematical Modeling is distinct from that of Representing in that the use of representations in modeling is necessarily in service of the overarching purpose of identifying and finding solutions for problems in real-world situations. Items assessing the Mathematical Modeling focus on multiple steps of the cycle of mathematical modeling driven by that overarching purpose. For example, given an open-ended situation, students could generate questions they would need to explore or identify some assumptions as they begin the modeling process. In such scenarios, students would engage in the first two steps of the modeling process.
-
-Scenario-based tasks are particularly useful in assessing student achievement in the practice of mathematical modeling.
 """
 
 PROMPT_COLLABORATIVE = """
 ===
 5. Collaborative Mathematics   (JSON key: "collaborative_mathematics")
 
-Official definition:
+Practice definition:
 The social enterprise of doing mathematics with others through discussion and collaborative problem solving whereby ideas are offered, debated, connected, and built-upon toward solution and shared understanding. Collaborative mathematics involves joint thinking among individuals toward the construction of a problem solution in developmentally and mathematically appropriate ways.
 
-Broader discussion:
-As a practice, collaborative mathematics exists alongside other mathematical practices. That is, as students work together toward a shared goal, they may also engage in representing, abstracting and generalizing, justifying and proving, and mathematical modeling. Assessing collaborative mathematics requires developing items that foreground and require the doing of mathematics collaboratively, engaging processes that are fundamentally about joint thinking. Collectively, these processes include sharing ideas with others; attending to and making sense of the mathematical contributions of others; evaluating the merit of others' ideas through agreement or disagreement; and productively responding to others' ideas through building on or extending ideas and connecting or generalizing across ideas.
+Practice descriptors:
+    - Add to or build on a numerical model provided by others to complete a mathematical task.
+    - Evaluate others' interpretations of numbers from real-life contexts.
+    - Analyze the effect of another's estimation method on the accuracy of results.
+    - Reflect on the work of others to extend a numerical pattern.
+    - Evaluate the mathematical reasonableness of a peer's mathematical contribution.
+    - Evaluate the validity of a measurement claim posed by others.
+    - Analyze others' solutions and suggest a critique of their solutions in a situation involving measurement.
+    - Attend to and make sense of the mathematical contributions of others in a situation involving measurement (e.g., revoice the work of others to clarify meaning of choice of measurement units).
+    - Engage in joint thinking to reach consensus about a measurement situation.
+    - Express and justify agreement or disagreement with a claim made by others in a geometric problem situation.
+    - Build on the work of others to geometrically model a situation.
+    - Evaluate the merit of others' geometric ideas.
+    - Connect and generalize across geometric ideas contributed by others in a problem-solving situation.
+    - Attend to the contributions of others in collaboratively generating a geometric proof.
+    - Choose a worthwhile statistical question from a set offered by others about a problem situation or context involving data.
+    - Recognize and critique misleading arguments from data (e.g., from media or other people).
+    - Revoice/restate the work of others in addressing a statistical or probabilistic situation.
+    - Analyze the models constructed by others to evaluate a new data set.
+    - Verify the conclusions of others using algebraic or numerical properties.
 
-Collaborative mathematics processes are largely understood as discursive in nature and occurring through social interaction during mathematical activity. Given the discursive nature of collaborative mathematics, items that measure collaborative processes should likewise be discursive in nature, offering students examples of social interaction or imagined utterances around mathematics to which they are tasked to respond in key ways. These include being asked to make sense of others' thinking, express and defend agreement or disagreement, and extend an idea.
-
-Three measurable skills are involved in collaborative mathematics: attending to and making sense of the mathematical contributions of others, evaluating the mathematical merit of the contributions of others, and responding productively to others' mathematical ideas.
-
-Attending to and making sense of the mathematical contributions of others. Collaborative mathematics begins with the sharing of ideas in the form of a conjecture or other contribution that is meant to be communicated to others. A first joint act is made up of both this sharing and how others attend to the conjecture and make sense of it. To do so, students must establish a shared understanding about what the problem is and how the problem is being interpreted. People elicit and probe ideas. Individuals then express and check personal understanding of another's thinking by repeating or revoicing the idea. From an assessment perspective, students can be asked to revoice (or put into their own words) the expressed mathematical ideas of another student/an avatar, or to justify its mathematical appropriateness.
-
-Evaluating the mathematical merit of the contributions of others. Once students attend to and make sense of the thinking of others, they must evaluate the mathematical reasonableness of their peers' mathematical contributions. Generally, students express their evaluation of the mathematical reasonableness of an idea through agreement or disagreement, including some explanation or justification. Agreeing or disagreeing emerges out of shared understanding. This skill is critical to the development of productive mathematical argumentation.
-
-Responding productively to others' mathematical ideas. Students learn to build on, extend, and connect across mathematical ideas. These discursive acts depend and build on the acts of making sense of and evaluating others' mathematical thinking. Once a shared mathematical idea is understood, students can further contribute to the mathematical discussion by acting upon those shared ideas. Connecting across students' mathematical ideas is a core discursive component of productive collaborative mathematics. By connecting ideas, students are able to notice and explain how two seemingly different strategies hold the same mathematical ideas. Students also build on or extend an idea through new examples, next steps, or logical deductions.
 """
 
 PROMPT_PROCEDURAL = """
 ===
 6. Procedural Fluency   (JSON key: "procedural_fluency")
 
-Official Definition:
+Practice Definition:
 Procedural fluency refers to knowledge of procedures, knowledge of when and how to use them appropriately, and skill in performing them flexibly, accurately, and efficiently.
 
-Broader discussion:
-In the domain of number, procedural fluency is especially needed to support conceptual understanding of place value and the meanings of rational numbers. It also supports the analysis of similarities and differences between methods of calculating. These methods include, in addition to written procedures, mental methods for finding certain sums, differences, products, or quotients, as well as methods that use calculators, computers, or manipulative materials such as blocks, counters, or beads.
+Practice descriptors:
+    - Recall basic number combinations quickly and accurately, or derive them efficiently from known facts.
+    - Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.
+    - Perform mental computations flexibly, adapting procedures to the numbers involved (e.g., compensating, using benchmark numbers, multiplying by powers of 10).
+    - Estimate the results of computations and use the estimates to check accuracy and order of magnitude.
+    - Select an appropriate and efficient computational method (mental, written, calculator, or other tools) for a given task.
+    - Convert accurately among equivalent forms of numbers (e.g., fractions, decimals, percents, scientific notation).
+    - Apply procedures for operations with signed numbers, exponents, and roots accurately.
+    - Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions).
+    - Use measuring tools and read scales accurately and with appropriate precision.
+    - Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.
+    - Convert units within and between measurement systems accurately.
+    - Carry out geometric transformations (translations, reflections, rotations, dilations) accurately and determine the resulting images.
+    - Perform geometric constructions and measurements accurately with tools or technology (e.g., ruler, protractor, compass, dynamic geometry software).
+    - Apply known geometric relationships and formulas to compute unknown lengths, angles, or measures efficiently.
+    - Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.
+    - Carry out the steps of constructing data displays accurately (e.g., setting scales and intervals, plotting values).
+    - Use systematic counting procedures (e.g., organized lists, tree diagrams, tables, counting principles) to determine sample spaces.
+    - Compute probabilities of simple, compound, and conditional events accurately.
+    - Apply properties of operations to rewrite expressions in equivalent forms (e.g., combining like terms, expanding, factoring).
+    - Evaluate expressions and functions accurately by substitution.
+    - Solve equations, inequalities, and systems using appropriate and efficient procedures, from informal methods to formal symbolic manipulation.
+    - Check results for accuracy (e.g., by substitution, estimation, or inverse operations) and correct procedural errors.
 
-Students need to be efficient and accurate in performing basic computations with whole numbers (6+7, 17-9, 8x4, and so on) without always having to refer to tables or other aids. They also need to know reasonably efficient and accurate ways to add, subtract, multiply, and divide multidigit numbers, both mentally and with pencil and paper. A good conceptual understanding of place value in the base-10 system supports the development of fluency in multidigit computation. Such understanding also supports simplified but accurate mental arithmetic and more flexible ways of dealing with numbers than many students ultimately achieve.
-
-Connected with procedural fluency is knowledge of ways to estimate the result of a procedure. Many tasks involving mathematics in everyday life require facility with algorithms for performing computations either mentally or in writing.
-
-In addition to providing tools for computing, some algorithms are important as concepts in their own right, which again illustrates the link between conceptual understanding and procedural fluency. Students need to see that procedures can be developed that will solve entire classes of problems, not just individual problems. By studying algorithms as "general procedures," students can gain insight into the fact that mathematics is well structured (highly organized, filled with patterns, predictable) and that a carefully developed procedure can be a powerful tool for completing routine tasks.
-
-It is important for computational procedures to be efficient, to be used accurately, and to result in correct answers. Both accuracy and efficiency can be improved with practice, which can also help students maintain fluency. Students also need to be able to apply procedures flexibly. Not all computational situations are alike. For example, applying a standard pencil-and-paper algorithm to find the result of every multiplication problem is neither necessary nor efficient. Students should be able to use a variety of mental strategies to multiply by 10, 20, or 300 (or any power of 10 or multiple of 10). Also, students should be able to perform such operations as finding the sum of 199 and 67 or the product of 4 and 26 by using quick mental strategies rather than relying on paper and pencil. Further, situations vary in their need for exact answers. Sometimes an estimate is good enough, as in calculating a tip on a bill at a restaurant. Sometimes using a calculator or computer is more appropriate than using paper and pencil, as in completing a complicated tax form. Hence, students need facility with a variety of computational tools, and they need to know how to select the appropriate tool for a given situation.
 """
 
 PROMPT_SCORING = """
@@ -246,24 +328,14 @@ How to score
 
 For each of the six practices, give a number from 0 to 1: the probability that an expert would say this item assesses that practice.
 
-- Score each practice on its own. The six numbers do not need to add up to 1, and an item can score high on two practices.
+- Score each practice on its own. The six numbers do not need to add up to 1, however, one practice has to be the highest.
 - Scale:
   - 0: no evidence; the practice is not involved.
   - 0.1-0.3: incidental; it plays a minor role (e.g. reading one value from a table).
   - 0.4-0.6: substantial, but shared with another practice or only part of what is needed.
   - 0.7-0.9: clearly required to answer the item correctly.
-  - 1.0: the item is a textbook example of the practice.
-- Most items have one main practice that scores 0.7 or higher, with the others at 0 or low. Some items genuinely combine two practices. Use 0 when there is no evidence; do not spread small scores over every practice because you are unsure.
-- At least one practice should normally score 0.5 or higher. If none of the first five practices is clearly involved, the item is almost always Procedural Fluency.
+  - 1.0: the item is a textbook example of the practice from the practice descriptors.
 - Base every score on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from.
-
-Boundary rules for common overlaps:
-- Named people. Names in a story ("Jada ran 3 miles") do not make an item collaborative. When a named person's claim, answer, strategy, or work is what the student must evaluate or build on, Collaborative Mathematics is high, and Justifying and Proving is usually moderate because the student is judging a claim.
-- Representing vs. Mathematical Modeling. If the student must set up the mathematics to solve a real-world problem, Modeling is high and Representing is moderate. If the student translates or interprets a representation without solving a real-world problem, Representing is high and Modeling is low.
-- Mathematical Modeling vs. Procedural Fluency. Context alone is not modeling. If the quantities and the operation are obvious and there is nothing to set up or interpret, Procedural Fluency is high and Modeling is low.
-- Abstracting and Generalizing vs. Procedural Fluency. Applying a rule, formula, or property that is given is procedural. Finding a rule, or recognizing a structure or property that holds in general, is Abstracting and Generalizing.
-- Skill tags. The skill tag names the mathematics content. Do not infer a practice from the verb in the skill name (for example "Interpret..." or "Represent...").
-- Missing context. If the item refers to an image or an earlier part you cannot see, score what the visible text and answer format require. Do not raise a score without visible evidence.
 
 ---
 

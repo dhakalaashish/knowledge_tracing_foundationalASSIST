@@ -1,28 +1,31 @@
 """
-Test version of augment_mathematical_practice.py: labels only the first 5 problems.
+Evaluate the mathematical practice prompt against the NAEP ground-truth items.
 
-Same prompt, model, and parsing as augment_mathematical_practice.py. The difference is the
-output: the original Problems.csv is only read, never modified. The first 5 rows, with the new
-`mathematical_practice` column, are written to a separate file, Problems_test5.csv, in
---output-dir. Each cell is a JSON array of 6 independent probabilities (0 to 1; they do not
-sum to 1), in this order:
+Same prompt, model, and parsing as augment_mathematical_practice.py, but run on
+problems_naep.csv: the example items from the NAEP Mathematics Framework plus procedural
+fluency items, each with a `ground_truth` practice. The ground truth is never shown to the
+model; it is dropped before any prompt is built and only used afterwards to score the
+predictions.
 
-    [Representing, Abstracting and Generalizing, Justifying and Proving,
-     Mathematical Modeling, Collaborative Mathematics, Procedural Fluency]
+problems_naep.csv is only read, never modified. Predictions are written to a separate file,
+problems_naep_predicted.csv, in --output-dir, with two new columns:
+    mathematical_practice: JSON array of 6 independent probabilities (0 to 1; they do not
+                           sum to 1), in this order:
+        [Representing, Abstracting and Generalizing, Justifying and Proving,
+         Mathematical Modeling, Collaborative Mathematics, Procedural Fluency]
+    predicted_practice:    the practice with the highest probability
 
-Read a cell back with json.loads(cell).
-
-Every run re-labels the 5 problems and overwrites Problems_test5.csv. Raw model responses and
-reasoning are written to mathematical_practice_test5_raw.jsonl in --output-dir, and the
-scores and reasoning for each problem are printed.
+After labeling, the script compares predicted_practice with ground_truth and prints top-1 and
+top-2 accuracy, per-practice accuracy, a confusion matrix, and every misclassified item. The
+metrics are also saved to mathematical_practice_naep_eval.json, and raw model responses to
+mathematical_practice_naep_raw.jsonl, both in --output-dir.
 
 Run from the Code/ directory (it imports clean_utils and kt_inference_base).
 
 Usage:
-    CUDA_VISIBLE_DEVICES=0 python augment_mathematical_practice_test5.py \
+    VLLM_USE_FLASHINFER_SAMPLER=0 CUDA_VISIBLE_DEVICES=0 python augment_mathematical_practice_test5.py \
         --data-dir ../Data \
-        --output-dir ../Data \
-        --cache-dir /data1/
+        --output-dir ../Data
 """
 
 import argparse
@@ -52,14 +55,16 @@ from kt_inference_base import (
 DEFAULT_MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
 
 # Input / output files
-PROBLEMS_FILE = "Problems.csv"
+PROBLEMS_FILE = "problems_naep.csv"
 SKILL_FILE = "Skills.csv"
-TEST_OUTPUT_FILE = "Problems_test5.csv"
-RAW_OUTPUT_FILE = "mathematical_practice_test5_raw.jsonl"
+TEST_OUTPUT_FILE = "problems_naep_predicted.csv"
+RAW_OUTPUT_FILE = "mathematical_practice_naep_raw.jsonl"
+EVAL_OUTPUT_FILE = "mathematical_practice_naep_eval.json"
 OUTPUT_COLUMN = "mathematical_practice"
+PREDICTED_COLUMN = "predicted_practice"
+GROUND_TRUTH_COLUMN = "ground_truth"
 
 # Run config defaults
-NUM_TEST_PROBLEMS = 5
 DEFAULT_BATCH_SIZE = 512
 DEFAULT_MAX_MODEL_LEN = 16384
 MAX_NEW_TOKENS = 1024
@@ -108,13 +113,10 @@ Your task: read ONE item from an online k-12 mathematics item bank and estimate,
 
 ---
 
-About the items
-
-- The items come from Illustrative Mathematics, a grades 6-8 curriculum, delivered in ASSISTments, an online learning platform.
-- Each item is scored automatically from a single response: a typed number or expression, a selected choice, a dropdown selection, or an ordering. Students cannot submit written explanations, and they work alone.
-- The problem text was converted from HTML. Images appear only as [image], answer blanks appear as ____, and dropdowns appear as [dropdown].
-- Many items are one part of a multi-part problem. The text may refer to a figure, table, or earlier part that you cannot see. Rate what the visible text and answer format require; do not guess at hidden content.
-- You also see the item's answer choices (if any), its correct answer, and its skill tag. The correct answer tells you what the student must produce. The skill tag describes the mathematics content, not the practice.
+Assess the item's practice probability using:
+    - Practice definition: defines what the practice measures 
+    - Practice descriptors: non-comprehensive list of descriptions of what the practice could entail
+Both the definition and the descriptor are important in identifying which practice the item belongs to 
 
 ---
 
@@ -338,14 +340,6 @@ For each of the six practices, give a number from 0 to 1: the probability that a
   - 1.0: the item is a textbook example of the practice from the practice descriptors.
 - Base every score on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from.
 
-Boundary rules for common overlaps:
-- Named people. Names in a story ("Jada ran 3 miles") do not make an item collaborative. When a named person's claim, answer, strategy, or work is what the student must evaluate or build on, Collaborative Mathematics is high, and Justifying and Proving is usually moderate because the student is judging a claim.
-- Representing vs. Mathematical Modeling. If the student must set up the mathematics to solve a real-world problem, Modeling is high and Representing is moderate. If the student translates or interprets a representation without solving a real-world problem, Representing is high and Modeling is low.
-- Mathematical Modeling vs. Procedural Fluency. Context alone is not modeling. If the quantities and the operation are obvious and there is nothing to set up or interpret, Procedural Fluency is high and Modeling is low.
-- Abstracting and Generalizing vs. Procedural Fluency. Applying a rule, formula, or property that is given is procedural. Finding a rule, or recognizing a structure or property that holds in general, is Abstracting and Generalizing.
-- Skill tags. The skill tag names the mathematics content. Do not infer a practice from the verb in the skill name (for example "Interpret..." or "Represent...").
-- Missing context. If the item refers to an image or an earlier part you cannot see, score what the visible text and answer format require. Do not raise a score without visible evidence.
-
 ---
 
 Output format
@@ -377,20 +371,27 @@ SYSTEM_PROMPT = (
 def parse_args():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
-        description=f"Label the first {NUM_TEST_PROBLEMS} problems with NAEP mathematical "
-                    f"practice probabilities and write them to {TEST_OUTPUT_FILE}"
+        description="Predict the mathematical practice of each ground-truth item and score "
+                    "the predictions against its ground_truth column"
     )
     parser.add_argument(
         "--data-dir", "-d",
         type=str,
         default=".",
-        help="Directory containing Problems.csv and Skills.csv (default: current directory)"
+        help=f"Directory containing {PROBLEMS_FILE} and {SKILL_FILE} (default: current directory)"
+    )
+    parser.add_argument(
+        "--problems-file",
+        type=str,
+        default=PROBLEMS_FILE,
+        help=f"Problems CSV with a {GROUND_TRUTH_COLUMN} column, inside --data-dir (default: {PROBLEMS_FILE})"
     )
     parser.add_argument(
         "--output-dir",
         type=str,
         default=".",
-        help=f"Directory for {TEST_OUTPUT_FILE} and {RAW_OUTPUT_FILE} (default: current directory)"
+        help=f"Directory for {TEST_OUTPUT_FILE}, {RAW_OUTPUT_FILE}, and {EVAL_OUTPUT_FILE} "
+             f"(default: current directory)"
     )
     parser.add_argument(
         "--model-id",
@@ -598,13 +599,139 @@ def print_summary(problems_df):
         print(f"  {name:<30} mean {mean:.2f}   highest score in {count} rows")
 
 
+def predicted_practice(scores):
+    """Name of the highest-scoring practice; ties go to the first one in PRACTICES order."""
+    return PRACTICE_NAMES[int(np.argmax(scores))]
+
+
+def evaluate_predictions(problems_df, ground_truth):
+    """
+    Compare each item's scores with its ground-truth practice.
+
+    Returns a dict with top-1 and top-2 accuracy, the mean probability given to the true
+    practice, per-practice results, a confusion matrix (ground truth -> predicted), and the
+    misclassified items. Items without scores or with a label outside PRACTICE_NAMES are
+    counted but left out of the metrics.
+    """
+    per_practice = {name: {'n': 0, 'top1_correct': 0, 'top2_correct': 0, 'true_score_sum': 0.0}
+                    for name in PRACTICE_NAMES}
+    confusion = {truth: {pred: 0 for pred in PRACTICE_NAMES} for truth in PRACTICE_NAMES}
+    misclassified, unscored, unknown_labels = [], [], []
+    n = top1 = top2 = ties = 0
+    true_score_sum = 0.0
+
+    for idx in problems_df.index:
+        problem_id = problems_df.at[idx, 'problem_id']
+        truth = ground_truth[idx].strip()
+        cell = problems_df.at[idx, OUTPUT_COLUMN]
+        if truth not in PRACTICE_NAMES:
+            unknown_labels.append({'problem_id': problem_id, GROUND_TRUTH_COLUMN: truth})
+            continue
+        if not cell.strip():
+            unscored.append(problem_id)
+            continue
+
+        scores = np.array(json.loads(cell))
+        ranked = np.argsort(-scores, kind='stable')
+        predicted = PRACTICE_NAMES[ranked[0]]
+        true_index = PRACTICE_NAMES.index(truth)
+        in_top2 = true_index in ranked[:2]
+
+        n += 1
+        top1 += predicted == truth
+        top2 += in_top2
+        ties += int((scores == scores.max()).sum() > 1)
+        true_score_sum += scores[true_index]
+        stats = per_practice[truth]
+        stats['n'] += 1
+        stats['top1_correct'] += predicted == truth
+        stats['top2_correct'] += in_top2
+        stats['true_score_sum'] += scores[true_index]
+        confusion[truth][predicted] += 1
+        if predicted != truth:
+            misclassified.append({
+                'problem_id': problem_id,
+                GROUND_TRUTH_COLUMN: truth,
+                PREDICTED_COLUMN: predicted,
+                'scores': dict(zip(PRACTICE_NAMES, scores.tolist())),
+            })
+
+    for stats in per_practice.values():
+        count = stats['n']
+        stats['top1_accuracy'] = stats['top1_correct'] / count if count else None
+        stats['top2_accuracy'] = stats['top2_correct'] / count if count else None
+        stats['mean_true_score'] = stats.pop('true_score_sum') / count if count else None
+
+    return {
+        'n_evaluated': n,
+        'top1_correct': top1,
+        'top1_accuracy': top1 / n if n else None,
+        'top2_correct': top2,
+        'top2_accuracy': top2 / n if n else None,
+        'mean_true_score': true_score_sum / n if n else None,
+        'n_tied_top_score': ties,
+        'per_practice': per_practice,
+        'confusion': confusion,
+        'misclassified': misclassified,
+        'unscored': unscored,
+        'unknown_labels': unknown_labels,
+    }
+
+
+def print_evaluation(metrics):
+    """Print the metrics from evaluate_predictions."""
+    n = metrics['n_evaluated']
+    print(f"\n{'='*80}")
+    print(f"EVALUATION AGAINST GROUND TRUTH ({n} items)")
+    print(f"{'='*80}")
+    if not n:
+        print("No items could be evaluated.")
+        return
+    print(f"Top-1 accuracy: {metrics['top1_correct']}/{n} = {metrics['top1_accuracy']:.1%}")
+    print(f"Top-2 accuracy: {metrics['top2_correct']}/{n} = {metrics['top2_accuracy']:.1%}  "
+          f"(true practice among the two highest scores)")
+    print(f"Mean probability given to the true practice: {metrics['mean_true_score']:.2f}")
+    if metrics['n_tied_top_score']:
+        print(f"Items whose top score is tied: {metrics['n_tied_top_score']} "
+              f"(the first tied practice in the order above counts as the prediction)")
+    if metrics['unscored']:
+        print(f"Not evaluated, no scores: {metrics['unscored']}")
+    if metrics['unknown_labels']:
+        print(f"Not evaluated, unknown {GROUND_TRUTH_COLUMN} label: {metrics['unknown_labels']}")
+
+    print(f"\nPer practice (by ground truth):")
+    print(f"  {'Practice':<30} {'n':>3}  {'top-1':>7}  {'top-2':>7}  {'mean p(true)':>12}")
+    for name, stats in metrics['per_practice'].items():
+        if not stats['n']:
+            print(f"  {name:<30} {0:>3}  {'-':>7}  {'-':>7}  {'-':>12}")
+            continue
+        print(f"  {name:<30} {stats['n']:>3}  {stats['top1_accuracy']:>7.0%}  "
+              f"{stats['top2_accuracy']:>7.0%}  {stats['mean_true_score']:>12.2f}")
+
+    abbreviations = ['REP', 'ABS', 'JUS', 'MOD', 'COL', 'PRO']
+    print(f"\nConfusion matrix (rows: ground truth, columns: predicted)")
+    print("  " + "  ".join(f"{a}={name}" for a, name in zip(abbreviations, PRACTICE_NAMES)))
+    print(f"  {'':<6}" + "".join(f"{a:>6}" for a in abbreviations))
+    for abbreviation, truth in zip(abbreviations, PRACTICE_NAMES):
+        row = metrics['confusion'][truth]
+        print(f"  {abbreviation:<6}" + "".join(f"{row[pred]:>6}" for pred in PRACTICE_NAMES))
+
+    if metrics['misclassified']:
+        print(f"\nMisclassified items:")
+        for item in metrics['misclassified']:
+            scores = ", ".join(f"{a} {s:.2f}" for a, s in zip(abbreviations, item['scores'].values()))
+            print(f"  {item['problem_id']}: truth {item[GROUND_TRUTH_COLUMN]}, "
+                  f"predicted {item[PREDICTED_COLUMN]}  [{scores}]")
+
+
 def main():
     args = parse_args()
 
-    problems_csv = os.path.join(args.data_dir, PROBLEMS_FILE)
+    problems_csv = os.path.join(args.data_dir, args.problems_file)
     skill_csv = os.path.join(args.data_dir, SKILL_FILE)
     output_csv = os.path.join(args.output_dir, TEST_OUTPUT_FILE)
     output_jsonl = os.path.join(args.output_dir, RAW_OUTPUT_FILE)
+    eval_json = os.path.join(args.output_dir, EVAL_OUTPUT_FILE)
     if os.path.abspath(output_csv) == os.path.abspath(problems_csv):
         raise ValueError(f"Output file would overwrite {problems_csv}")
 
@@ -612,24 +739,33 @@ def main():
     print(f"Problems file (read only): {problems_csv}")
     print(f"Output CSV: {output_csv}")
     print(f"Raw output JSONL: {output_jsonl}")
+    print(f"Evaluation JSON: {eval_json}")
     print(f"Samples per problem: {args.num_samples} ({'greedy' if args.num_samples == 1 else 'sampled, averaged'})")
 
     # Read every cell as text so the original columns are written back unchanged.
-    # Only the first NUM_TEST_PROBLEMS rows are kept, and all of them are (re-)labeled.
+    # Every row is (re-)labeled on each run.
     problems_df = pd.read_csv(problems_csv, dtype=str, keep_default_na=False)
-    problems_df = problems_df.head(NUM_TEST_PROBLEMS).copy()
+    if GROUND_TRUTH_COLUMN not in problems_df.columns:
+        raise ValueError(f"{problems_csv} has no '{GROUND_TRUTH_COLUMN}' column to evaluate against")
     problems_df[OUTPUT_COLUMN] = ''
+    problems_df[PREDICTED_COLUMN] = ''
+    ground_truth = problems_df[GROUND_TRUTH_COLUMN]
     skill_names = load_skill_names(skill_csv)
 
     todo = list(problems_df.index)
-    print(f"\nProblems to label: {len(todo)} "
-          f"(problem_ids: {', '.join(problems_df['problem_id'])})")
+    print(f"\nProblems to label: {len(todo)}")
+    print("Ground truth counts (hidden from the model):")
+    for name, count in ground_truth.value_counts().items():
+        print(f"  {name:<30} {count}")
 
     # Start a fresh raw output file for this run
     os.makedirs(args.output_dir, exist_ok=True)
     open(output_jsonl, 'w', encoding='utf-8').close()
 
-    user_prompts = {idx: create_user_prompt(problems_df.loc[idx], skill_names) for idx in todo}
+    # Build prompts from a copy without the ground truth (or any earlier prediction),
+    # so the model never sees the answer it is being scored on
+    prompt_df = problems_df.drop(columns=[GROUND_TRUTH_COLUMN, OUTPUT_COLUMN, PREDICTED_COLUMN])
+    user_prompts = {idx: create_user_prompt(prompt_df.loc[idx], skill_names) for idx in todo}
     print(f"\nExample user prompt (problem_id {problems_df.at[todo[0], 'problem_id']}):\n")
     print(user_prompts[todo[0]])
 
@@ -708,14 +844,19 @@ def main():
 
         records = []
         for idx, result in zip(batch, results):
+            predicted = None
             if result['scores'] is not None:
+                predicted = predicted_practice(result['scores'])
                 problems_df.at[idx, OUTPUT_COLUMN] = json.dumps(result['scores'])
+                problems_df.at[idx, PREDICTED_COLUMN] = predicted
                 labeled += 1
             else:
                 failed += 1
             records.append({
                 'problem_id': problems_df.at[idx, 'problem_id'],
                 OUTPUT_COLUMN: result['scores'],
+                PREDICTED_COLUMN: predicted,
+                GROUND_TRUTH_COLUMN: ground_truth[idx],
                 'num_valid_samples': result['num_valid_samples'],
                 'retried': result['retried'],
                 'reasoning': result['reasoning'],
@@ -726,13 +867,15 @@ def main():
 
         for record in records:
             scores = record[OUTPUT_COLUMN]
-            print(f"\nproblem_id {record['problem_id']}")
+            print(f"\nproblem_id {record['problem_id']}  ground truth: {record[GROUND_TRUTH_COLUMN]}")
             if scores is None:
                 print("  UNPARSED. Raw response:")
                 print(record['responses'][-1])
                 continue
             for name, score in zip(PRACTICE_NAMES, scores):
                 print(f"  {name:<30} {score:.2f}")
+            verdict = "correct" if record[PREDICTED_COLUMN] == record[GROUND_TRUTH_COLUMN].strip() else "WRONG"
+            print(f"  Predicted: {record[PREDICTED_COLUMN]} ({verdict})")
             print(f"  Reasoning: {record['reasoning'][0]}")
 
         save_problems_csv(problems_df, output_csv)
@@ -748,6 +891,15 @@ def main():
     if failed or too_long:
         print("Re-run the script to retry; the rows that failed are empty in the output CSV.")
     print_summary(problems_df)
+
+    metrics = evaluate_predictions(problems_df, ground_truth)
+    print_evaluation(metrics)
+    metrics['model_id'] = args.model_id
+    metrics['num_samples'] = args.num_samples
+    metrics['problems_file'] = problems_csv
+    with open(eval_json, 'w', encoding='utf-8') as f:
+        json.dump(metrics, f, indent=2, ensure_ascii=False)
+    print(f"\nSaved evaluation to {eval_json}")
 
     # Cleanup
     print("\nCleaning up...")
