@@ -1,11 +1,15 @@
 """
 Evaluate the mathematical practice prompt against the NAEP ground-truth items.
 
-Same prompt, model, and parsing as augment_mathematical_practice.py, but run on
+Same model and format checks as augment_mathematical_practice.py, but run on
 problems_naep.csv: the example items from the NAEP Mathematics Framework plus procedural
 fluency items, each with a `ground_truth` practice. The ground truth is never shown to the
 model; it is dropped before any prompt is built and only used afterwards to score the
 predictions.
+
+The model returns a reasoning, a "primary_practice" (the single practice the item mainly
+assesses), and six probabilities. The prompt here adds a primary_practice field and rules
+for common overlaps that augment_mathematical_practice.py does not have yet.
 
 problems_naep.csv is only read, never modified. Predictions are written to a separate file,
 problems_naep_predicted.csv, in --output-dir, with two new columns:
@@ -13,10 +17,12 @@ problems_naep_predicted.csv, in --output-dir, with two new columns:
                            sum to 1), in this order:
         [Representing, Abstracting and Generalizing, Justifying and Proving,
          Mathematical Modeling, Collaborative Mathematics, Procedural Fluency]
-    predicted_practice:    the practice with the highest probability
+    predicted_practice:    the model's primary_practice (with --num-samples > 1, the one most
+                           samples chose)
 
-After labeling, the script compares predicted_practice with ground_truth and prints top-1 and
-top-2 accuracy, per-practice accuracy, a confusion matrix, and every misclassified item. The
+After labeling, the script compares predicted_practice with ground_truth and prints top-1
+accuracy, argmax accuracy (highest probability, for comparison), top-2 accuracy,
+per-practice accuracy, a confusion matrix, and every misclassified item. The
 metrics are also saved to mathematical_practice_naep_eval.json, and raw model responses to
 mathematical_practice_naep_raw.jsonl, both in --output-dir.
 
@@ -121,7 +127,14 @@ Your task: read ONE item from an online k-12 mathematics item bank and estimate,
 Assess the item's practice probability using:
     - Practice definition: defines what the practice measures 
     - Practice descriptors: non-comprehensive list of descriptions of what the practice could entail
-Both the definition and the descriptor are important in identifying which practice the item belongs to 
+Both the definition and the descriptor are important in identifying which practice the item belongs to
+
+---
+
+About the items
+
+- A student works on each item alone. Practices that involve other people therefore appear through the item itself: the item shows another person's mathematical thinking (a named student's claim, strategy, answer, work, or a dialogue), and the student responds to it.
+- Figures appear only as text descriptions such as [Image: ...], or as [image] when no description is available. Judge from what the text shows.
 
 ---
 
@@ -273,6 +286,9 @@ PROMPT_COLLABORATIVE = """
 Practice definition:
 The social enterprise of doing mathematics with others through discussion and collaborative problem solving whereby ideas are offered, debated, connected, and built-upon toward solution and shared understanding. Collaborative mathematics involves joint thinking among individuals toward the construction of a problem solution in developmentally and mathematically appropriate ways.
 
+How this practice appears in an item a student answers alone:
+Items that measure collaborative processes are discursive in nature, offering students examples of social interaction or imagined utterances around mathematics to which they are tasked to respond in key ways. These include being asked to make sense of others' thinking, express and defend agreement or disagreement, and extend an idea.
+
 Practice descriptors:
     - Add to or build on a numerical model provided by others to complete a mathematical task.
     - Evaluate others' interpretations of numbers from real-life contexts.
@@ -344,15 +360,23 @@ For each of the six practices, give a number from 0 to 1: the probability that a
   - 0.7-0.9: clearly required to answer the item correctly.
   - 1.0: the item is a textbook example of the practice from the practice descriptors.
 - Base every score on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from.
+- Name the primary practice: the single practice the item mainly assesses. Give it the highest score. When two practices seem equally strong, use the rules below to choose.
+
+Rules for common overlaps (use them for both the scores and the primary practice):
+- Other people's thinking. Characters who only appear in a story (e.g., "Jada ran 3 miles") do not make an item collaborative. When the item presents another person's claim, strategy, answer, work, or dialogue, and the student must make sense of it, judge whether it is correct, find the error, agree or disagree, or extend it, the primary practice is Collaborative Mathematics, even when the student also justifies or refutes the claim (Justifying and Proving is then secondary).
+- Justifying vs. Abstracting. Showing or explaining why a claim is true for all cases, proving it, or refuting it with a counterexample is Justifying and Proving. Finding, describing, or extending a pattern, rule, or structure is Abstracting and Generalizing. The words "any" or "always" alone do not make an item Abstracting and Generalizing.
+- Modeling vs. Abstracting or Representing. When the item is a real-world scenario and the student must turn it into mathematics (decide which quantities matter, build or choose a model such as a rule or equation for the situation, and use or interpret it in context), the primary practice is Mathematical Modeling, even if building the model involves a general rule or a representation.
+- Representing vs. Procedural Fluency. If answering requires reading, interpreting, creating, or translating a representation (graph, table, number line, diagram, or an equation that stands for a situation), Representing is primary. If the numbers or expressions are given directly and the student only carries out a known procedure, Procedural Fluency is primary.
 
 ---
 
 Output format
 
-Respond with exactly one JSON object in this form, and write nothing before or after it. Fill in "reasoning" first, then the six numbers:
+Respond with exactly one JSON object in this form, and write nothing before or after it. Fill in "reasoning" first, then "primary_practice", then the six numbers:
 
 {
 "reasoning": "<2-4 sentences: what the student must do to answer correctly, and which practice(s) that requires>",
+"primary_practice": "<exactly one of: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency>",
 "representing": <number from 0 to 1>,
 "abstracting_and_generalizing": <number from 0 to 1>,
 "justifying_and_proving": <number from 0 to 1>,
@@ -511,25 +535,37 @@ def create_user_prompt(row):
 
 def score_request_output(output):
     """
-    Run the format checks (output_checks.check_response) on every sample of one vLLM output
-    and average the scores of the samples that pass. Samples with format errors are left out.
+    Run the format checks (output_checks.check_response) on every sample of one vLLM output,
+    average the scores of the samples that pass, and combine their primary_practice answers.
+    Samples with format errors are left out.
+
+    With several samples, the primary practice is the one most samples chose; a tied vote
+    goes to the tied practice with the highest mean score.
     """
-    vectors, reasonings, responses, errors, warnings = [], [], [], [], []
+    vectors, primaries, reasonings, responses, errors, warnings = [], [], [], [], [], []
     for completion in output.outputs:
         text = completion.text.strip()
         responses.append(text)
-        check = check_response(text, completion.finish_reason, PRACTICE_KEYS)
+        check = check_response(text, completion.finish_reason, PRACTICE_KEYS, PRACTICE_NAMES)
         errors.append(check['errors'])
         warnings.append(check['warnings'])
         if check['scores'] is not None:
             vectors.append(check['scores'])
+            primaries.append(check['primary'])
             reasonings.append(check['reasoning'])
 
     mean_scores = None
+    primary = None
     if vectors:
         mean_scores = [round(float(value), 2) for value in np.mean(vectors, axis=0)]
+        votes = {name: primaries.count(name) for name in PRACTICE_NAMES}
+        most = max(votes.values())
+        tied = [name for name in PRACTICE_NAMES if votes[name] == most]
+        primary = max(tied, key=lambda name: mean_scores[PRACTICE_NAMES.index(name)])
     return {
         'scores': mean_scores,
+        'primary': primary,
+        'primary_votes': primaries,
         'num_valid_samples': len(vectors),
         'reasoning': reasonings,
         'responses': responses,
@@ -565,25 +601,27 @@ def print_summary(problems_df):
         print(f"  {name:<30} mean {mean:.2f}   highest score in {count} rows")
 
 
-def predicted_practice(scores):
+def argmax_practice(scores):
     """Name of the highest-scoring practice; ties go to the first one in PRACTICES order."""
     return PRACTICE_NAMES[int(np.argmax(scores))]
 
 
 def evaluate_predictions(problems_df, ground_truth):
     """
-    Compare each item's scores with its ground-truth practice.
+    Compare each item's predicted_practice (the model's primary_practice) and scores with its
+    ground-truth practice.
 
-    Returns a dict with top-1 and top-2 accuracy, the mean probability given to the true
-    practice, per-practice results, a confusion matrix (ground truth -> predicted), and the
-    misclassified items. Items without scores or with a label outside PRACTICE_NAMES are
-    counted but left out of the metrics.
+    Returns a dict with top-1 accuracy (primary_practice), argmax accuracy (highest score, for
+    comparison), top-2 accuracy (true practice among the two highest scores), the mean
+    probability given to the true practice, per-practice results, a confusion matrix
+    (ground truth -> predicted), and the misclassified items. Items without scores or with a
+    label outside PRACTICE_NAMES are counted but left out of the metrics.
     """
     per_practice = {name: {'n': 0, 'top1_correct': 0, 'top2_correct': 0, 'true_score_sum': 0.0}
                     for name in PRACTICE_NAMES}
     confusion = {truth: {pred: 0 for pred in PRACTICE_NAMES} for truth in PRACTICE_NAMES}
     misclassified, unscored, unknown_labels = [], [], []
-    n = top1 = top2 = ties = 0
+    n = top1 = top2 = ties = argmax_correct = primary_not_argmax = 0
     true_score_sum = 0.0
 
     for idx in problems_df.index:
@@ -599,13 +637,16 @@ def evaluate_predictions(problems_df, ground_truth):
 
         scores = np.array(json.loads(cell))
         ranked = np.argsort(-scores, kind='stable')
-        predicted = PRACTICE_NAMES[ranked[0]]
+        predicted = problems_df.at[idx, PREDICTED_COLUMN]
+        highest = PRACTICE_NAMES[ranked[0]]
         true_index = PRACTICE_NAMES.index(truth)
         in_top2 = true_index in ranked[:2]
 
         n += 1
         top1 += predicted == truth
         top2 += in_top2
+        argmax_correct += highest == truth
+        primary_not_argmax += predicted != highest
         ties += int((scores == scores.max()).sum() > 1)
         true_score_sum += scores[true_index]
         stats = per_practice[truth]
@@ -634,6 +675,9 @@ def evaluate_predictions(problems_df, ground_truth):
         'top1_accuracy': top1 / n if n else None,
         'top2_correct': top2,
         'top2_accuracy': top2 / n if n else None,
+        'argmax_correct': argmax_correct,
+        'argmax_accuracy': argmax_correct / n if n else None,
+        'n_primary_not_argmax': primary_not_argmax,
         'mean_true_score': true_score_sum / n if n else None,
         'n_tied_top_score': ties,
         'per_practice': per_practice,
@@ -653,13 +697,17 @@ def print_evaluation(metrics):
     if not n:
         print("No items could be evaluated.")
         return
-    print(f"Top-1 accuracy: {metrics['top1_correct']}/{n} = {metrics['top1_accuracy']:.1%}")
+    print(f"Top-1 accuracy: {metrics['top1_correct']}/{n} = {metrics['top1_accuracy']:.1%}  "
+          f"(model's primary_practice)")
+    print(f"Argmax accuracy: {metrics['argmax_correct']}/{n} = {metrics['argmax_accuracy']:.1%}  "
+          f"(highest score, ties to the first practice; for comparison)")
     print(f"Top-2 accuracy: {metrics['top2_correct']}/{n} = {metrics['top2_accuracy']:.1%}  "
           f"(true practice among the two highest scores)")
     print(f"Mean probability given to the true practice: {metrics['mean_true_score']:.2f}")
+    print(f"Items where primary_practice is not the highest score: {metrics['n_primary_not_argmax']}")
     if metrics['n_tied_top_score']:
         print(f"Items whose top score is tied: {metrics['n_tied_top_score']} "
-              f"(the first tied practice in the order above counts as the prediction)")
+              f"(primary_practice decides these)")
     if metrics['unscored']:
         print(f"Not evaluated, no scores: {metrics['unscored']}")
     if metrics['unknown_labels']:
@@ -769,7 +817,8 @@ def main():
               f"(raise --max-model-len to include them): {too_long_ids}")
 
     # Constrain every response, including retries, to the JSON schema in output_checks
-    schema_constraint = {} if args.no_structured_output else structured_output_kwargs(PRACTICE_KEYS)
+    schema_constraint = ({} if args.no_structured_output
+                         else structured_output_kwargs(PRACTICE_KEYS, PRACTICE_NAMES))
     if args.num_samples == 1:
         sampling_params = SamplingParams(n=1, **GREEDY_SAMPLING, **schema_constraint)
     else:
@@ -818,7 +867,7 @@ def main():
         for idx, result in zip(batch, results):
             predicted = None
             if result['scores'] is not None:
-                predicted = predicted_practice(result['scores'])
+                predicted = result['primary']
                 problems_df.at[idx, OUTPUT_COLUMN] = json.dumps(result['scores'])
                 problems_df.at[idx, PREDICTED_COLUMN] = predicted
                 labeled += 1
@@ -828,6 +877,8 @@ def main():
                 'problem_id': problems_df.at[idx, 'problem_id'],
                 OUTPUT_COLUMN: result['scores'],
                 PREDICTED_COLUMN: predicted,
+                'argmax_practice': argmax_practice(result['scores']) if result['scores'] else None,
+                'primary_votes': result['primary_votes'],
                 GROUND_TRUTH_COLUMN: ground_truth[idx],
                 'num_valid_samples': result['num_valid_samples'],
                 'retried': result['retried'],
@@ -851,7 +902,9 @@ def main():
             for name, score in zip(PRACTICE_NAMES, scores):
                 print(f"  {name:<30} {score:.2f}")
             verdict = "correct" if record[PREDICTED_COLUMN] == record[GROUND_TRUTH_COLUMN].strip() else "WRONG"
-            print(f"  Predicted: {record[PREDICTED_COLUMN]} ({verdict})")
+            print(f"  Predicted (primary_practice): {record[PREDICTED_COLUMN]} ({verdict})")
+            if record['argmax_practice'] != record[PREDICTED_COLUMN]:
+                print(f"  Highest score instead: {record['argmax_practice']}")
             print(f"  Reasoning: {record['reasoning'][0]}")
             if any(record['format_warnings']):
                 print(f"  Format warnings: {record['format_warnings']}")

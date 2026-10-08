@@ -5,9 +5,14 @@ Used by augment_mathematical_practice.py and augment_mathematical_practice_test5
 
 Enforcement during generation (structured_output_kwargs):
     vLLM's structured outputs constrain decoding to practice_json_schema: a JSON object with
-    "reasoning" (non-empty string) followed by the six practice keys, each a number from 0 to 1,
+    "reasoning" (non-empty string), then "primary_practice" (one of the practice names; only
+    when practice_names is passed), then the six practice keys, each a number from 0 to 1,
     with no other keys and no text outside the object. A response can still be cut off by
     max_tokens, which check_response reports as "truncated".
+
+primary_practice is optional everywhere: pass practice_names to practice_json_schema,
+structured_output_kwargs, and check_response to require it, or leave it out to get the
+original six-score format.
 
 Checks after generation (a backstop, and the only checks when structured output is off):
 1. check_response: one model response.
@@ -24,8 +29,11 @@ Error codes:
     not_a_number    a practice value is not a number (e.g. "high", null, true)
     not_finite      a practice value is NaN or infinite
     out_of_range    a practice value is below 0 or above 1 (e.g. 80 instead of 0.8)
+    missing_primary "primary_practice" is missing (only checked when practice_names is passed)
+    invalid_primary "primary_practice" is not one of the practice names
 
 Warning codes:
+    primary_not_highest  primary_practice does not have the highest score
     extra_text        text before or after the JSON object (e.g. markdown code fences)
     extra_keys        keys other than the six practices and "reasoning"
     empty_reasoning   "reasoning" is missing or empty
@@ -40,25 +48,31 @@ import re
 import numpy as np
 
 REASONING_KEY = 'reasoning'
+PRIMARY_KEY = 'primary_practice'
 
 
-def practice_json_schema(practice_keys):
+def practice_json_schema(practice_keys, practice_names=None):
     """
     JSON schema for one response: "reasoning" first (so the model explains before scoring),
-    then each practice key as a number from 0 to 1. No other keys are allowed.
+    then "primary_practice" as one of practice_names (only if practice_names is given), then
+    each practice key as a number from 0 to 1. No other keys are allowed.
     """
     properties = {REASONING_KEY: {"type": "string", "minLength": 1}}
+    required = [REASONING_KEY]
+    if practice_names:
+        properties[PRIMARY_KEY] = {"type": "string", "enum": list(practice_names)}
+        required.append(PRIMARY_KEY)
     for key in practice_keys:
         properties[key] = {"type": "number", "minimum": 0, "maximum": 1}
     return {
         "type": "object",
         "properties": properties,
-        "required": [REASONING_KEY, *practice_keys],
+        "required": [*required, *practice_keys],
         "additionalProperties": False,
     }
 
 
-def structured_output_kwargs(practice_keys):
+def structured_output_kwargs(practice_keys, practice_names=None):
     """
     Keyword arguments for vllm.SamplingParams that force every response to match
     practice_json_schema during generation.
@@ -67,7 +81,7 @@ def structured_output_kwargs(practice_keys):
     (0.10.x and earlier) use guided_decoding=GuidedDecodingParams(json=...).
     vLLM is imported here, not at module level, so the checks below work without vLLM.
     """
-    schema = practice_json_schema(practice_keys)
+    schema = practice_json_schema(practice_keys, practice_names)
     try:
         from vllm.sampling_params import StructuredOutputsParams
         return {"structured_outputs": StructuredOutputsParams(json=schema)}
@@ -92,7 +106,7 @@ def _find_json_object(text, practice_keys):
     return None, None, None
 
 
-def check_response(text, finish_reason, practice_keys):
+def check_response(text, finish_reason, practice_keys, practice_names=None):
     """
     Check one model response against the expected output format.
 
@@ -100,9 +114,12 @@ def check_response(text, finish_reason, practice_keys):
         text: the response text
         finish_reason: vLLM's finish reason for the response ('stop', 'length', ...)
         practice_keys: the JSON keys of the practices, in output order
+        practice_names: the practice names, in the same order; if given, the response must
+            also contain "primary_practice" set to one of them
 
     Returns a dict:
         scores:    list of floats in practice_keys order, or None if there is any error
+        primary:   the primary_practice name, or None if not required or there is any error
         reasoning: the reasoning string ('' if missing)
         errors:    list of 'code: detail' strings that make the response unusable
         warnings:  list of 'code: detail' strings that are reported but keep the scores
@@ -114,13 +131,23 @@ def check_response(text, finish_reason, practice_keys):
     obj, start, end = _find_json_object(text, practice_keys)
     if obj is None:
         errors.append('no_json: no JSON object with practice keys found')
-        return {'scores': None, 'reasoning': '', 'errors': errors, 'warnings': warnings}
+        return {'scores': None, 'primary': None, 'reasoning': '', 'errors': errors,
+                'warnings': warnings}
 
     if text[:start].strip() or text[end:].strip():
         warnings.append('extra_text: text before or after the JSON object')
 
+    allowed_extra = {REASONING_KEY, PRIMARY_KEY} if practice_names else {REASONING_KEY}
     missing = [key for key in practice_keys if key not in obj]
-    extra = sorted(set(obj) - set(practice_keys) - {REASONING_KEY})
+    extra = sorted(set(obj) - set(practice_keys) - allowed_extra)
+
+    primary = None
+    if practice_names:
+        primary = obj.get(PRIMARY_KEY)
+        if primary is None:
+            errors.append(f'missing_primary: "{PRIMARY_KEY}" is missing')
+        elif primary not in practice_names:
+            errors.append(f"invalid_primary: {primary!r} is not one of the practice names")
     if missing:
         errors.append(f"missing_keys: {missing}")
     if extra:
@@ -154,7 +181,8 @@ def check_response(text, finish_reason, practice_keys):
             scores.append(number)
 
     if errors:
-        return {'scores': None, 'reasoning': reasoning, 'errors': errors, 'warnings': warnings}
+        return {'scores': None, 'primary': None, 'reasoning': reasoning, 'errors': errors,
+                'warnings': warnings}
 
     top = max(scores)
     if top == 0:
@@ -162,7 +190,11 @@ def check_response(text, finish_reason, practice_keys):
     elif scores.count(top) > 1:
         tied = [key for key, score in zip(practice_keys, scores) if score == top]
         warnings.append(f"tied_top_score: {tied} all scored {top:g}")
-    return {'scores': scores, 'reasoning': reasoning, 'errors': errors, 'warnings': warnings}
+    if primary is not None and scores[list(practice_names).index(primary)] < top:
+        warnings.append(f"primary_not_highest: {primary!r} scored "
+                        f"{scores[list(practice_names).index(primary)]:g}, highest is {top:g}")
+    return {'scores': scores, 'primary': primary, 'reasoning': reasoning, 'errors': errors,
+            'warnings': warnings}
 
 
 def check_output_frame(original_df, output_df, score_column, practice_names, predicted_column=None):
@@ -173,7 +205,7 @@ def check_output_frame(original_df, output_df, score_column, practice_names, pre
     - the row count or row order changed, or any original column (other than score_column
       and predicted_column) is missing, moved, or has a changed value;
     - a score cell is neither empty nor a JSON list of len(practice_names) numbers from 0 to 1;
-    - predicted_column (if given) is not the name of the highest score in its row, or is
+    - predicted_column (if given) is not one of practice_names in a row with scores, or is
       filled in a row that has no scores.
     """
     problems = []
@@ -218,11 +250,9 @@ def check_output_frame(original_df, output_df, score_column, practice_names, pre
             problems.append(f"row {idx}: {score_column} is not a list of {len(practice_names)} "
                             f"numbers from 0 to 1: {cell[:60]!r}")
             continue
-        if predicted_column:
-            expected = practice_names[int(np.argmax(scores))]
-            if predicted != expected:
-                problems.append(f"row {idx}: {predicted_column} is {predicted!r}, "
-                                f"but the highest score is {expected!r}")
+        if predicted_column and predicted not in practice_names:
+            problems.append(f"row {idx}: {predicted_column} is {predicted!r}, "
+                            f"which is not one of the practice names")
 
     if problems:
         shown = '\n  '.join(problems[:10])
