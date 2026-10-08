@@ -45,6 +45,12 @@ from vllm.distributed.parallel_state import (
 )
 
 from clean_utils import clean_problem_body
+from output_checks import (
+    check_response,
+    check_output_frame,
+    print_format_report,
+    structured_output_kwargs,
+)
 from kt_inference_base import (
     label_answer_options,
     get_correct_option_letters,
@@ -88,7 +94,7 @@ GREEDY_SAMPLING = {
     "max_tokens": MAX_NEW_TOKENS,
 }
 # Qwen's recommended settings for Qwen3 Instruct-2507 models.
-# Used when --num-samples > 1 and for retrying unparsable responses.
+# Used when --num-samples > 1 and for retrying responses that fail the format checks.
 STOCHASTIC_SAMPLING = {
     "temperature": 0.7,
     "top_p": 0.8,
@@ -436,6 +442,12 @@ def parse_args():
         help="Samples per problem. 1 uses greedy decoding; >1 samples at temperature 0.7 "
              "and averages the probabilities (default: 1)"
     )
+    parser.add_argument(
+        "--no-structured-output",
+        action="store_true",
+        default=False,
+        help="Do not constrain generation to the JSON schema; rely only on the format checks"
+    )
     args = parser.parse_args()
     if args.num_samples < 1:
         parser.error("--num-samples must be at least 1")
@@ -512,54 +524,21 @@ def create_user_prompt(row, skill_names):
     return prompt
 
 
-def _to_number(value):
-    """Convert a JSON value to a finite float, or None."""
-    if isinstance(value, bool):
-        return None
-    try:
-        value = float(value)
-    except (TypeError, ValueError):
-        return None
-    return value if np.isfinite(value) else None
-
-
-def parse_practice_scores(response_text):
-    """
-    Extract the practice scores from the last JSON object in the response.
-
-    Returns (scores in PRACTICES order, reasoning), or (None, None) if no JSON object
-    with all six numeric keys is found. Scores are clipped to [0, 1].
-    """
-    decoder = json.JSONDecoder()
-    starts = [match.start() for match in re.finditer(r'\{', response_text)]
-    for start in reversed(starts):
-        try:
-            obj, _ = decoder.raw_decode(response_text, start)
-        except json.JSONDecodeError:
-            continue
-        if not isinstance(obj, dict):
-            continue
-        values = [_to_number(obj.get(key)) for key in PRACTICE_KEYS]
-        if any(value is None for value in values):
-            continue
-        # Model answered in percent (e.g. 80 instead of 0.8)
-        if 1 < max(values) <= 100:
-            values = [value / 100 for value in values]
-        scores = [min(max(value, 0.0), 1.0) for value in values]
-        return scores, str(obj.get('reasoning', ''))
-    return None, None
-
-
 def score_request_output(output):
-    """Parse every sample of one vLLM output and average the valid score vectors."""
-    vectors, reasonings, responses = [], [], []
+    """
+    Run the format checks (output_checks.check_response) on every sample of one vLLM output
+    and average the scores of the samples that pass. Samples with format errors are left out.
+    """
+    vectors, reasonings, responses, errors, warnings = [], [], [], [], []
     for completion in output.outputs:
         text = completion.text.strip()
         responses.append(text)
-        scores, reasoning = parse_practice_scores(text)
-        if scores is not None:
-            vectors.append(scores)
-            reasonings.append(reasoning)
+        check = check_response(text, completion.finish_reason, PRACTICE_KEYS)
+        errors.append(check['errors'])
+        warnings.append(check['warnings'])
+        if check['scores'] is not None:
+            vectors.append(check['scores'])
+            reasonings.append(check['reasoning'])
 
     mean_scores = None
     if vectors:
@@ -569,6 +548,8 @@ def score_request_output(output):
         'num_valid_samples': len(vectors),
         'reasoning': reasonings,
         'responses': responses,
+        'format_errors': errors,
+        'format_warnings': warnings,
         'retried': False,
     }
 
@@ -741,10 +722,13 @@ def main():
     print(f"Raw output JSONL: {output_jsonl}")
     print(f"Evaluation JSON: {eval_json}")
     print(f"Samples per problem: {args.num_samples} ({'greedy' if args.num_samples == 1 else 'sampled, averaged'})")
+    print(f"Structured output: {'off (format checks only)' if args.no_structured_output else 'on (JSON schema enforced during generation)'}")
 
     # Read every cell as text so the original columns are written back unchanged.
     # Every row is (re-)labeled on each run.
-    problems_df = pd.read_csv(problems_csv, dtype=str, keep_default_na=False)
+    # original_df is kept untouched so check_output_frame can verify that before each save
+    original_df = pd.read_csv(problems_csv, dtype=str, keep_default_na=False)
+    problems_df = original_df.copy()
     if GROUND_TRUTH_COLUMN not in problems_df.columns:
         raise ValueError(f"{problems_csv} has no '{GROUND_TRUTH_COLUMN}' column to evaluate against")
     problems_df[OUTPUT_COLUMN] = ''
@@ -801,15 +785,18 @@ def main():
         print(f"WARNING: skipping {len(too_long)} prompts over budget "
               f"(raise --max-model-len to include them): {too_long_ids}")
 
+    # Constrain every response, including retries, to the JSON schema in output_checks
+    schema_constraint = {} if args.no_structured_output else structured_output_kwargs(PRACTICE_KEYS)
     if args.num_samples == 1:
-        sampling_params = SamplingParams(n=1, **GREEDY_SAMPLING)
+        sampling_params = SamplingParams(n=1, **GREEDY_SAMPLING, **schema_constraint)
     else:
-        sampling_params = SamplingParams(n=args.num_samples, **STOCHASTIC_SAMPLING)
-    retry_params = SamplingParams(n=1, **STOCHASTIC_SAMPLING)
+        sampling_params = SamplingParams(n=args.num_samples, **STOCHASTIC_SAMPLING, **schema_constraint)
+    retry_params = SamplingParams(n=1, **STOCHASTIC_SAMPLING, **schema_constraint)
 
     # Process in batches, saving after each one
     labeled = 0
     failed = 0
+    all_records = []
     num_batches = (len(sendable) + args.batch_size - 1) // args.batch_size
 
     for batch_idx in range(num_batches):
@@ -829,16 +816,18 @@ def main():
         outputs = llm.chat(conversations, sampling_params, use_tqdm=True)
         results = [score_request_output(output) for output in outputs]
 
-        # Retry unparsable responses once with sampling (greedy would repeat the same output)
+        # Retry responses that failed the format checks once with sampling
+        # (greedy would repeat the same output)
         retry_positions = [pos for pos, result in enumerate(results) if result['scores'] is None]
         if retry_positions:
-            print(f"Retrying {len(retry_positions)} unparsable responses...")
+            print(f"Retrying {len(retry_positions)} responses that failed the format checks...")
             retry_outputs = llm.chat(
                 [conversations[pos] for pos in retry_positions], retry_params, use_tqdm=False
             )
             for pos, output in zip(retry_positions, retry_outputs):
                 retried = score_request_output(output)
-                retried['responses'] = results[pos]['responses'] + retried['responses']
+                for key in ('responses', 'format_errors', 'format_warnings'):
+                    retried[key] = results[pos][key] + retried[key]
                 retried['retried'] = True
                 results[pos] = retried
 
@@ -859,17 +848,21 @@ def main():
                 GROUND_TRUTH_COLUMN: ground_truth[idx],
                 'num_valid_samples': result['num_valid_samples'],
                 'retried': result['retried'],
+                'format_errors': result['format_errors'],
+                'format_warnings': result['format_warnings'],
                 'reasoning': result['reasoning'],
                 'responses': result['responses'],
                 'user_prompt': user_prompts[idx],
                 'model_id': args.model_id,
             })
+        all_records.extend(records)
 
         for record in records:
             scores = record[OUTPUT_COLUMN]
             print(f"\nproblem_id {record['problem_id']}  ground truth: {record[GROUND_TRUTH_COLUMN]}")
             if scores is None:
-                print("  UNPARSED. Raw response:")
+                print(f"  FAILED FORMAT CHECKS: {record['format_errors']}")
+                print("  Last raw response:")
                 print(record['responses'][-1])
                 continue
             for name, score in zip(PRACTICE_NAMES, scores):
@@ -877,25 +870,35 @@ def main():
             verdict = "correct" if record[PREDICTED_COLUMN] == record[GROUND_TRUTH_COLUMN].strip() else "WRONG"
             print(f"  Predicted: {record[PREDICTED_COLUMN]} ({verdict})")
             print(f"  Reasoning: {record['reasoning'][0]}")
+            if any(record['format_warnings']):
+                print(f"  Format warnings: {record['format_warnings']}")
 
+        # Refuse to save if any original column (including ground_truth) changed, a score cell
+        # is malformed, or predicted_practice does not name the highest score
+        check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
+                           predicted_column=PREDICTED_COLUMN)
         save_problems_csv(problems_df, output_csv)
         append_results_jsonl(records, output_jsonl)
         print(f"\nSaved {len(records)} results to {output_csv} and {output_jsonl}")
 
     # Also write the CSV when nothing was sendable, so the output always exists
     if not sendable:
+        check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
+                           predicted_column=PREDICTED_COLUMN)
         save_problems_csv(problems_df, output_csv)
 
     print(f"\n{'='*80}")
-    print(f"Labeled: {labeled}, failed to parse: {failed}, skipped (too long): {len(too_long)}")
+    print(f"Labeled: {labeled}, failed format checks: {failed}, skipped (too long): {len(too_long)}")
     if failed or too_long:
         print("Re-run the script to retry; the rows that failed are empty in the output CSV.")
+    print_format_report(all_records)
     print_summary(problems_df)
 
     metrics = evaluate_predictions(problems_df, ground_truth)
     print_evaluation(metrics)
     metrics['model_id'] = args.model_id
     metrics['num_samples'] = args.num_samples
+    metrics['structured_output'] = not args.no_structured_output
     metrics['problems_file'] = problems_csv
     with open(eval_json, 'w', encoding='utf-8') as f:
         json.dump(metrics, f, indent=2, ensure_ascii=False)
