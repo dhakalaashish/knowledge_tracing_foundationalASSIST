@@ -286,9 +286,6 @@ PROMPT_COLLABORATIVE = """
 Practice definition:
 The social enterprise of doing mathematics with others through discussion and collaborative problem solving whereby ideas are offered, debated, connected, and built-upon toward solution and shared understanding. Collaborative mathematics involves joint thinking among individuals toward the construction of a problem solution in developmentally and mathematically appropriate ways.
 
-How this practice appears in an item a student answers alone:
-Items that measure collaborative processes are discursive in nature, offering students examples of social interaction or imagined utterances around mathematics to which they are tasked to respond in key ways. These include being asked to make sense of others' thinking, express and defend agreement or disagreement, and extend an idea.
-
 Practice descriptors:
     - Add to or build on a numerical model provided by others to complete a mathematical task.
     - Evaluate others' interpretations of numbers from real-life contexts.
