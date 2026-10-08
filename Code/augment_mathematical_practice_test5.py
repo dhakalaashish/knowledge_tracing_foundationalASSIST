@@ -62,7 +62,6 @@ DEFAULT_MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
 
 # Input / output files
 PROBLEMS_FILE = "problems_naep.csv"
-SKILL_FILE = "Skills.csv"
 TEST_OUTPUT_FILE = "problems_naep_predicted.csv"
 RAW_OUTPUT_FILE = "mathematical_practice_naep_raw.jsonl"
 EVAL_OUTPUT_FILE = "mathematical_practice_naep_eval.json"
@@ -384,7 +383,7 @@ def parse_args():
         "--data-dir", "-d",
         type=str,
         default=".",
-        help=f"Directory containing {PROBLEMS_FILE} and {SKILL_FILE} (default: current directory)"
+        help=f"Directory containing {PROBLEMS_FILE} (default: current directory)"
     )
     parser.add_argument(
         "--problems-file",
@@ -454,21 +453,6 @@ def parse_args():
     return args
 
 
-def load_skill_names(skills_csv):
-    """Map problem_id to its skill names, e.g. "Interpret Products of Whole Numbers (3.OA.A.1)"."""
-    skill_df = pd.read_csv(skills_csv, dtype=str, keep_default_na=False)
-    skill_names = {}
-    for problem_id, group in skill_df.groupby('problem_id', sort=False):
-        labels = []
-        for name, code in zip(group['node_name'], group['node_code']):
-            name, code = name.strip(), code.strip()
-            label = f"{name} ({code})" if code else name
-            if label and label not in labels:
-                labels.append(label)
-        skill_names[problem_id.strip()] = '; '.join(labels)
-    return skill_names
-
-
 def mark_answer_blanks(body_html):
     """
     Replace ASSISTments answer-blank tags with visible markers.
@@ -507,15 +491,16 @@ def format_choices_and_answer(row):
     return None, correct
 
 
-def create_user_prompt(row, skill_names):
-    """Creates the per-problem user prompt."""
+def create_user_prompt(row):
+    """
+    Creates the per-problem user prompt. Unlike augment_mathematical_practice.py, it has no
+    Skill(s) line, because the ground-truth items are not in Skills.csv.
+    """
     choices, correct = format_choices_and_answer(row)
-    skills = skill_names.get(row['problem_id'].strip()) or 'Undefined'
 
     prompt = "Item to rate:\n\n"
     prompt += f"Problem Type: {row['Problem Type']}\n"
-    prompt += f"Answer Type: {row['Answer Types']}\n"
-    prompt += f"Skill(s): {skills}\n\n"
+    prompt += f"Answer Type: {row['Answer Types']}\n\n"
     prompt += f"Problem:\n{clean_problem_body(mark_answer_blanks(row['Problem Body']))}\n\n"
     if choices:
         prompt += f"Answer Choices:\n{choices}\n\n"
@@ -709,7 +694,6 @@ def main():
     args = parse_args()
 
     problems_csv = os.path.join(args.data_dir, args.problems_file)
-    skill_csv = os.path.join(args.data_dir, SKILL_FILE)
     output_csv = os.path.join(args.output_dir, TEST_OUTPUT_FILE)
     output_jsonl = os.path.join(args.output_dir, RAW_OUTPUT_FILE)
     eval_json = os.path.join(args.output_dir, EVAL_OUTPUT_FILE)
@@ -734,7 +718,6 @@ def main():
     problems_df[OUTPUT_COLUMN] = ''
     problems_df[PREDICTED_COLUMN] = ''
     ground_truth = problems_df[GROUND_TRUTH_COLUMN]
-    skill_names = load_skill_names(skill_csv)
 
     todo = list(problems_df.index)
     print(f"\nProblems to label: {len(todo)}")
@@ -749,7 +732,7 @@ def main():
     # Build prompts from a copy without the ground truth (or any earlier prediction),
     # so the model never sees the answer it is being scored on
     prompt_df = problems_df.drop(columns=[GROUND_TRUTH_COLUMN, OUTPUT_COLUMN, PREDICTED_COLUMN])
-    user_prompts = {idx: create_user_prompt(prompt_df.loc[idx], skill_names) for idx in todo}
+    user_prompts = {idx: create_user_prompt(prompt_df.loc[idx]) for idx in todo}
     print(f"\nExample user prompt (problem_id {problems_df.at[todo[0], 'problem_id']}):\n")
     print(user_prompts[todo[0]])
 
