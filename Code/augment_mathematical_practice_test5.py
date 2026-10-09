@@ -359,12 +359,6 @@ For each of the six practices, give a number from 0 to 1: the probability that a
 - Base every score on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from.
 - Name the primary practice: the single practice the item mainly assesses. Give it the highest score. When two practices seem equally strong, use the rules below to choose.
 
-Rules for common overlaps (use them for both the scores and the primary practice):
-- Other people's thinking. Characters who only appear in a story (e.g., "Jada ran 3 miles") do not make an item collaborative. When the item presents another person's claim, strategy, answer, work, or dialogue, and the student must make sense of it, judge whether it is correct, find the error, agree or disagree, or extend it, the primary practice is Collaborative Mathematics, even when the student also justifies or refutes the claim (Justifying and Proving is then secondary).
-- Justifying vs. Abstracting. Showing or explaining why a claim is true for all cases, proving it, or refuting it with a counterexample is Justifying and Proving. Finding, describing, or extending a pattern, rule, or structure is Abstracting and Generalizing. The words "any" or "always" alone do not make an item Abstracting and Generalizing.
-- Modeling vs. Abstracting or Representing. When the item is a real-world scenario and the student must turn it into mathematics (decide which quantities matter, build or choose a model such as a rule or equation for the situation, and use or interpret it in context), the primary practice is Mathematical Modeling, even if building the model involves a general rule or a representation.
-- Representing vs. Procedural Fluency. If answering requires reading, interpreting, creating, or translating a representation (graph, table, number line, diagram, or an equation that stands for a situation), Representing is primary. If the numbers or expressions are given directly and the student only carries out a known procedure, Procedural Fluency is primary.
-
 ---
 
 Output format
