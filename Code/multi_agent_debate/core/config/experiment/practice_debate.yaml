@@ -1,0 +1,29 @@
+# @package _global_
+# Interactive debate over which mathematical practice an item mainly assesses.
+# Same structure as llm_debate's debate_interactive.yaml with the critique-and-refinement agents of
+# debate_critique_story.yaml:
+#   - two debaters per practice pair, 3 simultaneous rounds (rollout: sim)
+#   - the judge asks each debater a question before rounds 2 and 3 (cross_examiner)
+#   - best-of-4 arguments rated by the preference model, then critique-and-refinement with
+#     8 critiques rated by the critique model (see debaters/practice_v1_interactive.yaml)
+#   - interactive debates are rerun with the answer order swapped (core/debate.py), so each pair
+#     is debated twice
+#   - the final judge answers A or B and its log-probabilities are recorded (judge/debate/practice_judge.yaml)
+
+defaults:
+  - debaters/practice_v1_interactive@correct_debater
+  - debaters/practice_v1_interactive@incorrect_debater
+  - rollout: sim
+  - judge/debate/practice_judge@judge
+  - judge/debate/practice_preference@correct_preference
+  - judge/debate/practice_preference@incorrect_preference
+  - critic/debate/practice_critic@correct_critic
+  - critic/debate/practice_critic@incorrect_critic
+  - critic/debate/practice_critique_pm@correct_critique_pm
+  - critic/debate/practice_critique_pm@incorrect_critique_pm
+  - judge/debate/practice_intermediary@cross_examiner
+  - _self_
+
+method: debate
+method_type: sim
+use_intermediary: true

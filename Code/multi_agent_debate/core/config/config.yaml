@@ -1,0 +1,54 @@
+hydra:
+  run:
+    dir: ${exp_dir}/logs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${exp_dir}/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}
+  job_logging:
+    root:
+      level: INFO
+
+defaults:
+  - _self_
+
+logging: INFO
+print_prompt_and_response: false
+
+# Common Params
+exp_dir: ???
+method: ??? # debate, consultancy
+method_type: ??? # sim, seq | correct, incorrect
+use_intermediary: ???
+
+# Load
+seed: 0
+limit: null
+# Practice-pair CSV written by build_dataset.py (replaces the QuALITY loader options)
+dataset_file: null
+
+# Debater
+correct_debater:
+incorrect_debater:
+judge:
+concession_judge:
+cross_examiner:
+correct_preference:
+incorrect_preference:
+correct_critic:
+incorrect_critic:
+correct_critique_pm:
+incorrect_critique_pm:
+rollout:
+
+# Judge
+judge_name: "qwen3_30b"
+judge_type: "judge"
+round_limit: null
+
+# Scoring
+n_votes: 1
+
+# Local vLLM server (OpenAI-compatible) that serves every model id
+vllm_base_url: "http://localhost:8000/v1"
+vllm_num_threads: 128  # max concurrent requests to the server
+num_threads: 80        # concurrency budget; debates run num_threads / BoN at a time
