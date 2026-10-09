@@ -6,17 +6,25 @@ answer type, problem body, answer choices, correct answer, and skill name. It th
 how likely it is that the item assesses each of six practices: the five NAEP 2026
 Mathematical Practices plus Procedural Fluency (National Research Council, 2001).
 
-The result is written to Problems.csv as a new column, `mathematical_practice`. Each cell is
-a JSON array of 6 independent probabilities (0 to 1; they do not sum to 1), in this order:
+The prompt (SYSTEM_PROMPT) is the one evaluated against the NAEP ground-truth items in
+augment_mathematical_practice_test5.py; keep the two in sync.
 
-    [Representing, Abstracting and Generalizing, Justifying and Proving,
-     Mathematical Modeling, Collaborative Mathematics, Procedural Fluency]
+The result is written to Problems.csv as two columns:
+    mathematical_practice: JSON array of 6 independent probabilities (0 to 1; they do not
+                           sum to 1), in this order:
+        [Representing, Abstracting and Generalizing, Justifying and Proving,
+         Mathematical Modeling, Collaborative Mathematics, Procedural Fluency]
+                           Read a cell back with json.loads(cell).
+    predicted_practice:    the model's primary_practice, the single practice the problem
+                           mainly assesses (with --num-samples > 1, the one most samples chose)
 
-Read a cell back with json.loads(cell).
+A row counts as labeled only when predicted_practice is filled. Rows without it (including
+rows scored by the earlier six-score prompt) are labeled on the next run, and their old
+scores are cleared first, so an interrupted run resumes where it stopped without mixing
+prompts. Raw model responses and reasoning are appended to mathematical_practice_raw.jsonl
+in --output-dir. Before the first update, Problems.csv is backed up to Problems.csv.bak.
 
-Rows that already have a value are skipped, so an interrupted run resumes where it stopped.
-Raw model responses and reasoning are appended to mathematical_practice_raw.jsonl in
---output-dir. Before the first update, Problems.csv is backed up to Problems.csv.bak.
+At the end, the script prints how many problems have each predicted_practice.
 
 Run from the Code/ directory (it imports clean_utils and kt_inference_base).
 
@@ -68,6 +76,7 @@ PROBLEMS_FILE = "Problems.csv"
 SKILL_FILE = "Skills.csv"
 RAW_OUTPUT_FILE = "mathematical_practice_raw.jsonl"
 OUTPUT_COLUMN = "mathematical_practice"
+PREDICTED_COLUMN = "predicted_practice"
 
 # Run config defaults
 DEFAULT_BATCH_SIZE = 512
@@ -107,8 +116,11 @@ STOCHASTIC_SAMPLING = {
 # ---------------------------------------------------------------------------
 # Prompts
 #
+# The "From the NAEP Framework" and "From Adding It Up" passages are the source
+# text, verbatim except that in-text citations, page numbers, exhibit references,
+# and paragraphs about assessment logistics were removed. The "Rater guidance"
+# passages are written for this item bank and are not part of either source.
 # ---------------------------------------------------------------------------
-
 
 PROMPT_INTRO = """You are an expert in mathematics assessment. You have years of experience reviewing test items and deciding which mathematical practices each item assesses.
 
@@ -119,7 +131,14 @@ Your task: read ONE item from an online k-12 mathematics item bank and estimate,
 Assess the item's practice probability using:
     - Practice definition: defines what the practice measures 
     - Practice descriptors: non-comprehensive list of descriptions of what the practice could entail
-Both the definition and the descriptor are important in identifying which practice the item belongs to.
+Both the definition and the descriptor are important in identifying which practice the item belongs to
+
+---
+
+About the items
+
+- A student works on each item alone. Practices that involve other people therefore appear through the item itself: the item shows another person's mathematical thinking (a named student's claim, strategy, answer, work, or a dialogue), and the student responds to it.
+- Figures appear only as text descriptions such as [Image: ...], or as [image] when no description is available. Judge from what the text shows.
 
 ---
 
@@ -342,15 +361,17 @@ For each of the six practices, give a number from 0 to 1: the probability that a
   - 0.7-0.9: clearly required to answer the item correctly.
   - 1.0: the item is a textbook example of the practice from the practice descriptors.
 - Base every score on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from.
+- Name the primary practice: the single practice the item mainly assesses. Give it the highest score. 
 
 ---
 
 Output format
 
-Respond with exactly one JSON object in this form, and write nothing before or after it. Fill in "reasoning" first, then the six numbers:
+Respond with exactly one JSON object in this form, and write nothing before or after it. Fill in "reasoning" first, then "primary_practice", then the six numbers:
 
 {
 "reasoning": "<2-4 sentences: what the student must do to answer correctly, and which practice(s) that requires>",
+"primary_practice": "<exactly one of: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency>",
 "representing": <number from 0 to 1>,
 "abstracting_and_generalizing": <number from 0 to 1>,
 "justifying_and_proving": <number from 0 to 1>,
@@ -536,25 +557,37 @@ def create_user_prompt(row, skill_names):
 
 def score_request_output(output):
     """
-    Run the format checks (output_checks.check_response) on every sample of one vLLM output
-    and average the scores of the samples that pass. Samples with format errors are left out.
+    Run the format checks (output_checks.check_response) on every sample of one vLLM output,
+    average the scores of the samples that pass, and combine their primary_practice answers.
+    Samples with format errors are left out.
+
+    With several samples, the primary practice is the one most samples chose; a tied vote
+    goes to the tied practice with the highest mean score.
     """
-    vectors, reasonings, responses, errors, warnings = [], [], [], [], []
+    vectors, primaries, reasonings, responses, errors, warnings = [], [], [], [], [], []
     for completion in output.outputs:
         text = completion.text.strip()
         responses.append(text)
-        check = check_response(text, completion.finish_reason, PRACTICE_KEYS)
+        check = check_response(text, completion.finish_reason, PRACTICE_KEYS, PRACTICE_NAMES)
         errors.append(check['errors'])
         warnings.append(check['warnings'])
         if check['scores'] is not None:
             vectors.append(check['scores'])
+            primaries.append(check['primary'])
             reasonings.append(check['reasoning'])
 
     mean_scores = None
+    primary = None
     if vectors:
         mean_scores = [round(float(value), 2) for value in np.mean(vectors, axis=0)]
+        votes = {name: primaries.count(name) for name in PRACTICE_NAMES}
+        most = max(votes.values())
+        tied = [name for name in PRACTICE_NAMES if votes[name] == most]
+        primary = max(tied, key=lambda name: mean_scores[PRACTICE_NAMES.index(name)])
     return {
         'scores': mean_scores,
+        'primary': primary,
+        'primary_votes': primaries,
         'num_valid_samples': len(vectors),
         'reasoning': reasonings,
         'responses': responses,
@@ -579,15 +612,41 @@ def append_results_jsonl(records, output_jsonl):
 
 
 def print_summary(problems_df):
-    """Print how many rows have scores, the mean per practice, and the top-practice counts."""
-    vectors = [json.loads(cell) for cell in problems_df[OUTPUT_COLUMN] if cell.strip()]
-    print(f"Rows with scores: {len(vectors)} / {len(problems_df)}")
-    if not vectors:
+    """
+    Print how the labeled problems are spread over the practices. There is no ground truth
+    for these problems, so the counts are the main way to see what the model decided:
+      primary        problems whose predicted_practice is this practice (each counted once)
+      highest score  problems where this practice has the highest probability
+      score >= 0.7   problems where this practice is "clearly required" (can overlap)
+      mean score     mean probability of this practice over all labeled problems
+    """
+    labeled = problems_df[problems_df[PREDICTED_COLUMN].str.strip() != '']
+    print(f"\n{'='*80}")
+    print(f"PRACTICE COUNTS ({len(labeled)} of {len(problems_df)} problems labeled)")
+    print(f"{'='*80}")
+    if labeled.empty:
         return
-    scores = np.array(vectors)
-    top_counts = np.bincount(scores.argmax(axis=1), minlength=len(PRACTICES))
-    for name, mean, count in zip(PRACTICE_NAMES, scores.mean(axis=0), top_counts):
-        print(f"  {name:<30} mean {mean:.2f}   highest score in {count} rows")
+
+    scores = np.array([json.loads(cell) for cell in labeled[OUTPUT_COLUMN]])
+    primary_counts = labeled[PREDICTED_COLUMN].value_counts()
+    highest_counts = np.bincount(scores.argmax(axis=1), minlength=len(PRACTICES))
+    strong_counts = (scores >= 0.7).sum(axis=0)
+
+    print(f"  {'Practice':<30} {'primary':>15} {'highest score':>14} {'score >= 0.7':>13} {'mean score':>11}")
+    for i, name in enumerate(PRACTICE_NAMES):
+        count = int(primary_counts.get(name, 0))
+        print(f"  {name:<30} {count:>6} ({count / len(labeled):>6.1%}) {int(highest_counts[i]):>14} "
+              f"{int(strong_counts[i]):>13} {scores[:, i].mean():>11.2f}")
+    print(f"  {'Total':<30} {len(labeled):>6} ({1:>6.1%})")
+
+    highest_names = [PRACTICE_NAMES[i] for i in scores.argmax(axis=1)]
+    differ = sum(p != h for p, h in zip(labeled[PREDICTED_COLUMN], highest_names))
+    multi = int(((scores >= 0.7).sum(axis=1) >= 2).sum())
+    print(f"\n  primary: the model's primary_practice (predicted_practice), each problem counted once")
+    print(f"  highest score: this practice has the highest probability (ties go to the first practice)")
+    print(f"  score >= 0.7: this practice is clearly required; a problem can count for several")
+    print(f"  Problems whose primary_practice is not their highest score: {differ}")
+    print(f"  Problems with two or more practices scored 0.7 or higher: {multi}")
 
 
 def main():
@@ -609,15 +668,26 @@ def main():
     # original_df is kept untouched so check_output_frame can verify that before each save.
     original_df = pd.read_csv(problems_csv, dtype=str, keep_default_na=False)
     problems_df = original_df.copy()
-    if OUTPUT_COLUMN not in problems_df.columns:
-        problems_df[OUTPUT_COLUMN] = ''
+    for column in (OUTPUT_COLUMN, PREDICTED_COLUMN):
+        if column not in problems_df.columns:
+            problems_df[column] = ''
     skill_names = load_skill_names(skill_csv)
 
+    # A row is labeled only when predicted_practice is filled. Rows without it (for example,
+    # scored by the earlier six-score prompt) are relabeled, and their old scores are cleared
+    # so scores and predicted_practice always come from the same prompt.
     if args.overwrite:
-        todo = list(problems_df.index)
+        needs_label = problems_df.index
     else:
-        todo = list(problems_df.index[problems_df[OUTPUT_COLUMN].str.strip() == ''])
+        needs_label = problems_df.index[problems_df[PREDICTED_COLUMN].str.strip() == '']
+    stale = int((problems_df.loc[needs_label, OUTPUT_COLUMN].str.strip() != '').sum())
+    problems_df.loc[needs_label, [OUTPUT_COLUMN, PREDICTED_COLUMN]] = ''
+    todo = list(needs_label)
     print(f"\nProblems: {len(problems_df)}, needing labels: {len(todo)}")
+    if stale:
+        print(f"Cleared {stale} old scores (from an earlier prompt) that will be replaced. "
+              f"Before the first save, {PROBLEMS_FILE} is copied to {PROBLEMS_FILE}.bak "
+              f"if no backup exists yet.")
     if args.limit is not None:
         todo = todo[:args.limit]
         print(f"Limited to: {len(todo)}")
@@ -663,7 +733,8 @@ def main():
               f"(raise --max-model-len to include them): {too_long_ids}")
 
     # Constrain every response, including retries, to the JSON schema in output_checks
-    schema_constraint = {} if args.no_structured_output else structured_output_kwargs(PRACTICE_KEYS)
+    schema_constraint = ({} if args.no_structured_output
+                         else structured_output_kwargs(PRACTICE_KEYS, PRACTICE_NAMES))
     if args.num_samples == 1:
         sampling_params = SamplingParams(n=1, **GREEDY_SAMPLING, **schema_constraint)
     else:
@@ -718,12 +789,15 @@ def main():
         for idx, result in zip(batch, results):
             if result['scores'] is not None:
                 problems_df.at[idx, OUTPUT_COLUMN] = json.dumps(result['scores'])
+                problems_df.at[idx, PREDICTED_COLUMN] = result['primary']
                 labeled += 1
             else:
                 failed += 1
             records.append({
                 'problem_id': problems_df.at[idx, 'problem_id'],
                 OUTPUT_COLUMN: result['scores'],
+                PREDICTED_COLUMN: result['primary'],
+                'primary_votes': result['primary_votes'],
                 'num_valid_samples': result['num_valid_samples'],
                 'retried': result['retried'],
                 'format_errors': result['format_errors'],
@@ -735,8 +809,10 @@ def main():
             })
         all_records.extend(records)
 
-        # Refuse to save if any original column changed or a score cell is malformed
-        check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES)
+        # Refuse to save if any original column changed, a score cell is malformed, or
+        # predicted_practice is not a practice name
+        check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
+                           predicted_column=PREDICTED_COLUMN)
 
         if args.dry_run:
             for record in records:
@@ -749,6 +825,7 @@ def main():
                     continue
                 for name, score in zip(PRACTICE_NAMES, scores):
                     print(f"  {name:<30} {score:.2f}")
+                print(f"  Primary practice: {record[PREDICTED_COLUMN]}")
                 print(f"  Reasoning: {record['reasoning'][0]}")
                 if any(record['format_warnings']):
                     print(f"  Format warnings: {record['format_warnings']}")

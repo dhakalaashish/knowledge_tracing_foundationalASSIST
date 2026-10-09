@@ -357,7 +357,7 @@ For each of the six practices, give a number from 0 to 1: the probability that a
   - 0.7-0.9: clearly required to answer the item correctly.
   - 1.0: the item is a textbook example of the practice from the practice descriptors.
 - Base every score on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from.
-- Name the primary practice: the single practice the item mainly assesses. Give it the highest score. When two practices seem equally strong, use the rules below to choose.
+- Name the primary practice: the single practice the item mainly assesses. Give it the highest score. 
 
 ---
 
