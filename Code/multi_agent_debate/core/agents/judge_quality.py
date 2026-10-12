@@ -12,6 +12,9 @@ from core.utils import softmax
 
 LOGGER = logging.getLogger(__name__)
 
+# How many times the cross-examiner is asked for a question before the round is marked failed
+QUESTION_ATTEMPTS = 3
+
 
 class JudgeQuality(JudgeBase):
     def __init__(self, *args, **kwargs):
@@ -407,6 +410,29 @@ class JudgeQuality(JudgeBase):
 
         return response
 
+    @staticmethod
+    def extract_question(response: str | None) -> str | None:
+        """
+        The judge's question from its reply, or None if the reply has no usable question.
+
+        The question should be inside <question></question>. When the tags are missing, the text
+        after </thinking> is used instead (the original code did this only for gpt-3.5-turbo).
+        A reply whose <thinking> never closes was cut off by max_tokens and has no question.
+        """
+        if not response:
+            return None
+        if "<question>" in response:
+            question = response.split("<question>", 1)[1].split("</question>")[0].strip()
+            if question:
+                return question
+            # "<question></question>" followed by the question
+            return response.split("</question>", 1)[-1].strip() or None
+        if "</thinking>" in response:
+            return response.split("</thinking>", 1)[1].replace("</question>", "").strip() or None
+        if "<thinking>" in response:
+            return None
+        return response.strip() or None
+
     async def take_turn(
         self,
         transcript: TranscriptConfig,
@@ -417,27 +443,23 @@ class JudgeQuality(JudgeBase):
         response_key = "response_judge"
         if current_step < len(cache_manager.results):
             response = cache_manager.results[current_step].get(response_key, None)
-        if response is None:
-            response = await self.get_question(transcript)
-            cache_manager.save_item(current_step, response_key, response)
+        question = self.extract_question(response)
 
-        if "gpt-3.5-turbo" in self.config.language_model.model:
-            if "<question>" not in response and "</thinking>" in response:
-                response = response.split("</thinking>")[1].strip()
-                if response:
-                    response = f"<question>{response}</question>"
-            elif "<question>" not in response:
-                response = (
-                    response.replace("</thinking>", "")
-                    .replace("<thinking>", "")
-                    .strip()
+        # Ask again when there is no usable question. Only a usable reply is cached; the original
+        # cached the reply before parsing it, so one bad reply made every retry fail the same way.
+        attempts = 0
+        while question is None and attempts < QUESTION_ATTEMPTS:
+            if response is not None:
+                LOGGER.warning(
+                    f"Judge reply has no usable question (index {transcript.index}); asking again. "
+                    f"Reply starts: {response[:300]!r}"
                 )
-                if response:
-                    response = f"<question>{response}</question>"
-            elif "<question></question>" in response:
-                response = response.split("</question>")[1].strip()
-                if response:
-                    response = f"<question>{response}</question>"
-
-        question = response.split("<question>")[1].split("</question>")[0]
-        return question.strip(), response
+            response = await self.get_question(transcript)
+            question = self.extract_question(response)
+            attempts += 1
+        if question is None:
+            raise ValueError(
+                f"Judge gave no usable question after {QUESTION_ATTEMPTS} attempts (index {transcript.index})"
+            )
+        cache_manager.save_item(current_step, response_key, response)
+        return question, response
