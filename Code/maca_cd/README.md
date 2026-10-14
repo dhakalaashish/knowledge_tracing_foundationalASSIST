@@ -71,17 +71,17 @@ All commands start in `Code/maca_cd/`.
 
 **1. Preprocess** (CPU, a few minutes; prints the student, problem and concept counts):
 ```bash
-python data/concept_main.py --stage preprocess
+python3 data/concept_main.py --stage preprocess
 ```
 
 **2. Concept descriptions and graph** with the 30B server (start it as for the other experiments and wait
 until `curl -s localhost:8000/v1/models` lists it):
 ```bash
 VLLM_USE_FLASHINFER_SAMPLER=0 CUDA_VISIBLE_DEVICES=0 nohup vllm serve Qwen/Qwen3-30B-A3B-Instruct-2507 --port 8000 --max-model-len 32768 --enable-prefix-caching > ../../Data/vllm_server.log 2>&1 &
-python data/concept_main.py --stage metadata --limit 2     # smoke test: 2 concepts
-nohup python data/concept_main.py --stage metadata > data/metadata.log 2>&1 &
-python data/concept_main.py --stage init
-nohup python data/concept_main.py --stage extend > data/extend.log 2>&1 &
+python3 data/concept_main.py --stage metadata --limit 2     # smoke test: 2 concepts
+nohup python3 data/concept_main.py --stage metadata > data/metadata.log 2>&1 &
+python3 data/concept_main.py --stage init
+nohup python3 data/concept_main.py --stage extend > data/extend.log 2>&1 &
 ```
 `metadata` and `extend` resume when rerun. Rerun `init` only after deleting `data/graph/execution_state.json`
 and `data/graph/DAG_edges.json`, because they belong to the old root nodes.
@@ -89,21 +89,21 @@ and `data/graph/DAG_edges.json`, because they belong to the old root nodes.
 **3. Embeddings:** stop the 30B server (`pkill -f "vllm serve"`), then serve the embedding model:
 ```bash
 VLLM_USE_FLASHINFER_SAMPLER=0 CUDA_VISIBLE_DEVICES=0 nohup vllm serve Qwen/Qwen3-Embedding-0.6B --port 8001 --runner pooling > ../../Data/vllm_embed.log 2>&1 &
-python data/concept_main.py --stage embed
+python3 data/concept_main.py --stage embed
 ```
 Older vLLM versions take `--task embed` instead of `--runner pooling`.
 
 **4. Splits:**
 ```bash
-python data/data_preprocess.py
+python3 data/data_preprocess.py
 ```
 
 **5. Train:** stop the embedding server, then run from `model/`:
 ```bash
 cd model
-python train.py --split standard
-python train.py --split cold
-python train.py --split zeroshot
+python3 train.py --split standard
+python3 train.py --split cold
+python3 train.py --split zeroshot
 ```
 `--device cuda:1` picks another GPU. Training runs 200 epochs (`number_epoch` in `parameter.json`).
 

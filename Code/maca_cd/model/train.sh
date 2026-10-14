@@ -1,3 +1,3 @@
-python train.py --split standard
-python train.py --split cold
-python train.py --split zeroshot
+python3 train.py --split standard
+python3 train.py --split cold
+python3 train.py --split zeroshot
