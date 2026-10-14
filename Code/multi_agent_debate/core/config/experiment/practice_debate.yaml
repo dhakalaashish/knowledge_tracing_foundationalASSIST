@@ -5,7 +5,7 @@
 #   - two debaters per practice pair, 3 simultaneous rounds (rollout: sim)
 #   - the judge asks each debater a question before rounds 2 and 3 (cross_examiner)
 #   - best-of-4 arguments rated by the preference model, then critique-and-refinement with
-#     8 critiques rated by the critique model (see debaters/practice_v1_interactive.yaml)
+#     8 critiques rated by the critique model (best_of_n and critiques at the bottom turn these off)
 #   - interactive debates are rerun with the answer order swapped (core/debate.py), so each pair
 #     is debated twice
 #   - the final judge answers A or B and its log-probabilities are recorded (judge/debate/practice_judge.yaml)
@@ -27,3 +27,8 @@ defaults:
 method: debate
 method_type: sim
 use_intermediary: true
+
+# Debater turn settings, used by both debaters (debaters/practice_v1_interactive.yaml reads them).
+# Use a new run name after changing them: cached turns from another setting are not reused.
+best_of_n: 4  # drafts per turn, the preference model keeps the best one; 1 = off
+critiques: 8  # critiques per turn, the best one is used to refine the argument; 0 = off (no critique, no refinement)

@@ -21,7 +21,9 @@ Lab; see `LICENSE`), adapted as described below. Everything else in this folder 
 - 3 simultaneous rounds: opening arguments; then the judge asks each debater a question and they
   attack the opponent's argument; then the judge asks again and they defend their own.
 - Each debater turn: best-of-4 drafts (rated by the judge model), then critique-and-refinement with
-  8 critiques (the most helpful one, rated by a critique model, is used to refine).
+  8 critiques (the most helpful one, rated by a critique model, is used to refine). Both are set at
+  the bottom of `core/config/experiment/practice_debate.yaml`: `best_of_n: 1` turns off best-of-N,
+  `critiques: 0` turns off critique and refinement.
 - Quotes from the framework or the item are checked: `<v_quote>` (verified) or `<u_quote>` (not).
 
 **Prediction:** for each item, every practice takes part in 10 debates (5 opponents x 2 orders). Its
@@ -86,4 +88,9 @@ Rerunning a command resumes it: finished debate steps are cached in `multi_agent
 
 **Cost:** about 20 model calls per debater turn (4 drafts x 3 candidates, 4 ratings, 8 critiques,
 8 critique ratings, 4 refinements x 3 candidates, 4 ratings), about 120 per debate, so about 3,600
-per item. Time the pilot before starting the full run.
+per item. Time the pilot before starting the full run. With `best_of_n: 1` and `critiques: 0` a turn
+is 1 call (3 candidates, the first valid one is kept), about 9 per debate including the judge's
+questions and decision.
+
+After changing `best_of_n` or `critiques`, use a new run name (e.g. `plain`): a run name's cache holds
+the turns of one setting, and reusing it stops with `Num Response: 4 != BoN Config: 1`.
