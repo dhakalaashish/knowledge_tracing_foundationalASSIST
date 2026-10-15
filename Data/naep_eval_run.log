@@ -1,0 +1,533 @@
+Model: Qwen/Qwen3-30B-A3B-Instruct-2507
+Problems file (read only): ../Data/problems_naep.csv
+Output CSV: ../Data/problems_naep_predicted.csv
+Raw output JSONL: ../Data/mathematical_practice_naep_raw.jsonl
+Evaluation JSON: ../Data/mathematical_practice_naep_eval.json
+Samples per problem: 1 (greedy)
+Structured output: on (JSON schema enforced during generation)
+
+Problems to label: 36
+Ground truth counts (hidden from the model):
+  Procedural Fluency             14
+  Justifying and Proving         7
+  Abstracting and Generalizing   4
+  Representing                   4
+  Collaborative Mathematics      4
+  Mathematical Modeling          3
+
+Example user prompt (problem_id 900303):
+
+Item to rate:
+
+Problem Type: Multiple Choice (select 1)
+Answer Type: Multiple Choice
+
+Problem:
+[Image: base ten blocks: 3 large cubes (each made of 10 × 10 × 10 small cubes), 2 rods (each made of 10 small cubes), and 5 single small cubes. Key: one small cube = 1] Which of the following numbers is represented by the base ten blocks?
+
+Answer Choices:
+A) 325
+B) 370
+C) 3,025
+D) 3,205
+
+Correct Answer:
+C) 3,025
+
+Rate this item on the six practices. Respond with only the JSON object described in the instructions.
+
+Initializing vLLM engine...
+INFO 10-14 19:18:12 [api_utils.py:286] non-default args: {'trust_remote_code': True, 'max_model_len': 16384, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.9, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-30B-A3B-Instruct-2507'}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 10-14 19:18:13 [model.py:692] Resolved architecture: Qwen3MoeForCausalLM
+INFO 10-14 19:18:13 [model.py:2030] Using max model len 16384
+INFO 10-14 19:18:13 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 10-14 19:18:13 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=474866) INFO 10-14 19:18:16 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='Qwen/Qwen3-30B-A3B-Instruct-2507', speculative_config=None, tokenizer='Qwen/Qwen3-30B-A3B-Instruct-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=16384, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=Qwen/Qwen3-30B-A3B-Instruct-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::qwen4_exp_ple_short_conv', 'vllm::qwen4_exp_qsa_with_output', 'vllm::linear_attention', 'vllm::qwen_gdn_attention_core', 'vllm::qwen_gdn_attention_core_fused_norm_packed', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::hpc_rope_norm_forward', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=474866) INFO 10-14 19:18:17 [parallel_state.py:1827] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_14b86628db194e0f9bafa734ead3cf46 backend=nccl
+(EngineCore pid=474866) INFO 10-14 19:18:17 [parallel_state.py:2267] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank 0, EPLB rank N/A
+(EngineCore pid=474866) INFO 10-14 19:18:17 [gpu_worker.py:441] Using V2 Model Runner
+(EngineCore pid=474866) INFO 10-14 19:18:18 [model_runner.py:396] Loading model from scratch...
+(EngineCore pid=474866) INFO 10-14 19:18:19 [cuda.py:538] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=474866) INFO 10-14 19:18:19 [flash_attn.py:1116] Using FlashAttention version 2
+(EngineCore pid=474866) INFO 10-14 19:18:19 [unquantized.py:319] Using TRITON Unquantized MoE backend out of potential backends: ['FlashInfer TRTLLM', 'FlashInfer CUTLASS', 'TRITON', 'BATCHED_TRITON'].
+(EngineCore pid=474866) INFO 10-14 19:18:20 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 56.87 GiB. Available RAM: 246.36 GiB.
+(EngineCore pid=474866) INFO 10-14 19:18:20 [weight_utils.py:918] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=474866) Loading safetensors checkpoint shards:   0% Completed | 0/16 [00:00<?, ?it/s]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:   6% Completed | 1/16 [00:00<00:13,  1.09it/s]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  12% Completed | 2/16 [00:01<00:13,  1.00it/s]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  19% Completed | 3/16 [00:03<00:13,  1.03s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  25% Completed | 4/16 [00:04<00:12,  1.04s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  31% Completed | 5/16 [00:05<00:11,  1.05s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  38% Completed | 6/16 [00:06<00:10,  1.05s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  44% Completed | 7/16 [00:07<00:09,  1.05s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  50% Completed | 8/16 [00:08<00:08,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  56% Completed | 9/16 [00:09<00:07,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  62% Completed | 10/16 [00:10<00:06,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  69% Completed | 11/16 [00:11<00:05,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  75% Completed | 12/16 [00:12<00:04,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  81% Completed | 13/16 [00:13<00:03,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  88% Completed | 14/16 [00:14<00:02,  1.06s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards:  94% Completed | 15/16 [00:15<00:01,  1.07s/it]
+(EngineCore pid=474866) Loading safetensors checkpoint shards: 100% Completed | 16/16 [00:16<00:00,  1.21it/s]
+(EngineCore pid=474866) Loading safetensors checkpoint shards: 100% Completed | 16/16 [00:16<00:00,  1.00s/it]
+(EngineCore pid=474866) 
+(EngineCore pid=474866) INFO 10-14 19:18:36 [default_loader.py:430] Loading weights took 16.09 seconds
+(EngineCore pid=474866) INFO 10-14 19:18:36 [unquantized.py:400] Using MoEPrepareAndFinalizeNoDPEPModular
+(EngineCore pid=474866) INFO 10-14 19:18:36 [unquantized.py:401] Using TritonExperts MoE backend
+(EngineCore pid=474866) INFO 10-14 19:18:37 [model_runner.py:428] Model loading took 56.93 GiB memory and 18.541204 seconds
+(EngineCore pid=474866) INFO 10-14 19:18:37 [topk_topp_sampler.py:62] FlashInfer top-p/top-k sampling disabled via VLLM_USE_FLASHINFER_SAMPLER=0.
+(EngineCore pid=474866) INFO 10-14 19:18:37 [utils.py:320] Using LBNHC KV cache layout.
+(EngineCore pid=474866) INFO 10-14 19:18:39 [caching.py:343] reconstructed serializable fn from standalone compile artifacts. num_artifacts=3 num_submods=49
+(EngineCore pid=474866) INFO 10-14 19:18:39 [decorators.py:313] Directly load AOT compilation from path /home/adhakal/.cache/vllm/torch_compile_cache/torch_aot_compile/31b63ceb36a10c75edce6112db27c970dc3c986de2b87399b365f9a72e0e9eee/rank_0_0/model
+(EngineCore pid=474866) INFO 10-14 19:18:39 [monitor.py:53] torch.compile took 0.22 s in total
+(EngineCore pid=474866) WARNING 10-14 19:18:39 [fused_moe.py:1167] Using default MoE config. Performance might be sub-optimal! Config file not found at /home/adhakal/.local/lib/python3.10/site-packages/vllm/model_executor/layers/fused_moe/configs/E=128,N=768,device_name=NVIDIA_A100_80GB_PCIe.json
+(EngineCore pid=474866) INFO 10-14 19:18:39 [monitor.py:81] Initial profiling/warmup run took 0.26 s
+(EngineCore pid=474866) Capturing CUDA graphs (PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):   2%|▏         | 1/51 [00:00<00:10,  4.72it/s]Capturing CUDA graphs (PIECEWISE):   4%|▍         | 2/51 [00:00<00:08,  5.57it/s]Capturing CUDA graphs (PIECEWISE):   6%|▌         | 3/51 [00:00<00:08,  5.92it/s]Capturing CUDA graphs (PIECEWISE):   8%|▊         | 4/51 [00:00<00:07,  5.97it/s]Capturing CUDA graphs (PIECEWISE):  10%|▉         | 5/51 [00:00<00:07,  6.13it/s]Capturing CUDA graphs (PIECEWISE):  12%|█▏        | 6/51 [00:01<00:07,  6.24it/s]Capturing CUDA graphs (PIECEWISE):  14%|█▎        | 7/51 [00:01<00:06,  6.31it/s]Capturing CUDA graphs (PIECEWISE):  16%|█▌        | 8/51 [00:01<00:06,  6.36it/s]Capturing CUDA graphs (PIECEWISE):  18%|█▊        | 9/51 [00:01<00:06,  6.37it/s]Capturing CUDA graphs (PIECEWISE):  20%|█▉        | 10/51 [00:01<00:06,  6.38it/s]Capturing CUDA graphs (PIECEWISE):  22%|██▏       | 11/51 [00:01<00:06,  6.39it/s]Capturing CUDA graphs (PIECEWISE):  24%|██▎       | 12/51 [00:01<00:06,  6.38it/s]Capturing CUDA graphs (PIECEWISE):  25%|██▌       | 13/51 [00:02<00:05,  6.41it/s]Capturing CUDA graphs (PIECEWISE):  27%|██▋       | 14/51 [00:02<00:05,  6.43it/s]Capturing CUDA graphs (PIECEWISE):  29%|██▉       | 15/51 [00:02<00:05,  6.44it/s]Capturing CUDA graphs (PIECEWISE):  31%|███▏      | 16/51 [00:02<00:05,  6.44it/s]Capturing CUDA graphs (PIECEWISE):  33%|███▎      | 17/51 [00:02<00:05,  6.30it/s]Capturing CUDA graphs (PIECEWISE):  35%|███▌      | 18/51 [00:02<00:05,  6.26it/s]Capturing CUDA graphs (PIECEWISE):  37%|███▋      | 19/51 [00:03<00:05,  6.23it/s]Capturing CUDA graphs (PIECEWISE):  39%|███▉      | 20/51 [00:03<00:04,  6.21it/s]Capturing CUDA graphs (PIECEWISE):  41%|████      | 21/51 [00:03<00:04,  6.20it/s]Capturing CUDA graphs (PIECEWISE):  43%|████▎     | 22/51 [00:03<00:04,  6.19it/s]Capturing CUDA graphs (PIECEWISE):  45%|████▌     | 23/51 [00:03<00:04,  6.15it/s]Capturing CUDA graphs (PIECEWISE):  47%|████▋     | 24/51 [00:03<00:04,  6.14it/s]Capturing CUDA graphs (PIECEWISE):  49%|████▉     | 25/51 [00:04<00:04,  6.14it/s]Capturing CUDA graphs (PIECEWISE):  51%|█████     | 26/51 [00:04<00:04,  6.14it/s]Capturing CUDA graphs (PIECEWISE):  53%|█████▎    | 27/51 [00:04<00:03,  6.15it/s]Capturing CUDA graphs (PIECEWISE):  55%|█████▍    | 28/51 [00:04<00:03,  6.14it/s]Capturing CUDA graphs (PIECEWISE):  57%|█████▋    | 29/51 [00:04<00:03,  6.15it/s]Capturing CUDA graphs (PIECEWISE):  59%|█████▉    | 30/51 [00:04<00:03,  6.15it/s]Capturing CUDA graphs (PIECEWISE):  61%|██████    | 31/51 [00:04<00:03,  6.16it/s]Capturing CUDA graphs (PIECEWISE):  63%|██████▎   | 32/51 [00:05<00:03,  6.15it/s]Capturing CUDA graphs (PIECEWISE):  65%|██████▍   | 33/51 [00:05<00:03,  5.98it/s]Capturing CUDA graphs (PIECEWISE):  67%|██████▋   | 34/51 [00:05<00:02,  5.98it/s]Capturing CUDA graphs (PIECEWISE):  69%|██████▊   | 35/51 [00:05<00:02,  6.02it/s]Capturing CUDA graphs (PIECEWISE):  71%|███████   | 36/51 [00:05<00:02,  6.04it/s]Capturing CUDA graphs (PIECEWISE):  73%|███████▎  | 37/51 [00:06<00:02,  6.00it/s]Capturing CUDA graphs (PIECEWISE):  75%|███████▍  | 38/51 [00:06<00:02,  6.03it/s]Capturing CUDA graphs (PIECEWISE):  76%|███████▋  | 39/51 [00:06<00:01,  6.05it/s]Capturing CUDA graphs (PIECEWISE):  78%|███████▊  | 40/51 [00:06<00:01,  6.06it/s]Capturing CUDA graphs (PIECEWISE):  80%|████████  | 41/51 [00:06<00:01,  5.96it/s]Capturing CUDA graphs (PIECEWISE):  82%|████████▏ | 42/51 [00:06<00:01,  6.00it/s]Capturing CUDA graphs (PIECEWISE):  84%|████████▍ | 43/51 [00:06<00:01,  6.02it/s]Capturing CUDA graphs (PIECEWISE):  86%|████████▋ | 44/51 [00:07<00:01,  6.00it/s]Capturing CUDA graphs (PIECEWISE):  88%|████████▊ | 45/51 [00:07<00:01,  5.98it/s]Capturing CUDA graphs (PIECEWISE):  90%|█████████ | 46/51 [00:07<00:00,  6.02it/s]Capturing CUDA graphs (PIECEWISE):  92%|█████████▏| 47/51 [00:07<00:00,  6.04it/s]Capturing CUDA graphs (PIECEWISE):  94%|█████████▍| 48/51 [00:07<00:00,  6.06it/s]Capturing CUDA graphs (PIECEWISE):  96%|█████████▌| 49/51 [00:07<00:00,  6.07it/s]Capturing CUDA graphs (PIECEWISE):  98%|█████████▊| 50/51 [00:08<00:00,  6.13it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:08<00:00,  6.01it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:08<00:00,  6.13it/s]
+(EngineCore pid=474866) Capturing CUDA graphs (FULL):   0%|          | 0/2 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):  50%|█████     | 1/2 [00:00<00:00,  7.73it/s]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00,  7.80it/s]Capturing CUDA graphs (FULL): 100%|██████████| 2/2 [00:00<00:00,  7.78it/s]
+(EngineCore pid=474866) INFO 10-14 19:18:49 [model_runner.py:1066] Graph capturing finished in 9 secs, took 0.58 GiB
+(EngineCore pid=474866) INFO 10-14 19:18:50 [gpu_worker.py:640] Available KV cache memory: 12.63 GiB
+(EngineCore pid=474866) INFO 10-14 19:18:50 [gpu_worker.py:655] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8919 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9081. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=474866) INFO 10-14 19:18:50 [kv_cache_utils.py:2395] GPU KV cache size: 137,968 tokens, Maximum concurrency for 16,384 tokens per request: 8.42x
+(EngineCore pid=474866) INFO 10-14 19:18:50 [kernel_warmup.py:172] JIT kernel warmup starting.
+(EngineCore pid=474866) INFO 10-14 19:18:50 [kernel_warmup.py:185] JIT kernel warmup finished in 0.00s.
+(EngineCore pid=474866) Capturing CUDA graphs (PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (PIECEWISE):   2%|▏         | 1/51 [00:00<00:08,  6.19it/s]Capturing CUDA graphs (PIECEWISE):   4%|▍         | 2/51 [00:00<00:07,  6.48it/s]Capturing CUDA graphs (PIECEWISE):   6%|▌         | 3/51 [00:00<00:07,  6.61it/s]Capturing CUDA graphs (PIECEWISE):   8%|▊         | 4/51 [00:00<00:07,  6.68it/s]Capturing CUDA graphs (PIECEWISE):  10%|▉         | 5/51 [00:00<00:06,  6.72it/s]Capturing CUDA graphs (PIECEWISE):  12%|█▏        | 6/51 [00:00<00:06,  6.75it/s]Capturing CUDA graphs (PIECEWISE):  14%|█▎        | 7/51 [00:01<00:06,  6.77it/s]Capturing CUDA graphs (PIECEWISE):  16%|█▌        | 8/51 [00:01<00:06,  6.78it/s]Capturing CUDA graphs (PIECEWISE):  18%|█▊        | 9/51 [00:01<00:06,  6.78it/s]Capturing CUDA graphs (PIECEWISE):  20%|█▉        | 10/51 [00:01<00:06,  6.76it/s]Capturing CUDA graphs (PIECEWISE):  22%|██▏       | 11/51 [00:01<00:05,  6.75it/s]Capturing CUDA graphs (PIECEWISE):  24%|██▎       | 12/51 [00:01<00:05,  6.74it/s]Capturing CUDA graphs (PIECEWISE):  25%|██▌       | 13/51 [00:01<00:05,  6.74it/s]Capturing CUDA graphs (PIECEWISE):  27%|██▋       | 14/51 [00:02<00:05,  6.74it/s]Capturing CUDA graphs (PIECEWISE):  29%|██▉       | 15/51 [00:02<00:05,  6.74it/s]Capturing CUDA graphs (PIECEWISE):  31%|███▏      | 16/51 [00:02<00:05,  6.74it/s]Capturing CUDA graphs (PIECEWISE):  33%|███▎      | 17/51 [00:02<00:05,  6.63it/s]Capturing CUDA graphs (PIECEWISE):  35%|███▌      | 18/51 [00:02<00:05,  6.55it/s]Capturing CUDA graphs (PIECEWISE):  37%|███▋      | 19/51 [00:02<00:04,  6.48it/s]Capturing CUDA graphs (PIECEWISE):  39%|███▉      | 20/51 [00:03<00:04,  6.45it/s]Capturing CUDA graphs (PIECEWISE):  41%|████      | 21/51 [00:03<00:04,  6.42it/s]Capturing CUDA graphs (PIECEWISE):  43%|████▎     | 22/51 [00:03<00:04,  6.40it/s]Capturing CUDA graphs (PIECEWISE):  45%|████▌     | 23/51 [00:03<00:04,  6.38it/s]Capturing CUDA graphs (PIECEWISE):  47%|████▋     | 24/51 [00:03<00:04,  6.37it/s]Capturing CUDA graphs (PIECEWISE):  49%|████▉     | 25/51 [00:03<00:04,  6.36it/s]Capturing CUDA graphs (PIECEWISE):  51%|█████     | 26/51 [00:03<00:03,  6.35it/s]Capturing CUDA graphs (PIECEWISE):  53%|█████▎    | 27/51 [00:04<00:03,  6.35it/s]Capturing CUDA graphs (PIECEWISE):  55%|█████▍    | 28/51 [00:04<00:03,  6.34it/s]Capturing CUDA graphs (PIECEWISE):  57%|█████▋    | 29/51 [00:04<00:03,  6.33it/s]Capturing CUDA graphs (PIECEWISE):  59%|█████▉    | 30/51 [00:04<00:03,  6.33it/s]Capturing CUDA graphs (PIECEWISE):  61%|██████    | 31/51 [00:04<00:03,  6.33it/s]Capturing CUDA graphs (PIECEWISE):  63%|██████▎   | 32/51 [00:04<00:02,  6.34it/s]Capturing CUDA graphs (PIECEWISE):  65%|██████▍   | 33/51 [00:05<00:02,  6.21it/s]Capturing CUDA graphs (PIECEWISE):  67%|██████▋   | 34/51 [00:05<00:02,  6.24it/s]Capturing CUDA graphs (PIECEWISE):  69%|██████▊   | 35/51 [00:05<00:02,  6.24it/s]Capturing CUDA graphs (PIECEWISE):  71%|███████   | 36/51 [00:05<00:02,  6.22it/s]Capturing CUDA graphs (PIECEWISE):  73%|███████▎  | 37/51 [00:05<00:02,  6.21it/s]Capturing CUDA graphs (PIECEWISE):  75%|███████▍  | 38/51 [00:05<00:02,  6.21it/s]Capturing CUDA graphs (PIECEWISE):  76%|███████▋  | 39/51 [00:06<00:01,  6.21it/s]Capturing CUDA graphs (PIECEWISE):  78%|███████▊  | 40/51 [00:06<00:01,  6.20it/s]Capturing CUDA graphs (PIECEWISE):  80%|████████  | 41/51 [00:06<00:01,  6.20it/s]Capturing CUDA graphs (PIECEWISE):  82%|████████▏ | 42/51 [00:06<00:01,  6.20it/s]Capturing CUDA graphs (PIECEWISE):  84%|████████▍ | 43/51 [00:06<00:01,  6.20it/s]Capturing CUDA graphs (PIECEWISE):  86%|████████▋ | 44/51 [00:06<00:01,  6.19it/s]Capturing CUDA graphs (PIECEWISE):  88%|████████▊ | 45/51 [00:07<00:00,  6.19it/s]Capturing CUDA graphs (PIECEWISE):  90%|█████████ | 46/51 [00:07<00:00,  6.19it/s]Capturing CUDA graphs (PIECEWISE):  92%|█████████▏| 47/51 [00:07<00:00,  6.21it/s]Capturing CUDA graphs (PIECEWISE):  94%|█████████▍| 48/51 [00:07<00:00,  6.20it/s]Capturing CUDA graphs (PIECEWISE):  96%|█████████▌| 49/51 [00:07<00:00,  6.26it/s]Capturing CUDA graphs (PIECEWISE):  98%|█████████▊| 50/51 [00:07<00:00,  6.29it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:07<00:00,  6.36it/s]Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [00:07<00:00,  6.41it/s]
+(EngineCore pid=474866) Capturing CUDA graphs (FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (FULL):   3%|▎         | 1/35 [00:00<00:04,  8.06it/s]Capturing CUDA graphs (FULL):   6%|▌         | 2/35 [00:00<00:04,  8.09it/s]Capturing CUDA graphs (FULL):   9%|▊         | 3/35 [00:00<00:04,  7.96it/s]Capturing CUDA graphs (FULL):  11%|█▏        | 4/35 [00:00<00:03,  7.98it/s]Capturing CUDA graphs (FULL):  14%|█▍        | 5/35 [00:00<00:03,  7.99it/s]Capturing CUDA graphs (FULL):  17%|█▋        | 6/35 [00:00<00:03,  8.00it/s]Capturing CUDA graphs (FULL):  20%|██        | 7/35 [00:00<00:03,  7.99it/s]Capturing CUDA graphs (FULL):  23%|██▎       | 8/35 [00:01<00:03,  7.98it/s]Capturing CUDA graphs (FULL):  26%|██▌       | 9/35 [00:01<00:03,  7.99it/s]Capturing CUDA graphs (FULL):  29%|██▊       | 10/35 [00:01<00:03,  7.99it/s]Capturing CUDA graphs (FULL):  31%|███▏      | 11/35 [00:01<00:03,  7.99it/s]Capturing CUDA graphs (FULL):  34%|███▍      | 12/35 [00:01<00:02,  7.92it/s]Capturing CUDA graphs (FULL):  37%|███▋      | 13/35 [00:01<00:02,  7.94it/s]Capturing CUDA graphs (FULL):  40%|████      | 14/35 [00:01<00:02,  7.99it/s]Capturing CUDA graphs (FULL):  43%|████▎     | 15/35 [00:01<00:02,  8.00it/s]Capturing CUDA graphs (FULL):  46%|████▌     | 16/35 [00:02<00:02,  8.03it/s]Capturing CUDA graphs (FULL):  49%|████▊     | 17/35 [00:02<00:02,  8.02it/s]Capturing CUDA graphs (FULL):  51%|█████▏    | 18/35 [00:02<00:02,  8.01it/s]Capturing CUDA graphs (FULL):  54%|█████▍    | 19/35 [00:02<00:01,  8.00it/s]Capturing CUDA graphs (FULL):  57%|█████▋    | 20/35 [00:02<00:01,  8.00it/s]Capturing CUDA graphs (FULL):  60%|██████    | 21/35 [00:02<00:01,  7.92it/s]Capturing CUDA graphs (FULL):  63%|██████▎   | 22/35 [00:02<00:01,  7.95it/s]Capturing CUDA graphs (FULL):  66%|██████▌   | 23/35 [00:02<00:01,  7.97it/s]Capturing CUDA graphs (FULL):  69%|██████▊   | 24/35 [00:03<00:01,  8.00it/s]Capturing CUDA graphs (FULL):  71%|███████▏  | 25/35 [00:03<00:01,  8.01it/s]Capturing CUDA graphs (FULL):  74%|███████▍  | 26/35 [00:03<00:01,  8.04it/s]Capturing CUDA graphs (FULL):  77%|███████▋  | 27/35 [00:03<00:00,  8.05it/s]Capturing CUDA graphs (FULL):  80%|████████  | 28/35 [00:03<00:00,  7.90it/s]Capturing CUDA graphs (FULL):  83%|████████▎ | 29/35 [00:03<00:00,  7.91it/s]Capturing CUDA graphs (FULL):  86%|████████▌ | 30/35 [00:03<00:00,  7.96it/s]Capturing CUDA graphs (FULL):  89%|████████▊ | 31/35 [00:03<00:00,  8.03it/s]Capturing CUDA graphs (FULL):  91%|█████████▏| 32/35 [00:04<00:00,  8.05it/s]Capturing CUDA graphs (FULL):  94%|█████████▍| 33/35 [00:04<00:00,  8.16it/s]Capturing CUDA graphs (FULL):  97%|█████████▋| 34/35 [00:04<00:00,  8.23it/s]Capturing CUDA graphs (FULL): 100%|██████████| 35/35 [00:04<00:00,  8.36it/s]Capturing CUDA graphs (FULL): 100%|██████████| 35/35 [00:04<00:00,  8.03it/s]
+(EngineCore pid=474866) INFO 10-14 19:19:04 [model_runner.py:1066] Graph capturing finished in 13 secs, took 0.35 GiB
+(EngineCore pid=474866) INFO 10-14 19:19:04 [gpu_worker.py:825] CUDA graph pool memory: 0.35 GiB (actual), 0.64 GiB (estimated), difference: 0.29 GiB (83.8%).
+(EngineCore pid=474866) INFO 10-14 19:19:04 [gpu_worker.py:888] Free memory on device (78.84/79.25 GiB) on startup. Desired GPU memory utilization is (0.9, 71.33 GiB). Actual usage is 57.71 GiB for consumed memory (weights + non-torch), 0.98 GiB for peak activation, and 0.35 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=13031146394` (12.14 GiB) to fit into requested memory, or `--kv-cache-memory=21097212416` (19.65 GiB) to fully utilize gpu memory. Current kv cache memory in use is 12.63 GiB.
+(EngineCore pid=474866) INFO 10-14 19:19:05 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(EngineCore pid=474866) INFO 10-14 19:19:05 [torch_utils.py:287] Reducing Torch threads from 20 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=474866) INFO 10-14 19:19:05 [core.py:372] init engine (profile, create kv cache, warmup model) took 28.43 s (compilation: 0.22 s)
+(EngineCore pid=474866) INFO 10-14 19:19:05 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['triton', 'native'])
+INFO 10-14 19:19:06 [hf.py:642] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+System prompt: 3723 tokens; longest full prompt: 4261 tokens; budget: 15360
+
+================================================================================
+Processing batch 1/1 (36 problems)
+================================================================================
+Rendering conversations:   0%|          | 0/36 [00:00<?, ?it/s]Rendering conversations:  17%|█▋        | 6/36 [00:00<00:00, 55.47it/s]Rendering conversations:  42%|████▏     | 15/36 [00:00<00:00, 74.80it/s]Rendering conversations:  67%|██████▋   | 24/36 [00:00<00:00, 81.06it/s]Rendering conversations:  92%|█████████▏| 33/36 [00:00<00:00, 83.28it/s]Rendering conversations: 100%|██████████| 36/36 [00:00<00:00, 80.62it/s]
+Processed prompts:   0%|          | 0/36 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s](EngineCore pid=474866) WARNING 10-14 19:19:07 [jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+Processed prompts:   3%|▎         | 1/36 [00:05<03:12,  5.49s/it, est. speed input: 690.76 toks/s, output: 28.96 toks/s]Processed prompts:   6%|▌         | 2/36 [00:05<01:21,  2.39s/it, est. speed input: 1328.14 toks/s, output: 57.05 toks/s]Processed prompts:  14%|█▍        | 5/36 [00:05<00:22,  1.39it/s, est. speed input: 3230.69 toks/s, output: 142.02 toks/s]Processed prompts:  22%|██▏       | 8/36 [00:05<00:10,  2.68it/s, est. speed input: 5092.85 toks/s, output: 227.39 toks/s]Processed prompts:  28%|██▊       | 10/36 [00:06<00:07,  3.51it/s, est. speed input: 6155.48 toks/s, output: 279.07 toks/s]Processed prompts:  33%|███▎      | 12/36 [00:06<00:05,  4.75it/s, est. speed input: 7267.64 toks/s, output: 334.68 toks/s]Processed prompts:  42%|████▏     | 15/36 [00:06<00:03,  6.92it/s, est. speed input: 8924.67 toks/s, output: 417.31 toks/s]Processed prompts:  53%|█████▎    | 19/36 [00:06<00:01,  9.86it/s, est. speed input: 11029.46 toks/s, output: 526.36 toks/s]Processed prompts:  58%|█████▊    | 21/36 [00:06<00:01, 10.84it/s, est. speed input: 12005.40 toks/s, output: 578.00 toks/s]Processed prompts:  67%|██████▋   | 24/36 [00:06<00:00, 12.27it/s, est. speed input: 13393.70 toks/s, output: 656.11 toks/s]Processed prompts:  83%|████████▎ | 30/36 [00:07<00:00, 18.91it/s, est. speed input: 16527.81 toks/s, output: 832.00 toks/s]Processed prompts:  92%|█████████▏| 33/36 [00:07<00:00, 18.60it/s, est. speed input: 17770.40 toks/s, output: 909.31 toks/s]Processed prompts: 100%|██████████| 36/36 [00:07<00:00, 19.92it/s, est. speed input: 19105.38 toks/s, output: 995.45 toks/s]Processed prompts: 100%|██████████| 36/36 [00:07<00:00, 19.92it/s, est. speed input: 19105.38 toks/s, output: 995.45 toks/s]Processed prompts: 100%|██████████| 36/36 [00:07<00:00,  4.90it/s, est. speed input: 19105.38 toks/s, output: 995.45 toks/s]
+
+problem_id 900303  ground truth: Representing
+  Representing                   1.00
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.20
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.30
+  Predicted (primary_practice): Representing (correct)
+  Reasoning: The student must interpret a visual representation of base ten blocks—3 large cubes (each representing 1,000), 2 rods (each representing 10), and 5 single cubes (each representing 1)—and translate this into a numerical value. This requires recognizing the value of each block type and combining them correctly. The key challenge is correctly interpreting the large cubes as 1,000 each, which leads to 3,000, plus 20 from the rods, plus 5, totaling 3,025. This task primarily involves translating a visual model into a number, which aligns with the 'Representing' practice.
+
+problem_id 900304  ground truth: Representing
+  Representing                   1.00
+  Abstracting and Generalizing   0.20
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.30
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.10
+  Predicted (primary_practice): Representing (correct)
+  Reasoning: The student must interpret a speed-time graph and translate its features into a coherent narrative about Marisa's bicycle trip. This requires understanding the relationship between the graph's shape (increasing, flat, decreasing) and real-world actions (speeding up, constant speed, stopping). The task involves representing motion through a verbal description, which aligns with interpreting and translating visual representations into a narrative. The primary practice is Representing, as the student must use and interpret a graphical representation to describe a real-world scenario.
+
+problem_id 900305  ground truth: Representing
+  Representing                   0.90
+  Abstracting and Generalizing   0.30
+  Justifying and Proving         0.20
+  Mathematical Modeling          0.40
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.70
+  Predicted (primary_practice): Representing (correct)
+  Reasoning: The student must interpret the position of point C on a number line divided into 8 equal parts, recognize that it represents 6/8 or 3/4 of a mile, and then subtract 1/4 mile to find Ben's distance. This requires translating a visual representation (number line) into a fraction, performing a subtraction of fractions, and expressing the result as a simplified fraction. The primary task involves interpreting a visual model and using it to perform a calculation, which aligns most closely with Representing.
+
+problem_id 900306  ground truth: Representing
+  Representing                   1.00
+  Abstracting and Generalizing   0.20
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.30
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.40
+  Predicted (primary_practice): Representing (correct)
+  Reasoning: The student must interpret the division equation 4 ÷ (1/8) in a real-world context, recognizing that dividing a whole by a unit fraction yields the number of equal parts of that size. This requires understanding that dividing 4 yards by 1/8-yard pieces gives the number of pieces, which aligns with the meaning of division as 'how many groups of size 1/8 are in 4?'. The correct choice (D) involves translating the abstract equation into a meaningful scenario involving partitioning, which is a core aspect of representing mathematical ideas in context. The item primarily assesses the ability to match a mathematical expression to a realistic situation, which is a key component of Representing.
+
+problem_id 9003071  ground truth: Abstracting and Generalizing
+  Representing                   0.50
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.40
+  Mathematical Modeling          0.30
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.60
+  Predicted (primary_practice): Abstracting and Generalizing (correct)
+  Reasoning: The student must recognize that a regular hexagon can be divided into six congruent equilateral triangles, each with area T. To find the total area, the student must multiply T by 6, which requires understanding the geometric structure and symmetry of the hexagon. This involves abstracting the relationship between the shaded triangle and the whole hexagon, and generalizing from one triangle to the full figure. The key mathematical action is identifying a pattern and extending it across the entire shape, which aligns with abstracting and generalizing.
+
+problem_id 9003072  ground truth: Abstracting and Generalizing
+  Representing                   0.50
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.40
+  Mathematical Modeling          0.30
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.40
+  Predicted (primary_practice): Abstracting and Generalizing (correct)
+  Reasoning: The student must recognize that a regular 10-gon can be divided into 10 congruent isosceles triangles, each with vertex at the center P and base as a side of the polygon. Since one such triangle has area V, the total area of the polygon is 10 times V. This requires abstracting the structure of the polygon and generalizing from one triangle to the whole, which is a key aspect of abstracting and generalizing. While representing is involved (visualizing the polygon and triangles), the core task is generalizing the relationship between one triangle and the full polygon.
+
+problem_id 900308  ground truth: Abstracting and Generalizing
+  Representing                   0.60
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.40
+  Mathematical Modeling          0.30
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.50
+  Predicted (primary_practice): Abstracting and Generalizing (correct)
+  Reasoning: To answer correctly, the student must first compute the differences between adjacent terms in Sequence I (3, 5, 9, 17, 33), producing Sequence II: 2, 4, 8, 16, ... This involves representing the sequence differences numerically. Then, the student must recognize the pattern in Sequence II (doubling each time) to extend Sequence I, requiring abstracting and generalizing the pattern. Finally, the student must generalize the rule for Sequence II as 2^n, which requires identifying and expressing a structural pattern across terms. The item primarily assesses abstracting and generalizing because the core task is identifying and extending a non-linear pattern and formulating a general rule.
+
+problem_id 900309  ground truth: Abstracting and Generalizing
+  Representing                   0.50
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.40
+  Mathematical Modeling          0.30
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.40
+  Predicted (primary_practice): Abstracting and Generalizing (correct)
+  Reasoning: The student must list all possible outcomes for three coins, which requires recognizing that each coin has two possible outcomes and using systematic enumeration (a form of representation). The student then generalizes this pattern to four and five coins by recognizing that each additional coin doubles the number of outcomes, which involves abstracting and generalizing the pattern. The correct answer depends on identifying the exponential relationship (2^n), which is a key part of abstracting and generalizing. While representing is involved in listing outcomes, the core mathematical reasoning is about identifying and extending a pattern across cases.
+
+problem_id 900310  ground truth: Justifying and Proving
+  Representing                   0.50
+  Abstracting and Generalizing   0.60
+  Justifying and Proving         1.00
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.20
+  Predicted (primary_practice): Justifying and Proving (correct)
+  Reasoning: To answer correctly, the student must explain why multiplying any whole number by 6 always results in an even number, using mathematical reasoning such as factoring 6 as 2 × 3 and showing the product has 2 as a factor, or by showing the product can be written as the sum of two equal parts. This requires constructing a logical argument based on number properties, which aligns with Justifying and Proving. While Representing is involved (e.g., writing expressions), the core task is justifying a general claim. The item does not involve collaboration, modeling, abstraction beyond the claim, or procedural computation.
+
+problem_id 900311  ground truth: Justifying and Proving
+  Representing                   0.40
+  Abstracting and Generalizing   0.30
+  Justifying and Proving         1.00
+  Mathematical Modeling          0.20
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.30
+  Predicted (primary_practice): Justifying and Proving (correct)
+  Reasoning: The student must construct a logical, step-by-step geometric proof using given information and geometric theorems. They must identify and apply properties of midpoints, right angles, vertical angles, and triangle congruence (ASA) to conclude that AC ≅ DC. This requires justifying each step with a valid reason, which is central to the practice of Justifying and Proving. While some representation of the figure is involved, the core task is constructing a deductive argument.
+
+problem_id 900312  ground truth: Justifying and Proving
+  Representing                   0.50
+  Abstracting and Generalizing   0.40
+  Justifying and Proving         1.00
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.20
+  Procedural Fluency             0.30
+  Predicted (primary_practice): Justifying and Proving (correct)
+  Reasoning: To answer correctly, the student must analyze the logical difference between the compound inequalities 'x > −3 and x < 5' (which defines a bounded interval) and 'x > −3 or x < 5' (which covers all real numbers except possibly a single point). The student must interpret the meaning of 'and' versus 'or' in the context of inequalities, recognize that the 'or' condition is true for all real numbers, and justify why the two solution sets differ. This requires evaluating a mathematical claim (Barbara’s) and constructing a justification based on logical reasoning and inequality properties. The task centers on reasoning about the structure of compound inequalities and defending a conclusion, which aligns most strongly with Justifying and Proving.
+
+problem_id 900313  ground truth: Justifying and Proving
+  Representing                   0.30
+  Abstracting and Generalizing   0.40
+  Justifying and Proving         1.00
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.20
+  Procedural Fluency             0.30
+  Predicted (primary_practice): Justifying and Proving (correct)
+  Reasoning: The student must evaluate two conflicting mathematical claims about multiplication, determine which is correct, and provide a justification using a specific example or general reasoning. This requires analyzing the properties of multiplication, particularly how multiplying by numbers less than 1 affects the product. The task centers on assessing the validity of a claim and constructing a reasoned defense, which aligns most closely with Justifying and Proving.
+
+problem_id 900314  ground truth: Justifying and Proving
+  Representing                   0.30
+  Abstracting and Generalizing   0.40
+  Justifying and Proving         1.00
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.50
+  Predicted (primary_practice): Justifying and Proving (correct)
+  Reasoning: The student must complete a proof by mathematical induction, which requires using the inductive hypothesis (assuming the statement is true for n = k) and showing it holds for n = k + 1. This involves algebraic manipulation and logical justification to transform the sum up to (1/2)^k into the sum up to (1/2)^(k+1), then simplifying to match the target form. The task centers on constructing a deductive argument to validate a general claim, which aligns with Justifying and Proving. While some procedural fluency is needed to manipulate the expressions, the core of the task is the logical structure of the proof.
+
+problem_id 900315  ground truth: Justifying and Proving
+  Representing                   0.40
+  Abstracting and Generalizing   0.30
+  Justifying and Proving         0.90
+  Mathematical Modeling          0.20
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.50
+  Predicted (primary_practice): Justifying and Proving (correct)
+  Reasoning: The student must calculate and compare the probabilities of landing on blue for each spinner, which requires understanding fractions as probabilities and comparing them. The student must also explain their reasoning, which involves justifying why one probability is greater than the other. This requires evaluating and defending a mathematical claim based on probability calculations, which aligns most closely with Justifying and Proving. While Representing is involved in interpreting the spinners visually, the core task is justifying the correct choice based on probability reasoning.
+
+problem_id 900316  ground truth: Justifying and Proving
+  Representing                   0.30
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.40
+  Mathematical Modeling          0.20
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.50
+  Predicted (primary_practice): Abstracting and Generalizing (WRONG)
+  Reasoning: The student must identify a pattern in the number of diagonals drawn from a vertex of polygons with increasing sides (4, 5, 6, 7) and generalize it to a 20-sided polygon. The pattern shows that the number of diagonals from a vertex is (n - 3), where n is the number of sides. This requires recognizing the pattern across cases and extending it to a larger case, which is a core aspect of abstracting and generalizing. While the student performs a calculation, the key task is identifying and applying the general rule, not just procedural computation.
+
+problem_id 900317  ground truth: Mathematical Modeling
+  Representing                   0.40
+  Abstracting and Generalizing   0.30
+  Justifying and Proving         0.20
+  Mathematical Modeling          0.90
+  Collaborative Mathematics      0.50
+  Procedural Fluency             0.10
+  Predicted (primary_practice): Mathematical Modeling (correct)
+  Reasoning: The student must identify key information needed to make a data-informed decision about the Garden Bar, including student population, preferences, costs, and potential shortages or surpluses. This requires analyzing a real-world scenario, determining relevant variables, and planning a data collection strategy—core aspects of mathematical modeling. The task also involves collaborative thinking, as the student is part of a team making decisions, but the focus is on structuring the problem and planning the data-gathering process rather than direct peer interaction. The primary practice is mathematical modeling because the student must mathematize a real-world context to guide decision-making.
+
+problem_id 900318  ground truth: Mathematical Modeling
+  Representing                   0.50
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.70
+  Mathematical Modeling          0.60
+  Collaborative Mathematics      0.10
+  Procedural Fluency             0.60
+  Predicted (primary_practice): Abstracting and Generalizing (WRONG)
+  Reasoning: The student must calculate taxes and tax percentages for different incomes, generalize a formula for any income, analyze the behavior of the tax rate as income increases, and compare two tax models. This requires abstracting the pattern of tax calculation, generalizing the percent formula, and justifying conclusions about maximum tax rates and model comparisons. The item strongly emphasizes abstracting and generalizing, especially in parts (3) and (4), and also involves justifying and proving in (4) and (5). However, the core of the task is identifying and extending a mathematical structure across varying inputs, which aligns most closely with abstracting and generalizing.
+
+problem_id 900319  ground truth: Mathematical Modeling
+  Representing                   0.70
+  Abstracting and Generalizing   0.40
+  Justifying and Proving         0.80
+  Mathematical Modeling          1.00
+  Collaborative Mathematics      0.20
+  Procedural Fluency             0.30
+  Predicted (primary_practice): Mathematical Modeling (correct)
+  Reasoning: The student must design a survey question, describe a sampling method, create a data representation, and use it to make a recommendation with justification. This requires creating a statistical model of a real-world situation, selecting appropriate data collection methods, and using the model to inform a decision. The core task is building and using a statistical model to solve a practical problem, which aligns most closely with Mathematical Modeling. The item also involves Representing (creating a table or graph) and Justifying and Proving (justifying the recommendation), but the central focus is on modeling the decision-making process.
+
+problem_id 900320  ground truth: Collaborative Mathematics
+  Representing                   0.30
+  Abstracting and Generalizing   0.20
+  Justifying and Proving         0.90
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.60
+  Procedural Fluency             0.10
+  Predicted (primary_practice): Justifying and Proving (WRONG)
+  Reasoning: The student must evaluate the information provided by Brad about the museum being closed and assess its impact on the team's decision, considering the two goals: showing life in the town and manageable travel time. The student must use the museum's hours (weekend only) and Brad's claim to determine whether the museum is a viable option, then respond appropriately. This requires interpreting and connecting information from multiple sources (chat and museum details), which aligns with the practice of Justifying and Proving, as the student must justify why the museum may or may not be suitable based on evidence. Collaborative Mathematics is also involved, as the student responds to others' claims, but the core task is evaluating the validity of Brad's claim and the museum's availability.
+
+problem_id 900321  ground truth: Collaborative Mathematics
+  Representing                   0.20
+  Abstracting and Generalizing   0.90
+  Justifying and Proving         0.40
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.60
+  Procedural Fluency             0.10
+  Predicted (primary_practice): Abstracting and Generalizing (WRONG)
+  Reasoning: The student must evaluate a peer's suggestion (George's) and select a response that advances the group's decision-making by focusing on criteria for a good visit, which requires abstracting the concept of 'good' in a local context. In Turn 2, the student must interpret Brad's statement about visiting a local place and justify how that criterion connects to meaningful learning, which involves generalizing the purpose of a local visit. The task centers on reasoning about shared goals and criteria, not on computation, representation, or procedural steps.
+
+problem_id 900322  ground truth: Collaborative Mathematics
+  Representing                   0.40
+  Abstracting and Generalizing   0.30
+  Justifying and Proving         0.90
+  Mathematical Modeling          0.20
+  Collaborative Mathematics      0.50
+  Procedural Fluency             0.30
+  Predicted (primary_practice): Justifying and Proving (WRONG)
+  Reasoning: To answer correctly, the student must evaluate Connor's claim by recognizing that 8 × 16 can be decomposed as (8 × 15) + 8, which relies on the distributive property. The correct explanation requires justifying why this decomposition is valid, connecting it to the structure of multiplication and the meaning of 'groups'. This involves reasoning about mathematical relationships and defending a claim, which aligns with Justifying and Proving. While Representing is involved in visualizing groups, the core task is justifying the correctness of a mathematical claim.
+
+problem_id 900323  ground truth: Collaborative Mathematics
+  Representing                   0.40
+  Abstracting and Generalizing   0.50
+  Justifying and Proving         0.90
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.30
+  Procedural Fluency             0.60
+  Predicted (primary_practice): Justifying and Proving (WRONG)
+  Reasoning: To answer correctly, the student must identify a counterexample to Jose's claim that all whole numbers except 1 have an even number of factors. This requires recognizing that perfect squares have an odd number of factors because one factor (the square root) is repeated. The student must select a perfect square (like 4 or 9) and correctly state the number of its factors (3). This involves evaluating a mathematical claim, finding a counterexample, and justifying why the claim fails—key aspects of Justifying and Proving. While representing and procedural fluency are involved, the core task is refuting a generalization with evidence.
+
+problem_id 900601  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a subtraction calculation involving whole numbers, specifically 3,020 minus 687, to arrive at the correct answer of 2,333. This task requires accurate and efficient execution of a standard algorithm for subtraction, which is a core component of procedural fluency. There is no evidence of representation, abstraction, justification, modeling, or collaboration, as the item is a standalone computational problem with no context, peer input, or need for explanation.
+
+problem_id 900602  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a division calculation accurately and efficiently to find the quotient of 4,872 divided by 24. This requires applying a standard division algorithm or an efficient computational method, which is a core component of procedural fluency. There is no need to interpret representations, generalize patterns, justify reasoning, model a real-world situation, or respond to another person's mathematical thinking, so the other practices are not assessed.
+
+problem_id 900603  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a division operation involving a negative decimal and a whole number, requiring accurate execution of the division algorithm. The task involves procedural fluency in dividing decimals and handling negative numbers, with no need to interpret, represent, generalize, justify, model, or collaborate with others. The correct answer depends solely on applying the correct procedure accurately.
+
+problem_id 900604  ground truth: Procedural Fluency
+  Representing                   0.20
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.90
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must solve a linear equation by applying algebraic procedures such as distributing, combining like terms, and isolating the variable. The task requires procedural fluency in solving equations, including recognizing when a solution exists and identifying the correct value. While the equation involves a single step of distribution and simplification, the core of the task is executing the correct sequence of operations accurately. No representations, generalizations, justifications, modeling, or collaboration are required.
+
+problem_id 900605  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.20
+  Justifying and Proving         0.30
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must solve a quadratic equation by rearranging terms, factoring, and finding two solutions. This requires procedural fluency in algebraic manipulation, including combining like terms, factoring, and applying the zero-product property. The item does not involve representations, generalizations, justification, modeling, or collaboration, as it is a standalone computational task.
+
+problem_id 900606  ground truth: Procedural Fluency
+  Representing                   0.40
+  Abstracting and Generalizing   0.20
+  Justifying and Proving         0.30
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.90
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must complete the square on the quadratic equation 4x² + 16x = 65 to rewrite it in the form (x + p)² = q. This requires algebraic manipulation, including factoring out the leading coefficient, adding the correct constant to both sides to complete the square, and simplifying. The process involves procedural fluency in algebraic operations and understanding of completing the square, which is a key step in solving quadratic equations. While the form (x + p)² = q is a representation, the core task is the procedural transformation of the equation.
+
+problem_id 900607  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a multi-digit addition calculation accurately to find the sum of 7,816 and 5,436. This requires applying the standard addition algorithm with regrouping, which is a core procedural skill. There is no representation, generalization, justification, modeling, or collaboration involved; the task is purely computational.
+
+problem_id 900608  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a multi-digit multiplication calculation accurately and efficiently. The task requires applying a standard multiplication algorithm with whole numbers, which involves procedural knowledge, accuracy, and efficiency. There is no need to interpret representations, generalize patterns, justify reasoning, model a real-world situation, or respond to another person's mathematical thinking. The item focuses solely on executing a computational procedure correctly.
+
+problem_id 900609  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a multi-digit multiplication calculation accurately and efficiently. The task requires applying the standard multiplication algorithm with whole numbers, which involves procedural steps such as partial products and carrying. There is no need to interpret representations, generalize patterns, justify reasoning, model a real-world situation, or respond to another person's mathematical thinking. The primary requirement is accurate execution of a computational procedure.
+
+problem_id 900610  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a division of decimals (15.76 ÷ 1.6) accurately and efficiently. This requires applying a standard algorithm for decimal division, including adjusting the divisor and dividend to eliminate the decimal in the divisor, and carrying out the division step by step. The task focuses on executing a procedure correctly, with no need to interpret, model, justify, generalize, or collaborate. The primary requirement is procedural accuracy and efficiency.
+
+problem_id 900611  ground truth: Procedural Fluency
+  Representing                   0.10
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             1.00
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must perform a multiplication of two negative integers, which requires recalling and applying the rule for multiplying signed numbers. This task involves no representation translation, pattern generalization, justification, modeling, collaboration, or discussion of another's work. The primary requirement is accurate and efficient execution of a basic arithmetic procedure.
+
+problem_id 900612  ground truth: Procedural Fluency
+  Representing                   0.20
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.30
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.90
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must solve a linear equation involving fractions and parentheses by applying algebraic procedures such as distributing, combining like terms, and isolating the variable. The task requires accurate and efficient use of procedural steps to find the solution. While the student must interpret and manipulate symbolic expressions, the focus is on executing the correct sequence of operations rather than justifying, modeling, or collaborating. The item does not involve another person's thinking or representations beyond the equation itself.
+
+problem_id 900613  ground truth: Procedural Fluency
+  Representing                   0.20
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.90
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must solve a linear equation involving fractions and mixed numbers, requiring accurate procedural steps such as combining like terms, isolating the variable, and performing arithmetic with fractions and mixed numbers. The task primarily involves applying algebraic procedures correctly and efficiently, with minimal need for representation, justification, or collaboration. The equation is self-contained and does not involve another person's reasoning or a real-world context.
+
+problem_id 900614  ground truth: Procedural Fluency
+  Representing                   0.20
+  Abstracting and Generalizing   0.10
+  Justifying and Proving         0.10
+  Mathematical Modeling          0.10
+  Collaborative Mathematics      0.00
+  Procedural Fluency             0.90
+  Predicted (primary_practice): Procedural Fluency (correct)
+  Reasoning: The student must solve a quadratic equation by expanding and rearranging terms, then applying the quadratic formula or factoring. This requires procedural fluency in algebraic manipulation, including handling decimals and solving equations with variables on both sides. The item does not involve representations, collaboration, modeling, or generalization, and there is no claim or argument to evaluate. The primary task is accurate and efficient execution of algebraic procedures.
+
+Saved 36 results to ../Data/problems_naep_predicted.csv and ../Data/mathematical_practice_naep_raw.jsonl
+
+================================================================================
+Labeled: 36, failed format checks: 0, skipped (too long): 0
+
+Format check report (36 items, 36 responses including retries)
+  All responses passed every format check.
+Rows with scores: 36 / 36
+  Representing                   mean 0.38   highest score in 4 rows
+  Abstracting and Generalizing   mean 0.36   highest score in 7 rows
+  Justifying and Proving         mean 0.42   highest score in 9 rows
+  Mathematical Modeling          mean 0.22   highest score in 2 rows
+  Collaborative Mathematics      mean 0.11   highest score in 0 rows
+  Procedural Fluency             mean 0.60   highest score in 14 rows
+
+================================================================================
+EVALUATION AGAINST GROUND TRUTH (36 items)
+================================================================================
+Top-1 accuracy: 30/36 = 83.3%  (model's primary_practice)
+Argmax accuracy: 30/36 = 83.3%  (highest score, ties to the first practice; for comparison)
+Top-2 accuracy: 33/36 = 91.7%  (true practice among the two highest scores)
+Mean probability given to the true practice: 0.88
+Items where primary_practice is not the highest score: 0
+
+Per practice (by ground truth):
+  Practice                         n    top-1    top-2  mean p(true)
+  Representing                     4     100%     100%          0.97
+  Abstracting and Generalizing     4     100%     100%          0.90
+  Justifying and Proving           7      86%      86%          0.90
+  Mathematical Modeling            3      67%      67%          0.83
+  Collaborative Mathematics        4       0%      75%          0.50
+  Procedural Fluency              14     100%     100%          0.96
+
+Confusion matrix (rows: ground truth, columns: predicted)
+  REP=Representing  ABS=Abstracting and Generalizing  JUS=Justifying and Proving  MOD=Mathematical Modeling  COL=Collaborative Mathematics  PRO=Procedural Fluency
+           REP   ABS   JUS   MOD   COL   PRO
+  REP        4     0     0     0     0     0
+  ABS        0     4     0     0     0     0
+  JUS        0     1     6     0     0     0
+  MOD        0     1     0     2     0     0
+  COL        0     1     3     0     0     0
+  PRO        0     0     0     0     0    14
+
+Misclassified items:
+  900316: truth Justifying and Proving, predicted Abstracting and Generalizing  [REP 0.30, ABS 0.90, JUS 0.40, MOD 0.20, COL 0.00, PRO 0.50]
+  900318: truth Mathematical Modeling, predicted Abstracting and Generalizing  [REP 0.50, ABS 0.90, JUS 0.70, MOD 0.60, COL 0.10, PRO 0.60]
+  900320: truth Collaborative Mathematics, predicted Justifying and Proving  [REP 0.30, ABS 0.20, JUS 0.90, MOD 0.10, COL 0.60, PRO 0.10]
+  900321: truth Collaborative Mathematics, predicted Abstracting and Generalizing  [REP 0.20, ABS 0.90, JUS 0.40, MOD 0.10, COL 0.60, PRO 0.10]
+  900322: truth Collaborative Mathematics, predicted Justifying and Proving  [REP 0.40, ABS 0.30, JUS 0.90, MOD 0.20, COL 0.50, PRO 0.30]
+  900323: truth Collaborative Mathematics, predicted Justifying and Proving  [REP 0.40, ABS 0.50, JUS 0.90, MOD 0.10, COL 0.30, PRO 0.60]
+
+Saved evaluation to ../Data/mathematical_practice_naep_eval.json
+
+Cleaning up...
+INFO 10-14 19:19:14 [utils.py:632] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=474866) INFO 10-14 19:19:14 [core.py:1342] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=474866) INFO 10-14 19:19:14 [core.py:1493] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=474866) INFO 10-14 19:19:14 [core.py:1524] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=474866) INFO 10-14 19:19:14 [core.py:1355] [shutdown] EngineCore: exiting busy loop
+
+Done!
