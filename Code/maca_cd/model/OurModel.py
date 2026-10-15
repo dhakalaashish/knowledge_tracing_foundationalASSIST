@@ -188,6 +188,17 @@ class OurModelV(nn.Module):
             return output.view(-1)
 
 
+    def proficiency(self):
+        """Students x concepts proficiency exactly as forward() computes it (stat_emb), without the
+        perturbed graph views. Used for DOA (mastery_levels combines the graph differently)."""
+        stu_vec = self.User_Encoder.weight
+        know_vec = self.Con_free.weight
+        if self.Con_graph_Encoder is not None:
+            know_vec = self.Con_graph_Encoder(know_vec)
+        if self.pre_concept_e is not None:
+            know_vec, _ = self.Con_Encoder(self.pre_concept_e, know_vec)
+        return torch.sigmoid(stu_vec @ know_vec.t() + self.stu_bias.weight)
+
     def mastery_levels(self,stu_vec, exer_vec, knowledge_vec, epoch):
         stu_vec = self.User_Encoder.weight
         exer_vec = self.Exer_Encoder.weight

@@ -81,6 +81,9 @@ FoundationalASSIST counterpart.
    - zeroshot: 20% of the concepts are held out; responses to problems with a held-out concept are the test set
 4. **Training** (`model/train.py --split <split>`): MACA-CD, reporting ACC and AUC on the test set each
    epoch; the best epochs are logged in `model/results/OurModel/training_logs_<split>.txt`.
+   At every new best epoch it also computes the DOA (degree of agreement) of the diagnosed proficiency
+   over all responses of the split (`degree_of_agreement` in `model/utils.py`, same definition as
+   `doa_eval`; the practice version also prints the DOA of each practice).
 
 LLM: `Qwen/Qwen3-30B-A3B-Instruct-2507` on the local vLLM server (port 8000). Embeddings:
 `Qwen/Qwen3-Embedding-0.6B` on a second vLLM server (port 8001), 256 dimensions. Both are set in

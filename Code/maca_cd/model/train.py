@@ -13,7 +13,7 @@ import pdb, json, math, copy, pickle, random, time, re
 import numpy as np
 import pandas as pd
 import torch.utils.data as data
-from utils import sparse_graph_construction
+from utils import sparse_graph_construction, degree_of_agreement
 from torch.utils.data import DataLoader
 from sklearn.metrics import roc_auc_score
 import glob
@@ -115,14 +115,28 @@ def train():
 
         train_res["ACC"] = ACC
         train_res["AUC"] = AUC
+        if log_triggered:  # DOA of the diagnosed proficiency at every new best epoch
+            train_res["DOA"], doa_detail = evaluate_doa(net)
         training_logs = 'epoch: %d, ' % epoch
         for name, value in train_res.items():
             training_logs += name + ':' + '%.4f' % value + ' '
+        if log_triggered:
+            training_logs += doa_detail
 
         print(training_logs)
         if log_triggered:
             with open(log_file, "a") as f:
                 f.write(json.dumps(training_logs) + "\n")
+
+
+def evaluate_doa(net):
+    """DOA of the students x concepts proficiency over all responses of the split (train + test,
+    response_data_info["DOA_set"]), with the concept Q-matrix. Returns (DOA, text added to the log line)."""
+    net.eval()
+    with torch.no_grad():
+        proficiency = net.proficiency().cpu().numpy()
+    doa, _ = degree_of_agreement(proficiency, response_data_info["DOA_set"], Q_matrix.cpu().numpy())
+    return doa, ""
 
 
 def predict(net, test_loader):

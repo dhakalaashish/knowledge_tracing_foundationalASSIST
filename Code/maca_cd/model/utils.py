@@ -280,3 +280,56 @@ def doa_eval(y_true, y_pred):
         "doa_z_support": z_support,
     }
 
+
+
+def degree_of_agreement(proficiency, response_logs, q_weights):
+    '''
+    DOA of a diagnosed proficiency matrix (same definition as doa_eval above, vectorized).
+    For target t (a concept, or a concept-practice pair) and every exercise j with q_weights[j, t] > 0,
+    take the students who answered j correctly (C) and incorrectly (W):
+        agreeing pairs = #(c, w) with proficiency[c, t] > proficiency[w, t]
+        all pairs      = |C| * |W|
+    DOA_t = sum_j q_weights[j, t] * agreeing / sum_j q_weights[j, t] * all, and the DOA is the mean of DOA_t
+    over the targets that have at least one pair. q_weights is the Q-matrix (0/1), or soft weights.
+    :param proficiency: students x targets
+    :param response_logs: records [student, exercise, y, ...] (y in {0, 1})
+    :param q_weights: exercises x targets
+    :return: (mean DOA, DOA of every target with nan where it has no pairs)
+    '''
+    proficiency = np.asarray(proficiency, dtype=np.float64)
+    q_weights = np.asarray(q_weights, dtype=np.float64)
+    logs = np.asarray(response_logs)
+    students = logs[:, 0].astype(np.int64)
+    exercises = logs[:, 1].astype(np.int64)
+    labels = logs[:, 2].astype(np.float64)
+
+    n_targets = proficiency.shape[1]
+    numerator = np.zeros(n_targets)
+    denominator = np.zeros(n_targets)
+
+    order = np.argsort(exercises, kind="stable")
+    students, exercises, labels = students[order], exercises[order], labels[order]
+    starts = np.concatenate(([0], np.flatnonzero(np.diff(exercises)) + 1))
+    ends = np.concatenate((starts[1:], [len(exercises)]))
+    for start, end in zip(starts, ends):
+        j = exercises[start]
+        targets = np.flatnonzero(q_weights[j])
+        if len(targets) == 0:
+            continue
+        exercise_students = students[start:end]
+        exercise_labels = labels[start:end]
+        correct = exercise_students[exercise_labels == 1]
+        wrong = exercise_students[exercise_labels == 0]
+        if len(correct) == 0 or len(wrong) == 0:
+            continue
+        for t in targets:
+            wrong_sorted = np.sort(proficiency[wrong, t])
+            agreeing = np.searchsorted(wrong_sorted, proficiency[correct, t], side="left").sum()
+            numerator[t] += q_weights[j, t] * agreeing
+            denominator[t] += q_weights[j, t] * len(correct) * len(wrong)
+
+    doa = np.full(n_targets, np.nan)
+    has_pairs = denominator > 0
+    doa[has_pairs] = numerator[has_pairs] / denominator[has_pairs]
+    mean_doa = float(np.mean(doa[has_pairs])) if has_pairs.any() else float("nan")
+    return mean_doa, doa

@@ -13,7 +13,7 @@ import pdb, json, math, copy, pickle, random, time, re
 import numpy as np
 import pandas as pd
 import torch.utils.data as data
-from utils import sparse_graph_construction
+from utils import sparse_graph_construction, degree_of_agreement
 from torch.utils.data import DataLoader
 from sklearn.metrics import roc_auc_score
 import glob
@@ -117,14 +117,38 @@ def train():
 
         train_res["ACC"] = ACC
         train_res["AUC"] = AUC
+        if log_triggered:  # DOA of the diagnosed proficiency at every new best epoch
+            train_res["DOA"], doa_detail = evaluate_doa(net)
         training_logs = 'epoch: %d, ' % epoch
         for name, value in train_res.items():
             training_logs += name + ':' + '%.4f' % value + ' '
+        if log_triggered:
+            training_logs += doa_detail
 
         print(training_logs)
         if log_triggered:
             with open(log_file, "a") as f:
                 f.write(json.dumps(training_logs) + "\n")
+
+
+def evaluate_doa(net):
+    """DOA of the students x (concept, practice) proficiency C over all responses of the split
+    (train + test, response_data_info["DOA_set"]). The weight of exercise n for (k, p) is
+    Q_joint[n, k, p] = Q_concept[n, k] * Q_practice[n, p]. Returns (DOA, per-practice DOA for the log line)."""
+    net.eval()
+    with torch.no_grad():
+        C = net.proficiency()
+    stu_n_, con_n_, prac_n_ = C.shape
+    q_joint = (Q_matrix.float().unsqueeze(2) * QP_matrix.unsqueeze(1)).reshape(exercise_n, con_n_ * prac_n_)
+    doa, doa_targets = degree_of_agreement(C.reshape(stu_n_, con_n_ * prac_n_).cpu().numpy(),
+                                           response_data_info["DOA_set"], q_joint.cpu().numpy())
+    doa_targets = doa_targets.reshape(con_n_, prac_n_)
+    detail = "DOA by practice: "
+    for p, name in enumerate(response_data_info["practice_names"]):
+        values = doa_targets[:, p]
+        values = values[~np.isnan(values)]
+        detail += name + ':' + ('%.4f' % values.mean() if len(values) else 'n/a') + ' '
+    return doa, detail
 
 
 def predict(net, test_loader):
