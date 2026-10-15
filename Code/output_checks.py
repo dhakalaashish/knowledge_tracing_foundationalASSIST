@@ -1,7 +1,7 @@
 """
 Output format enforcement and checks for the mathematical practice LLM output.
 
-Used by augment_mathematical_practice.py and augment_mathematical_practice_test5.py.
+Used by augment_mathematical_practice.py and evaluate_mathematical_practice_naep.py.
 
 Enforcement during generation (structured_output_kwargs):
     vLLM's structured outputs constrain decoding to practice_json_schema: a JSON object with
@@ -197,19 +197,21 @@ def check_response(text, finish_reason, practice_keys, practice_names=None):
             'warnings': warnings}
 
 
-def check_output_frame(original_df, output_df, score_column, practice_names, predicted_column=None):
+def check_output_frame(original_df, output_df, score_column, practice_names, predicted_column=None,
+                       derived_columns=()):
     """
     Check the table before it is written to disk.
 
     Raises ValueError listing the problems if:
-    - the row count or row order changed, or any original column (other than score_column
-      and predicted_column) is missing, moved, or has a changed value;
+    - the row count or row order changed, or any original column (other than score_column,
+      predicted_column and derived_columns, which are recomputed from the scores) is missing,
+      moved, or has a changed value;
     - a score cell is neither empty nor a JSON list of len(practice_names) numbers from 0 to 1;
     - predicted_column (if given) is not one of practice_names in a row with scores, or is
       filled in a row that has no scores.
     """
     problems = []
-    skip = {score_column, predicted_column}
+    skip = {score_column, predicted_column, *derived_columns}
 
     if len(output_df) != len(original_df):
         problems.append(f"row count changed: {len(original_df)} -> {len(output_df)}")

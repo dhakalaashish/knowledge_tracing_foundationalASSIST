@@ -1,4 +1,4 @@
-"""The six practices, in the same order as PRACTICE_NAMES in augment_mathematical_practice_test5.py."""
+"""The six practices, in the same order as PRACTICE_NAMES in evaluate_mathematical_practice_naep.py."""
 
 PRACTICE_NAMES = [
     "Representing",

@@ -8,15 +8,18 @@ model; it is dropped before any prompt is built and only used afterwards to scor
 predictions.
 
 The model returns a reasoning, a "primary_practice" (the single practice the item mainly
-assesses), and six probabilities. The prompt here adds a primary_practice field and rules
-for common overlaps that augment_mathematical_practice.py does not have yet.
+assesses), and six probabilities. The system prompt is the same as in
+augment_mathematical_practice.py (keep the two in sync); the per-item prompt has no Skill(s)
+line, because the ground-truth items are not in Skills.csv.
 
 problems_naep.csv is only read, never modified. Predictions are written to a separate file,
-problems_naep_predicted.csv, in --output-dir, with two new columns:
+problems_naep_predicted.csv, in --output-dir, with these columns:
     mathematical_practice: JSON array of 6 independent probabilities (0 to 1; they do not
                            sum to 1), in this order:
         [Representing, Abstracting and Generalizing, Justifying and Proving,
          Mathematical Modeling, Collaborative Mathematics, Procedural Fluency]
+    practice_multi_hot:    JSON array of 6 zeros and ones computed from the probabilities
+                           (add_practice_multi_hot.py)
     predicted_practice:    the model's primary_practice (with --num-samples > 1, the one most
                            samples chose)
 
@@ -29,7 +32,7 @@ mathematical_practice_naep_raw.jsonl, both in --output-dir.
 Run from the Code/ directory (it imports clean_utils and kt_inference_base).
 
 Usage:
-    VLLM_USE_FLASHINFER_SAMPLER=0 CUDA_VISIBLE_DEVICES=0 python augment_mathematical_practice_test5.py \
+    VLLM_USE_FLASHINFER_SAMPLER=0 CUDA_VISIBLE_DEVICES=0 python3 evaluate_mathematical_practice_naep.py \
         --data-dir ../Data \
         --output-dir ../Data
 """
@@ -50,6 +53,7 @@ from vllm.distributed.parallel_state import (
     destroy_distributed_environment,
 )
 
+from add_practice_multi_hot import MULTI_HOT_COLUMN, add_multi_hot_column, print_multi_hot_summary
 from clean_utils import clean_problem_body
 from output_checks import (
     check_response,
@@ -770,7 +774,8 @@ def main():
 
     # Build prompts from a copy without the ground truth (or any earlier prediction),
     # so the model never sees the answer it is being scored on
-    prompt_df = problems_df.drop(columns=[GROUND_TRUTH_COLUMN, OUTPUT_COLUMN, PREDICTED_COLUMN])
+    prompt_df = problems_df.drop(columns=[GROUND_TRUTH_COLUMN, OUTPUT_COLUMN, PREDICTED_COLUMN, MULTI_HOT_COLUMN],
+                                 errors="ignore")
     user_prompts = {idx: create_user_prompt(prompt_df.loc[idx]) for idx in todo}
     print(f"\nExample user prompt (problem_id {problems_df.at[todo[0], 'problem_id']}):\n")
     print(user_prompts[todo[0]])
@@ -902,16 +907,18 @@ def main():
 
         # Refuse to save if any original column (including ground_truth) changed, a score cell
         # is malformed, or predicted_practice does not name the highest score
+        add_multi_hot_column(problems_df, OUTPUT_COLUMN)  # recomputed from the scores
         check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
-                           predicted_column=PREDICTED_COLUMN)
+                           predicted_column=PREDICTED_COLUMN, derived_columns=[MULTI_HOT_COLUMN])
         save_problems_csv(problems_df, output_csv)
         append_results_jsonl(records, output_jsonl)
         print(f"\nSaved {len(records)} results to {output_csv} and {output_jsonl}")
 
     # Also write the CSV when nothing was sendable, so the output always exists
     if not sendable:
+        add_multi_hot_column(problems_df, OUTPUT_COLUMN)  # recomputed from the scores
         check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
-                           predicted_column=PREDICTED_COLUMN)
+                           predicted_column=PREDICTED_COLUMN, derived_columns=[MULTI_HOT_COLUMN])
         save_problems_csv(problems_df, output_csv)
 
     print(f"\n{'='*80}")
@@ -920,6 +927,7 @@ def main():
         print("Re-run the script to retry; the rows that failed are empty in the output CSV.")
     print_format_report(all_records)
     print_summary(problems_df)
+    print_multi_hot_summary(add_multi_hot_column(problems_df, OUTPUT_COLUMN))
 
     metrics = evaluate_predictions(problems_df, ground_truth)
     print_evaluation(metrics)

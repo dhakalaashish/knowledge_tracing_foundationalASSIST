@@ -12,7 +12,7 @@ Lab; see `LICENSE`), adapted as described below. Everything else in this folder 
 
 | Paper (QuALITY) | Here |
 |---|---|
-| Story (debaters see it, judge does not) | Practice framework: definition and descriptors of the six practices (same text as `augment_mathematical_practice_test5.py`), followed by the item |
+| Story (debaters see it, judge does not) | Practice framework: definition and descriptors of the six practices (same text as `evaluate_mathematical_practice_naep.py`), followed by the item |
 | Question | "Which mathematical practice does this item mainly assess?" plus the item (the judge sees both) |
 | Two answers | Two practices. Every pair of the six practices is debated: 15 pairs, each in both answer orders = **30 debates per item** |
 | Judge's answer | The judge's log-probabilities of "A" and "B" after round 3 |

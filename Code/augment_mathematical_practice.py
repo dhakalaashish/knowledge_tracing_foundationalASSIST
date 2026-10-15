@@ -7,7 +7,7 @@ how likely it is that the item assesses each of six practices: the five NAEP 202
 Mathematical Practices plus Procedural Fluency (National Research Council, 2001).
 
 The prompt (SYSTEM_PROMPT) is the one evaluated against the NAEP ground-truth items in
-augment_mathematical_practice_test5.py; keep the two in sync.
+evaluate_mathematical_practice_naep.py; keep the two in sync.
 
 The result is written to Problems.csv as two columns:
     mathematical_practice: JSON array of 6 independent probabilities (0 to 1; they do not
@@ -55,6 +55,7 @@ from vllm.distributed.parallel_state import (
     destroy_distributed_environment,
 )
 
+from add_practice_multi_hot import MULTI_HOT_COLUMN, add_multi_hot_column, print_multi_hot_summary
 from clean_utils import clean_problem_body
 from output_checks import (
     check_response,
@@ -693,7 +694,17 @@ def main():
         print(f"Limited to: {len(todo)}")
     if not todo:
         print("Nothing to label.")
+        # Still bring practice_multi_hot up to date with the existing scores
+        stats = add_multi_hot_column(problems_df, OUTPUT_COLUMN)
+        multi_hot_changed = (MULTI_HOT_COLUMN not in original_df.columns
+                             or not problems_df[MULTI_HOT_COLUMN].equals(original_df[MULTI_HOT_COLUMN]))
+        if multi_hot_changed and not args.dry_run:
+            check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
+                               predicted_column=PREDICTED_COLUMN, derived_columns=[MULTI_HOT_COLUMN])
+            save_problems_csv(problems_df, problems_csv)
+            print(f"Updated {MULTI_HOT_COLUMN} in {problems_csv}")
         print_summary(problems_df)
+        print_multi_hot_summary(stats)
         return
 
     user_prompts = {idx: create_user_prompt(problems_df.loc[idx], skill_names) for idx in todo}
@@ -809,10 +820,13 @@ def main():
             })
         all_records.extend(records)
 
+        # practice_multi_hot is recomputed from the scores, so it always matches them
+        add_multi_hot_column(problems_df, OUTPUT_COLUMN)
+
         # Refuse to save if any original column changed, a score cell is malformed, or
         # predicted_practice is not a practice name
         check_output_frame(original_df, problems_df, OUTPUT_COLUMN, PRACTICE_NAMES,
-                           predicted_column=PREDICTED_COLUMN)
+                           predicted_column=PREDICTED_COLUMN, derived_columns=[MULTI_HOT_COLUMN])
 
         if args.dry_run:
             for record in records:
@@ -840,6 +854,7 @@ def main():
         print("Re-run the script to retry the rows that are still empty.")
     print_format_report(all_records)
     print_summary(problems_df)
+    print_multi_hot_summary(add_multi_hot_column(problems_df, OUTPUT_COLUMN))
     if args.dry_run:
         print("(dry run: summary includes unsaved scores)")
 

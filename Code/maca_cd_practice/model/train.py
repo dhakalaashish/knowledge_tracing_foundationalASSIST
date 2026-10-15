@@ -34,16 +34,20 @@ parser.add_argument('--device', type=str, default=parameter["device"],
                     help='device')
 parser.add_argument('--CDE', type=int, default=parameter["CDE"],
                     help='CDE')
+parser.add_argument('--practice_q', type=str, default=parameter.get("practice_q", "practice_probabilities"),
+                    choices=["practice_probabilities", "practice_one_hot"],
+                    help='source of Q_practice (run data/data_preprocess.py with the same setting first)')
 args = parser.parse_args()
 
 device = args.device
 split = args.split
-test_model = "OurModel"
+practice_q = args.practice_q
+test_model = "OurModel_" + practice_q  # practice version: results/OurModel_<practice_q>/
 CDE_label = bool(args.CDE)
 student_n, exercise_n, knowledge_n = parameter["student_num"], parameter["exercise_num"], parameter["concept_num"]
 assert min(student_n, exercise_n, knowledge_n) > 0, "Run data/data_preprocess.py first: it writes the counts to parameter.json"
 
-response_data_info = load_response_logs(split, student_n, exercise_n, knowledge_n, False)
+response_data_info = load_response_logs(split, student_n, exercise_n, knowledge_n, False, practice_q=practice_q)
 
 DAG, pre_emb = load_LLM_generation()
 pre_practice_emb = load_practice_embedding(response_data_info["practice_names"])  # practice version

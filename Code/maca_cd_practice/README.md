@@ -17,8 +17,8 @@ Collaborative Mathematics, Procedural Fluency), M students, N questions, d = `mf
 3. **C_mkp = sigmoid(<u_m, h_kp> + b_m)**: proficiency of student m on practice p for concept k.
    b_m is the student bias MACA-CD uses in its mastery.
 4. **D_nkp = sigmoid(<v_n, h_kp>)**: difficulty of question n for practice p on concept k.
-5. **Q_joint_n = Q_concept_n (outer product) Q_practice_n** (K x P). Q_practice is the six zero-shot scores of the
-   problem (`mathematical_practice`), used as soft weights.
+5. **Q_joint_n = Q_concept_n (outer product) Q_practice_n** (K x P). Q_practice comes from the setting
+   `practice_q` (see below): the six zero-shot scores of the problem as soft weights, or their 0/1 marks.
 6. **x_mn = Q_joint_n * (C_m - D_n)**, flattened to K*P. As in MACA-CD, the sigmoid is applied once
    (in steps 3 and 4), not again here.
 7. **r_mn = MLP(x_mn)**: MACA-CD's positive-weight MLP, with input size K*P.
@@ -26,32 +26,49 @@ Collaborative Mathematics, Procedural Fluency), M students, N questions, d = `mf
 The concept graph encoder, its contrastive loss, the text/graph fusion, the training loop and the
 evaluation are unchanged. `mastery_levels()` returns C (M x K x P).
 
+### practice_q: probabilities or one-hot
+
+`practice_q` in `parameter.json`, or `--practice_q` for `data/data_preprocess.py` and `model/train.py`,
+chooses where Q_practice comes from and where each run reads and writes:
+
+| practice_q | Q_practice (Data/Problems.csv column) | splits | results |
+|---|---|---|---|
+| `practice_probabilities` (default) | `mathematical_practice`: the six zero-shot scores | `data/preprocessed/practice_probabilities/` | `model/results/OurModel_practice_probabilities/` |
+| `practice_one_hot` | `practice_multi_hot`: 1 for every practice scored 0.7 or higher, otherwise the highest-scored one (`Code/add_practice_multi_hot.py`) | `data/preprocessed/practice_one_hot/` | `model/results/OurModel_practice_one_hot/` |
+
+The splits are identical for both settings; only Q_practice differs. Both settings can train at the
+same time. In the one-hot setting, DOA weights each exercise by its 0/1 marks instead of the scores.
+
 Files that differ from `maca_cd`:
 - `data/concept_main.py`: new stage `--stage practice_embed` (`practice_texts`, `practice_meta_embed`)
   -> `data/concept_preknowledge/practice_meta_emb.json`.
-- `data/data_preprocess.py`: reads `Data/Problems.csv` and adds `Q_practice` (exercise -> 6 scores) and
-  `practice_names` to every split. The splits themselves are the same as `maca_cd`'s.
-- `model/data_loader.py`: `load_practice_embedding`, `practice_q_matrix`; each split's output has `QP`.
-- `model/train.py`: passes the practice embedding and `QP` to the model.
+- `data/data_preprocess.py`: `--practice_q`; reads `Data/Problems.csv` and adds `Q_practice` (exercise ->
+  6 values), `practice_names` and `practice_q` to every split. The splits themselves are the same as `maca_cd`'s.
+- `model/data_loader.py`: `load_practice_embedding`, `practice_q_matrix`; reads the splits of `practice_q`;
+  each split's output has `QP`.
+- `model/train.py`: `--practice_q`; passes the practice embedding and `QP` to the model.
 - `model/OurModel.py`: `Prac_Encoder` (z_p), `KP_MLP` (h_kp), `practice_matrices` (C, D) and the joint
   interaction in `forward`.
 
 ### How to run (A100, from `Code/maca_cd_practice/`)
 
 Needs the finished `maca_cd` concept stages and the zero-shot practice labels in `Data/Problems.csv`
-(`Code/augment_mathematical_practice.py`). Reuse maca_cd's LLM outputs, so both models share the
-concepts, the prerequisite graph and the splits:
+(`Code/augment_mathematical_practice.py`, which also writes `practice_multi_hot`). Reuse maca_cd's LLM
+outputs, so both models share the concepts, the prerequisite graph and the splits:
 ```bash
 cp -r ../maca_cd/data/cleaned_data.csv ../maca_cd/data/used_concepts.txt ../maca_cd/data/graph ../maca_cd/data/concept_preknowledge data/
 ```
 With the embedding server on port 8001 (step 3 below):
 ```bash
 python3 data/concept_main.py --stage practice_embed
-python3 data/data_preprocess.py
-cd model && nohup bash train.sh > train.log 2>&1 &
 ```
-Results are in `model/train.log` and `model/results/OurModel/training_logs_<split>.txt`, comparable with
-the same files in `../maca_cd/model/`.
+Then, for each setting (`practice_probabilities` and/or `practice_one_hot`):
+```bash
+python3 data/data_preprocess.py --practice_q practice_one_hot
+cd model && for s in standard cold zeroshot; do PYTHONUNBUFFERED=1 nohup python3 train.py --split $s --practice_q practice_one_hot > train_${s}_practice_one_hot.log 2>&1 & done
+```
+Results are in `model/results/OurModel_<practice_q>/training_logs_<split>.txt`;
+`python3 ../compare_maca_cd_results.py` (from `Code/maca_cd_practice/`) compares them with `maca_cd`.
 
 ---
 

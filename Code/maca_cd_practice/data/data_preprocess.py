@@ -1,12 +1,18 @@
 ''' HFUT SPY @2025
 Standard / cold / zeroshot splits, adapted for FoundationalASSIST from MACA-CD/SLP/data/data_preprocess.py.
 Run from this directory after `python concept_main.py --stage preprocess`:
-    python data_preprocess.py
-Practice version: each split also stores Q_practice (exercise -> six zero-shot practice scores).
+    python data_preprocess.py [--practice_q practice_probabilities|practice_one_hot]
+Practice version: each split also stores Q_practice (exercise -> six practice values), from the column
+chosen by practice_q (default: "practice_q" in ../parameter.json):
+    practice_probabilities: the zero-shot scores in mathematical_practice
+    practice_one_hot:       the 0/1 marks in practice_multi_hot (Code/add_practice_multi_hot.py)
+The splits are written to preprocessed/<practice_q>/; they are the same for both settings, only
+Q_practice differs.
 Problems can have several skills, so Q_matrix maps each exercise to a list of concept ids.
 The student, exercise and concept counts are written into ../parameter.json.
 '''
 import json,os,pickle
+import argparse
 import pandas as pd
 from tqdm import tqdm
 import random
@@ -20,6 +26,16 @@ PARAMETER_FILE = "../parameter.json"
 with open(PARAMETER_FILE, "r") as f:
     parameter = json.load(f)
 random.seed(parameter.get("seed", 2025))
+
+# Practice version: which Problems.csv column fills Q_practice
+PRACTICE_Q_COLUMNS = {"practice_probabilities": "mathematical_practice", "practice_one_hot": "practice_multi_hot"}
+arg_parser = argparse.ArgumentParser(description="Standard / cold / zeroshot splits")
+arg_parser.add_argument("--practice_q", default=parameter.get("practice_q", "practice_probabilities"),
+                        choices=sorted(PRACTICE_Q_COLUMNS), help="source of Q_practice")
+practice_q = arg_parser.parse_args().practice_q
+PRACTICE_COLUMN = PRACTICE_Q_COLUMNS[practice_q]
+PREPROCESSED_DIR = os.path.join("preprocessed", practice_q)
+print("practice_q: {} (Problems.csv column {}), splits written to {}".format(practice_q, PRACTICE_COLUMN, PREPROCESSED_DIR))
 
 filename = "./cleaned_data.csv"
 all_data = pd.read_csv(filename, dtype={"concept_codes": str})
@@ -56,16 +72,20 @@ print("concept number is: ")
 print(len(concept_ids))
 assert concept_ids == set(range(1, len(conceptname2id) + 1)), "concept ids must be 1..N"
 
-# Practice version: Q_practice maps each exercise to its six zero-shot practice scores
-# (mathematical_practice in Data/Problems.csv, written by Code/augment_mathematical_practice.py,
-# in the order of PRACTICE_NAMES there).
+# Practice version: Q_practice maps each exercise to its six practice values from PRACTICE_COLUMN
+# of Data/Problems.csv: the zero-shot scores (mathematical_practice, written by
+# Code/augment_mathematical_practice.py) or their 0/1 marks (practice_multi_hot), both in the order
+# of PRACTICE_NAMES there.
 PRACTICE_NAMES = ["Representing", "Abstracting and Generalizing", "Justifying and Proving",
                   "Mathematical Modeling", "Collaborative Mathematics", "Procedural Fluency"]
 problems = pd.read_csv("../../../Data/Problems.csv", dtype=str, keep_default_na=False)
+if PRACTICE_COLUMN not in problems.columns:
+    raise RuntimeError("Data/Problems.csv has no {} column; run Code/augment_mathematical_practice.py "
+                       "(it also writes practice_multi_hot) or Code/add_practice_multi_hot.py first".format(PRACTICE_COLUMN))
 problems["problem_id"] = problems["problem_id"].str.strip()
 problems = problems.drop_duplicates("problem_id")
 practice_scores = dict()
-for problem_id, scores in zip(problems["problem_id"], problems["mathematical_practice"]):
+for problem_id, scores in zip(problems["problem_id"], problems[PRACTICE_COLUMN]):
     if scores.strip():
         scores = [float(score) for score in json.loads(scores)]
         assert len(scores) == len(PRACTICE_NAMES), "problem {} has {} practice scores".format(problem_id, len(scores))
@@ -80,9 +100,9 @@ for qid, problem_id in zip(all_data['question_id'], all_data['problem_id']):
         continue
     Q_practice[q_mapping[qid]] = practice_scores[problem_id]
 if missing:
-    raise RuntimeError("{} problems have no mathematical_practice scores in Data/Problems.csv; run "
-                       "augment_mathematical_practice.py first. Examples: {}".format(len(missing), sorted(missing)[:5]))
-print("practice scores for {} exercises".format(len(Q_practice)))
+    raise RuntimeError("{} problems have no {} in Data/Problems.csv; run augment_mathematical_practice.py "
+                       "first. Examples: {}".format(len(missing), PRACTICE_COLUMN, sorted(missing)[:5]))
+print("{} for {} exercises".format(PRACTICE_COLUMN, len(Q_practice)))
 
 
 # split 1: standard
@@ -111,15 +131,16 @@ test_set = all_sets[cut:]
 print("training length whole: " + str(len(train_set)))
 print("testing length whole: " + str(len(test_set)))
 
-os.makedirs("preprocessed", exist_ok=True)
+os.makedirs(PREPROCESSED_DIR, exist_ok=True)
 standard_spilt = {
     "train": train_set,
     "test": test_set,
     "Q_matrix": new_Q_matrix,
     "Q_practice": Q_practice,
-    "practice_names": PRACTICE_NAMES
+    "practice_names": PRACTICE_NAMES,
+    "practice_q": practice_q
 }
-with open("preprocessed/standard_spilt.pkl", "wb") as f:
+with open(os.path.join(PREPROCESSED_DIR, "standard_spilt.pkl"), "wb") as f:
     pickle.dump(standard_spilt, f)
 
 test_ratio = 0.8
@@ -151,10 +172,11 @@ cold_spilt = {
     "Q_matrix": new_Q_matrix,
     "Q_practice": Q_practice,
     "practice_names": PRACTICE_NAMES,
+    "practice_q": practice_q,
     "train_users": train_students_cold,
     "cold_users": test_students_cold
 }
-with open("preprocessed/cold_spilt.pkl", "wb") as f:
+with open(os.path.join(PREPROCESSED_DIR, "cold_spilt.pkl"), "wb") as f:
     pickle.dump(cold_spilt, f)
 
 # split 3: zero-shot concepts for the whole dataset
@@ -184,10 +206,11 @@ newc_spilt = {
     "Q_matrix": new_Q_matrix,
     "Q_practice": Q_practice,
     "practice_names": PRACTICE_NAMES,
+    "practice_q": practice_q,
     "test": test_set_newc,
     "zeroshot_concepts": sorted(selected_numbers)
 }
-with open("preprocessed/zeroshot_spilt.pkl", "wb") as f:
+with open(os.path.join(PREPROCESSED_DIR, "zeroshot_spilt.pkl"), "wb") as f:
     pickle.dump(newc_spilt, f)
 
 # counts for model/train.py

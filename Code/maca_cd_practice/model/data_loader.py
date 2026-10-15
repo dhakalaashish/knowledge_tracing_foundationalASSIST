@@ -76,8 +76,9 @@ def practice_q_matrix(loaded_data, exercise_n):
     return QP_matrix
 
 
-def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style = True):
-    data_file = '../data/preprocessed/' + split + '_spilt.pkl'
+def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style = True, practice_q = "practice_probabilities"):
+    # Practice version: the splits of each practice_q setting are in their own folder
+    data_file = '../data/preprocessed/' + practice_q + '/' + split + '_spilt.pkl'
     with open(data_file, "rb") as f:
         loaded_data = pickle.load(f)
 
