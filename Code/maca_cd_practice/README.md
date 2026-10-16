@@ -26,27 +26,36 @@ Collaborative Mathematics, Procedural Fluency), M students, N questions, d = `mf
 The concept graph encoder, its contrastive loss, the text/graph fusion, the training loop and the
 evaluation are unchanged. `mastery_levels()` returns C (M x K x P).
 
-### practice_q: probabilities or one-hot
+### practice_q: probabilities, one-hot or per concept
 
 `practice_q` in `parameter.json`, or `--practice_q` for `data/data_preprocess.py` and `model/train.py`,
-chooses where Q_practice comes from and where each run reads and writes:
+chooses where the practice part of the joint Q-matrix comes from and where each run reads and writes:
 
-| practice_q | Q_practice (Data/Problems.csv column) | splits | results |
+| practice_q | Joint Q-matrix (Data/Problems.csv columns) | splits | results |
 |---|---|---|---|
-| `practice_probabilities` (default) | `mathematical_practice`: the six zero-shot scores | `data/preprocessed/practice_probabilities/` | `model/results/OurModel_practice_probabilities/` |
-| `practice_one_hot` | `practice_multi_hot`: 1 for every practice scored 0.7 or higher, otherwise the highest-scored one (`Code/add_practice_multi_hot.py`) | `data/preprocessed/practice_one_hot/` | `model/results/OurModel_practice_one_hot/` |
+| `practice_probabilities` (default) | Q_concept outer `mathematical_practice` (the six zero-shot scores) | `data/preprocessed/practice_probabilities/` | `model/results/OurModel_practice_probabilities/` |
+| `practice_one_hot` | Q_concept outer `practice_multi_hot` (1 for every practice scored 0.7 or higher, otherwise the highest-scored one; `Code/add_practice_multi_hot.py`) | `data/preprocessed/practice_one_hot/` | `model/results/OurModel_practice_one_hot/` |
+| `practice_per_concept` | Per concept: a one-skill problem's concept gets `mathematical_practice`; each skill of a multi-skill problem gets its own scores from `concept_practice` (`Code/augment_practice_per_concept.py`). Each vector is divided by its sum | `data/preprocessed/practice_per_concept/` | `model/results/OurModel_practice_per_concept/` |
 
-The splits are identical for both settings; only Q_practice differs. Both settings can train at the
-same time. In the one-hot setting, DOA weights each exercise by its 0/1 marks instead of the scores.
+The splits are identical for every setting; only the joint Q-matrix differs. The settings can train
+at the same time. DOA weights each exercise by the setting's joint Q-matrix entries.
+
+In `practice_per_concept`, each involved concept's six practice weights sum to 1, so summing the joint
+Q-matrix over practices gives back the concept Q-matrix exactly, and each concept's (C - D) term is a
+weighted average of its practice terms. The weights of one practice over concepts are not normalized
+(like any Q-matrix column). An all-zero score vector falls back to the item-level scores, then to a
+one-hot of `predicted_practice`. Dividing by the sum (not a softmax) keeps the practices the LLM scored
+0 at 0; a softmax of scores in [0, 1] would be nearly uniform.
 
 Files that differ from `maca_cd`:
 - `data/concept_main.py`: new stage `--stage practice_embed` (`practice_texts`, `practice_meta_embed`)
   -> `data/concept_preknowledge/practice_meta_emb.json`.
 - `data/data_preprocess.py`: `--practice_q`; reads `Data/Problems.csv` and adds `Q_practice` (exercise ->
-  6 values), `practice_names` and `practice_q` to every split. The splits themselves are the same as `maca_cd`'s.
-- `model/data_loader.py`: `load_practice_embedding`, `practice_q_matrix`; reads the splits of `practice_q`;
-  each split's output has `QP`.
-- `model/train.py`: `--practice_q`; passes the practice embedding and `QP` to the model.
+  6 values), `practice_names`, `practice_q` and `Q_joint` (practice_per_concept only) to every split. The
+  splits themselves are the same as `maca_cd`'s.
+- `model/data_loader.py`: `load_practice_embedding`, `practice_q_matrix`, `joint_q_tensor`; reads the
+  splits of `practice_q`; each split's output has `QP` and the joint Q-matrix `QJ` (exercise x concept x practice).
+- `model/train.py`: `--practice_q`; passes the practice embedding and `QJ` to the model and to DOA.
 - `model/OurModel.py`: `Prac_Encoder` (z_p), `KP_MLP` (h_kp), `practice_matrices` (C, D) and the joint
   interaction in `forward`.
 
@@ -62,7 +71,9 @@ With the embedding server on port 8001 (step 3 below):
 ```bash
 python3 data/concept_main.py --stage practice_embed
 ```
-Then, for each setting (`practice_probabilities` and/or `practice_one_hot`):
+For `practice_per_concept`, first score each skill of the multi-skill problems (from `Code/`, with the
+GPU free): `python3 augment_practice_per_concept.py --data-dir ../Data --output-dir ../Data`.
+Then, for each setting (`practice_probabilities`, `practice_one_hot` and/or `practice_per_concept`):
 ```bash
 python3 data/data_preprocess.py --practice_q practice_one_hot
 cd model && for s in standard cold zeroshot; do PYTHONUNBUFFERED=1 nohup python3 train.py --split $s --practice_q practice_one_hot > train_${s}_practice_one_hot.log 2>&1 & done

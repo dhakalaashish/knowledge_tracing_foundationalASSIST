@@ -179,7 +179,7 @@ class OurModelV(nn.Module):
         D = torch.sigmoid(torch.einsum('nd,kpd->nkp', exer_vec, h_kp))
         return C, D
 
-    def forward(self, stu_id, stu_vector, exer_id, exer_vector, kid, knowledge_vec, epoch = 0, sign=False, practice_vec=None):
+    def forward(self, stu_id, stu_vector, exer_id, exer_vector, kid, knowledge_vec, epoch = 0, sign=False, joint_q=None):
         stu_vec = self.User_Encoder.weight
         exer_vec = self.Exer_Encoder.weight
         know_vec = self.Con_free.weight
@@ -196,8 +196,9 @@ class OurModelV(nn.Module):
         # Practice version: concept x practice proficiency and difficulty instead of per concept
         C, D = self.practice_matrices(know_vec, stu_vec, exer_vec)
 
-        # Q_joint_n = Q_concept_n (outer) Q_practice_n: B x K x P; x_mn = Q_joint_n * (C_m - D_n)
-        q_joint = knowledge_vec.t()[exer_id].unsqueeze(2) * practice_vec[exer_id].unsqueeze(1)
+        # Q_joint_n (B x K x P, precomputed in data_loader.joint_q_tensor: Q_concept_n outer Q_practice_n,
+        # or the per-concept weights of practice_per_concept); x_mn = Q_joint_n * (C_m - D_n)
+        q_joint = joint_q[exer_id]
         input_x = (q_joint * (C[stu_id] - D[exer_id])).reshape(len(exer_id), -1)
 
         output = self.layers(input_x)

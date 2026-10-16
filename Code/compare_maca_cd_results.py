@@ -19,6 +19,7 @@ MODELS = [
     ("maca_cd", "maca_cd/model/results/OurModel"),
     ("practice_probabilities", "maca_cd_practice/model/results/OurModel_practice_probabilities"),
     ("practice_one_hot", "maca_cd_practice/model/results/OurModel_practice_one_hot"),
+    ("practice_per_concept", "maca_cd_practice/model/results/OurModel_practice_per_concept"),
 ]
 SPLITS = ["standard", "cold", "zeroshot"]
 

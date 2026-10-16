@@ -1,13 +1,18 @@
 ''' HFUT SPY @2025
 Standard / cold / zeroshot splits, adapted for FoundationalASSIST from MACA-CD/SLP/data/data_preprocess.py.
 Run from this directory after `python concept_main.py --stage preprocess`:
-    python data_preprocess.py [--practice_q practice_probabilities|practice_one_hot]
+    python data_preprocess.py [--practice_q practice_probabilities|practice_one_hot|practice_per_concept]
 Practice version: each split also stores Q_practice (exercise -> six practice values), from the column
 chosen by practice_q (default: "practice_q" in ../parameter.json):
     practice_probabilities: the zero-shot scores in mathematical_practice
     practice_one_hot:       the 0/1 marks in practice_multi_hot (Code/add_practice_multi_hot.py)
-The splits are written to preprocessed/<practice_q>/; they are the same for both settings, only
-Q_practice differs.
+    practice_per_concept:   Q_joint (exercise -> {concept id: six weights that sum to 1}) instead of
+                            the outer product of the concept Q-matrix and Q_practice. One-skill
+                            problems use mathematical_practice, multi-skill problems the per-skill
+                            scores in concept_practice (Code/augment_practice_per_concept.py); each
+                            vector is divided by its sum.
+The splits are written to preprocessed/<practice_q>/; they are the same for every setting, only
+Q_practice (and Q_joint) differs.
 Problems can have several skills, so Q_matrix maps each exercise to a list of concept ids.
 The student, exercise and concept counts are written into ../parameter.json.
 '''
@@ -28,7 +33,8 @@ with open(PARAMETER_FILE, "r") as f:
 random.seed(parameter.get("seed", 2025))
 
 # Practice version: which Problems.csv column fills Q_practice
-PRACTICE_Q_COLUMNS = {"practice_probabilities": "mathematical_practice", "practice_one_hot": "practice_multi_hot"}
+PRACTICE_Q_COLUMNS = {"practice_probabilities": "mathematical_practice", "practice_one_hot": "practice_multi_hot",
+                      "practice_per_concept": "mathematical_practice"}
 arg_parser = argparse.ArgumentParser(description="Standard / cold / zeroshot splits")
 arg_parser.add_argument("--practice_q", default=parameter.get("practice_q", "practice_probabilities"),
                         choices=sorted(PRACTICE_Q_COLUMNS), help="source of Q_practice")
@@ -104,6 +110,71 @@ if missing:
                        "first. Examples: {}".format(len(missing), PRACTICE_COLUMN, sorted(missing)[:5]))
 print("{} for {} exercises".format(PRACTICE_COLUMN, len(Q_practice)))
 
+# practice_per_concept: Q_joint maps each exercise to {concept id: six practice weights}. A one-skill
+# problem's concept gets the item-level scores (mathematical_practice); each skill of a multi-skill
+# problem gets its own scores (concept_practice, written by Code/augment_practice_per_concept.py).
+# Every vector is divided by its sum, so each involved concept's weights sum to 1 and summing over
+# practices gives back the concept Q-matrix. An all-zero vector falls back to the item-level scores,
+# then to a one-hot of predicted_practice.
+Q_joint = None
+if practice_q == "practice_per_concept":
+    for column in ("concept_practice", "predicted_practice"):
+        if column not in problems.columns:
+            raise RuntimeError("Data/Problems.csv has no {} column; run Code/augment_practice_per_concept.py "
+                               "(and Code/augment_mathematical_practice.py) first".format(column))
+    concept_scores = dict(zip(problems["problem_id"], problems["concept_practice"]))
+    predicted = dict(zip(problems["problem_id"], problems["predicted_practice"]))
+
+    def divide_by_sum(scores):
+        total = sum(scores)
+        return [score / total for score in scores] if total > 0 else None
+
+    Q_joint = dict()
+    counts = {"one skill": 0, "several skills": 0, "fallback to item scores": 0, "fallback to predicted_practice": 0}
+    missing_skills = set()
+    for qid, problem_id, codes in zip(all_data['question_id'], all_data['problem_id'], all_data['concept_codes']):
+        exercise = q_mapping[qid]
+        if exercise in Q_joint:
+            continue
+        problem_id = str(problem_id).strip()
+        codes = codes.split("|")
+
+        item_weights = divide_by_sum(practice_scores[problem_id])
+        if item_weights is None:
+            item_weights = [1.0 if name == predicted.get(problem_id, "").strip() else 0.0 for name in PRACTICE_NAMES]
+            assert sum(item_weights) == 1, "problem {} has all-zero scores and no predicted_practice".format(problem_id)
+            counts["fallback to predicted_practice"] += 1
+
+        joint = dict()
+        if len(codes) == 1:
+            joint[code2id[codes[0]]] = item_weights
+            counts["one skill"] += 1
+        else:
+            cell = concept_scores.get(problem_id, "")
+            per_skill = {code.strip(): scores for code, scores in json.loads(cell).items()} if cell.strip() else {}
+            for code in codes:
+                if code.strip() not in per_skill:
+                    missing_skills.add("{}:{}".format(problem_id, code))
+                    continue
+                weights = divide_by_sum([float(score) for score in per_skill[code.strip()]])
+                if weights is None:
+                    weights = item_weights
+                    counts["fallback to item scores"] += 1
+                joint[code2id[code]] = weights
+            counts["several skills"] += 1
+        Q_joint[exercise] = joint
+
+        if not missing_skills:
+            # Summing over practices must give back the concept Q-matrix (1 per involved concept)
+            assert sorted(joint) == qid2cid[qid], "exercise {}: Q_joint concepts differ from Q_matrix".format(exercise)
+            assert all(abs(sum(weights) - 1) < 1e-6 for weights in joint.values()), \
+                "exercise {}: practice weights do not sum to 1".format(exercise)
+    if missing_skills:
+        raise RuntimeError("{} skills of multi-skill problems have no concept_practice scores; run "
+                           "Code/augment_practice_per_concept.py first. Examples: {}".format(
+                               len(missing_skills), sorted(missing_skills)[:5]))
+    print("Q_joint for {} exercises: {}".format(len(Q_joint), ", ".join("{} {}".format(n, name) for name, n in counts.items())))
+
 
 # split 1: standard
 all_sets = []
@@ -138,7 +209,8 @@ standard_spilt = {
     "Q_matrix": new_Q_matrix,
     "Q_practice": Q_practice,
     "practice_names": PRACTICE_NAMES,
-    "practice_q": practice_q
+    "practice_q": practice_q,
+    "Q_joint": Q_joint
 }
 with open(os.path.join(PREPROCESSED_DIR, "standard_spilt.pkl"), "wb") as f:
     pickle.dump(standard_spilt, f)
@@ -173,6 +245,7 @@ cold_spilt = {
     "Q_practice": Q_practice,
     "practice_names": PRACTICE_NAMES,
     "practice_q": practice_q,
+    "Q_joint": Q_joint,
     "train_users": train_students_cold,
     "cold_users": test_students_cold
 }
@@ -207,6 +280,7 @@ newc_spilt = {
     "Q_practice": Q_practice,
     "practice_names": PRACTICE_NAMES,
     "practice_q": practice_q,
+    "Q_joint": Q_joint,
     "test": test_set_newc,
     "zeroshot_concepts": sorted(selected_numbers)
 }

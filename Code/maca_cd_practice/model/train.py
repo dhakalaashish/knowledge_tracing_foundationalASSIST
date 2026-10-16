@@ -35,7 +35,7 @@ parser.add_argument('--device', type=str, default=parameter["device"],
 parser.add_argument('--CDE', type=int, default=parameter["CDE"],
                     help='CDE')
 parser.add_argument('--practice_q', type=str, default=parameter.get("practice_q", "practice_probabilities"),
-                    choices=["practice_probabilities", "practice_one_hot"],
+                    choices=["practice_probabilities", "practice_one_hot", "practice_per_concept"],
                     help='source of Q_practice (run data/data_preprocess.py with the same setting first)')
 args = parser.parse_args()
 
@@ -63,7 +63,8 @@ response_matrix = response_data_info["R"]
 response_matrix = torch.from_numpy(response_matrix).to(device)
 concept_num_matrix = response_data_info["concept_num_matrix"]
 concept_num_matrix = torch.from_numpy(concept_num_matrix).to(device)
-QP_matrix = torch.from_numpy(response_data_info["QP"]).to(device).float()  # practice version: exercise x practice scores
+# practice version: exercise x concept x practice weights of the joint Q-matrix (see data_loader.joint_q_tensor)
+QJ_matrix = torch.from_numpy(response_data_info["QJ"]).to(device).float()
 train_loader = DataLoader(train_dataset, batch_size=parameter["batch_size"], shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=parameter["batch_size"], shuffle=False)
 
@@ -106,7 +107,7 @@ def train():
             # exer_vec = torch.cat([response_matrix.t(), Q_matrix], dim=1).float()
             labels = labels.to(device).float()
             optimizer_net.zero_grad()       
-            output, ssl_loss = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), epoch, True, practice_vec=QP_matrix)
+            output, ssl_loss = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), epoch, True, joint_q=QJ_matrix)
             edu_loss = loss_function(output, labels)
             edu_loss = edu_loss.mean() + 0.001 * ssl_loss
             edu_loss.backward()
@@ -137,13 +138,14 @@ def train():
 
 def evaluate_doa(net):
     """DOA of the students x (concept, practice) proficiency C over all responses of the split
-    (train + test, response_data_info["DOA_set"]). The weight of exercise n for (k, p) is
-    Q_joint[n, k, p] = Q_concept[n, k] * Q_practice[n, p]. Returns (DOA, per-practice DOA for the log line)."""
+    (train + test, response_data_info["DOA_set"]). The weight of exercise n for (k, p) is its joint
+    Q-matrix entry Q_joint[n, k, p] (Q_concept[n, k] * Q_practice[n, p], or the per-concept weights of
+    practice_per_concept). Returns (DOA, per-practice DOA for the log line)."""
     net.eval()
     with torch.no_grad():
         C = net.proficiency()
     stu_n_, con_n_, prac_n_ = C.shape
-    q_joint = (Q_matrix.float().unsqueeze(2) * QP_matrix.unsqueeze(1)).reshape(exercise_n, con_n_ * prac_n_)
+    q_joint = QJ_matrix.reshape(exercise_n, con_n_ * prac_n_)
     doa, doa_targets = degree_of_agreement(C.reshape(stu_n_, con_n_ * prac_n_).cpu().numpy(),
                                            response_data_info["DOA_set"], q_joint.cpu().numpy())
     doa_targets = doa_targets.reshape(con_n_, prac_n_)
@@ -168,7 +170,7 @@ def predict(net, test_loader):
 
             exer_vec = response_matrix.t().float()
             labels = labels.to(device).float()
-            output = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), 100, practice_vec=QP_matrix) # 100 is nothing, just > 1
+            output = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), 100, joint_q=QJ_matrix) # 100 is nothing, just > 1
             output = output.view(-1)
             correct_count += ((output >= 0.5) == labels).sum()
             exer_count += len(labels)
