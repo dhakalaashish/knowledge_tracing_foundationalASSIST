@@ -196,8 +196,8 @@ class OurModelV(nn.Module):
         # Practice version: concept x practice proficiency and difficulty instead of per concept
         C, D = self.practice_matrices(know_vec, stu_vec, exer_vec)
 
-        # Q_joint_n (B x K x P, precomputed in data_loader.joint_q_tensor: Q_concept_n outer Q_practice_n,
-        # or the per-concept weights of practice_per_concept); x_mn = Q_joint_n * (C_m - D_n)
+        # Q_joint_n: concept x practice weights of the exercises in the batch (B x K x P, built from the
+        # per-concept practice scores in data_loader.joint_q_tensor); x_mn = Q_joint_n * (C_m - D_n)
         q_joint = joint_q[exer_id]
         input_x = (q_joint * (C[stu_id] - D[exer_id])).reshape(len(exer_id), -1)
 

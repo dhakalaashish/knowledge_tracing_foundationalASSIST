@@ -17,52 +17,48 @@ Collaborative Mathematics, Procedural Fluency), M students, N questions, d = `mf
 3. **C_mkp = sigmoid(<u_m, h_kp> + b_m)**: proficiency of student m on practice p for concept k.
    b_m is the student bias MACA-CD uses in its mastery.
 4. **D_nkp = sigmoid(<v_n, h_kp>)**: difficulty of question n for practice p on concept k.
-5. **Q_joint_n = Q_concept_n (outer product) Q_practice_n** (K x P). Q_practice comes from the setting
-   `practice_q` (see below): the six zero-shot scores of the problem as soft weights, or their 0/1 marks.
+5. **Q_joint_n** (K x P): the joint Q-matrix of question n (below).
 6. **x_mn = Q_joint_n * (C_m - D_n)**, flattened to K*P. As in MACA-CD, the sigmoid is applied once
    (in steps 3 and 4), not again here.
 7. **r_mn = MLP(x_mn)**: MACA-CD's positive-weight MLP, with input size K*P.
 
 The concept graph encoder, its contrastive loss, the text/graph fusion, the training loop and the
-evaluation are unchanged. `mastery_levels()` returns C (M x K x P).
+evaluation are unchanged. `mastery_levels()` returns C (M x K x P). DOA weights each exercise by its
+joint Q-matrix entries.
 
-### practice_q: probabilities, one-hot or per concept
+### The joint Q-matrix
 
-`practice_q` in `parameter.json`, or `--practice_q` for `data/data_preprocess.py` and `model/train.py`,
-chooses where the practice part of the joint Q-matrix comes from and where each run reads and writes:
-
-| practice_q | Joint Q-matrix (Data/Problems.csv columns) | splits | results |
-|---|---|---|---|
-| `practice_probabilities` (default) | Q_concept outer `mathematical_practice` (the six zero-shot scores) | `data/preprocessed/practice_probabilities/` | `model/results/OurModel_practice_probabilities/` |
-| `practice_one_hot` | Q_concept outer `practice_multi_hot` (1 for every practice scored 0.7 or higher, otherwise the highest-scored one; `Code/add_practice_multi_hot.py`) | `data/preprocessed/practice_one_hot/` | `model/results/OurModel_practice_one_hot/` |
-| `practice_per_concept` | Per concept: a one-skill problem's concept gets `mathematical_practice`; each skill of a multi-skill problem gets its own scores from `concept_practice` (`Code/augment_practice_per_concept.py`). Each vector is divided by its sum | `data/preprocessed/practice_per_concept/` | `model/results/OurModel_practice_per_concept/` |
-
-The splits are identical for every setting; only the joint Q-matrix differs. The settings can train
-at the same time. DOA weights each exercise by the setting's joint Q-matrix entries.
-
-In `practice_per_concept`, each involved concept's six practice weights sum to 1, so summing the joint
-Q-matrix over practices gives back the concept Q-matrix exactly, and each concept's (C - D) term is a
-weighted average of its practice terms. The weights of one practice over concepts are not normalized
-(like any Q-matrix column). An all-zero score vector falls back to the item-level scores, then to a
-one-hot of `predicted_practice`. Dividing by the sum (not a softmax) keeps the practices the LLM scored
-0 at 0; a softmax of scores in [0, 1] would be nearly uniform.
+Q_joint is N x K x P. Row k of Q_joint_n holds concept k's practice weights in question n; the rows of
+concepts the question does not involve are 0.
+- A question with one skill: its concept gets the question's six zero-shot scores
+  (`mathematical_practice`).
+- A question with several skills: each skill gets its own six scores (`concept_practice`, from
+  `Code/augment_practice_per_concept.py`, which prompts the zero-shot labeler once per skill).
+- Each vector is divided by its sum, so each involved concept's weights sum to 1. Summing Q_joint_n over
+  practices gives back the concept Q-matrix exactly, and each concept's (C - D) term is a weighted
+  average of its practice terms. The weights of one practice over concepts are not normalized (like any
+  Q-matrix column).
+- An all-zero score vector falls back to the question's scores, then to a one-hot of
+  `predicted_practice`. Dividing by the sum (not a softmax) keeps the practices the LLM scored 0 at 0;
+  a softmax of scores in [0, 1] would be nearly uniform.
 
 Files that differ from `maca_cd`:
 - `data/concept_main.py`: new stage `--stage practice_embed` (`practice_texts`, `practice_meta_embed`)
   -> `data/concept_preknowledge/practice_meta_emb.json`.
-- `data/data_preprocess.py`: `--practice_q`; reads `Data/Problems.csv` and adds `Q_practice` (exercise ->
-  6 values), `practice_names`, `practice_q` and `Q_joint` (practice_per_concept only) to every split. The
-  splits themselves are the same as `maca_cd`'s.
-- `model/data_loader.py`: `load_practice_embedding`, `practice_q_matrix`, `joint_q_tensor`; reads the
-  splits of `practice_q`; each split's output has `QP` and the joint Q-matrix `QJ` (exercise x concept x practice).
-- `model/train.py`: `--practice_q`; passes the practice embedding and `QJ` to the model and to DOA.
+- `data/data_preprocess.py`: reads `mathematical_practice`, `concept_practice` and `predicted_practice`
+  from `Data/Problems.csv` and adds `Q_joint` (exercise -> {concept id: six weights}) and
+  `practice_names` to every split. The splits themselves are the same as `maca_cd`'s.
+- `model/data_loader.py`: `load_practice_embedding`, `joint_q_tensor`; each split's output has the joint
+  Q-matrix `QJ` (exercise x concept x practice).
+- `model/train.py`: passes the practice embedding and `QJ` to the model and to DOA.
 - `model/OurModel.py`: `Prac_Encoder` (z_p), `KP_MLP` (h_kp), `practice_matrices` (C, D) and the joint
   interaction in `forward`.
 
 ### How to run (A100, from `Code/maca_cd_practice/`)
 
-Needs the finished `maca_cd` concept stages and the zero-shot practice labels in `Data/Problems.csv`
-(`Code/augment_mathematical_practice.py`, which also writes `practice_multi_hot`). Reuse maca_cd's LLM
+Needs the finished `maca_cd` concept stages, the zero-shot practice labels in `Data/Problems.csv`
+(`Code/augment_mathematical_practice.py`) and the per-skill scores of the multi-skill problems
+(`Code/augment_practice_per_concept.py`; run from `Code/` with the GPU free). Reuse maca_cd's LLM
 outputs, so both models share the concepts, the prerequisite graph and the splits:
 ```bash
 cp -r ../maca_cd/data/cleaned_data.csv ../maca_cd/data/used_concepts.txt ../maca_cd/data/graph ../maca_cd/data/concept_preknowledge data/
@@ -71,15 +67,17 @@ With the embedding server on port 8001 (step 3 below):
 ```bash
 python3 data/concept_main.py --stage practice_embed
 ```
-For `practice_per_concept`, first score each skill of the multi-skill problems (from `Code/`, with the
-GPU free): `python3 augment_practice_per_concept.py --data-dir ../Data --output-dir ../Data`.
-Then, for each setting (`practice_probabilities`, `practice_one_hot` and/or `practice_per_concept`):
+Then build the splits and train the three splits in parallel:
 ```bash
-python3 data/data_preprocess.py --practice_q practice_one_hot
-cd model && for s in standard cold zeroshot; do PYTHONUNBUFFERED=1 nohup python3 train.py --split $s --practice_q practice_one_hot > train_${s}_practice_one_hot.log 2>&1 & done
+python3 data/data_preprocess.py
+cd model && for s in standard cold zeroshot; do PYTHONUNBUFFERED=1 nohup python3 train.py --split $s > train_$s.log 2>&1 & done
 ```
-Results are in `model/results/OurModel_<practice_q>/training_logs_<split>.txt`;
-`python3 ../compare_maca_cd_results.py` (from `Code/maca_cd_practice/`) compares them with `maca_cd`.
+Results are in `model/results/OurModel/training_logs_<split>.txt`; `python3 ../compare_maca_cd_results.py`
+(from `Code/maca_cd_practice/`) prints the benchmark table against `maca_cd` (`--format markdown` or
+`latex` for a paper).
+
+To run the whole benchmark at once (both models, all three splits: 6 runs on one GPU, then the table),
+from `Code/`: `nohup bash run_maca_benchmark.sh > ../Data/maca_benchmark.log 2>&1 &`.
 
 ---
 

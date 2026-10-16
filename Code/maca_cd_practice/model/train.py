@@ -34,20 +34,16 @@ parser.add_argument('--device', type=str, default=parameter["device"],
                     help='device')
 parser.add_argument('--CDE', type=int, default=parameter["CDE"],
                     help='CDE')
-parser.add_argument('--practice_q', type=str, default=parameter.get("practice_q", "practice_probabilities"),
-                    choices=["practice_probabilities", "practice_one_hot", "practice_per_concept"],
-                    help='source of Q_practice (run data/data_preprocess.py with the same setting first)')
 args = parser.parse_args()
 
 device = args.device
 split = args.split
-practice_q = args.practice_q
-test_model = "OurModel_" + practice_q  # practice version: results/OurModel_<practice_q>/
+test_model = "OurModel"
 CDE_label = bool(args.CDE)
 student_n, exercise_n, knowledge_n = parameter["student_num"], parameter["exercise_num"], parameter["concept_num"]
 assert min(student_n, exercise_n, knowledge_n) > 0, "Run data/data_preprocess.py first: it writes the counts to parameter.json"
 
-response_data_info = load_response_logs(split, student_n, exercise_n, knowledge_n, False, practice_q=practice_q)
+response_data_info = load_response_logs(split, student_n, exercise_n, knowledge_n, False)
 
 DAG, pre_emb = load_LLM_generation()
 pre_practice_emb = load_practice_embedding(response_data_info["practice_names"])  # practice version
@@ -139,8 +135,8 @@ def train():
 def evaluate_doa(net):
     """DOA of the students x (concept, practice) proficiency C over all responses of the split
     (train + test, response_data_info["DOA_set"]). The weight of exercise n for (k, p) is its joint
-    Q-matrix entry Q_joint[n, k, p] (Q_concept[n, k] * Q_practice[n, p], or the per-concept weights of
-    practice_per_concept). Returns (DOA, per-practice DOA for the log line)."""
+    Q-matrix entry Q_joint[n, k, p] (concept k's weight for practice p in exercise n).
+    Returns (DOA, per-practice DOA for the log line)."""
     net.eval()
     with torch.no_grad():
         C = net.proficiency()

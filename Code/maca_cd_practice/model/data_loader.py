@@ -57,7 +57,7 @@ def load_LLM_generation():
 
 def load_practice_embedding(practice_names):
     """Practice version: embeddings of the practice definitions (data/concept_main.py
-    --stage practice_embed), in the order of the Q_practice columns, scaled like the concept embeddings."""
+    --stage practice_embed), in the order of the joint Q-matrix practices, scaled like the concept embeddings."""
     PracticeEmbedding_path = '../data/concept_preknowledge/practice_meta_emb.json'
     with open(PracticeEmbedding_path, 'r', encoding='utf-8') as f:
         practice_emb = json.load(f)
@@ -67,32 +67,21 @@ def load_practice_embedding(practice_names):
     return np.array([practice_emb[name] for name in practice_names]) * 10
 
 
-def practice_q_matrix(loaded_data, exercise_n):
-    """Practice version: exercise x practice matrix of the zero-shot practice scores."""
-    QP_dict = loaded_data["Q_practice"]
-    QP_matrix = np.zeros((exercise_n, len(loaded_data["practice_names"])))
-    for i_id, scores in QP_dict.items():
-        QP_matrix[i_id] = scores
-    return QP_matrix
-
-
-def joint_q_tensor(loaded_data, Q_matrix, QP_matrix):
-    """Practice version: exercise x concept x practice weights of the joint Q-matrix.
-    practice_per_concept: from the split's Q_joint (each involved concept's six weights sum to 1).
-    Other settings: the outer product of the concept Q-matrix and Q_practice."""
+def joint_q_tensor(loaded_data, exercise_n, knowledge_n):
+    """Practice version: exercise x concept x practice weights of the joint Q-matrix, from the split's
+    Q_joint (exercise -> {concept id: six weights that sum to 1}, built by data/data_preprocess.py)."""
     Q_joint = loaded_data.get("Q_joint")
     if Q_joint is None:
-        return Q_matrix[:, :, None] * QP_matrix[:, None, :]
-    QJ_matrix = np.zeros((Q_matrix.shape[0], Q_matrix.shape[1], QP_matrix.shape[1]))
+        raise ValueError("This split has no Q_joint; rebuild the splits with data/data_preprocess.py")
+    QJ_matrix = np.zeros((exercise_n, knowledge_n, len(loaded_data["practice_names"])))
     for i_id, concepts in Q_joint.items():
         for c_id, weights in concepts.items():
             QJ_matrix[i_id, c_id - 1] = weights
     return QJ_matrix
 
 
-def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style = True, practice_q = "practice_probabilities"):
-    # Practice version: the splits of each practice_q setting are in their own folder
-    data_file = '../data/preprocessed/' + practice_q + '/' + split + '_spilt.pkl'
+def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style = True):
+    data_file = '../data/preprocessed/' + split + '_spilt.pkl'
     with open(data_file, "rb") as f:
         loaded_data = pickle.load(f)
 
@@ -123,8 +112,7 @@ def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style 
                 response_matrix[u_id, i_id] = -1
 
         output = {"train": train_data, "test":test_data, "Q": Q_matrix, "R":response_matrix, "DOA_set": np.array(all_set), "train_set": train_set, "concept_num_matrix": concept_num_matrix}
-        output["QP"] = practice_q_matrix(loaded_data, exercise_n)
-        output["QJ"] = joint_q_tensor(loaded_data, Q_matrix, output["QP"])
+        output["QJ"] = joint_q_tensor(loaded_data, exercise_n, knowledge_n)
         output["practice_names"] = loaded_data["practice_names"]
         return output
 
@@ -156,8 +144,7 @@ def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style 
             else:
                 response_matrix[u_id, i_id] = -1
         output = {"train": train_data, "test": test_data, "Q": Q_matrix, "R": response_matrix, "DOA_set": np.array(all_set), "train_set": train_set, "concept_num_matrix": concept_num_matrix}
-        output["QP"] = practice_q_matrix(loaded_data, exercise_n)
-        output["QJ"] = joint_q_tensor(loaded_data, Q_matrix, output["QP"])
+        output["QJ"] = joint_q_tensor(loaded_data, exercise_n, knowledge_n)
         output["practice_names"] = loaded_data["practice_names"]
         return output
 
@@ -186,8 +173,7 @@ def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style 
             else:
                 response_matrix[u_id, i_id] = -1
         output = {"train": train_data, "test": test_data, "Q": Q_matrix, "R": response_matrix, "DOA_set": np.array(all_set), "train_set": train_set, "concept_num_matrix":concept_num_matrix}
-        output["QP"] = practice_q_matrix(loaded_data, exercise_n)
-        output["QJ"] = joint_q_tensor(loaded_data, Q_matrix, output["QP"])
+        output["QJ"] = joint_q_tensor(loaded_data, exercise_n, knowledge_n)
         output["practice_names"] = loaded_data["practice_names"]
         return output
     else:
