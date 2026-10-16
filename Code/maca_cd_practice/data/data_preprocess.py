@@ -1,11 +1,12 @@
 ''' HFUT SPY @2025
-Standard / cold / zeroshot splits, adapted for FoundationalASSIST from MACA-CD/SLP/data/data_preprocess.py.
+Standard / cold / zeroshot / colditem splits, adapted for FoundationalASSIST from MACA-CD/SLP/data/data_preprocess.py.
 Run from this directory after `python concept_main.py --stage preprocess`:
     python data_preprocess.py
 Practice version: each split also stores Q_joint, the joint Q-matrix (exercise -> {concept id: six
 practice weights that sum to 1}). A one-skill problem's concept gets the problem's zero-shot scores
 (mathematical_practice); each skill of a multi-skill problem gets its own scores (concept_practice,
-Code/augment_practice_per_concept.py). Each vector is divided by its sum.
+Code/augment_practice_per_concept.py). Scores below practice_cutoff (../parameter.json) are set to 0, then each
+vector is divided by its sum.
 The splits are written to preprocessed/ and are the same as maca_cd's.
 Problems can have several skills, so Q_matrix maps each exercise to a list of concept ids.
 The student, exercise and concept counts are written into ../parameter.json.
@@ -64,10 +65,11 @@ assert concept_ids == set(range(1, len(conceptname2id) + 1)), "concept ids must 
 # Practice version: the joint Q-matrix Q_joint maps each exercise to {concept id: six practice weights},
 # in the order of PRACTICE_NAMES in Code/augment_mathematical_practice.py. A one-skill problem's concept
 # gets the problem's zero-shot scores (mathematical_practice); each skill of a multi-skill problem gets its
-# own scores (concept_practice, written by Code/augment_practice_per_concept.py). Every vector is divided
-# by its sum, so each involved concept's weights sum to 1 and summing over practices gives back the
-# concept Q-matrix. An all-zero vector falls back to the problem's scores, then to a one-hot of
-# predicted_practice.
+# own scores (concept_practice, written by Code/augment_practice_per_concept.py). Scores below
+# practice_cutoff (../parameter.json) are set to 0 first, so incidental practices drop out; when no score
+# reaches the cutoff, the highest-scored practice(s) are kept. Every vector is then divided by its sum, so
+# each involved concept's weights sum to 1 and summing over practices gives back the concept Q-matrix.
+# An all-zero vector falls back to the problem's scores, then to a one-hot of predicted_practice.
 PRACTICE_NAMES = ["Representing", "Abstracting and Generalizing", "Justifying and Proving",
                   "Mathematical Modeling", "Collaborative Mathematics", "Procedural Fluency"]
 problems = pd.read_csv("../../../Data/Problems.csv", dtype=str, keep_default_na=False)
@@ -91,13 +93,24 @@ concept_scores = dict(zip(problems["problem_id"], problems["concept_practice"]))
 predicted = dict(zip(problems["problem_id"], problems["predicted_practice"]))
 
 
-def divide_by_sum(scores):
-    total = sum(scores)
-    return [score / total for score in scores] if total > 0 else None
+PRACTICE_CUTOFF = parameter.get("practice_cutoff", 0.0)
+
+
+def practice_weights(scores):
+    """Scores below PRACTICE_CUTOFF set to 0 (when none reaches it, the highest-scored practice(s) are kept),
+    then divided by their sum. None for an all-zero vector."""
+    kept = [score if score >= PRACTICE_CUTOFF else 0.0 for score in scores]
+    if sum(kept) == 0 and max(scores) > 0:
+        top = max(scores)
+        kept = [score if score == top else 0.0 for score in scores]
+        counts["kept only the highest score (none reaches the cutoff)"] += 1
+    total = sum(kept)
+    return [score / total for score in kept] if total > 0 else None
 
 
 Q_joint = dict()
-counts = {"one skill": 0, "several skills": 0, "fallback to problem scores": 0, "fallback to predicted_practice": 0}
+counts = {"one skill": 0, "several skills": 0, "fallback to problem scores": 0, "fallback to predicted_practice": 0,
+          "kept only the highest score (none reaches the cutoff)": 0}
 missing_skills = set()
 for qid, problem_id, codes in zip(all_data['question_id'], all_data['problem_id'], all_data['concept_codes']):
     exercise = q_mapping[qid]
@@ -106,7 +119,7 @@ for qid, problem_id, codes in zip(all_data['question_id'], all_data['problem_id'
     problem_id = str(problem_id).strip()
     codes = codes.split("|")
 
-    item_weights = divide_by_sum(practice_scores[problem_id])
+    item_weights = practice_weights(practice_scores[problem_id])
     if item_weights is None:
         item_weights = [1.0 if name == predicted.get(problem_id, "").strip() else 0.0 for name in PRACTICE_NAMES]
         assert sum(item_weights) == 1, "problem {} has all-zero scores and no predicted_practice".format(problem_id)
@@ -123,7 +136,7 @@ for qid, problem_id, codes in zip(all_data['question_id'], all_data['problem_id'
             if code.strip() not in per_skill:
                 missing_skills.add("{}:{}".format(problem_id, code))
                 continue
-            weights = divide_by_sum([float(score) for score in per_skill[code.strip()]])
+            weights = practice_weights([float(score) for score in per_skill[code.strip()]])
             if weights is None:
                 weights = item_weights
                 counts["fallback to problem scores"] += 1
@@ -140,7 +153,8 @@ if missing_skills:
     raise RuntimeError("{} skills of multi-skill problems have no concept_practice scores; run "
                        "Code/augment_practice_per_concept.py first. Examples: {}".format(
                            len(missing_skills), sorted(missing_skills)[:5]))
-print("Q_joint for {} exercises: {}".format(len(Q_joint), ", ".join("{} {}".format(n, name) for name, n in counts.items())))
+print("Q_joint for {} exercises (practice_cutoff {}): {}".format(
+    len(Q_joint), PRACTICE_CUTOFF, ", ".join("{} {}".format(n, name) for name, n in counts.items())))
 
 # split 1: standard
 all_sets = []
@@ -246,6 +260,31 @@ newc_spilt = {
 }
 with open(os.path.join(PREPROCESSED_DIR, "zeroshot_spilt.pkl"), "wb") as f:
     pickle.dump(newc_spilt, f)
+
+# split 4: cold-start items. 20% of the exercises are held out: all their responses are test responses,
+# so the model has never seen these items in training. (After the other splits, which stay unchanged.)
+train_set_colditem, test_set_colditem = [], []
+exercise_ids = sorted(new_Q_matrix)
+held_out_items = set(random.sample(exercise_ids, int(0.2 * len(exercise_ids))))
+for record in all_sets:
+    if record[1] in held_out_items:
+        test_set_colditem.append(record)
+    else:
+        train_set_colditem.append(record)
+
+print("training length whole: " + str(len(train_set_colditem)))
+print("testing length whole: " + str(len(test_set_colditem)))
+
+colditem_spilt = {
+    "train": train_set_colditem,
+    "Q_matrix": new_Q_matrix,
+    "practice_names": PRACTICE_NAMES,
+    "Q_joint": Q_joint,
+    "test": test_set_colditem,
+    "colditem_exercises": sorted(held_out_items)
+}
+with open(os.path.join(PREPROCESSED_DIR, "colditem_spilt.pkl"), "wb") as f:
+    pickle.dump(colditem_spilt, f)
 
 # counts for model/train.py
 parameter["student_num"] = len(user_ids)

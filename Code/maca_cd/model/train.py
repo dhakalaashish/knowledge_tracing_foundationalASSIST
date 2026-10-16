@@ -28,13 +28,22 @@ with open('../parameter.json', 'r') as f:
 
 parser = argparse.ArgumentParser(description='Configuration')
 parser.add_argument('--split', type=str, default=parameter["split"],
-                    choices=["standard", "cold", "zeroshot"],
+                    choices=["standard", "cold", "zeroshot", "colditem"],
                     help='dataset split')
 parser.add_argument('--device', type=str, default=parameter["device"],
                     help='device')
 parser.add_argument('--CDE', type=int, default=parameter["CDE"],
                     help='CDE')
+parser.add_argument('--seed', type=int, default=None,
+                    help='seed for PyTorch, NumPy and Python random numbers (weights, batch order, dropout); '
+                         'results go to training_logs_<split>_seed<seed>.txt. Default: unseeded')
 args = parser.parse_args()
+
+if args.seed is not None:
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)
 
 device = args.device
 split = args.split
@@ -75,10 +84,10 @@ def train():
     else:
         print(f"{log_path} Exists")
 
-    log_file = log_path + "/training_logs_"+ split +".txt"
+    log_file = log_path + "/training_logs_" + split + ("" if args.seed is None else "_seed%d" % args.seed) + ".txt"
     from datetime import datetime
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    current = current_time + " Model:" + test_model + " batch_size:" + str(parameter["batch_size"]) + " learning_rate:" + str(parameter["learning_rate"])
+    current = current_time + " Model:" + test_model + " batch_size:" + str(parameter["batch_size"]) + " learning_rate:" + str(parameter["learning_rate"]) + " seed:" + str(args.seed)
     with open(log_file, "a") as f:
         f.write(json.dumps(current) + "\n")
 

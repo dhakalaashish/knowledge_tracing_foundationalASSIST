@@ -148,7 +148,7 @@ def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style 
         output["practice_names"] = loaded_data["practice_names"]
         return output
 
-    elif split == "zeroshot":
+    elif split in ("zeroshot", "colditem"):
         train_set = loaded_data["train"]
         train_data = EduData(train_set)
         test_set = loaded_data["test"]
@@ -177,7 +177,7 @@ def load_response_logs(split, student_n, exercise_n, knowledge_n, encoder_style 
         output["practice_names"] = loaded_data["practice_names"]
         return output
     else:
-        raise ValueError("Split should be one of cold/standard/zeroshot")
+        raise ValueError("Split should be one of cold/standard/zeroshot/colditem")
 
 
 class EduData(data.Dataset):

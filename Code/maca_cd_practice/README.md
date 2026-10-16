@@ -8,23 +8,38 @@ This folder is a copy of `../maca_cd/` in which the model diagnoses proficiency 
 
 Notation: K concepts, P = 6 practices (the order of `mathematical_practice` in `Data/Problems.csv`:
 Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling,
-Collaborative Mathematics, Procedural Fluency), M students, N questions, d = `mf_dim`.
+Collaborative Mathematics, Procedural Fluency), M students, N questions, d = `mf_dim`. o_k is MACA-CD's
+fused concept embedding (`o_t_final`: concept text + prerequisite graph).
 
 1. **z_p** (P x d): the embedding of each practice's definition and descriptors (the text of the
    zero-shot labeler `Code/augment_mathematical_practice.py`), projected like the concept text.
-2. **h_kp = MLP(o_k * z_p)** (K x P x d), where o_k is MACA-CD's fused concept embedding (`o_t_final`:
-   concept text + prerequisite graph).
-3. **C_mkp = sigmoid(<u_m, h_kp> + b_m)**: proficiency of student m on practice p for concept k.
-   b_m is the student bias MACA-CD uses in its mastery.
-4. **D_nkp = sigmoid(<v_n, h_kp>)**: difficulty of question n for practice p on concept k.
-5. **Q_joint_n** (K x P): the joint Q-matrix of question n (below).
+2. **e_kp = phi_obj([o_k ; z_p])** (K x P x d): the (concept, practice) cell, from the concatenation, so a
+   practice adds its own directions instead of only rescaling the concept's.
+3. **C_mkp = sigmoid(<u_m, e_kp> + <pi_m, z_p> + g_psi([pi_m ; z_p ; o_k]) + b_m)**: proficiency of student
+   m on practice p for concept k.
+   - <u_m, e_kp>: concept mastery, adjusted by practice (MACA-CD's proficiency).
+   - <pi_m, z_p>: the student's ability in practice p across all concepts (bifactor structure); pi_m is
+     learned from all of the student's items, so it is identifiable even where a concept has few items
+     with that practice.
+   - g_psi: a small network for how the student's practice ability combines with the concept (e.g.
+     justifying transfers to algebra but not to geometry), penalized so it stays a refinement.
+   - b_m: the student bias of MACA-CD's mastery.
+4. **v_n = f_phi( sum_a sum_b w_a w_b g_theta([e_a ; e_b]) ) + delta_n**: the item, from a relational
+   network over its objects a, b (its (concept, practice) cells with joint Q-matrix weight w > 0, at most
+   3 x 6). The a = b terms are its single requirements, the a != b terms how its requirements interact.
+   delta_n is the item's free residual, penalized so difficulty is explained through concepts and
+   practices first; on items never seen in training it stays about 0.
+5. **D_nkp = sigmoid(<v_n, e_kp>)**: difficulty of question n for practice p on concept k.
 6. **x_mn = Q_joint_n * (C_m - D_n)**, flattened to K*P. As in MACA-CD, the sigmoid is applied once
-   (in steps 3 and 4), not again here.
+   (in steps 3 and 5), not again here.
 7. **r_mn = MLP(x_mn)**: MACA-CD's positive-weight MLP, with input size K*P.
 
+Loss: MACA-CD's (BCE + 0.001 x the graph contrastive loss) + `item_residual_penalty` x mean ||delta_n||^2
+over the batch's responses + `practice_interaction_penalty` x mean g_psi^2 (both in `parameter.json`).
+
 The concept graph encoder, its contrastive loss, the text/graph fusion, the training loop and the
-evaluation are unchanged. `mastery_levels()` returns C (M x K x P). DOA weights each exercise by its
-joint Q-matrix entries.
+evaluation are unchanged. `mastery_levels()` and `proficiency()` return C (M x K x P). DOA weights each
+exercise by its joint Q-matrix entries.
 
 ### The joint Q-matrix
 
@@ -34,6 +49,8 @@ concepts the question does not involve are 0.
   (`mathematical_practice`).
 - A question with several skills: each skill gets its own six scores (`concept_practice`, from
   `Code/augment_practice_per_concept.py`, which prompts the zero-shot labeler once per skill).
+- Scores below `practice_cutoff` (0.4, in `parameter.json`; 0 keeps all) are set to 0, so incidental
+  practices drop out; when no score reaches the cutoff, the highest-scored practice(s) are kept.
 - Each vector is divided by its sum, so each involved concept's weights sum to 1. Summing Q_joint_n over
   practices gives back the concept Q-matrix exactly, and each concept's (C - D) term is a weighted
   average of its practice terms. The weights of one practice over concepts are not normalized (like any
@@ -41,6 +58,13 @@ concepts the question does not involve are 0.
 - An all-zero score vector falls back to the question's scores, then to a one-hot of
   `predicted_practice`. Dividing by the sum (not a softmax) keeps the practices the LLM scored 0 at 0;
   a softmax of scores in [0, 1] would be nearly uniform.
+
+### Splits
+
+Like `maca_cd`: standard, cold (new students: half the students, with 2 of their responses in training),
+zeroshot (new concepts: 20% held out) and colditem (new items: 20% of the exercises held out entirely).
+The cold-item split is where the item encoder matters: the free residual of a held-out item is never
+trained, so its difficulty comes from its concept-practice requirements.
 
 Files that differ from `maca_cd`:
 - `data/concept_main.py`: new stage `--stage practice_embed` (`practice_texts`, `practice_meta_embed`)
@@ -50,9 +74,11 @@ Files that differ from `maca_cd`:
   `practice_names` to every split. The splits themselves are the same as `maca_cd`'s.
 - `model/data_loader.py`: `load_practice_embedding`, `joint_q_tensor`; each split's output has the joint
   Q-matrix `QJ` (exercise x concept x practice).
-- `model/train.py`: passes the practice embedding and `QJ` to the model and to DOA.
-- `model/OurModel.py`: `Prac_Encoder` (z_p), `KP_MLP` (h_kp), `practice_matrices` (C, D) and the joint
-  interaction in `forward`.
+- `model/train.py`: passes the practice embedding, `QJ` and the penalty weights to the model, adds the
+  penalties to the loss, and uses `QJ` for DOA.
+- `model/OurModel.py`: `Prac_Encoder` (z_p), `Obj_Encoder` (e_kp), `Prac_Ability` (pi_m), `Inter_*`
+  (g_psi), `Rel_*` and `Item_Encoder` (the relational item encoder), `item_objects`, `practice_matrices`
+  (C, D) and the joint interaction in `forward`.
 
 ### How to run (A100, from `Code/maca_cd_practice/`)
 
@@ -67,17 +93,20 @@ With the embedding server on port 8001 (step 3 below):
 ```bash
 python3 data/concept_main.py --stage practice_embed
 ```
-Then build the splits and train the three splits in parallel:
+Then build the splits and train the four splits in parallel:
 ```bash
 python3 data/data_preprocess.py
-cd model && for s in standard cold zeroshot; do PYTHONUNBUFFERED=1 nohup python3 train.py --split $s > train_$s.log 2>&1 & done
+cd model && for s in standard cold zeroshot colditem; do PYTHONUNBUFFERED=1 nohup python3 train.py --split $s > train_$s.log 2>&1 & done
 ```
 Results are in `model/results/OurModel/training_logs_<split>.txt`; `python3 ../compare_maca_cd_results.py`
 (from `Code/maca_cd_practice/`) prints the benchmark table against `maca_cd` (`--format markdown` or
 `latex` for a paper).
 
-To run the whole benchmark at once (both models, all three splits: 6 runs on one GPU, then the table),
-from `Code/`: `nohup bash run_maca_benchmark.sh > ../Data/maca_benchmark.log 2>&1 &`.
+To run the whole benchmark (both models x four splits x seeds 1-5 = 40 runs, up to 12 at once on one
+GPU, then the table of mean ± standard deviation over seeds with a paired t-test), from `Code/`:
+`nohup bash run_maca_benchmark.sh > ../Data/maca_benchmark.log 2>&1 &`. `SEEDS="1 2 3"` and
+`MAX_PARALLEL=6` change the seeds and the number of runs at once. `train.py --seed N` runs one seeded run
+(results in `training_logs_<split>_seed<N>.txt`); without `--seed` it is unseeded, as before.
 
 ---
 
@@ -100,11 +129,12 @@ FoundationalASSIST counterpart.
    - `init`: the concepts no other concept depends on -> `data/graph/initial_nodes.json`
    - `extend`: breadth-first prerequisite DAG from those nodes -> `data/graph/DAG_edges.json`
    - `embed`: an embedding of each description -> `data/concept_preknowledge/concept_meta_emb.json`
-3. **Splits** (`data/data_preprocess.py`): `data/preprocessed/{standard,cold,zeroshot}_spilt.pkl` and the
+3. **Splits** (`data/data_preprocess.py`): `data/preprocessed/{standard,cold,zeroshot,colditem}_spilt.pkl` and the
    student, exercise and concept counts in `parameter.json`.
    - standard: random 80/20 split of the responses
    - cold: half the students are test students, with only 2 of their responses in training
    - zeroshot: 20% of the concepts are held out; responses to problems with a held-out concept are the test set
+   - colditem: 20% of the exercises are held out entirely; all their responses are the test set (new items)
 4. **Training** (`model/train.py --split <split>`): MACA-CD, reporting ACC and AUC on the test set each
    epoch; the best epochs are logged in `model/results/OurModel/training_logs_<split>.txt`.
    At every new best epoch it also computes the DOA (degree of agreement) of the diagnosed proficiency
@@ -190,6 +220,7 @@ cd model
 python3 train.py --split standard
 python3 train.py --split cold
 python3 train.py --split zeroshot
+python3 train.py --split colditem
 ```
 `--device cuda:1` picks another GPU. Training runs 200 epochs (`number_epoch` in `parameter.json`).
 

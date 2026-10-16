@@ -119,8 +119,20 @@ class GraphEncoder(nn.Module):
         return all_embeddings
 
 
+def item_objects(joint_q):
+    """Practice version: the objects of each item for the relational item encoder, i.e. its
+    (concept, practice) cells with weight > 0. Returns obj_idx (N x S, cell index k * P + p) and obj_w
+    (N x S, the cell's joint Q-matrix weight), where S is the largest number of objects of an item;
+    items with fewer objects are padded with weight 0."""
+    exer_n, con_n, prac_n = joint_q.shape
+    flat = joint_q.reshape(exer_n, con_n * prac_n)
+    max_objects = max(int((flat > 0).sum(dim=1).max()), 1)
+    obj_w, obj_idx = torch.topk(flat, max_objects, dim=1)  # padding cells have weight 0
+    return obj_idx, obj_w
+
+
 class OurModelV(nn.Module):
-    def __init__(self, stu_n, exer_n, con_n, hidden_dim, device = "cuda:0", pre_concept_e=None, concept_graph = None, concept_num_matrix = None, pre_practice_e = None):
+    def __init__(self, stu_n, exer_n, con_n, hidden_dim, device = "cuda:0", pre_concept_e=None, concept_graph = None, concept_num_matrix = None, pre_practice_e = None, joint_q = None, item_residual_penalty = 0.01, practice_interaction_penalty = 0.001):
         super().__init__()
         self.con_n = con_n
         # Practice version: P practices, embedded from their definitions (z_p)
@@ -129,6 +141,8 @@ class OurModelV(nn.Module):
         self.exer_n = exer_n
         self.stu_n = stu_n
         self.emb_dim = hidden_dim
+        # Practice version: the item's free embedding is only its residual delta_n (penalized); the rest of
+        # the item comes from its (concept, practice) requirements through the relational item encoder
         self.Exer_Encoder = nn.Embedding(self.exer_n, self.emb_dim)
         self.User_Encoder = nn.Embedding(self.stu_n, self.emb_dim)
         self.pre_concept_e = torch.from_numpy(pre_concept_e).to(device).float()
@@ -142,18 +156,46 @@ class OurModelV(nn.Module):
 
         self.stu_bias = nn.Embedding(self.stu_n, 1)
         self.exer_bias = nn.Embedding(self.exer_n, 1)
-        # Practice version: z_p = projection of the practice-definition embedding (like text_proj),
-        # h_kp = MLP(o_k * z_p), and the prediction MLP reads the flattened K x P interaction.
+        d = self.emb_dim
+        # Practice version (relational).
+        # z_p: projection of the practice-definition embedding (like text_proj)
         self.Prac_Encoder = nn.Sequential(
-            nn.Linear(self.pre_practice_e.shape[1], self.emb_dim),
+            nn.Linear(self.pre_practice_e.shape[1], d),
             nn.Sigmoid()
         )
-        self.KP_MLP = nn.Sequential(
-            nn.Linear(self.emb_dim, self.emb_dim),
+        # e_kp = phi_obj([o_k ; z_p]): concatenation lets a practice add its own directions
+        self.Obj_Encoder = nn.Sequential(
+            nn.Linear(2 * d, d),
             nn.ReLU(),
-            nn.Linear(self.emb_dim, self.emb_dim)
+            nn.Linear(d, d)
         )
+        # pi_m: the student's ability in each practice, shared across concepts (<pi_m, z_p>)
+        self.Prac_Ability = nn.Embedding(self.stu_n, d)
+        # g_psi([pi_m ; z_p ; o_k]): its first layer is split into the student, practice and concept parts,
+        # so the M x K x P hidden values are sums of broadcast vectors
+        self.Inter_student = nn.Linear(d, d)
+        self.Inter_practice = nn.Linear(d, d, bias=False)
+        self.Inter_concept = nn.Linear(d, d, bias=False)
+        self.Inter_out = nn.Linear(d, 1)
+        # Relational item encoder: g_theta([e_a ; e_b]) (first layer split into the e_a and e_b parts) and f_phi
+        self.Rel_first = nn.Linear(d, d)
+        self.Rel_second = nn.Linear(d, d, bias=False)
+        self.Rel_out = nn.Linear(d, d)
+        self.Item_Encoder = nn.Sequential(
+            nn.Linear(d, d),
+            nn.ReLU(),
+            nn.Linear(d, d)
+        )
+        # The prediction MLP reads the flattened K x P interaction
         self.layers = build_mlp([self.con_n * self.prac_n, 64, 32, 1])
+        # The joint Q-matrix (N x K x P) and each item's objects for the relational encoder
+        joint_q = joint_q.float().to(device)
+        self.register_buffer("joint_q", joint_q)
+        obj_idx, obj_w = item_objects(joint_q)
+        self.register_buffer("obj_idx", obj_idx)
+        self.register_buffer("obj_w", obj_w)
+        self.item_residual_penalty = item_residual_penalty
+        self.practice_interaction_penalty = practice_interaction_penalty
 
         if concept_graph is not None:
             self.Con_graph_Encoder = GraphEncoder(concept_graph, shape1=self.con_n, shape2 = self.con_n, device = device)
@@ -167,21 +209,40 @@ class OurModelV(nn.Module):
         init_embeds = self.Con_free.weight.clone().detach().to(device)
         self.Con_Encoder.set_init_free_embed(init_embeds)
 
-    def practice_matrices(self, know_vec, stu_vec, exer_vec):
-        """Practice version.
-        h_kp  = MLP(o_k * z_p)                         K x P x d
-        C_mkp = sigmoid(<u_m, h_kp> + b_m)             M x K x P  (proficiency; b_m as in MACA-CD's mastery)
-        D_nkp = sigmoid(<v_n, h_kp>)                   N x K x P  (difficulty)"""
-        z_p = self.Prac_Encoder(self.pre_practice_e)                       # P x d
-        h_kp = self.KP_MLP(know_vec.unsqueeze(1) * z_p.unsqueeze(0))      # K x P x d
-        C = torch.einsum('md,kpd->mkp', stu_vec, h_kp)
-        C = torch.sigmoid(C + self.stu_bias.weight.view(-1, 1, 1))
-        D = torch.sigmoid(torch.einsum('nd,kpd->nkp', exer_vec, h_kp))
-        return C, D
+    def practice_matrices(self, know_vec):
+        """Practice version (relational). o_k = know_vec (fused concept embedding), a and b are an item's
+        objects (its (concept, practice) cells with joint Q-matrix weight w > 0).
+        z_p   = Prac_Encoder(practice-definition embedding)                                  P x d
+        e_kp  = phi_obj([o_k ; z_p])                                                         K x P x d
+        C_mkp = sigmoid(<u_m, e_kp> + <pi_m, z_p> + g_psi([pi_m ; z_p ; o_k]) + b_m)         M x K x P (proficiency)
+        v_n   = f_phi( sum_a sum_b w_a w_b g_theta([e_a ; e_b]) ) + delta_n                  N x d
+        D_nkp = sigmoid(<v_n, e_kp>)                                                         N x K x P (difficulty)
+        Returns C, D, g_psi (M x K x P) and delta (N x d), the last two for their penalties."""
+        con_n, prac_n, d = self.con_n, self.prac_n, self.emb_dim
+        z = self.Prac_Encoder(self.pre_practice_e)                                             # P x d
+        e = self.Obj_Encoder(torch.cat([know_vec.unsqueeze(1).expand(con_n, prac_n, d),
+                                        z.unsqueeze(0).expand(con_n, prac_n, d)], dim=-1))     # K x P x d
 
-    def forward(self, stu_id, stu_vector, exer_id, exer_vector, kid, knowledge_vec, epoch = 0, sign=False, joint_q=None):
-        stu_vec = self.User_Encoder.weight
-        exer_vec = self.Exer_Encoder.weight
+        # Proficiency: concept mastery + practice ability across concepts + their interaction
+        u = self.User_Encoder.weight
+        pi = self.Prac_Ability.weight
+        hidden = F.relu(self.Inter_student(pi)[:, None, None, :] + self.Inter_concept(know_vec)[None, :, None, :]
+                        + self.Inter_practice(z)[None, None, :, :])                              # M x K x P x d
+        g = self.Inter_out(hidden).squeeze(-1)                                                   # M x K x P
+        C = torch.einsum('md,kpd->mkp', u, e) + (pi @ z.t()).unsqueeze(1) + g + self.stu_bias.weight.view(-1, 1, 1)
+        C = torch.sigmoid(C)
+
+        # Difficulty: relational encoder over each item's objects plus the item's residual delta_n
+        objects = e.reshape(con_n * prac_n, d)[self.obj_idx]                                     # N x S x d
+        pairs = F.relu(self.Rel_first(objects).unsqueeze(2) + self.Rel_second(objects).unsqueeze(1))  # N x S x S x d
+        pair_w = self.obj_w.unsqueeze(2) * self.obj_w.unsqueeze(1)                               # N x S x S
+        relations = (pair_w.unsqueeze(-1) * self.Rel_out(pairs)).sum(dim=(1, 2))                 # N x d
+        delta = self.Exer_Encoder.weight
+        v = self.Item_Encoder(relations) + delta
+        D = torch.sigmoid(torch.einsum('nd,kpd->nkp', v, e))
+        return C, D, g, delta
+
+    def forward(self, stu_id, stu_vector, exer_id, exer_vector, kid, knowledge_vec, epoch = 0, sign=False):
         know_vec = self.Con_free.weight
 
         if self.Con_graph_Encoder is not None:
@@ -194,16 +255,20 @@ class OurModelV(nn.Module):
             know_vec, _ = self.Con_Encoder(self.pre_concept_e, graph_know_vec, epoch)
 
         # Practice version: concept x practice proficiency and difficulty instead of per concept
-        C, D = self.practice_matrices(know_vec, stu_vec, exer_vec)
+        C, D, g, delta = self.practice_matrices(know_vec)
 
         # Q_joint_n: concept x practice weights of the exercises in the batch (B x K x P, built from the
         # per-concept practice scores in data_loader.joint_q_tensor); x_mn = Q_joint_n * (C_m - D_n)
-        q_joint = joint_q[exer_id]
+        q_joint = self.joint_q[exer_id]
         input_x = (q_joint * (C[stu_id] - D[exer_id])).reshape(len(exer_id), -1)
 
         output = self.layers(input_x)
         if sign:
-            return output.view(-1), ssl_loss
+            # Penalties: the item residual delta_n per response (so it is weighed like the loss of the item's
+            # responses) and the practice-concept interaction g_psi (kept small, a refinement)
+            reg_loss = self.item_residual_penalty * (delta[exer_id] ** 2).sum(dim=1).mean() \
+                       + self.practice_interaction_penalty * (g ** 2).mean()
+            return output.view(-1), ssl_loss, reg_loss
         else:
             return output.view(-1)
 
@@ -211,19 +276,15 @@ class OurModelV(nn.Module):
     def proficiency(self):
         """Students x concepts x practices proficiency C exactly as forward() computes it, without the
         perturbed graph views. Used for DOA (mastery_levels combines the graph differently)."""
-        stu_vec = self.User_Encoder.weight
-        exer_vec = self.Exer_Encoder.weight
         know_vec = self.Con_free.weight
         if self.Con_graph_Encoder is not None:
             know_vec = self.Con_graph_Encoder(know_vec)
         if self.pre_concept_e is not None:
             know_vec, _ = self.Con_Encoder(self.pre_concept_e, know_vec)
-        C, _ = self.practice_matrices(know_vec, stu_vec, exer_vec)
+        C, _, _, _ = self.practice_matrices(know_vec)
         return C
 
     def mastery_levels(self,stu_vec, exer_vec, knowledge_vec, epoch):
-        stu_vec = self.User_Encoder.weight
-        exer_vec = self.Exer_Encoder.weight
         know_vec = self.Con_free.weight
 
         if self.Con_graph_Encoder is not None:
@@ -233,7 +294,7 @@ class OurModelV(nn.Module):
             know_vec, _ = self.Con_Encoder(self.pre_concept_e, know_vec, epoch)
 
         # Practice version: proficiency of every student on every (concept, practice), M x K x P
-        C, _ = self.practice_matrices(know_vec, stu_vec, exer_vec)
+        C, _, _, _ = self.practice_matrices(know_vec)
 
         # print(_["gate_weight_f"].view(-1))
         return C

@@ -28,13 +28,22 @@ with open('../parameter.json', 'r') as f:
 
 parser = argparse.ArgumentParser(description='Configuration')
 parser.add_argument('--split', type=str, default=parameter["split"],
-                    choices=["standard", "cold", "zeroshot"],
+                    choices=["standard", "cold", "zeroshot", "colditem"],
                     help='dataset split')
 parser.add_argument('--device', type=str, default=parameter["device"],
                     help='device')
 parser.add_argument('--CDE', type=int, default=parameter["CDE"],
                     help='CDE')
+parser.add_argument('--seed', type=int, default=None,
+                    help='seed for PyTorch, NumPy and Python random numbers (weights, batch order, dropout); '
+                         'results go to training_logs_<split>_seed<seed>.txt. Default: unseeded')
 args = parser.parse_args()
+
+if args.seed is not None:
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)
 
 device = args.device
 split = args.split
@@ -66,7 +75,7 @@ test_loader = DataLoader(test_dataset, batch_size=parameter["batch_size"], shuff
 
 def train():
     loss_function = nn.BCELoss(reduction="none")
-    net = OurModelV(student_n, exercise_n, knowledge_n, parameter["mf_dim"], device = device, pre_concept_e = pre_emb, concept_graph = [concept_parameters_diff_i.to(device), concept_parameters_diff_v.to(device)], concept_num_matrix=concept_num_matrix, pre_practice_e = pre_practice_emb)
+    net = OurModelV(student_n, exercise_n, knowledge_n, parameter["mf_dim"], device = device, pre_concept_e = pre_emb, concept_graph = [concept_parameters_diff_i.to(device), concept_parameters_diff_v.to(device)], concept_num_matrix=concept_num_matrix, pre_practice_e = pre_practice_emb, joint_q = QJ_matrix, item_residual_penalty = parameter.get("item_residual_penalty", 0.01), practice_interaction_penalty = parameter.get("practice_interaction_penalty", 0.001))
     net = net.to(device)
     optimizer_net = optim.Adam(net.parameters(), lr=parameter["learning_rate"])
 
@@ -78,10 +87,10 @@ def train():
     else:
         print(f"{log_path} Exists")
 
-    log_file = log_path + "/training_logs_"+ split +".txt"
+    log_file = log_path + "/training_logs_" + split + ("" if args.seed is None else "_seed%d" % args.seed) + ".txt"
     from datetime import datetime
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    current = current_time + " Model:" + test_model + " batch_size:" + str(parameter["batch_size"]) + " learning_rate:" + str(parameter["learning_rate"])
+    current = current_time + " Model:" + test_model + " batch_size:" + str(parameter["batch_size"]) + " learning_rate:" + str(parameter["learning_rate"]) + " seed:" + str(args.seed)
     with open(log_file, "a") as f:
         f.write(json.dumps(current) + "\n")
 
@@ -104,9 +113,9 @@ def train():
             # exer_vec = torch.cat([response_matrix.t(), Q_matrix], dim=1).float()
             labels = labels.to(device).float()
             optimizer_net.zero_grad()       
-            output, ssl_loss = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), epoch, True, joint_q=QJ_matrix)
+            output, ssl_loss, reg_loss = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), epoch, True)
             edu_loss = loss_function(output, labels)
-            edu_loss = edu_loss.mean() + 0.001 * ssl_loss
+            edu_loss = edu_loss.mean() + 0.001 * ssl_loss + reg_loss  # practice version: + the penalties on delta_n and g_psi
             edu_loss.backward()
             # Skip a step whose gradient is not finite: applying it would turn the weights into NaN, and
             # the next loss computation would stop the run with a CUDA device-side assert
@@ -175,7 +184,7 @@ def predict(net, test_loader):
 
             exer_vec = response_matrix.t().float()
             labels = labels.to(device).float()
-            output = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), 100, joint_q=QJ_matrix) # 100 is nothing, just > 1
+            output = net.forward(input_stu_ids, response_matrix.detach().float(), input_exer_ids, exer_vec, kid, Q_concept.detach(), 100) # 100 is nothing, just > 1
             output = output.view(-1)
             correct_count += ((output >= 0.5) == labels).sum()
             exer_count += len(labels)

@@ -17,11 +17,12 @@ FoundationalASSIST counterpart.
    - `init`: the concepts no other concept depends on -> `data/graph/initial_nodes.json`
    - `extend`: breadth-first prerequisite DAG from those nodes -> `data/graph/DAG_edges.json`
    - `embed`: an embedding of each description -> `data/concept_preknowledge/concept_meta_emb.json`
-3. **Splits** (`data/data_preprocess.py`): `data/preprocessed/{standard,cold,zeroshot}_spilt.pkl` and the
+3. **Splits** (`data/data_preprocess.py`): `data/preprocessed/{standard,cold,zeroshot,colditem}_spilt.pkl` and the
    student, exercise and concept counts in `parameter.json`.
    - standard: random 80/20 split of the responses
    - cold: half the students are test students, with only 2 of their responses in training
    - zeroshot: 20% of the concepts are held out; responses to problems with a held-out concept are the test set
+   - colditem: 20% of the exercises are held out entirely; all their responses are the test set (new items)
 4. **Training** (`model/train.py --split <split>`): MACA-CD, reporting ACC and AUC on the test set each
    epoch; the best epochs are logged in `model/results/OurModel/training_logs_<split>.txt`.
    At every new best epoch it also computes the DOA (degree of agreement) of the diagnosed proficiency
@@ -107,6 +108,7 @@ cd model
 python3 train.py --split standard
 python3 train.py --split cold
 python3 train.py --split zeroshot
+python3 train.py --split colditem
 ```
 `--device cuda:1` picks another GPU. Training runs 200 epochs (`number_epoch` in `parameter.json`).
 

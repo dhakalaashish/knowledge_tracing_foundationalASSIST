@@ -1,5 +1,5 @@
 ''' HFUT SPY @2025
-Standard / cold / zeroshot splits, adapted for FoundationalASSIST from MACA-CD/SLP/data/data_preprocess.py.
+Standard / cold / zeroshot / colditem splits, adapted for FoundationalASSIST from MACA-CD/SLP/data/data_preprocess.py.
 Run from this directory after `python concept_main.py --stage preprocess`:
     python data_preprocess.py
 Problems can have several skills, so Q_matrix maps each exercise to a list of concept ids.
@@ -154,6 +154,29 @@ newc_spilt = {
 }
 with open("preprocessed/zeroshot_spilt.pkl", "wb") as f:
     pickle.dump(newc_spilt, f)
+
+# split 4: cold-start items. 20% of the exercises are held out: all their responses are test responses,
+# so the model has never seen these items in training. (After the other splits, which stay unchanged.)
+train_set_colditem, test_set_colditem = [], []
+exercise_ids = sorted(new_Q_matrix)
+held_out_items = set(random.sample(exercise_ids, int(0.2 * len(exercise_ids))))
+for record in all_sets:
+    if record[1] in held_out_items:
+        test_set_colditem.append(record)
+    else:
+        train_set_colditem.append(record)
+
+print("training length whole: " + str(len(train_set_colditem)))
+print("testing length whole: " + str(len(test_set_colditem)))
+
+colditem_spilt = {
+    "train": train_set_colditem,
+    "Q_matrix": new_Q_matrix,
+    "test": test_set_colditem,
+    "colditem_exercises": sorted(held_out_items)
+}
+with open("preprocessed/colditem_spilt.pkl", "wb") as f:
+    pickle.dump(colditem_spilt, f)
 
 # counts for model/train.py
 parameter["student_num"] = len(user_ids)
