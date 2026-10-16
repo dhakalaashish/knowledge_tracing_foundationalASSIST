@@ -53,7 +53,7 @@ class FusionKnowledgeEncoder(nn.Module):
         o_t_init = self.free_embed_init  # initialization embedding
             
         concat = torch.cat([
-            torch.sqrt((o_t - o_t_init) ** 2),
+            torch.abs(o_t - o_t_init),  # = sqrt((o_t - o_t_init) ** 2), whose gradient is NaN where the difference is 0
             o_t * o_t_init
         ], dim=-1)  # shape: [concept_num, embed_dim*4]
 

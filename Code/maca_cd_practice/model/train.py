@@ -94,6 +94,7 @@ def train():
             'AUC': 0.0
         }
         net.train()
+        skipped_steps = 0
         for idx, (input_stu_ids, input_exer_ids, kid, labels) in enumerate(train_loader):
             kid = kid.to(device).long()
             Q_concept = Q_matrix.t().float()
@@ -107,7 +108,13 @@ def train():
             edu_loss = loss_function(output, labels)
             edu_loss = edu_loss.mean() + 0.001 * ssl_loss
             edu_loss.backward()
-            optimizer_net.step()
+            # Skip a step whose gradient is not finite: applying it would turn the weights into NaN, and
+            # the next loss computation would stop the run with a CUDA device-side assert
+            grads = [p.grad for p in net.parameters() if p.grad is not None]
+            if torch.stack([torch.isfinite(g).all() for g in grads]).all():
+                optimizer_net.step()
+            else:
+                skipped_steps += 1
             train_res['edu_loss'] += edu_loss.item()
 
         log_triggered = False
@@ -127,6 +134,8 @@ def train():
             training_logs += doa_detail
 
         print(training_logs)
+        if skipped_steps:
+            print("WARNING: epoch %d skipped %d training steps with non-finite gradients" % (epoch, skipped_steps))
         if log_triggered:
             with open(log_file, "a") as f:
                 f.write(json.dumps(training_logs) + "\n")
