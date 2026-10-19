@@ -127,7 +127,7 @@ def train():
             train_res['edu_loss'] += edu_loss.item()
 
         log_triggered = False
-        ACC, AUC = predict(net, test_loader)
+        ACC, AUC, test_pred = predict(net, test_loader)
         if AUC > best_auc:
             best_auc = AUC
             log_triggered = True
@@ -136,6 +136,7 @@ def train():
         train_res["AUC"] = AUC
         if log_triggered:  # DOA of the diagnosed proficiency at every new best epoch
             train_res["DOA"], doa_detail = evaluate_doa(net)
+            save_state(net, test_pred)
         training_logs = 'epoch: %d, ' % epoch
         for name, value in train_res.items():
             training_logs += name + ':' + '%.4f' % value + ' '
@@ -171,6 +172,17 @@ def evaluate_doa(net):
     return doa, detail
 
 
+def save_state(net, test_pred):
+    """Proficiency (students x concepts x practices) and test-record predictions of the best epoch so far,
+    in results/<model>/state_<split>[_seed<N>].npz (as maca_cd saves its students x concepts proficiency)."""
+    net.eval()
+    with torch.no_grad():
+        proficiency = net.proficiency().cpu().numpy()
+    state_file = "results/" + test_model + "/state_" + split + ("" if args.seed is None else "_seed%d" % args.seed) + ".npz"
+    np.savez(state_file, proficiency=proficiency, test_pred=test_pred,
+             test_records=test_dataset.data[:, :3].astype(np.int64))
+
+
 def predict(net, test_loader):
     net.eval()
     with torch.no_grad():
@@ -194,7 +206,7 @@ def predict(net, test_loader):
     label_all = np.array(label_all)
     accuracy = correct_count / exer_count
     auc = roc_auc_score(label_all, pred_all)
-    return accuracy, auc
+    return accuracy, auc, pred_all
 
 if __name__ == '__main__':
     train()

@@ -1,0 +1,53 @@
+{
+    "split": "standard",
+    "__comment_split__": "Default split (overridden by --split): one of standard/cold/zeroshot/colditem, the maca_cd splits",
+    "num_students": 300,
+    "__comment_num_students__": "Number of learner agents to simulate. Students are drawn in a fixed seeded order, so a larger number keeps the smaller sample and adds to it",
+    "seed": 2025,
+    "val_fraction": 0.125,
+    "__comment_val_fraction__": "Share of maca_cd's training records held out to pick the IRT/NCDM epoch: 0.125 of 80% gives the paper's 70/10/20",
+
+    "knowledge_tool": "ncdm",
+    "__comment_knowledge_tool__": "Knowledge-state tool the agent reads mastery from: ncdm (trained by train_tools.py) or maca_cd (plain MACA-CD, trained by maca_cd/model/train.py)",
+    "maca_cd_seed": null,
+    "__comment_maca_cd_seed__": "With knowledge_tool maca_cd: the --seed of the maca_cd run to read (null = the unseeded run)",
+    "relation_threshold": null,
+    "__comment_relation_threshold__": "KC relation R: edge i->j when the transition share C_ij exceeds this (null = mean + std of the non-zero C_ij)",
+
+    "ncdm": {
+        "lr": 0.002,
+        "batch_size": 32,
+        "epochs": 10,
+        "device": "cuda:0"
+    },
+    "__comment_ncdm__": "Official NeuralCD settings: Adam lr 0.002, batch 32; the epoch with the best validation AUC is kept",
+    "irt": {
+        "lr": 0.01,
+        "batch_size": 4096,
+        "epochs": 30,
+        "device": "cuda:0"
+    },
+
+    "agent": {
+        "short_term_size": 5,
+        "factual_k": 10,
+        "summary_max_words": 500,
+        "memory_text_chars": 300,
+        "exercise_text_chars": 4000,
+        "online_feedback": true,
+        "ablation": "none"
+    },
+    "__comment_agent__": "short_term_size d = 5 recent records (paper); factual_k = reinforced related facts shown; online_feedback true = reveal each test outcome after predicting it and reflect (paper), false = never reveal test outcomes; ablation: none/no_profile/no_reasoning/no_affect/no_reflection",
+
+    "llm": {
+        "base_url": "http://localhost:8000/v1",
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "temperature": 0.0,
+        "max_tokens_predict": 1024,
+        "max_tokens_reflect": 1024,
+        "top_logprobs": 5,
+        "concurrency": 64,
+        "max_attempts": 5
+    },
+    "__comment_llm__": "vLLM OpenAI-compatible server; temperature 0 as in the paper; concurrency = requests in flight (each student runs its records one after another)"
+}

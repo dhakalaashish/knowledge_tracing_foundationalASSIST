@@ -774,7 +774,8 @@ def main():
 
     # Build prompts from a copy without the ground truth (or any earlier prediction),
     # so the model never sees the answer it is being scored on
-    prompt_df = problems_df.drop(columns=[GROUND_TRUTH_COLUMN, OUTPUT_COLUMN, PREDICTED_COLUMN, MULTI_HOT_COLUMN],
+    prompt_df = problems_df.drop(columns=[GROUND_TRUTH_COLUMN, OUTPUT_COLUMN, PREDICTED_COLUMN, MULTI_HOT_COLUMN]
+                                         + [c for c in problems_df.columns if c.startswith("practice_probability_")],
                                  errors="ignore")
     user_prompts = {idx: create_user_prompt(prompt_df.loc[idx]) for idx in todo}
     print(f"\nExample user prompt (problem_id {problems_df.at[todo[0], 'problem_id']}):\n")

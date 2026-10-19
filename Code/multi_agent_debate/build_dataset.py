@@ -93,8 +93,9 @@ def main():
         problems_df = problems_df.head(args.limit_problems)
     # The ground truth must never reach a prompt: drop it (and any earlier predictions) first
     prompt_df = problems_df.drop(
-        columns=[c for c in (GROUND_TRUTH_COLUMN, "mathematical_practice", "predicted_practice")
-                 if c in problems_df.columns]
+        columns=[c for c in problems_df.columns
+                 if c in (GROUND_TRUTH_COLUMN, "mathematical_practice", "predicted_practice")
+                 or c.startswith("practice_probability_")]
     )
 
     framework = build_framework_text()
