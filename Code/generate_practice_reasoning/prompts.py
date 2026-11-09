@@ -31,13 +31,13 @@ PRACTICES = [
 
 INTRO_1 = """You are an expert in mathematics assessment. You have years of experience reviewing test items and deciding which mathematical practices each item assesses.
 
-Your task: read ONE item from an online k-12 mathematics item bank and work out which practices a student needs to use to solve it, in which order, and why; and which practices the item does not use, and why.
+Your task: read ONE item from an online k-12 mathematics item bank and work out which practices a student needs to use to solve it, in which order, how the student uses each one, and what a student could get wrong at each step; and which practices the item does not use, and why.
 
 """
 
 INTRO_2 = """You are an expert in mathematics assessment. You have years of experience reviewing test items and deciding which mathematical practices each item assesses.
 
-Your task: you will be given ONE item from an online k-12 mathematics item bank, together with an analysis of it: the practices a student uses to solve the item, in order, with the reason for each, and the practices the item does not use, with the reason for each. Use the item and the analysis to choose the single practice the item mainly assesses (the top practice), and explain why it is the top practice.
+Your task: you will be given ONE item from an online k-12 mathematics item bank, together with an analysis of it: the practices a student uses to solve the item, in order, with how each is used and what a student could get wrong at that step, and the practices the item does not use, with the reason for each. Use the item and the analysis to choose the top practice: the practice where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice.
 
 """
 
@@ -270,7 +270,9 @@ How to respond
 Base the answer on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from. Write the practice names exactly as: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency.
 
 - Work through how a student solves the item, step by step, and decide which practices the steps require.
+- Order the steps as the student actually does them. Turning words, a diagram, a table or a graph into a mathematical form (an expression, an equation, a number sentence, a model) comes before computing with that form.
 - Put each practice the student uses in "practices_used", in the order the student first needs it ("order": 1, 2, 3, ...). If a practice is needed at several points, list it once, at the point where it is first needed. Say why each practice is used: what the student does at that step, and which part of the practice definition or descriptors it matches.
+- For each practice used, say in "likely_errors" what a student could get wrong at that step, and how likely that is for a student. If the step is routine for a fluent student, say so.
 - Put each remaining practice in "practices_not_used", and say why the item does not call for it.
 - Each of the six practices must appear exactly once, either in "practices_used" or in "practices_not_used". "practices_used" must contain at least one practice.
 
@@ -278,8 +280,8 @@ Respond with exactly one JSON object in this form, and write nothing before or a
 
 {
 "practices_used": [
-  {"order": 1, "practice": "<practice name>", "why": "<1-3 sentences: what the student does at this step and why that is this practice>"},
-  {"order": 2, "practice": "<practice name>", "why": "<...>"}
+  {"order": 1, "practice": "<practice name>", "why": "<1-3 sentences: what the student does at this step and why that is this practice>", "likely_errors": "<1-2 sentences: what a student could get wrong at this step, and how likely that is>"},
+  {"order": 2, "practice": "<practice name>", "why": "<...>", "likely_errors": "<...>"}
 ],
 "practices_not_used": [
   {"practice": "<practice name>", "why": "<1-2 sentences: why the item does not call for this practice>"}
@@ -293,16 +295,16 @@ How to respond
 
 Base the answer on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from. Write the practice names exactly as: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency.
 
-- Read the item and the analysis. The analysis lists the practices the student uses, in order, and the practices the item does not use, each with a reason.
-- Choose the single practice the item mainly assesses: the practice that carries the main demand of the item, the one a student most needs in order to answer it correctly. It must be one of the practices in the analysis's "practices_used" list.
-- A practice is not the top practice just because it comes first or last in the order. Weigh what each used practice contributes to solving the item, using the reasons in the analysis and the practice definitions and descriptors. When two practices seem equally strong, choose the one that best matches the practice definitions.
-- Explain why this practice is the top practice: what in the item makes it the main demand, and why it outweighs each of the other practices used.
+- Read the item and the analysis. The analysis lists the practices the student uses, in order, with how each is used ("why") and what a student could get wrong at that step ("likely_errors"), and the practices the item does not use, each with a reason.
+- The top practice is the step where the item's difficulty lies: the practice a student who answers the item incorrectly most likely failed at. Compare the "likely_errors" of the practices used, check them against the item, and choose the practice whose step is hardest for a student. It must be one of the practices in the analysis's "practices_used" list.
+- A practice is not the top practice just because it comes first or last in the order, or because the analysis says the most about it. When two practices seem equally hard, choose the one that best matches the practice definitions.
+- Explain why this practice is the top practice: what a student is likely to get wrong at this step, and why the other practices used are less likely to cause an incorrect answer.
 
 Respond with exactly one JSON object in this form, and write nothing before or after it:
 
 {
 "top_practice": "<exactly one of: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency>",
-"why": "<2-4 sentences: why this practice is the top practice of the item, and why it outweighs the other practices used>"
+"why": "<2-4 sentences: where a student is most likely to go wrong in this item, why that step is this practice, and why the other practices used are less likely to cause an incorrect answer>"
 }"""
 
 PRACTICE_DEFINITIONS = (
@@ -323,7 +325,7 @@ SYSTEM_PROMPT_2 = INTRO_2 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_2
 
 # User prompt 1: the question, then the rendered problem text in place of {PROBLEM}.
 # Placeholders are filled in one pass by common.fill (not str.format: problem texts contain braces).
-Q1_TEMPLATE = """Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, and how the student uses each one. Then tell me which practices the student does not use, and why.
+Q1_TEMPLATE = """Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.
 
 Item:
 
@@ -339,4 +341,4 @@ Analysis of the practices a student uses to solve this item:
 
 {ANALYSIS}
 
-Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item, the one the item mainly assesses. Explain why it is the top practice and why it outweighs the other practices the student uses."""
+Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."""

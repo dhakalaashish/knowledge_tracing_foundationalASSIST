@@ -9,8 +9,9 @@ All prompts are in `prompts.py`. Each problem goes through two separate LLM call
 | | Prompt 1: practice order | Prompt 2: top practice |
 |---|---|---|
 | System prompt | `SYSTEM_PROMPT_1`: the task, the six practices with the definitions and descriptors from `Code/augment_mathematical_practice.py` (copied verbatim), notes about the items, and the format of answer 1 | `SYSTEM_PROMPT_2`: the task, the same definitions and descriptors and notes, and the format of answer 2 |
-| User prompt | `Q1_TEMPLATE`: *Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, and how the student uses each one. Then tell me which practices the student does not use, and why.* followed by the problem | `Q2_TEMPLATE`: the problem, answer 1 (the checked JSON, indented) as "Analysis of the practices a student uses to solve this item", and *Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item, the one the item mainly assesses. Explain why it is the top practice and why it outweighs the other practices the student uses.* |
-| Answer | the practices used, in order, each with why; the practices not used, each with why | the top practice, with why it is the top practice and outweighs the other practices used |
+| User prompt | `Q1_TEMPLATE`: *Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.* followed by the problem | `Q2_TEMPLATE`: the problem, answer 1 (the checked JSON, indented) as "Analysis of the practices a student uses to solve this item", and *Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.* |
+| Answer | the practices used, in the order the student does them (translating words, diagrams or tables into math comes before computing with it), each with why and likely errors; the practices not used, each with why | the top practice, with why it is the top practice |
+| Top practice rule | | the step where the item's difficulty lies: the practice a student who answers incorrectly most likely failed at, judged by comparing the `likely_errors` of the practices used |
 | Sent | always | only after answer 1 passed the JSON check |
 
 Answer 1:
@@ -18,8 +19,8 @@ Answer 1:
 ```json
 {
 "practices_used": [
-  {"order": 1, "practice": "Representing", "why": "..."},
-  {"order": 2, "practice": "Procedural Fluency", "why": "..."}
+  {"order": 1, "practice": "Representing", "why": "...", "likely_errors": "..."},
+  {"order": 2, "practice": "Procedural Fluency", "why": "...", "likely_errors": "..."}
 ],
 "practices_not_used": [
   {"practice": "Abstracting and Generalizing", "why": "..."},
@@ -36,7 +37,7 @@ Answer 2:
 {"top_practice": "Representing", "why": "..."}
 ```
 
-The JSON check (`common.AnswerChecker`) parses each answer with `json.loads`. The answer must be exactly one JSON object; a single ```` ```json ```` fence around it is accepted, but any other text before or after it fails. Answer 1 must list at least one practice as used, number the used practices 1, 2, 3... in order, name each of the six practices exactly once across the two lists, and give a non-empty "why" for every entry. Answer 2 must name one of the six practices, one that answer 1 listed as used, with a non-empty "why". If answer 1 fails, prompt 2 is not sent.
+The JSON check (`common.AnswerChecker`) parses each answer with `json.loads`. The answer must be exactly one JSON object; a single ```` ```json ```` fence around it is accepted, but any other text before or after it fails. Answer 1 must list at least one practice as used, number the used practices 1, 2, 3... in order, name each of the six practices exactly once across the two lists, give a non-empty "why" for every entry, and a non-empty "likely_errors" for every used practice. Answer 2 must name one of the six practices, one that answer 1 listed as used, with a non-empty "why". If answer 1 fails, prompt 2 is not sent.
 
 ## Retries and the list of failed problems
 
@@ -103,8 +104,8 @@ Full runs, from this folder on the A100:
 PYTHONUNBUFFERED=1 nohup python3 generate.py --provider anthropic --workers 8 > claude_api.log 2>&1 &
 PYTHONUNBUFFERED=1 nohup python3 generate.py --provider openai --model gpt-5 --workers 8 > openai.log 2>&1 &
 PYTHONUNBUFFERED=1 nohup python3 generate.py --provider gemini --model gemini-2.5-pro --workers 8 > gemini.log 2>&1 &
-CUDA_VISIBLE_DEVICES=0,1,2,3 PYTHONUNBUFFERED=1 nohup python3 generate.py --provider local \
-    --num-gpus 4 --cache-dir /data1/ > qwen3_30b.log 2>&1 &
+PYTHONUNBUFFERED=1 nohup python3 generate.py --provider local \
+    --num-gpus 1 --cache-dir /data1/ > qwen3_30b.log 2>&1 &
 ```
 
 Useful options:

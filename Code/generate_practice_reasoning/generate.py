@@ -31,7 +31,7 @@ Examples:
     python3 generate.py --provider anthropic --rows 1-20
     python3 generate.py --provider openai --model gpt-5 --rows 1-300 --workers 8
     python3 generate.py --provider gemini --model gemini-2.5-pro --rows 1-300
-    python3 generate.py --provider local --num-gpus 4 --cache-dir /data1/      # Qwen3-30B on vLLM
+    python3 generate.py --provider local --num-gpus 1 --cache-dir /data1/      # Qwen3-30B on vLLM
     python3 generate.py --provider anthropic --merge-only                      # rewrite the CSV columns
 """
 
@@ -97,7 +97,8 @@ def parse_args():
     g = ap.add_argument_group("gemini")
     g.add_argument("--gemini-include-thoughts", action="store_true", help="return and log thought summaries")
     g = ap.add_argument_group("local (offline vLLM)")
-    g.add_argument("--num-gpus", type=int, default=1)
+    g.add_argument("--num-gpus", type=int, default=1,
+                   help="GPUs for tensor parallelism; must not exceed the visible GPUs")
     g.add_argument("--gpu-memory-utilization", type=float, default=0.9)
     g.add_argument("--max-model-len", type=int, default=32768)
     g.add_argument("--cache-dir", help="Hugging Face download directory (e.g. /data1/)")

@@ -213,6 +213,12 @@ class LocalVLLMProvider:
 
     def __init__(self, args):
         os.environ.setdefault("VLLM_USE_FLASHINFER_SAMPLER", "0")  # needed on the A100 server
+        import torch
+        visible = torch.cuda.device_count()
+        if args.num_gpus > visible:
+            raise SystemExit(f"--num-gpus {args.num_gpus} but only {visible} GPU(s) are visible "
+                             f"(CUDA_VISIBLE_DEVICES={os.environ.get('CUDA_VISIBLE_DEVICES', 'not set')}). "
+                             f"Use --num-gpus {max(visible, 1)}.")
         from vllm import LLM, SamplingParams
         llm_kwargs = {"model": args.model, "tensor_parallel_size": args.num_gpus,
                       "gpu_memory_utilization": args.gpu_memory_utilization,

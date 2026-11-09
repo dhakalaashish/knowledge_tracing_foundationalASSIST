@@ -119,14 +119,14 @@ def parse_json_answer(text):
     return obj, how
 
 
-def _why(item, where):
-    why = item.get("why")
-    if not isinstance(why, str) or not why.strip():
-        raise ValueError(f"{where}: \"why\" must be a non-empty string")
+def _why(item, where, key="why"):
+    value = item.get(key)
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{where}: \"{key}\" must be a non-empty string")
 
 
 def check_answer1(obj):
-    """Rules for answer 1 (see prompts.PROMPT_RESPONSE). Raises ValueError on the first problem."""
+    """Rules for answer 1 (see prompts.PROMPT_RESPONSE_1). Raises ValueError on the first problem."""
     for key in ("practices_used", "practices_not_used"):
         if not isinstance(obj.get(key), list):
             raise ValueError(f"\"{key}\" must be a list")
@@ -143,6 +143,7 @@ def check_answer1(obj):
         if item.get("order") != i or isinstance(item.get("order"), bool):
             raise ValueError(f"{where}: \"order\" must be {i}")
         _why(item, where)
+        _why(item, where, "likely_errors")
         seen.append(item["practice"])
     for i, item in enumerate(not_used, 1):
         where = f"practices_not_used[{i}]"
