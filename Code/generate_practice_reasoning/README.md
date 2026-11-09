@@ -9,7 +9,7 @@ All prompts are in `prompts.py`. Each problem goes through two separate LLM call
 | | Prompt 1: practice order | Prompt 2: top practice |
 |---|---|---|
 | System prompt | `SYSTEM_PROMPT_1`: the task, the six practices with the definitions and descriptors from `Code/augment_mathematical_practice.py` (copied verbatim), notes about the items, and the format of answer 1 | `SYSTEM_PROMPT_2`: the task, the same definitions and descriptors and notes, and the format of answer 2 |
-| User prompt | `Q1_TEMPLATE`: *Look at the Math NAEP practices, and then tell me which practices needs to be used in which order to solve this problem. Also add "procedural fluency" from NRC as one of the practice:* followed by the problem | `Q2_TEMPLATE`: the problem, answer 1 (the checked JSON, indented) as "Analysis of the practices this item uses", and *If you had to choose one as the major practice, which one would you choose?* |
+| User prompt | `Q1_TEMPLATE`: *Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, and how the student uses each one. Then tell me which practices the student does not use, and why.* followed by the problem | `Q2_TEMPLATE`: the problem, answer 1 (the checked JSON, indented) as "Analysis of the practices a student uses to solve this item", and *Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item, the one the item mainly assesses. Explain why it is the top practice and why it outweighs the other practices the student uses.* |
 | Answer | the practices used, in order, each with why; the practices not used, each with why | the top practice, with why it is the top practice and outweighs the other practices used |
 | Sent | always | only after answer 1 passed the JSON check |
 
@@ -77,7 +77,7 @@ LC_ALL=C gawk -b -F'\t' -v PDIR=rendered -f tools/to_jsonl.awk ids.tsv > problem
 LC_ALL=C gawk -b -v PDIR=rendered -f tools/check_jsonl.awk problems_rendered.jsonl
 ```
 
-Note: unlike this setup, the Claude agents of the rows 1-300 run had no system prompt (and no web access), asked both questions in one chat, answered in free text, and their top practice was the first practice named in answer 2. Results from this script are therefore not strictly comparable with the `claude_*` columns.
+Note: unlike this setup, the Claude agents of the rows 1-300 run had no system prompt (and no web access), were asked differently worded questions ("Look at the Math NAEP practices, and then tell me which practices needs to be used in which order to solve this problem..." and "If you had to choose one as the major practice, which one would you choose?") in one chat, answered in free text, and their top practice was the first practice named in answer 2. Results from this script are therefore not strictly comparable with the `claude_*` columns.
 
 ## Setup
 

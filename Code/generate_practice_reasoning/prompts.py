@@ -2,8 +2,8 @@
 
 The practice definitions and descriptors are copied verbatim from SYSTEM_PROMPT in
 Code/augment_mathematical_practice.py (only the '(JSON key: ...)' tags after each practice name were
-removed, since the answers here use the practice names). Both prompts contain them. The two
-questions are the ones used for the claude_practice_reasoning / claude_top_practice columns.
+removed, since the answers here use the practice names). Both prompts contain them, and both user
+prompts ask the model to use them.
 
 Each problem goes through two separate LLM calls (two fresh conversations, not one chat):
 
@@ -321,19 +321,22 @@ SYSTEM_PROMPT_1 = INTRO_1 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_1
 # Prompt 2: the top practice, from the item and answer 1.
 SYSTEM_PROMPT_2 = INTRO_2 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_2
 
-# User prompt 1: question 1 with the rendered problem text in place of {PROBLEM}.
-# Placeholders are filled with str.replace, because problem texts contain braces.
-Q1_TEMPLATE = """Look at the Math NAEP practices, and then tell me which practices needs to be used in which order to solve this problem. Also add "procedural fluency" from NRC as one of the practice:
+# User prompt 1: the question, then the rendered problem text in place of {PROBLEM}.
+# Placeholders are filled in one pass by common.fill (not str.format: problem texts contain braces).
+Q1_TEMPLATE = """Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, and how the student uses each one. Then tell me which practices the student does not use, and why.
+
+Item:
 
 {PROBLEM}"""
 
-# User prompt 2: the problem, answer 1 (the checked JSON object, indented) and question 2.
+# User prompt 2: the problem, answer 1 (the checked JSON object, indented) in place of {ANALYSIS},
+# then the question.
 Q2_TEMPLATE = """Item:
 
 {PROBLEM}
 
-Analysis of the practices this item uses:
+Analysis of the practices a student uses to solve this item:
 
 {ANALYSIS}
 
-If you had to choose one as the major practice, which one would you choose?"""
+Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item, the one the item mainly assesses. Explain why it is the top practice and why it outweighs the other practices the student uses."""
