@@ -1,8 +1,8 @@
-// Compare Claude's practice labels (rows 1-300) with another labeler's (default: qwen3_30b_v2).
+// Compare Claude's practice labels (rows 1-300) with another labeler's (default: qwen3_30b_v3).
 //
 // Usage (from the repo root; Node only, no packages):
 //   node Code/generate_practice_reasoning/tools/compare_labels.js [prefix] [name]
-//   e.g. node Code/generate_practice_reasoning/tools/compare_labels.js qwen3_30b_v2 Qwen
+//   e.g. node Code/generate_practice_reasoning/tools/compare_labels.js qwen3_30b_v3 Qwen
 //
 // Reads:
 //   Data/Problems.csv      rows 1-300: Problem Body, problem_id, predicted_practice, claude_practice_reasoning,
@@ -17,7 +17,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const PREFIX = process.argv[2] || "qwen3_30b_v2";
+const PREFIX = process.argv[2] || "qwen3_30b_v3";
 const NAME = process.argv[3] || "Qwen";
 const N = 300;
 const ROOT = process.cwd();

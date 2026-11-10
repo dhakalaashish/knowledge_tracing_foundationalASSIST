@@ -21,7 +21,7 @@ import re
 from common import now, sha256
 
 THINK_RE = re.compile(r"^\s*<think>(.*?)</think>\s*", re.S)
-SYSTEM_NAMES = {1: "SYSTEM_PROMPT_1", 2: "SYSTEM_PROMPT_2"}
+SYSTEM_NAMES = {1: "SYSTEM_PROMPT_1", 2: "SYSTEM_PROMPT_2", 3: "SYSTEM_PROMPT_3"}
 
 
 def split_think(text):
@@ -248,8 +248,8 @@ class LocalVLLMProvider:
         return {"provider": self.name, "model": self.model, "params": self.params, "infra": self.infra}
 
     def sampling_for(self, key, step):
-        # A different seed for each attempt (so a redo can differ) and for each step.
-        return {**self.sampling_kwargs, "seed": self.base_seed + 2 * self.attempt_of.get(key, 0) + step - 1}
+        # A different seed for each attempt (so a redo can differ) and for each of the three steps.
+        return {**self.sampling_kwargs, "seed": self.base_seed + 3 * self.attempt_of.get(key, 0) + step - 1}
 
     def _rendered(self, conv, system, step):
         kw = dict(tokenize=False, add_generation_prompt=True)

@@ -34,21 +34,23 @@ def sha256(text):
 
 
 def load_prompts():
-    """The two system prompts and the two user prompt templates, all from prompts.py."""
+    """The three system prompts and the three user prompt templates, all from prompts.py."""
     if "{PROBLEM}" not in P.Q1_TEMPLATE:
         raise ValueError("prompts.Q1_TEMPLATE must contain {PROBLEM}")
-    if "{PROBLEM}" not in P.Q2_TEMPLATE or "{ANALYSIS}" not in P.Q2_TEMPLATE:
-        raise ValueError("prompts.Q2_TEMPLATE must contain {PROBLEM} and {ANALYSIS}")
-    return {"system_1": P.SYSTEM_PROMPT_1, "system_2": P.SYSTEM_PROMPT_2,
-            "q1_template": P.Q1_TEMPLATE, "q2_template": P.Q2_TEMPLATE}
+    if "{PROBLEM}" not in P.Q2_TEMPLATE or "{PRACTICES}" not in P.Q2_TEMPLATE:
+        raise ValueError("prompts.Q2_TEMPLATE must contain {PROBLEM} and {PRACTICES}")
+    if "{PROBLEM}" not in P.Q3_TEMPLATE or "{ANALYSIS}" not in P.Q3_TEMPLATE:
+        raise ValueError("prompts.Q3_TEMPLATE must contain {PROBLEM} and {ANALYSIS}")
+    return {"system_1": P.SYSTEM_PROMPT_1, "system_2": P.SYSTEM_PROMPT_2, "system_3": P.SYSTEM_PROMPT_3,
+            "q1_template": P.Q1_TEMPLATE, "q2_template": P.Q2_TEMPLATE, "q3_template": P.Q3_TEMPLATE}
 
 
-PLACEHOLDER_RE = re.compile(r"\{(PROBLEM|ANALYSIS)\}")
+PLACEHOLDER_RE = re.compile(r"\{(PROBLEM|PRACTICES|ANALYSIS)\}")
 
 
 def fill(template, **values):
-    """Fill {PROBLEM} / {ANALYSIS} in one pass (not str.format: problem texts contain braces, and
-    text that was filled in is never searched again)."""
+    """Fill {PROBLEM} / {PRACTICES} / {ANALYSIS} in one pass (not str.format: problem texts contain
+    braces, and text that was filled in is never searched again)."""
     return PLACEHOLDER_RE.sub(lambda m: values[m.group(1)], template)
 
 
@@ -56,10 +58,33 @@ def build_prompt1(prompts, problem_text):
     return fill(prompts["q1_template"], PROBLEM=problem_text)
 
 
+def practices_for_ordering(answer1):
+    """The practices answer 1 lists as used, one line each ("- <practice>: <why>"), in the fixed order of
+    prompts.PRACTICES, so prompt 2 does not see answer 1's order."""
+    why = {it["practice"]: " ".join(it["why"].split()) for it in answer1["practices_used"]}
+    return "\n".join(f"- {p}: {why[p]}" for p in P.PRACTICES if p in why)
+
+
 def build_prompt2(prompts, problem_text, answer1):
-    """Prompt 2 gets the problem and answer 1 as the checked JSON object, indented."""
-    analysis = json.dumps(answer1, ensure_ascii=False, indent=2)
-    return fill(prompts["q2_template"], PROBLEM=problem_text, ANALYSIS=analysis)
+    """Prompt 2 (order) gets the problem and the practices answer 1 lists as used."""
+    return fill(prompts["q2_template"], PROBLEM=problem_text, PRACTICES=practices_for_ordering(answer1))
+
+
+def combine(answer1, answer2):
+    """Answer 1 with its practices_used put in answer 2's order and renumbered (why and likely_errors
+    from answer 1); practices_not_used unchanged."""
+    by_name = {it["practice"]: it for it in answer1["practices_used"]}
+    used = []
+    for i, step in enumerate(answer2["ordering"], 1):
+        it = by_name[step["practice"]]
+        used.append({"order": i, "practice": it["practice"], "why": it["why"], "likely_errors": it["likely_errors"]})
+    return {"practices_used": used, "practices_not_used": answer1["practices_not_used"]}
+
+
+def build_prompt3(prompts, problem_text, combined):
+    """Prompt 3 (top practice) gets the problem and the combined analysis as JSON, indented."""
+    analysis = json.dumps(combined, ensure_ascii=False, indent=2)
+    return fill(prompts["q3_template"], PROBLEM=problem_text, ANALYSIS=analysis)
 
 
 def load_problems(path=RENDERED_JSONL):
@@ -162,40 +187,70 @@ def check_answer1(obj):
 
 
 def check_answer2(obj, answer1):
-    """Rules for answer 2 (see prompts.PROMPT_RESPONSE_2): one of the six practices, one that
-    answer 1 listed as used, and a non-empty why."""
-    top = obj.get("top_practice")
-    if top not in P.PRACTICES:
-        raise ValueError(f"\"top_practice\" must be one of the six practices, got {top!r}")
+    """Rules for answer 2, the order (see prompts.PROMPT_RESPONSE_2): exactly the practices answer 1
+    lists as used, each once, numbered 1, 2, 3..., each with a non-empty step, and a non-empty why."""
+    steps = obj.get("ordering")
+    if not isinstance(steps, list) or not steps:
+        raise ValueError("\"ordering\" must be a non-empty list")
+    got = []
+    for i, item in enumerate(steps, 1):
+        where = f"ordering[{i}]"
+        if not isinstance(item, dict):
+            raise ValueError(f"{where} must be an object")
+        if item.get("practice") not in P.PRACTICES:
+            raise ValueError(f"{where}: unknown practice {item.get('practice')!r}")
+        if item.get("order") != i or isinstance(item.get("order"), bool):
+            raise ValueError(f"{where}: \"order\" must be {i}")
+        _why(item, where, "step")
+        got.append(item["practice"])
     used = [it["practice"] for it in answer1["practices_used"]]
-    if top not in used:
-        raise ValueError(f"\"top_practice\" {top!r} is not in practices_used of answer 1 ({', '.join(used)})")
+    if sorted(got) != sorted(used) or len(set(got)) != len(got):
+        raise ValueError(f"\"ordering\" must list exactly the practices of answer 1 ({', '.join(used)}) once each, "
+                         f"got {', '.join(got)}")
     _why(obj, "answer 2")
 
 
+def check_answer3(obj, combined):
+    """Rules for answer 3, the top practice (see prompts.PROMPT_RESPONSE_3): one of the six practices,
+    one that the analysis lists as used, and a non-empty why."""
+    top = obj.get("top_practice")
+    if top not in P.PRACTICES:
+        raise ValueError(f"\"top_practice\" must be one of the six practices, got {top!r}")
+    used = [it["practice"] for it in combined["practices_used"]]
+    if top not in used:
+        raise ValueError(f"\"top_practice\" {top!r} is not in practices_used of the analysis ({', '.join(used)})")
+    _why(obj, "answer 3")
+
+
 class AnswerChecker:
-    """Checks the two answers of one problem as they arrive.
+    """Checks the three answers of one problem as they arrive.
 
     check(step, text) returns None if the answer is valid (and keeps the parsed object in
-    .parsed), or a message saying what is wrong. Prompt 2 is only sent after answer 1 passes,
-    because it is built from answer 1.
+    .parsed), or a message saying what is wrong. Each prompt is only sent after the answer before it
+    passes, because it is built from it. After answer 2 passes, .combined holds answer 1 in answer 2's
+    order (the analysis prompt 3 gets).
     """
 
     def __init__(self):
         self.parsed = []
         self.how = []
+        self.combined = None
 
     def check(self, turn, text):
         try:
             obj, how = parse_json_answer(text)
             if turn == 1:
                 check_answer1(obj)
-            else:
+            elif turn == 2:
                 check_answer2(obj, self.parsed[0])
+            else:
+                check_answer3(obj, self.combined)
         except ValueError as e:
             return f"answer {turn}: {e}"
         self.parsed.append(obj)
         self.how.append(how)
+        if turn == 2:
+            self.combined = combine(self.parsed[0], obj)
         return None
 
 
@@ -262,37 +317,63 @@ def _raise_field_limit():
             limit //= 10
 
 
+OUTPUT_SUFFIXES = ["reasoning", "ordering_reasoning", "top_practice", "top_practice_reasoning"]
+
+
 def output_columns(prefix):
-    return [f"{prefix}_reasoning", f"{prefix}_top_practice", f"{prefix}_top_practice_reasoning"]
+    return [f"{prefix}_{s}" for s in OUTPUT_SUFFIXES]
 
 
-def merge_into_csv(run_dir, prefix, csv_path, backup_dir):
+def merge_into_csv(run_dir, prefix, csv_path, backup_dir, replace_prefix=None):
     """Write the output columns for every row of the run that finished with status "ok".
 
-    <prefix>_reasoning: answer 1 (the checked JSON object, as compact JSON)
-    <prefix>_top_practice: answer 2's top_practice
-    <prefix>_top_practice_reasoning: answer 2's why
+    <prefix>_reasoning:              answer 1 reordered as answer 2 says (compact JSON; its practices_used
+                                     order is the final ordering)
+    <prefix>_ordering_reasoning:     answer 2, the order, as compact JSON (each step, and why this order)
+    <prefix>_top_practice:           answer 3's top_practice
+    <prefix>_top_practice_reasoning: answer 3's why
+    (Logs of the two-prompt version have no answer 2 order: <prefix>_reasoning is answer 1 and
+    <prefix>_ordering_reasoning stays empty.)
 
-    Rows are matched by position (data row number), because some problem_ids repeat. Rows not in
-    the run keep whatever the columns already held (empty if the columns are new). The CSV is
+    replace_prefix: the columns <replace_prefix>_* are renamed to <prefix>_* in place (same position) and
+    emptied first, so they hold only this run's values. Without it, rows not in the run keep whatever the
+    columns already held, and new columns are added after the existing ones.
+
+    Rows are matched by position (data row number), because some problem_ids repeat. The CSV is
     written with the same dialect as the original (minimal quoting, LF line endings, UTF-8).
     """
     _raise_field_limit()
     with open(csv_path, encoding="utf-8", newline="") as f:
         table = list(csv.reader(f))
     header, body = table[0], table[1:]
-    pid_col = header.index("problem_id")
-    cols = output_columns(prefix)
-    idx = []
-    for c in cols:
-        if c not in header:
-            header.append(c)
-            for r in body:
-                r.append("")
-        idx.append(header.index(c))
     width = len(header)
     for r in body:
         r.extend([""] * (width - len(r)))
+    pid_col = header.index("problem_id")
+    cols = output_columns(prefix)
+    replaced = []
+    if replace_prefix and replace_prefix != prefix:
+        old = [f"{replace_prefix}_{s}" for s in OUTPUT_SUFFIXES if f"{replace_prefix}_{s}" in header]
+        if old and any(c in header for c in cols):
+            raise ValueError(f"{csv_path} has both {replace_prefix}_* and {prefix}_* columns; remove one set first")
+        for j, name in enumerate(header):
+            if name in old:
+                header[j] = prefix + name[len(replace_prefix):]
+                replaced.append(name)
+        # (no old columns: an earlier merge already replaced them; the columns are still rewritten in full)
+    for c in cols:
+        if c not in header:
+            # put a missing column right after the output column before it, if that one exists
+            prev = [header.index(p) for p in cols[:cols.index(c)] if p in header]
+            at = prev[-1] + 1 if prev else len(header)
+            header.insert(at, c)
+            for r in body:
+                r.insert(at, "")
+    idx = [header.index(c) for c in cols]
+    if replace_prefix:
+        for r in body:
+            for j in idx:
+                r[j] = ""
 
     rows_dir = os.path.join(run_dir, "rows")
     written, skipped = 0, 0
@@ -309,9 +390,15 @@ def merge_into_csv(run_dir, prefix, csv_path, backup_dir):
         if str(body[i][pid_col]) != str(rec["problem_id"]):
             raise ValueError(f"row {rec['row']}: problem_id {body[i][pid_col]} in CSV, "
                              f"{rec['problem_id']} in the run log")
-        body[i][idx[0]] = json.dumps(final["answer1_json"], ensure_ascii=False)
-        body[i][idx[1]] = final["answer2_json"]["top_practice"]
-        body[i][idx[2]] = final["answer2_json"]["why"]
+        if "answer3_json" in final:          # three prompts
+            body[i][idx[0]] = json.dumps(final["combined_json"], ensure_ascii=False)
+            body[i][idx[1]] = json.dumps(final["answer2_json"], ensure_ascii=False)
+            top = final["answer3_json"]
+        else:                                # two-prompt logs (e.g. qwen3_30b_v2)
+            body[i][idx[0]] = json.dumps(final["answer1_json"], ensure_ascii=False)
+            top = final["answer2_json"]
+        body[i][idx[2]] = top["top_practice"]
+        body[i][idx[3]] = top["why"]
         written += 1
 
     os.makedirs(backup_dir, exist_ok=True)
@@ -324,4 +411,5 @@ def merge_into_csv(run_dir, prefix, csv_path, backup_dir):
         w.writerow(header)
         w.writerows(body)
     os.replace(tmp, csv_path)
-    return {"written": written, "skipped_unfinished": skipped, "columns": cols, "backup": backup}
+    return {"written": written, "skipped_unfinished": skipped, "columns": cols, "backup": backup,
+            "replaced": replaced}

@@ -1,23 +1,36 @@
-"""Every prompt used by generate.py: two system prompts and two user prompts.
+"""Every prompt used by generate.py: three system prompts and three user prompts.
 
 The practice definitions and descriptors are copied verbatim from SYSTEM_PROMPT in
 Code/augment_mathematical_practice.py (only the '(JSON key: ...)' tags after each practice name were
-removed, since the answers here use the practice names). Both prompts contain them, and both user
-prompts ask the model to use them.
+removed, since the answers here use the practice names). All three system prompts contain them, and every
+user prompt asks the model to use them.
 
-Each problem goes through two separate LLM calls (two fresh conversations, not one chat):
+Each problem goes through three separate LLM calls (three fresh conversations, not one chat):
 
-    Prompt 1 (practice order)
+    Prompt 1 (practices used and not used)
         system: SYSTEM_PROMPT_1
         user:   Q1_TEMPLATE with the problem in place of {PROBLEM}
-        model:  answer 1, a JSON object: the practices used, in order, with why; the practices not
-                used, with why. Checked with a JSON parser and the rules in PROMPT_RESPONSE_1.
+        model:  answer 1, a JSON object: the practices used, in order, with why and likely errors; the
+                practices not used, with why. Checked with a JSON parser and the rules in PROMPT_RESPONSE_1.
 
-    Prompt 2 (top practice), only after answer 1 passed the check
+    Prompt 2 (practice order), only after answer 1 passed the check
         system: SYSTEM_PROMPT_2
-        user:   Q2_TEMPLATE with the problem in place of {PROBLEM} and answer 1 (the checked JSON,
+        user:   Q2_TEMPLATE with the problem in place of {PROBLEM} and the practices answer 1 lists as
+                used, in the fixed order of PRACTICES (not answer 1's order), each with answer 1's "why",
+                in place of {PRACTICES}
+        model:  answer 2, a JSON object: the same practices in the order a student uses them, with what
+                the student does at each step, and why the steps come in this order. Checked the same way.
+
+    Answer 1 is then reordered as answer 2 says ("combined analysis": answer 1's practices_used in
+    answer 2's order, renumbered, with answer 1's why and likely_errors; practices_not_used unchanged).
+
+    Prompt 3 (top practice), only after answer 2 passed the check
+        system: SYSTEM_PROMPT_3
+        user:   Q3_TEMPLATE with the problem in place of {PROBLEM} and the combined analysis (JSON,
                 indented) in place of {ANALYSIS}
-        model:  answer 2, a JSON object: the top practice and why. Checked the same way.
+        model:  answer 3, a JSON object: the top practice and why. Checked the same way.
+
+Prompt 1 and prompt 3 are the same text as prompt 1 and prompt 2 of the two-prompt version (run qwen3_30b_v2).
 """
 
 PRACTICES = [
@@ -36,6 +49,12 @@ Your task: read ONE item from an online k-12 mathematics item bank and work out 
 """
 
 INTRO_2 = """You are an expert in mathematics assessment. You have years of experience reviewing test items and deciding which mathematical practices each item assesses.
+
+Your task: you will be given ONE item from an online k-12 mathematics item bank, together with the practices a student uses to solve it, each with how the student uses it. Put these practices in the order in which a student working on the item uses them, from the first step to the last, say what the student does at each step, and explain why the steps come in this order.
+
+"""
+
+INTRO_3 = """You are an expert in mathematics assessment. You have years of experience reviewing test items and deciding which mathematical practices each item assesses.
 
 Your task: you will be given ONE item from an online k-12 mathematics item bank, together with an analysis of it: the practices a student uses to solve the item, in order, with how each is used and what a student could get wrong at that step, and the practices the item does not use, with the reason for each. Use the item and the analysis to choose the top practice: the practice where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice.
 
@@ -295,6 +314,31 @@ How to respond
 
 Base the answer on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from. Write the practice names exactly as: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency.
 
+- The practices are given in a fixed order (the order of the six practices above). That order says nothing about the order of the steps.
+- Work through how a student solves the item from start to finish, and put the practices in the order the student first uses them: "order": 1 is the practice the student uses first, "order": 2 the next one, and so on.
+- The order is the order in time, not the order of importance or difficulty. The practice the item is mostly about, or the hardest step, can come late.
+- A student first has to make sense of the item. Turning words, a diagram, a table or a graph into a mathematical form (an expression, an equation, a number sentence, a model) comes before computing with that form, and checking or defending a result comes after the result is found. Follow the item itself when it works differently.
+- If a practice is used at several points, place it where it is first needed.
+- Use exactly the practices you are given, each once. Do not add or drop a practice.
+- For each practice, say in "step" what the student does at that step. In "why", explain why the steps come in this order.
+
+Respond with exactly one JSON object in this form, and write nothing before or after it:
+
+{
+"ordering": [
+  {"order": 1, "practice": "<practice name>", "step": "<1 sentence: what the student does at this step>"},
+  {"order": 2, "practice": "<practice name>", "step": "<...>"}
+],
+"why": "<1-3 sentences: why the steps come in this order>"
+}"""
+
+PROMPT_RESPONSE_3 = """
+---
+
+How to respond
+
+Base the answer on what the student must do to produce the correct answer to this item, not on what a teacher could do with it or on the lesson it came from. Write the practice names exactly as: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency.
+
 - Read the item and the analysis. The analysis lists the practices the student uses, in order, with how each is used ("why") and what a student could get wrong at that step ("likely_errors"), and the practices the item does not use, each with a reason.
 - The top practice is the step where the item's difficulty lies: the practice a student who answers the item incorrectly most likely failed at. Compare the "likely_errors" of the practices used, check them against the item, and choose the practice whose step is hardest for a student. It must be one of the practices in the analysis's "practices_used" list.
 - A practice is not the top practice just because it comes first or last in the order, or because the analysis says the most about it. When two practices seem equally hard, choose the one that best matches the practice definitions.
@@ -317,23 +361,39 @@ PRACTICE_DEFINITIONS = (
     + PROMPT_PROCEDURAL
 )
 
-# Prompt 1: practice order, with reasons, and the practices not used.
+# Prompt 1: the practices used (in order, with reasons and likely errors) and the practices not used.
 SYSTEM_PROMPT_1 = INTRO_1 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_1
 
-# Prompt 2: the top practice, from the item and answer 1.
+# Prompt 2: the order of the practices used, from the item and the practices answer 1 lists as used.
 SYSTEM_PROMPT_2 = INTRO_2 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_2
 
-# User prompt 1: the question, then the rendered problem text in place of {PROBLEM}.
+# Prompt 3: the top practice, from the item and answer 1 reordered as answer 2 says.
+SYSTEM_PROMPT_3 = INTRO_3 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_3
+
 # Placeholders are filled in one pass by common.fill (not str.format: problem texts contain braces).
+
+# User prompt 1: the question, then the rendered problem text in place of {PROBLEM}.
 Q1_TEMPLATE = """Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.
 
 Item:
 
 {PROBLEM}"""
 
-# User prompt 2: the problem, answer 1 (the checked JSON object, indented) in place of {ANALYSIS},
-# then the question.
+# User prompt 2: the problem, the practices answer 1 lists as used in place of {PRACTICES} (one line each,
+# "- <practice>: <answer 1's why>", in the fixed order of PRACTICES), then the question.
 Q2_TEMPLATE = """Item:
+
+{PROBLEM}
+
+Practices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):
+
+{PRACTICES}
+
+Using the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."""
+
+# User prompt 3: the problem, the combined analysis (answer 1 reordered as answer 2 says; JSON, indented)
+# in place of {ANALYSIS}, then the question.
+Q3_TEMPLATE = """Item:
 
 {PROBLEM}
 

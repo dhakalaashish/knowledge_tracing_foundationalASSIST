@@ -1,16 +1,22 @@
-"""Ask an LLM which practices a problem needs, in order, and then which one is the top practice.
+"""Ask an LLM which practices a problem needs, then their order, then which one is the top practice.
 
-Every prompt is in prompts.py. Each problem goes through two separate LLM calls (two fresh
-conversations); both see only the problem text, never predicted_practice or any other label:
+Every prompt is in prompts.py. Each problem goes through three separate LLM calls (three fresh
+conversations); all see only the problem text, never predicted_practice or any other label:
 
-    Prompt 1 (practice order)
+    Prompt 1 (practices used and not used)
         system: prompts.SYSTEM_PROMPT_1 (practice definitions and descriptors, answer 1 format)
         user:   prompts.Q1_TEMPLATE with the rendered problem
-        answer 1: the practices used, in order, with why; the practices not used, with why
-    Prompt 2 (top practice), sent only after answer 1 passed the JSON check
+        answer 1: the practices used, in order, with why and likely errors; the practices not used, with why
+    Prompt 2 (order), sent only after answer 1 passed the JSON check
         system: prompts.SYSTEM_PROMPT_2 (same definitions and descriptors, answer 2 format)
-        user:   prompts.Q2_TEMPLATE with the problem and answer 1 (the checked JSON)
-        answer 2: the top practice, with why
+        user:   prompts.Q2_TEMPLATE with the problem and the practices answer 1 lists as used (fixed
+                order, each with answer 1's why; not answer 1's order)
+        answer 2: those practices in the order a student uses them, with each step, and why this order
+    Answer 1 is reordered as answer 2 says (common.combine): the combined analysis.
+    Prompt 3 (top practice), sent only after answer 2 passed the JSON check
+        system: prompts.SYSTEM_PROMPT_3 (same definitions and descriptors, answer 3 format)
+        user:   prompts.Q3_TEMPLATE with the problem and the combined analysis (JSON)
+        answer 3: the top practice, with why
 
 Each answer is checked with a JSON parser and against the format rules. If an answer fails, the
 problem starts again from prompt 1 in fresh conversations; a problem gets at most
@@ -18,9 +24,11 @@ problem starts again from prompt 1 in fresh conversations; a problem gets at mos
 runs/<prefix>/failed_problems.csv.
 
 Output columns in Data/Problems.csv:
-    <prefix>_reasoning               answer 1 as JSON
-    <prefix>_top_practice            answer 2's top_practice
-    <prefix>_top_practice_reasoning  answer 2's why
+    <prefix>_reasoning               the combined analysis as JSON (answer 1 in answer 2's order)
+    <prefix>_ordering_reasoning      answer 2 as JSON
+    <prefix>_top_practice            answer 3's top_practice
+    <prefix>_top_practice_reasoning  answer 3's why
+With --replace-columns OLD, the OLD_* columns are renamed to <prefix>_* in place and hold only this run.
 
 Every call is logged in runs/<prefix>/rows/row_NNNNN.json (each call's exact request, full raw
 response, reasoning when exposed, usage, timestamps, the JSON check result, every attempt); the
@@ -31,7 +39,7 @@ Examples:
     python3 generate.py --provider anthropic --rows 1-20
     python3 generate.py --provider openai --model gpt-5 --rows 1-300 --workers 8
     python3 generate.py --provider gemini --model gemini-2.5-pro --rows 1-300
-    python3 generate.py --provider local --num-gpus 1 --cache-dir /data1/      # Qwen3-30B on vLLM
+    python3 generate.py --provider local --num-gpus 1 --column-prefix qwen3_30b_v3 --replace-columns qwen3_30b_v2
     python3 generate.py --provider anthropic --merge-only                      # rewrite the CSV columns
 """
 
@@ -54,8 +62,8 @@ DEFAULT_MODELS = {
 }
 DEFAULT_PREFIX = {"anthropic": "claude_api", "openai": "openAI", "gemini": "gemini", "local": "qwen3_30b"}
 # Settings that must match for rows of one run (one set of CSV columns) to be comparable.
-LOCKED_KEYS = ["provider", "model", "system_prompt_1_sha256", "system_prompt_2_sha256",
-               "q1_template_sha256", "q2_template_sha256", "params"]
+LOCKED_KEYS = ["provider", "model", "system_prompt_1_sha256", "system_prompt_2_sha256", "system_prompt_3_sha256",
+               "q1_template_sha256", "q2_template_sha256", "q3_template_sha256", "params"]
 
 
 def parse_args():
@@ -83,6 +91,9 @@ def parse_args():
     ap.add_argument("--dry-run", action="store_true", help="print the prompts for the selected rows and stop")
     ap.add_argument("--merge-only", action="store_true", help="skip generation; write the CSV columns from the logs")
     ap.add_argument("--no-merge", action="store_true", help="do not touch Problems.csv after generating")
+    ap.add_argument("--replace-columns", metavar="OLD_PREFIX",
+                    help="when merging, rename the OLD_PREFIX_* columns of Problems.csv to <prefix>_* in place and "
+                         "fill them only from this run (e.g. --replace-columns qwen3_30b_v2)")
     ap.add_argument("--force", action="store_true",
                     help="allow settings that differ from the ones recorded for this run directory")
     g = ap.add_argument_group("anthropic")
@@ -131,13 +142,18 @@ def run_config(args, prompts, provider_desc):
         "q1_template_sha256": common.sha256(prompts["q1_template"]),
         "q2_template": prompts["q2_template"],
         "q2_template_sha256": common.sha256(prompts["q2_template"]),
+        "system_prompt_3": prompts["system_3"],
+        "system_prompt_3_sha256": common.sha256(prompts["system_3"]),
+        "q3_template": prompts["q3_template"],
+        "q3_template_sha256": common.sha256(prompts["q3_template"]),
         "params": provider_desc["params"],
         "max_retries_per_problem": args.max_retries_per_problem,
         "problems_file": os.path.relpath(common.RENDERED_JSONL, common.HERE),
         "problems_file_sha256": common.sha256(common.read_text(common.RENDERED_JSONL)),
         "answer_check": "each answer must parse as one JSON object (optionally inside one ```json fence) "
-                        "and follow prompts.PROMPT_RESPONSE_1 / _2; prompt 2 is sent only after answer 1 "
-                        "passes; a failed answer starts the problem again from prompt 1",
+                        "and follow prompts.PROMPT_RESPONSE_1 / _2 / _3; each prompt is sent only after the answer "
+                        "before it passes; prompt 3 gets answer 1 reordered as answer 2 says (common.combine); "
+                        "a failed answer starts the problem again from prompt 1",
         "output_columns": common.output_columns(args.column_prefix),
     }
 
@@ -173,15 +189,16 @@ def new_record(args, prob, prompts, provider_desc):
         "provider": args.provider, "model": args.model, "column_prefix": args.column_prefix,
         "system_prompt_1_sha256": common.sha256(prompts["system_1"]),
         "system_prompt_2_sha256": common.sha256(prompts["system_2"]),
+        "system_prompt_3_sha256": common.sha256(prompts["system_3"]),
         "generation_params": provider_desc["params"],
         "attempts": [], "final": {"status": "pending"},
     }
 
 
 def finish_attempt(rec, calls, failed_step, error, invalid, checker, max_retries):
-    """Add one attempt (prompt 1, and prompt 2 if it was reached) to the record.
+    """Add one attempt (prompt 1, and prompts 2 and 3 if they were reached) to the record.
 
-    An attempt fails if either prompt failed: the model's answer did not pass the JSON check
+    An attempt fails if any prompt failed: the model's answer did not pass the JSON check
     (invalid), or the call itself failed (error: API error, refusal, output cut off at the token
     limit, empty answer). A failed attempt is retried from prompt 1 while the row has made at most
     max_retries failed attempts, so a row gets at most 1 + max_retries attempts in all.
@@ -191,14 +208,18 @@ def finish_attempt(rec, calls, failed_step, error, invalid, checker, max_retries
     att = {"attempt": len(rec["attempts"]) + 1, "calls": calls or [],
            "failed_step": failed_step if reason else None,
            "failure_kind": ("error" if error else "invalid_answer") if reason else None,
-           "failure_reason": reason, "parsed_answers": checker.parsed, "json_extraction": checker.how}
+           "failure_reason": reason, "parsed_answers": checker.parsed, "combined": checker.combined,
+           "json_extraction": checker.how}
     rec["attempts"].append(att)
     if reason is None:
         rec["final"] = {
             "status": "ok", "attempt": att["attempt"],
             "answer1": calls[0]["response_text"], "answer2": calls[1]["response_text"],
+            "answer3": calls[2]["response_text"],
             "answer1_json": checker.parsed[0], "answer2_json": checker.parsed[1],
-            "top_practice": checker.parsed[1]["top_practice"],
+            "answer3_json": checker.parsed[2], "combined_json": checker.combined,
+            "ordering": [it["practice"] for it in checker.combined["practices_used"]],
+            "top_practice": checker.parsed[2]["top_practice"],
         }
         return False
     n_failed = sum(1 for a in rec["attempts"] if a["failure_reason"])
@@ -244,7 +265,7 @@ def generate(args, provider, prompts, problems, rows):
             common.write_json_atomic(common.row_path(args.run_dir, r), rec)
             f = rec["final"]
             if f["status"] == "ok":
-                note = f["top_practice"]
+                note = f"{' > '.join(f['ordering'])} | top: {f['top_practice']}"
             else:
                 note = (f"prompt {f['last_failed_step']}, {f['last_failure_kind']}: "
                         f"{f['last_failure_reason'].splitlines()[0]}")
@@ -294,25 +315,29 @@ def error_text(e):
 
 
 def run_problems(args, provider, prompts, problems, rows, checkers):
-    """Run prompt 1 and then prompt 2 for each row.
-    Yield (row, calls, failed_step, error, invalid); failed_step is 1 or 2 when the attempt failed."""
+    """Run prompts 1, 2 and 3 for each row, each only after the answer before it passed.
+    Yield (row, calls, failed_step, error, invalid); failed_step is 1, 2 or 3 when the attempt failed."""
     if args.provider == "local":
         yield from run_problems_local(provider, prompts, problems, rows, checkers)
         return
 
     def one(r):
-        calls, check, text = [], checkers[r].check, problems[r]["text"]
+        calls, ck, text = [], checkers[r], problems[r]["text"]
         step = 1
         try:
-            rec1 = provider.call(prompts["system_1"], common.build_prompt1(prompts, text), 1, calls)
-            problem = check(1, rec1["response_text"])
+            rec = provider.call(prompts["system_1"], common.build_prompt1(prompts, text), 1, calls)
+            problem = ck.check(1, rec["response_text"])
             if problem:
-                return r, calls, 1, None, problem     # prompt 2 is never sent
+                return r, calls, 1, None, problem     # prompts 2 and 3 are never sent
             step = 2
-            prompt2 = common.build_prompt2(prompts, text, checkers[r].parsed[0])
-            rec2 = provider.call(prompts["system_2"], prompt2, 2, calls)
-            problem = check(2, rec2["response_text"])
-            return r, calls, (2 if problem else None), None, problem
+            rec = provider.call(prompts["system_2"], common.build_prompt2(prompts, text, ck.parsed[0]), 2, calls)
+            problem = ck.check(2, rec["response_text"])
+            if problem:
+                return r, calls, 2, None, problem     # prompt 3 is never sent
+            step = 3
+            rec = provider.call(prompts["system_3"], common.build_prompt3(prompts, text, ck.combined), 3, calls)
+            problem = ck.check(3, rec["response_text"])
+            return r, calls, (3 if problem else None), None, problem
         except Exception as e:  # logged in the row file with the calls that finished; the run goes on
             return r, calls, step, error_text(e), None
 
@@ -323,29 +348,29 @@ def run_problems(args, provider, prompts, problems, rows, checkers):
 
 
 def run_problems_local(provider, prompts, problems, rows, checkers):
-    """Batched version: prompt 1 for all rows, then prompt 2 only for the rows whose answer 1 passed."""
+    """Batched version: prompt 1 for all rows, then prompt 2 for the rows whose answer 1 passed, then
+    prompt 3 for the rows whose answer 2 passed."""
     calls = {r: [] for r in rows}
-    step2 = []
-    reqs = [(r, prompts["system_1"], common.build_prompt1(prompts, problems[r]["text"]), 1) for r in rows]
-    for r, rec, error in provider.call_many(reqs):
-        calls[r].append(rec)
-        if error:
-            yield r, calls[r], 1, error, None
-            continue
-        problem = checkers[r].check(1, rec["response_text"])
-        if problem:
-            yield r, calls[r], 1, None, problem
-            continue
-        step2.append(r)
-    reqs = [(r, prompts["system_2"],
-             common.build_prompt2(prompts, problems[r]["text"], checkers[r].parsed[0]), 2) for r in step2]
-    for r, rec, error in provider.call_many(reqs):
-        calls[r].append(rec)
-        if error:
-            yield r, calls[r], 2, error, None
-        else:
-            problem = checkers[r].check(2, rec["response_text"])
-            yield r, calls[r], (2 if problem else None), None, problem
+    build = {1: lambda r: common.build_prompt1(prompts, problems[r]["text"]),
+             2: lambda r: common.build_prompt2(prompts, problems[r]["text"], checkers[r].parsed[0]),
+             3: lambda r: common.build_prompt3(prompts, problems[r]["text"], checkers[r].combined)}
+    todo = list(rows)
+    for step in (1, 2, 3):
+        reqs = [(r, prompts[f"system_{step}"], build[step](r), step) for r in todo]
+        passed = []
+        for r, rec, error in provider.call_many(reqs):
+            calls[r].append(rec)
+            if error:
+                yield r, calls[r], step, error, None
+                continue
+            problem = checkers[r].check(step, rec["response_text"])
+            if problem:
+                yield r, calls[r], step, None, problem
+            elif step == 3:
+                yield r, calls[r], None, None, None
+            else:
+                passed.append(r)
+        todo = passed
 
 
 def main():
@@ -360,12 +385,16 @@ def main():
         print(prompts["system_1"])
         print("=" * 30, "SYSTEM PROMPT 2", "=" * 30)
         print(prompts["system_2"])
+        print("=" * 30, "SYSTEM PROMPT 3", "=" * 30)
+        print(prompts["system_3"])
         for r in rows[:3]:
             text = problems[r]["text"]
             print("=" * 30, f"ROW {r} (problem_id {problems[r]['problem_id']}) USER PROMPT 1", "=" * 30)
             print(common.build_prompt1(prompts, text))
-            print("=" * 30, f"ROW {r} USER PROMPT 2 (answer 1 goes where {{ANALYSIS}} is)", "=" * 30)
-            print(common.fill(prompts["q2_template"], PROBLEM=text, ANALYSIS="{ANALYSIS}"))
+            print("=" * 30, f"ROW {r} USER PROMPT 2 (answer 1's practices used go where {{PRACTICES}} is)", "=" * 30)
+            print(common.fill(prompts["q2_template"], PROBLEM=text, PRACTICES="{PRACTICES}"))
+            print("=" * 30, f"ROW {r} USER PROMPT 3 (answer 1 in answer 2's order goes where {{ANALYSIS}} is)", "=" * 30)
+            print(common.fill(prompts["q3_template"], PROBLEM=text, ANALYSIS="{ANALYSIS}"))
         return
 
     if not args.merge_only:
@@ -384,7 +413,9 @@ def main():
 
     if not args.no_merge:
         res = common.merge_into_csv(args.run_dir, args.column_prefix, args.problems_csv,
-                                    os.path.join(common.RUNS_DIR, "_csv_backups"))
+                                    os.path.join(common.RUNS_DIR, "_csv_backups"), args.replace_columns)
+        if res["replaced"]:
+            print(f"Replaced {', '.join(res['replaced'])} with the {args.column_prefix}_* columns")
         print(f"Wrote {res['written']} rows to {', '.join(res['columns'])} in {args.problems_csv} "
               f"({res['skipped_unfinished']} rows not ok left out; backup: {res['backup']})")
 

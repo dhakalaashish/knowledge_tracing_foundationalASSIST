@@ -3,11 +3,11 @@
 // Usage (from the repo root):
 //   node Code/generate_practice_reasoning/tools/build_problems_300.js \
 //       --ordering Code/generate_practice_reasoning/tools/claude_ordering.tsv \
-//       --answers <folder with Claude's r<row>_q2.md> [--llm qwen3_30b_v2] [--reviews reviews.jsonl]
+//       --answers <folder with Claude's r<row>_q2.md> [--llm qwen3_30b_v3] [--reviews reviews.jsonl]
 //
 //   --ordering  output of claude_ordering.awk (row <TAB> source <TAB> ordering ...)
 //   --answers   folder with Claude's answer 2 files (the reason for its top practice)
-//   --llm       column prefix of the second labeler in Problems.csv (default qwen3_30b_v2)
+//   --llm       column prefix of the second labeler in Problems.csv (default qwen3_30b_v3)
 //   --reviews   optional: the review page's saved documents, one JSON object per line
 //               ({"data": {...}} as the artifact database lists them, or the bare data). They fill the aashish_* columns.
 // Aashish's columns already in Data/problems_300.csv are kept (matched by row) unless --reviews has that row.
@@ -19,7 +19,7 @@ const { readTable, csvField, canon, llmOrdering } = require("./csv");
 
 const args = {};
 for (let i = 2; i < process.argv.length; i += 2) args[process.argv[i].replace(/^--/, "")] = process.argv[i + 1];
-const LLM = args.llm || "qwen3_30b_v2";
+const LLM = args.llm || "qwen3_30b_v3";
 const LLM_SHORT = LLM.split(/[_\d]/)[0];           // "qwen" for the choice values
 const N = 300;
 const OUT = "Data/problems_300.csv";

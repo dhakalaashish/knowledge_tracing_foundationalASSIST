@@ -3,11 +3,11 @@
 //
 // Usage (from the repo root):
 //   node Code/generate_practice_reasoning/tools/review_data_llm.js [prefix] > llm.js
-//   prefix: column prefix in Problems.csv (default qwen3_30b_v2)
+//   prefix: column prefix in Problems.csv (default qwen3_30b_v3)
 // Each record: {row, order: [...], top, used: [{p, why, err}], not: [{p, why}], a2}
 
 const { readTable, canon, llmOrdering } = require("./csv");
-const PREFIX = process.argv[2] || "qwen3_30b_v2";
+const PREFIX = process.argv[2] || "qwen3_30b_v3";
 const N = 300;
 
 const P = readTable("Data/Problems.csv");
