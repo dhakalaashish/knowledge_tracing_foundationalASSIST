@@ -1,0 +1,217 @@
+{
+  "row": 2715,
+  "problem_id": "148105",
+  "problem_text": "A small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No",
+          "started_at": "2026-11-09T23:34:16+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.\",\n      \"likely_errors\": \"A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.\",\n      \"likely_errors\": \"A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.\",\n      \"likely_errors\": \"A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.\",\n      \"likely_errors\": \"A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3899,
+            "completion_tokens": 717
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:38:25+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.\",\n      \"likely_errors\": \"A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.\",\n      \"likely_errors\": \"A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.\",\n      \"likely_errors\": \"A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.\",\n      \"likely_errors\": \"A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA small company is selling a new board game, and they need to know how many to produce in the future.\nAfter 12 months, they sold 4 thousand games; after 18 months, they sold 7 thousand games; and after 36 months, they sold 15 thousand games.\nCould this information be reasonably estimated using a single linear model?\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.\",\n      \"likely_errors\": \"A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.\",\n      \"likely_errors\": \"A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying whether a linear model is reasonable, as they might incorrectly assume linearity due to increasing values without checking for a constant rate of change. This step requires evaluating the consistency of slopes between data points and defending a conclusion based on evidence, which is central to Justifying and Proving. While Representing is important for correctly plotting or organizing the data, errors here are more likely to be due to unit misreading rather than conceptual misunderstanding, and the item’s difficulty lies in the reasoning behind the conclusion, not the representation itself.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying whether a linear model is reasonable, as they might incorrectly assume linearity due to increasing values without checking for a constant rate of change. This step requires evaluating the consistency of slopes between data points and defending a conclusion based on evidence, which is central to Justifying and Proving. While Representing is important for correctly plotting or organizing the data, errors here are more likely to be due to unit misreading rather than conceptual misunderstanding, and the item’s difficulty lies in the reasoning behind the conclusion, not the representation itself.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4587,
+            "completion_tokens": 137
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:49:55+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.",
+              "likely_errors": "A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.",
+              "likely_errors": "A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed."
+            }
+          ]
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying whether a linear model is reasonable, as they might incorrectly assume linearity due to increasing values without checking for a constant rate of change. This step requires evaluating the consistency of slopes between data points and defending a conclusion based on evidence, which is central to Justifying and Proving. While Representing is important for correctly plotting or organizing the data, errors here are more likely to be due to unit misreading rather than conceptual misunderstanding, and the item’s difficulty lies in the reasoning behind the conclusion, not the representation itself."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.\",\n      \"likely_errors\": \"A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.\",\n      \"likely_errors\": \"A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}",
+    "answer2": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying whether a linear model is reasonable, as they might incorrectly assume linearity due to increasing values without checking for a constant rate of change. This step requires evaluating the consistency of slopes between data points and defending a conclusion based on evidence, which is central to Justifying and Proving. While Representing is important for correctly plotting or organizing the data, errors here are more likely to be due to unit misreading rather than conceptual misunderstanding, and the item’s difficulty lies in the reasoning behind the conclusion, not the representation itself.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given word problem and translate the real-world data (sales over time) into a mathematical representation, such as plotting points (12, 4), (18, 7), (36, 15) on a coordinate plane or organizing them into a table. This step involves recognizing and using a numerical and graphical representation appropriate to the context of linear modeling.",
+          "likely_errors": "A student might misread the time units (e.g., treat months as years) or incorrectly assign values to the coordinates, especially with the 'thousands' unit. This is moderately likely for students who rush or are not careful with unit interpretation."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "The student must evaluate whether a single linear model can reasonably fit the data by analyzing the pattern of growth. This involves computing or estimating the rate of change between pairs of points (e.g., from 12 to 18 months: (7–4)/(18–12) = 0.5 thousand/month; from 18 to 36 months: (15–7)/(36–18) ≈ 0.444 thousand/month) and comparing them to determine if the rate is approximately constant. The student must then justify their conclusion (Yes or No) based on this analysis, which aligns with justifying conclusions about numerical relationships and evaluating the validity of a claim about linearity.",
+          "likely_errors": "A student might assume linearity because the values are increasing and ignore the changing rate, or incorrectly calculate the slope due to arithmetic errors. This is moderately likely, especially if the student does not compute multiple slopes or compare them explicitly."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a broader pattern or extend the reasoning to a general formula, sequence, or family of functions beyond the given data points. The task is focused on evaluating a specific model for a specific data set, not on generalizing a rule or pattern across larger domains."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the context is real-world, the task is not about creating a model to solve a problem or make a prediction. Instead, it asks whether an existing model (linear) is reasonable for the data, which is a validation task, not a modeling process involving mathematization, solution, or checking viability."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer claims, or contributions from another student. The student responds independently to a question about data, with no need to build on, evaluate, or connect with another person’s mathematical thinking."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must compute slopes (a procedural task), the focus is not on fluency in computation per se, but on using those computations to justify a conclusion. The item assesses reasoning about linearity, not the accuracy or efficiency of performing operations. Thus, procedural fluency is not the primary practice assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying whether a linear model is reasonable, as they might incorrectly assume linearity due to increasing values without checking for a constant rate of change. This step requires evaluating the consistency of slopes between data points and defending a conclusion based on evidence, which is central to Justifying and Proving. While Representing is important for correctly plotting or organizing the data, errors here are more likely to be due to unit misreading rather than conceptual misunderstanding, and the item’s difficulty lies in the reasoning behind the conclusion, not the representation itself."
+    },
+    "top_practice": "Justifying and Proving"
+  }
+}

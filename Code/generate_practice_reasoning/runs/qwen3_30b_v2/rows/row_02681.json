@@ -1,0 +1,221 @@
+{
+  "row": 2681,
+  "problem_id": "7452",
+  "problem_text": "Predict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to",
+          "started_at": "2026-11-09T23:34:16+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.\",\n    \"likely_errors\": \"A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.\",\n    \"likely_errors\": \"A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.\",\n    \"likely_errors\": \"A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.\",\n    \"likely_errors\": \"A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.\",\n    \"likely_errors\": \"A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.\",\n    \"likely_errors\": \"A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3921,
+            "completion_tokens": 701
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:38:25+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.\",\n      \"likely_errors\": \"A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.\",\n      \"likely_errors\": \"A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.\",\n      \"likely_errors\": \"A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.\",\n      \"likely_errors\": \"A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.\",\n      \"likely_errors\": \"A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.\",\n      \"likely_errors\": \"A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.\",\n      \"likely_errors\": \"A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.\",\n      \"likely_errors\": \"A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.\",\n      \"likely_errors\": \"A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the right skew in the histogram and generalizing that this shape implies the mean is greater than the median. This requires identifying a pattern across the data distribution and applying a general rule about skewed data, which is a core aspect of Abstracting and Generalizing. While misreading the histogram (Representing) or giving a weak justification (Justifying and Proving) are possible errors, they are less likely to cause incorrect answers because the visual pattern is strong and the relationship between skewness and central tendency is a standard concept taught at this level. Procedural Fluency is not involved, and Collaborative Mathematics and Mathematical Modeling are not part of the task.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the right skew in the histogram and generalizing that this shape implies the mean is greater than the median. This requires identifying a pattern across the data distribution and applying a general rule about skewed data, which is a core aspect of Abstracting and Generalizing. While misreading the histogram (Representing) or giving a weak justification (Justifying and Proving) are possible errors, they are less likely to cause incorrect answers because the visual pattern is strong and the relationship between skewness and central tendency is a standard concept taught at this level. Procedural Fluency is not involved, and Collaborative Mathematics and Mathematical Modeling are not part of the task.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4597,
+            "completion_tokens": 163
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:49:55+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.",
+              "likely_errors": "A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.",
+              "likely_errors": "A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.",
+              "likely_errors": "A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing the right skew in the histogram and generalizing that this shape implies the mean is greater than the median. This requires identifying a pattern across the data distribution and applying a general rule about skewed data, which is a core aspect of Abstracting and Generalizing. While misreading the histogram (Representing) or giving a weak justification (Justifying and Proving) are possible errors, they are less likely to cause incorrect answers because the visual pattern is strong and the relationship between skewness and central tendency is a standard concept taught at this level. Procedural Fluency is not involved, and Collaborative Mathematics and Mathematical Modeling are not part of the task."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.\",\n    \"likely_errors\": \"A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.\",\n    \"likely_errors\": \"A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.\",\n    \"likely_errors\": \"A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the right skew in the histogram and generalizing that this shape implies the mean is greater than the median. This requires identifying a pattern across the data distribution and applying a general rule about skewed data, which is a core aspect of Abstracting and Generalizing. While misreading the histogram (Representing) or giving a weak justification (Justifying and Proving) are possible errors, they are less likely to cause incorrect answers because the visual pattern is strong and the relationship between skewness and central tendency is a standard concept taught at this level. Procedural Fluency is not involved, and Collaborative Mathematics and Mathematical Modeling are not part of the task.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the histogram, which is a visual representation of the data, and translate it into a mental or written numerical distribution of ages. This involves recognizing the frequency of each age group (e.g., 2 people aged 5–10, 3 aged 10–15, etc.) and understanding how the bar heights correspond to frequencies, which aligns with the descriptor of interpreting visual representations of data sets.",
+          "likely_errors": "A student might misread the bar heights or incorrectly interpret the age intervals (e.g., thinking a bar from 5 to 10 includes 10), leading to an incorrect frequency distribution. This is moderately likely for students unfamiliar with histograms."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After constructing the frequency distribution, the student must analyze the shape of the distribution—specifically, the skewness—by recognizing that the tail extends to the right (due to the high frequency at the upper end, e.g., 45–50 with 11 people). This allows the student to generalize that a right-skewed distribution typically has a mean greater than the median, which is a key pattern in data analysis.",
+          "likely_errors": "A student might fail to notice the skew or misidentify the direction of the tail, especially if they focus only on the highest bar. This is moderately likely, particularly if the student lacks experience with skewed distributions."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must justify their prediction (mean > median) by referencing the distribution's skewness, explaining that in a right-skewed distribution, the mean is pulled toward the tail, while the median remains closer to the center of the data. This requires making a valid claim and supporting it with a general rule about data shapes and central tendency.",
+          "likely_errors": "A student might guess without reasoning or provide a weak justification (e.g., 'the numbers are big'), which would not meet the standard of a valid justification. This is moderately likely if students have not been taught the relationship between skewness and measures of center."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world scenario or solving a problem through mathematization of a context. Instead, it focuses on analyzing an existing data representation and making a statistical inference, so modeling is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s thinking, argument, or solution. It is a standalone inference task, so there is no opportunity or requirement for collaborative reasoning or responding to peers."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student may need to compute the mean or median, the item does not require performing calculations (e.g., summing values or finding the middle value). The prediction is based on shape analysis, not computation, so procedural fluency in calculating central tendency is not necessary."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing the right skew in the histogram and generalizing that this shape implies the mean is greater than the median. This requires identifying a pattern across the data distribution and applying a general rule about skewed data, which is a core aspect of Abstracting and Generalizing. While misreading the histogram (Representing) or giving a weak justification (Justifying and Proving) are possible errors, they are less likely to cause incorrect answers because the visual pattern is strong and the relationship between skewness and central tendency is a standard concept taught at this level. Procedural Fluency is not involved, and Collaborative Mathematics and Mathematical Modeling are not part of the task."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

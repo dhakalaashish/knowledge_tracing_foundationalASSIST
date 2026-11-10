@@ -1,0 +1,217 @@
+{
+  "row": 2668,
+  "problem_id": "14567",
+  "problem_text": "The graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city",
+          "started_at": "2026-11-09T23:34:16+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.\",\n    \"likely_errors\": \"A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.\",\n    \"likely_errors\": \"A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.\",\n    \"likely_errors\": \"A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.\",\n    \"likely_errors\": \"A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3932,
+            "completion_tokens": 577
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:38:25+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nThe graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.\",\n      \"likely_errors\": \"A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.\",\n      \"likely_errors\": \"A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.\",\n      \"likely_errors\": \"A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.\",\n      \"likely_errors\": \"A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe graph shows the temperature between noon and midnight in City A on a certain day.\n[image]\nThe table shows the temperature, T, in degrees Fahrenheit, for h hours after noon, in City B.\n[Table:\nh | 1 | 2 | 3 | 4 | 5 | 6\nT | 82 | 78 | 75 | 62 | 58 | 59]\nWhich city was warmer at 4:00 p.m.?\n\nAnswer choices:\nA. City A || City B || Neither city\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.\",\n      \"likely_errors\": \"A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.\",\n      \"likely_errors\": \"A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at interpreting the graph to find the temperature at 4:00 p.m., as this requires accurately reading coordinates from a visual representation, which can be challenging if the graph has non-standard scales or if the student misidentifies the hour mark. While procedural fluency is involved in reading the table, that step is more straightforward and less error-prone because it involves direct lookup. The difficulty in this item centers on translating the graphical representation into a numerical value, making Representing the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at interpreting the graph to find the temperature at 4:00 p.m., as this requires accurately reading coordinates from a visual representation, which can be challenging if the graph has non-standard scales or if the student misidentifies the hour mark. While procedural fluency is involved in reading the table, that step is more straightforward and less error-prone because it involves direct lookup. The difficulty in this item centers on translating the graphical representation into a numerical value, making Representing the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4484,
+            "completion_tokens": 124
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:49:55+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.",
+              "likely_errors": "A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.",
+              "likely_errors": "A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon."
+            }
+          ]
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at interpreting the graph to find the temperature at 4:00 p.m., as this requires accurately reading coordinates from a visual representation, which can be challenging if the graph has non-standard scales or if the student misidentifies the hour mark. While procedural fluency is involved in reading the table, that step is more straightforward and less error-prone because it involves direct lookup. The difficulty in this item centers on translating the graphical representation into a numerical value, making Representing the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.\",\n    \"likely_errors\": \"A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.\",\n    \"likely_errors\": \"A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at interpreting the graph to find the temperature at 4:00 p.m., as this requires accurately reading coordinates from a visual representation, which can be challenging if the graph has non-standard scales or if the student misidentifies the hour mark. While procedural fluency is involved in reading the table, that step is more straightforward and less error-prone because it involves direct lookup. The difficulty in this item centers on translating the graphical representation into a numerical value, making Representing the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the graph of temperature over time for City A and translate the visual representation into a numerical value at 4:00 p.m. (h = 4), which involves reading coordinates from the graph and recognizing the relationship between time and temperature. This matches the descriptor of interpreting visual representations to draw conclusions.",
+          "likely_errors": "A student might misread the graph’s scale or incorrectly identify the temperature at h = 4, such as confusing the y-axis value or misreading the hour mark. This is moderately likely, especially if the graph has non-integer intervals or a dense scale."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must use the table to find the temperature in City B at h = 4, which requires locating the correct row and reading the corresponding T value (62°F). This is a direct retrieval task that relies on accurate reading and interpretation of tabular data, fitting the descriptor of carrying out operations with numbers and data efficiently.",
+          "likely_errors": "A student might misread the table, selecting the value for h = 5 or h = 3 by mistake, or confuse the columns. This is fairly likely, especially under time pressure or if the table is poorly formatted."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple data points or extending a relationship beyond the given values. The student only needs to compare two specific temperatures at a single time point, not generalize trends or relationships over time."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a comparison of temperature at a specific time, not for a justification of a claim, argument, or mathematical relationship. There is no need to defend or refute a statement, provide a counterexample, or construct a deductive argument."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The situation is not a real-world problem that requires building or refining a model to solve a complex scenario. The data are already provided in graphical and tabular forms, and the task is a direct comparison, not a modeling exercise involving variables, assumptions, or validation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or shared reasoning. The student responds independently to a question based on given data, with no indication of another person’s mathematical thinking to evaluate or build upon."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at interpreting the graph to find the temperature at 4:00 p.m., as this requires accurately reading coordinates from a visual representation, which can be challenging if the graph has non-standard scales or if the student misidentifies the hour mark. While procedural fluency is involved in reading the table, that step is more straightforward and less error-prone because it involves direct lookup. The difficulty in this item centers on translating the graphical representation into a numerical value, making Representing the top practice."
+    },
+    "top_practice": "Representing"
+  }
+}

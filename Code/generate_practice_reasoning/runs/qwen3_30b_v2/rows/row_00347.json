@@ -1,0 +1,217 @@
+{
+  "row": 347,
+  "problem_id": "198767",
+  "problem_text": "A simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____",
+          "started_at": "2026-11-09T23:20:07+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'\",\n    \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n    \"likely_errors\": \"A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'\",\n    \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n    \"likely_errors\": \"A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3928,
+            "completion_tokens": 682
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:23:03+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:40:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly interpreting the symbolic representation of the simulation results, particularly in accurately counting the number of 1s (made kicks) in each trial. Misreading sequences like '11111' or '00011' due to carelessness or confusion between 1s and 0s can lead to incorrect counts, which then cascade into wrong probabilities. While procedural fluency is involved in the calculation, the error is more likely to originate in the initial representation step, as the task hinges on precise interpretation of the given symbolic data—making 'Representing' the core challenge. The other practice used, procedural fluency, involves straightforward counting and division, which is less error-prone once the correct counts are established.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly interpreting the symbolic representation of the simulation results, particularly in accurately counting the number of 1s (made kicks) in each trial. Misreading sequences like '11111' or '00011' due to carelessness or confusion between 1s and 0s can lead to incorrect counts, which then cascade into wrong probabilities. While procedural fluency is involved in the calculation, the error is more likely to originate in the initial representation step, as the task hinges on precise interpretation of the given symbolic data—making 'Representing' the core challenge. The other practice used, procedural fluency, involves straightforward counting and division, which is less error-prone once the correct counts are established.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4585,
+            "completion_tokens": 175
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:41:41+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'",
+              "likely_errors": "A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'",
+              "likely_errors": "A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas."
+            }
+          ]
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of correctly interpreting the symbolic representation of the simulation results, particularly in accurately counting the number of 1s (made kicks) in each trial. Misreading sequences like '11111' or '00011' due to carelessness or confusion between 1s and 0s can lead to incorrect counts, which then cascade into wrong probabilities. While procedural fluency is involved in the calculation, the error is more likely to originate in the initial representation step, as the task hinges on precise interpretation of the given symbolic data—making 'Representing' the core challenge. The other practice used, procedural fluency, involves straightforward counting and division, which is less error-prone once the correct counts are established."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'\",\n    \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n    \"likely_errors\": \"A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly interpreting the symbolic representation of the simulation results, particularly in accurately counting the number of 1s (made kicks) in each trial. Misreading sequences like '11111' or '00011' due to carelessness or confusion between 1s and 0s can lead to incorrect counts, which then cascade into wrong probabilities. While procedural fluency is involved in the calculation, the error is more likely to originate in the initial representation step, as the task hinges on precise interpretation of the given symbolic data—making 'Representing' the core challenge. The other practice used, procedural fluency, involves straightforward counting and division, which is less error-prone once the correct counts are established.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given table of simulation results, where each trial is represented as a sequence of 1s and 0s (1 = make, 0 = miss), and translate this visual and symbolic representation into a count of successful kicks per trial. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Create visual representation of measurements or relationships between measurements.'",
+          "likely_errors": "A student might miscount the number of 1s in a trial (e.g., misreading '11111' as 4 makes instead of 5) or confuse 1s and 0s, which is moderately likely for students still developing attention to detail in symbolic representations."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After counting the number of successful kicks in each trial, the student must compute the number of trials in which 3 or more kicks were made (i.e., count trials with 3, 4, or 5 successes), then divide that count by the total number of trials (5) to estimate the probability. This requires accurate counting and division, matching the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'",
+          "likely_errors": "A student might incorrectly count the number of successful trials (e.g., missing a trial with 3 successes) or make a calculation error in the division (e.g., 3/5 = 0.5 instead of 0.6), which is moderately likely, especially without checking work."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a broader pattern, extend the simulation to more trials, or generalize the result to a different probability or number of trials. The task is limited to analyzing the given simulation data without extending it to a general rule or larger context."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to defend or evaluate a claim about the simulation’s validity, reason why the estimate is accurate, or provide a deductive argument. The task is purely computational and interpretive, not evaluative or argumentative."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although a simulation is used, the student is not creating or designing a model to represent a real-world scenario. The model (the simulation with 1s and 0s) is already provided, and the student is only using it to compute a probability estimate, not building or revising a model based on a problem context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer contributions, or social interaction elements. The student works independently on interpreting and computing from the given table, with no need to respond to another person’s reasoning or build on shared ideas."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of correctly interpreting the symbolic representation of the simulation results, particularly in accurately counting the number of 1s (made kicks) in each trial. Misreading sequences like '11111' or '00011' due to carelessness or confusion between 1s and 0s can lead to incorrect counts, which then cascade into wrong probabilities. While procedural fluency is involved in the calculation, the error is more likely to originate in the initial representation step, as the task hinges on precise interpretation of the given symbolic data—making 'Representing' the core challenge. The other practice used, procedural fluency, involves straightforward counting and division, which is less error-prone once the correct counts are established."
+    },
+    "top_practice": "Representing"
+  }
+}

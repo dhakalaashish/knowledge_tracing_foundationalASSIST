@@ -1,0 +1,217 @@
+{
+  "row": 1567,
+  "problem_id": "86471",
+  "problem_text": "A furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____",
+          "started_at": "2026-11-09T23:28:22+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.\",\n    \"likely_errors\": \"A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.\",\n    \"likely_errors\": \"A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.\",\n    \"likely_errors\": \"A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.\",\n    \"likely_errors\": \"A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3897,
+            "completion_tokens": 668
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:31:09+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.\",\n      \"likely_errors\": \"A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.\",\n      \"likely_errors\": \"A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:44:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.\",\n      \"likely_errors\": \"A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.\",\n      \"likely_errors\": \"A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA furniture store pays a wholesale price for a mattress. Then, the store marks up the retail price to 150% of the wholesale price. Later, they put the mattress on sale for 50% off of the retail price. A customer just bought the mattress for sale and paid $1,200.\nWhat was the retail price of the mattress, before the discount?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.\",\n      \"likely_errors\": \"A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.\",\n      \"likely_errors\": \"A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly translating the verbal scenario into a mathematical model, particularly by misunderstanding the 150% markup as adding 150% to the wholesale price (resulting in 2.5W) instead of recognizing it as 1.5 times the wholesale price. This misrepresentation leads to an incorrect equation and ultimately the wrong answer. While procedural fluency is involved, calculation errors are less likely to be the primary cause of incorrect answers because the computations are straightforward once the model is correct; thus, the core difficulty lies in accurate representation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly translating the verbal scenario into a mathematical model, particularly by misunderstanding the 150% markup as adding 150% to the wholesale price (resulting in 2.5W) instead of recognizing it as 1.5 times the wholesale price. This misrepresentation leads to an incorrect equation and ultimately the wrong answer. While procedural fluency is involved, calculation errors are less likely to be the primary cause of incorrect answers because the computations are straightforward once the model is correct; thus, the core difficulty lies in accurate representation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4540,
+            "completion_tokens": 138
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:46:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.",
+              "likely_errors": "A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.",
+              "likely_errors": "A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of correctly translating the verbal scenario into a mathematical model, particularly by misunderstanding the 150% markup as adding 150% to the wholesale price (resulting in 2.5W) instead of recognizing it as 1.5 times the wholesale price. This misrepresentation leads to an incorrect equation and ultimately the wrong answer. While procedural fluency is involved, calculation errors are less likely to be the primary cause of incorrect answers because the computations are straightforward once the model is correct; thus, the core difficulty lies in accurate representation."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.\",\n    \"likely_errors\": \"A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.\",\n    \"likely_errors\": \"A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly translating the verbal scenario into a mathematical model, particularly by misunderstanding the 150% markup as adding 150% to the wholesale price (resulting in 2.5W) instead of recognizing it as 1.5 times the wholesale price. This misrepresentation leads to an incorrect equation and ultimately the wrong answer. While procedural fluency is involved, calculation errors are less likely to be the primary cause of incorrect answers because the computations are straightforward once the model is correct; thus, the core difficulty lies in accurate representation.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the verbal description of the pricing scenario—wholesale price, 150% markup, 50% discount, final sale price—into a mathematical model, such as an equation or a chain of operations. This involves representing the relationships between the wholesale price, retail price, and sale price using numbers and percentages, which aligns with the descriptor of creating a numerical representation of a word problem.",
+          "likely_errors": "A student might misrepresent the markup as 150% of the wholesale price instead of 150% of the wholesale price meaning the retail price is 1.5 times the wholesale, or incorrectly apply the 50% discount to the wholesale price. This is moderately likely, especially if the student confuses markup and discount logic."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically (e.g., letting W be the wholesale price, then retail = 1.5W, and sale price = 0.5 × 1.5W = 0.75W), the student must perform the necessary computations to solve for the retail price. Since the sale price is $1,200, the student solves 0.75W = 1,200 to find W, then computes 1.5W to get the retail price. This requires accurate and efficient computation with decimals and percentages.",
+          "likely_errors": "A student might make a calculation error, such as dividing 1,200 by 0.75 incorrectly or miscalculating 1.5 × 1,600. These are common procedural errors, especially under time pressure, so they are moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a broader pattern or generalize beyond this specific case. The problem involves a single instance of markup and discount with fixed percentages, and no extension to other cases or general formulas is needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to justify or prove why a particular method works or to defend a claim about the reasoning. The task is to compute a value, not to evaluate or construct a mathematical argument."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the scenario is real-world, the student is not required to identify the problem, select variables, or build a model from scratch. The model is already implied by the problem statement, and the student only needs to apply a standard procedure to solve it."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative prompt, so collaboration is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of correctly translating the verbal scenario into a mathematical model, particularly by misunderstanding the 150% markup as adding 150% to the wholesale price (resulting in 2.5W) instead of recognizing it as 1.5 times the wholesale price. This misrepresentation leads to an incorrect equation and ultimately the wrong answer. While procedural fluency is involved, calculation errors are less likely to be the primary cause of incorrect answers because the computations are straightforward once the model is correct; thus, the core difficulty lies in accurate representation."
+    },
+    "top_practice": "Representing"
+  }
+}

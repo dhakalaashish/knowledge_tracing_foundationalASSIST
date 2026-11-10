@@ -1,0 +1,217 @@
+{
+  "row": 2331,
+  "problem_id": "1805",
+  "problem_text": "A company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2",
+          "started_at": "2026-11-09T23:31:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n    \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.\",\n    \"likely_errors\": \"A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n    \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.\",\n    \"likely_errors\": \"A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3918,
+            "completion_tokens": 736
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:34:15+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.\",\n      \"likely_errors\": \"A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:46:28+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.\",\n      \"likely_errors\": \"A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.\",\n      \"likely_errors\": \"A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of abstracting and generalizing, where they must recognize that comparing raw counts (950 vs. 150) is misleading and instead focus on the proportion of success (95% vs. 75%). This step requires decontextualizing the problem to see that the key mathematical idea is relative frequency, not absolute numbers. While misrepresenting the data (e.g., incorrect decimal conversion) is a possible error, it is less likely to be the root cause of incorrect answers because the numbers are straightforward. The deeper conceptual leap—understanding that proportion, not count, determines likelihood—is the true challenge, making Abstracting and Generalizing the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of abstracting and generalizing, where they must recognize that comparing raw counts (950 vs. 150) is misleading and instead focus on the proportion of success (95% vs. 75%). This step requires decontextualizing the problem to see that the key mathematical idea is relative frequency, not absolute numbers. While misrepresenting the data (e.g., incorrect decimal conversion) is a possible error, it is less likely to be the root cause of incorrect answers because the numbers are straightforward. The deeper conceptual leap—understanding that proportion, not count, determines likelihood—is the true challenge, making Abstracting and Generalizing the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4629,
+            "completion_tokens": 167
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:48:08+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.",
+              "likely_errors": "A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.",
+              "likely_errors": "A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of abstracting and generalizing, where they must recognize that comparing raw counts (950 vs. 150) is misleading and instead focus on the proportion of success (95% vs. 75%). This step requires decontextualizing the problem to see that the key mathematical idea is relative frequency, not absolute numbers. While misrepresenting the data (e.g., incorrect decimal conversion) is a possible error, it is less likely to be the root cause of incorrect answers because the numbers are straightforward. The deeper conceptual leap—understanding that proportion, not count, determines likelihood—is the true challenge, making Abstracting and Generalizing the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n    \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.\",\n    \"likely_errors\": \"A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of abstracting and generalizing, where they must recognize that comparing raw counts (950 vs. 150) is misleading and instead focus on the proportion of success (95% vs. 75%). This step requires decontextualizing the problem to see that the key mathematical idea is relative frequency, not absolute numbers. While misrepresenting the data (e.g., incorrect decimal conversion) is a possible error, it is less likely to be the root cause of incorrect answers because the numbers are straightforward. The deeper conceptual leap—understanding that proportion, not count, determines likelihood—is the true challenge, making Abstracting and Generalizing the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.",
+          "likely_errors": "A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the data as proportions, the student must recognize the underlying pattern: that the proportion of success (lasting more than a year) is what matters, not the raw number of successes. The student generalizes that comparing relative success rates (fractions or percentages) is the appropriate method to determine which product is more reliable, extending this reasoning from a specific case to a broader principle of proportional reasoning.",
+          "likely_errors": "A student might fail to abstract the core idea and instead focus on absolute numbers, especially if they don’t see the need to normalize the data. This error is moderately likely, particularly for students who are not yet comfortable with proportional thinking."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to choose the more likely product based on data, but does not require the student to construct a formal argument, provide a counterexample, or prove why one product is better. There is no claim to evaluate or refute, nor any need for deductive reasoning beyond comparing proportions, so this practice is not called for."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is not asking the student to create a model of a real-world situation involving variables, units, or estimation. The data is already provided and the question is purely about comparing given proportions, not about mathematizing a complex or open-ended context. Thus, modeling is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer's work, and no need to respond to another student’s reasoning. The student works independently on a straightforward comparison, so there is no collaborative element involved in solving the task."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must compute proportions (e.g., 950 ÷ 1000 = 0.95), this is a minimal procedural task embedded within the larger process of representation and abstraction. The item does not assess the student’s ability to carry out operations efficiently or flexibly, nor does it emphasize accuracy in computation as a primary skill—instead, it focuses on interpretation and reasoning. Thus, procedural fluency is not the central practice assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of abstracting and generalizing, where they must recognize that comparing raw counts (950 vs. 150) is misleading and instead focus on the proportion of success (95% vs. 75%). This step requires decontextualizing the problem to see that the key mathematical idea is relative frequency, not absolute numbers. While misrepresenting the data (e.g., incorrect decimal conversion) is a possible error, it is less likely to be the root cause of incorrect answers because the numbers are straightforward. The deeper conceptual leap—understanding that proportion, not count, determines likelihood—is the true challenge, making Abstracting and Generalizing the top practice."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "row": 62,
+  "problem_id": "22103",
+  "problem_text": "Here are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money",
+          "started_at": "2026-11-09T23:20:07+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'\",\n    \"likely_errors\": \"A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n    \"likely_errors\": \"A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'\",\n    \"likely_errors\": \"A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n    \"likely_errors\": \"A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3941,
+            "completion_tokens": 613
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:23:03+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHere are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'\",\n      \"likely_errors\": \"A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:40:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'\",\n      \"likely_errors\": \"A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere are some scenarios:\n- According to market research, a business has a 75% chance of making money in the first 3 years.\n- According to lab testing, 5/6 of a certain kind of experimental light bulb will work after 3 years.\n- According to experts, the likelihood of a car needing major repairs in the first 3 years is 0.7.\nOrder the scenarios in order of likelihood from least (1) to greatest (3) after three years.\n\nItems to put in order:\n- the light bulb still works\n- the car needs major repairs\n- the business makes money\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'\",\n      \"likely_errors\": \"A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying the correct order after conversion, as they may miscompare the values (e.g., incorrectly believing 0.7 > 75% or 5/6 < 0.7) and fail to provide a logical defense for their choice. This step requires more than computation—it demands reasoning about numerical relationships and defending a conclusion, which is the essence of 'Justifying and Proving.' While 'Representing' involves conversion, which can lead to errors, the likelihood of such errors is lower if the student uses a reliable method; the deeper challenge lies in correctly interpreting and justifying the comparison, making 'Justifying and Proving' the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying the correct order after conversion, as they may miscompare the values (e.g., incorrectly believing 0.7 > 75% or 5/6 < 0.7) and fail to provide a logical defense for their choice. This step requires more than computation—it demands reasoning about numerical relationships and defending a conclusion, which is the essence of 'Justifying and Proving.' While 'Representing' involves conversion, which can lead to errors, the likelihood of such errors is lower if the student uses a reliable method; the deeper challenge lies in correctly interpreting and justifying the comparison, making 'Justifying and Proving' the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4529,
+            "completion_tokens": 166
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:41:41+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'",
+              "likely_errors": "A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'",
+              "likely_errors": "A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task."
+            }
+          ]
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying the correct order after conversion, as they may miscompare the values (e.g., incorrectly believing 0.7 > 75% or 5/6 < 0.7) and fail to provide a logical defense for their choice. This step requires more than computation—it demands reasoning about numerical relationships and defending a conclusion, which is the essence of 'Justifying and Proving.' While 'Representing' involves conversion, which can lead to errors, the likelihood of such errors is lower if the student uses a reliable method; the deeper challenge lies in correctly interpreting and justifying the comparison, making 'Justifying and Proving' the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'\",\n    \"likely_errors\": \"A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n    \"likely_errors\": \"A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying the correct order after conversion, as they may miscompare the values (e.g., incorrectly believing 0.7 > 75% or 5/6 < 0.7) and fail to provide a logical defense for their choice. This step requires more than computation—it demands reasoning about numerical relationships and defending a conclusion, which is the essence of 'Justifying and Proving.' While 'Representing' involves conversion, which can lead to errors, the likelihood of such errors is lower if the student uses a reliable method; the deeper challenge lies in correctly interpreting and justifying the comparison, making 'Justifying and Proving' the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the given scenarios—expressed in different forms (percent, fraction, decimal)—into a common mathematical representation (e.g., converting all to decimals or percentages) to compare them directly. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).'",
+          "likely_errors": "A student might incorrectly convert one of the values (e.g., misreading 5/6 as 0.56 or 75% as 0.75) or fail to align the representations, leading to an incorrect order. This is moderately likely, especially if the student is not fluent with fraction-decimal conversions."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After converting the values, the student must compare them and justify the correct order based on numerical value. This involves making a logical claim about relative likelihood and supporting it with the converted values, which matches the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'",
+          "likely_errors": "A student might order the values incorrectly due to a miscalculation or misinterpretation (e.g., thinking 0.7 > 75% or 5/6 < 0.7), or fail to explain why the order is correct. This is moderately likely, especially if the student does not verify their comparisons."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The task is limited to comparing three specific, given probabilities without generalizing beyond them."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or evaluating a model to represent a real-world situation. The scenarios are already provided with assigned probabilities, and the task is purely comparative, not predictive or structural."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, shared work, or peer contributions. The student works independently to order the scenarios, with no interaction or response to another person’s reasoning."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student performs conversions (e.g., fraction to decimal), the task is not primarily about fluently executing procedures in isolation. The core challenge is comparison and justification, not the accuracy or efficiency of computation per se. The procedural steps are embedded in the larger reasoning task."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying the correct order after conversion, as they may miscompare the values (e.g., incorrectly believing 0.7 > 75% or 5/6 < 0.7) and fail to provide a logical defense for their choice. This step requires more than computation—it demands reasoning about numerical relationships and defending a conclusion, which is the essence of 'Justifying and Proving.' While 'Representing' involves conversion, which can lead to errors, the likelihood of such errors is lower if the student uses a reliable method; the deeper challenge lies in correctly interpreting and justifying the comparison, making 'Justifying and Proving' the top practice."
+    },
+    "top_practice": "Justifying and Proving"
+  }
+}

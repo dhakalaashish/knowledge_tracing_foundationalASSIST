@@ -1,0 +1,221 @@
+{
+  "row": 1531,
+  "problem_id": "14960",
+  "problem_text": "To make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTo make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth.",
+          "started_at": "2026-11-09T23:25:44+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTo make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTo make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.\",\n      \"likely_errors\": \"A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.\",\n      \"likely_errors\": \"A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.\",\n      \"likely_errors\": \"A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.\",\n      \"likely_errors\": \"A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.\",\n      \"likely_errors\": \"A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.\",\n      \"likely_errors\": \"A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3911,
+            "completion_tokens": 755
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:28:22+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTo make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.\",\n      \"likely_errors\": \"A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.\",\n      \"likely_errors\": \"A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.\",\n      \"likely_errors\": \"A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:43:19+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTo make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.\",\n      \"likely_errors\": \"A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.\",\n      \"likely_errors\": \"A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.\",\n      \"likely_errors\": \"A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTo make a Koch snowflake,\n- Start with an equilateral triangle. This is step 1.\n- Divide each side into 3 equal pieces. Construct a smaller equilateral triangle on the middle third. This is step 2.\n- Do the same to each of the newly created sides. This is step 3.\n- Keep repeating this process.\n[image]\nBy what percentage does the perimeter increase at step 2?\n____ %\nRound your answer to the nearest tenth.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.\",\n      \"likely_errors\": \"A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.\",\n      \"likely_errors\": \"A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.\",\n      \"likely_errors\": \"A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the percentage increase using fractions and the percentage formula. Errors in multiplying the number of segments (e.g., using 3 instead of 4 per side) or in handling fractions (e.g., miscalculating (4/3 - 1) × 100) are common and directly lead to incorrect answers. While representing and abstracting are important, they are more conceptual and less error-prone if the visual pattern is understood; the procedural step involves multiple precise calculations, making it the most likely source of mistakes.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the percentage increase using fractions and the percentage formula. Errors in multiplying the number of segments (e.g., using 3 instead of 4 per side) or in handling fractions (e.g., miscalculating (4/3 - 1) × 100) are common and directly lead to incorrect answers. While representing and abstracting are important, they are more conceptual and less error-prone if the visual pattern is understood; the procedural step involves multiple precise calculations, making it the most likely source of mistakes.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4636,
+            "completion_tokens": 146
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:44:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.",
+              "likely_errors": "A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.",
+              "likely_errors": "A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.",
+              "likely_errors": "A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work."
+            }
+          ]
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the percentage increase using fractions and the percentage formula. Errors in multiplying the number of segments (e.g., using 3 instead of 4 per side) or in handling fractions (e.g., miscalculating (4/3 - 1) × 100) are common and directly lead to incorrect answers. While representing and abstracting are important, they are more conceptual and less error-prone if the visual pattern is understood; the procedural step involves multiple precise calculations, making it the most likely source of mistakes."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.\",\n      \"likely_errors\": \"A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.\",\n      \"likely_errors\": \"A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.\",\n      \"likely_errors\": \"A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work.\"\n    }\n  ]\n}",
+    "answer2": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the percentage increase using fractions and the percentage formula. Errors in multiplying the number of segments (e.g., using 3 instead of 4 per side) or in handling fractions (e.g., miscalculating (4/3 - 1) × 100) are common and directly lead to incorrect answers. While representing and abstracting are important, they are more conceptual and less error-prone if the visual pattern is understood; the procedural step involves multiple precise calculations, making it the most likely source of mistakes.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the visual description of the Koch snowflake construction and translate it into a mathematical representation. Specifically, they need to represent the change in perimeter by visualizing how each side is divided into three equal parts, with a new equilateral triangle added on the middle third, increasing the number of sides and the total length. This matches the descriptor of creating visual representations of geometric models to solve problems.",
+          "likely_errors": "A student might miscount the number of new segments added or incorrectly assume the new triangle's side length is the same as the original, leading to an incorrect representation of the perimeter increase. This is moderately likely for students unfamiliar with fractal construction."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the change in the perimeter, the student must compute the percentage increase. This involves calculating the original perimeter (3 times the side length), determining the new perimeter (each side replaced by 4 segments of length 1/3 the original), and computing the percentage increase using the formula: ((new - original)/original) × 100. This requires accurate and efficient computation with fractions and percentages.",
+          "likely_errors": "A student might incorrectly compute the number of new segments (e.g., thinking it’s 3 instead of 4 per side), or make an arithmetic error in the fraction or percentage calculation. This is common and likely, especially with multi-step computations involving fractions."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern that each side is replaced by four segments of one-third the length, so the perimeter is multiplied by 4/3 at each step. Although the question only asks for step 2, understanding this general rule (scaling by 4/3) is essential to confirm the correct computation and to reason why the increase is consistent across steps. This aligns with the descriptor of identifying and generalizing patterns in sequences and extending them using symbols or operations.",
+          "likely_errors": "A student might fail to see the multiplicative pattern and instead try to add lengths incorrectly, or incorrectly generalize the increase as additive rather than multiplicative. This is moderately likely for students who haven’t worked with recursive geometric patterns before."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim, or provide a proof. They are only asked to compute a percentage increase based on a given geometric transformation, not to justify why the process works or prove the pattern holds. There is no claim to evaluate or refute, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item is not asking the student to model a real-world situation or to identify a problem from a context. The Koch snowflake is a defined mathematical construction, and the question is purely computational and geometric. No real-world scenario, data, or need to validate a model against reality is involved."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a geometric construction and computation, with no requirement to respond to or build on another’s claim, strategy, or work."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the percentage increase using fractions and the percentage formula. Errors in multiplying the number of segments (e.g., using 3 instead of 4 per side) or in handling fractions (e.g., miscalculating (4/3 - 1) × 100) are common and directly lead to incorrect answers. While representing and abstracting are important, they are more conceptual and less error-prone if the visual pattern is understood; the procedural step involves multiple precise calculations, making it the most likely source of mistakes."
+    },
+    "top_practice": "Procedural Fluency"
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "row": 718,
+  "problem_id": "44115",
+  "problem_text": "A textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____",
+          "started_at": "2026-11-09T23:23:04+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.\",\n    \"likely_errors\": \"A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.\",\n    \"likely_errors\": \"A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.\",\n    \"likely_errors\": \"A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.\",\n    \"likely_errors\": \"A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.\",\n    \"likely_errors\": \"A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.\",\n    \"likely_errors\": \"A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3870,
+            "completion_tokens": 736
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:25:43+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.\",\n      \"likely_errors\": \"A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.\",\n      \"likely_errors\": \"A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.\",\n      \"likely_errors\": \"A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:41:42+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.\",\n      \"likely_errors\": \"A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.\",\n      \"likely_errors\": \"A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.\",\n      \"likely_errors\": \"A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nWhat is the probability that you turn to page 45?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.\",\n      \"likely_errors\": \"A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.\",\n      \"likely_errors\": \"A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.\",\n      \"likely_errors\": \"A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of computing 1 ÷ 428 correctly and expressing it as a simplified fraction or decimal, especially if they lack fluency in basic probability calculations. While Representing and Abstracting and Generalizing involve conceptual understanding, the computation itself is straightforward and the error of writing 45/428 instead of 1/428 is a clear procedural mistake. The other practices are less likely to cause incorrect answers because the representation is simple (uniform distribution) and the generalization (1/n) is intuitive once the setup is understood—so the core difficulty lies in executing the correct arithmetic procedure accurately.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of computing 1 ÷ 428 correctly and expressing it as a simplified fraction or decimal, especially if they lack fluency in basic probability calculations. While Representing and Abstracting and Generalizing involve conceptual understanding, the computation itself is straightforward and the error of writing 45/428 instead of 1/428 is a clear procedural mistake. The other practices are less likely to cause incorrect answers because the representation is simple (uniform distribution) and the generalization (1/n) is intuitive once the setup is understood—so the core difficulty lies in executing the correct arithmetic procedure accurately.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4581,
+            "completion_tokens": 155
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:43:19+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.",
+              "likely_errors": "A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.",
+              "likely_errors": "A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.",
+              "likely_errors": "A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged."
+            }
+          ]
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural step of computing 1 ÷ 428 correctly and expressing it as a simplified fraction or decimal, especially if they lack fluency in basic probability calculations. While Representing and Abstracting and Generalizing involve conceptual understanding, the computation itself is straightforward and the error of writing 45/428 instead of 1/428 is a clear procedural mistake. The other practices are less likely to cause incorrect answers because the representation is simple (uniform distribution) and the generalization (1/n) is intuitive once the setup is understood—so the core difficulty lies in executing the correct arithmetic procedure accurately."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.\",\n    \"likely_errors\": \"A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.\",\n    \"likely_errors\": \"A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.\",\n    \"likely_errors\": \"A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of computing 1 ÷ 428 correctly and expressing it as a simplified fraction or decimal, especially if they lack fluency in basic probability calculations. While Representing and Abstracting and Generalizing involve conceptual understanding, the computation itself is straightforward and the error of writing 45/428 instead of 1/428 is a clear procedural mistake. The other practices are less likely to cause incorrect answers because the representation is simple (uniform distribution) and the generalization (1/n) is intuitive once the setup is understood—so the core difficulty lies in executing the correct arithmetic procedure accurately.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the probability of selecting a specific page from a book with 428 pages, which requires applying the basic probability formula: P(event) = number of favorable outcomes / total number of possible outcomes. Here, there is 1 favorable outcome (page 45) and 428 possible outcomes (pages 1 to 428), so the student performs the division 1 ÷ 428 accurately and efficiently.",
+          "likely_errors": "A student might incorrectly write the fraction as 45/428 (confusing the page number with the number of favorable outcomes) or make a computational error in division. This is moderately likely for students who are not fluent with basic probability calculations."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must interpret the real-world scenario (a textbook with numbered pages) and translate it into a mathematical representation: a uniform probability model where each page has an equal chance of being selected. This involves recognizing that the situation can be modeled as a discrete uniform distribution with 428 equally likely outcomes.",
+          "likely_errors": "A student might fail to recognize that the pages are equally likely or misrepresent the total number of outcomes (e.g., thinking the book has 427 pages or starting from page 0). This is somewhat likely for students who struggle with abstracting real-world contexts into mathematical models."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the concept of probability from a specific case (page 45) to the general rule: for any single page in a uniformly random selection from n pages, the probability is 1/n. This step involves recognizing the pattern that the probability of selecting any one specific page is always 1 divided by the total number of pages, regardless of the page number.",
+          "likely_errors": "A student might believe that page 45 has a different probability due to its position (e.g., thinking it's more or less likely), indicating a failure to abstract the uniformity of the distribution. This is moderately likely for students who have not internalized the concept of equally likely outcomes."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal justification or proof for their answer. There is no claim to evaluate or refute, nor is there a need to defend a generalization with deductive reasoning or counterexamples. The task is computational and conceptual, not argumentative."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the scenario is real-world, the modeling is straightforward and already fully specified: a uniform random selection from 428 pages. The student does not need to identify the problem, select variables, or build a model from scratch; the model is given implicitly by the context. Therefore, no modeling process is required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, peer claim, or collaborative prompt. The student responds independently, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural step of computing 1 ÷ 428 correctly and expressing it as a simplified fraction or decimal, especially if they lack fluency in basic probability calculations. While Representing and Abstracting and Generalizing involve conceptual understanding, the computation itself is straightforward and the error of writing 45/428 instead of 1/428 is a clear procedural mistake. The other practices are less likely to cause incorrect answers because the representation is simple (uniform distribution) and the generalization (1/n) is intuitive once the setup is understood—so the core difficulty lies in executing the correct arithmetic procedure accurately."
+    },
+    "top_practice": "Procedural Fluency"
+  }
+}

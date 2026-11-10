@@ -1,0 +1,221 @@
+{
+  "row": 1930,
+  "problem_id": "223006",
+  "problem_text": "The spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____",
+          "started_at": "2026-11-09T23:28:22+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.\",\n    \"likely_errors\": \"A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.\",\n    \"likely_errors\": \"A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.\",\n    \"likely_errors\": \"A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.\",\n    \"likely_errors\": \"A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.\",\n    \"likely_errors\": \"A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.\",\n    \"likely_errors\": \"A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3917,
+            "completion_tokens": 728
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:31:09+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nThe spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.\",\n      \"likely_errors\": \"A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.\",\n      \"likely_errors\": \"A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.\",\n      \"likely_errors\": \"A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:44:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.\",\n      \"likely_errors\": \"A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.\",\n      \"likely_errors\": \"A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.\",\n      \"likely_errors\": \"A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe spiral in the figure is made by starting with a right triangle with both legs measuring one unit each. Then a second right triangle is built with one leg measuring one unit, and the other leg being the hypotenuse of the first triangle. A third right triangle is built on the second triangle’s hypotenuse, again with the other leg measuring one unit, and so on.\n[image]\nFind the length, x, of the hypotenuse of the last triangle constructed in the figure.\nx = ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.\",\n      \"likely_errors\": \"A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.\",\n      \"likely_errors\": \"A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.\",\n      \"likely_errors\": \"A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the recursive pattern in the hypotenuse lengths, particularly by failing to see that each hypotenuse is the square root of the next integer (i.e., √n), and instead assuming a linear or additive pattern. This step is the core intellectual challenge of the item, as the geometric construction is iterative and non-obvious. While Representing and Procedural Fluency are important, misinterpreting the pattern (Abstracting and Generalizing) would lead to an incorrect formula, making the final computation (Procedural Fluency) irrelevant. Representing is more straightforward once the pattern is understood, and procedural errors are less likely if the correct formula is known.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the recursive pattern in the hypotenuse lengths, particularly by failing to see that each hypotenuse is the square root of the next integer (i.e., √n), and instead assuming a linear or additive pattern. This step is the core intellectual challenge of the item, as the geometric construction is iterative and non-obvious. While Representing and Procedural Fluency are important, misinterpreting the pattern (Abstracting and Generalizing) would lead to an incorrect formula, making the final computation (Procedural Fluency) irrelevant. Representing is more straightforward once the pattern is understood, and procedural errors are less likely if the correct formula is known.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4620,
+            "completion_tokens": 172
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:46:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.",
+              "likely_errors": "A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.",
+              "likely_errors": "A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.",
+              "likely_errors": "A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing and generalizing the recursive pattern in the hypotenuse lengths, particularly by failing to see that each hypotenuse is the square root of the next integer (i.e., √n), and instead assuming a linear or additive pattern. This step is the core intellectual challenge of the item, as the geometric construction is iterative and non-obvious. While Representing and Procedural Fluency are important, misinterpreting the pattern (Abstracting and Generalizing) would lead to an incorrect formula, making the final computation (Procedural Fluency) irrelevant. Representing is more straightforward once the pattern is understood, and procedural errors are less likely if the correct formula is known."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.\",\n    \"likely_errors\": \"A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.\",\n    \"likely_errors\": \"A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.\",\n    \"likely_errors\": \"A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the recursive pattern in the hypotenuse lengths, particularly by failing to see that each hypotenuse is the square root of the next integer (i.e., √n), and instead assuming a linear or additive pattern. This step is the core intellectual challenge of the item, as the geometric construction is iterative and non-obvious. While Representing and Procedural Fluency are important, misinterpreting the pattern (Abstracting and Generalizing) would lead to an incorrect formula, making the final computation (Procedural Fluency) irrelevant. Representing is more straightforward once the pattern is understood, and procedural errors are less likely if the correct formula is known.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the geometric description of the spiral and translate it into a sequence of right triangles, each built on the hypotenuse of the previous one with one leg of length 1. This involves creating a visual or mental model of the spiral and recognizing the pattern of successive right triangles, which aligns with the descriptor of drawing or sketching figures from a written description and representing problem situations with geometric models.",
+          "likely_errors": "A student might misinterpret the construction process, such as assuming both legs are always 1 unit, or incorrectly placing the new triangle, leading to an incorrect sequence. This is moderately likely for students unfamiliar with iterative geometric constructions."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern in the hypotenuse lengths—each hypotenuse being the square root of the sum of the squares of the previous hypotenuse and 1—and generalize this recursive relationship into a formula for the nth hypotenuse. This matches the descriptor of identifying patterns in sequences and generalizing them using symbols or expressions.",
+          "likely_errors": "A student might fail to see the recursive pattern or incorrectly assume a linear or additive pattern (e.g., adding 1 each time), leading to an incorrect formula. This is moderately likely, especially if the student hasn’t worked with iterative square roots before."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the pattern is recognized (e.g., hypotenuse of the nth triangle is √n), the student must compute the final hypotenuse length using the square root operation and arithmetic with radicals, such as computing √(1² + (√(n−1))²) iteratively or directly as √n. This aligns with the descriptor of carrying out algorithms accurately and efficiently with radicals and square roots.",
+          "likely_errors": "A student might make a computational error in simplifying radicals (e.g., √(1 + 2) = √3, but mistakenly writing √1 + √2), or misapply the Pythagorean Theorem. This is likely for students with weak fluency in radical arithmetic."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for the length of the hypotenuse based on a constructed spiral, not for a justification of why the pattern holds or a formal proof of the general formula. The student is expected to compute the result, not to defend or refute a claim or develop a deductive argument."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context or scenario to model, nor is the student asked to identify variables, create a model, or validate a solution in a practical setting. The problem is purely geometric and recursive, not contextualized in a situation requiring mathematization of a real-world problem."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer claim to respond to, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing and generalizing the recursive pattern in the hypotenuse lengths, particularly by failing to see that each hypotenuse is the square root of the next integer (i.e., √n), and instead assuming a linear or additive pattern. This step is the core intellectual challenge of the item, as the geometric construction is iterative and non-obvious. While Representing and Procedural Fluency are important, misinterpreting the pattern (Abstracting and Generalizing) would lead to an incorrect formula, making the final computation (Procedural Fluency) irrelevant. Representing is more straightforward once the pattern is understood, and procedural errors are less likely if the correct formula is known."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

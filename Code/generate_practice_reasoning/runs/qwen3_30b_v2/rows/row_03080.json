@@ -1,0 +1,221 @@
+{
+  "row": 3080,
+  "problem_id": "62003",
+  "problem_text": "Tyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e",
+          "started_at": "2026-11-09T23:38:26+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.\",\n      \"likely_errors\": \"A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.\",\n      \"likely_errors\": \"A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.\",\n      \"likely_errors\": \"A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.\",\n      \"likely_errors\": \"A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.\",\n      \"likely_errors\": \"A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.\",\n      \"likely_errors\": \"A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3912,
+            "completion_tokens": 689
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:40:08+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.\",\n      \"likely_errors\": \"A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.\",\n      \"likely_errors\": \"A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.\",\n      \"likely_errors\": \"A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.\",\n      \"likely_errors\": \"A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.\",\n      \"likely_errors\": \"A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.\",\n      \"likely_errors\": \"A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTyler has more than $10. Elena has more money than Tyler. Mai has more money than Elena. Let t be the amount of money that Tyler has, let e be the amount of money that Elena has, and let m be the amount of money that Mai has. Select all statements that are true.\n\nAnswer choices:\nA. t < m || m > 10 || e > 10 || t > 10 || e > m || t < e\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.\",\n      \"likely_errors\": \"A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.\",\n      \"likely_errors\": \"A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.\",\n      \"likely_errors\": \"A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong when evaluating which statements are necessarily true based on the logical chain of inequalities, as this requires justifying each claim through deductive reasoning (e.g., recognizing that m > e > t > 10 implies m > 10 and e > 10). This step involves more than just procedural computation—it demands understanding logical implications and avoiding assumptions. While Representing and Procedural Fluency are important, errors in these steps are more likely to be due to simple missteps (like reversing an inequality or miscalculating a chain), which are less subtle and easier to catch. In contrast, failing to justify the necessity of a statement (e.g., thinking t < e is not necessarily true when it is directly given) reflects a deeper conceptual gap in reasoning, making Justifying and Proving the core difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong when evaluating which statements are necessarily true based on the logical chain of inequalities, as this requires justifying each claim through deductive reasoning (e.g., recognizing that m > e > t > 10 implies m > 10 and e > 10). This step involves more than just procedural computation—it demands understanding logical implications and avoiding assumptions. While Representing and Procedural Fluency are important, errors in these steps are more likely to be due to simple missteps (like reversing an inequality or miscalculating a chain), which are less subtle and easier to catch. In contrast, failing to justify the necessity of a statement (e.g., thinking t < e is not necessarily true when it is directly given) reflects a deeper conceptual gap in reasoning, making Justifying and Proving the core difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4572,
+            "completion_tokens": 193
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:49:55+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.",
+              "likely_errors": "A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.",
+              "likely_errors": "A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.",
+              "likely_errors": "A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent."
+            }
+          ]
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong when evaluating which statements are necessarily true based on the logical chain of inequalities, as this requires justifying each claim through deductive reasoning (e.g., recognizing that m > e > t > 10 implies m > 10 and e > 10). This step involves more than just procedural computation—it demands understanding logical implications and avoiding assumptions. While Representing and Procedural Fluency are important, errors in these steps are more likely to be due to simple missteps (like reversing an inequality or miscalculating a chain), which are less subtle and easier to catch. In contrast, failing to justify the necessity of a statement (e.g., thinking t < e is not necessarily true when it is directly given) reflects a deeper conceptual gap in reasoning, making Justifying and Proving the core difficulty."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.\",\n      \"likely_errors\": \"A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.\",\n      \"likely_errors\": \"A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.\",\n      \"likely_errors\": \"A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent.\"\n    }\n  ]\n}",
+    "answer2": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong when evaluating which statements are necessarily true based on the logical chain of inequalities, as this requires justifying each claim through deductive reasoning (e.g., recognizing that m > e > t > 10 implies m > 10 and e > 10). This step involves more than just procedural computation—it demands understanding logical implications and avoiding assumptions. While Representing and Procedural Fluency are important, errors in these steps are more likely to be due to simple missteps (like reversing an inequality or miscalculating a chain), which are less subtle and easier to catch. In contrast, failing to justify the necessity of a statement (e.g., thinking t < e is not necessarily true when it is directly given) reflects a deeper conceptual gap in reasoning, making Justifying and Proving the core difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the verbal relationships among the amounts of money into mathematical inequalities using variables (t, e, m) and symbols (<, >). This involves creating a symbolic representation of the described situation, which aligns with the practice of representing problem situations with algebraic expressions and inequalities.",
+          "likely_errors": "A student might incorrectly assign variables or misrepresent the inequalities (e.g., writing t > e instead of t < e), especially if they confuse the direction of the inequality. This is moderately likely for students still developing symbolic representation skills."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After representing the relationships, the student must evaluate each answer choice to determine which statements are necessarily true based on the given inequalities (t > 10, e > t, m > e). This requires reasoning about logical implications and justifying why certain statements must be true (e.g., if t > 10 and e > t, then e > 10), which directly involves justifying mathematical claims using deductive reasoning.",
+          "likely_errors": "A student might incorrectly assume that all inequalities involving the variables are true without checking the chain of reasoning (e.g., thinking t < e is true but missing that it's implied by e > t). This is moderately likely, especially if students confuse the direction of inequalities or fail to trace the logical chain."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "The student must perform the logical comparisons and evaluate the truth of each inequality statement efficiently and accurately. This includes comparing values based on transitive relationships (e.g., t > 10 and e > t implies e > 10) and correctly identifying which compound statements are true, requiring fluent application of inequality properties and order reasoning.",
+          "likely_errors": "A student might make a procedural error in comparing values (e.g., incorrectly concluding that m > 10 is false when it follows from m > e > t > 10), especially under time pressure. This is moderately likely for students with weak fluency in inequality chains."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending reasoning to a broader domain. The relationships are specific and fixed, and there is no need to generalize beyond the given scenario or to create a broader rule or formula."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely symbolic and logical, not rooted in a real-world context that requires mathematizing a scenario, selecting variables, or validating a solution in context. The situation is already fully mathematized through the given variables and inequalities."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is individual and does not involve another person's mathematical thinking, dialogue, or solution to respond to. There is no peer contribution or collaborative reasoning required, so the social dimension of mathematics is absent."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong when evaluating which statements are necessarily true based on the logical chain of inequalities, as this requires justifying each claim through deductive reasoning (e.g., recognizing that m > e > t > 10 implies m > 10 and e > 10). This step involves more than just procedural computation—it demands understanding logical implications and avoiding assumptions. While Representing and Procedural Fluency are important, errors in these steps are more likely to be due to simple missteps (like reversing an inequality or miscalculating a chain), which are less subtle and easier to catch. In contrast, failing to justify the necessity of a statement (e.g., thinking t < e is not necessarily true when it is directly given) reflects a deeper conceptual gap in reasoning, making Justifying and Proving the core difficulty."
+    },
+    "top_practice": "Justifying and Proving"
+  }
+}

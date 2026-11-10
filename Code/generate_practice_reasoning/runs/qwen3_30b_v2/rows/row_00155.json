@@ -1,0 +1,221 @@
+{
+  "row": 155,
+  "problem_id": "62350",
+  "problem_text": "A shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____",
+          "started_at": "2026-11-09T23:20:07+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).\",\n      \"likely_errors\": \"A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.\",\n      \"likely_errors\": \"A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.\",\n      \"likely_errors\": \"A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).\",\n      \"likely_errors\": \"A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.\",\n      \"likely_errors\": \"A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.\",\n      \"likely_errors\": \"A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3893,
+            "completion_tokens": 832
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:23:03+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).\",\n      \"likely_errors\": \"A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.\",\n      \"likely_errors\": \"A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.\",\n      \"likely_errors\": \"A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:40:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).\",\n      \"likely_errors\": \"A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.\",\n      \"likely_errors\": \"A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.\",\n      \"likely_errors\": \"A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA shopper bought a watermelon, a pack of napkins, and some paper plates. In his state, there is no tax on food. The tax rate on non-food items is 5%. The total for the three items he bought was $8.25 before tax, and he paid $0.19 in tax. How much did the watermelon cost?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).\",\n      \"likely_errors\": \"A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.\",\n      \"likely_errors\": \"A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.\",\n      \"likely_errors\": \"A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why the tax applies only to non-food items and why dividing the tax amount by the rate gives the taxable cost—this requires understanding the logical relationship between tax, rate, and base amount. While Representing and Procedural Fluency involve important steps, misrepresenting the tax application (e.g., applying it to the whole purchase) is less likely than failing to justify the core reasoning behind the division step. Procedural errors in decimal computation are common but typically more mechanical and less central to the conceptual challenge; the deeper difficulty lies in reasoning through the 'why' of the solution, making Justifying and Proving the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why the tax applies only to non-food items and why dividing the tax amount by the rate gives the taxable cost—this requires understanding the logical relationship between tax, rate, and base amount. While Representing and Procedural Fluency involve important steps, misrepresenting the tax application (e.g., applying it to the whole purchase) is less likely than failing to justify the core reasoning behind the division step. Procedural errors in decimal computation are common but typically more mechanical and less central to the conceptual challenge; the deeper difficulty lies in reasoning through the 'why' of the solution, making Justifying and Proving the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4696,
+            "completion_tokens": 162
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:41:41+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).",
+              "likely_errors": "A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.",
+              "likely_errors": "A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.",
+              "likely_errors": "A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently."
+            }
+          ]
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why the tax applies only to non-food items and why dividing the tax amount by the rate gives the taxable cost—this requires understanding the logical relationship between tax, rate, and base amount. While Representing and Procedural Fluency involve important steps, misrepresenting the tax application (e.g., applying it to the whole purchase) is less likely than failing to justify the core reasoning behind the division step. Procedural errors in decimal computation are common but typically more mechanical and less central to the conceptual challenge; the deeper difficulty lies in reasoning through the 'why' of the solution, making Justifying and Proving the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).\",\n      \"likely_errors\": \"A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.\",\n      \"likely_errors\": \"A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.\",\n      \"likely_errors\": \"A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently.\"\n    }\n  ]\n}",
+    "answer2": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why the tax applies only to non-food items and why dividing the tax amount by the rate gives the taxable cost—this requires understanding the logical relationship between tax, rate, and base amount. While Representing and Procedural Fluency involve important steps, misrepresenting the tax application (e.g., applying it to the whole purchase) is less likely than failing to justify the core reasoning behind the division step. Procedural errors in decimal computation are common but typically more mechanical and less central to the conceptual challenge; the deeper difficulty lies in reasoning through the 'why' of the solution, making Justifying and Proving the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the word problem into a mathematical model by identifying the relevant quantities and relationships: the total cost before tax, the tax rate on non-food items, the total tax paid, and the unknown cost of the watermelon. This involves representing the situation using variables (e.g., letting x be the cost of the watermelon) and expressing the tax as 5% of the non-food items (napkins and plates).",
+          "likely_errors": "A student might misidentify which items are taxable (e.g., incorrectly assuming the watermelon is taxed) or incorrectly represent the tax as 5% of the total purchase, leading to an incorrect equation. This is moderately likely for students who struggle with contextualizing word problems."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "The student must justify the reasoning behind setting up the equation: since only non-food items are taxed at 5%, and the total tax paid is $0.19, the cost of non-food items must be $0.19 / 0.05 = $3.80. The student then uses this to find the watermelon cost by subtracting from the total before tax ($8.25 - $3.80 = $4.45). This requires justifying each step in the logical chain, including why the tax applies only to non-food items and why dividing the tax by the rate gives the taxable amount.",
+          "likely_errors": "A student might incorrectly assume the tax is applied to the entire purchase or fail to justify why dividing the tax by the rate gives the taxable amount, leading to an incorrect total. This is moderately likely if the student lacks confidence in reasoning through proportional relationships."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After setting up the correct equation (e.g., 0.05 × (total non-food cost) = 0.19), the student must perform the division (0.19 ÷ 0.05) and then subtract the result from $8.25. This requires accurate and efficient computation with decimals and percentages, including handling money values correctly.",
+          "likely_errors": "A student might make a calculation error in dividing 0.19 by 0.05 (e.g., getting 0.38 or 3.8 instead of 3.80) or misalign decimal places when subtracting. These are common errors and likely for students with weaker procedural fluency in decimal operations."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem involves a single, specific scenario with no need to identify or extend a pattern, generalize a rule, or apply a concept to a broader class of problems. There is no indication that the student must recognize a structural relationship across multiple cases or extend reasoning to a new context."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem is contextual, the modeling is already fully specified: the tax rules, the total cost, and the tax paid are given directly. The student does not need to identify a problem, select variables, build a model from scratch, or validate its reasonableness—these steps are all provided. The task is to solve a given model, not to create or refine one."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, no peer work to evaluate, and no requirement to respond to or build on someone else’s idea. The student works independently."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why the tax applies only to non-food items and why dividing the tax amount by the rate gives the taxable cost—this requires understanding the logical relationship between tax, rate, and base amount. While Representing and Procedural Fluency involve important steps, misrepresenting the tax application (e.g., applying it to the whole purchase) is less likely than failing to justify the core reasoning behind the division step. Procedural errors in decimal computation are common but typically more mechanical and less central to the conceptual challenge; the deeper difficulty lies in reasoning through the 'why' of the solution, making Justifying and Proving the top practice."
+    },
+    "top_practice": "Justifying and Proving"
+  }
+}

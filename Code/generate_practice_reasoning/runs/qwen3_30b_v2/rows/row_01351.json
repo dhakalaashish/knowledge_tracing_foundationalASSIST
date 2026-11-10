@@ -1,0 +1,221 @@
+{
+  "row": 1351,
+  "problem_id": "181770",
+  "problem_text": "Ten students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws",
+          "started_at": "2026-11-09T23:25:44+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.\",\n    \"likely_errors\": \"A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.\",\n    \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.\",\n    \"likely_errors\": \"A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.\",\n    \"likely_errors\": \"A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.\",\n    \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.\",\n    \"likely_errors\": \"A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3872,
+            "completion_tokens": 668
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:28:22+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.\",\n      \"likely_errors\": \"A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.\",\n      \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.\",\n      \"likely_errors\": \"A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:43:19+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.\",\n      \"likely_errors\": \"A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.\",\n      \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.\",\n      \"likely_errors\": \"A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.\",\n      \"likely_errors\": \"A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.\",\n      \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.\",\n      \"likely_errors\": \"A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of correctly computing the interquartile range, particularly in determining Q1 and Q3 due to inconsistent or incorrect application of the quartile method—such as misidentifying the median of the lower or upper half—or making an arithmetic error when subtracting. While Representing requires ordering the data, this step is straightforward and less error-prone if the student is careful. Justifying and Proving is important but secondary; students often apply a standard method without deep justification, and the item does not require them to defend their method. Thus, procedural fluency is the primary barrier to success.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of correctly computing the interquartile range, particularly in determining Q1 and Q3 due to inconsistent or incorrect application of the quartile method—such as misidentifying the median of the lower or upper half—or making an arithmetic error when subtracting. While Representing requires ordering the data, this step is straightforward and less error-prone if the student is careful. Justifying and Proving is important but secondary; students often apply a standard method without deep justification, and the item does not require them to defend their method. Thus, procedural fluency is the primary barrier to success.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4515,
+            "completion_tokens": 149
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:44:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.",
+              "likely_errors": "A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.",
+              "likely_errors": "A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.",
+              "likely_errors": "A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of correctly computing the interquartile range, particularly in determining Q1 and Q3 due to inconsistent or incorrect application of the quartile method—such as misidentifying the median of the lower or upper half—or making an arithmetic error when subtracting. While Representing requires ordering the data, this step is straightforward and less error-prone if the student is careful. Justifying and Proving is important but secondary; students often apply a standard method without deep justification, and the item does not require them to defend their method. Thus, procedural fluency is the primary barrier to success."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.\",\n    \"likely_errors\": \"A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.\",\n    \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.\",\n    \"likely_errors\": \"A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of correctly computing the interquartile range, particularly in determining Q1 and Q3 due to inconsistent or incorrect application of the quartile method—such as misidentifying the median of the lower or upper half—or making an arithmetic error when subtracting. While Representing requires ordering the data, this step is straightforward and less error-prone if the student is careful. Justifying and Proving is important but secondary; students often apply a standard method without deep justification, and the item does not require them to defend their method. Thus, procedural fluency is the primary barrier to success.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must first represent the given data set of free throws made by the ten students in an ordered numerical form, which is a necessary step before computing the interquartile range. This aligns with the descriptor of creating a visual or tabular representation of a data set, and interpreting it to solve a statistical problem.",
+          "likely_errors": "A student might misorder the data or skip a value, leading to an incorrect IQR. This is moderately likely, especially if the student rushes through the ordering step without careful attention."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After ordering the data, the student must compute the first quartile (Q1), third quartile (Q3), and then subtract Q1 from Q3 to find the IQR. This requires accurate application of a standard procedure for finding quartiles and computing the difference, which is a core aspect of procedural fluency with statistical measures.",
+          "likely_errors": "A student might incorrectly determine Q1 or Q3 by misapplying the method (e.g., using the median of the entire data set instead of the lower/upper halves), or make a simple arithmetic error. This is common, especially with small data sets where the quartile method can be ambiguous without clear rules."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "To ensure the correct quartile values are used, the student must justify their choice of method for finding Q1 and Q3 (e.g., whether to include or exclude the median when splitting the data), especially since different conventions exist. This involves evaluating the validity of their own reasoning and ensuring it aligns with standard statistical practice.",
+          "likely_errors": "A student might choose a method without justification and arrive at an incorrect IQR due to inconsistent quartile calculation rules. This is somewhat likely if the student has not been exposed to multiple methods or lacks confidence in choosing the correct one."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple data sets or extending a statistical concept to a broader context. It focuses on a single, specific data set and a direct computation, so generalization beyond this instance is not necessary."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The task is purely computational and does not involve creating or evaluating a model to represent a real-world scenario. There is no need to identify variables, make assumptions, or check the reasonableness of the solution in context; the data is already provided and the question is purely statistical."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, strategy, or answer. There is no dialogue, peer contribution, or need to respond to or build on another’s work, so collaboration is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of correctly computing the interquartile range, particularly in determining Q1 and Q3 due to inconsistent or incorrect application of the quartile method—such as misidentifying the median of the lower or upper half—or making an arithmetic error when subtracting. While Representing requires ordering the data, this step is straightforward and less error-prone if the student is careful. Justifying and Proving is important but secondary; students often apply a standard method without deep justification, and the item does not require them to defend their method. Thus, procedural fluency is the primary barrier to success."
+    },
+    "top_practice": "Procedural Fluency"
+  }
+}

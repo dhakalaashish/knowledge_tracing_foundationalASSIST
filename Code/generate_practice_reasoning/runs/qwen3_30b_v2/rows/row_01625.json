@@ -1,0 +1,217 @@
+{
+  "row": 1625,
+  "problem_id": "441900",
+  "problem_text": "The table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]",
+          "started_at": "2026-11-09T23:28:22+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.\",\n    \"likely_errors\": \"A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.\",\n    \"likely_errors\": \"A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.\",\n    \"likely_errors\": \"A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.\",\n    \"likely_errors\": \"A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3928,
+            "completion_tokens": 601
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:31:09+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nThe table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.\",\n      \"likely_errors\": \"A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.\",\n      \"likely_errors\": \"A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:44:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.\",\n      \"likely_errors\": \"A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.\",\n      \"likely_errors\": \"A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe table shows the value of the electricity they used and the value of the electricity they generated each week for a month. What amount is due for this month?\n$ ____\n[Table:\n| used ($) | generated ($)\nweek 1 | 13.45 | -6.33\nweek 2 | 21.78 | -8.94\nweek 3 | 18.12 | -7.70\nweek 4 | 24.05 | -5.36]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.\",\n      \"likely_errors\": \"A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.\",\n      \"likely_errors\": \"A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong in the first step—computing the net electricity cost for each week—due to errors in decimal arithmetic, especially when subtracting a negative number (which requires adding the absolute value). This step demands accurate and efficient handling of signed decimals, a core aspect of procedural fluency. While representing the total sum is also important, the error-prone nature of decimal operations, particularly with negative values, makes procedural fluency the primary source of incorrect answers; the representation step is more straightforward once accurate weekly values are obtained.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong in the first step—computing the net electricity cost for each week—due to errors in decimal arithmetic, especially when subtracting a negative number (which requires adding the absolute value). This step demands accurate and efficient handling of signed decimals, a core aspect of procedural fluency. While representing the total sum is also important, the error-prone nature of decimal operations, particularly with negative values, makes procedural fluency the primary source of incorrect answers; the representation step is more straightforward once accurate weekly values are obtained.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4503,
+            "completion_tokens": 130
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:46:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.",
+              "likely_errors": "A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.",
+              "likely_errors": "A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work."
+            }
+          ]
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong in the first step—computing the net electricity cost for each week—due to errors in decimal arithmetic, especially when subtracting a negative number (which requires adding the absolute value). This step demands accurate and efficient handling of signed decimals, a core aspect of procedural fluency. While representing the total sum is also important, the error-prone nature of decimal operations, particularly with negative values, makes procedural fluency the primary source of incorrect answers; the representation step is more straightforward once accurate weekly values are obtained."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.\",\n    \"likely_errors\": \"A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.\",\n    \"likely_errors\": \"A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong in the first step—computing the net electricity cost for each week—due to errors in decimal arithmetic, especially when subtracting a negative number (which requires adding the absolute value). This step demands accurate and efficient handling of signed decimals, a core aspect of procedural fluency. While representing the total sum is also important, the error-prone nature of decimal operations, particularly with negative values, makes procedural fluency the primary source of incorrect answers; the representation step is more straightforward once accurate weekly values are obtained.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must first compute the net electricity cost for each week by subtracting the generated amount (a negative value) from the used amount, which involves accurate arithmetic with decimals. This step requires fluently performing subtraction with decimal numbers, including handling negative values, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently with decimals.",
+          "likely_errors": "A student might incorrectly subtract the generated amount from the used amount (e.g., adding instead of subtracting, or mishandling the negative sign), or make a decimal place error. This is moderately likely, especially if the student is not fluent with decimal operations."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "After computing weekly net values, the student must represent the total monthly amount due by summing the weekly net values. This involves translating the table data and calculations into a single numerical expression (e.g., summing four decimal numbers) and interpreting the result as the total amount due, which matches the practice of creating and interpreting numerical representations of a data set.",
+          "likely_errors": "A student might misrepresent the sum by omitting a week’s value, incorrectly combining values, or failing to account for the negative generated values. This is moderately likely, particularly if the student does not carefully track the weekly computations."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across weeks or generalizing a rule for future weeks. The task is strictly computational and does not involve recognizing a broader pattern or making a generalization about relationships between used and generated electricity beyond the given data."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument about the correctness of a method, claim, or relationship. There is no claim to assess or refute, nor any need to justify why a particular operation is valid."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world data (electricity usage and generation), the task is purely computational: summing given values. There is no need to identify a problem, mathematize a scenario, or check the viability of a solution in a broader context; the model is already provided in the table."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer claims, or contributions from another student. The student works independently on a straightforward calculation, with no requirement to respond to or build on another person’s reasoning or work."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong in the first step—computing the net electricity cost for each week—due to errors in decimal arithmetic, especially when subtracting a negative number (which requires adding the absolute value). This step demands accurate and efficient handling of signed decimals, a core aspect of procedural fluency. While representing the total sum is also important, the error-prone nature of decimal operations, particularly with negative values, makes procedural fluency the primary source of incorrect answers; the representation step is more straightforward once accurate weekly values are obtained."
+    },
+    "top_practice": "Procedural Fluency"
+  }
+}

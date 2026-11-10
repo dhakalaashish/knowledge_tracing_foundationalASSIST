@@ -1,0 +1,221 @@
+{
+  "row": 1748,
+  "problem_id": "207084",
+  "problem_text": "A submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches",
+          "started_at": "2026-11-09T23:28:22+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.\",\n    \"likely_errors\": \"A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).\",\n    \"likely_errors\": \"A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.\",\n    \"likely_errors\": \"A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.\",\n    \"likely_errors\": \"A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).\",\n    \"likely_errors\": \"A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.\",\n    \"likely_errors\": \"A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3909,
+            "completion_tokens": 757
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:31:09+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.\",\n      \"likely_errors\": \"A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).\",\n      \"likely_errors\": \"A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.\",\n      \"likely_errors\": \"A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:44:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.\",\n      \"likely_errors\": \"A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).\",\n      \"likely_errors\": \"A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.\",\n      \"likely_errors\": \"A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA submarine sandwich shop makes sandwiches with one kind of bread, one protein, one choice of cheese, and two vegetables. How many different sandwiches are possible?\n[Table:\n- Breads: Italian, white, wheat\n- Proteins: Tuna, ham, turkey, beans\n- Cheese: Provolone, Swiss, American, none\n- Vegetables: Lettuce, tomatoes, peppers, onions, pickles\n| [image]]\n____ different sandwiches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.\",\n      \"likely_errors\": \"A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).\",\n      \"likely_errors\": \"A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.\",\n      \"likely_errors\": \"A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the total number of sandwiches requires multiplying the number of choices across independent categories, including applying the combination formula for two vegetables. This step demands abstracting the situation into a multiplicative counting principle, which is challenging if students don't see the underlying pattern of independent choices. While Representing and Procedural Fluency involve potential errors, they are more mechanical—misreading the table or miscalculating are common but less fundamental. The core difficulty lies in the abstract insight that choices combine multiplicatively and that vegetable pairs require combinations, not just simple multiplication, making Abstracting and Generalizing the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the total number of sandwiches requires multiplying the number of choices across independent categories, including applying the combination formula for two vegetables. This step demands abstracting the situation into a multiplicative counting principle, which is challenging if students don't see the underlying pattern of independent choices. While Representing and Procedural Fluency involve potential errors, they are more mechanical—misreading the table or miscalculating are common but less fundamental. The core difficulty lies in the abstract insight that choices combine multiplicatively and that vegetable pairs require combinations, not just simple multiplication, making Abstracting and Generalizing the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4641,
+            "completion_tokens": 154
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:46:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.",
+              "likely_errors": "A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).",
+              "likely_errors": "A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.",
+              "likely_errors": "A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing that the total number of sandwiches requires multiplying the number of choices across independent categories, including applying the combination formula for two vegetables. This step demands abstracting the situation into a multiplicative counting principle, which is challenging if students don't see the underlying pattern of independent choices. While Representing and Procedural Fluency involve potential errors, they are more mechanical—misreading the table or miscalculating are common but less fundamental. The core difficulty lies in the abstract insight that choices combine multiplicatively and that vegetable pairs require combinations, not just simple multiplication, making Abstracting and Generalizing the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.\",\n    \"likely_errors\": \"A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).\",\n    \"likely_errors\": \"A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.\",\n    \"likely_errors\": \"A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the total number of sandwiches requires multiplying the number of choices across independent categories, including applying the combination formula for two vegetables. This step demands abstracting the situation into a multiplicative counting principle, which is challenging if students don't see the underlying pattern of independent choices. While Representing and Procedural Fluency involve potential errors, they are more mechanical—misreading the table or miscalculating are common but less fundamental. The core difficulty lies in the abstract insight that choices combine multiplicatively and that vegetable pairs require combinations, not just simple multiplication, making Abstracting and Generalizing the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given information about sandwich components (bread, protein, cheese, vegetables) and translate it into a mathematical structure—specifically, a counting situation involving combinations. This involves recognizing and organizing the choices into categories and using a visual table to represent the options, which aligns with creating a visual representation of a problem situation to solve it.",
+          "likely_errors": "A student might miscount the number of options in a category (e.g., misreading the table and thinking there are only 3 vegetables instead of 5) or fail to represent the 'none' cheese option correctly, leading to an incorrect total. This is moderately likely for students who rush through reading the table."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the total number of sandwiches is found by multiplying the number of choices in each category (bread × protein × cheese × combinations of two vegetables), and generalize this to a multiplicative counting principle. This involves identifying a pattern in how choices combine across independent categories and extending it to a broader mathematical rule (the fundamental counting principle).",
+          "likely_errors": "A student might incorrectly add the choices instead of multiplying them, or fail to recognize that the vegetable choice involves combinations (not just choosing one), which would lead to a wrong total. This is moderately likely, especially if the student hasn't seen similar problems before."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After setting up the correct mathematical structure (3 breads × 4 proteins × 4 cheeses × C(5,2) vegetables), the student must compute the number of vegetable combinations (C(5,2) = 10) and then multiply all values accurately and efficiently. This involves applying a procedural method (combinations formula or listing) and carrying out the multiplication correctly, which is a core aspect of procedural fluency.",
+          "likely_errors": "A student might miscalculate C(5,2) as 15 (e.g., by multiplying 5×3 instead of using the formula) or make a multiplication error (e.g., 3×4×4×10 = 480, but computing it as 400). These errors are common due to carelessness and are likely for students who are not fluent in multiplication and combinations."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify why the counting method works or to prove that the total is correct. There is no claim to evaluate, no argument to refute, and no need to provide a deductive explanation—only the final count is requested."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the context is real-world (sandwiches), the problem is purely a counting task with no need to identify a problem, create a model, test it, or validate its reasonableness. The structure is already fully defined and standard, so no modeling process is required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on this item, and there is no interaction with others' thinking, claims, or strategies. The item does not present a peer's work to evaluate or build upon, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing that the total number of sandwiches requires multiplying the number of choices across independent categories, including applying the combination formula for two vegetables. This step demands abstracting the situation into a multiplicative counting principle, which is challenging if students don't see the underlying pattern of independent choices. While Representing and Procedural Fluency involve potential errors, they are more mechanical—misreading the table or miscalculating are common but less fundamental. The core difficulty lies in the abstract insight that choices combine multiplicatively and that vegetable pairs require combinations, not just simple multiplication, making Abstracting and Generalizing the top practice."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

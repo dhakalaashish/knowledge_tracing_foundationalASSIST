@@ -1,0 +1,221 @@
+{
+  "row": 739,
+  "problem_id": "123066",
+  "problem_text": "Imagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nImagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %",
+          "started_at": "2026-11-09T23:23:04+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nImagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nImagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.\",\n    \"likely_errors\": \"A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.\",\n    \"likely_errors\": \"A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.\",\n    \"likely_errors\": \"A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.\",\n    \"likely_errors\": \"A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.\",\n    \"likely_errors\": \"A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.\",\n    \"likely_errors\": \"A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3867,
+            "completion_tokens": 717
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:25:43+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nImagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.\",\n      \"likely_errors\": \"A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.\",\n      \"likely_errors\": \"A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.\",\n      \"likely_errors\": \"A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:41:42+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nImagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.\",\n      \"likely_errors\": \"A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.\",\n      \"likely_errors\": \"A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.\",\n      \"likely_errors\": \"A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nImagine that you measure the length and width of a rectangle and you know the measurements are accurate within 5% of the actual measurements. If you use your measurements to find the area, what is the maximum percent error for the area of the rectangle?\n____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.\",\n      \"likely_errors\": \"A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.\",\n      \"likely_errors\": \"A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.\",\n      \"likely_errors\": \"A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why the maximum percent error is 10% (or 10.25%) by analyzing extreme cases algebraically, as this requires constructing a valid mathematical argument rather than just applying a rule. While representing the error and generalizing the pattern are important, they are more likely to be attempted correctly with partial understanding; however, without a solid justification, a student may incorrectly claim 5% or 25% and not recognize the error. The other practices—Representing and Abstracting and Generalizing—are foundational but less likely to be the primary source of error because the item’s structure supports these steps, whereas Justifying and Proving demands deeper reasoning that many students lack.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why the maximum percent error is 10% (or 10.25%) by analyzing extreme cases algebraically, as this requires constructing a valid mathematical argument rather than just applying a rule. While representing the error and generalizing the pattern are important, they are more likely to be attempted correctly with partial understanding; however, without a solid justification, a student may incorrectly claim 5% or 25% and not recognize the error. The other practices—Representing and Abstracting and Generalizing—are foundational but less likely to be the primary source of error because the item’s structure supports these steps, whereas Justifying and Proving demands deeper reasoning that many students lack.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4558,
+            "completion_tokens": 171
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:43:19+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.",
+              "likely_errors": "A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.",
+              "likely_errors": "A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.",
+              "likely_errors": "A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context."
+            }
+          ]
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why the maximum percent error is 10% (or 10.25%) by analyzing extreme cases algebraically, as this requires constructing a valid mathematical argument rather than just applying a rule. While representing the error and generalizing the pattern are important, they are more likely to be attempted correctly with partial understanding; however, without a solid justification, a student may incorrectly claim 5% or 25% and not recognize the error. The other practices—Representing and Abstracting and Generalizing—are foundational but less likely to be the primary source of error because the item’s structure supports these steps, whereas Justifying and Proving demands deeper reasoning that many students lack."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.\",\n    \"likely_errors\": \"A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.\",\n    \"likely_errors\": \"A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.\",\n    \"likely_errors\": \"A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why the maximum percent error is 10% (or 10.25%) by analyzing extreme cases algebraically, as this requires constructing a valid mathematical argument rather than just applying a rule. While representing the error and generalizing the pattern are important, they are more likely to be attempted correctly with partial understanding; however, without a solid justification, a student may incorrectly claim 5% or 25% and not recognize the error. The other practices—Representing and Abstracting and Generalizing—are foundational but less likely to be the primary source of error because the item’s structure supports these steps, whereas Justifying and Proving demands deeper reasoning that many students lack.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the verbal description of the measurement error (5% uncertainty in length and width) into a mathematical representation, such as expressing the possible range of each dimension as a percentage deviation (e.g., length = L ± 5% of L). This involves interpreting the real-world context and creating a symbolic or numerical model of the error bounds.",
+          "likely_errors": "A student might incorrectly represent the error as a fixed amount (e.g., ±5 units) instead of a relative percentage, or fail to account for both upper and lower bounds. This is moderately likely for students who struggle with proportional reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern that when two quantities with relative errors are multiplied (as in area = length × width), the maximum relative error in the product is approximately the sum of the individual relative errors (i.e., 5% + 5% = 10%). This requires identifying a generalizable rule from a specific case and extending it to a broader principle about error propagation in multiplication.",
+          "likely_errors": "A student might incorrectly assume the maximum error is 5% (same as each dimension) or 25% (5% × 5%), both of which reflect a failure to generalize correctly. This is moderately likely, especially if the student has not encountered error propagation before."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must justify why the maximum percent error in the area is 10% by reasoning through the extreme cases (e.g., using (1.05L)(1.05W) = 1.1025LW, which gives a 10.25% increase, and similarly for the lower bound). This involves evaluating the mathematical validity of the claim and defending the conclusion using algebraic reasoning.",
+          "likely_errors": "A student might state 10% without justification or provide an incorrect justification (e.g., claiming it’s 5% because the error is symmetric). This is likely if the student lacks experience in constructing mathematical arguments."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the problem involves a real-world context, the student is not required to identify a problem, define variables, or build a model from scratch. The model (area = length × width with percentage error) is already implied and the focus is on error analysis, not creating a new model to represent a situation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s thinking, no dialogue, no shared work, and no need to respond to or build on someone else’s claim. The student works independently on a single mathematical question."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While basic multiplication and percentage calculations are involved, the core challenge is not procedural execution but reasoning about error propagation. The student is not simply computing a product or applying a standard algorithm; instead, they must reason about the implications of relative error in a multiplicative context."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why the maximum percent error is 10% (or 10.25%) by analyzing extreme cases algebraically, as this requires constructing a valid mathematical argument rather than just applying a rule. While representing the error and generalizing the pattern are important, they are more likely to be attempted correctly with partial understanding; however, without a solid justification, a student may incorrectly claim 5% or 25% and not recognize the error. The other practices—Representing and Abstracting and Generalizing—are foundational but less likely to be the primary source of error because the item’s structure supports these steps, whereas Justifying and Proving demands deeper reasoning that many students lack."
+    },
+    "top_practice": "Justifying and Proving"
+  }
+}

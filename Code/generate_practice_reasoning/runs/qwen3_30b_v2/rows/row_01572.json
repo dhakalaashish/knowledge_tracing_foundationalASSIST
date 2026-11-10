@@ -1,0 +1,221 @@
+{
+  "row": 1572,
+  "problem_id": "579179",
+  "problem_text": "A sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____",
+          "started_at": "2026-11-09T23:28:22+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.\",\n    \"likely_errors\": \"A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.\",\n    \"likely_errors\": \"A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.\",\n    \"likely_errors\": \"A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.\",\n    \"likely_errors\": \"A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.\",\n    \"likely_errors\": \"A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.\",\n    \"likely_errors\": \"A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3870,
+            "completion_tokens": 724
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:31:09+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.\",\n      \"likely_errors\": \"A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.\",\n      \"likely_errors\": \"A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.\",\n      \"likely_errors\": \"A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:44:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.\",\n      \"likely_errors\": \"A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.\",\n      \"likely_errors\": \"A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.\",\n      \"likely_errors\": \"A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA sandwich store charges a delivery fee to bring lunch to an office building. One office pays $33 for 4 turkey sandwiches. Another office pays $61 for 8 turkey sandwiches. How much does each turkey sandwich add to the cost of the delivery?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.\",\n      \"likely_errors\": \"A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.\",\n      \"likely_errors\": \"A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.\",\n      \"likely_errors\": \"A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of abstracting the constant rate of change from the two data points, as they may incorrectly assume the cost per sandwich is simply the total cost divided by the number of sandwiches for each order (e.g., $33 ÷ 4 or $61 ÷ 8), failing to recognize the presence of a fixed delivery fee. This error stems from not generalizing the linear structure of the problem. While Representing and Procedural Fluency are important, misrepresenting the situation (Representing) is less likely to occur if the student correctly identifies the pattern, and procedural errors (Procedural Fluency) are typically minor and more easily caught, whereas the conceptual failure to abstract the rate of change is the core challenge and the most common reason for incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of abstracting the constant rate of change from the two data points, as they may incorrectly assume the cost per sandwich is simply the total cost divided by the number of sandwiches for each order (e.g., $33 ÷ 4 or $61 ÷ 8), failing to recognize the presence of a fixed delivery fee. This error stems from not generalizing the linear structure of the problem. While Representing and Procedural Fluency are important, misrepresenting the situation (Representing) is less likely to occur if the student correctly identifies the pattern, and procedural errors (Procedural Fluency) are typically minor and more easily caught, whereas the conceptual failure to abstract the rate of change is the core challenge and the most common reason for incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4569,
+            "completion_tokens": 187
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:46:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.",
+              "likely_errors": "A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.",
+              "likely_errors": "A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.",
+              "likely_errors": "A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of abstracting the constant rate of change from the two data points, as they may incorrectly assume the cost per sandwich is simply the total cost divided by the number of sandwiches for each order (e.g., $33 ÷ 4 or $61 ÷ 8), failing to recognize the presence of a fixed delivery fee. This error stems from not generalizing the linear structure of the problem. While Representing and Procedural Fluency are important, misrepresenting the situation (Representing) is less likely to occur if the student correctly identifies the pattern, and procedural errors (Procedural Fluency) are typically minor and more easily caught, whereas the conceptual failure to abstract the rate of change is the core challenge and the most common reason for incorrect answers."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.\",\n    \"likely_errors\": \"A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.\",\n    \"likely_errors\": \"A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.\",\n    \"likely_errors\": \"A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of abstracting the constant rate of change from the two data points, as they may incorrectly assume the cost per sandwich is simply the total cost divided by the number of sandwiches for each order (e.g., $33 ÷ 4 or $61 ÷ 8), failing to recognize the presence of a fixed delivery fee. This error stems from not generalizing the linear structure of the problem. While Representing and Procedural Fluency are important, misrepresenting the situation (Representing) is less likely to occur if the student correctly identifies the pattern, and procedural errors (Procedural Fluency) are typically minor and more easily caught, whereas the conceptual failure to abstract the rate of change is the core challenge and the most common reason for incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the word problem by translating the given information—two different total costs for different numbers of sandwiches—into a mathematical representation, such as two ordered pairs (4, 33) and (8, 61), or by setting up a linear equation. This involves recognizing and creating a numerical representation of a real-world situation involving rates and fixed costs.",
+          "likely_errors": "A student might misrepresent the situation by treating the total cost as only proportional to the number of sandwiches, ignoring the fixed delivery fee, or incorrectly assigning the variables. This is moderately likely, especially if the student overlooks the fixed component."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must identify the underlying pattern: that the total cost increases by a constant amount per sandwich, indicating a linear relationship. They must generalize that the difference in total cost between the two orders divided by the difference in sandwich count gives the per-sandwich cost, recognizing this as a rate of change across two data points.",
+          "likely_errors": "A student might incorrectly assume the cost per sandwich is simply $33 ÷ 4 or $61 ÷ 8, failing to account for the fixed delivery fee. This is common and likely, especially if the student does not abstract the structure of the problem."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After identifying the correct method (finding the rate of change between two points), the student performs the necessary computation: (61 - 33) ÷ (8 - 4) = 28 ÷ 4 = 7. This requires accurate and efficient arithmetic with whole numbers and proper application of the subtraction and division operations.",
+          "likely_errors": "A student might make a computational error, such as subtracting 61 - 33 incorrectly (e.g., getting 27 instead of 28) or dividing 28 by 4 as 6 instead of 7. This is likely due to carelessness or lack of fluency."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with a deductive proof. The task is to compute a value based on a given scenario, not to evaluate or justify a mathematical claim about the reasoning behind it."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem involves a real-world context, the student is not asked to identify a problem, create a model from scratch, or assess the reasonableness of the model in a broader context. The model (linear relationship with fixed and variable costs) is implicitly provided by the data, and the task is computational rather than model-building or validation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work. There is no dialogue, no peer contribution to analyze, and no need to respond to or build on another person’s idea, so collaboration is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of abstracting the constant rate of change from the two data points, as they may incorrectly assume the cost per sandwich is simply the total cost divided by the number of sandwiches for each order (e.g., $33 ÷ 4 or $61 ÷ 8), failing to recognize the presence of a fixed delivery fee. This error stems from not generalizing the linear structure of the problem. While Representing and Procedural Fluency are important, misrepresenting the situation (Representing) is less likely to occur if the student correctly identifies the pattern, and procedural errors (Procedural Fluency) are typically minor and more easily caught, whereas the conceptual failure to abstract the rate of change is the core challenge and the most common reason for incorrect answers."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

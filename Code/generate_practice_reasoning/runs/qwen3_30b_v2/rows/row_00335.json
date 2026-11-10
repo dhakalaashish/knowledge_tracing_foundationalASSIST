@@ -1,0 +1,217 @@
+{
+  "row": 335,
+  "problem_id": "187130",
+  "problem_text": "Noah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nNoah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____",
+          "started_at": "2026-11-09T23:20:07+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nNoah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nNoah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.\",\n    \"likely_errors\": \"A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.\",\n    \"likely_errors\": \"A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.\",\n    \"likely_errors\": \"A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.\",\n    \"likely_errors\": \"A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3963,
+            "completion_tokens": 611
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:23:03+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nNoah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.\",\n      \"likely_errors\": \"A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.\",\n      \"likely_errors\": \"A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:40:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nNoah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.\",\n      \"likely_errors\": \"A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.\",\n      \"likely_errors\": \"A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nNoah's parents are interested in moving to another part of town. They look up all the prices of the homes for sale and record them in thousands of dollars.\n[Table:\nNeighborhood 1 | 80 | 55 | 80 | 120 | 60 | 90 | 60 | 80 | 55 | 70\nNeighborhood 2 | 110 | 120 | 160 | 110 | 100 | 110 | 140 | 150 | 120 | 120]\n[image]\nFind the mean of neighborhood 1.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.\",\n      \"likely_errors\": \"A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.\",\n      \"likely_errors\": \"A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the mean, which requires summing ten numbers and dividing by 10—this is a core aspect of procedural fluency. While misreading the table (a Representing error) is possible, the table is straightforward and the units are clearly stated, making this error less likely than arithmetic mistakes. The procedural step is more complex and error-prone, especially without a calculator, and is the final, decisive step in solving the item. Since the item does not require justification, generalization, modeling, or collaboration, the other practices used are less likely to be the source of incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the mean, which requires summing ten numbers and dividing by 10—this is a core aspect of procedural fluency. While misreading the table (a Representing error) is possible, the table is straightforward and the units are clearly stated, making this error less likely than arithmetic mistakes. The procedural step is more complex and error-prone, especially without a calculator, and is the final, decisive step in solving the item. Since the item does not require justification, generalization, modeling, or collaboration, the other practices used are less likely to be the source of incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4549,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:41:41+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.",
+              "likely_errors": "A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.",
+              "likely_errors": "A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with."
+            }
+          ]
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of accurately computing the mean, which requires summing ten numbers and dividing by 10—this is a core aspect of procedural fluency. While misreading the table (a Representing error) is possible, the table is straightforward and the units are clearly stated, making this error less likely than arithmetic mistakes. The procedural step is more complex and error-prone, especially without a calculator, and is the final, decisive step in solving the item. Since the item does not require justification, generalization, modeling, or collaboration, the other practices used are less likely to be the source of incorrect answers."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.\",\n    \"likely_errors\": \"A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.\",\n    \"likely_errors\": \"A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the mean, which requires summing ten numbers and dividing by 10—this is a core aspect of procedural fluency. While misreading the table (a Representing error) is possible, the table is straightforward and the units are clearly stated, making this error less likely than arithmetic mistakes. The procedural step is more complex and error-prone, especially without a calculator, and is the final, decisive step in solving the item. Since the item does not require justification, generalization, modeling, or collaboration, the other practices used are less likely to be the source of incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of home prices in thousands of dollars and translate the data into a numerical list for calculation. This involves recognizing the representation of the data in tabular form and converting it into a set of numbers to work with, which aligns with the descriptor of translating between written and numerical representations of data.",
+          "likely_errors": "A student might misread the table, skip a value, or misinterpret the units (e.g., treating values as dollars instead of thousands), which is moderately likely, especially if the student rushes or overlooks the 'in thousands of dollars' note."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the mean by summing the values in Neighborhood 1 (80, 55, 80, 120, 60, 90, 60, 80, 55, 70) and dividing by the number of values (10). This requires accurate addition and division, which is a core part of procedural fluency with operations on whole numbers and decimals.",
+          "likely_errors": "A student might make an arithmetic error in summing the numbers (e.g., misadding 80 + 55 as 125 instead of 135) or divide incorrectly. These errors are common but can be caught with checking; they are moderately likely, especially without a calculator."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The task requires only computing the mean of a single data set, not identifying or extending a pattern, making a generalization across data sets, or identifying broader structural relationships. There is no need to extend reasoning beyond the given numbers."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a calculation, not a justification of a claim, a proof, or a critique of reasoning. No argument or conjecture is presented for the student to evaluate or defend."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world scenario to model, no problem to define, no model to build or revise. The student is simply asked to compute a statistic from given data, not to mathematize a context or evaluate a model’s reasonableness."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with another person’s thinking, no dialogue, and no need to respond to or build on another’s claim or strategy. The item does not present another student’s work or perspective to engage with."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of accurately computing the mean, which requires summing ten numbers and dividing by 10—this is a core aspect of procedural fluency. While misreading the table (a Representing error) is possible, the table is straightforward and the units are clearly stated, making this error less likely than arithmetic mistakes. The procedural step is more complex and error-prone, especially without a calculator, and is the final, decisive step in solving the item. Since the item does not require justification, generalization, modeling, or collaboration, the other practices used are less likely to be the source of incorrect answers."
+    },
+    "top_practice": "Procedural Fluency"
+  }
+}

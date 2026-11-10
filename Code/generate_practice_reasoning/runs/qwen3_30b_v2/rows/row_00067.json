@@ -1,0 +1,221 @@
+{
+  "row": 67,
+  "problem_id": "24873",
+  "problem_text": "A random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____",
+          "started_at": "2026-11-09T23:20:07+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.\",\n    \"likely_errors\": \"A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'\",\n    \"likely_errors\": \"A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'\",\n    \"likely_errors\": \"A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.\",\n    \"likely_errors\": \"A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'\",\n    \"likely_errors\": \"A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'\",\n    \"likely_errors\": \"A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3887,
+            "completion_tokens": 677
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:23:03+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.\",\n      \"likely_errors\": \"A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'\",\n      \"likely_errors\": \"A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:40:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.\",\n      \"likely_errors\": \"A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'\",\n      \"likely_errors\": \"A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA random sample of people were asked which hand they prefer to write with.\nl means they prefer to use their left hand.\nr means they prefer to use their right hand.\nl r r r r r r r r r l r r r r\nBased on this sample, estimate the proportion of the population that prefers to write with their left hand.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.\",\n      \"likely_errors\": \"A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'\",\n      \"likely_errors\": \"A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing from the sample to the population, as this requires understanding that the sample proportion estimates the population proportion—a key statistical concept. Misunderstanding this leads to answers like raw counts or percentages without context, which are common errors. While Representing and Procedural Fluency involve counting and division, these are more mechanical and less prone to conceptual failure; students often succeed at these steps even if they don’t fully grasp the inference. Thus, Abstracting and Generalizing is the core challenge, making it the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing from the sample to the population, as this requires understanding that the sample proportion estimates the population proportion—a key statistical concept. Misunderstanding this leads to answers like raw counts or percentages without context, which are common errors. While Representing and Procedural Fluency involve counting and division, these are more mechanical and less prone to conceptual failure; students often succeed at these steps even if they don’t fully grasp the inference. Thus, Abstracting and Generalizing is the core challenge, making it the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4539,
+            "completion_tokens": 136
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:41:41+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.",
+              "likely_errors": "A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'",
+              "likely_errors": "A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'",
+              "likely_errors": "A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of generalizing from the sample to the population, as this requires understanding that the sample proportion estimates the population proportion—a key statistical concept. Misunderstanding this leads to answers like raw counts or percentages without context, which are common errors. While Representing and Procedural Fluency involve counting and division, these are more mechanical and less prone to conceptual failure; students often succeed at these steps even if they don’t fully grasp the inference. Thus, Abstracting and Generalizing is the core challenge, making it the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.\",\n    \"likely_errors\": \"A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'\",\n    \"likely_errors\": \"A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'\",\n    \"likely_errors\": \"A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing from the sample to the population, as this requires understanding that the sample proportion estimates the population proportion—a key statistical concept. Misunderstanding this leads to answers like raw counts or percentages without context, which are common errors. While Representing and Procedural Fluency involve counting and division, these are more mechanical and less prone to conceptual failure; students often succeed at these steps even if they don’t fully grasp the inference. Thus, Abstracting and Generalizing is the core challenge, making it the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given sequence of letters 'l' and 'r' as a data set representing hand preference, translating the textual representation into a countable set of data points. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.' Here, the student implicitly creates a tally or count of 'l's and 'r's from the string.",
+          "likely_errors": "A student might miscount the number of 'l's or 'r's due to misreading the string, especially if they skip or double-count characters. This is moderately likely for students who are not careful with reading sequences."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the data by counting the occurrences of 'l' and 'r', the student must compute the proportion of left-handed individuals by dividing the number of 'l's by the total number of responses. This requires accurate division and understanding of proportions, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently.'",
+          "likely_errors": "A student might make a computational error in division (e.g., 2 ÷ 12 = 0.16 instead of 0.166...) or miscount the total, leading to an incorrect proportion. This is likely for students with weaker arithmetic fluency."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize from the sample to the population by estimating the population proportion based on the sample proportion. This involves recognizing that the sample is a representative subset and that the sample proportion serves as a reasonable estimate for the population parameter, matching the descriptor: 'Extend quantified attributes to a larger set.'",
+          "likely_errors": "A student might fail to recognize that the sample is being used to estimate a population value and instead give a raw count or percentage without context. This is moderately likely for students who don’t grasp the concept of sampling and inference."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify their reasoning with formal argumentation, counterexamples, or proof. The task is to compute and estimate, not to defend or refute a claim about the validity of the method or result."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the item involves data, it does not require the student to identify a problem, select variables, build a model, or test its reasonableness. The modeling is minimal and direct—just counting and computing a proportion—so no modeling process is required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to another student’s idea, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of generalizing from the sample to the population, as this requires understanding that the sample proportion estimates the population proportion—a key statistical concept. Misunderstanding this leads to answers like raw counts or percentages without context, which are common errors. While Representing and Procedural Fluency involve counting and division, these are more mechanical and less prone to conceptual failure; students often succeed at these steps even if they don’t fully grasp the inference. Thus, Abstracting and Generalizing is the core challenge, making it the top practice."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "row": 1315,
+  "problem_id": "191727",
+  "problem_text": "Place these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPlace these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5",
+          "started_at": "2026-11-09T23:25:44+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPlace these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPlace these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.\",\n    \"likely_errors\": \"A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.\",\n    \"likely_errors\": \"A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.\",\n    \"likely_errors\": \"A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.\",\n    \"likely_errors\": \"A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3875,
+            "completion_tokens": 691
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:28:22+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nPlace these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.\",\n      \"likely_errors\": \"A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.\",\n      \"likely_errors\": \"A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:43:19+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nPlace these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.\",\n      \"likely_errors\": \"A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.\",\n      \"likely_errors\": \"A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nPlace these numbers in order from least to greatest:\n\nItems to put in order:\n- 1/4\n- -3/4\n- -3\n- -3/8\n- 6\n- 3.1\n- 16/5\n- -2.5\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.\",\n      \"likely_errors\": \"A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.\",\n      \"likely_errors\": \"A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong when converting fractions and mixed numbers into a common form (like decimals), especially with negative fractions and improper fractions, due to errors in place value or sign handling—such as misreading -3/8 as -0.38 instead of -0.375. This step is the core challenge because incorrect representations lead directly to flawed comparisons. While procedural fluency in ordering is important, the error-prone nature of translation between representations (fractions, decimals, integers) makes Representing the primary source of difficulty, as the other steps depend on accurate initial conversions.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong when converting fractions and mixed numbers into a common form (like decimals), especially with negative fractions and improper fractions, due to errors in place value or sign handling—such as misreading -3/8 as -0.38 instead of -0.375. This step is the core challenge because incorrect representations lead directly to flawed comparisons. While procedural fluency in ordering is important, the error-prone nature of translation between representations (fractions, decimals, integers) makes Representing the primary source of difficulty, as the other steps depend on accurate initial conversions.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4541,
+            "completion_tokens": 139
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:44:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.",
+              "likely_errors": "A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.",
+              "likely_errors": "A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved."
+            }
+          ]
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong when converting fractions and mixed numbers into a common form (like decimals), especially with negative fractions and improper fractions, due to errors in place value or sign handling—such as misreading -3/8 as -0.38 instead of -0.375. This step is the core challenge because incorrect representations lead directly to flawed comparisons. While procedural fluency in ordering is important, the error-prone nature of translation between representations (fractions, decimals, integers) makes Representing the primary source of difficulty, as the other steps depend on accurate initial conversions."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.\",\n    \"likely_errors\": \"A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.\",\n    \"likely_errors\": \"A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong when converting fractions and mixed numbers into a common form (like decimals), especially with negative fractions and improper fractions, due to errors in place value or sign handling—such as misreading -3/8 as -0.38 instead of -0.375. This step is the core challenge because incorrect representations lead directly to flawed comparisons. While procedural fluency in ordering is important, the error-prone nature of translation between representations (fractions, decimals, integers) makes Representing the primary source of difficulty, as the other steps depend on accurate initial conversions.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must convert all given numbers—fractions, decimals, and integers—into a common form (e.g., decimals) to compare them, which involves translating between different representations of rational numbers. This aligns with the descriptor: 'Recognize, apply, create, or translate across multiple representations of fractions (e.g., visual models of equivalent fractions) and rational numbers (decimals, fractions, percents).' The student converts each number to a decimal to make comparisons easier.",
+          "likely_errors": "A student might incorrectly convert a fraction (e.g., -3/4 to -0.75 instead of -0.75) or misplace the decimal point (e.g., writing -3/8 as -0.38 instead of -0.375), leading to an incorrect order. This is moderately likely, especially with negative fractions."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing all numbers in a comparable form (e.g., decimals), the student must accurately compare the decimal values and arrange them in ascending order. This requires fluency in comparing signed decimals and understanding their relative positions on the number line, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.' The student performs the comparison and ordering step-by-step.",
+          "likely_errors": "A student might incorrectly order negative numbers (e.g., treating -3 as greater than -2.5) or misorder decimals (e.g., placing 3.1 before 16/5 = 3.2), which is common due to misconceptions about negative numbers. This is moderately likely, especially among students developing fluency."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The task involves ordering a fixed set of numbers without identifying or extending a pattern, generalizing a rule, or making broader inferences across cases. There is no need to recognize a structural relationship or extend reasoning to a larger domain, so this practice is not required."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a final answer (ordered list) without requiring the student to explain or defend their reasoning. There is no claim to evaluate, no proof to construct, and no justification to provide, so this practice is not assessed."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The task is purely computational and does not involve modeling a real-world scenario, identifying a problem to solve, or validating a solution in context. It is a direct comparison of given numbers without any contextual or applied modeling component."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the item, with no interaction with others, no response to another student’s reasoning, and no need to build on or critique peer contributions. The item does not present a dialogue, claim, or work from another student, so collaboration is not involved."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong when converting fractions and mixed numbers into a common form (like decimals), especially with negative fractions and improper fractions, due to errors in place value or sign handling—such as misreading -3/8 as -0.38 instead of -0.375. This step is the core challenge because incorrect representations lead directly to flawed comparisons. While procedural fluency in ordering is important, the error-prone nature of translation between representations (fractions, decimals, integers) makes Representing the primary source of difficulty, as the other steps depend on accurate initial conversions."
+    },
+    "top_practice": "Representing"
+  }
+}

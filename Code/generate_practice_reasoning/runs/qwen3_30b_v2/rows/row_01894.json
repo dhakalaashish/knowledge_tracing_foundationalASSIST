@@ -1,0 +1,221 @@
+{
+  "row": 1894,
+  "problem_id": "252048",
+  "problem_text": "Let a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nLet a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8",
+          "started_at": "2026-11-09T23:28:22+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nLet a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nLet a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.\",\n    \"likely_errors\": \"A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.\",\n    \"likely_errors\": \"A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.\",\n    \"likely_errors\": \"A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.\",\n    \"likely_errors\": \"A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.\",\n    \"likely_errors\": \"A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.\",\n    \"likely_errors\": \"A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3908,
+            "completion_tokens": 712
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:31:09+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nLet a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.\",\n      \"likely_errors\": \"A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.\",\n      \"likely_errors\": \"A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.\",\n      \"likely_errors\": \"A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:44:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nLet a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.\",\n      \"likely_errors\": \"A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.\",\n      \"likely_errors\": \"A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.\",\n      \"likely_errors\": \"A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nLet a, b, c, d, e, and f be positive numbers.\nGiven these equations, arrange a, b, c, d, e, and f from least to greatest.\n\nItems to put in order:\n- b^3 = 8\n- f^3 = 7\n- c^2 = 10\n- a^2 = 9\n- d^3 = 9\n- e^2 = 8\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.\",\n      \"likely_errors\": \"A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.\",\n      \"likely_errors\": \"A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.\",\n      \"likely_errors\": \"A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying the general principle that the size of a variable depends on both the root type (square vs. cube) and the value it is raised to—specifically, that higher roots grow more slowly than lower roots. Misunderstanding this relationship can lead to incorrect ordering, such as assuming ∛9 > √10, even though ∛9 ≈ 2.08 and √10 ≈ 3.16. While procedural fluency and representing are important, they involve straightforward computation and approximation, which are more mechanical and less prone to error if the student can perform basic root calculations. The abstracting step requires deeper conceptual understanding, making it the most likely source of error for a student who answers incorrectly.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying the general principle that the size of a variable depends on both the root type (square vs. cube) and the value it is raised to—specifically, that higher roots grow more slowly than lower roots. Misunderstanding this relationship can lead to incorrect ordering, such as assuming ∛9 > √10, even though ∛9 ≈ 2.08 and √10 ≈ 3.16. While procedural fluency and representing are important, they involve straightforward computation and approximation, which are more mechanical and less prone to error if the student can perform basic root calculations. The abstracting step requires deeper conceptual understanding, making it the most likely source of error for a student who answers incorrectly.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4595,
+            "completion_tokens": 182
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:46:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.",
+              "likely_errors": "A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.",
+              "likely_errors": "A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.",
+              "likely_errors": "A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing and applying the general principle that the size of a variable depends on both the root type (square vs. cube) and the value it is raised to—specifically, that higher roots grow more slowly than lower roots. Misunderstanding this relationship can lead to incorrect ordering, such as assuming ∛9 > √10, even though ∛9 ≈ 2.08 and √10 ≈ 3.16. While procedural fluency and representing are important, they involve straightforward computation and approximation, which are more mechanical and less prone to error if the student can perform basic root calculations. The abstracting step requires deeper conceptual understanding, making it the most likely source of error for a student who answers incorrectly."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.\",\n    \"likely_errors\": \"A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.\",\n    \"likely_errors\": \"A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.\",\n    \"likely_errors\": \"A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying the general principle that the size of a variable depends on both the root type (square vs. cube) and the value it is raised to—specifically, that higher roots grow more slowly than lower roots. Misunderstanding this relationship can lead to incorrect ordering, such as assuming ∛9 > √10, even though ∛9 ≈ 2.08 and √10 ≈ 3.16. While procedural fluency and representing are important, they involve straightforward computation and approximation, which are more mechanical and less prone to error if the student can perform basic root calculations. The abstracting step requires deeper conceptual understanding, making it the most likely source of error for a student who answers incorrectly.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must solve each equation for the variable by applying inverse operations (e.g., taking cube roots or square roots) accurately and efficiently. This involves computing values such as b = ∛8 = 2, f = ∛7 ≈ 1.91, c = √10 ≈ 3.16, a = √9 = 3, d = ∛9 ≈ 2.08, e = √8 ≈ 2.83, which requires accurate and efficient computation with roots and exponents.",
+          "likely_errors": "A student might incorrectly compute a root (e.g., think √9 = 3.5 or ∛8 = 3), or misapply the operation (e.g., divide instead of root). This is moderately likely, especially with irrational roots like ∛7 or √10."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "After computing the approximate values, the student must represent these values numerically and compare them to order the variables. This involves translating the symbolic equations into numerical values and organizing them in a way that allows for comparison, such as writing down the decimal approximations or placing them on a number line mentally.",
+          "likely_errors": "A student might misrepresent a value (e.g., round √10 to 3 instead of 3.16), or fail to recognize that ∛7 < ∛8 = 2, leading to an incorrect order. This is moderately likely due to approximation errors."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the underlying pattern that the size of the variable depends on the root and the value it is raised to—specifically, comparing values of the form x^n = k by computing x = k^(1/n). This requires generalizing across the different equations to understand how the exponent and the base interact to determine the size of the variable.",
+          "likely_errors": "A student might not recognize that higher roots (like cube roots) grow more slowly than square roots, leading to a wrong ordering (e.g., assuming ∛9 > √10). This is moderately likely, especially if the student lacks experience comparing different types of roots."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify their reasoning or provide a proof for their ordering. The task is to arrange the values, not to defend or evaluate a claim about mathematical relationships."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context or scenario to model. The problem is purely symbolic and computational, with no need to identify variables, define a problem, or validate a model in a real-world situation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to someone else’s reasoning."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing and applying the general principle that the size of a variable depends on both the root type (square vs. cube) and the value it is raised to—specifically, that higher roots grow more slowly than lower roots. Misunderstanding this relationship can lead to incorrect ordering, such as assuming ∛9 > √10, even though ∛9 ≈ 2.08 and √10 ≈ 3.16. While procedural fluency and representing are important, they involve straightforward computation and approximation, which are more mechanical and less prone to error if the student can perform basic root calculations. The abstracting step requires deeper conceptual understanding, making it the most likely source of error for a student who answers incorrectly."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

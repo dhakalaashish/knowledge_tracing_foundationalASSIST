@@ -1,0 +1,217 @@
+{
+  "row": 1216,
+  "problem_id": "245930",
+  "problem_text": "Lin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nLin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____",
+          "started_at": "2026-11-09T23:25:44+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nLin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nLin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.\",\n    \"likely_errors\": \"A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.\",\n    \"likely_errors\": \"A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.\",\n    \"likely_errors\": \"A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.\",\n    \"likely_errors\": \"A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3865,
+            "completion_tokens": 784
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:28:22+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nLin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.\",\n      \"likely_errors\": \"A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.\",\n      \"likely_errors\": \"A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:43:19+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nLin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.\",\n      \"likely_errors\": \"A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.\",\n      \"likely_errors\": \"A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nLin’s father is paying for a $20 meal. He has a 15%-off coupon for the meal. After the discount, a 7% sales tax is applied.\nWhat does Lin’s father pay for the meal?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.\",\n      \"likely_errors\": \"A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.\",\n      \"likely_errors\": \"A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong in the procedural steps of calculating the discount and tax, especially when applying the 7% tax to the already-discounted price rather than the original $20. Errors like miscalculating 15% of 20 (e.g., 15 × 20 = 300) or incorrectly adding the tax before the discount are common and directly tied to procedural fluency. While representing the problem correctly is important, the actual computation steps are more error-prone and central to the difficulty. The representing step is less likely to cause an incorrect answer because the correct expression (e.g., 20 × 0.85 × 1.07) is straightforward once the sequence is understood, and the main challenge lies in executing the calculations accurately.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong in the procedural steps of calculating the discount and tax, especially when applying the 7% tax to the already-discounted price rather than the original $20. Errors like miscalculating 15% of 20 (e.g., 15 × 20 = 300) or incorrectly adding the tax before the discount are common and directly tied to procedural fluency. While representing the problem correctly is important, the actual computation steps are more error-prone and central to the difficulty. The representing step is less likely to cause an incorrect answer because the correct expression (e.g., 20 × 0.85 × 1.07) is straightforward once the sequence is understood, and the main challenge lies in executing the calculations accurately.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4624,
+            "completion_tokens": 187
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:44:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.",
+              "likely_errors": "A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.",
+              "likely_errors": "A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong in the procedural steps of calculating the discount and tax, especially when applying the 7% tax to the already-discounted price rather than the original $20. Errors like miscalculating 15% of 20 (e.g., 15 × 20 = 300) or incorrectly adding the tax before the discount are common and directly tied to procedural fluency. While representing the problem correctly is important, the actual computation steps are more error-prone and central to the difficulty. The representing step is less likely to cause an incorrect answer because the correct expression (e.g., 20 × 0.85 × 1.07) is straightforward once the sequence is understood, and the main challenge lies in executing the calculations accurately."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.\",\n    \"likely_errors\": \"A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.\",\n    \"likely_errors\": \"A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong in the procedural steps of calculating the discount and tax, especially when applying the 7% tax to the already-discounted price rather than the original $20. Errors like miscalculating 15% of 20 (e.g., 15 × 20 = 300) or incorrectly adding the tax before the discount are common and directly tied to procedural fluency. While representing the problem correctly is important, the actual computation steps are more error-prone and central to the difficulty. The representing step is less likely to cause an incorrect answer because the correct expression (e.g., 20 × 0.85 × 1.07) is straightforward once the sequence is understood, and the main challenge lies in executing the calculations accurately.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the discount by calculating 15% of $20, then subtract that amount from $20 to find the discounted price. This requires accurate and efficient application of percentage operations with decimals (e.g., 0.15 × 20 = 3). Then, the student must apply a 7% sales tax to the discounted price by computing 0.07 × (20 − 3), and add that to the discounted price to get the final total. These steps involve multiple procedural calculations with decimals and percentages, which aligns with the descriptors for procedural fluency.",
+          "likely_errors": "A student might incorrectly calculate 15% of 20 (e.g., 15 × 20 = 300 instead of 3), or apply the tax to the original price instead of the discounted price. These errors are common, especially with multi-step percentage problems, so they are moderately likely."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must translate the word problem into a mathematical expression or sequence of operations. This includes representing the 15% discount as a multiplication (0.15 × 20), representing the discounted price as (20 − 0.15×20), and then representing the 7% tax as 0.07 × (discounted price). The student may also represent the final amount as a single expression: 20 × (1 − 0.15) × (1 + 0.07). This translation from verbal description to mathematical form is a core aspect of representing, as described in the practice descriptors.",
+          "likely_errors": "A student might misrepresent the sequence of operations—such as adding the tax before the discount or applying the tax to the original price—leading to an incorrect expression. This is likely due to misunderstanding the order of operations in real-world contexts."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item involves a single, specific scenario with fixed numbers and operations. There is no need to identify a pattern across multiple cases, generalize a formula, or extend reasoning to a broader domain. The problem does not ask for a general rule or pattern, so abstracting and generalizing is not required."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical answer, not a justification of a claim or argument. There is no mathematical statement to prove or refute, no counterexample to find, and no reasoning about why a process works. The student is not required to defend or evaluate a reasoning process, so justifying and proving is not assessed."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the problem is contextual, it is not asking the student to identify a problem, create a model, or evaluate the model’s reasonableness in a real-world scenario. The model (applying discount then tax) is already given and standard. The student is simply applying a known procedure to a fixed situation, not constructing or validating a model from a real-world context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another person’s thinking, strategy, or claim. There is no dialogue, peer work, or collaborative reasoning involved. The student works alone and responds directly to the question, so collaborative mathematics is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong in the procedural steps of calculating the discount and tax, especially when applying the 7% tax to the already-discounted price rather than the original $20. Errors like miscalculating 15% of 20 (e.g., 15 × 20 = 300) or incorrectly adding the tax before the discount are common and directly tied to procedural fluency. While representing the problem correctly is important, the actual computation steps are more error-prone and central to the difficulty. The representing step is less likely to cause an incorrect answer because the correct expression (e.g., 20 × 0.85 × 1.07) is straightforward once the sequence is understood, and the main challenge lies in executing the calculations accurately."
+    },
+    "top_practice": "Procedural Fluency"
+  }
+}

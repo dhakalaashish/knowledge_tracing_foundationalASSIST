@@ -1,0 +1,217 @@
+{
+  "row": 1524,
+  "problem_id": "499326",
+  "problem_text": "Here are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %",
+          "started_at": "2026-11-09T23:25:44+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.\",\n    \"likely_errors\": \"A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.\",\n    \"likely_errors\": \"A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.\",\n    \"likely_errors\": \"A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.\",\n    \"likely_errors\": \"A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3883,
+            "completion_tokens": 621
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:28:22+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.\",\n      \"likely_errors\": \"A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.\",\n      \"likely_errors\": \"A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:43:19+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.\",\n      \"likely_errors\": \"A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.\",\n      \"likely_errors\": \"A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.\",\n      \"likely_errors\": \"A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.\",\n      \"likely_errors\": \"A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly interpreting the table as a proportional relationship between cost and sales tax, which requires representing the situation mathematically as tax = rate × cost. Misunderstanding this relationship—such as treating the tax as a fixed amount or inverting the ratio—leads to incorrect calculations. While procedural fluency is necessary for the division and percentage conversion, the foundational error in representation is more likely to cause a wrong answer because it affects the entire solution process; procedural errors are more mechanical and less common among students with basic computation skills.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly interpreting the table as a proportional relationship between cost and sales tax, which requires representing the situation mathematically as tax = rate × cost. Misunderstanding this relationship—such as treating the tax as a fixed amount or inverting the ratio—leads to incorrect calculations. While procedural fluency is necessary for the division and percentage conversion, the foundational error in representation is more likely to cause a wrong answer because it affects the entire solution process; procedural errors are more mechanical and less common among students with basic computation skills.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4478,
+            "completion_tokens": 132
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:44:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.",
+              "likely_errors": "A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.",
+              "likely_errors": "A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas."
+            }
+          ]
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of correctly interpreting the table as a proportional relationship between cost and sales tax, which requires representing the situation mathematically as tax = rate × cost. Misunderstanding this relationship—such as treating the tax as a fixed amount or inverting the ratio—leads to incorrect calculations. While procedural fluency is necessary for the division and percentage conversion, the foundational error in representation is more likely to cause a wrong answer because it affects the entire solution process; procedural errors are more mechanical and less common among students with basic computation skills."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.\",\n    \"likely_errors\": \"A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.\",\n    \"likely_errors\": \"A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly interpreting the table as a proportional relationship between cost and sales tax, which requires representing the situation mathematically as tax = rate × cost. Misunderstanding this relationship—such as treating the tax as a fixed amount or inverting the ratio—leads to incorrect calculations. While procedural fluency is necessary for the division and percentage conversion, the foundational error in representation is more likely to cause a wrong answer because it affects the entire solution process; procedural errors are more mechanical and less common among students with basic computation skills.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given table of costs and sales tax amounts as a proportional relationship, recognizing that the sales tax is a percentage of the cost. This involves translating the numerical data into a mathematical relationship (tax = rate × cost), which aligns with the practice of representing problem situations using numerical and tabular data.",
+          "likely_errors": "A student might misinterpret the table as showing a fixed tax amount rather than a rate, or incorrectly set up the ratio (e.g., dividing cost by tax instead of tax by cost), which is likely for students who struggle with proportional reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the relationship, the student must compute the sales tax rate by dividing the sales tax amount by the cost for each item (e.g., 0.46 ÷ 10), then convert the result to a percentage. This requires accurate division and multiplication with decimals, which falls under procedural fluency in computing with decimals and percentages.",
+          "likely_errors": "A student might make a decimal placement error during division (e.g., 0.46 ÷ 10 = 0.046, but misplacing the decimal as 4.6), or forget to multiply by 100 to convert to a percentage. These errors are common but less likely for students with strong computational fluency."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to extend the pattern beyond the given data or generalize the tax rate to a broader context (e.g., predicting tax for a new cost or deriving a formula). The task is to compute a single rate from given examples, not to find or justify a general rule."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to defend or evaluate a claim about the tax rate, nor to provide reasoning for why the rate is consistent across items. The task is computational, not argumentative, so justifying or proving a mathematical claim is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world pricing, the student is not required to identify a problem, mathematize a scenario, or validate a solution in a broader context. The model (tax = rate × cost) is already implied and the task is purely computational."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, student work, or peer claims for the student to respond to. It is a standalone problem, so there is no opportunity or requirement for collaboration, discussion, or building on others' ideas."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of correctly interpreting the table as a proportional relationship between cost and sales tax, which requires representing the situation mathematically as tax = rate × cost. Misunderstanding this relationship—such as treating the tax as a fixed amount or inverting the ratio—leads to incorrect calculations. While procedural fluency is necessary for the division and percentage conversion, the foundational error in representation is more likely to cause a wrong answer because it affects the entire solution process; procedural errors are more mechanical and less common among students with basic computation skills."
+    },
+    "top_practice": "Representing"
+  }
+}

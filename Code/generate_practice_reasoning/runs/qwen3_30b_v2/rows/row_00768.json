@@ -1,0 +1,221 @@
+{
+  "row": 768,
+  "problem_id": "45665",
+  "problem_text": "Suppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v2",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____",
+          "started_at": "2026-11-09T23:23:04+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.\",\n    \"likely_errors\": \"A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.\",\n    \"likely_errors\": \"A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.\",\n    \"likely_errors\": \"A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.\",\n    \"likely_errors\": \"A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.\",\n    \"likely_errors\": \"A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.\",\n    \"likely_errors\": \"A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3857,
+            "completion_tokens": 800
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:25:43+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.\",\n      \"likely_errors\": \"A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.\",\n      \"likely_errors\": \"A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.\",\n      \"likely_errors\": \"A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-09T23:41:42+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.\",\n      \"likely_errors\": \"A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.\",\n      \"likely_errors\": \"A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.\",\n      \"likely_errors\": \"A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.\",\n      \"likely_errors\": \"A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.\",\n      \"likely_errors\": \"A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.\",\n      \"likely_errors\": \"A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing that the interquartile range always contains 50% of the data, regardless of the specific values, especially when applying this to a small, discrete data set of 20 numbers. Miscounting due to off-by-one errors in determining the positions of Q1 and Q3 (e.g., thinking the 5th to 14th values are included instead of 5th to 15th) is a common error that stems from not fully abstracting the concept of quartiles as dividing the data into four equal parts. While Representing is important for setting up the problem, and Procedural Fluency is needed for the simple calculation, both are less likely to cause an incorrect answer because the representation is straightforward and the percentage computation is basic. The difficulty lies in correctly generalizing the 50% rule to this specific case, making Abstracting and Generalizing the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing that the interquartile range always contains 50% of the data, regardless of the specific values, especially when applying this to a small, discrete data set of 20 numbers. Miscounting due to off-by-one errors in determining the positions of Q1 and Q3 (e.g., thinking the 5th to 14th values are included instead of 5th to 15th) is a common error that stems from not fully abstracting the concept of quartiles as dividing the data into four equal parts. While Representing is important for setting up the problem, and Procedural Fluency is needed for the simple calculation, both are less likely to cause an incorrect answer because the representation is straightforward and the percentage computation is basic. The difficulty lies in correctly generalizing the 50% rule to this specific case, making Abstracting and Generalizing the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4632,
+            "completion_tokens": 218
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-09T23:43:19+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.",
+              "likely_errors": "A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.",
+              "likely_errors": "A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.",
+              "likely_errors": "A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required."
+            }
+          ]
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of generalizing that the interquartile range always contains 50% of the data, regardless of the specific values, especially when applying this to a small, discrete data set of 20 numbers. Miscounting due to off-by-one errors in determining the positions of Q1 and Q3 (e.g., thinking the 5th to 14th values are included instead of 5th to 15th) is a common error that stems from not fully abstracting the concept of quartiles as dividing the data into four equal parts. While Representing is important for setting up the problem, and Procedural Fluency is needed for the simple calculation, both are less likely to cause an incorrect answer because the representation is straightforward and the percentage computation is basic. The difficulty lies in correctly generalizing the 50% rule to this specific case, making Abstracting and Generalizing the top practice."
+        }
+      ],
+      "json_extraction": [
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.\",\n    \"likely_errors\": \"A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.\",\n    \"likely_errors\": \"A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.\",\n    \"likely_errors\": \"A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required.\"\n  }\n]\n}",
+    "answer2": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing that the interquartile range always contains 50% of the data, regardless of the specific values, especially when applying this to a small, discrete data set of 20 numbers. Miscounting due to off-by-one errors in determining the positions of Q1 and Q3 (e.g., thinking the 5th to 14th values are included instead of 5th to 15th) is a common error that stems from not fully abstracting the concept of quartiles as dividing the data into four equal parts. While Representing is important for setting up the problem, and Procedural Fluency is needed for the simple calculation, both are less likely to cause an incorrect answer because the representation is straightforward and the percentage computation is basic. The difficulty lies in correctly generalizing the 50% rule to this specific case, making Abstracting and Generalizing the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given scenario—20 distinct numbers—and represent the concept of quartiles mathematically, recognizing that the first quartile (Q1) and third quartile (Q3) divide the data into four equal parts. This involves translating the verbal description into a structured understanding of data distribution, specifically using the idea of dividing 20 data points into four groups of 5, which is a core part of representing data sets using quartiles.",
+          "likely_errors": "A student might misinterpret how quartiles divide the data, such as thinking Q1 and Q3 include the median or that the interquartile range includes all values from Q1 to Q3 inclusively without accounting for the exact number of data points. This is moderately likely, especially for students unfamiliar with quartile calculation in small data sets."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the concept that in any ordered data set, the interquartile range (IQR) contains the middle 50% of the data. Since there are 20 numbers, the student applies the general rule that the IQR spans from the 25th to the 75th percentile, which corresponds to the middle 10 values (5th to 15th in an ordered list), and thus deduces that 10 values lie between Q1 and Q3. This step requires recognizing a pattern across data sets: regardless of the actual values, the IQR always contains half the data when the data is evenly distributed.",
+          "likely_errors": "A student might incorrectly assume that the number of values between Q1 and Q3 is 10.5 or 9, or might miscount due to off-by-one errors when determining positions. This is moderately likely, especially if the student relies on a formula without understanding the underlying distribution."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After identifying that the interquartile range spans the middle 50% of 20 values, the student performs the calculation: 50% of 20 equals 10. This involves applying a basic percentage computation accurately and efficiently, which is a core component of procedural fluency in working with data distributions.",
+          "likely_errors": "A student might miscalculate 50% of 20 as 1 or 20, or divide 20 by 4 incorrectly. However, this is unlikely for students with basic procedural fluency in percentages and division."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, provide a counterexample, or defend a claim with logical reasoning. The question is computational and conceptual, asking for a count based on standard definitions, not a justification of why the IQR contains 50% of the data."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context to model, no need to identify variables, create a representation of a situation, or check the reasonableness of a solution in a practical scenario. The item is purely about interpreting statistical measures within a defined mathematical structure."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone question with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build upon, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of generalizing that the interquartile range always contains 50% of the data, regardless of the specific values, especially when applying this to a small, discrete data set of 20 numbers. Miscounting due to off-by-one errors in determining the positions of Q1 and Q3 (e.g., thinking the 5th to 14th values are included instead of 5th to 15th) is a common error that stems from not fully abstracting the concept of quartiles as dividing the data into four equal parts. While Representing is important for setting up the problem, and Procedural Fluency is needed for the simple calculation, both are less likely to cause an incorrect answer because the representation is straightforward and the percentage computation is basic. The difficulty lies in correctly generalizing the 50% rule to this specific case, making Abstracting and Generalizing the top practice."
+    },
+    "top_practice": "Abstracting and Generalizing"
+  }
+}
