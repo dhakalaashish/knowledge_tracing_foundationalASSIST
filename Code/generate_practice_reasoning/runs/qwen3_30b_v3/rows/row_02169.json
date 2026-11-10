@@ -1,0 +1,389 @@
+{
+  "row": 2169,
+  "problem_id": "308662",
+  "problem_text": "Here is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n    \"likely_errors\": \"A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n    \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n    \"likely_errors\": \"A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n    \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3942,
+            "completion_tokens": 825
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Abstracting and Generalizing: The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Procedural Fluency: Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Abstracting and Generalizing: The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Procedural Fluency: Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Abstracting and Generalizing: The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Procedural Fluency: Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the map and the given routes, translating the path descriptions into a mathematical model by identifying the segments and their relationships, recognizing that the Thursday route is a subset of the other routes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the overlapping segments across the different routes and generalizes the relationship between the total distances to isolate the length of the repeated path B-E-F-G-B, using the differences between Monday, Wednesday, and Tuesday routes.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary arithmetic operations—subtracting the Monday route from the Wednesday route to find B-C-D-E, then using that result and the Tuesday route to compute the length of the Thursday route.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem visually and mathematically to understand the relationships between the routes. Only after this representation is established can they abstract the pattern of overlapping segments and generalize the relationships. Finally, once the logical path is clear, the student applies procedural fluency to compute the answer accurately and efficiently.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the map and the given routes, translating the path descriptions into a mathematical model by identifying the segments and their relationships, recognizing that the Thursday route is a subset of the other routes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the overlapping segments across the different routes and generalizes the relationship between the total distances to isolate the length of the repeated path B-E-F-G-B, using the differences between Monday, Wednesday, and Tuesday routes.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary arithmetic operations—subtracting the Monday route from the Wednesday route to find B-C-D-E, then using that result and the Tuesday route to compute the length of the Thursday route.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem visually and mathematically to understand the relationships between the routes. Only after this representation is established can they abstract the pattern of overlapping segments and generalize the relationships. Finally, once the logical path is clear, the student applies procedural fluency to compute the answer accurately and efficiently.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4281,
+            "completion_tokens": 281
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n      \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n      \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is a rough map of a neighborhood.\n[image]\nThere are 4 mail routes during the week.\n- On Monday, the mail truck follows the route A-B-E-F-G-H-A, which is 14 miles long.\n- On Tuesday, the mail truck follows the route B-C-D-E-F-G-B, which is 22 miles long.\n- On Wednesday, the truck follows the route A-B-C-D-E-F-G-H-A, which is 24 miles long.\n- On Thursday, the mail truck follows the route B-E-F-G-B.\nHow long is the route on Thursdays?\n____ miles\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n      \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing the overlapping structure of the routes and generalizing the relationships between them, such as identifying that the difference between Wednesday and Monday routes reveals the length of B-C-D-E. This step requires abstracting beyond the given numbers to see patterns in the paths and using that to deduce unknown segment lengths. While Representing and Procedural Fluency involve important steps, misidentifying segments or making arithmetic errors is less likely to be the root cause of incorrect answers if the student correctly sees the pattern. The difficulty lies in the cognitive leap to generalize across routes, which is the core challenge in this item.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing the overlapping structure of the routes and generalizing the relationships between them, such as identifying that the difference between Wednesday and Monday routes reveals the length of B-C-D-E. This step requires abstracting beyond the given numbers to see patterns in the paths and using that to deduce unknown segment lengths. While Representing and Procedural Fluency involve important steps, misidentifying segments or making arithmetic errors is less likely to be the root cause of incorrect answers if the student correctly sees the pattern. The difficulty lies in the cognitive leap to generalize across routes, which is the core challenge in this item.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4742,
+            "completion_tokens": 148
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+              "likely_errors": "A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+              "likely_errors": "A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'",
+              "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the map and the given routes, translating the path descriptions into a mathematical model by identifying the segments and their relationships, recognizing that the Thursday route is a subset of the other routes."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the overlapping segments across the different routes and generalizes the relationship between the total distances to isolate the length of the repeated path B-E-F-G-B, using the differences between Monday, Wednesday, and Tuesday routes."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the necessary arithmetic operations—subtracting the Monday route from the Wednesday route to find B-C-D-E, then using that result and the Tuesday route to compute the length of the Thursday route."
+            }
+          ],
+          "why": "The student must first represent the problem visually and mathematically to understand the relationships between the routes. Only after this representation is established can they abstract the pattern of overlapping segments and generalize the relationships. Finally, once the logical path is clear, the student applies procedural fluency to compute the answer accurately and efficiently."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to fail at recognizing the overlapping structure of the routes and generalizing the relationships between them, such as identifying that the difference between Wednesday and Monday routes reveals the length of B-C-D-E. This step requires abstracting beyond the given numbers to see patterns in the paths and using that to deduce unknown segment lengths. While Representing and Procedural Fluency involve important steps, misidentifying segments or making arithmetic errors is less likely to be the root cause of incorrect answers if the student correctly sees the pattern. The difficulty lies in the cognitive leap to generalize across routes, which is the core challenge in this item."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+            "likely_errors": "A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+            "likely_errors": "A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'",
+            "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n    \"likely_errors\": \"A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'\",\n    \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the map and the given routes, translating the path descriptions into a mathematical model by identifying the segments and their relationships, recognizing that the Thursday route is a subset of the other routes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the overlapping segments across the different routes and generalizes the relationship between the total distances to isolate the length of the repeated path B-E-F-G-B, using the differences between Monday, Wednesday, and Tuesday routes.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary arithmetic operations—subtracting the Monday route from the Wednesday route to find B-C-D-E, then using that result and the Tuesday route to compute the length of the Thursday route.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem visually and mathematically to understand the relationships between the routes. Only after this representation is established can they abstract the pattern of overlapping segments and generalize the relationships. Finally, once the logical path is clear, the student applies procedural fluency to compute the answer accurately and efficiently.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing the overlapping structure of the routes and generalizing the relationships between them, such as identifying that the difference between Wednesday and Monday routes reveals the length of B-C-D-E. This step requires abstracting beyond the given numbers to see patterns in the paths and using that to deduce unknown segment lengths. While Representing and Procedural Fluency involve important steps, misidentifying segments or making arithmetic errors is less likely to be the root cause of incorrect answers if the student correctly sees the pattern. The difficulty lies in the cognitive leap to generalize across routes, which is the core challenge in this item.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+          "likely_errors": "A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'",
+          "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the map and the given routes, translating the path descriptions into a mathematical model by identifying the segments and their relationships, recognizing that the Thursday route is a subset of the other routes."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the overlapping segments across the different routes and generalizes the relationship between the total distances to isolate the length of the repeated path B-E-F-G-B, using the differences between Monday, Wednesday, and Tuesday routes."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the necessary arithmetic operations—subtracting the Monday route from the Wednesday route to find B-C-D-E, then using that result and the Tuesday route to compute the length of the Thursday route."
+        }
+      ],
+      "why": "The student must first represent the problem visually and mathematically to understand the relationships between the routes. Only after this representation is established can they abstract the pattern of overlapping segments and generalize the relationships. Finally, once the logical path is clear, the student applies procedural fluency to compute the answer accurately and efficiently."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to fail at recognizing the overlapping structure of the routes and generalizing the relationships between them, such as identifying that the difference between Wednesday and Monday routes reveals the length of B-C-D-E. This step requires abstracting beyond the given numbers to see patterns in the paths and using that to deduce unknown segment lengths. While Representing and Procedural Fluency involve important steps, misidentifying segments or making arithmetic errors is less likely to be the root cause of incorrect answers if the student correctly sees the pattern. The difficulty lies in the cognitive leap to generalize across routes, which is the core challenge in this item."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the map description and translate the given routes into a mathematical representation by identifying the segments of the route and associating them with distances. This involves recognizing that the route on Thursday (B-E-F-G-B) is a subset of the other routes and using the provided total distances to deduce unknown segment lengths. This aligns with the descriptor: 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+          "likely_errors": "A student might misidentify the path segments or incorrectly assume all segments are equal, leading to an incorrect assignment of distances. This is moderately likely, especially if the student does not carefully track the sequence of stops."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the Thursday route is a subpath of the Monday and Wednesday routes and use the known total distances to isolate the length of the repeated segment B-E-F-G-B. By comparing the Monday and Wednesday routes, the student can deduce that the extra segment A-B-C-D-E-F-G-H-A minus A-B-E-F-G-H-A reveals the length of B-C-D-E, which can then be used to infer the Thursday route. This involves identifying a pattern across routes and generalizing relationships between overlapping paths, matching the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might fail to see the overlapping structure or incorrectly assume that the difference between routes gives the Thursday route directly. This is moderately likely, especially if the student does not systematically compare route lengths and paths."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the student has identified the relevant segment lengths through reasoning, they must perform arithmetic operations—specifically subtraction and addition—to compute the length of the Thursday route. For example, using the difference between Wednesday (24 miles) and Monday (14 miles) routes to find B-C-D-E (10 miles), and then using Tuesday’s route (22 miles) to isolate B-E-F-G-B. The student must compute accurately and efficiently, which matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers.'",
+          "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning route segments or miscalculating differences. This is likely for students who are not fluent in basic arithmetic, especially under time pressure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument or prove a claim. While reasoning is involved, the task is to compute a length based on given data, not to defend or refute a mathematical claim or provide a deductive proof. The student is expected to solve the problem, not justify their method in a formal way."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem presents a pre-existing, simplified representation of a real-world scenario (a mail route map), and the student is not required to identify a problem, create a model, or validate its reasonableness. The model is already given in the form of route descriptions and distances, so no modeling process is needed beyond interpretation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s work, argument, or contribution. There is no dialogue, peer reasoning, or need to respond to another person’s idea, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

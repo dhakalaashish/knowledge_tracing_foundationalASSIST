@@ -1,0 +1,389 @@
+{
+  "row": 1639,
+  "problem_id": "225864",
+  "problem_text": "A toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\",\n      \"likely_errors\": \"A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\",\n      \"likely_errors\": \"A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\",\n      \"likely_errors\": \"A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\",\n      \"likely_errors\": \"A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\",\n      \"likely_errors\": \"A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\",\n      \"likely_errors\": \"A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3899,
+            "completion_tokens": 852
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\n- Abstracting and Generalizing: The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\n- Procedural Fluency: The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\n- Abstracting and Generalizing: The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\n- Procedural Fluency: The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\n- Abstracting and Generalizing: The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\n- Procedural Fluency: The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given times for different numbers of slices and represents the relationship mathematically by recognizing that each batch of 4 slices takes 35 seconds, translating the word problem into a numerical pattern.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the consistent pattern that every 4 slices require 35 seconds and generalizes this rule to determine how many full batches can be made in the total time, extending the relationship to a larger domain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student converts 4 minutes and 40 seconds to 280 seconds and performs the division (280 ÷ 35) to find the number of batches, then multiplies by 4 to compute the total number of slices.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the situation by representing the relationship between slices and time, which is the foundation for further reasoning. Once the pattern is represented, the student can abstract and generalize it to apply across the total time. Only after the mathematical structure is established can the student efficiently carry out the necessary calculations, which requires procedural fluency in time conversion and division.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given times for different numbers of slices and represents the relationship mathematically by recognizing that each batch of 4 slices takes 35 seconds, translating the word problem into a numerical pattern.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the consistent pattern that every 4 slices require 35 seconds and generalizes this rule to determine how many full batches can be made in the total time, extending the relationship to a larger domain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student converts 4 minutes and 40 seconds to 280 seconds and performs the division (280 ÷ 35) to find the number of batches, then multiplies by 4 to compute the total number of slices.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the situation by representing the relationship between slices and time, which is the foundation for further reasoning. Once the pattern is represented, the student can abstract and generalize it to apply across the total time. Only after the mathematical structure is established can the student efficiently carry out the necessary calculations, which requires procedural fluency in time conversion and division.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4164,
+            "completion_tokens": 305
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\",\n      \"likely_errors\": \"A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\",\n      \"likely_errors\": \"A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\",\n      \"likely_errors\": \"A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\",\n      \"likely_errors\": \"A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\",\n      \"likely_errors\": \"A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\",\n      \"likely_errors\": \"A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nIf someone makes as many slices of toast as possible in 4 minutes and 40 seconds, how many slices do think they can make?\n____ slices\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\",\n      \"likely_errors\": \"A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\",\n      \"likely_errors\": \"A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\",\n      \"likely_errors\": \"A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the consistent 4-slice batch pattern across all given data points, which is essential to correctly scale the problem to 280 seconds. Misinterpreting the relationship as a per-slice rate (e.g., 10.5 seconds per slice) leads to an incorrect total, and this error stems from failing to abstract the batch-based structure. While Representing and Procedural Fluency involve important steps, the error in Representing (misinterpreting the pattern) is often a result of failing to generalize, and procedural errors (like time conversion) are more likely to be caught by estimation or simple checks, making them less likely to be the root cause of incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the consistent 4-slice batch pattern across all given data points, which is essential to correctly scale the problem to 280 seconds. Misinterpreting the relationship as a per-slice rate (e.g., 10.5 seconds per slice) leads to an incorrect total, and this error stems from failing to abstract the batch-based structure. While Representing and Procedural Fluency involve important steps, the error in Representing (misinterpreting the pattern) is often a result of failing to generalize, and procedural errors (like time conversion) are more likely to be caught by estimation or simple checks, making them less likely to be the root cause of incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4722,
+            "completion_tokens": 174
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.",
+              "likely_errors": "A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.",
+              "likely_errors": "A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.",
+              "likely_errors": "A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the given times for different numbers of slices and represents the relationship mathematically by recognizing that each batch of 4 slices takes 35 seconds, translating the word problem into a numerical pattern."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the consistent pattern that every 4 slices require 35 seconds and generalizes this rule to determine how many full batches can be made in the total time, extending the relationship to a larger domain."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student converts 4 minutes and 40 seconds to 280 seconds and performs the division (280 ÷ 35) to find the number of batches, then multiplies by 4 to compute the total number of slices."
+            }
+          ],
+          "why": "The student must first make sense of the situation by representing the relationship between slices and time, which is the foundation for further reasoning. Once the pattern is represented, the student can abstract and generalize it to apply across the total time. Only after the mathematical structure is established can the student efficiently carry out the necessary calculations, which requires procedural fluency in time conversion and division."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing and generalizing the consistent 4-slice batch pattern across all given data points, which is essential to correctly scale the problem to 280 seconds. Misinterpreting the relationship as a per-slice rate (e.g., 10.5 seconds per slice) leads to an incorrect total, and this error stems from failing to abstract the batch-based structure. While Representing and Procedural Fluency involve important steps, the error in Representing (misinterpreting the pattern) is often a result of failing to generalize, and procedural errors (like time conversion) are more likely to be caught by estimation or simple checks, making them less likely to be the root cause of incorrect answers."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.",
+            "likely_errors": "A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.",
+            "likely_errors": "A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.",
+            "likely_errors": "A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.\",\n      \"likely_errors\": \"A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.\",\n      \"likely_errors\": \"A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.\",\n      \"likely_errors\": \"A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given times for different numbers of slices and represents the relationship mathematically by recognizing that each batch of 4 slices takes 35 seconds, translating the word problem into a numerical pattern.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the consistent pattern that every 4 slices require 35 seconds and generalizes this rule to determine how many full batches can be made in the total time, extending the relationship to a larger domain.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student converts 4 minutes and 40 seconds to 280 seconds and performs the division (280 ÷ 35) to find the number of batches, then multiplies by 4 to compute the total number of slices.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the situation by representing the relationship between slices and time, which is the foundation for further reasoning. Once the pattern is represented, the student can abstract and generalize it to apply across the total time. Only after the mathematical structure is established can the student efficiently carry out the necessary calculations, which requires procedural fluency in time conversion and division.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the consistent 4-slice batch pattern across all given data points, which is essential to correctly scale the problem to 280 seconds. Misinterpreting the relationship as a per-slice rate (e.g., 10.5 seconds per slice) leads to an incorrect total, and this error stems from failing to abstract the batch-based structure. While Representing and Procedural Fluency involve important steps, the error in Representing (misinterpreting the pattern) is often a result of failing to generalize, and procedural errors (like time conversion) are more likely to be caught by estimation or simple checks, making them less likely to be the root cause of incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.",
+          "likely_errors": "A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.",
+          "likely_errors": "A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.",
+          "likely_errors": "A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the given times for different numbers of slices and represents the relationship mathematically by recognizing that each batch of 4 slices takes 35 seconds, translating the word problem into a numerical pattern."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the consistent pattern that every 4 slices require 35 seconds and generalizes this rule to determine how many full batches can be made in the total time, extending the relationship to a larger domain."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student converts 4 minutes and 40 seconds to 280 seconds and performs the division (280 ÷ 35) to find the number of batches, then multiplies by 4 to compute the total number of slices."
+        }
+      ],
+      "why": "The student must first make sense of the situation by representing the relationship between slices and time, which is the foundation for further reasoning. Once the pattern is represented, the student can abstract and generalize it to apply across the total time. Only after the mathematical structure is established can the student efficiently carry out the necessary calculations, which requires procedural fluency in time conversion and division."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing and generalizing the consistent 4-slice batch pattern across all given data points, which is essential to correctly scale the problem to 280 seconds. Misinterpreting the relationship as a per-slice rate (e.g., 10.5 seconds per slice) leads to an incorrect total, and this error stems from failing to abstract the batch-based structure. While Representing and Procedural Fluency involve important steps, the error in Representing (misinterpreting the pattern) is often a result of failing to generalize, and procedural errors (like time conversion) are more likely to be caught by estimation or simple checks, making them less likely to be the root cause of incorrect answers."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given data (times for 4, 8, and 10 slices) and represent the relationship between number of slices and time mathematically—specifically, recognizing that each batch of 4 slices takes 35 seconds. This involves translating a word problem into a numerical pattern or expression (e.g., 35 seconds per 4 slices), which matches the descriptor of representing problem situations with numerical operations.",
+          "likely_errors": "A student might misinterpret the pattern and assume that 8 slices take 70 seconds because 2 × 35 = 70, but then incorrectly apply that to 10 slices (e.g., 3 × 35 = 105, so 10 slices = 105 seconds, and then try to scale further). This error is likely if the student does not recognize the consistent 4-slice batch pattern."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern that each 4 slices require 35 seconds, regardless of the total number of slices. They must extend this rule to determine how many full batches of 4 slices can be made in 280 seconds, and then compute the total number of slices (8 batches × 4 = 32 slices). This involves identifying a consistent relationship and extending it to a larger domain, which aligns with the practice of identifying and extending patterns and generalizing relationships.",
+          "likely_errors": "A student might try to interpolate or extrapolate based on non-constant rates (e.g., assuming 10 slices take 105 seconds, so 1 slice takes 10.5 seconds), leading to a flawed total. This is moderately likely if the student fails to recognize the batch-based structure of the toaster."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "The student must convert the total time given (4 minutes and 40 seconds) into seconds (280 seconds) and then perform division to determine how many 35-second intervals fit into 280 seconds. This involves accurate and efficient computation with whole numbers and time conversion, which aligns with the procedural fluency descriptors involving computation, unit conversion, and efficient use of algorithms.",
+          "likely_errors": "A student might incorrectly convert 4 minutes and 40 seconds to 440 seconds instead of 280 seconds, or divide 280 by 35 incorrectly (e.g., getting 7 instead of 8). This is moderately likely, especially if the student rushes or misremembers time conversions."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical claim or argument. There is no statement from another student to critique, no conjecture to prove, and no need to justify why a particular method is valid. The task is computational and pattern-based, not argumentative or proof-oriented."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is real-world, the problem is already mathematized—time and slices are directly related through a fixed batch system. The student is not required to identify a problem, define variables, build a model, or check its reasonableness in context. The model is given implicitly, so no modeling process is needed."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no student's work to respond to, and no social or collaborative element. The student works independently, and there is no requirement to engage with or build on another person's thinking, so collaborative practices are not activated."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "row": 2093,
+  "problem_id": "615367",
+  "problem_text": "Here is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\",\n    \"likely_errors\": \"A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\",\n    \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\",\n    \"likely_errors\": \"A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\",\n    \"likely_errors\": \"A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\",\n    \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\",\n    \"likely_errors\": \"A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3913,
+            "completion_tokens": 715
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\n- Abstracting and Generalizing: The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\n- Procedural Fluency: After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\n- Abstracting and Generalizing: The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\n- Procedural Fluency: After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\n- Abstracting and Generalizing: The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\n- Procedural Fluency: After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of daily changes in paper cup inventory and translates the information into a mathematical expression that models the net change in cups, particularly focusing on Thursday's delivery and usage.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate arithmetic to compute the number of cups used on Thursday by subtracting the net change in inventory from the delivery of 2,000 cups.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the underlying pattern that the number of cups used equals the delivery minus the net change in inventory and generalizes this relationship to understand the consistent mathematical structure across days with deliveries.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by interpreting the table and translating it into a numerical expression, which is the foundational step. Once the representation is established, the student applies procedural fluency to compute the number of cups used. Only after computing the result does the student abstract and generalize the relationship, identifying the consistent pattern across days. This order reflects the logical progression from understanding the problem to performing calculations and then recognizing broader mathematical structure.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of daily changes in paper cup inventory and translates the information into a mathematical expression that models the net change in cups, particularly focusing on Thursday's delivery and usage.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate arithmetic to compute the number of cups used on Thursday by subtracting the net change in inventory from the delivery of 2,000 cups.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the underlying pattern that the number of cups used equals the delivery minus the net change in inventory and generalizes this relationship to understand the consistent mathematical structure across days with deliveries.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by interpreting the table and translating it into a numerical expression, which is the foundational step. Once the representation is established, the student applies procedural fluency to compute the number of cups used. Only after computing the result does the student abstract and generalize the relationship, identifying the consistent pattern across days. This order reflects the logical progression from understanding the problem to performing calculations and then recognizing broader mathematical structure.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4149,
+            "completion_tokens": 291
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\",\n      \"likely_errors\": \"A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\",\n      \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\",\n      \"likely_errors\": \"A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\",\n      \"likely_errors\": \"A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\",\n      \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\",\n      \"likely_errors\": \"A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\",\n      \"likely_errors\": \"A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\",\n      \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\",\n      \"likely_errors\": \"A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the number of cups used on Thursday equals the delivery amount minus the net change in inventory (2,000 – 1,719 = 281), which requires abstracting the underlying relationship: used = delivered – net change. This step demands decontextualizing the situation to identify a consistent mathematical pattern across days with deliveries. While Representing and Procedural Fluency are important, misinterpreting the table or making a calculation error is less likely to be the primary cause of incorrect answers because the table is straightforward and the arithmetic is basic; the deeper conceptual leap—seeing the structure of the relationship—is the true hurdle.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the number of cups used on Thursday equals the delivery amount minus the net change in inventory (2,000 – 1,719 = 281), which requires abstracting the underlying relationship: used = delivered – net change. This step demands decontextualizing the situation to identify a consistent mathematical pattern across days with deliveries. While Representing and Procedural Fluency are important, misinterpreting the table or making a calculation error is less likely to be the primary cause of incorrect answers because the table is straightforward and the arithmetic is basic; the deeper conceptual leap—seeing the structure of the relationship—is the true hurdle.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4603,
+            "completion_tokens": 164
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.",
+              "likely_errors": "A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.",
+              "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.",
+              "likely_errors": "A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of daily changes in paper cup inventory and translates the information into a mathematical expression that models the net change in cups, particularly focusing on Thursday's delivery and usage."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs accurate arithmetic to compute the number of cups used on Thursday by subtracting the net change in inventory from the delivery of 2,000 cups."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes the underlying pattern that the number of cups used equals the delivery minus the net change in inventory and generalizes this relationship to understand the consistent mathematical structure across days with deliveries."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by interpreting the table and translating it into a numerical expression, which is the foundational step. Once the representation is established, the student applies procedural fluency to compute the number of cups used. Only after computing the result does the student abstract and generalize the relationship, identifying the consistent pattern across days. This order reflects the logical progression from understanding the problem to performing calculations and then recognizing broader mathematical structure."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing that the number of cups used on Thursday equals the delivery amount minus the net change in inventory (2,000 – 1,719 = 281), which requires abstracting the underlying relationship: used = delivered – net change. This step demands decontextualizing the situation to identify a consistent mathematical pattern across days with deliveries. While Representing and Procedural Fluency are important, misinterpreting the table or making a calculation error is less likely to be the primary cause of incorrect answers because the table is straightforward and the arithmetic is basic; the deeper conceptual leap—seeing the structure of the relationship—is the true hurdle."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.",
+            "likely_errors": "A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.",
+            "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic."
+          },
+          {
+            "order": 3,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.",
+            "likely_errors": "A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.\",\n    \"likely_errors\": \"A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.\",\n    \"likely_errors\": \"A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.\",\n    \"likely_errors\": \"A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of daily changes in paper cup inventory and translates the information into a mathematical expression that models the net change in cups, particularly focusing on Thursday's delivery and usage.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate arithmetic to compute the number of cups used on Thursday by subtracting the net change in inventory from the delivery of 2,000 cups.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the underlying pattern that the number of cups used equals the delivery minus the net change in inventory and generalizes this relationship to understand the consistent mathematical structure across days with deliveries.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by interpreting the table and translating it into a numerical expression, which is the foundational step. Once the representation is established, the student applies procedural fluency to compute the number of cups used. Only after computing the result does the student abstract and generalize the relationship, identifying the consistent pattern across days. This order reflects the logical progression from understanding the problem to performing calculations and then recognizing broader mathematical structure.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the number of cups used on Thursday equals the delivery amount minus the net change in inventory (2,000 – 1,719 = 281), which requires abstracting the underlying relationship: used = delivered – net change. This step demands decontextualizing the situation to identify a consistent mathematical pattern across days with deliveries. While Representing and Procedural Fluency are important, misinterpreting the table or making a calculation error is less likely to be the primary cause of incorrect answers because the table is straightforward and the arithmetic is basic; the deeper conceptual leap—seeing the structure of the relationship—is the true hurdle.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.",
+          "likely_errors": "A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.",
+          "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.",
+          "likely_errors": "A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of daily changes in paper cup inventory and translates the information into a mathematical expression that models the net change in cups, particularly focusing on Thursday's delivery and usage."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs accurate arithmetic to compute the number of cups used on Thursday by subtracting the net change in inventory from the delivery of 2,000 cups."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes the underlying pattern that the number of cups used equals the delivery minus the net change in inventory and generalizes this relationship to understand the consistent mathematical structure across days with deliveries."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by interpreting the table and translating it into a numerical expression, which is the foundational step. Once the representation is established, the student applies procedural fluency to compute the number of cups used. Only after computing the result does the student abstract and generalize the relationship, identifying the consistent pattern across days. This order reflects the logical progression from understanding the problem to performing calculations and then recognizing broader mathematical structure."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing that the number of cups used on Thursday equals the delivery amount minus the net change in inventory (2,000 – 1,719 = 281), which requires abstracting the underlying relationship: used = delivered – net change. This step demands decontextualizing the situation to identify a consistent mathematical pattern across days with deliveries. While Representing and Procedural Fluency are important, misinterpreting the table or making a calculation error is less likely to be the primary cause of incorrect answers because the table is straightforward and the arithmetic is basic; the deeper conceptual leap—seeing the structure of the relationship—is the true hurdle."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of daily changes in paper cup inventory and represent the situation mathematically by recognizing that the net change in cups over the week can be modeled as a sequence of additions and subtractions. This involves translating the verbal and tabular data into a numerical expression that reflects the cumulative effect of the changes, particularly focusing on Thursday's delivery and usage.",
+          "likely_errors": "A student might misinterpret the table and think 'Thursday +1,719' means 1,719 cups were used, or confuse the sign of the change. This is moderately likely, especially for students who do not carefully read the table's structure."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation as a numerical expression, the student must perform accurate arithmetic to determine how many cups were used on Thursday. This includes computing the net change in inventory from Monday to Thursday and then subtracting the delivered cups to find the number used, or recognizing that the net change on Thursday is the difference between the delivery and the ending inventory. The student must compute with whole numbers efficiently and correctly.",
+          "likely_errors": "A student might make a computational error in subtraction or addition, such as misaligning digits or miscalculating 2,000 – 1,719. This is likely for students who lack fluency in multi-digit arithmetic."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the net change on Thursday (a delivery of 2,000 and a net reduction of 1,719) implies that 281 cups were used, and generalize this reasoning to understand that the number used equals the delivery minus the net increase in inventory. This step involves identifying a consistent pattern: used = delivered – net change, which applies across days with deliveries and usage.",
+          "likely_errors": "A student might not see the relationship between delivery and net change, or incorrectly assume that the number used equals the net change (e.g., 1,719). This is moderately likely for students who struggle with decontextualizing and identifying underlying structure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about a general rule or relationship. The question is focused on computing a specific value based on given data, not on proving why a pattern holds or refuting a false claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the student is not asked to identify a problem, build a model, or assess the reasonableness of a solution in a broader scenario. The model (the table) is already provided, and the task is purely computational based on it."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or shared reasoning. The student works independently on a single data set and computes a value without responding to another person's strategy or claim."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

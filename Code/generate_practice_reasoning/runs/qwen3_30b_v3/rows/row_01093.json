@@ -1,0 +1,389 @@
+{
+  "row": 1093,
+  "problem_id": "164198",
+  "problem_text": "An advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts",
+          "started_at": "2026-11-10T01:31:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\",\n    \"likely_errors\": \"A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\",\n    \"likely_errors\": \"A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\",\n    \"likely_errors\": \"A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\",\n    \"likely_errors\": \"A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\",\n    \"likely_errors\": \"A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\",\n    \"likely_errors\": \"A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3867,
+            "completion_tokens": 693
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:34:13+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\n- Mathematical Modeling: The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\n- Procedural Fluency: After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\n- Mathematical Modeling: The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\n- Procedural Fluency: After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\n- Mathematical Modeling: The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\n- Procedural Fluency: After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the advertisement's claim and translates the coverage information (2 quarts for 175 square feet) into a mathematical proportion, establishing a relationship between paint volume and area.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student identifies the real-world problem (painting two coats), mathematizes it by applying the proportional relationship to the total area (implied to be known), and uses the model to calculate the required paint amount, including considering practical constraints like buying whole quarts.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations—multiplying the area by 2 for two coats, then dividing by the coverage rate (175 sq ft per 2 quarts)—accurately and efficiently using proportional reasoning and arithmetic.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given information mathematically to make sense of the problem, which is the foundation for modeling. Once the model is established, the student applies it to solve the real-world scenario, which requires modeling. Finally, the student carries out the required computations, which demands procedural fluency. This sequence follows the logical progression from comprehension and modeling to execution.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the advertisement's claim and translates the coverage information (2 quarts for 175 square feet) into a mathematical proportion, establishing a relationship between paint volume and area.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student identifies the real-world problem (painting two coats), mathematizes it by applying the proportional relationship to the total area (implied to be known), and uses the model to calculate the required paint amount, including considering practical constraints like buying whole quarts.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations—multiplying the area by 2 for two coats, then dividing by the coverage rate (175 sq ft per 2 quarts)—accurately and efficiently using proportional reasoning and arithmetic.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given information mathematically to make sense of the problem, which is the foundation for modeling. Once the model is established, the student applies it to solve the real-world scenario, which requires modeling. Finally, the student carries out the required computations, which demands procedural fluency. This sequence follows the logical progression from comprehension and modeling to execution.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4099,
+            "completion_tokens": 306
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:49:27+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\",\n      \"likely_errors\": \"A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\",\n      \"likely_errors\": \"A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:58:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\",\n      \"likely_errors\": \"A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\",\n      \"likely_errors\": \"A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nAn advertisement about the paint that you want to use reads: “Just 2 quarts covers 175 square feet!” If you need to apply two coats of paint on all the walls, how much paint do you need to buy?\n____ quarts\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\",\n      \"likely_errors\": \"A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\",\n      \"likely_errors\": \"A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Procedural Fluency\",\n  \"why\": \"A student is most likely to go wrong at the procedural step of correctly calculating the total paint needed, especially by forgetting to account for two coats or incorrectly scaling the coverage rate (e.g., multiplying 2 quarts by 2 instead of using proportionality). This step requires accurate and efficient proportional computation, which is the core of Procedural Fluency. While Representing and Mathematical Modeling are important, misinterpreting the ratio or failing to model the context correctly is less likely to be the primary error—students often correctly set up the relationship but then make a calculation mistake. The procedural step is the most common source of errors in such rate problems.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Procedural Fluency\",\n  \"why\": \"A student is most likely to go wrong at the procedural step of correctly calculating the total paint needed, especially by forgetting to account for two coats or incorrectly scaling the coverage rate (e.g., multiplying 2 quarts by 2 instead of using proportionality). This step requires accurate and efficient proportional computation, which is the core of Procedural Fluency. While Representing and Mathematical Modeling are important, misinterpreting the ratio or failing to model the context correctly is less likely to be the primary error—students often correctly set up the relationship but then make a calculation mistake. The procedural step is the most common source of errors in such rate problems.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4535,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:59:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.",
+              "likely_errors": "A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.",
+              "likely_errors": "A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness."
+            },
+            {
+              "order": 3,
+              "practice": "Mathematical Modeling",
+              "why": "The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.",
+              "likely_errors": "A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the advertisement's claim and translates the coverage information (2 quarts for 175 square feet) into a mathematical proportion, establishing a relationship between paint volume and area."
+            },
+            {
+              "order": 2,
+              "practice": "Mathematical Modeling",
+              "step": "The student identifies the real-world problem (painting two coats), mathematizes it by applying the proportional relationship to the total area (implied to be known), and uses the model to calculate the required paint amount, including considering practical constraints like buying whole quarts."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the necessary calculations—multiplying the area by 2 for two coats, then dividing by the coverage rate (175 sq ft per 2 quarts)—accurately and efficiently using proportional reasoning and arithmetic."
+            }
+          ],
+          "why": "The student must first represent the given information mathematically to make sense of the problem, which is the foundation for modeling. Once the model is established, the student applies it to solve the real-world scenario, which requires modeling. Finally, the student carries out the required computations, which demands procedural fluency. This sequence follows the logical progression from comprehension and modeling to execution."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural step of correctly calculating the total paint needed, especially by forgetting to account for two coats or incorrectly scaling the coverage rate (e.g., multiplying 2 quarts by 2 instead of using proportionality). This step requires accurate and efficient proportional computation, which is the core of Procedural Fluency. While Representing and Mathematical Modeling are important, misinterpreting the ratio or failing to model the context correctly is less likely to be the primary error—students often correctly set up the relationship but then make a calculation mistake. The procedural step is the most common source of errors in such rate problems."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.",
+            "likely_errors": "A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation."
+          },
+          {
+            "order": 2,
+            "practice": "Mathematical Modeling",
+            "why": "The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.",
+            "likely_errors": "A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.",
+            "likely_errors": "A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.\",\n    \"likely_errors\": \"A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.\",\n    \"likely_errors\": \"A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.\",\n    \"likely_errors\": \"A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the advertisement's claim and translates the coverage information (2 quarts for 175 square feet) into a mathematical proportion, establishing a relationship between paint volume and area.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student identifies the real-world problem (painting two coats), mathematizes it by applying the proportional relationship to the total area (implied to be known), and uses the model to calculate the required paint amount, including considering practical constraints like buying whole quarts.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations—multiplying the area by 2 for two coats, then dividing by the coverage rate (175 sq ft per 2 quarts)—accurately and efficiently using proportional reasoning and arithmetic.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given information mathematically to make sense of the problem, which is the foundation for modeling. Once the model is established, the student applies it to solve the real-world scenario, which requires modeling. Finally, the student carries out the required computations, which demands procedural fluency. This sequence follows the logical progression from comprehension and modeling to execution.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Procedural Fluency\",\n  \"why\": \"A student is most likely to go wrong at the procedural step of correctly calculating the total paint needed, especially by forgetting to account for two coats or incorrectly scaling the coverage rate (e.g., multiplying 2 quarts by 2 instead of using proportionality). This step requires accurate and efficient proportional computation, which is the core of Procedural Fluency. While Representing and Mathematical Modeling are important, misinterpreting the ratio or failing to model the context correctly is less likely to be the primary error—students often correctly set up the relationship but then make a calculation mistake. The procedural step is the most common source of errors in such rate problems.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.",
+          "likely_errors": "A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.",
+          "likely_errors": "A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness."
+        },
+        {
+          "order": 3,
+          "practice": "Mathematical Modeling",
+          "why": "The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.",
+          "likely_errors": "A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the advertisement's claim and translates the coverage information (2 quarts for 175 square feet) into a mathematical proportion, establishing a relationship between paint volume and area."
+        },
+        {
+          "order": 2,
+          "practice": "Mathematical Modeling",
+          "step": "The student identifies the real-world problem (painting two coats), mathematizes it by applying the proportional relationship to the total area (implied to be known), and uses the model to calculate the required paint amount, including considering practical constraints like buying whole quarts."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the necessary calculations—multiplying the area by 2 for two coats, then dividing by the coverage rate (175 sq ft per 2 quarts)—accurately and efficiently using proportional reasoning and arithmetic."
+        }
+      ],
+      "why": "The student must first represent the given information mathematically to make sense of the problem, which is the foundation for modeling. Once the model is established, the student applies it to solve the real-world scenario, which requires modeling. Finally, the student carries out the required computations, which demands procedural fluency. This sequence follows the logical progression from comprehension and modeling to execution."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural step of correctly calculating the total paint needed, especially by forgetting to account for two coats or incorrectly scaling the coverage rate (e.g., multiplying 2 quarts by 2 instead of using proportionality). This step requires accurate and efficient proportional computation, which is the core of Procedural Fluency. While Representing and Mathematical Modeling are important, misinterpreting the ratio or failing to model the context correctly is less likely to be the primary error—students often correctly set up the relationship but then make a calculation mistake. The procedural step is the most common source of errors in such rate problems."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the advertisement's claim about paint coverage and translate it into a mathematical relationship: 2 quarts cover 175 square feet. This involves recognizing and using a proportional representation of coverage (quarts per square foot) to model the situation, which aligns with the descriptor of creating a visual or numerical representation of a problem situation involving measurement.",
+          "likely_errors": "A student might misinterpret the advertisement as 2 quarts covering 175 square feet per coat, or incorrectly set up the ratio (e.g., 175 quarts per 2 square feet), which would lead to an incorrect calculation. This is moderately likely for students who struggle with unit interpretation."
+        },
+        {
+          "order": 2,
+          "practice": "Mathematical Modeling",
+          "why": "The student must mathematize the real-world scenario by identifying the problem (how much paint for two coats), selecting the appropriate mathematical model (proportional relationship based on coverage), and applying it to determine the required paint. This includes checking whether the result is reasonable (e.g., buying whole quarts), which aligns with the practice of creating and applying a model to solve a real-world problem.",
+          "likely_errors": "A student might not consider that paint is sold in whole quarts and fail to round up, or misapply the model by using the wrong area. This is moderately likely if students don’t think critically about the context."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After representing the coverage rate, the student must compute the total paint needed by first determining the total area to be painted (though not explicitly given, the problem assumes the area is known or implied), then multiplying by 2 coats, and finally dividing by the coverage rate (175 sq ft per 2 quarts). This requires accurate and efficient computation with fractions and proportions, matching the descriptor of carrying out proportional computations efficiently.",
+          "likely_errors": "A student might forget to account for two coats, or incorrectly compute the total quarts (e.g., multiplying 2 quarts by 2 instead of scaling the coverage). This is common and likely for students with weak proportional reasoning or carelessness."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. It is a single, specific application of a given rate, not a generalization across scenarios or numbers."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to evaluate or defend a claim, provide a reason why the calculation is valid, or refute a false statement. There is no argument or claim to assess, so justification is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so collaboration is not involved."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Mathematical Modeling",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

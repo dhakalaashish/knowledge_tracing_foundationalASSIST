@@ -1,0 +1,370 @@
+{
+  "row": 2758,
+  "problem_id": "25844",
+  "problem_text": "Is the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False",
+          "started_at": "2026-11-10T01:40:33+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\",\n    \"likely_errors\": \"A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\",\n    \"likely_errors\": \"A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\",\n    \"likely_errors\": \"A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\",\n    \"likely_errors\": \"A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3860,
+            "completion_tokens": 712
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:43:45+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\n- Procedural Fluency: The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:52:26+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\n- Procedural Fluency: The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\n- Procedural Fluency: The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes both sides of the equation accurately by applying the order of operations, correctly evaluating exponentiation and multiplication, including recognizing that 10^(3×2) = 10^6 and calculating 8.4 × 2 = 16.8.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates whether the two computed values are equal and justifies their conclusion that the equation is false by explaining that the property (a × b)^c = a × (b^c) does not hold, even though the values are different.\"\n    }\n  ],\n  \"why\": \"A student must first compute both sides of the equation correctly using procedural fluency before they can assess whether the equation is true or false. Only after obtaining the numerical results—16,800 on the left and 16,800,000 on the right—can the student engage in reasoning to justify why the equation is false, which requires mathematical justification based on the invalid application of exponent rules.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes both sides of the equation accurately by applying the order of operations, correctly evaluating exponentiation and multiplication, including recognizing that 10^(3×2) = 10^6 and calculating 8.4 × 2 = 16.8.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates whether the two computed values are equal and justifies their conclusion that the equation is false by explaining that the property (a × b)^c = a × (b^c) does not hold, even though the values are different.\"\n    }\n  ],\n  \"why\": \"A student must first compute both sides of the equation correctly using procedural fluency before they can assess whether the equation is true or false. Only after obtaining the numerical results—16,800 on the left and 16,800,000 on the right—can the student engage in reasoning to justify why the equation is false, which requires mathematical justification based on the invalid application of exponent rules.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4108,
+            "completion_tokens": 261
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:54:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\",\n      \"likely_errors\": \"A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\",\n      \"likely_errors\": \"A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:02:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\",\n      \"likely_errors\": \"A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\",\n      \"likely_errors\": \"A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nIs the equation true or false?\n8.4 × 10^3× 2 = (8.4 × 2) × 10^(3×2)\n\nAnswer choices:\nA. True || False\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\",\n      \"likely_errors\": \"A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\",\n      \"likely_errors\": \"A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of correctly evaluating the exponentiation 10^(3×2), often misinterpreting it as (10^3)×2 instead of 10^6, which leads to a significant miscalculation of the right side. This error is common and directly results in an incorrect conclusion, even if the student computes 8.4 × 2 correctly. While Justifying and Proving is required to evaluate the truth of the equation, a student who computes both sides accurately will recognize the inequality and can justify the answer correctly; thus, the core difficulty lies in the procedural accuracy, not the reasoning. The other practices used are less likely to cause an incorrect answer because they depend on the correct execution of the procedures first.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of correctly evaluating the exponentiation 10^(3×2), often misinterpreting it as (10^3)×2 instead of 10^6, which leads to a significant miscalculation of the right side. This error is common and directly results in an incorrect conclusion, even if the student computes 8.4 × 2 correctly. While Justifying and Proving is required to evaluate the truth of the equation, a student who computes both sides accurately will recognize the inequality and can justify the answer correctly; thus, the core difficulty lies in the procedural accuracy, not the reasoning. The other practices used are less likely to cause an incorrect answer because they depend on the correct execution of the procedures first.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4547,
+            "completion_tokens": 180
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:04:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.",
+              "likely_errors": "A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.",
+              "likely_errors": "A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Representing",
+              "why": "The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it."
+            },
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "step": "The student computes both sides of the equation accurately by applying the order of operations, correctly evaluating exponentiation and multiplication, including recognizing that 10^(3×2) = 10^6 and calculating 8.4 × 2 = 16.8."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student evaluates whether the two computed values are equal and justifies their conclusion that the equation is false by explaining that the property (a × b)^c = a × (b^c) does not hold, even though the values are different."
+            }
+          ],
+          "why": "A student must first compute both sides of the equation correctly using procedural fluency before they can assess whether the equation is true or false. Only after obtaining the numerical results—16,800 on the left and 16,800,000 on the right—can the student engage in reasoning to justify why the equation is false, which requires mathematical justification based on the invalid application of exponent rules."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural step of correctly evaluating the exponentiation 10^(3×2), often misinterpreting it as (10^3)×2 instead of 10^6, which leads to a significant miscalculation of the right side. This error is common and directly results in an incorrect conclusion, even if the student computes 8.4 × 2 correctly. While Justifying and Proving is required to evaluate the truth of the equation, a student who computes both sides accurately will recognize the inequality and can justify the answer correctly; thus, the core difficulty lies in the procedural accuracy, not the reasoning. The other practices used are less likely to cause an incorrect answer because they depend on the correct execution of the procedures first."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Procedural Fluency",
+            "why": "The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.",
+            "likely_errors": "A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.",
+            "likely_errors": "A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Representing",
+            "why": "The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it."
+          },
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.\",\n    \"likely_errors\": \"A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.\",\n    \"likely_errors\": \"A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes both sides of the equation accurately by applying the order of operations, correctly evaluating exponentiation and multiplication, including recognizing that 10^(3×2) = 10^6 and calculating 8.4 × 2 = 16.8.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates whether the two computed values are equal and justifies their conclusion that the equation is false by explaining that the property (a × b)^c = a × (b^c) does not hold, even though the values are different.\"\n    }\n  ],\n  \"why\": \"A student must first compute both sides of the equation correctly using procedural fluency before they can assess whether the equation is true or false. Only after obtaining the numerical results—16,800 on the left and 16,800,000 on the right—can the student engage in reasoning to justify why the equation is false, which requires mathematical justification based on the invalid application of exponent rules.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of correctly evaluating the exponentiation 10^(3×2), often misinterpreting it as (10^3)×2 instead of 10^6, which leads to a significant miscalculation of the right side. This error is common and directly results in an incorrect conclusion, even if the student computes 8.4 × 2 correctly. While Justifying and Proving is required to evaluate the truth of the equation, a student who computes both sides accurately will recognize the inequality and can justify the answer correctly; thus, the core difficulty lies in the procedural accuracy, not the reasoning. The other practices used are less likely to cause an incorrect answer because they depend on the correct execution of the procedures first.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.",
+          "likely_errors": "A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.",
+          "likely_errors": "A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "step": "The student computes both sides of the equation accurately by applying the order of operations, correctly evaluating exponentiation and multiplication, including recognizing that 10^(3×2) = 10^6 and calculating 8.4 × 2 = 16.8."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student evaluates whether the two computed values are equal and justifies their conclusion that the equation is false by explaining that the property (a × b)^c = a × (b^c) does not hold, even though the values are different."
+        }
+      ],
+      "why": "A student must first compute both sides of the equation correctly using procedural fluency before they can assess whether the equation is true or false. Only after obtaining the numerical results—16,800 on the left and 16,800,000 on the right—can the student engage in reasoning to justify why the equation is false, which requires mathematical justification based on the invalid application of exponent rules."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural step of correctly evaluating the exponentiation 10^(3×2), often misinterpreting it as (10^3)×2 instead of 10^6, which leads to a significant miscalculation of the right side. This error is common and directly results in an incorrect conclusion, even if the student computes 8.4 × 2 correctly. While Justifying and Proving is required to evaluate the truth of the equation, a student who computes both sides accurately will recognize the inequality and can justify the answer correctly; thus, the core difficulty lies in the procedural accuracy, not the reasoning. The other practices used are less likely to cause an incorrect answer because they depend on the correct execution of the procedures first."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute both sides of the equation accurately to determine if they are equal. This involves applying the order of operations and performing the multiplication and exponentiation correctly, including understanding that 10^3×2 means 10^(3×2) = 10^6, not (10^3)×2. The student must also compute 8.4 × 2 = 16.8 and evaluate the left side as 8.4 × 1000 × 2 = 16,800 and the right side as 16.8 × 10^6 = 16,800,000.",
+          "likely_errors": "A student might incorrectly compute 10^3×2 as (10^3)×2 = 1000×2 = 2000 instead of 10^(3×2) = 10^6 = 1,000,000, leading to a false conclusion. This is a common error and moderately likely."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After computing both sides, the student must evaluate whether the equation is true or false and justify their conclusion based on the mathematical reasoning that the property used on the right side (distributing the exponent over multiplication) does not hold. The student must recognize that (a × b)^c ≠ a × (b^c), and thus the equation is false, even though the left side is 16,800 and the right side is 16,800,000. The student must defend their answer with a valid mathematical argument.",
+          "likely_errors": "A student might claim the equation is true because both sides are large numbers or because they miscalculated and thought the results were equal. This is less likely if they compute correctly, but still possible if they don’t reflect on the structure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate among different representations (e.g., visual models, graphs, tables). The equation is already in symbolic form, and no external representation is needed to solve it."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not ask the student to identify or extend a pattern, generalize a rule, or make a broader claim about mathematical properties. The focus is on evaluating a single equation, not on identifying a general principle across cases."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context or scenario to model. The item is purely symbolic and does not involve identifying a problem, mathematizing a situation, or checking the viability of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer work, and no need to respond to another person’s claim or strategy. The student works independently on a single equation without interaction or collaboration."
+        }
+      ]
+    },
+    "ordering": [
+      "Procedural Fluency",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

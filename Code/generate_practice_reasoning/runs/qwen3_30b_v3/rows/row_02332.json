@@ -1,0 +1,389 @@
+{
+  "row": 2332,
+  "problem_id": "137922",
+  "problem_text": "An item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\",\n    \"likely_errors\": \"A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n    \"likely_errors\": \"A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\",\n    \"likely_errors\": \"A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n    \"likely_errors\": \"A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3916,
+            "completion_tokens": 922
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\n- Abstracting and Generalizing: The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Justifying and Proving: The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\n- Abstracting and Generalizing: The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Justifying and Proving: The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\n- Abstracting and Generalizing: The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Justifying and Proving: The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal description of a 20% discount on an item costing x dollars and translates it into mathematical expressions, such as x - (20/100)x or (1 - 0.20)x, by recognizing that a discount involves subtracting a percentage of the original price.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies that multiple expressions—like (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the discounted price, recognizing the underlying pattern that a 20% discount corresponds to retaining 80% of the original price.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates each given expression to determine its correctness, justifying why valid expressions like 0.80x are equivalent to the discounted price and why invalid ones like (100 - 20)x are not, by analyzing their mathematical structure and equivalence.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically to make sense of the discount, which is the foundation for all further reasoning. Once representations are created, the student generalizes across equivalent forms by recognizing the common structure of 80% of the original price. Only after identifying multiple forms can the student evaluate and justify which expressions are correct, making justification the final step in the process.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal description of a 20% discount on an item costing x dollars and translates it into mathematical expressions, such as x - (20/100)x or (1 - 0.20)x, by recognizing that a discount involves subtracting a percentage of the original price.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies that multiple expressions—like (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the discounted price, recognizing the underlying pattern that a 20% discount corresponds to retaining 80% of the original price.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates each given expression to determine its correctness, justifying why valid expressions like 0.80x are equivalent to the discounted price and why invalid ones like (100 - 20)x are not, by analyzing their mathematical structure and equivalence.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically to make sense of the discount, which is the foundation for all further reasoning. Once representations are created, the student generalizes across equivalent forms by recognizing the common structure of 80% of the original price. Only after identifying multiple forms can the student evaluate and justify which expressions are correct, making justification the final step in the process.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4273,
+            "completion_tokens": 363
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\",\n      \"likely_errors\": \"A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\",\n      \"likely_errors\": \"A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nAn item costs x dollars and then a 20% discount is applied. Select all the expressions that could represent the price of the item after the discount.\n\nAnswer choices:\nA. 20/100x\n||\nx - 20/100x\n||\n(1 - 0.20)x\n||\n(100 - 20)/100x\n||\n0.80x\n||\n(100 - 20)x\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\",\n      \"likely_errors\": \"A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why certain expressions are correct and others are not, particularly by selecting (100 - 20)x as valid due to misinterpreting percentage notation—failing to recognize that (100 - 20)/100x is required for equivalence, not (100 - 20)x. This step requires deep conceptual reasoning about the structure of expressions and the meaning of percentages, which is central to 'Justifying and Proving.' While Representing and Abstracting and Generalizing are important, they involve recognizing and connecting representations, which are more accessible; the error in Justifying and Proving is more consequential and diagnostic of a fundamental misunderstanding of equivalence.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why certain expressions are correct and others are not, particularly by selecting (100 - 20)x as valid due to misinterpreting percentage notation—failing to recognize that (100 - 20)/100x is required for equivalence, not (100 - 20)x. This step requires deep conceptual reasoning about the structure of expressions and the meaning of percentages, which is central to 'Justifying and Proving.' While Representing and Abstracting and Generalizing are important, they involve recognizing and connecting representations, which are more accessible; the error in Justifying and Proving is more consequential and diagnostic of a fundamental misunderstanding of equivalence.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4813,
+            "completion_tokens": 171
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'",
+              "likely_errors": "A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+              "likely_errors": "A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'",
+              "likely_errors": "A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the verbal description of a 20% discount on an item costing x dollars and translates it into mathematical expressions, such as x - (20/100)x or (1 - 0.20)x, by recognizing that a discount involves subtracting a percentage of the original price."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies that multiple expressions—like (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the discounted price, recognizing the underlying pattern that a 20% discount corresponds to retaining 80% of the original price."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student evaluates each given expression to determine its correctness, justifying why valid expressions like 0.80x are equivalent to the discounted price and why invalid ones like (100 - 20)x are not, by analyzing their mathematical structure and equivalence."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically to make sense of the discount, which is the foundation for all further reasoning. Once representations are created, the student generalizes across equivalent forms by recognizing the common structure of 80% of the original price. Only after identifying multiple forms can the student evaluate and justify which expressions are correct, making justification the final step in the process."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why certain expressions are correct and others are not, particularly by selecting (100 - 20)x as valid due to misinterpreting percentage notation—failing to recognize that (100 - 20)/100x is required for equivalence, not (100 - 20)x. This step requires deep conceptual reasoning about the structure of expressions and the meaning of percentages, which is central to 'Justifying and Proving.' While Representing and Abstracting and Generalizing are important, they involve recognizing and connecting representations, which are more accessible; the error in Justifying and Proving is more consequential and diagnostic of a fundamental misunderstanding of equivalence."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'",
+            "likely_errors": "A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+            "likely_errors": "A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'",
+            "likely_errors": "A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'\",\n    \"likely_errors\": \"A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'\",\n    \"likely_errors\": \"A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal description of a 20% discount on an item costing x dollars and translates it into mathematical expressions, such as x - (20/100)x or (1 - 0.20)x, by recognizing that a discount involves subtracting a percentage of the original price.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies that multiple expressions—like (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the discounted price, recognizing the underlying pattern that a 20% discount corresponds to retaining 80% of the original price.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates each given expression to determine its correctness, justifying why valid expressions like 0.80x are equivalent to the discounted price and why invalid ones like (100 - 20)x are not, by analyzing their mathematical structure and equivalence.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically to make sense of the discount, which is the foundation for all further reasoning. Once representations are created, the student generalizes across equivalent forms by recognizing the common structure of 80% of the original price. Only after identifying multiple forms can the student evaluate and justify which expressions are correct, making justification the final step in the process.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why certain expressions are correct and others are not, particularly by selecting (100 - 20)x as valid due to misinterpreting percentage notation—failing to recognize that (100 - 20)/100x is required for equivalence, not (100 - 20)x. This step requires deep conceptual reasoning about the structure of expressions and the meaning of percentages, which is central to 'Justifying and Proving.' While Representing and Abstracting and Generalizing are important, they involve recognizing and connecting representations, which are more accessible; the error in Justifying and Proving is more consequential and diagnostic of a fundamental misunderstanding of equivalence.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'",
+          "likely_errors": "A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'",
+          "likely_errors": "A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the verbal description of a 20% discount on an item costing x dollars and translates it into mathematical expressions, such as x - (20/100)x or (1 - 0.20)x, by recognizing that a discount involves subtracting a percentage of the original price."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies that multiple expressions—like (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the discounted price, recognizing the underlying pattern that a 20% discount corresponds to retaining 80% of the original price."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student evaluates each given expression to determine its correctness, justifying why valid expressions like 0.80x are equivalent to the discounted price and why invalid ones like (100 - 20)x are not, by analyzing their mathematical structure and equivalence."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically to make sense of the discount, which is the foundation for all further reasoning. Once representations are created, the student generalizes across equivalent forms by recognizing the common structure of 80% of the original price. Only after identifying multiple forms can the student evaluate and justify which expressions are correct, making justification the final step in the process."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why certain expressions are correct and others are not, particularly by selecting (100 - 20)x as valid due to misinterpreting percentage notation—failing to recognize that (100 - 20)/100x is required for equivalence, not (100 - 20)x. This step requires deep conceptual reasoning about the structure of expressions and the meaning of percentages, which is central to 'Justifying and Proving.' While Representing and Abstracting and Generalizing are important, they involve recognizing and connecting representations, which are more accessible; the error in Justifying and Proving is more consequential and diagnostic of a fundamental misunderstanding of equivalence."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal description of a 20% discount on an item costing x dollars and translate it into mathematical expressions. This involves recognizing that a 20% discount means subtracting 20% of x from x, which can be represented as x - (20/100)x or equivalently as (1 - 0.20)x. This aligns with the descriptor: 'Represent numbers, operations, or word problems using visual models' and 'Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.'",
+          "likely_errors": "A student might incorrectly represent the discount as 20/100x without subtracting it from x, or confuse the expression for the discount amount with the final price. This is moderately likely, especially for students still developing proportional reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that multiple algebraic expressions—such as (1 - 0.20)x, 0.80x, and (100 - 20)/100x—are mathematically equivalent representations of the same situation. This requires identifying the underlying structure (a 20% reduction means 80% of the original price) and generalizing that different forms (fractional, decimal, percentage-based) can represent the same quantity. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might fail to recognize that (100 - 20)/100x is equivalent to 0.80x, especially if they don't simplify the fraction or understand that (100 - 20)/100 = 0.80. This is moderately likely, particularly if the student lacks fluency in converting between fractions and decimals."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must evaluate each expression to determine whether it correctly models the post-discount price and justify why certain expressions are valid while others are not. For example, they must reject (100 - 20)x because it equals 80x, which is not equivalent to 0.80x. This involves analyzing the structure of each expression and proving its correctness through logical reasoning, which aligns with the descriptor: 'Make, justify, or defend conclusions and generalizations about numerical relationships or patterns, including why they are valid or will always hold.'",
+          "likely_errors": "A student might select (100 - 20)x as correct, misunderstanding that (100 - 20) is 80, but the expression lacks the division by 100, making it 80 times the original price. This is moderately likely, especially if the student misapplies percentage notation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve modeling a real-world scenario with a mathematical structure to solve a problem; instead, it focuses on recognizing equivalent algebraic representations of a given situation. There is no need to identify variables, make assumptions, or validate a solution in context—only to evaluate symbolic expressions for correctness."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or collaborative task. The student works independently to evaluate expressions, with no need to respond to another person’s claim, strategy, or work. Therefore, no social or collaborative reasoning is required."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must perform basic operations (e.g., computing 1 - 0.20 or simplifying (100 - 20)/100), the task is not about executing procedures efficiently or accurately in isolation. The focus is on conceptual understanding of equivalence and representation, not on carrying out calculations or applying algorithms. Thus, procedural fluency is not the primary practice assessed."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

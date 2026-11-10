@@ -1,0 +1,370 @@
+{
+  "row": 1352,
+  "problem_id": "256621",
+  "problem_text": "Ten students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions",
+          "started_at": "2026-11-10T01:31:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\",\n    \"likely_errors\": \"A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\",\n    \"likely_errors\": \"A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3874,
+            "completion_tokens": 648
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:34:13+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\n- Procedural Fluency: The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\n- Procedural Fluency: The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\n- Procedural Fluency: The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the list of numbers as a data set and translates it into a mathematical expression for the mean by recognizing that the mean requires summing all values and dividing by the number of data points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the arithmetic operations—adding the numbers in the list and dividing the sum by 10—accurately and efficiently to compute the mean.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given data set mathematically by identifying the appropriate operation for finding the mean, which is a foundational step before any computation. Only after this representation is established can the student apply procedural fluency to carry out the necessary calculations. Thus, representing precedes procedural fluency in the problem-solving sequence.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the list of numbers as a data set and translates it into a mathematical expression for the mean by recognizing that the mean requires summing all values and dividing by the number of data points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the arithmetic operations—adding the numbers in the list and dividing the sum by 10—accurately and efficiently to compute the mean.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given data set mathematically by identifying the appropriate operation for finding the mean, which is a foundational step before any computation. Only after this representation is established can the student apply procedural fluency to carry out the necessary calculations. Thus, representing precedes procedural fluency in the problem-solving sequence.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4043,
+            "completion_tokens": 203
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:49:27+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\",\n      \"likely_errors\": \"A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\",\n      \"likely_errors\": \"A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:58:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\",\n      \"likely_errors\": \"A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\",\n      \"likely_errors\": \"A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students took a history quiz. This list shows how many questions each student answered correctly.\n[Table:\n9 | 6 | 8 | 10 | 5 | 8 | 10 | 7 | 9 | 8]\nWhat is the mean?\n____ questions\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\",\n      \"likely_errors\": \"A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\",\n      \"likely_errors\": \"A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural fluency step, where they must accurately add the ten numbers and divide by 10. Computational errors in multi-digit addition or division by 10 are common, especially under time pressure or without careful checking. While representing the data set correctly is important, the list is clearly formatted with 10 values, making misinterpretation unlikely. The other practice, Representing, is less likely to cause an error because the data is explicitly given as a list of scores, and the task is straightforward. Thus, the primary source of incorrect answers stems from procedural mistakes, not conceptual misunderstanding.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural fluency step, where they must accurately add the ten numbers and divide by 10. Computational errors in multi-digit addition or division by 10 are common, especially under time pressure or without careful checking. While representing the data set correctly is important, the list is clearly formatted with 10 values, making misinterpretation unlikely. The other practice, Representing, is less likely to cause an error because the data is explicitly given as a list of scores, and the task is straightforward. Thus, the primary source of incorrect answers stems from procedural mistakes, not conceptual misunderstanding.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4497,
+            "completion_tokens": 148
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:59:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.",
+              "likely_errors": "A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.",
+              "likely_errors": "A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the list of numbers as a data set and translates it into a mathematical expression for the mean by recognizing that the mean requires summing all values and dividing by the number of data points."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the arithmetic operations—adding the numbers in the list and dividing the sum by 10—accurately and efficiently to compute the mean."
+            }
+          ],
+          "why": "The student must first represent the given data set mathematically by identifying the appropriate operation for finding the mean, which is a foundational step before any computation. Only after this representation is established can the student apply procedural fluency to carry out the necessary calculations. Thus, representing precedes procedural fluency in the problem-solving sequence."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong during the procedural fluency step, where they must accurately add the ten numbers and divide by 10. Computational errors in multi-digit addition or division by 10 are common, especially under time pressure or without careful checking. While representing the data set correctly is important, the list is clearly formatted with 10 values, making misinterpretation unlikely. The other practice, Representing, is less likely to cause an error because the data is explicitly given as a list of scores, and the task is straightforward. Thus, the primary source of incorrect answers stems from procedural mistakes, not conceptual misunderstanding."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.",
+            "likely_errors": "A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.",
+            "likely_errors": "A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.\",\n    \"likely_errors\": \"A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the list of numbers as a data set and translates it into a mathematical expression for the mean by recognizing that the mean requires summing all values and dividing by the number of data points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the arithmetic operations—adding the numbers in the list and dividing the sum by 10—accurately and efficiently to compute the mean.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given data set mathematically by identifying the appropriate operation for finding the mean, which is a foundational step before any computation. Only after this representation is established can the student apply procedural fluency to carry out the necessary calculations. Thus, representing precedes procedural fluency in the problem-solving sequence.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural fluency step, where they must accurately add the ten numbers and divide by 10. Computational errors in multi-digit addition or division by 10 are common, especially under time pressure or without careful checking. While representing the data set correctly is important, the list is clearly formatted with 10 values, making misinterpretation unlikely. The other practice, Representing, is less likely to cause an error because the data is explicitly given as a list of scores, and the task is straightforward. Thus, the primary source of incorrect answers stems from procedural mistakes, not conceptual misunderstanding.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.",
+          "likely_errors": "A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.",
+          "likely_errors": "A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the list of numbers as a data set and translates it into a mathematical expression for the mean by recognizing that the mean requires summing all values and dividing by the number of data points."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the arithmetic operations—adding the numbers in the list and dividing the sum by 10—accurately and efficiently to compute the mean."
+        }
+      ],
+      "why": "The student must first represent the given data set mathematically by identifying the appropriate operation for finding the mean, which is a foundational step before any computation. Only after this representation is established can the student apply procedural fluency to carry out the necessary calculations. Thus, representing precedes procedural fluency in the problem-solving sequence."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong during the procedural fluency step, where they must accurately add the ten numbers and divide by 10. Computational errors in multi-digit addition or division by 10 are common, especially under time pressure or without careful checking. While representing the data set correctly is important, the list is clearly formatted with 10 values, making misinterpretation unlikely. The other practice, Representing, is less likely to cause an error because the data is explicitly given as a list of scores, and the task is straightforward. Thus, the primary source of incorrect answers stems from procedural mistakes, not conceptual misunderstanding."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the list of numbers as a data set and recognize that the mean is a measure of center that requires summing all values and dividing by the count. The list itself is a numerical representation of data, and the student must translate this into a mathematical expression (sum ÷ 10) to compute the mean, which is a core aspect of representing data sets numerically for analysis.",
+          "likely_errors": "A student might misinterpret the list as individual scores without recognizing it as a data set, or might incorrectly count the number of students (e.g., thinking there are 9 or 11 values). This is unlikely if the list is clearly presented with 10 entries, but possible if the student rushes."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must add the numbers in the list (9, 6, 8, 10, 5, 8, 10, 7, 9, 8) accurately and efficiently to find the sum, then divide by the number of students (10) to compute the mean. This involves carrying out a sequence of arithmetic operations—addition and division—using whole numbers, which aligns with the procedural fluency descriptor of performing operations accurately and efficiently.",
+          "likely_errors": "A student might make a computational error in adding the numbers (e.g., miscounting the total sum) or in dividing by 10. This is moderately likely, especially if the student is not fluent with mental math or multi-digit addition."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern, extend a sequence, or generalize a rule beyond computing a single mean. It is a straightforward calculation based on a given data set, not an open-ended or exploratory task that invites broader generalization."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to justify why the mean is the appropriate measure, defend a claim about the data, or provide a logical argument. The task is purely computational, with no claim or reasoning from another student to evaluate or refute."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world situation, identifying a problem to solve, or checking the reasonableness of a solution in context. The data is already provided and the task is a direct computation, not a modeling process."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer’s reasoning, no claim to evaluate, and no need to build on or respond to another student’s work. It is a solo, individual computation task with no collaborative elements."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

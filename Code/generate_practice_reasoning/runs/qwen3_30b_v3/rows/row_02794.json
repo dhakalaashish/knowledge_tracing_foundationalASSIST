@@ -1,0 +1,389 @@
+{
+  "row": 2794,
+  "problem_id": "265140",
+  "problem_text": "Two different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B",
+          "started_at": "2026-11-10T01:40:33+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\",\n    \"likely_errors\": \"A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\",\n    \"likely_errors\": \"A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\",\n    \"likely_errors\": \"A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\",\n    \"likely_errors\": \"A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\",\n    \"likely_errors\": \"A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\",\n    \"likely_errors\": \"A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3938,
+            "completion_tokens": 780
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:43:45+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\n- Abstracting and Generalizing: The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\n- Justifying and Proving: After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:52:26+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\n- Abstracting and Generalizing: The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\n- Justifying and Proving: After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\n- Abstracting and Generalizing: The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\n- Justifying and Proving: After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the box plot for Class A by identifying key numerical values such as the median, quartiles, and range from the visual components of the plot.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the central tendency and spread of Class A (from the box plot) and Class B (from the data list) to identify a general pattern indicating which class had lower homework times overall.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student constructs a logical argument based on specific data points or visual features (e.g., medians, distribution of values) to justify why one class spent less time on homework than the other.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the box plot (Representing) to extract numerical information before comparing the two data sets. Once the data from both classes are understood, the student generalizes across representations to make a comparative conclusion (Abstracting and Generalizing). Finally, the student justifies this conclusion with evidence, which requires reasoning and argumentation (Justifying and Proving), and this step logically follows after the comparison is made.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the box plot for Class A by identifying key numerical values such as the median, quartiles, and range from the visual components of the plot.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the central tendency and spread of Class A (from the box plot) and Class B (from the data list) to identify a general pattern indicating which class had lower homework times overall.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student constructs a logical argument based on specific data points or visual features (e.g., medians, distribution of values) to justify why one class spent less time on homework than the other.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the box plot (Representing) to extract numerical information before comparing the two data sets. Once the data from both classes are understood, the student generalizes across representations to make a comparative conclusion (Abstracting and Generalizing). Finally, the student justifies this conclusion with evidence, which requires reasoning and argumentation (Justifying and Proving), and this step logically follows after the comparison is made.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4203,
+            "completion_tokens": 290
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:54:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\",\n      \"likely_errors\": \"A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\",\n      \"likely_errors\": \"A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:02:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\",\n      \"likely_errors\": \"A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\",\n      \"likely_errors\": \"A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nTwo different classes took a survey to determine the number of minutes spent on\nhomework one evening. Here is a box plot showing the results from Class A:\n[image]\nHere are the results from Class B:\n10, 15, 20, 20, 25, 30, 30, 35, 40, 45, 45, 45, 60, 60, 80\nIn which class did students spend less time on their homework?\n\nAnswer choices:\nA. Class A || Class B\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\",\n      \"likely_errors\": \"A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\",\n      \"likely_errors\": \"A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of comparing the central tendencies and overall spread of two different data representations (a box plot and a list of numbers) to draw a general conclusion about which class spent less time on homework. This requires abstracting the key features of each data set—such as median and distribution—and generalizing across representations to make a valid comparison. While misreading the box plot (Representing) or failing to justify the conclusion (Justifying and Proving) are possible errors, they are less likely to be the root cause of incorrect answers because the median of Class B is clearly 35, and Class A’s median is also 35, making the comparison more nuanced. The real challenge lies in recognizing that even with equal medians, Class B has more values below 35, so the overall time is less—this requires generalizing beyond a single measure to consider the full distribution, which is the essence of Abstracting and Generalizing.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of comparing the central tendencies and overall spread of two different data representations (a box plot and a list of numbers) to draw a general conclusion about which class spent less time on homework. This requires abstracting the key features of each data set—such as median and distribution—and generalizing across representations to make a valid comparison. While misreading the box plot (Representing) or failing to justify the conclusion (Justifying and Proving) are possible errors, they are less likely to be the root cause of incorrect answers because the median of Class B is clearly 35, and Class A’s median is also 35, making the comparison more nuanced. The real challenge lies in recognizing that even with equal medians, Class B has more values below 35, so the overall time is less—this requires generalizing beyond a single measure to consider the full distribution, which is the essence of Abstracting and Generalizing.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4693,
+            "completion_tokens": 218
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:04:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.",
+              "likely_errors": "A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.",
+              "likely_errors": "A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.",
+              "likely_errors": "A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the box plot for Class A by identifying key numerical values such as the median, quartiles, and range from the visual components of the plot."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student compares the central tendency and spread of Class A (from the box plot) and Class B (from the data list) to identify a general pattern indicating which class had lower homework times overall."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student constructs a logical argument based on specific data points or visual features (e.g., medians, distribution of values) to justify why one class spent less time on homework than the other."
+            }
+          ],
+          "why": "The student must first interpret the box plot (Representing) to extract numerical information before comparing the two data sets. Once the data from both classes are understood, the student generalizes across representations to make a comparative conclusion (Abstracting and Generalizing). Finally, the student justifies this conclusion with evidence, which requires reasoning and argumentation (Justifying and Proving), and this step logically follows after the comparison is made."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of comparing the central tendencies and overall spread of two different data representations (a box plot and a list of numbers) to draw a general conclusion about which class spent less time on homework. This requires abstracting the key features of each data set—such as median and distribution—and generalizing across representations to make a valid comparison. While misreading the box plot (Representing) or failing to justify the conclusion (Justifying and Proving) are possible errors, they are less likely to be the root cause of incorrect answers because the median of Class B is clearly 35, and Class A’s median is also 35, making the comparison more nuanced. The real challenge lies in recognizing that even with equal medians, Class B has more values below 35, so the overall time is less—this requires generalizing beyond a single measure to consider the full distribution, which is the essence of Abstracting and Generalizing."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.",
+            "likely_errors": "A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.",
+            "likely_errors": "A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.",
+            "likely_errors": "A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.\",\n    \"likely_errors\": \"A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.\",\n    \"likely_errors\": \"A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.\",\n    \"likely_errors\": \"A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the box plot for Class A by identifying key numerical values such as the median, quartiles, and range from the visual components of the plot.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the central tendency and spread of Class A (from the box plot) and Class B (from the data list) to identify a general pattern indicating which class had lower homework times overall.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student constructs a logical argument based on specific data points or visual features (e.g., medians, distribution of values) to justify why one class spent less time on homework than the other.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the box plot (Representing) to extract numerical information before comparing the two data sets. Once the data from both classes are understood, the student generalizes across representations to make a comparative conclusion (Abstracting and Generalizing). Finally, the student justifies this conclusion with evidence, which requires reasoning and argumentation (Justifying and Proving), and this step logically follows after the comparison is made.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of comparing the central tendencies and overall spread of two different data representations (a box plot and a list of numbers) to draw a general conclusion about which class spent less time on homework. This requires abstracting the key features of each data set—such as median and distribution—and generalizing across representations to make a valid comparison. While misreading the box plot (Representing) or failing to justify the conclusion (Justifying and Proving) are possible errors, they are less likely to be the root cause of incorrect answers because the median of Class B is clearly 35, and Class A’s median is also 35, making the comparison more nuanced. The real challenge lies in recognizing that even with equal medians, Class B has more values below 35, so the overall time is less—this requires generalizing beyond a single measure to consider the full distribution, which is the essence of Abstracting and Generalizing.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.",
+          "likely_errors": "A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.",
+          "likely_errors": "A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.",
+          "likely_errors": "A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the box plot for Class A by identifying key numerical values such as the median, quartiles, and range from the visual components of the plot."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student compares the central tendency and spread of Class A (from the box plot) and Class B (from the data list) to identify a general pattern indicating which class had lower homework times overall."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student constructs a logical argument based on specific data points or visual features (e.g., medians, distribution of values) to justify why one class spent less time on homework than the other."
+        }
+      ],
+      "why": "The student must first interpret the box plot (Representing) to extract numerical information before comparing the two data sets. Once the data from both classes are understood, the student generalizes across representations to make a comparative conclusion (Abstracting and Generalizing). Finally, the student justifies this conclusion with evidence, which requires reasoning and argumentation (Justifying and Proving), and this step logically follows after the comparison is made."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of comparing the central tendencies and overall spread of two different data representations (a box plot and a list of numbers) to draw a general conclusion about which class spent less time on homework. This requires abstracting the key features of each data set—such as median and distribution—and generalizing across representations to make a valid comparison. While misreading the box plot (Representing) or failing to justify the conclusion (Justifying and Proving) are possible errors, they are less likely to be the root cause of incorrect answers because the median of Class B is clearly 35, and Class A’s median is also 35, making the comparison more nuanced. The real challenge lies in recognizing that even with equal medians, Class B has more values below 35, so the overall time is less—this requires generalizing beyond a single measure to consider the full distribution, which is the essence of Abstracting and Generalizing."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the box plot for Class A, translating the visual representation into numerical values (such as the median, quartiles, and range) to understand the distribution of homework times. This involves recognizing and interpreting the components of the box plot, such as the median line, box edges, and whiskers, which aligns with the descriptor of interpreting visual representations to draw inferences.",
+          "likely_errors": "A student might misread the scale or incorrectly identify the median or quartiles from the box plot, especially if the plot is not clearly labeled. This is moderately likely, as students often struggle with reading box plots accurately, particularly when the scale is not marked with consistent intervals."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must compare the central tendencies (e.g., median) and overall spread of the two data sets—Class A (from the box plot) and Class B (from the list)—to determine which class spent less time on homework. This requires identifying a general pattern or trend: the class with the lower median and lower overall values is the one with less time spent. This step involves generalizing across different representations (graphical vs. numerical) to make a comparative conclusion.",
+          "likely_errors": "A student might focus only on the median of Class B and ignore the full distribution, or misjudge the central tendency of Class A due to an inaccurate interpretation of the box plot. This is moderately likely, especially if the student does not consider the full data distribution."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After determining that Class B has a lower median and lower overall values, the student must justify this conclusion by referencing specific numerical or visual evidence (e.g., 'Class A's median is 35 minutes, Class B's median is 35 minutes, but Class B has more values below 35, so overall students in Class B spent less time'). This involves constructing a valid argument based on the data, which matches the descriptor of justifying conclusions about numerical relationships.",
+          "likely_errors": "A student might state a conclusion without supporting evidence, such as saying 'Class B spent less time' without referencing the median or the data spread. This is moderately likely, especially if the student is rushed or not accustomed to providing justification."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world scenario or using a model to solve a problem. The data is already presented, and the task is a direct comparison of two existing data sets, not a modeling process involving identification of variables, formulation of a model, or validation of a solution in context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s mathematical thinking, such as a peer’s claim, strategy, or work to respond to. The student works independently on the data from two classes, with no dialogue or shared reasoning required, so collaborative practices are not involved."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student may need to compute the median of Class B (which is straightforward), the item does not require the student to perform a series of procedural steps like solving equations, converting units, or applying complex algorithms. The core task is interpretation and comparison, not procedural execution, so procedural fluency is not the primary skill assessed."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

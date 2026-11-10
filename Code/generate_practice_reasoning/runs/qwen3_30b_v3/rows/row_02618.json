@@ -1,0 +1,370 @@
+{
+  "row": 2618,
+  "problem_id": "96695",
+  "problem_text": "A restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50",
+          "started_at": "2026-11-10T01:40:33+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\",\n    \"likely_errors\": \"A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\",\n    \"likely_errors\": \"A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\",\n    \"likely_errors\": \"A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\",\n    \"likely_errors\": \"A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3910,
+            "completion_tokens": 679
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:43:45+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\n- Procedural Fluency: The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:52:26+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\n- Procedural Fluency: The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\n- Procedural Fluency: The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total cost for 60 burritos by multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively), performing accurate and efficient multiplication with decimals and whole numbers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student compares the two total costs ($72 and $75) and justifies which option is cheaper by making a valid mathematical claim supported by the computed evidence, such as stating that the 10-burrito special is cheaper because $72 < $75.\"\n    }\n  ],\n  \"why\": \"The student must first compute the total costs using accurate and efficient procedures before they can compare them and make a justified claim. Procedural Fluency comes first because it provides the numerical foundation needed for the justification. Only after obtaining the results can the student engage in Justifying and Proving to defend their conclusion based on the evidence.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total cost for 60 burritos by multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively), performing accurate and efficient multiplication with decimals and whole numbers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student compares the two total costs ($72 and $75) and justifies which option is cheaper by making a valid mathematical claim supported by the computed evidence, such as stating that the 10-burrito special is cheaper because $72 < $75.\"\n    }\n  ],\n  \"why\": \"The student must first compute the total costs using accurate and efficient procedures before they can compare them and make a justified claim. Procedural Fluency comes first because it provides the numerical foundation needed for the justification. Only after obtaining the results can the student engage in Justifying and Proving to defend their conclusion based on the evidence.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4089,
+            "completion_tokens": 262
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:54:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\",\n      \"likely_errors\": \"A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:02:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\",\n      \"likely_errors\": \"A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA restaurant is offering 2 specials: 10 burritos for $12, or 6 burritos for $7.50. Noah needs 60 burritos for his party. Should he buy 6 orders of the 10-burrito special or 10 orders of the 6-burrito special?\n\nAnswer choices:\nA. 10 burritos for $12 || 6 burritos for $7.50\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\",\n      \"likely_errors\": \"A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying which option is cheaper, as they might incorrectly choose the 6-burrito special based on a lower price per burrito without computing the total cost for 60 burritos. This reflects a conceptual error in reasoning, where the student fails to ground their conclusion in full computational evidence. While procedural fluency is needed to compute the totals, the error is not in calculation but in the reasoning behind the decision, making 'Justifying and Proving' the core difficulty. Procedural fluency errors are more mechanical and less likely to explain a systematic misjudgment of the better deal.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying which option is cheaper, as they might incorrectly choose the 6-burrito special based on a lower price per burrito without computing the total cost for 60 burritos. This reflects a conceptual error in reasoning, where the student fails to ground their conclusion in full computational evidence. While procedural fluency is needed to compute the totals, the error is not in calculation but in the reasoning behind the decision, making 'Justifying and Proving' the core difficulty. Procedural fluency errors are more mechanical and less likely to explain a systematic misjudgment of the better deal.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4564,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:04:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.",
+              "likely_errors": "A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.",
+              "likely_errors": "A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Representing",
+              "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed."
+            },
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the total cost for 60 burritos by multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively), performing accurate and efficient multiplication with decimals and whole numbers."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student compares the two total costs ($72 and $75) and justifies which option is cheaper by making a valid mathematical claim supported by the computed evidence, such as stating that the 10-burrito special is cheaper because $72 < $75."
+            }
+          ],
+          "why": "The student must first compute the total costs using accurate and efficient procedures before they can compare them and make a justified claim. Procedural Fluency comes first because it provides the numerical foundation needed for the justification. Only after obtaining the results can the student engage in Justifying and Proving to defend their conclusion based on the evidence."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying which option is cheaper, as they might incorrectly choose the 6-burrito special based on a lower price per burrito without computing the total cost for 60 burritos. This reflects a conceptual error in reasoning, where the student fails to ground their conclusion in full computational evidence. While procedural fluency is needed to compute the totals, the error is not in calculation but in the reasoning behind the decision, making 'Justifying and Proving' the core difficulty. Procedural fluency errors are more mechanical and less likely to explain a systematic misjudgment of the better deal."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Procedural Fluency",
+            "why": "The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.",
+            "likely_errors": "A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.",
+            "likely_errors": "A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Representing",
+            "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed."
+          },
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.\",\n    \"likely_errors\": \"A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.\",\n    \"likely_errors\": \"A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total cost for 60 burritos by multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively), performing accurate and efficient multiplication with decimals and whole numbers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student compares the two total costs ($72 and $75) and justifies which option is cheaper by making a valid mathematical claim supported by the computed evidence, such as stating that the 10-burrito special is cheaper because $72 < $75.\"\n    }\n  ],\n  \"why\": \"The student must first compute the total costs using accurate and efficient procedures before they can compare them and make a justified claim. Procedural Fluency comes first because it provides the numerical foundation needed for the justification. Only after obtaining the results can the student engage in Justifying and Proving to defend their conclusion based on the evidence.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying which option is cheaper, as they might incorrectly choose the 6-burrito special based on a lower price per burrito without computing the total cost for 60 burritos. This reflects a conceptual error in reasoning, where the student fails to ground their conclusion in full computational evidence. While procedural fluency is needed to compute the totals, the error is not in calculation but in the reasoning behind the decision, making 'Justifying and Proving' the core difficulty. Procedural fluency errors are more mechanical and less likely to explain a systematic misjudgment of the better deal.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.",
+          "likely_errors": "A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.",
+          "likely_errors": "A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the total cost for 60 burritos by multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively), performing accurate and efficient multiplication with decimals and whole numbers."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student compares the two total costs ($72 and $75) and justifies which option is cheaper by making a valid mathematical claim supported by the computed evidence, such as stating that the 10-burrito special is cheaper because $72 < $75."
+        }
+      ],
+      "why": "The student must first compute the total costs using accurate and efficient procedures before they can compare them and make a justified claim. Procedural Fluency comes first because it provides the numerical foundation needed for the justification. Only after obtaining the results can the student engage in Justifying and Proving to defend their conclusion based on the evidence."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying which option is cheaper, as they might incorrectly choose the 6-burrito special based on a lower price per burrito without computing the total cost for 60 burritos. This reflects a conceptual error in reasoning, where the student fails to ground their conclusion in full computational evidence. While procedural fluency is needed to compute the totals, the error is not in calculation but in the reasoning behind the decision, making 'Justifying and Proving' the core difficulty. Procedural fluency errors are more mechanical and less likely to explain a systematic misjudgment of the better deal."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the total cost for 60 burritos using each special: multiplying the number of orders (6 for the 10-burrito special, 10 for the 6-burrito special) by the price per order ($12 and $7.50, respectively). This involves accurate and efficient multiplication and addition to determine total costs, which aligns with the practice of carrying out operations with decimals and whole numbers accurately and efficiently.",
+          "likely_errors": "A student might miscalculate 6 × $12 as $62 or 10 × $7.50 as $75.00, or incorrectly add the cost per burrito instead of the total per order. These errors are common but likely for students who lack fluency with decimal multiplication."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After computing the total costs ($72 for 60 burritos via the 10-burrito special, $75 for the 6-burrito special), the student must compare the two totals and justify which option is cheaper. This requires making a valid mathematical claim (e.g., 'The 10-burrito special is cheaper') and defending it with the computed evidence, which matches the descriptor of justifying conclusions about numerical relationships.",
+          "likely_errors": "A student might incorrectly conclude that the 6-burrito special is better because it has a lower price per burrito, failing to account for the total cost for 60 burritos. This reflects a conceptual misunderstanding, but it is a common error when justification is not grounded in full computation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables). The problem is presented numerically and involves direct computation and comparison, so no visual or symbolic representation beyond the given numbers is needed."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem involves a specific scenario with fixed quantities and prices, and the student is not asked to identify a pattern, extend it to a larger set, or derive a general rule (e.g., for any number of burritos). There is no need to generalize beyond the given context."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the situation is real-world, the problem does not require the student to identify a problem, mathematize it, or validate the solution in context. The model (buying burritos in bulk) is already given, and the task is purely computational and comparative."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a standalone problem with no reference to another student's thinking, strategy, or claim. There is no need to respond to or build on someone else’s work, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "ordering": [
+      "Procedural Fluency",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

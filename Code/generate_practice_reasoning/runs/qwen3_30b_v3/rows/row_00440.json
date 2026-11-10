@@ -1,0 +1,389 @@
+{
+  "row": 440,
+  "problem_id": "279742",
+  "problem_text": "The numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____",
+          "started_at": "2026-11-10T01:26:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\"order\": 1, \"practice\": \"Representing\", \"why\": \"The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\", \"likely_errors\": \"A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup.\"},\n  {\"order\": 2, \"practice\": \"Procedural Fluency\", \"why\": \"After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\", \"likely_errors\": \"Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work.\"},\n  {\"order\": 3, \"practice\": \"Abstracting and Generalizing\", \"why\": \"The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\", \"likely_errors\": \"A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely.\"}\n],\n\"practices_not_used\": [\n  {\"practice\": \"Justifying and Proving\", \"why\": \"While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required.\"},\n  {\"practice\": \"Mathematical Modeling\", \"why\": \"The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed.\"},\n  {\"practice\": \"Collaborative Mathematics\", \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon.\"}\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\"order\": 1, \"practice\": \"Representing\", \"why\": \"The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\", \"likely_errors\": \"A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup.\"},\n  {\"order\": 2, \"practice\": \"Procedural Fluency\", \"why\": \"After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\", \"likely_errors\": \"Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work.\"},\n  {\"order\": 3, \"practice\": \"Abstracting and Generalizing\", \"why\": \"The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\", \"likely_errors\": \"A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely.\"}\n],\n\"practices_not_used\": [\n  {\"practice\": \"Justifying and Proving\", \"why\": \"While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required.\"},\n  {\"practice\": \"Mathematical Modeling\", \"why\": \"The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed.\"},\n  {\"practice\": \"Collaborative Mathematics\", \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon.\"}\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3864,
+            "completion_tokens": 722
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:28:51+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\n- Abstracting and Generalizing: The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\n- Procedural Fluency: After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:45:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\n- Abstracting and Generalizing: The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\n- Procedural Fluency: After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\n- Abstracting and Generalizing: The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\n- Procedural Fluency: After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the scenario by representing the contents of each bag as mathematical sets—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualizes the selection process as a Cartesian product of these sets to define the sample space.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying pattern by recognizing that the number of overlapping values between two consecutive integer sequences depends on the intersection of their ranges, and generalizes this to the formula max(0, min(b,d) - max(a,c) + 1) for intervals [a,b] and [c,d].\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (6 numbers from 5 to 10), then calculates the probability as 6/100 = 3/50 using accurate arithmetic and fraction simplification.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by translating the verbal description into sets and understanding the sample space before proceeding to analyze patterns. Only after establishing the structure of the problem can they abstract the general relationship between overlapping intervals. Finally, they apply procedural fluency to compute the probability, which relies on the correct representations and generalizations established earlier.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the scenario by representing the contents of each bag as mathematical sets—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualizes the selection process as a Cartesian product of these sets to define the sample space.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying pattern by recognizing that the number of overlapping values between two consecutive integer sequences depends on the intersection of their ranges, and generalizes this to the formula max(0, min(b,d) - max(a,c) + 1) for intervals [a,b] and [c,d].\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (6 numbers from 5 to 10), then calculates the probability as 6/100 = 3/50 using accurate arithmetic and fraction simplification.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by translating the verbal description into sets and understanding the sample space before proceeding to analyze patterns. Only after establishing the structure of the problem can they abstract the general relationship between overlapping intervals. Finally, they apply procedural fluency to compute the probability, which relies on the correct representations and generalizations established earlier.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4145,
+            "completion_tokens": 350
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:46:48+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\",\n      \"likely_errors\": \"A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\",\n      \"likely_errors\": \"A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\",\n      \"likely_errors\": \"Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:54:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\",\n      \"likely_errors\": \"A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\",\n      \"likely_errors\": \"A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\",\n      \"likely_errors\": \"Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nThe numbers 1 through 10 are put in one bag, and the numbers 5 through 14 are put in another bag. When you pick one number from each bag, what is the probability you get the same number?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\",\n      \"likely_errors\": \"A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\",\n      \"likely_errors\": \"A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\",\n      \"likely_errors\": \"Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the underlying pattern in the overlap of two consecutive integer sequences, which requires abstracting the structure of the problem beyond simple listing. While representing the sets and computing the probability are important, they are more mechanical and less prone to error if the setup is correct. The difficulty lies in seeing that the number of common elements depends on the intersection of ranges, a generalizable insight that many students miss, leading them to miscount favorable outcomes. Procedural fluency errors are common but usually stem from this earlier conceptual failure, making abstracting and generalizing the root cause of incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the underlying pattern in the overlap of two consecutive integer sequences, which requires abstracting the structure of the problem beyond simple listing. While representing the sets and computing the probability are important, they are more mechanical and less prone to error if the setup is correct. The difficulty lies in seeing that the number of common elements depends on the intersection of ranges, a generalizable insight that many students miss, leading them to miscount favorable outcomes. Procedural fluency errors are common but usually stem from this earlier conceptual failure, making abstracting and generalizing the root cause of incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4593,
+            "completion_tokens": 148
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:56:23+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.",
+              "likely_errors": "A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.",
+              "likely_errors": "Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.",
+              "likely_errors": "A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the scenario by representing the contents of each bag as mathematical sets—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualizes the selection process as a Cartesian product of these sets to define the sample space."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the underlying pattern by recognizing that the number of overlapping values between two consecutive integer sequences depends on the intersection of their ranges, and generalizes this to the formula max(0, min(b,d) - max(a,c) + 1) for intervals [a,b] and [c,d]."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (6 numbers from 5 to 10), then calculates the probability as 6/100 = 3/50 using accurate arithmetic and fraction simplification."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically by translating the verbal description into sets and understanding the sample space before proceeding to analyze patterns. Only after establishing the structure of the problem can they abstract the general relationship between overlapping intervals. Finally, they apply procedural fluency to compute the probability, which relies on the correct representations and generalizations established earlier."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing the underlying pattern in the overlap of two consecutive integer sequences, which requires abstracting the structure of the problem beyond simple listing. While representing the sets and computing the probability are important, they are more mechanical and less prone to error if the setup is correct. The difficulty lies in seeing that the number of common elements depends on the intersection of ranges, a generalizable insight that many students miss, leading them to miscount favorable outcomes. Procedural fluency errors are common but usually stem from this earlier conceptual failure, making abstracting and generalizing the root cause of incorrect answers."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.",
+            "likely_errors": "A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.",
+            "likely_errors": "A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.",
+            "likely_errors": "Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\"order\": 1, \"practice\": \"Representing\", \"why\": \"The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.\", \"likely_errors\": \"A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup.\"},\n  {\"order\": 2, \"practice\": \"Procedural Fluency\", \"why\": \"After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.\", \"likely_errors\": \"Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work.\"},\n  {\"order\": 3, \"practice\": \"Abstracting and Generalizing\", \"why\": \"The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.\", \"likely_errors\": \"A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely.\"}\n],\n\"practices_not_used\": [\n  {\"practice\": \"Justifying and Proving\", \"why\": \"While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required.\"},\n  {\"practice\": \"Mathematical Modeling\", \"why\": \"The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed.\"},\n  {\"practice\": \"Collaborative Mathematics\", \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon.\"}\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the scenario by representing the contents of each bag as mathematical sets—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualizes the selection process as a Cartesian product of these sets to define the sample space.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying pattern by recognizing that the number of overlapping values between two consecutive integer sequences depends on the intersection of their ranges, and generalizes this to the formula max(0, min(b,d) - max(a,c) + 1) for intervals [a,b] and [c,d].\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (6 numbers from 5 to 10), then calculates the probability as 6/100 = 3/50 using accurate arithmetic and fraction simplification.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by translating the verbal description into sets and understanding the sample space before proceeding to analyze patterns. Only after establishing the structure of the problem can they abstract the general relationship between overlapping intervals. Finally, they apply procedural fluency to compute the probability, which relies on the correct representations and generalizations established earlier.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the underlying pattern in the overlap of two consecutive integer sequences, which requires abstracting the structure of the problem beyond simple listing. While representing the sets and computing the probability are important, they are more mechanical and less prone to error if the setup is correct. The difficulty lies in seeing that the number of common elements depends on the intersection of ranges, a generalizable insight that many students miss, leading them to miscount favorable outcomes. Procedural fluency errors are common but usually stem from this earlier conceptual failure, making abstracting and generalizing the root cause of incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.",
+          "likely_errors": "A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.",
+          "likely_errors": "Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.",
+          "likely_errors": "A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the scenario by representing the contents of each bag as mathematical sets—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualizes the selection process as a Cartesian product of these sets to define the sample space."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the underlying pattern by recognizing that the number of overlapping values between two consecutive integer sequences depends on the intersection of their ranges, and generalizes this to the formula max(0, min(b,d) - max(a,c) + 1) for intervals [a,b] and [c,d]."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (6 numbers from 5 to 10), then calculates the probability as 6/100 = 3/50 using accurate arithmetic and fraction simplification."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically by translating the verbal description into sets and understanding the sample space before proceeding to analyze patterns. Only after establishing the structure of the problem can they abstract the general relationship between overlapping intervals. Finally, they apply procedural fluency to compute the probability, which relies on the correct representations and generalizations established earlier."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing the underlying pattern in the overlap of two consecutive integer sequences, which requires abstracting the structure of the problem beyond simple listing. While representing the sets and computing the probability are important, they are more mechanical and less prone to error if the setup is correct. The difficulty lies in seeing that the number of common elements depends on the intersection of ranges, a generalizable insight that many students miss, leading them to miscount favorable outcomes. Procedural fluency errors are common but usually stem from this earlier conceptual failure, making abstracting and generalizing the root cause of incorrect answers."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the scenario by representing the contents of each bag as sets of numbers—{1, 2, ..., 10} and {5, 6, ..., 14}—and visualize the process of selecting one number from each bag. This involves translating the verbal description into mathematical sets and understanding the sample space as a Cartesian product of the two sets, which aligns with the descriptor of representing problem situations with sets and operations.",
+          "likely_errors": "A student might misrepresent the sets (e.g., include numbers outside the range or exclude endpoints), leading to incorrect sample space size. This is moderately likely for students who rush through the setup."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the overlap between two consecutive integer sequences (1–10 and 5–14) depends on the intersection of their ranges. They generalize that for two intervals [a,b] and [c,d], the number of common elements is max(0, min(b,d) - max(a,c) + 1). Applying this insight to the specific case shows the structure behind the problem, which is a key part of abstracting and generalizing patterns and relationships.",
+          "likely_errors": "A student might fail to see the pattern and instead rely solely on listing, which is error-prone. However, recognizing the general structure is less likely for younger or less experienced students, so this error is moderately likely."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After representing the sets, the student must compute the total number of possible outcomes (10 × 10 = 100) and the number of favorable outcomes (numbers common to both sets: 5 through 10, which is 6 numbers). Then, they must compute the probability as 6/100 = 3/50. This requires accurate multiplication, counting, and simplification of fractions—core components of procedural fluency.",
+          "likely_errors": "Students may miscalculate the number of favorable outcomes (e.g., count only 4 or 5 numbers) or make arithmetic errors in multiplication or simplification. These are common, especially under time pressure, but less likely if the student checks work."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "While the student computes a probability, the item does not require them to justify why the method is valid (e.g., why outcomes are equally likely or why the counting method works). There is no claim to evaluate or refute, nor is there a need to construct a formal argument, so justifying and proving is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is a standard probability problem with no real-world context to interpret or model. The problem is already mathematized: the bags and numbers are given as abstract sets. No modeling of a real-world situation, selection of variables, or validation of assumptions is needed."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element for the student to respond to or build upon."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

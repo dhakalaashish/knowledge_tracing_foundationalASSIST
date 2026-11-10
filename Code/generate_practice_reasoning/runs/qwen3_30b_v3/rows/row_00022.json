@@ -1,0 +1,389 @@
+{
+  "row": 22,
+  "problem_id": "238362",
+  "problem_text": "Order from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high",
+          "started_at": "2026-11-10T01:26:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\",\n    \"likely_errors\": \"A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\",\n    \"likely_errors\": \"A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\",\n    \"likely_errors\": \"A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\",\n    \"likely_errors\": \"A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\",\n    \"likely_errors\": \"A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\",\n    \"likely_errors\": \"A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3886,
+            "completion_tokens": 698
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:28:51+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\n- Abstracting and Generalizing: The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\n- Procedural Fluency: After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:45:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\n- Abstracting and Generalizing: The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\n- Procedural Fluency: After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\n- Abstracting and Generalizing: The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\n- Procedural Fluency: After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the physical objects (pennies, dollar bills, bread slices, books) by estimating or recalling their thicknesses and translates these real-world quantities into measurable numerical values using inches, creating a mathematical model of how many of each would stack to 1 foot.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate division of 12 inches (1 foot) by the thickness of each item in inches to compute the number of items in a 1-foot stack, using efficient and precise calculations with decimals or fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the computed values across the different items and recognizes the general pattern that thinner items produce a larger count in a fixed-height stack, extending this reasoning to understand the inverse relationship between thickness and quantity.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world scenario mathematically by assigning measurable thicknesses to each object before any computation can occur. Once the numerical values are obtained through calculation, the student can then compare them and identify the underlying pattern. Generalizing the relationship between thickness and count comes last because it requires the results of the prior steps—both the representations and the computed values—to form a broader understanding.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the physical objects (pennies, dollar bills, bread slices, books) by estimating or recalling their thicknesses and translates these real-world quantities into measurable numerical values using inches, creating a mathematical model of how many of each would stack to 1 foot.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate division of 12 inches (1 foot) by the thickness of each item in inches to compute the number of items in a 1-foot stack, using efficient and precise calculations with decimals or fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the computed values across the different items and recognizes the general pattern that thinner items produce a larger count in a fixed-height stack, extending this reasoning to understand the inverse relationship between thickness and quantity.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world scenario mathematically by assigning measurable thicknesses to each object before any computation can occur. Once the numerical values are obtained through calculation, the student can then compare them and identify the underlying pattern. Generalizing the relationship between thickness and count comes last because it requires the results of the prior steps—both the representations and the computed values—to form a broader understanding.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4102,
+            "completion_tokens": 315
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:46:48+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\",\n      \"likely_errors\": \"A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\",\n      \"likely_errors\": \"A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\",\n      \"likely_errors\": \"A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:54:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\",\n      \"likely_errors\": \"A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\",\n      \"likely_errors\": \"A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\",\n      \"likely_errors\": \"A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nOrder from smallest to largest:\n\nItems to put in order:\n- Number of pennies in a stack that is 1 ft high\n- Number of dollar bills in a stack that is 1 ft high\n- Number of slices of bread in a stack that is 1 ft high\n- Number of books in a stack that is 1 ft high\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\",\n      \"likely_errors\": \"A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\",\n      \"likely_errors\": \"A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\",\n      \"likely_errors\": \"A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the inverse relationship between thickness and count across different items—understanding that thinner items result in more in a stack, and thicker items result in fewer. This requires abstracting the pattern from specific calculations and generalizing it to all items, which is central to the practice of Abstracting and Generalizing. While Representing and Procedural Fluency involve foundational steps (estimating thickness and computing division), these are more mechanical and less prone to error if the student has basic number sense. The error in Abstracting and Generalizing—misordering items based on intuition rather than numerical comparison—is more likely to cause a wrong answer because it reflects a deeper conceptual misunderstanding of proportional relationships.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the inverse relationship between thickness and count across different items—understanding that thinner items result in more in a stack, and thicker items result in fewer. This requires abstracting the pattern from specific calculations and generalizing it to all items, which is central to the practice of Abstracting and Generalizing. While Representing and Procedural Fluency involve foundational steps (estimating thickness and computing division), these are more mechanical and less prone to error if the student has basic number sense. The error in Abstracting and Generalizing—misordering items based on intuition rather than numerical comparison—is more likely to cause a wrong answer because it reflects a deeper conceptual misunderstanding of proportional relationships.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4559,
+            "completion_tokens": 167
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:56:23+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.",
+              "likely_errors": "A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.",
+              "likely_errors": "A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.",
+              "likely_errors": "A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the physical objects (pennies, dollar bills, bread slices, books) by estimating or recalling their thicknesses and translates these real-world quantities into measurable numerical values using inches, creating a mathematical model of how many of each would stack to 1 foot."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs accurate division of 12 inches (1 foot) by the thickness of each item in inches to compute the number of items in a 1-foot stack, using efficient and precise calculations with decimals or fractions."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student compares the computed values across the different items and recognizes the general pattern that thinner items produce a larger count in a fixed-height stack, extending this reasoning to understand the inverse relationship between thickness and quantity."
+            }
+          ],
+          "why": "The student must first represent the real-world scenario mathematically by assigning measurable thicknesses to each object before any computation can occur. Once the numerical values are obtained through calculation, the student can then compare them and identify the underlying pattern. Generalizing the relationship between thickness and count comes last because it requires the results of the prior steps—both the representations and the computed values—to form a broader understanding."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing the inverse relationship between thickness and count across different items—understanding that thinner items result in more in a stack, and thicker items result in fewer. This requires abstracting the pattern from specific calculations and generalizing it to all items, which is central to the practice of Abstracting and Generalizing. While Representing and Procedural Fluency involve foundational steps (estimating thickness and computing division), these are more mechanical and less prone to error if the student has basic number sense. The error in Abstracting and Generalizing—misordering items based on intuition rather than numerical comparison—is more likely to cause a wrong answer because it reflects a deeper conceptual misunderstanding of proportional relationships."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.",
+            "likely_errors": "A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.",
+            "likely_errors": "A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion."
+          },
+          {
+            "order": 3,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.",
+            "likely_errors": "A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.\",\n    \"likely_errors\": \"A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.\",\n    \"likely_errors\": \"A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.\",\n    \"likely_errors\": \"A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the physical objects (pennies, dollar bills, bread slices, books) by estimating or recalling their thicknesses and translates these real-world quantities into measurable numerical values using inches, creating a mathematical model of how many of each would stack to 1 foot.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate division of 12 inches (1 foot) by the thickness of each item in inches to compute the number of items in a 1-foot stack, using efficient and precise calculations with decimals or fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the computed values across the different items and recognizes the general pattern that thinner items produce a larger count in a fixed-height stack, extending this reasoning to understand the inverse relationship between thickness and quantity.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world scenario mathematically by assigning measurable thicknesses to each object before any computation can occur. Once the numerical values are obtained through calculation, the student can then compare them and identify the underlying pattern. Generalizing the relationship between thickness and count comes last because it requires the results of the prior steps—both the representations and the computed values—to form a broader understanding.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing the inverse relationship between thickness and count across different items—understanding that thinner items result in more in a stack, and thicker items result in fewer. This requires abstracting the pattern from specific calculations and generalizing it to all items, which is central to the practice of Abstracting and Generalizing. While Representing and Procedural Fluency involve foundational steps (estimating thickness and computing division), these are more mechanical and less prone to error if the student has basic number sense. The error in Abstracting and Generalizing—misordering items based on intuition rather than numerical comparison—is more likely to cause a wrong answer because it reflects a deeper conceptual misunderstanding of proportional relationships.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.",
+          "likely_errors": "A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.",
+          "likely_errors": "A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.",
+          "likely_errors": "A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the physical objects (pennies, dollar bills, bread slices, books) by estimating or recalling their thicknesses and translates these real-world quantities into measurable numerical values using inches, creating a mathematical model of how many of each would stack to 1 foot."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs accurate division of 12 inches (1 foot) by the thickness of each item in inches to compute the number of items in a 1-foot stack, using efficient and precise calculations with decimals or fractions."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student compares the computed values across the different items and recognizes the general pattern that thinner items produce a larger count in a fixed-height stack, extending this reasoning to understand the inverse relationship between thickness and quantity."
+        }
+      ],
+      "why": "The student must first represent the real-world scenario mathematically by assigning measurable thicknesses to each object before any computation can occur. Once the numerical values are obtained through calculation, the student can then compare them and identify the underlying pattern. Generalizing the relationship between thickness and count comes last because it requires the results of the prior steps—both the representations and the computed values—to form a broader understanding."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing the inverse relationship between thickness and count across different items—understanding that thinner items result in more in a stack, and thicker items result in fewer. This requires abstracting the pattern from specific calculations and generalizing it to all items, which is central to the practice of Abstracting and Generalizing. While Representing and Procedural Fluency involve foundational steps (estimating thickness and computing division), these are more mechanical and less prone to error if the student has basic number sense. The error in Abstracting and Generalizing—misordering items based on intuition rather than numerical comparison—is more likely to cause a wrong answer because it reflects a deeper conceptual misunderstanding of proportional relationships."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the real-world quantities (pennies, dollar bills, bread slices, books) and represent them mathematically by estimating or recalling their thicknesses to model how many of each would stack to 1 foot. This involves translating physical objects into measurable attributes (thickness) and using a consistent unit (feet), which aligns with creating visual or numerical representations of physical quantities.",
+          "likely_errors": "A student might misrepresent the thickness of an object (e.g., assume all items are the same thickness) or incorrectly convert inches to feet, leading to an inaccurate count. This is moderately likely for students unfamiliar with standard dimensions of everyday objects."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the thickness of each item, the student must perform accurate division: 12 inches (1 foot) divided by the thickness of each item (in inches) to compute the number of items in a 1-foot stack. This requires efficient and accurate computation with decimals or fractions, matching the procedural fluency descriptor involving computation with numbers and units.",
+          "likely_errors": "A student might make a calculation error (e.g., dividing incorrectly or misplacing decimal points) or fail to convert units properly. This is likely for students with weak computational fluency, especially with decimals and unit conversion."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must compare the computed values across different items and recognize the underlying pattern: thinner items yield more in a stack, and thicker items yield fewer. This requires generalizing the relationship between thickness and count, extending reasoning from specific cases to a broader understanding of proportional relationships, which fits the practice of identifying and extending patterns and making generalizations across cases.",
+          "likely_errors": "A student might incorrectly order the items due to a flawed assumption (e.g., assuming books are thin because they are light), or fail to see the inverse relationship between thickness and count. This is moderately likely, especially if students rely on intuition rather than numerical comparison."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim with evidence, or refute a counterexample. The task is to order items based on computed values, not to evaluate or create a mathematical proof or justification of a claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the item involves real-world objects, it does not require the student to identify a problem, develop a model from a scenario, or test the reasonableness of a solution in context. The model (stacking items to 1 ft) is fully specified, and the task is purely computational and comparative."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or work. There is no dialogue, shared reasoning, or need to respond to a peer’s contribution, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

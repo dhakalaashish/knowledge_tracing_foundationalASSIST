@@ -1,0 +1,370 @@
+{
+  "row": 1849,
+  "problem_id": "89416",
+  "problem_text": "Diego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\",\n      \"likely_errors\": \"A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\",\n      \"likely_errors\": \"Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\",\n      \"likely_errors\": \"A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\",\n      \"likely_errors\": \"Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3877,
+            "completion_tokens": 691
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\n- Procedural Fluency: After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\n- Procedural Fluency: After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\n- Procedural Fluency: After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem into a mathematical model by defining variables for the unknown quantities and writing a system of equations that represents the total number of questions and the total points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student solves the system of equations using algebraic procedures such as substitution or elimination to find the number of essay questions.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by identifying and modeling the relationships described in the scenario before applying computational procedures. Only after creating the equations can the student use procedural fluency to solve them, making Representing the necessary first step and Procedural Fluency the subsequent step.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem into a mathematical model by defining variables for the unknown quantities and writing a system of equations that represents the total number of questions and the total points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student solves the system of equations using algebraic procedures such as substitution or elimination to find the number of essay questions.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by identifying and modeling the relationships described in the scenario before applying computational procedures. Only after creating the equations can the student use procedural fluency to solve them, making Representing the necessary first step and Procedural Fluency the subsequent step.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4031,
+            "completion_tokens": 183
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\",\n      \"likely_errors\": \"A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\",\n      \"likely_errors\": \"Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\",\n      \"likely_errors\": \"A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\",\n      \"likely_errors\": \"Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nDiego’s history teacher writes a test for the class with 26 questions. The test is worth 123 points and has two types of questions: multiple choice worth 3 points each, and essays worth 8 points each. How many essay questions are on the test?\n____ essay questions.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\",\n      \"likely_errors\": \"A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\",\n      \"likely_errors\": \"Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of translating the word problem into a correct mathematical model, particularly by misrepresenting the relationship between the number of questions and their point values. Errors such as swapping variables, incorrectly forming the total point equation (e.g., 8x + 3x = 123), or failing to account for both question types in the total count are common and stem from a weak grasp of how to represent real-world constraints symbolically. While procedural fluency is important, the setup step is more foundational and error-prone; if the representation is incorrect, even flawless computation will lead to a wrong answer. The other practice used, procedural fluency, involves executing known procedures and is less likely to be the source of failure because students can often perform algebraic steps accurately once the system is correctly set up.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of translating the word problem into a correct mathematical model, particularly by misrepresenting the relationship between the number of questions and their point values. Errors such as swapping variables, incorrectly forming the total point equation (e.g., 8x + 3x = 123), or failing to account for both question types in the total count are common and stem from a weak grasp of how to represent real-world constraints symbolically. While procedural fluency is important, the setup step is more foundational and error-prone; if the representation is incorrect, even flawless computation will lead to a wrong answer. The other practice used, procedural fluency, involves executing known procedures and is less likely to be the source of failure because students can often perform algebraic steps accurately once the system is correctly set up.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4538,
+            "completion_tokens": 188
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.",
+              "likely_errors": "A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.",
+              "likely_errors": "Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the word problem into a mathematical model by defining variables for the unknown quantities and writing a system of equations that represents the total number of questions and the total points."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student solves the system of equations using algebraic procedures such as substitution or elimination to find the number of essay questions."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically by identifying and modeling the relationships described in the scenario before applying computational procedures. Only after creating the equations can the student use procedural fluency to solve them, making Representing the necessary first step and Procedural Fluency the subsequent step."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of translating the word problem into a correct mathematical model, particularly by misrepresenting the relationship between the number of questions and their point values. Errors such as swapping variables, incorrectly forming the total point equation (e.g., 8x + 3x = 123), or failing to account for both question types in the total count are common and stem from a weak grasp of how to represent real-world constraints symbolically. While procedural fluency is important, the setup step is more foundational and error-prone; if the representation is incorrect, even flawless computation will lead to a wrong answer. The other practice used, procedural fluency, involves executing known procedures and is less likely to be the source of failure because students can often perform algebraic steps accurately once the system is correctly set up."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.",
+            "likely_errors": "A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.",
+            "likely_errors": "Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.\",\n      \"likely_errors\": \"A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.\",\n      \"likely_errors\": \"Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem into a mathematical model by defining variables for the unknown quantities and writing a system of equations that represents the total number of questions and the total points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student solves the system of equations using algebraic procedures such as substitution or elimination to find the number of essay questions.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by identifying and modeling the relationships described in the scenario before applying computational procedures. Only after creating the equations can the student use procedural fluency to solve them, making Representing the necessary first step and Procedural Fluency the subsequent step.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of translating the word problem into a correct mathematical model, particularly by misrepresenting the relationship between the number of questions and their point values. Errors such as swapping variables, incorrectly forming the total point equation (e.g., 8x + 3x = 123), or failing to account for both question types in the total count are common and stem from a weak grasp of how to represent real-world constraints symbolically. While procedural fluency is important, the setup step is more foundational and error-prone; if the representation is incorrect, even flawless computation will lead to a wrong answer. The other practice used, procedural fluency, involves executing known procedures and is less likely to be the source of failure because students can often perform algebraic steps accurately once the system is correctly set up.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.",
+          "likely_errors": "A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.",
+          "likely_errors": "Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the word problem into a mathematical model by defining variables for the unknown quantities and writing a system of equations that represents the total number of questions and the total points."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student solves the system of equations using algebraic procedures such as substitution or elimination to find the number of essay questions."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically by identifying and modeling the relationships described in the scenario before applying computational procedures. Only after creating the equations can the student use procedural fluency to solve them, making Representing the necessary first step and Procedural Fluency the subsequent step."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of translating the word problem into a correct mathematical model, particularly by misrepresenting the relationship between the number of questions and their point values. Errors such as swapping variables, incorrectly forming the total point equation (e.g., 8x + 3x = 123), or failing to account for both question types in the total count are common and stem from a weak grasp of how to represent real-world constraints symbolically. While procedural fluency is important, the setup step is more foundational and error-prone; if the representation is incorrect, even flawless computation will lead to a wrong answer. The other practice used, procedural fluency, involves executing known procedures and is less likely to be the source of failure because students can often perform algebraic steps accurately once the system is correctly set up."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the word problem into a mathematical model by representing the unknown quantities (number of essay questions and multiple choice questions) and their point values using variables and equations. This involves creating a system of equations: let x be the number of essay questions and y be the number of multiple choice questions, then x + y = 26 and 8x + 3y = 123. This matches the descriptor of translating between written descriptions and symbolic representations.",
+          "likely_errors": "A student might misassign variables (e.g., swap x and y), incorrectly set up the total point equation (e.g., 8x + 3x = 123), or fail to represent the total number of questions correctly. This is moderately likely for students still developing algebraic reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After setting up the system of equations, the student must solve it using appropriate procedures—such as substitution or elimination—accurately and efficiently. This includes performing algebraic steps like substituting y = 26 - x into the second equation, simplifying, and solving for x. This aligns with the descriptor of solving equations using formal symbolic manipulation.",
+          "likely_errors": "Students may make arithmetic errors during substitution or simplification (e.g., miscalculating 8(26 - x) or combining like terms incorrectly), or they might stop before finding the final answer. These errors are common but typically avoidable with careful work and checking, so they are moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem presents a specific, concrete scenario with fixed values (26 questions, 123 points, 3 and 8 points per question type). There is no need to identify a broader pattern, generalize across cases, or extend reasoning to a family of similar problems. The solution is limited to solving one instance, not deriving a general rule."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical answer, not a justification or proof. While a student might check their answer by substituting back, the task does not require them to defend or evaluate a mathematical claim, provide a counterexample, or construct a deductive argument about why the solution is valid."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the problem is contextual, the model (system of equations) is directly given by the structure of the problem. There is no need to identify an appropriate attribute to measure, select a model, or revise a model based on feedback. The mathematization is straightforward and implicit in the setup."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on this item, and there is no reference to another student’s thinking, argument, or contribution. The item does not involve evaluating, building on, or responding to a peer’s idea, so collaborative interaction is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Representing"
+  }
+}

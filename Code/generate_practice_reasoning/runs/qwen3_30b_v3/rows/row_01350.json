@@ -1,0 +1,389 @@
+{
+  "row": 1350,
+  "problem_id": "181647",
+  "problem_text": "Ten students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws",
+          "started_at": "2026-11-10T01:31:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\",\n      \"likely_errors\": \"A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\",\n      \"likely_errors\": \"A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\",\n      \"likely_errors\": \"A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\",\n      \"likely_errors\": \"A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\",\n      \"likely_errors\": \"A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\",\n      \"likely_errors\": \"A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3869,
+            "completion_tokens": 715
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:34:13+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\n- Justifying and Proving: The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\n- Procedural Fluency: The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\n- Justifying and Proving: The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\n- Procedural Fluency: The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\n- Justifying and Proving: The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\n- Procedural Fluency: The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student accurately orders the data set from smallest to largest, resulting in the sequence 4, 5, 5, 6, 6, 6, 7, 8, 9, 9.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"step\": \"The student represents the ordered data in a clear, structured format to visually identify the two middle values (the 5th and 6th numbers) for the median calculation.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student applies the definition of the median for an even number of data points, justifying that the median is the average of the 5th and 6th values, and explains why this method is mathematically valid.\"\n    }\n  ],\n  \"why\": \"The student must first use procedural fluency to order the data, as this is a prerequisite for identifying the median. Once ordered, the student uses representing to structure the data clearly, enabling accurate identification of the middle values. Finally, the student justifies the method used to compute the median, which relies on understanding the definition and reasoning about its validity, making this the final step in the process.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student accurately orders the data set from smallest to largest, resulting in the sequence 4, 5, 5, 6, 6, 6, 7, 8, 9, 9.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"step\": \"The student represents the ordered data in a clear, structured format to visually identify the two middle values (the 5th and 6th numbers) for the median calculation.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student applies the definition of the median for an even number of data points, justifying that the median is the average of the 5th and 6th values, and explains why this method is mathematically valid.\"\n    }\n  ],\n  \"why\": \"The student must first use procedural fluency to order the data, as this is a prerequisite for identifying the median. Once ordered, the student uses representing to structure the data clearly, enabling accurate identification of the middle values. Finally, the student justifies the method used to compute the median, which relies on understanding the definition and reasoning about its validity, making this the final step in the process.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4086,
+            "completion_tokens": 299
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:49:27+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\",\n      \"likely_errors\": \"A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\",\n      \"likely_errors\": \"A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\",\n      \"likely_errors\": \"A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:58:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\",\n      \"likely_errors\": \"A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\",\n      \"likely_errors\": \"A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\",\n      \"likely_errors\": \"A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the median number of free throws made?\n____ free throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\",\n      \"likely_errors\": \"A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\",\n      \"likely_errors\": \"A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\",\n      \"likely_errors\": \"A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of correctly applying the definition of the median for an even number of data points, such as by selecting only the 5th value instead of averaging the 5th and 6th values. This step requires justifying why the average of the two middle numbers is used, which is a core aspect of Justifying and Proving. While Procedural Fluency and Representing are important for ordering and listing the data, these steps are more mechanical and less prone to error if the student follows the procedure. The error in Justifying and Proving is more conceptual and directly leads to an incorrect answer, making it the primary source of difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of correctly applying the definition of the median for an even number of data points, such as by selecting only the 5th value instead of averaging the 5th and 6th values. This step requires justifying why the average of the two middle numbers is used, which is a core aspect of Justifying and Proving. While Procedural Fluency and Representing are important for ordering and listing the data, these steps are more mechanical and less prone to error if the student follows the procedure. The error in Justifying and Proving is more conceptual and directly leads to an incorrect answer, making it the primary source of difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4555,
+            "completion_tokens": 159
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:59:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.",
+              "likely_errors": "A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.",
+              "likely_errors": "A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.",
+              "likely_errors": "A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "step": "The student accurately orders the data set from smallest to largest, resulting in the sequence 4, 5, 5, 6, 6, 6, 7, 8, 9, 9."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "step": "The student represents the ordered data in a clear, structured format to visually identify the two middle values (the 5th and 6th numbers) for the median calculation."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student applies the definition of the median for an even number of data points, justifying that the median is the average of the 5th and 6th values, and explains why this method is mathematically valid."
+            }
+          ],
+          "why": "The student must first use procedural fluency to order the data, as this is a prerequisite for identifying the median. Once ordered, the student uses representing to structure the data clearly, enabling accurate identification of the middle values. Finally, the student justifies the method used to compute the median, which relies on understanding the definition and reasoning about its validity, making this the final step in the process."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of correctly applying the definition of the median for an even number of data points, such as by selecting only the 5th value instead of averaging the 5th and 6th values. This step requires justifying why the average of the two middle numbers is used, which is a core aspect of Justifying and Proving. While Procedural Fluency and Representing are important for ordering and listing the data, these steps are more mechanical and less prone to error if the student follows the procedure. The error in Justifying and Proving is more conceptual and directly leads to an incorrect answer, making it the primary source of difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Procedural Fluency",
+            "why": "The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.",
+            "likely_errors": "A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization."
+          },
+          {
+            "order": 2,
+            "practice": "Representing",
+            "why": "After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.",
+            "likely_errors": "A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.",
+            "likely_errors": "A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.\",\n      \"likely_errors\": \"A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.\",\n      \"likely_errors\": \"A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.\",\n      \"likely_errors\": \"A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student accurately orders the data set from smallest to largest, resulting in the sequence 4, 5, 5, 6, 6, 6, 7, 8, 9, 9.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"step\": \"The student represents the ordered data in a clear, structured format to visually identify the two middle values (the 5th and 6th numbers) for the median calculation.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student applies the definition of the median for an even number of data points, justifying that the median is the average of the 5th and 6th values, and explains why this method is mathematically valid.\"\n    }\n  ],\n  \"why\": \"The student must first use procedural fluency to order the data, as this is a prerequisite for identifying the median. Once ordered, the student uses representing to structure the data clearly, enabling accurate identification of the middle values. Finally, the student justifies the method used to compute the median, which relies on understanding the definition and reasoning about its validity, making this the final step in the process.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of correctly applying the definition of the median for an even number of data points, such as by selecting only the 5th value instead of averaging the 5th and 6th values. This step requires justifying why the average of the two middle numbers is used, which is a core aspect of Justifying and Proving. While Procedural Fluency and Representing are important for ordering and listing the data, these steps are more mechanical and less prone to error if the student follows the procedure. The error in Justifying and Proving is more conceptual and directly leads to an incorrect answer, making it the primary source of difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.",
+          "likely_errors": "A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.",
+          "likely_errors": "A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.",
+          "likely_errors": "A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "step": "The student accurately orders the data set from smallest to largest, resulting in the sequence 4, 5, 5, 6, 6, 6, 7, 8, 9, 9."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "step": "The student represents the ordered data in a clear, structured format to visually identify the two middle values (the 5th and 6th numbers) for the median calculation."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student applies the definition of the median for an even number of data points, justifying that the median is the average of the 5th and 6th values, and explains why this method is mathematically valid."
+        }
+      ],
+      "why": "The student must first use procedural fluency to order the data, as this is a prerequisite for identifying the median. Once ordered, the student uses representing to structure the data clearly, enabling accurate identification of the middle values. Finally, the student justifies the method used to compute the median, which relies on understanding the definition and reasoning about its validity, making this the final step in the process."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of correctly applying the definition of the median for an even number of data points, such as by selecting only the 5th value instead of averaging the 5th and 6th values. This step requires justifying why the average of the two middle numbers is used, which is a core aspect of Justifying and Proving. While Procedural Fluency and Representing are important for ordering and listing the data, these steps are more mechanical and less prone to error if the student follows the procedure. The error in Justifying and Proving is more conceptual and directly leads to an incorrect answer, making it the primary source of difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must first organize the data in ascending order to compute the median, which requires accurately listing the numbers from smallest to largest. This step involves a procedural skill in ordering a set of numbers, which is a core component of procedural fluency as defined by accurately and efficiently handling numerical data.",
+          "likely_errors": "A student might misorder the numbers (e.g., placing 9 before 8 or skipping a 6), which is common for students who are not fluent in sequencing data. This error is moderately likely, especially if the student rushes or lacks practice with data organization."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "After ordering the data, the student must represent the list in a clear, structured form (e.g., 4, 5, 5, 6, 6, 6, 7, 8, 9, 9) to identify the middle values. This step involves translating raw data into a visual or numerical representation that supports the calculation of the median, which aligns with the practice of creating and interpreting numerical representations of data.",
+          "likely_errors": "A student might fail to represent the data correctly after sorting, such as omitting a number or miscounting the total (e.g., thinking there are 9 values instead of 10). This is moderately likely, particularly if the student does not verify their ordered list."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must apply the definition of the median for an even number of data points (the average of the 5th and 6th values) and justify why this method is appropriate. This involves reasoning about the mathematical definition of median and why the average of the two middle numbers is used, which is a key aspect of justifying mathematical claims and procedures.",
+          "likely_errors": "A student might incorrectly choose one of the middle values (e.g., just picking the 5th value) without averaging, which shows a misunderstanding of the median definition. This is fairly likely, especially if the student has not internalized the rule for even-sized data sets."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond this specific data set. The task is focused on computing a single statistical measure from a given list, not on recognizing a broader pattern or extending reasoning to a larger domain."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or using a model to represent a real-world situation or to solve a problem that requires mathematizing a context. The data is already provided in a mathematical form, and the task is purely computational, not contextual or scenario-based."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no need to evaluate or build on someone else’s work. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "ordering": [
+      "Procedural Fluency",
+      "Representing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

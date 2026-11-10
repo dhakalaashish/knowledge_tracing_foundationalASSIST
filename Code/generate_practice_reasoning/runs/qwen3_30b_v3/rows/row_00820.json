@@ -1,0 +1,389 @@
+{
+  "row": 820,
+  "problem_id": "101005",
+  "problem_text": "A school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\",\n    \"likely_errors\": \"A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\",\n    \"likely_errors\": \"A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\",\n    \"likely_errors\": \"A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\",\n    \"likely_errors\": \"A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3907,
+            "completion_tokens": 726
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\n- Justifying and Proving: After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\n- Procedural Fluency: The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\n- Justifying and Proving: After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\n- Procedural Fluency: The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\n- Justifying and Proving: After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\n- Procedural Fluency: The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to calculate total sales, and then computes 60% of that total to find the amount paid to the company.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the required multiplications and additions accurately and efficiently to compute the total sales and then calculates 60% of that total.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies that 60% of total sales is the correct amount to pay the company because the school keeps 40%, so the remainder must go to the company.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by translating the context and table into a numerical expression, which is the foundational step. Once the representation is in place, the student applies procedural fluency to compute the values accurately. Only after obtaining the result does the student justify why the calculation is correct, which relies on understanding the relationship between the percentages and the distribution of funds.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to calculate total sales, and then computes 60% of that total to find the amount paid to the company.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the required multiplications and additions accurately and efficiently to compute the total sales and then calculates 60% of that total.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies that 60% of total sales is the correct amount to pay the company because the school keeps 40%, so the remainder must go to the company.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by translating the context and table into a numerical expression, which is the foundational step. Once the representation is in place, the student applies procedural fluency to compute the values accurately. Only after obtaining the result does the student justify why the calculation is correct, which relies on understanding the relationship between the percentages and the distribution of funds.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4121,
+            "completion_tokens": 297
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\",\n      \"likely_errors\": \"A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\",\n      \"likely_errors\": \"A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\",\n      \"likely_errors\": \"A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\",\n      \"likely_errors\": \"A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA school is selling candles for a fundraiser. They keep 40% of the total sales as their commission, and they pay the rest to the candle company.\n[Table:\nprice of candle | number of candles sold\nsmall candle: $11 | 68\nmedium candle: $18 | 45\nlarge candle: $25 | 21]\nHow much money must the school pay to the candle company?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\",\n      \"likely_errors\": \"A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\",\n      \"likely_errors\": \"A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why 60% of total sales, not 40%, should be paid to the company. Misunderstanding that 'keeping 40%' means the remainder (60%) goes to the company is a common conceptual error, especially if the student focuses only on the number 40% without reasoning about the distribution. While Representing and Procedural Fluency involve setting up the calculation and performing arithmetic—both of which are more mechanical—the reasoning behind using 60% is the critical conceptual hurdle. Procedural Fluency errors are less likely to be the main cause because they are typically computational slips, whereas a student who uses 40% instead of 60% has failed to justify the correct relationship between the percentages, indicating a deeper conceptual gap.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why 60% of total sales, not 40%, should be paid to the company. Misunderstanding that 'keeping 40%' means the remainder (60%) goes to the company is a common conceptual error, especially if the student focuses only on the number 40% without reasoning about the distribution. While Representing and Procedural Fluency involve setting up the calculation and performing arithmetic—both of which are more mechanical—the reasoning behind using 60% is the critical conceptual hurdle. Procedural Fluency errors are less likely to be the main cause because they are typically computational slips, whereas a student who uses 40% instead of 60% has failed to justify the correct relationship between the percentages, indicating a deeper conceptual gap.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4608,
+            "completion_tokens": 193
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.",
+              "likely_errors": "A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.",
+              "likely_errors": "A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.",
+              "likely_errors": "A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to calculate total sales, and then computes 60% of that total to find the amount paid to the company."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the required multiplications and additions accurately and efficiently to compute the total sales and then calculates 60% of that total."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student justifies that 60% of total sales is the correct amount to pay the company because the school keeps 40%, so the remainder must go to the company."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically by translating the context and table into a numerical expression, which is the foundational step. Once the representation is in place, the student applies procedural fluency to compute the values accurately. Only after obtaining the result does the student justify why the calculation is correct, which relies on understanding the relationship between the percentages and the distribution of funds."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why 60% of total sales, not 40%, should be paid to the company. Misunderstanding that 'keeping 40%' means the remainder (60%) goes to the company is a common conceptual error, especially if the student focuses only on the number 40% without reasoning about the distribution. While Representing and Procedural Fluency involve setting up the calculation and performing arithmetic—both of which are more mechanical—the reasoning behind using 60% is the critical conceptual hurdle. Procedural Fluency errors are less likely to be the main cause because they are typically computational slips, whereas a student who uses 40% instead of 60% has failed to justify the correct relationship between the percentages, indicating a deeper conceptual gap."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.",
+            "likely_errors": "A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.",
+            "likely_errors": "A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.",
+            "likely_errors": "A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.\",\n    \"likely_errors\": \"A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.\",\n    \"likely_errors\": \"A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to calculate total sales, and then computes 60% of that total to find the amount paid to the company.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the required multiplications and additions accurately and efficiently to compute the total sales and then calculates 60% of that total.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies that 60% of total sales is the correct amount to pay the company because the school keeps 40%, so the remainder must go to the company.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically by translating the context and table into a numerical expression, which is the foundational step. Once the representation is in place, the student applies procedural fluency to compute the values accurately. Only after obtaining the result does the student justify why the calculation is correct, which relies on understanding the relationship between the percentages and the distribution of funds.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why 60% of total sales, not 40%, should be paid to the company. Misunderstanding that 'keeping 40%' means the remainder (60%) goes to the company is a common conceptual error, especially if the student focuses only on the number 40% without reasoning about the distribution. While Representing and Procedural Fluency involve setting up the calculation and performing arithmetic—both of which are more mechanical—the reasoning behind using 60% is the critical conceptual hurdle. Procedural Fluency errors are less likely to be the main cause because they are typically computational slips, whereas a student who uses 40% instead of 60% has failed to justify the correct relationship between the percentages, indicating a deeper conceptual gap.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.",
+          "likely_errors": "A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.",
+          "likely_errors": "A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.",
+          "likely_errors": "A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to calculate total sales, and then computes 60% of that total to find the amount paid to the company."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the required multiplications and additions accurately and efficiently to compute the total sales and then calculates 60% of that total."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student justifies that 60% of total sales is the correct amount to pay the company because the school keeps 40%, so the remainder must go to the company."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically by translating the context and table into a numerical expression, which is the foundational step. Once the representation is in place, the student applies procedural fluency to compute the values accurately. Only after obtaining the result does the student justify why the calculation is correct, which relies on understanding the relationship between the percentages and the distribution of funds."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why 60% of total sales, not 40%, should be paid to the company. Misunderstanding that 'keeping 40%' means the remainder (60%) goes to the company is a common conceptual error, especially if the student focuses only on the number 40% without reasoning about the distribution. While Representing and Procedural Fluency involve setting up the calculation and performing arithmetic—both of which are more mechanical—the reasoning behind using 60% is the critical conceptual hurdle. Procedural Fluency errors are less likely to be the main cause because they are typically computational slips, whereas a student who uses 40% instead of 60% has failed to justify the correct relationship between the percentages, indicating a deeper conceptual gap."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the word problem and table into a mathematical expression: (11 × 68) + (18 × 45) + (25 × 21) to find total sales, then compute 60% of that total (since 40% is kept by the school). This involves creating a numerical representation of the situation using multiplication and addition, matching the descriptor of representing problem situations with numeric representations and operations.",
+          "likely_errors": "A student might misrepresent the problem by using 40% of total sales as the amount to pay (instead of 60%), or incorrectly set up the multiplication. This is moderately likely, especially if the student misreads 'keep 40%' as 'pay 40%'."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the total sales by multiplying the price of each candle type by the number sold and summing the results. This requires accurate and efficient multiplication and addition with whole numbers and decimals, which aligns with the procedural fluency descriptor of carrying out operations accurately and efficiently.",
+          "likely_errors": "A student might make a calculation error in multiplication (e.g., 18 × 45 = 810 instead of 810 is correct, but 18 × 45 = 720 is a common mistake) or misadd the partial totals. This is moderately likely, especially without a calculator, but less likely for students with strong arithmetic fluency."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After computing 60% of total sales, the student must justify that this is correct because the school keeps 40%, so the remainder (60%) goes to the company. This involves reasoning about the relationship between the percentages and the distribution of money, which matches the descriptor of justifying conclusions about numerical relationships and why they are valid.",
+          "likely_errors": "A student might not recognize that 60% is the correct portion to pay, instead using 40% or subtracting incorrectly. This is moderately likely if the student doesn’t fully understand the meaning of 'keep 40%'."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item involves a single, specific scenario with given numbers and no pattern or sequence to generalize. There is no need to identify a broader pattern or extend reasoning to a larger set of cases, so abstracting and generalizing is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the situation is contextual, the student is not asked to identify a problem, make assumptions, or build a model from scratch. The model (multiplication and percentage calculation) is straightforward and directly provided by the problem, so full mathematical modeling is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or work. There is no need to respond to or build on another person’s contribution, so collaborative mathematics is not assessed."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

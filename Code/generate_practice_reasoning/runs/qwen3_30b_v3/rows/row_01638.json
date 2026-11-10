@@ -1,0 +1,389 @@
+{
+  "row": 1638,
+  "problem_id": "225175",
+  "problem_text": "A state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\",\n    \"likely_errors\": \"A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\",\n    \"likely_errors\": \"A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\",\n    \"likely_errors\": \"A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\",\n    \"likely_errors\": \"A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\",\n    \"likely_errors\": \"A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\",\n    \"likely_errors\": \"A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3887,
+            "completion_tokens": 847
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\n- Abstracting and Generalizing: After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\n- Procedural Fluency: Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\n- Abstracting and Generalizing: After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\n- Procedural Fluency: Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\n- Abstracting and Generalizing: After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\n- Procedural Fluency: Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the scenario involving people and entrance fees and translates it into a mathematical representation, such as a table of values or a sequence of numbers showing the relationship between the number of people and the charge.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern in the fees—specifically, that the cost increases by $6 for every 2 additional people—and generalizes this rate to apply it to a larger number of people, such as 30.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate arithmetic to compute the total charge for 30 people by applying the generalized rate ($3 per person or $6 per 2 people), calculating the number of increments, and adding the base fee.\"\n    }\n  ],\n  \"why\": \"A student must first represent the given information mathematically to make sense of the problem before identifying patterns. Once the pattern is recognized and generalized, the student can apply it to new cases, which requires accurate computation. Procedural fluency follows abstracting and generalizing because the calculations depend on the established pattern, and the order reflects the logical progression from understanding the situation to solving it.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the scenario involving people and entrance fees and translates it into a mathematical representation, such as a table of values or a sequence of numbers showing the relationship between the number of people and the charge.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern in the fees—specifically, that the cost increases by $6 for every 2 additional people—and generalizes this rate to apply it to a larger number of people, such as 30.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate arithmetic to compute the total charge for 30 people by applying the generalized rate ($3 per person or $6 per 2 people), calculating the number of increments, and adding the base fee.\"\n    }\n  ],\n  \"why\": \"A student must first represent the given information mathematically to make sense of the problem before identifying patterns. Once the pattern is recognized and generalized, the student can apply it to new cases, which requires accurate computation. Procedural fluency follows abstracting and generalizing because the calculations depend on the established pattern, and the order reflects the logical progression from understanding the situation to solving it.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4146,
+            "completion_tokens": 303
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\",\n      \"likely_errors\": \"A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\",\n      \"likely_errors\": \"A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA state park charges an entrance fee based on the number of people in a vehicle. A car containing 2 people is charged $14, a car containing 4 people is charged $20, and a van containing 8 people is charged $32.\nHow much do you think a bus containing 30 people would be charged?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\",\n      \"likely_errors\": \"A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of identifying and extending the pattern correctly, especially by misinterpreting the rate of change—such as assuming a constant $7 per person instead of recognizing the $6 increase for every 2 people. This error stems from failing to abstract the underlying structure of the data, which is the core of this practice. While Representing and Procedural Fluency are important, misrepresenting the data is less likely if the student reads the values carefully, and procedural errors are typically minor and fixable with attention, whereas a flawed generalization leads to a fundamentally incorrect prediction.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of identifying and extending the pattern correctly, especially by misinterpreting the rate of change—such as assuming a constant $7 per person instead of recognizing the $6 increase for every 2 people. This error stems from failing to abstract the underlying structure of the data, which is the core of this practice. While Representing and Procedural Fluency are important, misrepresenting the data is less likely if the student reads the values carefully, and procedural errors are typically minor and fixable with attention, whereas a flawed generalization leads to a fundamentally incorrect prediction.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4709,
+            "completion_tokens": 144
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.",
+              "likely_errors": "A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.",
+              "likely_errors": "A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.",
+              "likely_errors": "A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the scenario involving people and entrance fees and translates it into a mathematical representation, such as a table of values or a sequence of numbers showing the relationship between the number of people and the charge."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the pattern in the fees—specifically, that the cost increases by $6 for every 2 additional people—and generalizes this rate to apply it to a larger number of people, such as 30."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student performs accurate arithmetic to compute the total charge for 30 people by applying the generalized rate ($3 per person or $6 per 2 people), calculating the number of increments, and adding the base fee."
+            }
+          ],
+          "why": "A student must first represent the given information mathematically to make sense of the problem before identifying patterns. Once the pattern is recognized and generalized, the student can apply it to new cases, which requires accurate computation. Procedural fluency follows abstracting and generalizing because the calculations depend on the established pattern, and the order reflects the logical progression from understanding the situation to solving it."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of identifying and extending the pattern correctly, especially by misinterpreting the rate of change—such as assuming a constant $7 per person instead of recognizing the $6 increase for every 2 people. This error stems from failing to abstract the underlying structure of the data, which is the core of this practice. While Representing and Procedural Fluency are important, misrepresenting the data is less likely if the student reads the values carefully, and procedural errors are typically minor and fixable with attention, whereas a flawed generalization leads to a fundamentally incorrect prediction."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.",
+            "likely_errors": "A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.",
+            "likely_errors": "A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.",
+            "likely_errors": "A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.\",\n    \"likely_errors\": \"A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.\",\n    \"likely_errors\": \"A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.\",\n    \"likely_errors\": \"A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the scenario involving people and entrance fees and translates it into a mathematical representation, such as a table of values or a sequence of numbers showing the relationship between the number of people and the charge.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern in the fees—specifically, that the cost increases by $6 for every 2 additional people—and generalizes this rate to apply it to a larger number of people, such as 30.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate arithmetic to compute the total charge for 30 people by applying the generalized rate ($3 per person or $6 per 2 people), calculating the number of increments, and adding the base fee.\"\n    }\n  ],\n  \"why\": \"A student must first represent the given information mathematically to make sense of the problem before identifying patterns. Once the pattern is recognized and generalized, the student can apply it to new cases, which requires accurate computation. Procedural fluency follows abstracting and generalizing because the calculations depend on the established pattern, and the order reflects the logical progression from understanding the situation to solving it.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of identifying and extending the pattern correctly, especially by misinterpreting the rate of change—such as assuming a constant $7 per person instead of recognizing the $6 increase for every 2 people. This error stems from failing to abstract the underlying structure of the data, which is the core of this practice. While Representing and Procedural Fluency are important, misrepresenting the data is less likely if the student reads the values carefully, and procedural errors are typically minor and fixable with attention, whereas a flawed generalization leads to a fundamentally incorrect prediction.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.",
+          "likely_errors": "A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.",
+          "likely_errors": "A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.",
+          "likely_errors": "A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the scenario involving people and entrance fees and translates it into a mathematical representation, such as a table of values or a sequence of numbers showing the relationship between the number of people and the charge."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the pattern in the fees—specifically, that the cost increases by $6 for every 2 additional people—and generalizes this rate to apply it to a larger number of people, such as 30."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student performs accurate arithmetic to compute the total charge for 30 people by applying the generalized rate ($3 per person or $6 per 2 people), calculating the number of increments, and adding the base fee."
+        }
+      ],
+      "why": "A student must first represent the given information mathematically to make sense of the problem before identifying patterns. Once the pattern is recognized and generalized, the student can apply it to new cases, which requires accurate computation. Procedural fluency follows abstracting and generalizing because the calculations depend on the established pattern, and the order reflects the logical progression from understanding the situation to solving it."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of identifying and extending the pattern correctly, especially by misinterpreting the rate of change—such as assuming a constant $7 per person instead of recognizing the $6 increase for every 2 people. This error stems from failing to abstract the underlying structure of the data, which is the core of this practice. While Representing and Procedural Fluency are important, misrepresenting the data is less likely if the student reads the values carefully, and procedural errors are typically minor and fixable with attention, whereas a flawed generalization leads to a fundamentally incorrect prediction."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given scenario involving people and charges, and translate it into a mathematical representation such as a table of values or a pattern of numbers. This involves recognizing the relationship between the number of people and the entrance fee, which aligns with the descriptor of representing problem situations using numerical patterns or tables.",
+          "likely_errors": "A student might misrepresent the data by incorrectly listing the values or misreading the number of people or fees, such as switching 2 people with $14 and 4 people with $20. This is moderately likely, especially if the student rushes through the initial reading."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the data, the student must identify a pattern in the fees: the cost increases by $6 for every 2 additional people (from 2 to 4 people: +$6; from 4 to 8 people: +$12, which is $6 per 2 people). The student then generalizes this rate to predict the cost for 30 people, extending the pattern beyond the given data points, which matches the descriptor of identifying and extending patterns to larger sets of numbers.",
+          "likely_errors": "A student might incorrectly assume a constant rate per person (e.g., $7 per person) and apply it directly, leading to $210, which is far off. This is likely if the student fails to notice the non-uniform rate or misidentifies the increment. Alternatively, they might apply the $6 increase only for every 2 people but miscalculate the number of steps to 30, leading to an incorrect total."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the pattern is generalized (e.g., $6 for every 2 people, or $3 per person), the student must perform accurate arithmetic to compute the total cost for 30 people. This includes determining the number of 2-person increments from 2 to 30 (14 increments), multiplying by $6, and adding the base fee of $14. This step requires efficient and accurate computation, matching the descriptor of carrying out algorithms efficiently with whole numbers and operations.",
+          "likely_errors": "A student might make a computational error in multiplication or addition (e.g., 14 × 6 = 84, then 84 + 14 = 98, but they might write 88 or 108). This is likely due to arithmetic fatigue or miscounting the number of increments. However, if the student has strong procedural fluency, this step is routine and error-prone only under pressure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument or proof about why the pattern holds or to defend a claim with logical reasoning. The task is to make a prediction based on observed data, not to justify the validity of the pattern or its mathematical foundation."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the scenario is contextual, the item does not ask the student to identify a problem, define variables, build a model (like an equation), or check the reasonableness of the solution in the real world. The student is only asked to extrapolate a pattern, not to develop a full model with assumptions, parameters, or validation steps."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another person's thinking, strategy, or claim. There is no dialogue, peer work, or collaborative element that requires the student to respond to or build on someone else’s mathematical contribution."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

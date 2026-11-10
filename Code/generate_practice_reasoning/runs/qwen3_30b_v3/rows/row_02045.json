@@ -1,0 +1,389 @@
+{
+  "row": 2045,
+  "problem_id": "17667",
+  "problem_text": "Consecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\",\n    \"likely_errors\": \"A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\",\n    \"likely_errors\": \"A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\",\n    \"likely_errors\": \"A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\",\n    \"likely_errors\": \"A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\",\n    \"likely_errors\": \"A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\",\n    \"likely_errors\": \"A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3886,
+            "completion_tokens": 687
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\n- Abstracting and Generalizing: The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\n- Justifying and Proving: After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\n- Abstracting and Generalizing: The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\n- Justifying and Proving: After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\n- Abstracting and Generalizing: The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\n- Justifying and Proving: After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the verbal description of consecutive positive integers into a mathematical representation using algebraic expressions, such as n, n+1, n+2, ..., to model a sequence of two or more consecutive integers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the sum of k consecutive integers starting at n into the formula k*n + k*(k-1)/2 = 100 and analyzes this equation for different values of k to identify all possible solutions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student verifies that each candidate solution yields a valid set of consecutive positive integers (n > 0, all terms are integers) and justifies that no other solutions exist by showing that for larger k, n becomes non-positive or non-integer.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make it solvable, which is the foundation for all subsequent steps. Once represented, the student generalizes the pattern across different numbers of terms to systematically explore all possibilities. Only after identifying candidate solutions does the student need to justify their validity and completeness, ensuring each solution meets the conditions and that no others are possible.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the verbal description of consecutive positive integers into a mathematical representation using algebraic expressions, such as n, n+1, n+2, ..., to model a sequence of two or more consecutive integers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the sum of k consecutive integers starting at n into the formula k*n + k*(k-1)/2 = 100 and analyzes this equation for different values of k to identify all possible solutions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student verifies that each candidate solution yields a valid set of consecutive positive integers (n > 0, all terms are integers) and justifies that no other solutions exist by showing that for larger k, n becomes non-positive or non-integer.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make it solvable, which is the foundation for all subsequent steps. Once represented, the student generalizes the pattern across different numbers of terms to systematically explore all possibilities. Only after identifying candidate solutions does the student need to justify their validity and completeness, ensuring each solution meets the conditions and that no others are possible.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4095,
+            "completion_tokens": 306
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\",\n      \"likely_errors\": \"A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\",\n      \"likely_errors\": \"A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\",\n      \"likely_errors\": \"A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\",\n      \"likely_errors\": \"A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\",\n      \"likely_errors\": \"A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\",\n      \"likely_errors\": \"A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nConsecutive numbers follow one right after the other. An example of three consecutive numbers is 17, 18, and 19. Another example is -100, -99, -98.\nHow many sets of two or more consecutive positive integers can be added to obtain a sum of 100?\n____ sets\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\",\n      \"likely_errors\": \"A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\",\n      \"likely_errors\": \"A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\",\n      \"likely_errors\": \"A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of verifying that each candidate solution consists of consecutive positive integers and that no valid solutions are missed, especially by failing to check whether the starting number n is positive or whether all terms are integers. This step requires rigorous justification to rule out invalid cases and confirm completeness, which is central to the practice of Justifying and Proving. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and generalizing the pattern, which students can often do correctly even if they don’t fully verify the solutions. Procedural Fluency is not the main challenge, as the computations are not routine but embedded in reasoning, and the other practices are not used at all.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of verifying that each candidate solution consists of consecutive positive integers and that no valid solutions are missed, especially by failing to check whether the starting number n is positive or whether all terms are integers. This step requires rigorous justification to rule out invalid cases and confirm completeness, which is central to the practice of Justifying and Proving. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and generalizing the pattern, which students can often do correctly even if they don’t fully verify the solutions. Procedural Fluency is not the main challenge, as the computations are not routine but embedded in reasoning, and the other practices are not used at all.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4548,
+            "completion_tokens": 169
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.",
+              "likely_errors": "A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.",
+              "likely_errors": "A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.",
+              "likely_errors": "A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the verbal description of consecutive positive integers into a mathematical representation using algebraic expressions, such as n, n+1, n+2, ..., to model a sequence of two or more consecutive integers."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes the sum of k consecutive integers starting at n into the formula k*n + k*(k-1)/2 = 100 and analyzes this equation for different values of k to identify all possible solutions."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student verifies that each candidate solution yields a valid set of consecutive positive integers (n > 0, all terms are integers) and justifies that no other solutions exist by showing that for larger k, n becomes non-positive or non-integer."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically to make it solvable, which is the foundation for all subsequent steps. Once represented, the student generalizes the pattern across different numbers of terms to systematically explore all possibilities. Only after identifying candidate solutions does the student need to justify their validity and completeness, ensuring each solution meets the conditions and that no others are possible."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of verifying that each candidate solution consists of consecutive positive integers and that no valid solutions are missed, especially by failing to check whether the starting number n is positive or whether all terms are integers. This step requires rigorous justification to rule out invalid cases and confirm completeness, which is central to the practice of Justifying and Proving. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and generalizing the pattern, which students can often do correctly even if they don’t fully verify the solutions. Procedural Fluency is not the main challenge, as the computations are not routine but embedded in reasoning, and the other practices are not used at all."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.",
+            "likely_errors": "A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.",
+            "likely_errors": "A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.",
+            "likely_errors": "A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.\",\n    \"likely_errors\": \"A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.\",\n    \"likely_errors\": \"A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.\",\n    \"likely_errors\": \"A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the verbal description of consecutive positive integers into a mathematical representation using algebraic expressions, such as n, n+1, n+2, ..., to model a sequence of two or more consecutive integers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the sum of k consecutive integers starting at n into the formula k*n + k*(k-1)/2 = 100 and analyzes this equation for different values of k to identify all possible solutions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student verifies that each candidate solution yields a valid set of consecutive positive integers (n > 0, all terms are integers) and justifies that no other solutions exist by showing that for larger k, n becomes non-positive or non-integer.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make it solvable, which is the foundation for all subsequent steps. Once represented, the student generalizes the pattern across different numbers of terms to systematically explore all possibilities. Only after identifying candidate solutions does the student need to justify their validity and completeness, ensuring each solution meets the conditions and that no others are possible.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of verifying that each candidate solution consists of consecutive positive integers and that no valid solutions are missed, especially by failing to check whether the starting number n is positive or whether all terms are integers. This step requires rigorous justification to rule out invalid cases and confirm completeness, which is central to the practice of Justifying and Proving. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and generalizing the pattern, which students can often do correctly even if they don’t fully verify the solutions. Procedural Fluency is not the main challenge, as the computations are not routine but embedded in reasoning, and the other practices are not used at all.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.",
+          "likely_errors": "A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.",
+          "likely_errors": "A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.",
+          "likely_errors": "A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the verbal description of consecutive positive integers into a mathematical representation using algebraic expressions, such as n, n+1, n+2, ..., to model a sequence of two or more consecutive integers."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes the sum of k consecutive integers starting at n into the formula k*n + k*(k-1)/2 = 100 and analyzes this equation for different values of k to identify all possible solutions."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student verifies that each candidate solution yields a valid set of consecutive positive integers (n > 0, all terms are integers) and justifies that no other solutions exist by showing that for larger k, n becomes non-positive or non-integer."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically to make it solvable, which is the foundation for all subsequent steps. Once represented, the student generalizes the pattern across different numbers of terms to systematically explore all possibilities. Only after identifying candidate solutions does the student need to justify their validity and completeness, ensuring each solution meets the conditions and that no others are possible."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of verifying that each candidate solution consists of consecutive positive integers and that no valid solutions are missed, especially by failing to check whether the starting number n is positive or whether all terms are integers. This step requires rigorous justification to rule out invalid cases and confirm completeness, which is central to the practice of Justifying and Proving. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and generalizing the pattern, which students can often do correctly even if they don’t fully verify the solutions. Procedural Fluency is not the main challenge, as the computations are not routine but embedded in reasoning, and the other practices are not used at all."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the problem by representing the concept of consecutive positive integers mathematically, such as using algebraic expressions like n, n+1, n+2, etc., to model a sequence of two or more consecutive integers. This involves translating the verbal description of consecutive numbers into a symbolic form suitable for computation.",
+          "likely_errors": "A student might incorrectly represent the sequence (e.g., using n, n+2 instead of n, n+1) or fail to account for the requirement of 'two or more' numbers, leading to invalid or incomplete models. This is moderately likely for students still developing algebraic representation skills."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the sum of k consecutive integers starting at n into a formula: k*n + k*(k-1)/2 = 100. They then analyze this equation across different values of k (number of terms) to find all valid solutions. This requires identifying a pattern and extending it across multiple cases to determine all possible sets.",
+          "likely_errors": "A student might miss some values of k due to not systematically testing all possibilities or incorrectly deriving the sum formula. This is moderately likely, especially if they skip testing small or large k values."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After identifying candidate values of k and n, the student must verify that each solution produces a valid set of consecutive positive integers (e.g., n > 0, all terms are integers, and the sum is exactly 100). They must also justify why no other solutions exist, such as by showing that for k > some value, n becomes non-positive or non-integer.",
+          "likely_errors": "A student might accept a solution where n is not positive or where the terms are not integers, or fail to check all possible k values, leading to an incomplete or incorrect count. This is moderately likely, especially if they don’t verify each solution."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem does not involve modeling a real-world scenario with a context-driven question; instead, it is a pure number theory problem with a defined mathematical structure. There is no need to identify a real-world attribute, select a model, or validate the solution in a contextual setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no interaction with another person’s thinking, no dialogue, no peer claim, and no requirement to respond to or build on someone else’s work. The student works independently on the problem as stated."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student performs calculations (e.g., solving equations, testing values), the core of the task is not procedural execution but rather structural reasoning, pattern recognition, and justification. The steps required are not routine computations but strategic, non-algorithmic reasoning to find all valid solutions."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

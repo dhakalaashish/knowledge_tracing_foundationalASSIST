@@ -1,0 +1,389 @@
+{
+  "row": 2998,
+  "problem_id": "79667",
+  "problem_text": "Two TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show",
+          "started_at": "2026-11-10T01:40:33+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\",\n      \"likely_errors\": \"A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\",\n      \"likely_errors\": \"A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\",\n      \"likely_errors\": \"A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\",\n      \"likely_errors\": \"A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\",\n      \"likely_errors\": \"A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\",\n      \"likely_errors\": \"A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3909,
+            "completion_tokens": 828
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:43:45+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\n- Abstracting and Generalizing: The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\n- Justifying and Proving: The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:52:26+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\n- Abstracting and Generalizing: The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\n- Justifying and Proving: The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\n- Abstracting and Generalizing: The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\n- Justifying and Proving: The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given mean and MAD values for each show and creates a mental or visual representation of the age distributions, imagining clusters of data points around the means with spreads determined by the MADs.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes that a sixth-grader (around 11–12 years old) is much younger than both mean ages, but the show with greater variability (MAD = 20) is more likely to include younger viewers due to the wider spread of ages.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student constructs a logical argument to defend their choice, explaining that the higher MAD in the first show indicates greater variability, making it possible for some viewers to be much younger, unlike the tightly clustered second show.\"\n    }\n  ],\n  \"why\": \"The student must first represent the statistical information visually or mentally to make sense of the data (Representing). Only after forming this representation can they generalize about the likelihood of a young viewer being in each group (Abstracting and Generalizing). Finally, they must justify their conclusion with a reasoned argument based on the meaning of mean and MAD, which requires constructing a valid mathematical justification (Justifying and Proving). This sequence reflects the natural progression from understanding the data, making a broader inference, and then defending that inference.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given mean and MAD values for each show and creates a mental or visual representation of the age distributions, imagining clusters of data points around the means with spreads determined by the MADs.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes that a sixth-grader (around 11–12 years old) is much younger than both mean ages, but the show with greater variability (MAD = 20) is more likely to include younger viewers due to the wider spread of ages.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student constructs a logical argument to defend their choice, explaining that the higher MAD in the first show indicates greater variability, making it possible for some viewers to be much younger, unlike the tightly clustered second show.\"\n    }\n  ],\n  \"why\": \"The student must first represent the statistical information visually or mentally to make sense of the data (Representing). Only after forming this representation can they generalize about the likelihood of a young viewer being in each group (Abstracting and Generalizing). Finally, they must justify their conclusion with a reasoned argument based on the meaning of mean and MAD, which requires constructing a valid mathematical justification (Justifying and Proving). This sequence reflects the natural progression from understanding the data, making a broader inference, and then defending that inference.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4279,
+            "completion_tokens": 336
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:54:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\",\n      \"likely_errors\": \"A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\",\n      \"likely_errors\": \"A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\",\n      \"likely_errors\": \"A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:02:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\",\n      \"likely_errors\": \"A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\",\n      \"likely_errors\": \"A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\",\n      \"likely_errors\": \"A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nTwo TV shows each asked 100 viewers for their ages. For one show, the mean age of the viewers was 35 years and the MAD was 20 years. For the other show, the mean age of the viewers was 30 years and the MAD was 5 years.\nA sixth-grade student says he watches one of the shows. Which show do you think he watches?\n\nAnswer choices:\nA. The first show || The second show\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\",\n      \"likely_errors\": \"A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\",\n      \"likely_errors\": \"A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\",\n      \"likely_errors\": \"A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing from the statistical measures to infer which show a sixth-grader is more likely to watch. The key insight—recognizing that higher variability (larger MAD) allows for younger viewers even if the mean is higher—is a non-trivial generalization that requires understanding that MAD measures spread, not just central tendency. Students who fail here may incorrectly choose the second show simply because its mean is lower, not realizing that a small MAD means all viewers are tightly clustered near 30, making a 12-year-old extremely unlikely. While Representing and Justifying are important, they are more straightforward: interpreting the data visually and explaining the reasoning are easier once the generalization is made, so errors in those steps are less likely to cause incorrect answers than failing to make the correct generalization.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing from the statistical measures to infer which show a sixth-grader is more likely to watch. The key insight—recognizing that higher variability (larger MAD) allows for younger viewers even if the mean is higher—is a non-trivial generalization that requires understanding that MAD measures spread, not just central tendency. Students who fail here may incorrectly choose the second show simply because its mean is lower, not realizing that a small MAD means all viewers are tightly clustered near 30, making a 12-year-old extremely unlikely. While Representing and Justifying are important, they are more straightforward: interpreting the data visually and explaining the reasoning are easier once the generalization is made, so errors in those steps are less likely to cause incorrect answers than failing to make the correct generalization.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4708,
+            "completion_tokens": 191
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:04:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'",
+              "likely_errors": "A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.",
+              "likely_errors": "A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.",
+              "likely_errors": "A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the given mean and MAD values for each show and creates a mental or visual representation of the age distributions, imagining clusters of data points around the means with spreads determined by the MADs."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes that a sixth-grader (around 11–12 years old) is much younger than both mean ages, but the show with greater variability (MAD = 20) is more likely to include younger viewers due to the wider spread of ages."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student constructs a logical argument to defend their choice, explaining that the higher MAD in the first show indicates greater variability, making it possible for some viewers to be much younger, unlike the tightly clustered second show."
+            }
+          ],
+          "why": "The student must first represent the statistical information visually or mentally to make sense of the data (Representing). Only after forming this representation can they generalize about the likelihood of a young viewer being in each group (Abstracting and Generalizing). Finally, they must justify their conclusion with a reasoned argument based on the meaning of mean and MAD, which requires constructing a valid mathematical justification (Justifying and Proving). This sequence reflects the natural progression from understanding the data, making a broader inference, and then defending that inference."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of generalizing from the statistical measures to infer which show a sixth-grader is more likely to watch. The key insight—recognizing that higher variability (larger MAD) allows for younger viewers even if the mean is higher—is a non-trivial generalization that requires understanding that MAD measures spread, not just central tendency. Students who fail here may incorrectly choose the second show simply because its mean is lower, not realizing that a small MAD means all viewers are tightly clustered near 30, making a 12-year-old extremely unlikely. While Representing and Justifying are important, they are more straightforward: interpreting the data visually and explaining the reasoning are easier once the generalization is made, so errors in those steps are less likely to cause incorrect answers than failing to make the correct generalization."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'",
+            "likely_errors": "A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.",
+            "likely_errors": "A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.",
+            "likely_errors": "A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'\",\n      \"likely_errors\": \"A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.\",\n      \"likely_errors\": \"A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.\",\n      \"likely_errors\": \"A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given mean and MAD values for each show and creates a mental or visual representation of the age distributions, imagining clusters of data points around the means with spreads determined by the MADs.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes that a sixth-grader (around 11–12 years old) is much younger than both mean ages, but the show with greater variability (MAD = 20) is more likely to include younger viewers due to the wider spread of ages.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student constructs a logical argument to defend their choice, explaining that the higher MAD in the first show indicates greater variability, making it possible for some viewers to be much younger, unlike the tightly clustered second show.\"\n    }\n  ],\n  \"why\": \"The student must first represent the statistical information visually or mentally to make sense of the data (Representing). Only after forming this representation can they generalize about the likelihood of a young viewer being in each group (Abstracting and Generalizing). Finally, they must justify their conclusion with a reasoned argument based on the meaning of mean and MAD, which requires constructing a valid mathematical justification (Justifying and Proving). This sequence reflects the natural progression from understanding the data, making a broader inference, and then defending that inference.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing from the statistical measures to infer which show a sixth-grader is more likely to watch. The key insight—recognizing that higher variability (larger MAD) allows for younger viewers even if the mean is higher—is a non-trivial generalization that requires understanding that MAD measures spread, not just central tendency. Students who fail here may incorrectly choose the second show simply because its mean is lower, not realizing that a small MAD means all viewers are tightly clustered near 30, making a 12-year-old extremely unlikely. While Representing and Justifying are important, they are more straightforward: interpreting the data visually and explaining the reasoning are easier once the generalization is made, so errors in those steps are less likely to cause incorrect answers than failing to make the correct generalization.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'",
+          "likely_errors": "A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.",
+          "likely_errors": "A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.",
+          "likely_errors": "A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the given mean and MAD values for each show and creates a mental or visual representation of the age distributions, imagining clusters of data points around the means with spreads determined by the MADs."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes that a sixth-grader (around 11–12 years old) is much younger than both mean ages, but the show with greater variability (MAD = 20) is more likely to include younger viewers due to the wider spread of ages."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student constructs a logical argument to defend their choice, explaining that the higher MAD in the first show indicates greater variability, making it possible for some viewers to be much younger, unlike the tightly clustered second show."
+        }
+      ],
+      "why": "The student must first represent the statistical information visually or mentally to make sense of the data (Representing). Only after forming this representation can they generalize about the likelihood of a young viewer being in each group (Abstracting and Generalizing). Finally, they must justify their conclusion with a reasoned argument based on the meaning of mean and MAD, which requires constructing a valid mathematical justification (Justifying and Proving). This sequence reflects the natural progression from understanding the data, making a broader inference, and then defending that inference."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of generalizing from the statistical measures to infer which show a sixth-grader is more likely to watch. The key insight—recognizing that higher variability (larger MAD) allows for younger viewers even if the mean is higher—is a non-trivial generalization that requires understanding that MAD measures spread, not just central tendency. Students who fail here may incorrectly choose the second show simply because its mean is lower, not realizing that a small MAD means all viewers are tightly clustered near 30, making a 12-year-old extremely unlikely. While Representing and Justifying are important, they are more straightforward: interpreting the data visually and explaining the reasoning are easier once the generalization is made, so errors in those steps are less likely to cause incorrect answers than failing to make the correct generalization."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given statistical information—mean and MAD—for two TV shows and represent it in a way that allows comparison. This involves translating the verbal description of the data (mean age and MAD) into a mental or visual model of the distribution of ages, such as imagining a cluster of data points around the mean with a spread indicated by the MAD. This aligns with the descriptor: 'Create a visual, graphical, or tabular representation of a given data set.'",
+          "likely_errors": "A student might misrepresent the data by confusing mean with median or misinterpreting MAD as a measure of central tendency, leading to an incorrect comparison. This is moderately likely for students still developing statistical reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize from the statistical measures (mean and MAD) to infer which show is more likely to appeal to a sixth-grader. This involves recognizing that a sixth-grader (around 11–12 years old) is much younger than the mean age of either show, but the show with a smaller MAD (5 years) has less variability, so most viewers are closer to the mean. Therefore, the second show (mean 30, MAD 5) has a tighter cluster around 30, making it even less likely for a 12-year-old to be a viewer. The first show (mean 35, MAD 20) has a wider spread, meaning some viewers could be much younger. The student generalizes that a younger viewer is more plausible in a more variable distribution, even if the mean is higher.",
+          "likely_errors": "A student might incorrectly assume the show with the lower mean (30) is more suitable, failing to consider the spread. This is likely if they don’t grasp that MAD reflects variability, not just central tendency."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must defend their choice by reasoning about why one show is more likely for a sixth-grader. This requires constructing a logical argument based on the statistical measures: the first show has a higher mean but much greater variability (MAD = 20), so it's possible that some viewers are much younger, while the second show has a tighter cluster around 30, making younger viewers unlikely. The student must justify why the higher variability allows for younger viewers, using the meaning of MAD as a measure of spread.",
+          "likely_errors": "A student might give a vague answer like 'I think it’s the first one' without reasoning, or incorrectly claim that the second show is better because the mean is lower. This is moderately likely if the student hasn’t internalized the meaning of MAD."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not require the student to create a model of a real-world situation, define variables, or test a solution against real data. The scenario is already fully described, and the student only needs to interpret existing statistical measures, not build or revise a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item does not involve another person’s mathematical thinking, argument, or work that the student must respond to. The student is making a personal judgment based on data, not engaging in dialogue or building on a peer’s contribution."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "The item does not require the student to perform any calculations (e.g., computing mean, MAD, or other statistics). All values are given, and the student only needs to interpret them, not execute a procedure."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

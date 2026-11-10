@@ -1,0 +1,389 @@
+{
+  "row": 1452,
+  "problem_id": "25209",
+  "problem_text": "A small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups",
+          "started_at": "2026-11-10T01:31:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\",\n    \"likely_errors\": \"A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\",\n    \"likely_errors\": \"A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\",\n    \"likely_errors\": \"A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\",\n    \"likely_errors\": \"A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\",\n    \"likely_errors\": \"A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\",\n    \"likely_errors\": \"A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3895,
+            "completion_tokens": 718
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:34:13+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\n- Abstracting and Generalizing: The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\n- Procedural Fluency: After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\n- Abstracting and Generalizing: The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\n- Procedural Fluency: After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\n- Abstracting and Generalizing: The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\n- Procedural Fluency: After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem by translating the ingredient quantities from the test batch into a mathematical ratio, specifically recognizing the relationship between sugar and water as 1/4 cup to 1 cup.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the proportional relationship from the test batch to the larger batch by recognizing that the same ratio must be maintained, and applies this multiplicative relationship to scale the sugar amount for 10 cups of water.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student sets up and solves the proportion using fraction multiplication (1/4 × 10) to compute the required amount of sugar, accurately calculating the result as 2.5 cups.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by identifying and translating the given quantities into a ratio (Representing). Only after establishing this representation can they abstract the proportional relationship and generalize it to the larger batch (Abstracting and Generalizing). Finally, once the relationship is understood and the proportion is set up, the student applies procedural fluency to compute the correct amount of sugar (Procedural Fluency). This sequence follows the logical progression from understanding the problem to applying mathematical reasoning and then performing accurate computation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem by translating the ingredient quantities from the test batch into a mathematical ratio, specifically recognizing the relationship between sugar and water as 1/4 cup to 1 cup.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the proportional relationship from the test batch to the larger batch by recognizing that the same ratio must be maintained, and applies this multiplicative relationship to scale the sugar amount for 10 cups of water.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student sets up and solves the proportion using fraction multiplication (1/4 × 10) to compute the required amount of sugar, accurately calculating the result as 2.5 cups.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by identifying and translating the given quantities into a ratio (Representing). Only after establishing this representation can they abstract the proportional relationship and generalize it to the larger batch (Abstracting and Generalizing). Finally, once the relationship is understood and the proportion is set up, the student applies procedural fluency to compute the correct amount of sugar (Procedural Fluency). This sequence follows the logical progression from understanding the problem to applying mathematical reasoning and then performing accurate computation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4108,
+            "completion_tokens": 319
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:49:27+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\",\n      \"likely_errors\": \"A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\",\n      \"likely_errors\": \"A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:58:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\",\n      \"likely_errors\": \"A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\",\n      \"likely_errors\": \"A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA small, test batch of lemonade used 1/4 cup of sugar added to 1 cup of water and 1/4 cup of lemon juice. After confirming it tasted good, a larger batch is going to be made with the same ratios using 10 cups of water. How much sugar should be added so that the large batch tastes the same as the test batch?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\",\n      \"likely_errors\": \"A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\",\n      \"likely_errors\": \"A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the proportional relationship between sugar and water across batches, which is the core of abstracting and generalizing. Misunderstanding that the ratio must scale multiplicatively (e.g., treating it additively or misapplying the ratio) leads to incorrect answers like 10 cups of sugar. While Representing and Procedural Fluency involve important steps, errors in those areas are more mechanical and less central to the conceptual challenge; students who correctly represent the ratio and perform the multiplication accurately can still fail if they don’t grasp the underlying proportional structure, making Abstracting and Generalizing the key hurdle.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the proportional relationship between sugar and water across batches, which is the core of abstracting and generalizing. Misunderstanding that the ratio must scale multiplicatively (e.g., treating it additively or misapplying the ratio) leads to incorrect answers like 10 cups of sugar. While Representing and Procedural Fluency involve important steps, errors in those areas are more mechanical and less central to the conceptual challenge; students who correctly represent the ratio and perform the multiplication accurately can still fail if they don’t grasp the underlying proportional structure, making Abstracting and Generalizing the key hurdle.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4588,
+            "completion_tokens": 151
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:59:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.",
+              "likely_errors": "A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.",
+              "likely_errors": "A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).",
+              "likely_errors": "A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the word problem by translating the ingredient quantities from the test batch into a mathematical ratio, specifically recognizing the relationship between sugar and water as 1/4 cup to 1 cup."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes the proportional relationship from the test batch to the larger batch by recognizing that the same ratio must be maintained, and applies this multiplicative relationship to scale the sugar amount for 10 cups of water."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student sets up and solves the proportion using fraction multiplication (1/4 × 10) to compute the required amount of sugar, accurately calculating the result as 2.5 cups."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by identifying and translating the given quantities into a ratio (Representing). Only after establishing this representation can they abstract the proportional relationship and generalize it to the larger batch (Abstracting and Generalizing). Finally, once the relationship is understood and the proportion is set up, the student applies procedural fluency to compute the correct amount of sugar (Procedural Fluency). This sequence follows the logical progression from understanding the problem to applying mathematical reasoning and then performing accurate computation."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to fail at recognizing and applying the proportional relationship between sugar and water across batches, which is the core of abstracting and generalizing. Misunderstanding that the ratio must scale multiplicatively (e.g., treating it additively or misapplying the ratio) leads to incorrect answers like 10 cups of sugar. While Representing and Procedural Fluency involve important steps, errors in those areas are more mechanical and less central to the conceptual challenge; students who correctly represent the ratio and perform the multiplication accurately can still fail if they don’t grasp the underlying proportional structure, making Abstracting and Generalizing the key hurdle."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.",
+            "likely_errors": "A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.",
+            "likely_errors": "A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).",
+            "likely_errors": "A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.\",\n    \"likely_errors\": \"A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.\",\n    \"likely_errors\": \"A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).\",\n    \"likely_errors\": \"A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem by translating the ingredient quantities from the test batch into a mathematical ratio, specifically recognizing the relationship between sugar and water as 1/4 cup to 1 cup.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the proportional relationship from the test batch to the larger batch by recognizing that the same ratio must be maintained, and applies this multiplicative relationship to scale the sugar amount for 10 cups of water.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student sets up and solves the proportion using fraction multiplication (1/4 × 10) to compute the required amount of sugar, accurately calculating the result as 2.5 cups.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by identifying and translating the given quantities into a ratio (Representing). Only after establishing this representation can they abstract the proportional relationship and generalize it to the larger batch (Abstracting and Generalizing). Finally, once the relationship is understood and the proportion is set up, the student applies procedural fluency to compute the correct amount of sugar (Procedural Fluency). This sequence follows the logical progression from understanding the problem to applying mathematical reasoning and then performing accurate computation.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the proportional relationship between sugar and water across batches, which is the core of abstracting and generalizing. Misunderstanding that the ratio must scale multiplicatively (e.g., treating it additively or misapplying the ratio) leads to incorrect answers like 10 cups of sugar. While Representing and Procedural Fluency involve important steps, errors in those areas are more mechanical and less central to the conceptual challenge; students who correctly represent the ratio and perform the multiplication accurately can still fail if they don’t grasp the underlying proportional structure, making Abstracting and Generalizing the key hurdle.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.",
+          "likely_errors": "A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.",
+          "likely_errors": "A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).",
+          "likely_errors": "A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the word problem by translating the ingredient quantities from the test batch into a mathematical ratio, specifically recognizing the relationship between sugar and water as 1/4 cup to 1 cup."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes the proportional relationship from the test batch to the larger batch by recognizing that the same ratio must be maintained, and applies this multiplicative relationship to scale the sugar amount for 10 cups of water."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student sets up and solves the proportion using fraction multiplication (1/4 × 10) to compute the required amount of sugar, accurately calculating the result as 2.5 cups."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by identifying and translating the given quantities into a ratio (Representing). Only after establishing this representation can they abstract the proportional relationship and generalize it to the larger batch (Abstracting and Generalizing). Finally, once the relationship is understood and the proportion is set up, the student applies procedural fluency to compute the correct amount of sugar (Procedural Fluency). This sequence follows the logical progression from understanding the problem to applying mathematical reasoning and then performing accurate computation."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to fail at recognizing and applying the proportional relationship between sugar and water across batches, which is the core of abstracting and generalizing. Misunderstanding that the ratio must scale multiplicatively (e.g., treating it additively or misapplying the ratio) leads to incorrect answers like 10 cups of sugar. While Representing and Procedural Fluency involve important steps, errors in those areas are more mechanical and less central to the conceptual challenge; students who correctly represent the ratio and perform the multiplication accurately can still fail if they don’t grasp the underlying proportional structure, making Abstracting and Generalizing the key hurdle."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given situation involving ingredients and their quantities, translating the word problem into a mathematical representation of ratios. This includes recognizing that the test batch uses 1/4 cup sugar, 1 cup water, and 1/4 cup lemon juice, and representing the ratio of sugar to water as 1/4 : 1, which can be simplified or scaled for the larger batch.",
+          "likely_errors": "A student might misrepresent the ratio by incorrectly writing sugar to water as 1:4 instead of 1/4:1, or confuse the quantities of other ingredients, leading to an incorrect proportion. This is moderately likely for students who struggle with fraction-based ratios."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the proportional relationship between sugar and water from the test batch to the larger batch. Since the larger batch uses 10 cups of water, the student applies the same ratio to determine how much sugar is needed, recognizing that the relationship is multiplicative and scalable across batches.",
+          "likely_errors": "A student might fail to recognize the proportional relationship and instead add 10 times 1/4 cup without scaling correctly (e.g., adding 10 cups of sugar), or incorrectly apply additive reasoning. This is moderately likely for students who haven't internalized proportional reasoning."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After setting up the proportion (1/4 cup sugar / 1 cup water = x cups sugar / 10 cups water), the student performs the computation to solve for x. This involves multiplying 1/4 by 10, which requires fluency with fraction multiplication and simplification (10 × 1/4 = 10/4 = 2.5).",
+          "likely_errors": "A student might make a computational error in multiplying fractions (e.g., 1/4 × 10 = 10/40), or incorrectly simplify 10/4 as 2.4 instead of 2.5. This is likely for students with weak fraction fluency."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify their reasoning, defend a claim, or provide a formal argument about why the solution is correct. The task is to compute a quantity based on a given ratio, not to evaluate or construct a proof or justification."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the item does not involve creating a model from a scenario, identifying variables, or validating the model’s reasonableness. The ratio is already provided and fixed; the student is simply applying a known proportion, not building or testing a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual problem with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or collaborative task to respond to, so the social, interactive aspects of collaborative mathematics are not engaged."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

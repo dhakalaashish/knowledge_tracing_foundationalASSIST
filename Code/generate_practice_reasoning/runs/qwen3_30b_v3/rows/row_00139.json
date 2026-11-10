@@ -1,0 +1,389 @@
+{
+  "row": 139,
+  "problem_id": "53019",
+  "problem_text": "How many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____",
+          "started_at": "2026-11-10T01:26:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\",\n    \"likely_errors\": \"A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\",\n    \"likely_errors\": \"A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\",\n    \"likely_errors\": \"A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\",\n    \"likely_errors\": \"A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3839,
+            "completion_tokens": 847
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:28:51+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\n- Abstracting and Generalizing: After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Procedural Fluency: Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:45:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\n- Abstracting and Generalizing: After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Procedural Fluency: Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\n- Abstracting and Generalizing: After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\n- Procedural Fluency: Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student visualizes or sketches how multiple triangles can meet at a single vertex, creating a geometric representation to understand the spatial arrangement.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that the sum of angles at a vertex must equal 360 degrees and generalizes this rule to determine how many triangles can fit based on their interior angles.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the number of triangles by dividing 360 degrees by the interior angle of a triangle (e.g., 60° for an equilateral triangle) using accurate division.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem spatially to make sense of how triangles can meet at a vertex, which is a prerequisite for identifying patterns. Once the geometric representation is in place, the student can abstract the underlying mathematical rule—angle sum at a point—before applying arithmetic procedures to compute the solution. This order reflects the logical progression from understanding the situation to generalizing the principle and then performing the calculation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student visualizes or sketches how multiple triangles can meet at a single vertex, creating a geometric representation to understand the spatial arrangement.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that the sum of angles at a vertex must equal 360 degrees and generalizes this rule to determine how many triangles can fit based on their interior angles.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the number of triangles by dividing 360 degrees by the interior angle of a triangle (e.g., 60° for an equilateral triangle) using accurate division.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem spatially to make sense of how triangles can meet at a vertex, which is a prerequisite for identifying patterns. Once the geometric representation is in place, the student can abstract the underlying mathematical rule—angle sum at a point—before applying arithmetic procedures to compute the solution. This order reflects the logical progression from understanding the situation to generalizing the principle and then performing the calculation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4173,
+            "completion_tokens": 278
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:46:48+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\",\n      \"likely_errors\": \"A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\",\n      \"likely_errors\": \"A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:54:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\",\n      \"likely_errors\": \"A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\",\n      \"likely_errors\": \"A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHow many triangles can you fit together at one vertex?\nDo not include units (triangles) in your answer.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\",\n      \"likely_errors\": \"A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\",\n      \"likely_errors\": \"A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the key geometric principle that the sum of angles around a point is 360° and that this must be exactly filled by the angles of the triangles meeting at the vertex. This step requires abstracting from specific examples to generalize that the number of triangles depends on their interior angles, which is a core aspect of Abstracting and Generalizing. While Representing and Procedural Fluency are important, misrepresenting the arrangement or miscalculating 360 ÷ 60 is less likely to be the primary barrier—students often correctly sketch equilateral triangles and perform the division. The deeper conceptual leap of generalizing the angle-sum rule to determine maximum fit is the most challenging and where errors are most likely to originate.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the key geometric principle that the sum of angles around a point is 360° and that this must be exactly filled by the angles of the triangles meeting at the vertex. This step requires abstracting from specific examples to generalize that the number of triangles depends on their interior angles, which is a core aspect of Abstracting and Generalizing. While Representing and Procedural Fluency are important, misrepresenting the arrangement or miscalculating 360 ÷ 60 is less likely to be the primary barrier—students often correctly sketch equilateral triangles and perform the division. The deeper conceptual leap of generalizing the angle-sum rule to determine maximum fit is the most challenging and where errors are most likely to originate.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4661,
+            "completion_tokens": 179
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:56:23+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'",
+              "likely_errors": "A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+              "likely_errors": "A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'",
+              "likely_errors": "A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student visualizes or sketches how multiple triangles can meet at a single vertex, creating a geometric representation to understand the spatial arrangement."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the pattern that the sum of angles at a vertex must equal 360 degrees and generalizes this rule to determine how many triangles can fit based on their interior angles."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the number of triangles by dividing 360 degrees by the interior angle of a triangle (e.g., 60° for an equilateral triangle) using accurate division."
+            }
+          ],
+          "why": "The student must first represent the problem spatially to make sense of how triangles can meet at a vertex, which is a prerequisite for identifying patterns. Once the geometric representation is in place, the student can abstract the underlying mathematical rule—angle sum at a point—before applying arithmetic procedures to compute the solution. This order reflects the logical progression from understanding the situation to generalizing the principle and then performing the calculation."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to fail at recognizing and applying the key geometric principle that the sum of angles around a point is 360° and that this must be exactly filled by the angles of the triangles meeting at the vertex. This step requires abstracting from specific examples to generalize that the number of triangles depends on their interior angles, which is a core aspect of Abstracting and Generalizing. While Representing and Procedural Fluency are important, misrepresenting the arrangement or miscalculating 360 ÷ 60 is less likely to be the primary barrier—students often correctly sketch equilateral triangles and perform the division. The deeper conceptual leap of generalizing the angle-sum rule to determine maximum fit is the most challenging and where errors are most likely to originate."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'",
+            "likely_errors": "A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+            "likely_errors": "A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'",
+            "likely_errors": "A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'\",\n    \"likely_errors\": \"A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'\",\n    \"likely_errors\": \"A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student visualizes or sketches how multiple triangles can meet at a single vertex, creating a geometric representation to understand the spatial arrangement.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that the sum of angles at a vertex must equal 360 degrees and generalizes this rule to determine how many triangles can fit based on their interior angles.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the number of triangles by dividing 360 degrees by the interior angle of a triangle (e.g., 60° for an equilateral triangle) using accurate division.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem spatially to make sense of how triangles can meet at a vertex, which is a prerequisite for identifying patterns. Once the geometric representation is in place, the student can abstract the underlying mathematical rule—angle sum at a point—before applying arithmetic procedures to compute the solution. This order reflects the logical progression from understanding the situation to generalizing the principle and then performing the calculation.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the key geometric principle that the sum of angles around a point is 360° and that this must be exactly filled by the angles of the triangles meeting at the vertex. This step requires abstracting from specific examples to generalize that the number of triangles depends on their interior angles, which is a core aspect of Abstracting and Generalizing. While Representing and Procedural Fluency are important, misrepresenting the arrangement or miscalculating 360 ÷ 60 is less likely to be the primary barrier—students often correctly sketch equilateral triangles and perform the division. The deeper conceptual leap of generalizing the angle-sum rule to determine maximum fit is the most challenging and where errors are most likely to originate.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'",
+          "likely_errors": "A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'",
+          "likely_errors": "A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student visualizes or sketches how multiple triangles can meet at a single vertex, creating a geometric representation to understand the spatial arrangement."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the pattern that the sum of angles at a vertex must equal 360 degrees and generalizes this rule to determine how many triangles can fit based on their interior angles."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the number of triangles by dividing 360 degrees by the interior angle of a triangle (e.g., 60° for an equilateral triangle) using accurate division."
+        }
+      ],
+      "why": "The student must first represent the problem spatially to make sense of how triangles can meet at a vertex, which is a prerequisite for identifying patterns. Once the geometric representation is in place, the student can abstract the underlying mathematical rule—angle sum at a point—before applying arithmetic procedures to compute the solution. This order reflects the logical progression from understanding the situation to generalizing the principle and then performing the calculation."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to fail at recognizing and applying the key geometric principle that the sum of angles around a point is 360° and that this must be exactly filled by the angles of the triangles meeting at the vertex. This step requires abstracting from specific examples to generalize that the number of triangles depends on their interior angles, which is a core aspect of Abstracting and Generalizing. While Representing and Procedural Fluency are important, misrepresenting the arrangement or miscalculating 360 ÷ 60 is less likely to be the primary barrier—students often correctly sketch equilateral triangles and perform the division. The deeper conceptual leap of generalizing the angle-sum rule to determine maximum fit is the most challenging and where errors are most likely to originate."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the abstract question about fitting triangles together at a vertex by visualizing or sketching how multiple triangles can meet at a single point. This involves creating a geometric representation—such as drawing or mentally picturing triangles sharing a common vertex—to understand how they can be arranged without gaps or overlaps. This aligns with the descriptor: 'Draw or sketch figures from a written description' and 'Represent problem situations with geometric models to draw conclusions.'",
+          "likely_errors": "A student might misrepresent the arrangement by overlapping triangles or leaving gaps, or may incorrectly assume only equilateral triangles can be used. This is moderately likely, especially for students with limited experience with geometric tiling or vertex configurations."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After visualizing or experimenting with triangle arrangements, the student must identify a pattern or rule—such as the sum of angles at a vertex being 360 degrees—and generalize this to determine how many triangles of a given type can fit. The student must reason that the number depends on the interior angle of the triangle and extend this logic to any triangle, or at least to regular triangles (e.g., equilateral), to find the maximum number that fits exactly. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might fail to recognize that the sum of angles at a vertex must be 360°, or incorrectly assume that all triangles behave the same way regardless of their angles. This is moderately likely, particularly if the student has not worked with angle sums in polygons."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "Once the student generalizes that the sum of angles at a vertex is 360°, they must compute how many triangle angles (e.g., 60° for equilateral) fit into 360° by dividing 360 by the interior angle. This requires accurate division and knowledge of angle measures, such as knowing that equilateral triangles have 60° angles. This aligns with: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers' and 'Apply formulas for perimeter, area, surface area, and volume accurately and efficiently.'",
+          "likely_errors": "A student might miscalculate 360 ÷ 60 as 5 or 7, or use the wrong angle measure (e.g., 90° or 45°). This is likely for students with weak arithmetic fluency or who confuse triangle types."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "While the student uses reasoning and generalization, the item does not require constructing a formal justification or proof (e.g., proving why 360° is the total angle at a point or why no more than six equilateral triangles can fit). The task is to find the number, not to defend or construct a deductive argument about the result, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely geometric and abstract, not rooted in a real-world context or scenario that requires modeling a situation with mathematics. There is no need to identify variables, create equations, or validate a solution in a practical context; the question is about a fixed geometric constraint."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solitary task with no reference to another person’s thinking, argument, or solution. There is no dialogue, peer claim, or shared reasoning to respond to, so collaborative engagement is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

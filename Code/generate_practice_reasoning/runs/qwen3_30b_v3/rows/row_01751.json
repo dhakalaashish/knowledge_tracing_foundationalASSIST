@@ -1,0 +1,370 @@
+{
+  "row": 1751,
+  "problem_id": "207655",
+  "problem_text": "How many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\",\n    \"likely_errors\": \"A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\",\n    \"likely_errors\": \"A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\",\n    \"likely_errors\": \"A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\",\n    \"likely_errors\": \"A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3879,
+            "completion_tokens": 655
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\n- Procedural Fluency: After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\n- Procedural Fluency: After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\n- Procedural Fluency: After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of meal components and translates the categorical data into a mathematical structure representing combinations of one item from each category.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student counts the number of choices in each category and applies the multiplication principle to compute the total number of different meals.\"\n    }\n  ],\n  \"why\": \"The student must first understand and represent the problem situation by interpreting the table and recognizing the need to count combinations across categories before performing any computation. Only after establishing this mathematical representation can the student apply procedural fluency to calculate the total number of meals using multiplication.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of meal components and translates the categorical data into a mathematical structure representing combinations of one item from each category.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student counts the number of choices in each category and applies the multiplication principle to compute the total number of different meals.\"\n    }\n  ],\n  \"why\": \"The student must first understand and represent the problem situation by interpreting the table and recognizing the need to count combinations across categories before performing any computation. Only after establishing this mathematical representation can the student apply procedural fluency to calculate the total number of meals using multiplication.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4004,
+            "completion_tokens": 168
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\",\n      \"likely_errors\": \"A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\",\n      \"likely_errors\": \"A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\",\n      \"likely_errors\": \"A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\",\n      \"likely_errors\": \"A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHow many different meals are possible if each meal includes one main course, one side dish, and one drink?\n[Table:\nmain courses | side dishes | drinks\ngrilled chicken | salad | milk\nturkey sandwich | applesauce | juice\npasta salad | — | water]\nThere are ____ different meals.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\",\n      \"likely_errors\": \"A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\",\n      \"likely_errors\": \"A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Procedural Fluency\",\n  \"why\": \"A student is most likely to go wrong at the step of accurately multiplying the number of choices in each category, especially if they miscount the side dishes due to the blank cell, leading to an incorrect total like 12 instead of 18. While Representing is important for interpreting the table, the error is more likely in the calculation step, which is central to Procedural Fluency. The other practice used, Representing, is less likely to cause an incorrect answer because the table is clear and the structure of the problem is straightforward, making misrepresentation less probable than a computational mistake.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Procedural Fluency\",\n  \"why\": \"A student is most likely to go wrong at the step of accurately multiplying the number of choices in each category, especially if they miscount the side dishes due to the blank cell, leading to an incorrect total like 12 instead of 18. While Representing is important for interpreting the table, the error is more likely in the calculation step, which is central to Procedural Fluency. The other practice used, Representing, is less likely to cause an incorrect answer because the table is clear and the structure of the problem is straightforward, making misrepresentation less probable than a computational mistake.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4508,
+            "completion_tokens": 142
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.",
+              "likely_errors": "A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.",
+              "likely_errors": "A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of meal components and translates the categorical data into a mathematical structure representing combinations of one item from each category."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student counts the number of choices in each category and applies the multiplication principle to compute the total number of different meals."
+            }
+          ],
+          "why": "The student must first understand and represent the problem situation by interpreting the table and recognizing the need to count combinations across categories before performing any computation. Only after establishing this mathematical representation can the student apply procedural fluency to calculate the total number of meals using multiplication."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of accurately multiplying the number of choices in each category, especially if they miscount the side dishes due to the blank cell, leading to an incorrect total like 12 instead of 18. While Representing is important for interpreting the table, the error is more likely in the calculation step, which is central to Procedural Fluency. The other practice used, Representing, is less likely to cause an incorrect answer because the table is clear and the structure of the problem is straightforward, making misrepresentation less probable than a computational mistake."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.",
+            "likely_errors": "A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.",
+            "likely_errors": "A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.\",\n    \"likely_errors\": \"A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.\",\n    \"likely_errors\": \"A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of meal components and translates the categorical data into a mathematical structure representing combinations of one item from each category.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student counts the number of choices in each category and applies the multiplication principle to compute the total number of different meals.\"\n    }\n  ],\n  \"why\": \"The student must first understand and represent the problem situation by interpreting the table and recognizing the need to count combinations across categories before performing any computation. Only after establishing this mathematical representation can the student apply procedural fluency to calculate the total number of meals using multiplication.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Procedural Fluency\",\n  \"why\": \"A student is most likely to go wrong at the step of accurately multiplying the number of choices in each category, especially if they miscount the side dishes due to the blank cell, leading to an incorrect total like 12 instead of 18. While Representing is important for interpreting the table, the error is more likely in the calculation step, which is central to Procedural Fluency. The other practice used, Representing, is less likely to cause an incorrect answer because the table is clear and the structure of the problem is straightforward, making misrepresentation less probable than a computational mistake.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.",
+          "likely_errors": "A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.",
+          "likely_errors": "A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of meal components and translates the categorical data into a mathematical structure representing combinations of one item from each category."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student counts the number of choices in each category and applies the multiplication principle to compute the total number of different meals."
+        }
+      ],
+      "why": "The student must first understand and represent the problem situation by interpreting the table and recognizing the need to count combinations across categories before performing any computation. Only after establishing this mathematical representation can the student apply procedural fluency to calculate the total number of meals using multiplication."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of accurately multiplying the number of choices in each category, especially if they miscount the side dishes due to the blank cell, leading to an incorrect total like 12 instead of 18. While Representing is important for interpreting the table, the error is more likely in the calculation step, which is central to Procedural Fluency. The other practice used, Representing, is less likely to cause an incorrect answer because the table is clear and the structure of the problem is straightforward, making misrepresentation less probable than a computational mistake."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of meal components and translate the categorical data (main courses, side dishes, drinks) into a mathematical structure that represents combinations. This involves recognizing the need to count all possible combinations of one item from each category, which aligns with the descriptor of representing problem situations with visual or tabular data to solve mathematical problems.",
+          "likely_errors": "A student might misread the table, skip a category (e.g., ignore the missing side dish for pasta salad), or incorrectly assume that all items are available for all combinations, leading to an inaccurate count. This is moderately likely, especially if the student does not carefully examine the table."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation, the student must compute the total number of different meals by multiplying the number of choices in each category. This requires correctly counting the available options (3 main courses, 2 side dishes, 3 drinks) and applying the multiplication principle accurately, which is a core part of procedural fluency in counting and combinatorics.",
+          "likely_errors": "A student might incorrectly count the number of items in a category (e.g., counting 3 side dishes instead of 2 due to the blank), or make a multiplication error (e.g., 3 × 2 × 3 = 18, but computing it as 12). This is likely for students who are not fluent in multiplication or who miscount the items."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern across multiple cases, generalize a rule beyond this specific scenario, or extend the reasoning to a broader domain. The problem is a straightforward application of the multiplication principle with fixed, given data, not a situation that invites abstraction or generalization."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to defend or evaluate a claim, provide a reason why the answer is correct, or construct a logical argument about the reasoning behind the count. There is no assertion or claim from a student or character to critique, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is not a real-world scenario that requires mathematizing a complex context, identifying variables, creating a model, or checking the reasonableness of a solution in a broader situation. It is a direct combinatorics question based on a given table, not a modeling task involving assumptions or validation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item does not present another person’s mathematical thinking, claim, or work for the student to respond to. There is no dialogue, peer argument, or collaborative context; the student works independently on a static table and a single numerical answer."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

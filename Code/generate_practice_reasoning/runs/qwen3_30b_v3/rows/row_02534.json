@@ -1,0 +1,389 @@
+{
+  "row": 2534,
+  "problem_id": "262608",
+  "problem_text": "Here is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\",\n    \"likely_errors\": \"A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\",\n    \"likely_errors\": \"A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\",\n    \"likely_errors\": \"A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\",\n    \"likely_errors\": \"A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\",\n    \"likely_errors\": \"A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\",\n    \"likely_errors\": \"A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3910,
+            "completion_tokens": 714
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\n- Abstracting and Generalizing: The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\n- Justifying and Proving: After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\n- Abstracting and Generalizing: The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\n- Justifying and Proving: After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\n- Abstracting and Generalizing: The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\n- Justifying and Proving: After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets each written question and translates it into a mathematical or statistical form by recognizing whether the question anticipates variability in data, such as identifying that 'most popular lunch choice' implies a distribution of responses.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the common pattern that defines a statistical question—anticipating variability—and generalizes this rule to evaluate all the given questions, determining which ones expect multiple possible answers rather than a single fixed value.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates each question individually, using the generalized rule to justify why certain questions are statistical (e.g., due to expected variation in sleep hours) and why others are not (e.g., a fixed count of math teachers).\"\n    }\n  ],\n  \"why\": \"The student must first interpret the questions (Representing) to understand their mathematical form. Then, they must abstract the core concept of variability across all questions (Abstracting and Generalizing) to apply a consistent rule. Finally, they justify their decisions by applying that rule to each case (Justifying and Proving), which logically follows after establishing the general principle.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets each written question and translates it into a mathematical or statistical form by recognizing whether the question anticipates variability in data, such as identifying that 'most popular lunch choice' implies a distribution of responses.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the common pattern that defines a statistical question—anticipating variability—and generalizes this rule to evaluate all the given questions, determining which ones expect multiple possible answers rather than a single fixed value.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates each question individually, using the generalized rule to justify why certain questions are statistical (e.g., due to expected variation in sleep hours) and why others are not (e.g., a fixed count of math teachers).\"\n    }\n  ],\n  \"why\": \"The student must first interpret the questions (Representing) to understand their mathematical form. Then, they must abstract the core concept of variability across all questions (Abstracting and Generalizing) to apply a consistent rule. Finally, they justify their decisions by applying that rule to each case (Justifying and Proving), which logically follows after establishing the general principle.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4122,
+            "completion_tokens": 297
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\",\n      \"likely_errors\": \"A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\",\n      \"likely_errors\": \"A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\",\n      \"likely_errors\": \"A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\",\n      \"likely_errors\": \"A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\",\n      \"likely_errors\": \"A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\",\n      \"likely_errors\": \"A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is a list of questions about the students and teachers at a school. Select all the questions that are statistical questions.\n\nAnswer choices:\nA. What is the most popular lunch choice?\n||\nWhat school do these students attend?\n||\nHow many math teachers are in the school?\n||\nWhat is a common age for the teachers at the school?\n||\nAbout how many hours of sleep do students generally get on a school night?\n||\nHow do students usually travel from home to school?\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\",\n      \"likely_errors\": \"A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\",\n      \"likely_errors\": \"A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\",\n      \"likely_errors\": \"A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why a question is or is not statistical, particularly by failing to articulate that statistical questions anticipate variability in data. For example, they might incorrectly justify selecting 'How many math teachers are in the school?' as statistical because it involves numbers, without recognizing it has a single answer. This step requires deeper reasoning about the definition of a statistical question, which is the core of 'Justifying and Proving.' While 'Representing' and 'Abstracting and Generalizing' are important, they are more about initial interpretation and pattern recognition, which are less error-prone for students who have been exposed to the concept. The 'Justifying and Proving' step is the most cognitively demanding and where misconceptions are most likely to surface.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why a question is or is not statistical, particularly by failing to articulate that statistical questions anticipate variability in data. For example, they might incorrectly justify selecting 'How many math teachers are in the school?' as statistical because it involves numbers, without recognizing it has a single answer. This step requires deeper reasoning about the definition of a statistical question, which is the core of 'Justifying and Proving.' While 'Representing' and 'Abstracting and Generalizing' are important, they are more about initial interpretation and pattern recognition, which are less error-prone for students who have been exposed to the concept. The 'Justifying and Proving' step is the most cognitively demanding and where misconceptions are most likely to surface.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4598,
+            "completion_tokens": 181
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.",
+              "likely_errors": "A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.",
+              "likely_errors": "A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.",
+              "likely_errors": "A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets each written question and translates it into a mathematical or statistical form by recognizing whether the question anticipates variability in data, such as identifying that 'most popular lunch choice' implies a distribution of responses."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the common pattern that defines a statistical question—anticipating variability—and generalizes this rule to evaluate all the given questions, determining which ones expect multiple possible answers rather than a single fixed value."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student evaluates each question individually, using the generalized rule to justify why certain questions are statistical (e.g., due to expected variation in sleep hours) and why others are not (e.g., a fixed count of math teachers)."
+            }
+          ],
+          "why": "The student must first interpret the questions (Representing) to understand their mathematical form. Then, they must abstract the core concept of variability across all questions (Abstracting and Generalizing) to apply a consistent rule. Finally, they justify their decisions by applying that rule to each case (Justifying and Proving), which logically follows after establishing the general principle."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why a question is or is not statistical, particularly by failing to articulate that statistical questions anticipate variability in data. For example, they might incorrectly justify selecting 'How many math teachers are in the school?' as statistical because it involves numbers, without recognizing it has a single answer. This step requires deeper reasoning about the definition of a statistical question, which is the core of 'Justifying and Proving.' While 'Representing' and 'Abstracting and Generalizing' are important, they are more about initial interpretation and pattern recognition, which are less error-prone for students who have been exposed to the concept. The 'Justifying and Proving' step is the most cognitively demanding and where misconceptions are most likely to surface."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.",
+            "likely_errors": "A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.",
+            "likely_errors": "A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.",
+            "likely_errors": "A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.\",\n    \"likely_errors\": \"A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.\",\n    \"likely_errors\": \"A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.\",\n    \"likely_errors\": \"A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets each written question and translates it into a mathematical or statistical form by recognizing whether the question anticipates variability in data, such as identifying that 'most popular lunch choice' implies a distribution of responses.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the common pattern that defines a statistical question—anticipating variability—and generalizes this rule to evaluate all the given questions, determining which ones expect multiple possible answers rather than a single fixed value.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates each question individually, using the generalized rule to justify why certain questions are statistical (e.g., due to expected variation in sleep hours) and why others are not (e.g., a fixed count of math teachers).\"\n    }\n  ],\n  \"why\": \"The student must first interpret the questions (Representing) to understand their mathematical form. Then, they must abstract the core concept of variability across all questions (Abstracting and Generalizing) to apply a consistent rule. Finally, they justify their decisions by applying that rule to each case (Justifying and Proving), which logically follows after establishing the general principle.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying why a question is or is not statistical, particularly by failing to articulate that statistical questions anticipate variability in data. For example, they might incorrectly justify selecting 'How many math teachers are in the school?' as statistical because it involves numbers, without recognizing it has a single answer. This step requires deeper reasoning about the definition of a statistical question, which is the core of 'Justifying and Proving.' While 'Representing' and 'Abstracting and Generalizing' are important, they are more about initial interpretation and pattern recognition, which are less error-prone for students who have been exposed to the concept. The 'Justifying and Proving' step is the most cognitively demanding and where misconceptions are most likely to surface.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.",
+          "likely_errors": "A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.",
+          "likely_errors": "A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.",
+          "likely_errors": "A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets each written question and translates it into a mathematical or statistical form by recognizing whether the question anticipates variability in data, such as identifying that 'most popular lunch choice' implies a distribution of responses."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the common pattern that defines a statistical question—anticipating variability—and generalizes this rule to evaluate all the given questions, determining which ones expect multiple possible answers rather than a single fixed value."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student evaluates each question individually, using the generalized rule to justify why certain questions are statistical (e.g., due to expected variation in sleep hours) and why others are not (e.g., a fixed count of math teachers)."
+        }
+      ],
+      "why": "The student must first interpret the questions (Representing) to understand their mathematical form. Then, they must abstract the core concept of variability across all questions (Abstracting and Generalizing) to apply a consistent rule. Finally, they justify their decisions by applying that rule to each case (Justifying and Proving), which logically follows after establishing the general principle."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why a question is or is not statistical, particularly by failing to articulate that statistical questions anticipate variability in data. For example, they might incorrectly justify selecting 'How many math teachers are in the school?' as statistical because it involves numbers, without recognizing it has a single answer. This step requires deeper reasoning about the definition of a statistical question, which is the core of 'Justifying and Proving.' While 'Representing' and 'Abstracting and Generalizing' are important, they are more about initial interpretation and pattern recognition, which are less error-prone for students who have been exposed to the concept. The 'Justifying and Proving' step is the most cognitively demanding and where misconceptions are most likely to surface."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the written questions and translate them into mathematical or statistical forms by recognizing which questions involve variability in data. This involves identifying whether the question anticipates a range of answers (e.g., 'most popular lunch choice' implies a distribution of responses), which aligns with the descriptor of interpreting written representations to determine statistical nature.",
+          "likely_errors": "A student might misinterpret a question like 'How many math teachers are in the school?' as statistical because it involves numbers, even though it has a single, fixed answer. This is moderately likely for students who confuse numerical questions with statistical ones."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must identify the underlying pattern that defines a statistical question: one that anticipates variability in the data. They generalize this concept across all the given questions, applying the rule that a statistical question expects multiple possible answers, not a single value. This matches the descriptor of identifying patterns and generalizing relationships across cases.",
+          "likely_errors": "A student might incorrectly generalize that any question with numbers is statistical, or fail to recognize that 'common age' implies a distribution of ages, leading to misclassification. This is moderately likely, especially if the student hasn't internalized the concept of variability."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After identifying which questions are statistical, the student must justify their selections by reasoning about whether each question anticipates variability. For example, they must defend why 'About how many hours of sleep do students generally get on a school night?' is statistical (due to expected variation in responses) versus 'How many math teachers are in the school?' (a fixed count). This aligns with the practice of justifying conclusions about numerical relationships and patterns.",
+          "likely_errors": "A student might select a non-statistical question (like 'What school do these students attend?') and justify it incorrectly by saying 'it’s about students,' without recognizing that it has only one answer. This is moderately likely if students lack experience in articulating the reasoning behind statistical questions."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or applying a model to represent a real-world situation. There is no need to mathematize a scenario, use a model to solve a problem, or check the reasonableness of a solution in context. The task is purely conceptual—identifying the nature of questions—so modeling is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone task where the student selects answers independently. There is no interaction with another person’s thinking, no dialogue, no shared work, and no requirement to respond to or build on another’s reasoning. Thus, collaborative practices are not involved."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "The item does not require any computation, algorithmic procedures, or accurate execution of operations. The student is not solving equations, performing calculations, or applying formulas. The task is about conceptual understanding of statistical questions, not procedural execution."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

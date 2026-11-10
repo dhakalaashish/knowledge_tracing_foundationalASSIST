@@ -1,0 +1,389 @@
+{
+  "row": 935,
+  "problem_id": "176751",
+  "problem_text": "Your teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\",\n    \"likely_errors\": \"A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\",\n    \"likely_errors\": \"A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\",\n    \"likely_errors\": \"A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\",\n    \"likely_errors\": \"A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\",\n    \"likely_errors\": \"A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\",\n    \"likely_errors\": \"A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3870,
+            "completion_tokens": 752
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\n- Abstracting and Generalizing: The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\n- Procedural Fluency: After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\n- Abstracting and Generalizing: The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\n- Procedural Fluency: After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\n- Abstracting and Generalizing: The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\n- Procedural Fluency: After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the drawing of the 1-inch cube and represents the situation mathematically by recognizing the volume of the large cube as 1 cubic inch and the smaller cubes as having a volume of 1/8 cubic inch, using visual and numerical representations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divides 1 by 1/8 to determine that 8 small cubes are needed.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the underlying pattern that halving the edge length increases the number of small cubes by a factor of 8, generalizing this to the principle that volume scales with the cube of the linear dimension.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the visual and numerical information in the problem by representing the situation mathematically, which is the first step in solving any problem. Once represented, the student applies procedural fluency to compute the volumes and perform the division. Only after obtaining the result does the student reflect on the broader mathematical relationship, which involves abstracting and generalizing the scaling behavior of volume with respect to linear dimensions.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the drawing of the 1-inch cube and represents the situation mathematically by recognizing the volume of the large cube as 1 cubic inch and the smaller cubes as having a volume of 1/8 cubic inch, using visual and numerical representations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divides 1 by 1/8 to determine that 8 small cubes are needed.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the underlying pattern that halving the edge length increases the number of small cubes by a factor of 8, generalizing this to the principle that volume scales with the cube of the linear dimension.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the visual and numerical information in the problem by representing the situation mathematically, which is the first step in solving any problem. Once represented, the student applies procedural fluency to compute the volumes and perform the division. Only after obtaining the result does the student reflect on the broader mathematical relationship, which involves abstracting and generalizing the scaling behavior of volume with respect to linear dimensions.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4108,
+            "completion_tokens": 331
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\",\n      \"likely_errors\": \"A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\",\n      \"likely_errors\": \"A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\",\n      \"likely_errors\": \"A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\",\n      \"likely_errors\": \"A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\",\n      \"likely_errors\": \"A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\",\n      \"likely_errors\": \"A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nYour teacher will give you cubes that have edge lengths of 1/2 inch.\nHere is a drawing of a cube with edge lengths of 1 inch.\n[image]\nHow many cubes with edge lengths of 1/2 inch are needed to fill this cube?\n____ cubes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\",\n      \"likely_errors\": \"A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\",\n      \"likely_errors\": \"A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\",\n      \"likely_errors\": \"A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Representing\",\n  \"why\": \"A student is most likely to go wrong at the Representing step by misrepresenting the volume of the small cube, such as calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or failing to recognize that the number of small cubes must be determined by volume rather than linear count. This error stems from a fundamental misunderstanding of how volume scales, which is central to the task. While Procedural Fluency and Abstracting and Generalizing are important, they rely on correct representation first; if the representation is flawed, even accurate procedures or generalizations will lead to the wrong answer. Thus, the Representing step is the foundational and most likely point of failure.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Representing\",\n  \"why\": \"A student is most likely to go wrong at the Representing step by misrepresenting the volume of the small cube, such as calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or failing to recognize that the number of small cubes must be determined by volume rather than linear count. This error stems from a fundamental misunderstanding of how volume scales, which is central to the task. While Procedural Fluency and Abstracting and Generalizing are important, they rely on correct representation first; if the representation is flawed, even accurate procedures or generalizations will lead to the wrong answer. Thus, the Representing step is the foundational and most likely point of failure.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4597,
+            "completion_tokens": 171
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.",
+              "likely_errors": "A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.",
+              "likely_errors": "A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.",
+              "likely_errors": "A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the drawing of the 1-inch cube and represents the situation mathematically by recognizing the volume of the large cube as 1 cubic inch and the smaller cubes as having a volume of 1/8 cubic inch, using visual and numerical representations."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divides 1 by 1/8 to determine that 8 small cubes are needed."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes the underlying pattern that halving the edge length increases the number of small cubes by a factor of 8, generalizing this to the principle that volume scales with the cube of the linear dimension."
+            }
+          ],
+          "why": "The student must first make sense of the visual and numerical information in the problem by representing the situation mathematically, which is the first step in solving any problem. Once represented, the student applies procedural fluency to compute the volumes and perform the division. Only after obtaining the result does the student reflect on the broader mathematical relationship, which involves abstracting and generalizing the scaling behavior of volume with respect to linear dimensions."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the Representing step by misrepresenting the volume of the small cube, such as calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or failing to recognize that the number of small cubes must be determined by volume rather than linear count. This error stems from a fundamental misunderstanding of how volume scales, which is central to the task. While Procedural Fluency and Abstracting and Generalizing are important, they rely on correct representation first; if the representation is flawed, even accurate procedures or generalizations will lead to the wrong answer. Thus, the Representing step is the foundational and most likely point of failure."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.",
+            "likely_errors": "A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.",
+            "likely_errors": "A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures."
+          },
+          {
+            "order": 3,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.",
+            "likely_errors": "A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.\",\n    \"likely_errors\": \"A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.\",\n    \"likely_errors\": \"A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.\",\n    \"likely_errors\": \"A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the drawing of the 1-inch cube and represents the situation mathematically by recognizing the volume of the large cube as 1 cubic inch and the smaller cubes as having a volume of 1/8 cubic inch, using visual and numerical representations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divides 1 by 1/8 to determine that 8 small cubes are needed.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the underlying pattern that halving the edge length increases the number of small cubes by a factor of 8, generalizing this to the principle that volume scales with the cube of the linear dimension.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the visual and numerical information in the problem by representing the situation mathematically, which is the first step in solving any problem. Once represented, the student applies procedural fluency to compute the volumes and perform the division. Only after obtaining the result does the student reflect on the broader mathematical relationship, which involves abstracting and generalizing the scaling behavior of volume with respect to linear dimensions.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Representing\",\n  \"why\": \"A student is most likely to go wrong at the Representing step by misrepresenting the volume of the small cube, such as calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or failing to recognize that the number of small cubes must be determined by volume rather than linear count. This error stems from a fundamental misunderstanding of how volume scales, which is central to the task. While Procedural Fluency and Abstracting and Generalizing are important, they rely on correct representation first; if the representation is flawed, even accurate procedures or generalizations will lead to the wrong answer. Thus, the Representing step is the foundational and most likely point of failure.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.",
+          "likely_errors": "A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.",
+          "likely_errors": "A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.",
+          "likely_errors": "A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the drawing of the 1-inch cube and represents the situation mathematically by recognizing the volume of the large cube as 1 cubic inch and the smaller cubes as having a volume of 1/8 cubic inch, using visual and numerical representations."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divides 1 by 1/8 to determine that 8 small cubes are needed."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes the underlying pattern that halving the edge length increases the number of small cubes by a factor of 8, generalizing this to the principle that volume scales with the cube of the linear dimension."
+        }
+      ],
+      "why": "The student must first make sense of the visual and numerical information in the problem by representing the situation mathematically, which is the first step in solving any problem. Once represented, the student applies procedural fluency to compute the volumes and perform the division. Only after obtaining the result does the student reflect on the broader mathematical relationship, which involves abstracting and generalizing the scaling behavior of volume with respect to linear dimensions."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the Representing step by misrepresenting the volume of the small cube, such as calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or failing to recognize that the number of small cubes must be determined by volume rather than linear count. This error stems from a fundamental misunderstanding of how volume scales, which is central to the task. While Procedural Fluency and Abstracting and Generalizing are important, they rely on correct representation first; if the representation is flawed, even accurate procedures or generalizations will lead to the wrong answer. Thus, the Representing step is the foundational and most likely point of failure."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given drawing of a 1-inch cube and represent the situation mathematically by recognizing that the cube has a volume of 1 cubic inch. They then need to represent the smaller cubes (with edge length 1/2 inch) and relate their volume (1/8 cubic inch) to the larger cube using visual and numerical representations, such as dividing the larger cube into smaller unit cubes or using volume formulas.",
+          "likely_errors": "A student might misrepresent the volume of the small cube by calculating (1/2) × (1/2) = 1/4 instead of (1/2)³ = 1/8, or incorrectly assume the number of small cubes is 2 along each edge without accounting for volume. This is moderately likely for students who confuse area and volume."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the problem, the student must compute the volume of the large cube (1³ = 1 cubic inch) and the volume of each small cube ((1/2)³ = 1/8 cubic inch), then divide the two volumes (1 ÷ 1/8 = 8) to find how many small cubes fit. This requires accurate computation with fractions and understanding of volume formulas.",
+          "likely_errors": "A student might incorrectly divide 1 by 1/8 as 1/8 or make a calculation error in exponentiation (e.g., (1/2)² instead of (1/2)³). These errors are common but less likely if the student is fluent with fraction operations and volume procedures."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the general pattern that when edge length is halved, the number of small cubes needed to fill the larger cube increases by a factor of 8 (since volume scales with the cube of the linear dimension). This involves generalizing from a specific case (1 inch → 1/2 inch) to a broader understanding of how scaling affects volume.",
+          "likely_errors": "A student might generalize incorrectly, thinking that halving the edge length means doubling the number of cubes (e.g., 2 instead of 8), failing to recognize the cubic relationship. This is moderately likely for students who have not yet internalized the concept of volume scaling."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to defend or construct a formal argument about why the solution is correct. There is no claim, counterexample, or proof to evaluate or create; the task is computational and conceptual, not argumentative."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is not about modeling a real-world scenario with open-ended variables or assumptions. It is a direct, closed mathematical question about filling a geometric shape with smaller units, with no need to identify variables, make assumptions, or validate a model against real-world data."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, peer contribution, or collaborative reasoning required, so the social aspect of mathematics is not engaged."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Representing"
+  }
+}

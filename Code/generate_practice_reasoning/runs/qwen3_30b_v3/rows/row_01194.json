@@ -1,0 +1,389 @@
+{
+  "row": 1194,
+  "problem_id": "181356",
+  "problem_text": "You are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.",
+          "started_at": "2026-11-10T01:31:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\",\n      \"likely_errors\": \"A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\",\n      \"likely_errors\": \"A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3911,
+            "completion_tokens": 798
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:34:13+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\n- Mathematical Modeling: The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\n- Procedural Fluency: After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:48:08+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\n- Mathematical Modeling: The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\n- Procedural Fluency: After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\n- Mathematical Modeling: The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\n- Procedural Fluency: After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student interprets the real-world scenario of planning a dinner party within a budget, identifies the problem (staying within $50 for 8 guests), and mathematizes it by determining the cost per guest and allocating funds across menu items, including constraints like portion size and item counts.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the real-world constraints—such as 0.5 pound per person, 8 guests, and the menu structure—into a mathematical representation, including a list of items with quantities, unit prices, and total costs, using numbers, tables, or equations to track spending.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate calculations: divides the total budget by the number of guests to find the budget per guest, computes total costs for each food item based on quantity and price, and checks that the total does not exceed $50 using efficient and accurate arithmetic operations.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the real-world context and identify the mathematical problem (Mathematical Modeling), which comes before creating any representation. Only after modeling the situation can the student represent the constraints and relationships mathematically (Representing). Finally, once the model and representation are in place, the student applies procedural skills to compute and verify the solution (Procedural Fluency).\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student interprets the real-world scenario of planning a dinner party within a budget, identifies the problem (staying within $50 for 8 guests), and mathematizes it by determining the cost per guest and allocating funds across menu items, including constraints like portion size and item counts.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the real-world constraints—such as 0.5 pound per person, 8 guests, and the menu structure—into a mathematical representation, including a list of items with quantities, unit prices, and total costs, using numbers, tables, or equations to track spending.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate calculations: divides the total budget by the number of guests to find the budget per guest, computes total costs for each food item based on quantity and price, and checks that the total does not exceed $50 using efficient and accurate arithmetic operations.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the real-world context and identify the mathematical problem (Mathematical Modeling), which comes before creating any representation. Only after modeling the situation can the student represent the constraints and relationships mathematically (Representing). Finally, once the model and representation are in place, the student applies procedural skills to compute and verify the solution (Procedural Fluency).\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4135,
+            "completion_tokens": 341
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:49:27+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\",\n      \"likely_errors\": \"A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:58:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\",\n      \"likely_errors\": \"A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nYou are planning a dinner party with a budget of $50 and a menu that consists of 1 main dish, 2 side dishes, and 1 dessert. There will be 8 guests at your party.\nChoose your menu items and decide on the quantities to buy so you stay on budget.\nIf you choose meat, fish, or poultry for your main dish, plan to buy at least 0.5 pound per person.\nThe budget is $ ____ per guest.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\",\n      \"likely_errors\": \"A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Mathematical Modeling\",\n\"why\": \"The primary difficulty lies in correctly interpreting the real-world scenario and translating it into a mathematical model, including identifying the key constraints (8 guests, $50 budget, 0.5 lb per person) and determining how to allocate resources accordingly. A student who fails here may not recognize the need to compute a per-guest budget or apply the portion requirement properly, leading to an unworkable plan. While Representing and Procedural Fluency are important, they rely on the correct model being established first; without accurate modeling, even precise calculations or clear representations will be based on flawed assumptions.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Mathematical Modeling\",\n\"why\": \"The primary difficulty lies in correctly interpreting the real-world scenario and translating it into a mathematical model, including identifying the key constraints (8 guests, $50 budget, 0.5 lb per person) and determining how to allocate resources accordingly. A student who fails here may not recognize the need to compute a per-guest budget or apply the portion requirement properly, leading to an unworkable plan. While Representing and Procedural Fluency are important, they rely on the correct model being established first; without accurate modeling, even precise calculations or clear representations will be based on flawed assumptions.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4679,
+            "completion_tokens": 138
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:59:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Mathematical Modeling",
+              "why": "The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.",
+              "likely_errors": "A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.",
+              "likely_errors": "A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely."
+            },
+            {
+              "order": 3,
+              "practice": "Representing",
+              "why": "The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.",
+              "likely_errors": "A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Mathematical Modeling",
+              "step": "The student interprets the real-world scenario of planning a dinner party within a budget, identifies the problem (staying within $50 for 8 guests), and mathematizes it by determining the cost per guest and allocating funds across menu items, including constraints like portion size and item counts."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "step": "The student translates the real-world constraints—such as 0.5 pound per person, 8 guests, and the menu structure—into a mathematical representation, including a list of items with quantities, unit prices, and total costs, using numbers, tables, or equations to track spending."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student performs accurate calculations: divides the total budget by the number of guests to find the budget per guest, computes total costs for each food item based on quantity and price, and checks that the total does not exceed $50 using efficient and accurate arithmetic operations."
+            }
+          ],
+          "why": "The student must first make sense of the real-world context and identify the mathematical problem (Mathematical Modeling), which comes before creating any representation. Only after modeling the situation can the student represent the constraints and relationships mathematically (Representing). Finally, once the model and representation are in place, the student applies procedural skills to compute and verify the solution (Procedural Fluency)."
+        },
+        {
+          "top_practice": "Mathematical Modeling",
+          "why": "The primary difficulty lies in correctly interpreting the real-world scenario and translating it into a mathematical model, including identifying the key constraints (8 guests, $50 budget, 0.5 lb per person) and determining how to allocate resources accordingly. A student who fails here may not recognize the need to compute a per-guest budget or apply the portion requirement properly, leading to an unworkable plan. While Representing and Procedural Fluency are important, they rely on the correct model being established first; without accurate modeling, even precise calculations or clear representations will be based on flawed assumptions."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Mathematical Modeling",
+            "why": "The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.",
+            "likely_errors": "A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling."
+          },
+          {
+            "order": 2,
+            "practice": "Representing",
+            "why": "The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.",
+            "likely_errors": "A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.",
+            "likely_errors": "A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.\",\n      \"likely_errors\": \"A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.\",\n      \"likely_errors\": \"A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.\",\n      \"likely_errors\": \"A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student interprets the real-world scenario of planning a dinner party within a budget, identifies the problem (staying within $50 for 8 guests), and mathematizes it by determining the cost per guest and allocating funds across menu items, including constraints like portion size and item counts.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the real-world constraints—such as 0.5 pound per person, 8 guests, and the menu structure—into a mathematical representation, including a list of items with quantities, unit prices, and total costs, using numbers, tables, or equations to track spending.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate calculations: divides the total budget by the number of guests to find the budget per guest, computes total costs for each food item based on quantity and price, and checks that the total does not exceed $50 using efficient and accurate arithmetic operations.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the real-world context and identify the mathematical problem (Mathematical Modeling), which comes before creating any representation. Only after modeling the situation can the student represent the constraints and relationships mathematically (Representing). Finally, once the model and representation are in place, the student applies procedural skills to compute and verify the solution (Procedural Fluency).\"\n}",
+    "answer3": "{\n\"top_practice\": \"Mathematical Modeling\",\n\"why\": \"The primary difficulty lies in correctly interpreting the real-world scenario and translating it into a mathematical model, including identifying the key constraints (8 guests, $50 budget, 0.5 lb per person) and determining how to allocate resources accordingly. A student who fails here may not recognize the need to compute a per-guest budget or apply the portion requirement properly, leading to an unworkable plan. While Representing and Procedural Fluency are important, they rely on the correct model being established first; without accurate modeling, even precise calculations or clear representations will be based on flawed assumptions.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Mathematical Modeling",
+          "why": "The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.",
+          "likely_errors": "A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.",
+          "likely_errors": "A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely."
+        },
+        {
+          "order": 3,
+          "practice": "Representing",
+          "why": "The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.",
+          "likely_errors": "A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Mathematical Modeling",
+          "step": "The student interprets the real-world scenario of planning a dinner party within a budget, identifies the problem (staying within $50 for 8 guests), and mathematizes it by determining the cost per guest and allocating funds across menu items, including constraints like portion size and item counts."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "step": "The student translates the real-world constraints—such as 0.5 pound per person, 8 guests, and the menu structure—into a mathematical representation, including a list of items with quantities, unit prices, and total costs, using numbers, tables, or equations to track spending."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student performs accurate calculations: divides the total budget by the number of guests to find the budget per guest, computes total costs for each food item based on quantity and price, and checks that the total does not exceed $50 using efficient and accurate arithmetic operations."
+        }
+      ],
+      "why": "The student must first make sense of the real-world context and identify the mathematical problem (Mathematical Modeling), which comes before creating any representation. Only after modeling the situation can the student represent the constraints and relationships mathematically (Representing). Finally, once the model and representation are in place, the student applies procedural skills to compute and verify the solution (Procedural Fluency)."
+    },
+    "answer3_json": {
+      "top_practice": "Mathematical Modeling",
+      "why": "The primary difficulty lies in correctly interpreting the real-world scenario and translating it into a mathematical model, including identifying the key constraints (8 guests, $50 budget, 0.5 lb per person) and determining how to allocate resources accordingly. A student who fails here may not recognize the need to compute a per-guest budget or apply the portion requirement properly, leading to an unworkable plan. While Representing and Procedural Fluency are important, they rely on the correct model being established first; without accurate modeling, even precise calculations or clear representations will be based on flawed assumptions."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Mathematical Modeling",
+          "why": "The student must interpret the real-world scenario of planning a dinner party within a budget, identify the mathematical problem (staying within $50 for 8 guests), and mathematize it by determining the cost per guest and allocating funds across menu items. This involves selecting appropriate quantities and items based on constraints like portion size and total budget, which aligns with creating and applying a model to solve a real-world problem.",
+          "likely_errors": "A student might miscalculate the per-guest budget by dividing incorrectly (e.g., 50 ÷ 8 = 6.25, but they might say 400), or fail to account for the 0.5-pound-per-person requirement, leading to underestimating ingredient costs. This is moderately likely for students not used to multi-step real-world modeling."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must translate the real-world constraints (e.g., 0.5 lb per person, 8 guests, 1 main, 2 sides, 1 dessert) into a mathematical representation—such as a list of items with quantities, unit prices, and total costs—using numbers, tables, or equations. This includes representing the budget constraint as an inequality or equation to track spending.",
+          "likely_errors": "A student might misrepresent the quantity needed (e.g., buying only 0.5 lb total instead of 4 lbs for 8 people), or fail to organize the data clearly, leading to incorrect totals. This is moderately likely, especially if the student doesn’t use a structured format."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After modeling the situation, the student must perform accurate calculations: dividing the total budget by the number of guests to find the budget per guest, computing total costs for each food item based on quantity and price, and checking that the total does not exceed $50. These require efficient and accurate use of arithmetic operations, unit conversion, and estimation.",
+          "likely_errors": "A student might make a computational error in division (e.g., 50 ÷ 8 = 6.25, but they write 6.5), or incorrectly multiply price per pound by quantity. These errors are common but likely to be caught with estimation checks; thus, moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The task is specific to a single dinner party with fixed constraints (8 guests, $50 budget, 0.5 lb per person). There is no requirement to identify patterns across multiple cases, extend reasoning to broader cases, or generalize rules (e.g., for any number of guests or budget), so this practice is not required."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to choose and calculate, not to defend or evaluate a claim about a mathematical relationship. There is no provided argument to critique or a conjecture to prove, and no need to justify why a particular choice is mathematically valid beyond staying within budget, so this practice is not assessed."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the task, with no interaction with peers, no dialogue, no shared work, and no need to respond to or build on another person’s thinking. The item does not include any student’s claim, strategy, or answer to evaluate, so collaborative reasoning is not involved."
+        }
+      ]
+    },
+    "ordering": [
+      "Mathematical Modeling",
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Mathematical Modeling"
+  }
+}

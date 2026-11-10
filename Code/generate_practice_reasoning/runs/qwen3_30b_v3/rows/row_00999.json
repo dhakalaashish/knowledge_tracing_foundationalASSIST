@@ -1,0 +1,389 @@
+{
+  "row": 999,
+  "problem_id": "164748",
+  "problem_text": "Your friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\",\n    \"likely_errors\": \"A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\",\n    \"likely_errors\": \"A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\",\n    \"likely_errors\": \"A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\",\n    \"likely_errors\": \"A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\",\n    \"likely_errors\": \"A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\",\n    \"likely_errors\": \"A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3860,
+            "completion_tokens": 684
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\n- Mathematical Modeling: The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\n- Procedural Fluency: After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\n- Mathematical Modeling: The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\n- Procedural Fluency: After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\n- Mathematical Modeling: The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\n- Procedural Fluency: After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student interprets the real-world scenario of painting a room with a friend and identifies the mathematical problem by recognizing that the time saved is the difference between the time it would have taken alone and the 150 minutes taken together.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculation, such as subtracting 150 minutes from the original time (if known) or solving a rate problem to determine the time saved, using accurate and efficient arithmetic procedures.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies why the computed time saved is correct by explaining the reasoning, such as confirming that the difference between the original time and the combined time represents the actual time saved due to collaboration.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the real-world situation and model it mathematically before performing any computation. Once the model is in place, procedural fluency is required to compute the time saved. Only after obtaining a result does the student need to justify the correctness of that result, ensuring the reasoning aligns with the scenario. This sequence follows the logical flow from understanding to calculation to validation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student interprets the real-world scenario of painting a room with a friend and identifies the mathematical problem by recognizing that the time saved is the difference between the time it would have taken alone and the 150 minutes taken together.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculation, such as subtracting 150 minutes from the original time (if known) or solving a rate problem to determine the time saved, using accurate and efficient arithmetic procedures.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies why the computed time saved is correct by explaining the reasoning, such as confirming that the difference between the original time and the combined time represents the actual time saved due to collaboration.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the real-world situation and model it mathematically before performing any computation. Once the model is in place, procedural fluency is required to compute the time saved. Only after obtaining a result does the student need to justify the correctness of that result, ensuring the reasoning aligns with the scenario. This sequence follows the logical flow from understanding to calculation to validation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4078,
+            "completion_tokens": 302
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\",\n      \"likely_errors\": \"A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\",\n      \"likely_errors\": \"A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\",\n      \"likely_errors\": \"A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\",\n      \"likely_errors\": \"A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\",\n      \"likely_errors\": \"A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\",\n      \"likely_errors\": \"A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nYour friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?\n____ minutes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\",\n      \"likely_errors\": \"A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\",\n      \"likely_errors\": \"A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\",\n      \"likely_errors\": \"A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Mathematical Modeling\",\n\"why\": \"A student is most likely to go wrong at the modeling step by incorrectly interpreting the scenario—believing that the 150 minutes spent working together directly represents the time saved, rather than recognizing that time saved is the difference between the original time alone and the combined time. This error stems from not properly mathematizing the situation, which is the core of Mathematical Modeling. While Procedural Fluency and Justifying and Proving are important, they depend on first correctly modeling the problem; without that, even accurate calculations and justifications would be based on a flawed premise. The other practices are less likely to cause an incorrect answer because they rely on the initial model being correct.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Mathematical Modeling\",\n\"why\": \"A student is most likely to go wrong at the modeling step by incorrectly interpreting the scenario—believing that the 150 minutes spent working together directly represents the time saved, rather than recognizing that time saved is the difference between the original time alone and the combined time. This error stems from not properly mathematizing the situation, which is the core of Mathematical Modeling. While Procedural Fluency and Justifying and Proving are important, they depend on first correctly modeling the problem; without that, even accurate calculations and justifications would be based on a flawed premise. The other practices are less likely to cause an incorrect answer because they rely on the initial model being correct.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4519,
+            "completion_tokens": 155
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Mathematical Modeling",
+              "why": "The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.",
+              "likely_errors": "A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.",
+              "likely_errors": "A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.",
+              "likely_errors": "A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Representing",
+              "why": "The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation."
+            },
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Mathematical Modeling",
+              "step": "The student interprets the real-world scenario of painting a room with a friend and identifies the mathematical problem by recognizing that the time saved is the difference between the time it would have taken alone and the 150 minutes taken together."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the necessary calculation, such as subtracting 150 minutes from the original time (if known) or solving a rate problem to determine the time saved, using accurate and efficient arithmetic procedures."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student justifies why the computed time saved is correct by explaining the reasoning, such as confirming that the difference between the original time and the combined time represents the actual time saved due to collaboration."
+            }
+          ],
+          "why": "The student must first make sense of the real-world situation and model it mathematically before performing any computation. Once the model is in place, procedural fluency is required to compute the time saved. Only after obtaining a result does the student need to justify the correctness of that result, ensuring the reasoning aligns with the scenario. This sequence follows the logical flow from understanding to calculation to validation."
+        },
+        {
+          "top_practice": "Mathematical Modeling",
+          "why": "A student is most likely to go wrong at the modeling step by incorrectly interpreting the scenario—believing that the 150 minutes spent working together directly represents the time saved, rather than recognizing that time saved is the difference between the original time alone and the combined time. This error stems from not properly mathematizing the situation, which is the core of Mathematical Modeling. While Procedural Fluency and Justifying and Proving are important, they depend on first correctly modeling the problem; without that, even accurate calculations and justifications would be based on a flawed premise. The other practices are less likely to cause an incorrect answer because they rely on the initial model being correct."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Mathematical Modeling",
+            "why": "The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.",
+            "likely_errors": "A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.",
+            "likely_errors": "A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.",
+            "likely_errors": "A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Representing",
+            "why": "The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation."
+          },
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.\",\n    \"likely_errors\": \"A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.\",\n    \"likely_errors\": \"A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.\",\n    \"likely_errors\": \"A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Representing\",\n    \"why\": \"The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation.\"\n  },\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Mathematical Modeling\",\n      \"step\": \"The student interprets the real-world scenario of painting a room with a friend and identifies the mathematical problem by recognizing that the time saved is the difference between the time it would have taken alone and the 150 minutes taken together.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculation, such as subtracting 150 minutes from the original time (if known) or solving a rate problem to determine the time saved, using accurate and efficient arithmetic procedures.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies why the computed time saved is correct by explaining the reasoning, such as confirming that the difference between the original time and the combined time represents the actual time saved due to collaboration.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the real-world situation and model it mathematically before performing any computation. Once the model is in place, procedural fluency is required to compute the time saved. Only after obtaining a result does the student need to justify the correctness of that result, ensuring the reasoning aligns with the scenario. This sequence follows the logical flow from understanding to calculation to validation.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Mathematical Modeling\",\n\"why\": \"A student is most likely to go wrong at the modeling step by incorrectly interpreting the scenario—believing that the 150 minutes spent working together directly represents the time saved, rather than recognizing that time saved is the difference between the original time alone and the combined time. This error stems from not properly mathematizing the situation, which is the core of Mathematical Modeling. While Procedural Fluency and Justifying and Proving are important, they depend on first correctly modeling the problem; without that, even accurate calculations and justifications would be based on a flawed premise. The other practices are less likely to cause an incorrect answer because they rely on the initial model being correct.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Mathematical Modeling",
+          "why": "The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.",
+          "likely_errors": "A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.",
+          "likely_errors": "A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.",
+          "likely_errors": "A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Mathematical Modeling",
+          "step": "The student interprets the real-world scenario of painting a room with a friend and identifies the mathematical problem by recognizing that the time saved is the difference between the time it would have taken alone and the 150 minutes taken together."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the necessary calculation, such as subtracting 150 minutes from the original time (if known) or solving a rate problem to determine the time saved, using accurate and efficient arithmetic procedures."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student justifies why the computed time saved is correct by explaining the reasoning, such as confirming that the difference between the original time and the combined time represents the actual time saved due to collaboration."
+        }
+      ],
+      "why": "The student must first make sense of the real-world situation and model it mathematically before performing any computation. Once the model is in place, procedural fluency is required to compute the time saved. Only after obtaining a result does the student need to justify the correctness of that result, ensuring the reasoning aligns with the scenario. This sequence follows the logical flow from understanding to calculation to validation."
+    },
+    "answer3_json": {
+      "top_practice": "Mathematical Modeling",
+      "why": "A student is most likely to go wrong at the modeling step by incorrectly interpreting the scenario—believing that the 150 minutes spent working together directly represents the time saved, rather than recognizing that time saved is the difference between the original time alone and the combined time. This error stems from not properly mathematizing the situation, which is the core of Mathematical Modeling. While Procedural Fluency and Justifying and Proving are important, they depend on first correctly modeling the problem; without that, even accurate calculations and justifications would be based on a flawed premise. The other practices are less likely to cause an incorrect answer because they rely on the initial model being correct."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Mathematical Modeling",
+          "why": "The student must interpret the real-world scenario—painting a room with help from a friend—and identify the mathematical problem: determining how much time was saved by working together. This involves mathematizing the situation by recognizing that the time saved depends on the difference between the time it would have taken alone and the time taken with help, which requires modeling the situation with a quantitative relationship.",
+          "likely_errors": "A student might misinterpret the scenario and assume the time saved is simply 150 minutes, not realizing that this is the time taken together, not the time saved. This is moderately likely for students who do not fully model the situation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After modeling the situation, the student must perform a calculation—likely subtracting the combined time (150 minutes) from the original time it would have taken alone. This requires accurate computation, possibly involving subtraction of time values or solving a rate problem (e.g., using work rates). The student must apply procedures efficiently and accurately to find the time saved.",
+          "likely_errors": "A student might incorrectly compute the difference due to arithmetic errors, especially if the original time is not given explicitly and must be inferred. This is likely if the student lacks fluency in basic operations or misapplies the formula for work rates."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must justify why the computed time saved is correct, particularly if the original time alone is not provided. For example, if the original time was 200 minutes and the combined time is 150 minutes, the student must explain why the difference (50 minutes) is the time saved, showing that the reasoning is valid and consistent with the scenario.",
+          "likely_errors": "A student might state the answer without justification, or provide a flawed explanation (e.g., claiming the time saved is 150 minutes because that’s the time spent together). This is moderately likely if the student skips reasoning steps."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate between visual, numerical, or symbolic representations. There is no diagram, table, graph, or model to interpret, and the problem is presented entirely in words without a need to generate a representation."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem is specific to a single scenario and does not ask the student to identify a pattern, extend a relationship, or generalize across cases. There is no need to derive a broader rule or apply reasoning to a family of similar problems."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the item, and there is no interaction with another person’s reasoning, strategy, or work. The mention of a friend is part of the scenario, not a contribution to be evaluated or built upon."
+        }
+      ]
+    },
+    "ordering": [
+      "Mathematical Modeling",
+      "Procedural Fluency",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Mathematical Modeling"
+  }
+}

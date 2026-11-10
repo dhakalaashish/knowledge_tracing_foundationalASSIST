@@ -1,0 +1,389 @@
+{
+  "row": 34,
+  "problem_id": "7829",
+  "problem_text": "Han found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____",
+          "started_at": "2026-11-10T01:26:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\",\n    \"likely_errors\": \"A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\",\n    \"likely_errors\": \"A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\",\n    \"likely_errors\": \"A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\",\n    \"likely_errors\": \"A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\",\n    \"likely_errors\": \"A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\",\n    \"likely_errors\": \"A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3964,
+            "completion_tokens": 823
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:28:51+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\n- Abstracting and Generalizing: The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\n- Procedural Fluency: After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:45:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\n- Abstracting and Generalizing: The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\n- Procedural Fluency: After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\n- Abstracting and Generalizing: The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\n- Procedural Fluency: After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given expression and rewrites it using equivalent representations, expanding (2·3)² and (3·5)² into their prime factorizations to make the structure of 2s and 5s visible.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the pattern Han used—pairing 2s and 5s to form 10s—and applies this strategy to identify how many complete pairs can be formed in the simplified expression to generate powers of 10.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies exponent rules and arithmetic operations to simplify the expression, cancel common factors, and compute the final numerical result accurately and efficiently.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression in a form that reveals the underlying structure (prime factors) before recognizing the pattern of pairing 2s and 5s to make 10s. Only after this structural understanding is established can the student generalize Han's method to the new expression. Finally, procedural fluency is required to carry out the necessary computations to reach the correct answer.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given expression and rewrites it using equivalent representations, expanding (2·3)² and (3·5)² into their prime factorizations to make the structure of 2s and 5s visible.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the pattern Han used—pairing 2s and 5s to form 10s—and applies this strategy to identify how many complete pairs can be formed in the simplified expression to generate powers of 10.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies exponent rules and arithmetic operations to simplify the expression, cancel common factors, and compute the final numerical result accurately and efficiently.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression in a form that reveals the underlying structure (prime factors) before recognizing the pattern of pairing 2s and 5s to make 10s. Only after this structural understanding is established can the student generalize Han's method to the new expression. Finally, procedural fluency is required to carry out the necessary computations to reach the correct answer.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4238,
+            "completion_tokens": 293
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:46:48+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\",\n      \"likely_errors\": \"A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\",\n      \"likely_errors\": \"A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\",\n      \"likely_errors\": \"A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:54:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\",\n      \"likely_errors\": \"A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\",\n      \"likely_errors\": \"A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\",\n      \"likely_errors\": \"A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n(2^3 · 5^2 · (2 · 3)^2 · (3 · 5)^2)/(3^2)\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\",\n      \"likely_errors\": \"A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\",\n      \"likely_errors\": \"A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\",\n      \"likely_errors\": \"A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying Han’s core strategy—pairing 2s and 5s to form powers of 10—because this requires abstracting the pattern from the example and generalizing it to a new, more complex expression. Misapplying the pairing logic (e.g., using more 10s than possible due to mismatched counts of 2s and 5s) is a common and critical error that leads to an incorrect final answer. While Representing and Procedural Fluency involve important steps, they are more mechanical: expanding expressions and combining exponents are procedural tasks that, while error-prone, are less likely to be the root cause of failure compared to the conceptual leap of identifying and correctly applying the 2-5 pairing pattern.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying Han’s core strategy—pairing 2s and 5s to form powers of 10—because this requires abstracting the pattern from the example and generalizing it to a new, more complex expression. Misapplying the pairing logic (e.g., using more 10s than possible due to mismatched counts of 2s and 5s) is a common and critical error that leads to an incorrect final answer. While Representing and Procedural Fluency involve important steps, they are more mechanical: expanding expressions and combining exponents are procedural tasks that, while error-prone, are less likely to be the root cause of failure compared to the conceptual leap of identifying and correctly applying the 2-5 pairing pattern.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4762,
+            "completion_tokens": 186
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:56:23+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.",
+              "likely_errors": "A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.",
+              "likely_errors": "A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).",
+              "likely_errors": "A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the given expression and rewrites it using equivalent representations, expanding (2·3)² and (3·5)² into their prime factorizations to make the structure of 2s and 5s visible."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes the pattern Han used—pairing 2s and 5s to form 10s—and applies this strategy to identify how many complete pairs can be formed in the simplified expression to generate powers of 10."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student applies exponent rules and arithmetic operations to simplify the expression, cancel common factors, and compute the final numerical result accurately and efficiently."
+            }
+          ],
+          "why": "The student must first represent the expression in a form that reveals the underlying structure (prime factors) before recognizing the pattern of pairing 2s and 5s to make 10s. Only after this structural understanding is established can the student generalize Han's method to the new expression. Finally, procedural fluency is required to carry out the necessary computations to reach the correct answer."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing and applying Han’s core strategy—pairing 2s and 5s to form powers of 10—because this requires abstracting the pattern from the example and generalizing it to a new, more complex expression. Misapplying the pairing logic (e.g., using more 10s than possible due to mismatched counts of 2s and 5s) is a common and critical error that leads to an incorrect final answer. While Representing and Procedural Fluency involve important steps, they are more mechanical: expanding expressions and combining exponents are procedural tasks that, while error-prone, are less likely to be the root cause of failure compared to the conceptual leap of identifying and correctly applying the 2-5 pairing pattern."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.",
+            "likely_errors": "A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).",
+            "likely_errors": "A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.",
+            "likely_errors": "A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.\",\n    \"likely_errors\": \"A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.\",\n    \"likely_errors\": \"A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).\",\n    \"likely_errors\": \"A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given expression and rewrites it using equivalent representations, expanding (2·3)² and (3·5)² into their prime factorizations to make the structure of 2s and 5s visible.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the pattern Han used—pairing 2s and 5s to form 10s—and applies this strategy to identify how many complete pairs can be formed in the simplified expression to generate powers of 10.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies exponent rules and arithmetic operations to simplify the expression, cancel common factors, and compute the final numerical result accurately and efficiently.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression in a form that reveals the underlying structure (prime factors) before recognizing the pattern of pairing 2s and 5s to make 10s. Only after this structural understanding is established can the student generalize Han's method to the new expression. Finally, procedural fluency is required to carry out the necessary computations to reach the correct answer.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying Han’s core strategy—pairing 2s and 5s to form powers of 10—because this requires abstracting the pattern from the example and generalizing it to a new, more complex expression. Misapplying the pairing logic (e.g., using more 10s than possible due to mismatched counts of 2s and 5s) is a common and critical error that leads to an incorrect final answer. While Representing and Procedural Fluency involve important steps, they are more mechanical: expanding expressions and combining exponents are procedural tasks that, while error-prone, are less likely to be the root cause of failure compared to the conceptual leap of identifying and correctly applying the 2-5 pairing pattern.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.",
+          "likely_errors": "A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.",
+          "likely_errors": "A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).",
+          "likely_errors": "A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the given expression and rewrites it using equivalent representations, expanding (2·3)² and (3·5)² into their prime factorizations to make the structure of 2s and 5s visible."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes the pattern Han used—pairing 2s and 5s to form 10s—and applies this strategy to identify how many complete pairs can be formed in the simplified expression to generate powers of 10."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student applies exponent rules and arithmetic operations to simplify the expression, cancel common factors, and compute the final numerical result accurately and efficiently."
+        }
+      ],
+      "why": "The student must first represent the expression in a form that reveals the underlying structure (prime factors) before recognizing the pattern of pairing 2s and 5s to make 10s. Only after this structural understanding is established can the student generalize Han's method to the new expression. Finally, procedural fluency is required to carry out the necessary computations to reach the correct answer."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing and applying Han’s core strategy—pairing 2s and 5s to form powers of 10—because this requires abstracting the pattern from the example and generalizing it to a new, more complex expression. Misapplying the pairing logic (e.g., using more 10s than possible due to mismatched counts of 2s and 5s) is a common and critical error that leads to an incorrect final answer. While Representing and Procedural Fluency involve important steps, they are more mechanical: expanding expressions and combining exponents are procedural tasks that, while error-prone, are less likely to be the root cause of failure compared to the conceptual leap of identifying and correctly applying the 2-5 pairing pattern."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given expression and rewrite it using equivalent representations that make the structure of 2s and 5s visible. This includes expanding the terms (2·3)² and (3·5)² into their prime factorizations, which transforms the expression into a product of powers of 2, 3, and 5. This step aligns with the descriptor of translating between different representations of expressions using symbols and expanding expressions to reveal structure.",
+          "likely_errors": "A student might incorrectly expand (2·3)² as 2²·3² but forget to apply the exponent to both factors, or misapply the exponent to only one. This is moderately likely for students still developing fluency with exponent rules."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it strategically to the simplified expression. After simplifying, the student identifies how many complete pairs of 2 and 5 are available to form 10s, and then uses powers of 10 to compute the final value efficiently. This matches the descriptor of identifying patterns and generalizing to extend reasoning to a broader domain (here, using 10s to simplify large powers).",
+          "likely_errors": "A student might fail to notice that the number of 2s and 5s limits the number of 10s that can be formed (e.g., using all 5s even if fewer 2s are available), leading to an incorrect power of 10. This is moderately likely, especially if the student hasn't internalized the pairing logic."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After rewriting the expression in terms of prime factors, the student must apply exponent rules (e.g., a^m · a^n = a^(m+n)) and simplify the resulting expression by combining like bases. This includes simplifying the numerator and denominator, canceling common factors (especially 3²), and computing the final result. This step requires accurate and efficient use of arithmetic and exponent operations.",
+          "likely_errors": "A student might incorrectly combine exponents (e.g., adding exponents when dividing), miscount the number of 2s or 5s, or fail to cancel 3² properly. These errors are common and moderately likely, especially under time pressure or with complex expressions."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to apply Han’s technique to compute a value, not to justify or prove why the method works. There is no request to defend, critique, or explain the validity of Han’s approach or to provide a general proof of the method’s correctness, so this practice is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The task is purely computational and algebraic, involving simplification of an expression using a given strategy. There is no real-world context, no need to identify a problem from a scenario, or to create or evaluate a model to represent a situation. The problem is abstract and internal to mathematics, so modeling is not involved."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents Han’s method as a given strategy, but the student is solving independently. There is no dialogue, peer contribution, or need to respond to or build on another person’s reasoning. The task is individual and does not involve discussion, joint thinking, or evaluation of others’ ideas, so collaboration is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

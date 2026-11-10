@@ -1,0 +1,370 @@
+{
+  "row": 347,
+  "problem_id": "198767",
+  "problem_text": "A simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____",
+          "started_at": "2026-11-10T01:26:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3928,
+            "completion_tokens": 782
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:28:51+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Procedural Fluency: After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:45:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Procedural Fluency: After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Procedural Fluency: After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the simulation results by translating each trial's string of 1s and 0s into a count of successful kicks, recognizing that each digit represents a made or missed field goal and that the entire string represents a single game of 5 kicks.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student counts how many of the 5 trials resulted in 3 or more made kicks, then divides that number by 5 to compute the estimated probability, performing accurate arithmetic and proportional reasoning.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the simulation data by interpreting the numerical representation of the trials—this is a foundational step in translating the given information into a mathematical form. Only after this representation is established can the student apply procedural steps to count and compute the probability. Thus, Representing precedes Procedural Fluency in the sequence of problem-solving actions.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the simulation results by translating each trial's string of 1s and 0s into a count of successful kicks, recognizing that each digit represents a made or missed field goal and that the entire string represents a single game of 5 kicks.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student counts how many of the 5 trials resulted in 3 or more made kicks, then divides that number by 5 to compute the estimated probability, performing accurate arithmetic and proportional reasoning.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the simulation data by interpreting the numerical representation of the trials—this is a foundational step in translating the given information into a mathematical form. Only after this representation is established can the student apply procedural steps to count and compute the probability. Thus, Representing precedes Procedural Fluency in the sequence of problem-solving actions.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4181,
+            "completion_tokens": 230
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:46:48+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:54:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA simulation is done to represent kicking 5 field goals in a single game with a 72% probability of making each one. A 1 represents making the kick and a 0 represents missing the kick.\n[Table:\ntrial | result\n1 | 10101\n2 | 11010\n3 | 00011\n4 | 11111\n5 | 10011]\nBased on these results, estimate the probability that 3 or more kicks are made.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of interpreting the simulation results, particularly by miscounting the number of made kicks (1s) in each trial or misunderstanding the meaning of the digits. This is the core challenge because the representation—strings of 1s and 0s—must be accurately translated into counts of successes, and errors here cascade into the final probability estimate. While procedural fluency is involved in counting and dividing, the error rate is lower because the arithmetic is simple and the steps are routine; thus, the difficulty lies primarily in correctly representing the data, making 'Representing' the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of interpreting the simulation results, particularly by miscounting the number of made kicks (1s) in each trial or misunderstanding the meaning of the digits. This is the core challenge because the representation—strings of 1s and 0s—must be accurately translated into counts of successes, and errors here cascade into the final probability estimate. While procedural fluency is involved in counting and dividing, the error rate is lower because the arithmetic is simple and the steps are routine; thus, the difficulty lies primarily in correctly representing the data, making 'Representing' the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4681,
+            "completion_tokens": 144
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:56:23+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+              "likely_errors": "A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'",
+              "likely_errors": "A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the simulation results by translating each trial's string of 1s and 0s into a count of successful kicks, recognizing that each digit represents a made or missed field goal and that the entire string represents a single game of 5 kicks."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student counts how many of the 5 trials resulted in 3 or more made kicks, then divides that number by 5 to compute the estimated probability, performing accurate arithmetic and proportional reasoning."
+            }
+          ],
+          "why": "The student must first make sense of the simulation data by interpreting the numerical representation of the trials—this is a foundational step in translating the given information into a mathematical form. Only after this representation is established can the student apply procedural steps to count and compute the probability. Thus, Representing precedes Procedural Fluency in the sequence of problem-solving actions."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of interpreting the simulation results, particularly by miscounting the number of made kicks (1s) in each trial or misunderstanding the meaning of the digits. This is the core challenge because the representation—strings of 1s and 0s—must be accurately translated into counts of successes, and errors here cascade into the final probability estimate. While procedural fluency is involved in counting and dividing, the error rate is lower because the arithmetic is simple and the steps are routine; thus, the difficulty lies primarily in correctly representing the data, making 'Representing' the top practice."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+            "likely_errors": "A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'",
+            "likely_errors": "A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'\",\n      \"likely_errors\": \"A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the simulation results by translating each trial's string of 1s and 0s into a count of successful kicks, recognizing that each digit represents a made or missed field goal and that the entire string represents a single game of 5 kicks.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student counts how many of the 5 trials resulted in 3 or more made kicks, then divides that number by 5 to compute the estimated probability, performing accurate arithmetic and proportional reasoning.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the simulation data by interpreting the numerical representation of the trials—this is a foundational step in translating the given information into a mathematical form. Only after this representation is established can the student apply procedural steps to count and compute the probability. Thus, Representing precedes Procedural Fluency in the sequence of problem-solving actions.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of interpreting the simulation results, particularly by miscounting the number of made kicks (1s) in each trial or misunderstanding the meaning of the digits. This is the core challenge because the representation—strings of 1s and 0s—must be accurately translated into counts of successes, and errors here cascade into the final probability estimate. While procedural fluency is involved in counting and dividing, the error rate is lower because the arithmetic is simple and the steps are routine; thus, the difficulty lies primarily in correctly representing the data, making 'Representing' the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+          "likely_errors": "A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'",
+          "likely_errors": "A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the simulation results by translating each trial's string of 1s and 0s into a count of successful kicks, recognizing that each digit represents a made or missed field goal and that the entire string represents a single game of 5 kicks."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student counts how many of the 5 trials resulted in 3 or more made kicks, then divides that number by 5 to compute the estimated probability, performing accurate arithmetic and proportional reasoning."
+        }
+      ],
+      "why": "The student must first make sense of the simulation data by interpreting the numerical representation of the trials—this is a foundational step in translating the given information into a mathematical form. Only after this representation is established can the student apply procedural steps to count and compute the probability. Thus, Representing precedes Procedural Fluency in the sequence of problem-solving actions."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of interpreting the simulation results, particularly by miscounting the number of made kicks (1s) in each trial or misunderstanding the meaning of the digits. This is the core challenge because the representation—strings of 1s and 0s—must be accurately translated into counts of successes, and errors here cascade into the final probability estimate. While procedural fluency is involved in counting and dividing, the error rate is lower because the arithmetic is simple and the steps are routine; thus, the difficulty lies primarily in correctly representing the data, making 'Representing' the top practice."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given table of simulation results, where each row represents a trial of 5 field goals and each digit represents a made (1) or missed (0) kick. The student needs to translate the string of digits into a count of successful kicks per trial, which involves recognizing and interpreting a numerical representation of a probabilistic event. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+          "likely_errors": "A student might miscount the number of 1s in a trial (e.g., miscounting 11111 as 4 instead of 5), or misinterpret the meaning of 1 and 0. This is moderately likely, especially if the student is not careful or unfamiliar with simulation notation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After interpreting each trial, the student must count how many trials resulted in 3 or more made kicks (i.e., 3, 4, or 5 successes). This requires accurate counting and basic arithmetic—adding up the number of trials that meet the condition. The student then divides that count by the total number of trials (5) to compute the estimated probability. This step involves applying a standard procedure for estimating probability from simulation data, matching the descriptor: 'Carry out proportional, rate, and percent computations efficiently (e.g., unit rates, scaling, solving proportions)' and 'Compute statistical measures (e.g., mean, median, mode, range, interquartile range, standard deviation) accurately and efficiently.'",
+          "likely_errors": "A student might incorrectly count the number of trials with 3 or more successes (e.g., missing one such trial) or make a division error (e.g., 3/5 = 0.6, but writing 0.06). This is moderately likely, especially if the student is rushing or lacks confidence in basic computation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple simulations or extend the reasoning to a broader context (e.g., predicting long-term behavior or generalizing the formula for probability). The student is simply analyzing a given set of 5 trials, not deriving a general rule or extending the pattern to more trials or different probabilities."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The student is not asked to defend or evaluate a claim, provide a counterexample, or construct a logical argument about why the estimate is valid or how it relates to theoretical probability. The task is purely computational and interpretive, not argumentative or deductive."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the simulation itself is a model, the student is not asked to create, design, or evaluate a model for a real-world situation. They are only using the provided simulation data to compute an estimate, not building a model from scratch or assessing its reasonableness in context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer claims, or interaction with another student’s reasoning. The student works independently on the given data without responding to or building on someone else’s mathematical thinking, so collaborative aspects are absent."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Representing"
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "row": 854,
+  "problem_id": "170280",
+  "problem_text": "[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\",\n    \"likely_errors\": \"A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\",\n    \"likely_errors\": \"A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\",\n    \"likely_errors\": \"A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\",\n    \"likely_errors\": \"A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3861,
+            "completion_tokens": 656
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\n- Procedural Fluency: After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\n- Procedural Fluency: After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\n- Procedural Fluency: After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the visual models in Diagram A and Diagram B, identifying the line of best fit and the data points, and translates the graphical representation into a numerical understanding of predicted versus actual car prices.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the absolute difference between the actual and predicted prices for each car, checks whether each difference exceeds $3,000, and counts how many cars meet this criterion.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the visual models by interpreting the relationship between the data points and the line of best fit, which is a representational act. Only after this interpretation can the student perform the necessary numerical computations, which requires accurate and efficient procedural execution. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the visual models in Diagram A and Diagram B, identifying the line of best fit and the data points, and translates the graphical representation into a numerical understanding of predicted versus actual car prices.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the absolute difference between the actual and predicted prices for each car, checks whether each difference exceeds $3,000, and counts how many cars meet this criterion.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the visual models by interpreting the relationship between the data points and the line of best fit, which is a representational act. Only after this interpretation can the student perform the necessary numerical computations, which requires accurate and efficient procedural execution. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4047,
+            "completion_tokens": 214
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\",\n      \"likely_errors\": \"A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\",\n      \"likely_errors\": \"A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\",\n      \"likely_errors\": \"A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\",\n      \"likely_errors\": \"A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\n[image]\n[Table:\nFor how many cars does the prediction made by the model in Diagram A differ by more than $3,000? | ____ cars\nWhat about the model in Diagram B? | ____ cars]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\",\n      \"likely_errors\": \"A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\",\n      \"likely_errors\": \"A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of interpreting the visual models in Diagram A and Diagram B, particularly in accurately reading the scales, identifying predicted values from the line of best fit, and measuring the vertical distance between data points and the line. Misreading the graph's scale or confusing axes can lead to incorrect comparisons, and this error is more fundamental than arithmetic mistakes. While procedural fluency is needed for subtraction and counting, those steps are less likely to cause failure because they are straightforward once the correct values are identified. The difficulty lies primarily in correctly translating the visual representation into meaningful numerical data.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of interpreting the visual models in Diagram A and Diagram B, particularly in accurately reading the scales, identifying predicted values from the line of best fit, and measuring the vertical distance between data points and the line. Misreading the graph's scale or confusing axes can lead to incorrect comparisons, and this error is more fundamental than arithmetic mistakes. While procedural fluency is needed for subtraction and counting, those steps are less likely to cause failure because they are straightforward once the correct values are identified. The difficulty lies primarily in correctly translating the visual representation into meaningful numerical data.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4491,
+            "completion_tokens": 138
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'",
+              "likely_errors": "A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'",
+              "likely_errors": "A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the visual models in Diagram A and Diagram B, identifying the line of best fit and the data points, and translates the graphical representation into a numerical understanding of predicted versus actual car prices."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the absolute difference between the actual and predicted prices for each car, checks whether each difference exceeds $3,000, and counts how many cars meet this criterion."
+            }
+          ],
+          "why": "The student must first make sense of the visual models by interpreting the relationship between the data points and the line of best fit, which is a representational act. Only after this interpretation can the student perform the necessary numerical computations, which requires accurate and efficient procedural execution. Thus, Representing precedes Procedural Fluency in the sequence of steps."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of interpreting the visual models in Diagram A and Diagram B, particularly in accurately reading the scales, identifying predicted values from the line of best fit, and measuring the vertical distance between data points and the line. Misreading the graph's scale or confusing axes can lead to incorrect comparisons, and this error is more fundamental than arithmetic mistakes. While procedural fluency is needed for subtraction and counting, those steps are less likely to cause failure because they are straightforward once the correct values are identified. The difficulty lies primarily in correctly translating the visual representation into meaningful numerical data."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'",
+            "likely_errors": "A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'",
+            "likely_errors": "A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'\",\n    \"likely_errors\": \"A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'\",\n    \"likely_errors\": \"A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the visual models in Diagram A and Diagram B, identifying the line of best fit and the data points, and translates the graphical representation into a numerical understanding of predicted versus actual car prices.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the absolute difference between the actual and predicted prices for each car, checks whether each difference exceeds $3,000, and counts how many cars meet this criterion.\"\n    }\n  ],\n  \"why\": \"The student must first make sense of the visual models by interpreting the relationship between the data points and the line of best fit, which is a representational act. Only after this interpretation can the student perform the necessary numerical computations, which requires accurate and efficient procedural execution. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of interpreting the visual models in Diagram A and Diagram B, particularly in accurately reading the scales, identifying predicted values from the line of best fit, and measuring the vertical distance between data points and the line. Misreading the graph's scale or confusing axes can lead to incorrect comparisons, and this error is more fundamental than arithmetic mistakes. While procedural fluency is needed for subtraction and counting, those steps are less likely to cause failure because they are straightforward once the correct values are identified. The difficulty lies primarily in correctly translating the visual representation into meaningful numerical data.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'",
+          "likely_errors": "A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'",
+          "likely_errors": "A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the visual models in Diagram A and Diagram B, identifying the line of best fit and the data points, and translates the graphical representation into a numerical understanding of predicted versus actual car prices."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the absolute difference between the actual and predicted prices for each car, checks whether each difference exceeds $3,000, and counts how many cars meet this criterion."
+        }
+      ],
+      "why": "The student must first make sense of the visual models by interpreting the relationship between the data points and the line of best fit, which is a representational act. Only after this interpretation can the student perform the necessary numerical computations, which requires accurate and efficient procedural execution. Thus, Representing precedes Procedural Fluency in the sequence of steps."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of interpreting the visual models in Diagram A and Diagram B, particularly in accurately reading the scales, identifying predicted values from the line of best fit, and measuring the vertical distance between data points and the line. Misreading the graph's scale or confusing axes can lead to incorrect comparisons, and this error is more fundamental than arithmetic mistakes. While procedural fluency is needed for subtraction and counting, those steps are less likely to cause failure because they are straightforward once the correct values are identified. The difficulty lies primarily in correctly translating the visual representation into meaningful numerical data."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the visual model in Diagram A and Diagram B, which likely show scatterplots or graphs with data points and a line of best fit, and translate the visual representation into numerical comparisons. This involves recognizing the relationship between the predicted values (from the model line) and actual values (data points), and identifying when the difference exceeds $3,000. This aligns with the descriptor: 'Represent, interpret, or compare expressions or problem situations involving absolute values' and 'Create visual representation of measurements or relationships between measurements.'",
+          "likely_errors": "A student might misread the scale on the graph, misidentify the predicted value from the line, or incorrectly measure the vertical distance between a point and the line. This is moderately likely, especially if the graph has a non-standard scale or if the student confuses the axes."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After identifying the relevant data points and predicted values from the diagrams, the student must compute the absolute difference between the actual and predicted prices for each car and compare it to $3,000. This requires accurate subtraction and absolute value computation, and counting how many exceed the threshold. This matches the descriptor: 'Carry out algorithms for addition, subtraction, multiplication, and division accurately and efficiently with whole numbers, fractions, decimals, and integers.'",
+          "likely_errors": "A student might make arithmetic errors in subtraction or misapply the absolute value, or miscount the number of cars that meet the condition. These errors are common, especially under time pressure, but are less likely if the student checks their work."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern across a broader set of cases or generalize a rule beyond the given data. The task is specific to the two models shown and does not ask for a general formula or pattern across different datasets."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical count based on visual and computational analysis, not for defending or constructing a mathematical argument. There is no claim to evaluate or prove, nor any need to justify why a model is better or how a pattern holds."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the diagrams may represent a real-world modeling scenario, the student is not asked to create, revise, or evaluate a model from a context. They are only assessing an existing model's accuracy, not mathematizing a situation or building a model to solve a problem."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or collaborative elements. The student works independently on interpreting diagrams and computing differences, with no need to respond to or build on another person's mathematical thinking."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Representing"
+  }
+}

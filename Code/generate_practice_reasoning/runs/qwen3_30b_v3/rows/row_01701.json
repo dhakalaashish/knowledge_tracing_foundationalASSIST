@@ -1,0 +1,389 @@
+{
+  "row": 1701,
+  "problem_id": "6562",
+  "problem_text": "Imagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\",\n    \"likely_errors\": \"A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\",\n    \"likely_errors\": \"A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\",\n    \"likely_errors\": \"A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\",\n    \"likely_errors\": \"A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\",\n    \"likely_errors\": \"A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\",\n    \"likely_errors\": \"A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3887,
+            "completion_tokens": 758
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\n- Abstracting and Generalizing: The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\n- Procedural Fluency: After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\n- Abstracting and Generalizing: The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\n- Procedural Fluency: After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\n- Abstracting and Generalizing: The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\n- Procedural Fluency: After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student visualizes or sketches the 4×4×4 cube and represents the spatial arrangement of the smaller cubes by identifying their positions—corner, edge, face, or interior—to determine which cubes have exactly two blue faces.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that on each edge of the cube, only the middle two small cubes (excluding the corner cubes) have exactly two blue faces, and generalizes this pattern across all 12 edges of the cube.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total number of cubes with exactly two blue faces by multiplying 12 edges by 2 cubes per edge, resulting in 24.\"\n    }\n  ],\n  \"why\": \"The student must first represent the physical cube and its structure mentally or visually to understand the spatial relationships before identifying patterns. Once the pattern is recognized across the cube’s edges, the student generalizes it to all 12 edges, which is a key step in abstracting the solution. Only after this conceptual understanding is established does the student perform the arithmetic computation, which relies on procedural fluency.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student visualizes or sketches the 4×4×4 cube and represents the spatial arrangement of the smaller cubes by identifying their positions—corner, edge, face, or interior—to determine which cubes have exactly two blue faces.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that on each edge of the cube, only the middle two small cubes (excluding the corner cubes) have exactly two blue faces, and generalizes this pattern across all 12 edges of the cube.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total number of cubes with exactly two blue faces by multiplying 12 edges by 2 cubes per edge, resulting in 24.\"\n    }\n  ],\n  \"why\": \"The student must first represent the physical cube and its structure mentally or visually to understand the spatial relationships before identifying patterns. Once the pattern is recognized across the cube’s edges, the student generalizes it to all 12 edges, which is a key step in abstracting the solution. Only after this conceptual understanding is established does the student perform the arithmetic computation, which relies on procedural fluency.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4124,
+            "completion_tokens": 296
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\",\n      \"likely_errors\": \"A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\",\n      \"likely_errors\": \"A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\",\n      \"likely_errors\": \"A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\",\n      \"likely_errors\": \"A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\",\n      \"likely_errors\": \"A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\",\n      \"likely_errors\": \"A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nImagine a large, solid cube made out of 64 white snap cubes. Someone spray paints all 6 faces of the large cube blue. After the paint dries, they disassemble the large cube into a pile of 64 snap cubes.\nHow many of those 64 snap cubes have exactly 2 faces that are blue?\n____ snap cubes\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\",\n      \"likely_errors\": \"A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\",\n      \"likely_errors\": \"A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\",\n      \"likely_errors\": \"A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the Representing step by misvisualizing the 4×4×4 cube or incorrectly identifying which small cubes have exactly two blue faces—such as including corner cubes (which have three blue faces) or miscounting the edge cubes. This step is foundational: without a correct mental or visual model of the cube’s structure, the subsequent generalization and computation will fail. While Abstracting and Generalizing and Procedural Fluency involve risks (e.g., wrong edge count or arithmetic error), these are more likely to stem from a prior failure in Representing; thus, the core difficulty lies in accurately representing the spatial arrangement.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the Representing step by misvisualizing the 4×4×4 cube or incorrectly identifying which small cubes have exactly two blue faces—such as including corner cubes (which have three blue faces) or miscounting the edge cubes. This step is foundational: without a correct mental or visual model of the cube’s structure, the subsequent generalization and computation will fail. While Abstracting and Generalizing and Procedural Fluency involve risks (e.g., wrong edge count or arithmetic error), these are more likely to stem from a prior failure in Representing; thus, the core difficulty lies in accurately representing the spatial arrangement.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4620,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.",
+              "likely_errors": "A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.",
+              "likely_errors": "A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.",
+              "likely_errors": "A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student visualizes or sketches the 4×4×4 cube and represents the spatial arrangement of the smaller cubes by identifying their positions—corner, edge, face, or interior—to determine which cubes have exactly two blue faces."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the pattern that on each edge of the cube, only the middle two small cubes (excluding the corner cubes) have exactly two blue faces, and generalizes this pattern across all 12 edges of the cube."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the total number of cubes with exactly two blue faces by multiplying 12 edges by 2 cubes per edge, resulting in 24."
+            }
+          ],
+          "why": "The student must first represent the physical cube and its structure mentally or visually to understand the spatial relationships before identifying patterns. Once the pattern is recognized across the cube’s edges, the student generalizes it to all 12 edges, which is a key step in abstracting the solution. Only after this conceptual understanding is established does the student perform the arithmetic computation, which relies on procedural fluency."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the Representing step by misvisualizing the 4×4×4 cube or incorrectly identifying which small cubes have exactly two blue faces—such as including corner cubes (which have three blue faces) or miscounting the edge cubes. This step is foundational: without a correct mental or visual model of the cube’s structure, the subsequent generalization and computation will fail. While Abstracting and Generalizing and Procedural Fluency involve risks (e.g., wrong edge count or arithmetic error), these are more likely to stem from a prior failure in Representing; thus, the core difficulty lies in accurately representing the spatial arrangement."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.",
+            "likely_errors": "A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.",
+            "likely_errors": "A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.",
+            "likely_errors": "A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.\",\n    \"likely_errors\": \"A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.\",\n    \"likely_errors\": \"A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.\",\n    \"likely_errors\": \"A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student visualizes or sketches the 4×4×4 cube and represents the spatial arrangement of the smaller cubes by identifying their positions—corner, edge, face, or interior—to determine which cubes have exactly two blue faces.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that on each edge of the cube, only the middle two small cubes (excluding the corner cubes) have exactly two blue faces, and generalizes this pattern across all 12 edges of the cube.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the total number of cubes with exactly two blue faces by multiplying 12 edges by 2 cubes per edge, resulting in 24.\"\n    }\n  ],\n  \"why\": \"The student must first represent the physical cube and its structure mentally or visually to understand the spatial relationships before identifying patterns. Once the pattern is recognized across the cube’s edges, the student generalizes it to all 12 edges, which is a key step in abstracting the solution. Only after this conceptual understanding is established does the student perform the arithmetic computation, which relies on procedural fluency.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the Representing step by misvisualizing the 4×4×4 cube or incorrectly identifying which small cubes have exactly two blue faces—such as including corner cubes (which have three blue faces) or miscounting the edge cubes. This step is foundational: without a correct mental or visual model of the cube’s structure, the subsequent generalization and computation will fail. While Abstracting and Generalizing and Procedural Fluency involve risks (e.g., wrong edge count or arithmetic error), these are more likely to stem from a prior failure in Representing; thus, the core difficulty lies in accurately representing the spatial arrangement.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.",
+          "likely_errors": "A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.",
+          "likely_errors": "A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.",
+          "likely_errors": "A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student visualizes or sketches the 4×4×4 cube and represents the spatial arrangement of the smaller cubes by identifying their positions—corner, edge, face, or interior—to determine which cubes have exactly two blue faces."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the pattern that on each edge of the cube, only the middle two small cubes (excluding the corner cubes) have exactly two blue faces, and generalizes this pattern across all 12 edges of the cube."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the total number of cubes with exactly two blue faces by multiplying 12 edges by 2 cubes per edge, resulting in 24."
+        }
+      ],
+      "why": "The student must first represent the physical cube and its structure mentally or visually to understand the spatial relationships before identifying patterns. Once the pattern is recognized across the cube’s edges, the student generalizes it to all 12 edges, which is a key step in abstracting the solution. Only after this conceptual understanding is established does the student perform the arithmetic computation, which relies on procedural fluency."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the Representing step by misvisualizing the 4×4×4 cube or incorrectly identifying which small cubes have exactly two blue faces—such as including corner cubes (which have three blue faces) or miscounting the edge cubes. This step is foundational: without a correct mental or visual model of the cube’s structure, the subsequent generalization and computation will fail. While Abstracting and Generalizing and Procedural Fluency involve risks (e.g., wrong edge count or arithmetic error), these are more likely to stem from a prior failure in Representing; thus, the core difficulty lies in accurately representing the spatial arrangement."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must visualize or sketch the large cube made of 64 smaller snap cubes (4×4×4) and represent the spatial arrangement of the smaller cubes based on their position—corner, edge, face, or interior. This involves interpreting the physical structure and translating it into a mental or visual model to identify which cubes have exactly two blue faces, which are located along the edges but not at the corners.",
+          "likely_errors": "A student might miscount the number of edge cubes or incorrectly assume all edge cubes have two blue faces, possibly including corner cubes (which have three), or fail to recognize that only the middle cubes on each edge qualify. This is moderately likely for students who struggle with spatial reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern across the cube’s structure: in a 4×4×4 cube, each edge has 4 small cubes, but only the two middle ones (not the corners) have exactly two blue faces. The student applies this insight to all 12 edges of the cube, recognizing that the same pattern holds regardless of edge location, and multiplies 10 edges (wait—actually 12 edges) by 2 middle cubes per edge to find the total.",
+          "likely_errors": "A student might incorrectly generalize by using a smaller cube (e.g., 3×3×3) as a model and apply it to the 4×4×4 case, leading to an incorrect count. Alternatively, they might miscount the number of edges (e.g., thinking there are 8 or 16 edges), which would result in a wrong total. This is moderately likely if the student lacks experience with 3D pattern generalization."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After identifying that each of the 12 edges contributes 2 cubes with exactly two blue faces, the student performs the multiplication: 12 × 2 = 24. This requires accurate and efficient computation with whole numbers, which is a core component of procedural fluency.",
+          "likely_errors": "A student might make a simple arithmetic error (e.g., 12 × 2 = 20 or 26), which is common but easily caught with checking. This is likely for students who are fluent but careless."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to compute a count based on spatial reasoning and pattern recognition, not to justify why the pattern holds or refute a counterclaim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is purely mathematical and does not involve creating or validating a model to solve a real-world problem. The cube is a fixed geometric object, and the question is about counting based on structure, not about interpreting or building a model to represent a broader context."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solitary task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, shared work, or peer input to respond to, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Representing"
+  }
+}

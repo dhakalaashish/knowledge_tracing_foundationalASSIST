@@ -1,0 +1,389 @@
+{
+  "row": 2021,
+  "problem_id": "91684",
+  "problem_text": "Noah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches",
+          "started_at": "2026-11-10T01:34:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\",\n      \"likely_errors\": \"A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\",\n      \"likely_errors\": \"A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3869,
+            "completion_tokens": 779
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:37:02+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\n- Abstracting and Generalizing: The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\n- Procedural Fluency: After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:49:27+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\n- Abstracting and Generalizing: The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\n- Procedural Fluency: After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\n- Abstracting and Generalizing: The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\n- Procedural Fluency: After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the recipe as a ratio of orange juice to soda water (4:5) and represents the given quantities (36 L orange juice, 45 L soda water) as the ratio 36:45 to compare with the recipe ratio.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes that 36:45 is a scaled version of 4:5 and generalizes that both quantities are multiplied by the same factor, identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) to determine the number of batches.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem using ratios to make sense of the relationship between ingredients, which is a prerequisite for identifying patterns. Once the ratios are represented, the student can abstract the multiplicative structure and generalize the scaling factor across both quantities. Only after this conceptual understanding is established can the student apply procedural fluency to compute the result accurately.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the recipe as a ratio of orange juice to soda water (4:5) and represents the given quantities (36 L orange juice, 45 L soda water) as the ratio 36:45 to compare with the recipe ratio.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes that 36:45 is a scaled version of 4:5 and generalizes that both quantities are multiplied by the same factor, identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) to determine the number of batches.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem using ratios to make sense of the relationship between ingredients, which is a prerequisite for identifying patterns. Once the ratios are represented, the student can abstract the multiplicative structure and generalize the scaling factor across both quantities. Only after this conceptual understanding is established can the student apply procedural fluency to compute the result accurately.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4123,
+            "completion_tokens": 322
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:50:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\",\n      \"likely_errors\": \"A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:59:36+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\",\n      \"likely_errors\": \"A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nNoah’s recipe for one batch of sparkling orange juice uses 4 liters of orange juice and 5 liters of soda water.\nIf someone mixes 36 liters of orange juice and 45 liters of soda water, how many batches would they make?\n____ batches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\",\n      \"likely_errors\": \"A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing that both ingredients are scaled by the same factor (9) and generalizing this pattern from the original ratio (4:5) to the given quantities (36:45). This requires identifying the multiplicative relationship across both parts of the ratio, which is a key aspect of abstracting and generalizing. While representing the ratio correctly (Representing) and performing division (Procedural Fluency) are important, they are more routine; students who misrepresent the ratio or make a calculation error can still succeed if they correctly identify the scaling factor. However, failing to generalize the consistent scaling factor—especially if they only check one part—leads to incorrect answers, making this the core challenge of the item.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing that both ingredients are scaled by the same factor (9) and generalizing this pattern from the original ratio (4:5) to the given quantities (36:45). This requires identifying the multiplicative relationship across both parts of the ratio, which is a key aspect of abstracting and generalizing. While representing the ratio correctly (Representing) and performing division (Procedural Fluency) are important, they are more routine; students who misrepresent the ratio or make a calculation error can still succeed if they correctly identify the scaling factor. However, failing to generalize the consistent scaling factor—especially if they only check one part—leads to incorrect answers, making this the core challenge of the item.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4619,
+            "completion_tokens": 178
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:01:11+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.",
+              "likely_errors": "A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.",
+              "likely_errors": "A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.",
+              "likely_errors": "A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the recipe as a ratio of orange juice to soda water (4:5) and represents the given quantities (36 L orange juice, 45 L soda water) as the ratio 36:45 to compare with the recipe ratio."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes that 36:45 is a scaled version of 4:5 and generalizes that both quantities are multiplied by the same factor, identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) to determine the number of batches."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches."
+            }
+          ],
+          "why": "The student must first represent the problem using ratios to make sense of the relationship between ingredients, which is a prerequisite for identifying patterns. Once the ratios are represented, the student can abstract the multiplicative structure and generalize the scaling factor across both quantities. Only after this conceptual understanding is established can the student apply procedural fluency to compute the result accurately."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing that both ingredients are scaled by the same factor (9) and generalizing this pattern from the original ratio (4:5) to the given quantities (36:45). This requires identifying the multiplicative relationship across both parts of the ratio, which is a key aspect of abstracting and generalizing. While representing the ratio correctly (Representing) and performing division (Procedural Fluency) are important, they are more routine; students who misrepresent the ratio or make a calculation error can still succeed if they correctly identify the scaling factor. However, failing to generalize the consistent scaling factor—especially if they only check one part—leads to incorrect answers, making this the core challenge of the item."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.",
+            "likely_errors": "A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.",
+            "likely_errors": "A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.",
+            "likely_errors": "A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.\",\n      \"likely_errors\": \"A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.\",\n      \"likely_errors\": \"A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the recipe as a ratio of orange juice to soda water (4:5) and represents the given quantities (36 L orange juice, 45 L soda water) as the ratio 36:45 to compare with the recipe ratio.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes that 36:45 is a scaled version of 4:5 and generalizes that both quantities are multiplied by the same factor, identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) to determine the number of batches.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem using ratios to make sense of the relationship between ingredients, which is a prerequisite for identifying patterns. Once the ratios are represented, the student can abstract the multiplicative structure and generalize the scaling factor across both quantities. Only after this conceptual understanding is established can the student apply procedural fluency to compute the result accurately.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing that both ingredients are scaled by the same factor (9) and generalizing this pattern from the original ratio (4:5) to the given quantities (36:45). This requires identifying the multiplicative relationship across both parts of the ratio, which is a key aspect of abstracting and generalizing. While representing the ratio correctly (Representing) and performing division (Procedural Fluency) are important, they are more routine; students who misrepresent the ratio or make a calculation error can still succeed if they correctly identify the scaling factor. However, failing to generalize the consistent scaling factor—especially if they only check one part—leads to incorrect answers, making this the core challenge of the item.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.",
+          "likely_errors": "A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.",
+          "likely_errors": "A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.",
+          "likely_errors": "A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the recipe as a ratio of orange juice to soda water (4:5) and represents the given quantities (36 L orange juice, 45 L soda water) as the ratio 36:45 to compare with the recipe ratio."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes that 36:45 is a scaled version of 4:5 and generalizes that both quantities are multiplied by the same factor, identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) to determine the number of batches."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches."
+        }
+      ],
+      "why": "The student must first represent the problem using ratios to make sense of the relationship between ingredients, which is a prerequisite for identifying patterns. Once the ratios are represented, the student can abstract the multiplicative structure and generalize the scaling factor across both quantities. Only after this conceptual understanding is established can the student apply procedural fluency to compute the result accurately."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing that both ingredients are scaled by the same factor (9) and generalizing this pattern from the original ratio (4:5) to the given quantities (36:45). This requires identifying the multiplicative relationship across both parts of the ratio, which is a key aspect of abstracting and generalizing. While representing the ratio correctly (Representing) and performing division (Procedural Fluency) are important, they are more routine; students who misrepresent the ratio or make a calculation error can still succeed if they correctly identify the scaling factor. However, failing to generalize the consistent scaling factor—especially if they only check one part—leads to incorrect answers, making this the core challenge of the item."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the recipe as a ratio of orange juice to soda water (4:5) and represent the given quantities (36 L orange juice, 45 L soda water) in a way that allows comparison to the recipe ratio, such as writing the ratio 36:45 and recognizing it as a multiple of 4:5. This matches the descriptor of translating between different representations of ratios and rational numbers.",
+          "likely_errors": "A student might misrepresent the ratio by reversing the parts (e.g., 36:45 as 5:4) or fail to recognize that the quantities must be compared in the same order as the recipe. This is moderately likely for students who are still developing ratio reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the given mixture (36:45) is a scaled version of the original recipe (4:5) and generalize that both quantities are scaled by the same factor. This involves identifying the multiplicative relationship (e.g., 4 × 9 = 36, 5 × 9 = 45) and extending that pattern to determine the number of batches. This aligns with the descriptor of identifying patterns in ratios and generalizing them using symbols or numbers.",
+          "likely_errors": "A student might incorrectly assume different scaling factors for each ingredient (e.g., 36 ÷ 4 = 9, but 45 ÷ 5 = 9, so it’s consistent—but a student might not notice this and try to use different factors). This is unlikely if the student checks both parts, but possible if they only check one."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After recognizing the scaling factor (9), the student must perform the division (36 ÷ 4 = 9 or 45 ÷ 5 = 9) accurately and efficiently to compute the number of batches. This involves applying a basic division procedure with whole numbers, which is a core part of procedural fluency with operations.",
+          "likely_errors": "A student might make a computational error (e.g., 36 ÷ 4 = 8) or misapply the operation (e.g., add instead of divide). This is common among students with weaker arithmetic fluency, so it is moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument, provide a counterexample, or defend a claim about why the ratio must be equivalent. The task is to compute a quantity based on a given proportional relationship, not to prove or critique a mathematical assertion."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the recipe context is real-world, the student is not asked to identify a problem, create a model, or assess the reasonableness of a solution in a broader context. The model (ratio) is already provided, and the task is purely computational based on a direct proportional relationship."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer work, no claim by another student, and no need to respond to or build on someone else’s thinking. The student works independently on a straightforward calculation, so collaborative practices are not engaged."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "row": 345,
+  "problem_id": "198955",
+  "problem_text": "Find a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____",
+          "started_at": "2026-11-10T01:26:13+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\",\n      \"likely_errors\": \"A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\",\n      \"likely_errors\": \"A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\",\n      \"likely_errors\": \"A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\",\n      \"likely_errors\": \"A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3978,
+            "completion_tokens": 672
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:28:51+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\n- Abstracting and Generalizing: The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\n- Justifying and Proving: After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:45:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\n- Abstracting and Generalizing: The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\n- Justifying and Proving: After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\n- Abstracting and Generalizing: The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\n- Justifying and Proving: After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal conditions of the problem and creates a structured representation by assigning each digit position to count the occurrences of a specific digit (0, 1, 2, or 3) in the number.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying structural constraint that the sum of the digits must equal 4, since each digit represents a count and there are four digits total, and uses this generalization to narrow down possible solutions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student tests a candidate number (like 2100), evaluates each condition against the actual digit counts, and justifies why it fails by pointing out the inconsistency between the third digit and the actual number of 2s.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to understand the relationships between digit positions and their meanings. Once represented, the student can abstract the key structural constraint (sum of digits equals 4) to guide the search efficiently. Only after forming a candidate solution does the student need to justify and prove whether it satisfies all conditions, which requires evaluating each digit against the actual counts in the number.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal conditions of the problem and creates a structured representation by assigning each digit position to count the occurrences of a specific digit (0, 1, 2, or 3) in the number.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying structural constraint that the sum of the digits must equal 4, since each digit represents a count and there are four digits total, and uses this generalization to narrow down possible solutions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student tests a candidate number (like 2100), evaluates each condition against the actual digit counts, and justifies why it fails by pointing out the inconsistency between the third digit and the actual number of 2s.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to understand the relationships between digit positions and their meanings. Once represented, the student can abstract the key structural constraint (sum of digits equals 4) to guide the search efficiently. Only after forming a candidate solution does the student need to justify and prove whether it satisfies all conditions, which requires evaluating each digit against the actual counts in the number.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4175,
+            "completion_tokens": 306
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:46:48+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\",\n      \"likely_errors\": \"A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\",\n      \"likely_errors\": \"A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:54:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\",\n      \"likely_errors\": \"A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\",\n      \"likely_errors\": \"A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nFind a four-digit number using only the digits 0, 1, 2, or 3 where:\n- the first digit tells you how many zeros are in the number,\n- the second digit tells you how many ones are in the number,\n- the third digit tells you how many twos are in the number, and\n- the fourth digit tells you how many threes are in the number.\nThe number 2,100 is close, but doesn’t quite work. The first digit is 2, and there are 2 zeros. The second digit is 1, and there is 1 one. The fourth digit is 0, and there are no threes. But the third digit, which is supposed to count the number of 2’s, is zero.\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\",\n      \"likely_errors\": \"A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\",\n      \"likely_errors\": \"A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why 2100 doesn't work, particularly by failing to recognize that the digit '2' in the number itself contributes to the count that the third digit must represent. This requires careful logical evaluation of each condition, including the self-referential nature of the problem. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and recognizing constraints, which are less error-prone than the precise reasoning needed to verify a candidate solution. Procedural Fluency, Modeling, and Collaboration are not central to the task, so they are less likely to be the source of incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why 2100 doesn't work, particularly by failing to recognize that the digit '2' in the number itself contributes to the count that the third digit must represent. This requires careful logical evaluation of each condition, including the self-referential nature of the problem. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and recognizing constraints, which are less error-prone than the precise reasoning needed to verify a candidate solution. Procedural Fluency, Modeling, and Collaboration are not central to the task, so they are less likely to be the source of incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4621,
+            "completion_tokens": 162
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:56:23+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.",
+              "likely_errors": "A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.",
+              "likely_errors": "A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.",
+              "likely_errors": "A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the verbal conditions of the problem and creates a structured representation by assigning each digit position to count the occurrences of a specific digit (0, 1, 2, or 3) in the number."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the underlying structural constraint that the sum of the digits must equal 4, since each digit represents a count and there are four digits total, and uses this generalization to narrow down possible solutions."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student tests a candidate number (like 2100), evaluates each condition against the actual digit counts, and justifies why it fails by pointing out the inconsistency between the third digit and the actual number of 2s."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically to understand the relationships between digit positions and their meanings. Once represented, the student can abstract the key structural constraint (sum of digits equals 4) to guide the search efficiently. Only after forming a candidate solution does the student need to justify and prove whether it satisfies all conditions, which requires evaluating each digit against the actual counts in the number."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why 2100 doesn't work, particularly by failing to recognize that the digit '2' in the number itself contributes to the count that the third digit must represent. This requires careful logical evaluation of each condition, including the self-referential nature of the problem. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and recognizing constraints, which are less error-prone than the precise reasoning needed to verify a candidate solution. Procedural Fluency, Modeling, and Collaboration are not central to the task, so they are less likely to be the source of incorrect answers."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.",
+            "likely_errors": "A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.",
+            "likely_errors": "A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.",
+            "likely_errors": "A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.\",\n      \"likely_errors\": \"A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.\",\n      \"likely_errors\": \"A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.\",\n      \"likely_errors\": \"A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal conditions of the problem and creates a structured representation by assigning each digit position to count the occurrences of a specific digit (0, 1, 2, or 3) in the number.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying structural constraint that the sum of the digits must equal 4, since each digit represents a count and there are four digits total, and uses this generalization to narrow down possible solutions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student tests a candidate number (like 2100), evaluates each condition against the actual digit counts, and justifies why it fails by pointing out the inconsistency between the third digit and the actual number of 2s.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to understand the relationships between digit positions and their meanings. Once represented, the student can abstract the key structural constraint (sum of digits equals 4) to guide the search efficiently. Only after forming a candidate solution does the student need to justify and prove whether it satisfies all conditions, which requires evaluating each digit against the actual counts in the number.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why 2100 doesn't work, particularly by failing to recognize that the digit '2' in the number itself contributes to the count that the third digit must represent. This requires careful logical evaluation of each condition, including the self-referential nature of the problem. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and recognizing constraints, which are less error-prone than the precise reasoning needed to verify a candidate solution. Procedural Fluency, Modeling, and Collaboration are not central to the task, so they are less likely to be the source of incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.",
+          "likely_errors": "A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.",
+          "likely_errors": "A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.",
+          "likely_errors": "A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the verbal conditions of the problem and creates a structured representation by assigning each digit position to count the occurrences of a specific digit (0, 1, 2, or 3) in the number."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the underlying structural constraint that the sum of the digits must equal 4, since each digit represents a count and there are four digits total, and uses this generalization to narrow down possible solutions."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student tests a candidate number (like 2100), evaluates each condition against the actual digit counts, and justifies why it fails by pointing out the inconsistency between the third digit and the actual number of 2s."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically to understand the relationships between digit positions and their meanings. Once represented, the student can abstract the key structural constraint (sum of digits equals 4) to guide the search efficiently. Only after forming a candidate solution does the student need to justify and prove whether it satisfies all conditions, which requires evaluating each digit against the actual counts in the number."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why 2100 doesn't work, particularly by failing to recognize that the digit '2' in the number itself contributes to the count that the third digit must represent. This requires careful logical evaluation of each condition, including the self-referential nature of the problem. While Representing and Abstracting and Generalizing are important, they are more about setting up the problem and recognizing constraints, which are less error-prone than the precise reasoning needed to verify a candidate solution. Procedural Fluency, Modeling, and Collaboration are not central to the task, so they are less likely to be the source of incorrect answers."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal description of the number and translate it into a structured mathematical representation, assigning each digit to a count of a specific digit in the number. This involves creating a mental or written model where each position corresponds to a count of 0s, 1s, 2s, and 3s, matching the problem's conditions.",
+          "likely_errors": "A student might misassign the digit positions (e.g., confusing the third digit as counting 1s instead of 2s), or fail to recognize that the digits themselves are part of the count. This is moderately likely for students unfamiliar with self-referential problems."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize patterns across possible digit combinations and generalize the constraints (e.g., the sum of all digits must equal 4, since there are four digits and each digit counts occurrences of another digit). This involves identifying a structural relationship that limits possible solutions and guiding the search process.",
+          "likely_errors": "A student might fail to notice that the sum of the digits must equal 4 (since each digit counts one of the four positions), leading to an unproductive search. This is moderately likely, especially if the student does not reflect on the global constraints."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "After testing a candidate number (like 2100), the student must evaluate whether it satisfies all conditions and justify why it fails (e.g., the third digit is 0 but there is one 2 in the number). This requires logical reasoning to verify each condition and explain the discrepancy, aligning with the practice of justifying conclusions about numerical relationships.",
+          "likely_errors": "A student might overlook that the digit '2' in the number contributes to the count that the third digit must represent, leading to an incorrect conclusion. This is moderately likely, especially if the self-referential nature is not fully grasped."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is not about modeling a real-world scenario or constructing a model to solve a contextual problem; instead, it is a self-referential logic puzzle requiring internal consistency checking, not external modeling of a situation."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a single student’s attempt (2100) as a starting point, but the student is expected to solve the problem independently without engaging with others’ ideas or building on a peer’s contribution in a dialogue or shared reasoning context."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While basic arithmetic is involved, the solution does not rely on executing a standard algorithm or performing computations efficiently; instead, it depends on logical reasoning, pattern recognition, and validation of conditions, not on fluency with operations or procedures."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

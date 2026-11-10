@@ -1,0 +1,389 @@
+{
+  "row": 716,
+  "problem_id": "44396",
+  "problem_text": "A textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\",\n      \"likely_errors\": \"A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\",\n      \"likely_errors\": \"A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\",\n      \"likely_errors\": \"A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\",\n      \"likely_errors\": \"A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3884,
+            "completion_tokens": 759
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\n- Abstracting and Generalizing: The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\n- Procedural Fluency: After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\n- Abstracting and Generalizing: The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\n- Procedural Fluency: After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\n- Abstracting and Generalizing: The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\n- Procedural Fluency: After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the textbook pages as a set of numbers from 1 to 428, translating the real-world scenario into a mathematical model using numerical representation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the alternating pattern of even and odd pages and generalizes that exactly half of the pages are even, regardless of the total, leading to a probability of 1/2 for landing on an even page.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes 1/2 of 50 to find the expected number of even pages, performing the multiplication accurately and efficiently.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by modeling the pages as a numbered set before identifying patterns. Once the representation is in place, the student can abstract the even-odd pattern and generalize the probability. Only after establishing the theoretical probability does the student perform the necessary computation, which requires procedural fluency.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the textbook pages as a set of numbers from 1 to 428, translating the real-world scenario into a mathematical model using numerical representation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the alternating pattern of even and odd pages and generalizes that exactly half of the pages are even, regardless of the total, leading to a probability of 1/2 for landing on an even page.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes 1/2 of 50 to find the expected number of even pages, performing the multiplication accurately and efficiently.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by modeling the pages as a numbered set before identifying patterns. Once the representation is in place, the student can abstract the even-odd pattern and generalize the probability. Only after establishing the theoretical probability does the student perform the necessary computation, which requires procedural fluency.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4115,
+            "completion_tokens": 261
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\",\n      \"likely_errors\": \"A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\",\n      \"likely_errors\": \"A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\",\n      \"likely_errors\": \"A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\",\n      \"likely_errors\": \"A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA textbook has 428 pages numbered in order starting with 1. You flip to a random page in the book in a way that it is equally likely to stop at any of the pages.\nIf you repeat this experiment 50 times, about how many times do you expect you will turn to an even numbered page?\n____ times\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\",\n      \"likely_errors\": \"A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\",\n      \"likely_errors\": \"A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the pattern that half the pages are even due to the alternating even-odd sequence, especially if they fail to see that this holds regardless of the total number of pages. This step is critical because miscounting or doubting the 50% proportion leads to incorrect expectations, and the error is not easily caught without strong pattern recognition. While Representing and Procedural Fluency involve potential errors, they are more mechanical: misrepresenting the total pages is less likely if the student reads carefully, and arithmetic errors in 50 ÷ 2 are typically minor and less common than conceptual failure to generalize the even-odd pattern.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the pattern that half the pages are even due to the alternating even-odd sequence, especially if they fail to see that this holds regardless of the total number of pages. This step is critical because miscounting or doubting the 50% proportion leads to incorrect expectations, and the error is not easily caught without strong pattern recognition. While Representing and Procedural Fluency involve potential errors, they are more mechanical: misrepresenting the total pages is less likely if the student reads carefully, and arithmetic errors in 50 ÷ 2 are typically minor and less common than conceptual failure to generalize the even-odd pattern.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4614,
+            "completion_tokens": 166
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.",
+              "likely_errors": "A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.",
+              "likely_errors": "A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.",
+              "likely_errors": "A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the textbook pages as a set of numbers from 1 to 428, translating the real-world scenario into a mathematical model using numerical representation."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes the alternating pattern of even and odd pages and generalizes that exactly half of the pages are even, regardless of the total, leading to a probability of 1/2 for landing on an even page."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student computes 1/2 of 50 to find the expected number of even pages, performing the multiplication accurately and efficiently."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by modeling the pages as a numbered set before identifying patterns. Once the representation is in place, the student can abstract the even-odd pattern and generalize the probability. Only after establishing the theoretical probability does the student perform the necessary computation, which requires procedural fluency."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing and generalizing the pattern that half the pages are even due to the alternating even-odd sequence, especially if they fail to see that this holds regardless of the total number of pages. This step is critical because miscounting or doubting the 50% proportion leads to incorrect expectations, and the error is not easily caught without strong pattern recognition. While Representing and Procedural Fluency involve potential errors, they are more mechanical: misrepresenting the total pages is less likely if the student reads carefully, and arithmetic errors in 50 ÷ 2 are typically minor and less common than conceptual failure to generalize the even-odd pattern."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.",
+            "likely_errors": "A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.",
+            "likely_errors": "A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.",
+            "likely_errors": "A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.\",\n      \"likely_errors\": \"A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.\",\n      \"likely_errors\": \"A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.\",\n      \"likely_errors\": \"A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the textbook pages as a set of numbers from 1 to 428, translating the real-world scenario into a mathematical model using numerical representation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the alternating pattern of even and odd pages and generalizes that exactly half of the pages are even, regardless of the total, leading to a probability of 1/2 for landing on an even page.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes 1/2 of 50 to find the expected number of even pages, performing the multiplication accurately and efficiently.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by modeling the pages as a numbered set before identifying patterns. Once the representation is in place, the student can abstract the even-odd pattern and generalize the probability. Only after establishing the theoretical probability does the student perform the necessary computation, which requires procedural fluency.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Abstracting and Generalizing\",\n  \"why\": \"A student is most likely to go wrong at the step of recognizing and generalizing the pattern that half the pages are even due to the alternating even-odd sequence, especially if they fail to see that this holds regardless of the total number of pages. This step is critical because miscounting or doubting the 50% proportion leads to incorrect expectations, and the error is not easily caught without strong pattern recognition. While Representing and Procedural Fluency involve potential errors, they are more mechanical: misrepresenting the total pages is less likely if the student reads carefully, and arithmetic errors in 50 ÷ 2 are typically minor and less common than conceptual failure to generalize the even-odd pattern.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.",
+          "likely_errors": "A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.",
+          "likely_errors": "A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.",
+          "likely_errors": "A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the textbook pages as a set of numbers from 1 to 428, translating the real-world scenario into a mathematical model using numerical representation."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes the alternating pattern of even and odd pages and generalizes that exactly half of the pages are even, regardless of the total, leading to a probability of 1/2 for landing on an even page."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student computes 1/2 of 50 to find the expected number of even pages, performing the multiplication accurately and efficiently."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by modeling the pages as a numbered set before identifying patterns. Once the representation is in place, the student can abstract the even-odd pattern and generalize the probability. Only after establishing the theoretical probability does the student perform the necessary computation, which requires procedural fluency."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing and generalizing the pattern that half the pages are even due to the alternating even-odd sequence, especially if they fail to see that this holds regardless of the total number of pages. This step is critical because miscounting or doubting the 50% proportion leads to incorrect expectations, and the error is not easily caught without strong pattern recognition. While Representing and Procedural Fluency involve potential errors, they are more mechanical: misrepresenting the total pages is less likely if the student reads carefully, and arithmetic errors in 50 ÷ 2 are typically minor and less common than conceptual failure to generalize the even-odd pattern."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the situation by representing the pages of the textbook as a set of numbers from 1 to 428, recognizing that each page number is a distinct outcome in a probability experiment. This involves translating the real-world scenario into a mathematical model using numerical representation, which aligns with the descriptor of representing problem situations with numerical representations and operations.",
+          "likely_errors": "A student might misrepresent the total number of pages (e.g., thinking it's 427 or 429) or incorrectly assume that page 1 is not included, leading to an inaccurate sample space. This is moderately likely for students who rush through reading the problem."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern that every other page is even, so exactly half the pages are even-numbered, regardless of the total number of pages, as long as it's even. They generalize this pattern (even-odd alternation) to deduce that the probability of landing on an even page is 1/2, and apply this to the 50 trials. This matches the descriptor of identifying patterns and generalizing across cases to larger sets.",
+          "likely_errors": "A student might fail to generalize and instead count even pages manually (prone to error), or incorrectly assume that the proportion of even pages depends on the total (e.g., thinking 428/2 = 214 is not half). This is moderately likely for students who lack confidence in pattern recognition."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After determining the theoretical probability (1/2), the student computes 1/2 of 50 to find the expected number of even pages, which is 25. This requires accurate multiplication of a fraction and a whole number, a basic procedural skill. This aligns with the descriptor of carrying out operations efficiently and accurately, including proportional computations.",
+          "likely_errors": "A student might compute 50 ÷ 2 incorrectly (e.g., 20 or 26) or misapply the operation (e.g., 50 × 2 = 100). This is likely for students with weak fluency in basic arithmetic, especially with fractions."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument or proof about why half the pages are even or why the expected value follows from probability. The reasoning is based on a straightforward pattern and computation, not on justifying a claim or providing a deductive proof."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is contextual, the student is not asked to create a model from scratch, refine it, or check its real-world viability. The model (random selection from 1 to 428 with equal likelihood) is already fully specified, and the task is purely computational based on given assumptions."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, strategy, or claim. There is no dialogue, shared work, or need to respond to a peer’s reasoning, so collaboration is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

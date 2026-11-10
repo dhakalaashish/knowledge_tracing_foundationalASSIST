@@ -1,0 +1,389 @@
+{
+  "row": 777,
+  "problem_id": "226658",
+  "problem_text": "Here are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\",\n      \"likely_errors\": \"A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\",\n      \"likely_errors\": \"A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\",\n      \"likely_errors\": \"A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\",\n      \"likely_errors\": \"A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3884,
+            "completion_tokens": 771
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\n- Abstracting and Generalizing: The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\n- Procedural Fluency: After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\n- Abstracting and Generalizing: The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\n- Procedural Fluency: After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\n- Abstracting and Generalizing: The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\n- Procedural Fluency: After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of values as a mathematical relationship between the area of plastic liner and its cost, recognizing the data as a proportional relationship.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the consistent pattern in the table—each 25 ft² increase corresponds to a $3.75 cost increase—and generalizes this to determine the unit rate of $0.15 per square foot.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student uses the unit rate to compute the total cost for a given amount of liner, performing accurate multiplication to find the final cost.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the given data (a table) as a mathematical relationship (Representing) before identifying the underlying pattern (Abstracting and Generalizing). Only after establishing the unit rate can the student apply computational procedures (Procedural Fluency) to calculate the total cost. This sequence reflects the logical progression from understanding the data to generalizing a rule and then executing the necessary calculation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of values as a mathematical relationship between the area of plastic liner and its cost, recognizing the data as a proportional relationship.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the consistent pattern in the table—each 25 ft² increase corresponds to a $3.75 cost increase—and generalizes this to determine the unit rate of $0.15 per square foot.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student uses the unit rate to compute the total cost for a given amount of liner, performing accurate multiplication to find the final cost.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the given data (a table) as a mathematical relationship (Representing) before identifying the underlying pattern (Abstracting and Generalizing). Only after establishing the unit rate can the student apply computational procedures (Procedural Fluency) to calculate the total cost. This sequence reflects the logical progression from understanding the data to generalizing a rule and then executing the necessary calculation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4134,
+            "completion_tokens": 275
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\",\n      \"likely_errors\": \"A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\",\n      \"likely_errors\": \"A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\",\n      \"likely_errors\": \"A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\",\n      \"likely_errors\": \"A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere are the prices for different amounts of plastic liner. How much will all the plastic liner for the pool cost?\n$ ____\n[Table:\nplastic liner (ft^2) | cost ($)\n25 | 3.75\n50 | 7.50\n75 | 11.25]\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\",\n      \"likely_errors\": \"A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\",\n      \"likely_errors\": \"A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong when abstracting the proportional pattern from the table and generalizing the unit rate, as this requires recognizing that the cost increases by $3.75 for every 25 ft², which must be interpreted as $0.15 per square foot. Students who rely on additive thinking or fail to see the multiplicative relationship may incorrectly scale the cost, leading to errors. While Representing and Procedural Fluency are important, misreading the table or making a calculation error is less likely to be the primary cause of incorrect answers than failing to generalize the proportional relationship, which is central to solving the problem correctly.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong when abstracting the proportional pattern from the table and generalizing the unit rate, as this requires recognizing that the cost increases by $3.75 for every 25 ft², which must be interpreted as $0.15 per square foot. Students who rely on additive thinking or fail to see the multiplicative relationship may incorrectly scale the cost, leading to errors. While Representing and Procedural Fluency are important, misreading the table or making a calculation error is less likely to be the primary cause of incorrect answers than failing to generalize the proportional relationship, which is central to solving the problem correctly.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4625,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.",
+              "likely_errors": "A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.",
+              "likely_errors": "A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "why": "After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.",
+              "likely_errors": "A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of values as a mathematical relationship between the area of plastic liner and its cost, recognizing the data as a proportional relationship."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the consistent pattern in the table—each 25 ft² increase corresponds to a $3.75 cost increase—and generalizes this to determine the unit rate of $0.15 per square foot."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student uses the unit rate to compute the total cost for a given amount of liner, performing accurate multiplication to find the final cost."
+            }
+          ],
+          "why": "The student must first interpret the given data (a table) as a mathematical relationship (Representing) before identifying the underlying pattern (Abstracting and Generalizing). Only after establishing the unit rate can the student apply computational procedures (Procedural Fluency) to calculate the total cost. This sequence reflects the logical progression from understanding the data to generalizing a rule and then executing the necessary calculation."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong when abstracting the proportional pattern from the table and generalizing the unit rate, as this requires recognizing that the cost increases by $3.75 for every 25 ft², which must be interpreted as $0.15 per square foot. Students who rely on additive thinking or fail to see the multiplicative relationship may incorrectly scale the cost, leading to errors. While Representing and Procedural Fluency are important, misreading the table or making a calculation error is less likely to be the primary cause of incorrect answers than failing to generalize the proportional relationship, which is central to solving the problem correctly."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.",
+            "likely_errors": "A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.",
+            "likely_errors": "A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.",
+            "likely_errors": "A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.\",\n      \"likely_errors\": \"A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.\",\n      \"likely_errors\": \"A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.\",\n      \"likely_errors\": \"A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of values as a mathematical relationship between the area of plastic liner and its cost, recognizing the data as a proportional relationship.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the consistent pattern in the table—each 25 ft² increase corresponds to a $3.75 cost increase—and generalizes this to determine the unit rate of $0.15 per square foot.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student uses the unit rate to compute the total cost for a given amount of liner, performing accurate multiplication to find the final cost.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the given data (a table) as a mathematical relationship (Representing) before identifying the underlying pattern (Abstracting and Generalizing). Only after establishing the unit rate can the student apply computational procedures (Procedural Fluency) to calculate the total cost. This sequence reflects the logical progression from understanding the data to generalizing a rule and then executing the necessary calculation.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong when abstracting the proportional pattern from the table and generalizing the unit rate, as this requires recognizing that the cost increases by $3.75 for every 25 ft², which must be interpreted as $0.15 per square foot. Students who rely on additive thinking or fail to see the multiplicative relationship may incorrectly scale the cost, leading to errors. While Representing and Procedural Fluency are important, misreading the table or making a calculation error is less likely to be the primary cause of incorrect answers than failing to generalize the proportional relationship, which is central to solving the problem correctly.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.",
+          "likely_errors": "A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.",
+          "likely_errors": "A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.",
+          "likely_errors": "A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of values as a mathematical relationship between the area of plastic liner and its cost, recognizing the data as a proportional relationship."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the consistent pattern in the table—each 25 ft² increase corresponds to a $3.75 cost increase—and generalizes this to determine the unit rate of $0.15 per square foot."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student uses the unit rate to compute the total cost for a given amount of liner, performing accurate multiplication to find the final cost."
+        }
+      ],
+      "why": "The student must first interpret the given data (a table) as a mathematical relationship (Representing) before identifying the underlying pattern (Abstracting and Generalizing). Only after establishing the unit rate can the student apply computational procedures (Procedural Fluency) to calculate the total cost. This sequence reflects the logical progression from understanding the data to generalizing a rule and then executing the necessary calculation."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong when abstracting the proportional pattern from the table and generalizing the unit rate, as this requires recognizing that the cost increases by $3.75 for every 25 ft², which must be interpreted as $0.15 per square foot. Students who rely on additive thinking or fail to see the multiplicative relationship may incorrectly scale the cost, leading to errors. While Representing and Procedural Fluency are important, misreading the table or making a calculation error is less likely to be the primary cause of incorrect answers than failing to generalize the proportional relationship, which is central to solving the problem correctly."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of values as a relationship between the area of plastic liner (in square feet) and its cost (in dollars), translating the data into a mathematical pattern or ratio. This involves recognizing that the table presents a proportional relationship, which is a key aspect of representing data numerically and identifying proportional relationships.",
+          "likely_errors": "A student might misread the table, confusing the columns or misinterpreting the units, leading to incorrect pairing of area and cost. This is moderately likely, especially for students who struggle with reading tables or interpreting units."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the pattern in the table—each time the area increases by 25 ft², the cost increases by $3.75—then generalize this to find the unit rate (cost per square foot) and extend it to any amount of liner. This involves identifying a consistent multiplicative relationship and applying it beyond the given values.",
+          "likely_errors": "A student might incorrectly assume a different rate (e.g., adding $7.50 for every 50 ft² instead of finding the unit rate) or fail to see the proportional pattern, especially if they rely only on additive thinking. This is moderately likely, particularly if students lack experience with proportional reasoning."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After identifying the unit rate ($0.15 per ft²), the student must perform accurate arithmetic—likely multiplication—to compute the total cost for a given amount of liner. Since the item does not specify the total area needed, the student must assume the question is asking for the cost per square foot or the rate, or there may be a missing piece of information. However, if the question is interpreted as finding the cost for a standard or implied amount (e.g., 100 ft²), then multiplication is required. The key step is computing the cost using the established rate accurately.",
+          "likely_errors": "A student might make a computational error in multiplication or division (e.g., $3.75 ÷ 25 = $0.14 instead of $0.15), or incorrectly scale the cost. This is likely for students who lack fluency with decimal operations, especially with money."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify or prove why the relationship is proportional or to defend a claim with logical reasoning. The task is computational and interpretive, not argumentative or deductive, so there is no need to construct or evaluate a mathematical proof or justification."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world (pool liner cost), the task does not involve identifying a problem, mathematizing a scenario, or validating the solution in context. The table already provides a clear mathematical model, and the student is only expected to use it to compute a cost, not to build or assess a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone problem with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative element, so the student does not need to engage with or respond to others’ mathematical ideas."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

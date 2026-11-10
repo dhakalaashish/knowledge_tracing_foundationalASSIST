@@ -1,0 +1,370 @@
+{
+  "row": 2246,
+  "problem_id": "136547",
+  "problem_text": "Decide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\",\n      \"likely_errors\": \"A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\",\n      \"likely_errors\": \"A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3847,
+            "completion_tokens": 624
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\n- Justifying and Proving: After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\n- Justifying and Proving: After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\n- Justifying and Proving: After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal question 'How did you get to school this morning?' and translates it into a representation of data types by recognizing that the possible responses are labels such as walking, bus, car, or bike, which are categories rather than numbers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates the nature of the data and justifies why the responses are categorical by explaining that the answers are qualitative labels without numerical value, not measurable quantities, thus defending the classification based on the definitions of categorical and numerical data.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the question and represent it in terms of data types (categorical vs. numerical) before they can justify their classification. Representing comes first because it involves the initial translation of a real-world context into a mathematical structure. Only after this representation is established can the student engage in justification by applying definitions and reasoning about why the data type is categorical rather than numerical.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal question 'How did you get to school this morning?' and translates it into a representation of data types by recognizing that the possible responses are labels such as walking, bus, car, or bike, which are categories rather than numbers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates the nature of the data and justifies why the responses are categorical by explaining that the answers are qualitative labels without numerical value, not measurable quantities, thus defending the classification based on the definitions of categorical and numerical data.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the question and represent it in terms of data types (categorical vs. numerical) before they can justify their classification. Representing comes first because it involves the initial translation of a real-world context into a mathematical structure. Only after this representation is established can the student engage in justification by applying definitions and reasoning about why the data type is categorical rather than numerical.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4014,
+            "completion_tokens": 241
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\",\n      \"likely_errors\": \"A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\",\n      \"likely_errors\": \"A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nDecide if the responses will produce numerical data or categorical data.\nHow did you get to school this morning?\n\nAnswer choices:\nA. Categorical || Numerical\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\",\n      \"likely_errors\": \"A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the justification step, where they must defend why the data is categorical rather than numerical, especially if they confuse the countability of categories with numerical measurement. This step is central to the item’s difficulty because misjudging the nature of the data hinges on conceptual understanding, not just recognition. While Representing is important for initial interpretation, the error in misclassifying the data often stems from flawed reasoning rather than misrepresentation, making Justifying and Proving the critical hurdle.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the justification step, where they must defend why the data is categorical rather than numerical, especially if they confuse the countability of categories with numerical measurement. This step is central to the item’s difficulty because misjudging the nature of the data hinges on conceptual understanding, not just recognition. While Representing is important for initial interpretation, the error in misclassifying the data often stems from flawed reasoning rather than misrepresentation, making Justifying and Proving the critical hurdle.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4442,
+            "completion_tokens": 122
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.",
+              "likely_errors": "A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'",
+              "likely_errors": "A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the verbal question 'How did you get to school this morning?' and translates it into a representation of data types by recognizing that the possible responses are labels such as walking, bus, car, or bike, which are categories rather than numbers."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student evaluates the nature of the data and justifies why the responses are categorical by explaining that the answers are qualitative labels without numerical value, not measurable quantities, thus defending the classification based on the definitions of categorical and numerical data."
+            }
+          ],
+          "why": "The student must first interpret the question and represent it in terms of data types (categorical vs. numerical) before they can justify their classification. Representing comes first because it involves the initial translation of a real-world context into a mathematical structure. Only after this representation is established can the student engage in justification by applying definitions and reasoning about why the data type is categorical rather than numerical."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the justification step, where they must defend why the data is categorical rather than numerical, especially if they confuse the countability of categories with numerical measurement. This step is central to the item’s difficulty because misjudging the nature of the data hinges on conceptual understanding, not just recognition. While Representing is important for initial interpretation, the error in misclassifying the data often stems from flawed reasoning rather than misrepresentation, making Justifying and Proving the critical hurdle."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.",
+            "likely_errors": "A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'",
+            "likely_errors": "A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.\",\n      \"likely_errors\": \"A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'\",\n      \"likely_errors\": \"A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal question 'How did you get to school this morning?' and translates it into a representation of data types by recognizing that the possible responses are labels such as walking, bus, car, or bike, which are categories rather than numbers.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates the nature of the data and justifies why the responses are categorical by explaining that the answers are qualitative labels without numerical value, not measurable quantities, thus defending the classification based on the definitions of categorical and numerical data.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the question and represent it in terms of data types (categorical vs. numerical) before they can justify their classification. Representing comes first because it involves the initial translation of a real-world context into a mathematical structure. Only after this representation is established can the student engage in justification by applying definitions and reasoning about why the data type is categorical rather than numerical.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the justification step, where they must defend why the data is categorical rather than numerical, especially if they confuse the countability of categories with numerical measurement. This step is central to the item’s difficulty because misjudging the nature of the data hinges on conceptual understanding, not just recognition. While Representing is important for initial interpretation, the error in misclassifying the data often stems from flawed reasoning rather than misrepresentation, making Justifying and Proving the critical hurdle.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.",
+          "likely_errors": "A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'",
+          "likely_errors": "A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the verbal question 'How did you get to school this morning?' and translates it into a representation of data types by recognizing that the possible responses are labels such as walking, bus, car, or bike, which are categories rather than numbers."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student evaluates the nature of the data and justifies why the responses are categorical by explaining that the answers are qualitative labels without numerical value, not measurable quantities, thus defending the classification based on the definitions of categorical and numerical data."
+        }
+      ],
+      "why": "The student must first interpret the question and represent it in terms of data types (categorical vs. numerical) before they can justify their classification. Representing comes first because it involves the initial translation of a real-world context into a mathematical structure. Only after this representation is established can the student engage in justification by applying definitions and reasoning about why the data type is categorical rather than numerical."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the justification step, where they must defend why the data is categorical rather than numerical, especially if they confuse the countability of categories with numerical measurement. This step is central to the item’s difficulty because misjudging the nature of the data hinges on conceptual understanding, not just recognition. While Representing is important for initial interpretation, the error in misclassifying the data often stems from flawed reasoning rather than misrepresentation, making Justifying and Proving the critical hurdle."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal question 'How did you get to school this morning?' and translate it into a mathematical representation of data types—specifically, recognizing that the possible responses (e.g., walking, bus, car, bike) are categories rather than numbers. This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and extends to interpreting real-world contexts into data types.",
+          "likely_errors": "A student might misinterpret the question as asking for a number (e.g., how many minutes it took), leading them to choose numerical data. This is moderately likely, especially for younger students who may not distinguish between 'how' and 'how many'."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After determining the nature of the data, the student must justify why the response is categorical (because answers are labels or categories, not measurable quantities) rather than numerical. This involves making a claim about the data type and defending it based on the definition of categorical vs. numerical data, which matches the descriptor: 'Make, justify, or defend conclusions about numerical relationships or patterns, including why they are valid or will always hold.'",
+          "likely_errors": "A student might incorrectly justify by saying 'it’s numerical because you can count the ways'—confusing the number of categories with numerical data. This error is moderately likely, especially if the student misunderstands the distinction between countable categories and measurable values."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases, extending a relationship, or generalizing a rule beyond the given context. It focuses on classifying a single question’s data type, not on finding broader structural or numerical patterns."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The task does not involve creating a model to solve a real-world problem, mathematizing a scenario, or using a model to make predictions. It is a classification task based on understanding data types, not modeling a situation with mathematical structures."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a standalone question without any reference to another student’s thinking, strategy, or response. There is no need to build on, evaluate, or respond to a peer’s contribution, so collaborative engagement is not required."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "The item does not require performing a calculation, applying an algorithm, or executing a mathematical procedure. The task is conceptual—distinguishing data types—rather than computational or procedural in nature."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

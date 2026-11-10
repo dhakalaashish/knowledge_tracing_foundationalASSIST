@@ -1,0 +1,370 @@
+{
+  "row": 2379,
+  "problem_id": "349992",
+  "problem_text": "Select all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\",\n      \"likely_errors\": \"A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\",\n      \"likely_errors\": \"A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\",\n      \"likely_errors\": \"A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\",\n      \"likely_errors\": \"A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3919,
+            "completion_tokens": 722
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\n- Procedural Fluency: The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\n- Procedural Fluency: The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Justifying and Proving: After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\n- Procedural Fluency: The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the probability of each event by applying the definition of probability (favorable outcomes divided by total outcomes) to determine whether it equals 0.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies why certain events have a probability of 0 by explaining that they are impossible given the constraints of the situation, such as a standard number cube having no face with 7 or a 400-page book not having pages beyond 400.\"\n    }\n  ],\n  \"why\": \"The student must first compute the probabilities of each event using accurate procedural methods before they can evaluate or justify why any of them equal zero. Only after determining that an event has a probability of 0 can the student provide a logical justification based on the impossibility of the event occurring within the given constraints.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the probability of each event by applying the definition of probability (favorable outcomes divided by total outcomes) to determine whether it equals 0.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies why certain events have a probability of 0 by explaining that they are impossible given the constraints of the situation, such as a standard number cube having no face with 7 or a 400-page book not having pages beyond 400.\"\n    }\n  ],\n  \"why\": \"The student must first compute the probabilities of each event using accurate procedural methods before they can evaluate or justify why any of them equal zero. Only after determining that an event has a probability of 0 can the student provide a logical justification based on the impossibility of the event occurring within the given constraints.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4116,
+            "completion_tokens": 215
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\",\n      \"likely_errors\": \"A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\",\n      \"likely_errors\": \"A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\",\n      \"likely_errors\": \"A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\",\n      \"likely_errors\": \"A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nSelect all the events that have a probability of 0.\n\nAnswer choices:\nA. Choosing a red block from a bag with 9 white blocks and 1 red block. || Rolling a 6\nB. three times in a row\nC. on a standard number cube. || Rolling a 7 on a standard number cube. || Opening a 400-page book to exactly page 231. || Opening a 400-page book a page number greater than 450.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\",\n      \"likely_errors\": \"A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\",\n      \"likely_errors\": \"A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why certain events have a probability of 0, particularly by confusing very low probability with impossibility (e.g., selecting page 231 as having probability 0 because it seems unlikely). This requires a deep conceptual understanding that probability 0 means impossible, not just rare. While procedural fluency is needed to compute probabilities, the error is less likely there because the calculations are straightforward (e.g., 0/6 for rolling a 7). The other practice used—Procedural Fluency—is more mechanical and less prone to error in this context, making Justifying and Proving the key difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why certain events have a probability of 0, particularly by confusing very low probability with impossibility (e.g., selecting page 231 as having probability 0 because it seems unlikely). This requires a deep conceptual understanding that probability 0 means impossible, not just rare. While procedural fluency is needed to compute probabilities, the error is less likely there because the calculations are straightforward (e.g., 0/6 for rolling a 7). The other practice used—Procedural Fluency—is more mechanical and less prone to error in this context, making Justifying and Proving the key difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4611,
+            "completion_tokens": 158
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.",
+              "likely_errors": "A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.",
+              "likely_errors": "A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Representing",
+              "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations."
+            },
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the probability of each event by applying the definition of probability (favorable outcomes divided by total outcomes) to determine whether it equals 0."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student justifies why certain events have a probability of 0 by explaining that they are impossible given the constraints of the situation, such as a standard number cube having no face with 7 or a 400-page book not having pages beyond 400."
+            }
+          ],
+          "why": "The student must first compute the probabilities of each event using accurate procedural methods before they can evaluate or justify why any of them equal zero. Only after determining that an event has a probability of 0 can the student provide a logical justification based on the impossibility of the event occurring within the given constraints."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying why certain events have a probability of 0, particularly by confusing very low probability with impossibility (e.g., selecting page 231 as having probability 0 because it seems unlikely). This requires a deep conceptual understanding that probability 0 means impossible, not just rare. While procedural fluency is needed to compute probabilities, the error is less likely there because the calculations are straightforward (e.g., 0/6 for rolling a 7). The other practice used—Procedural Fluency—is more mechanical and less prone to error in this context, making Justifying and Proving the key difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Procedural Fluency",
+            "why": "The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.",
+            "likely_errors": "A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.",
+            "likely_errors": "A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Representing",
+            "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations."
+          },
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.\",\n      \"likely_errors\": \"A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.\",\n      \"likely_errors\": \"A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Representing\",\n      \"why\": \"The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations.\"\n    },\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the probability of each event by applying the definition of probability (favorable outcomes divided by total outcomes) to determine whether it equals 0.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student justifies why certain events have a probability of 0 by explaining that they are impossible given the constraints of the situation, such as a standard number cube having no face with 7 or a 400-page book not having pages beyond 400.\"\n    }\n  ],\n  \"why\": \"The student must first compute the probabilities of each event using accurate procedural methods before they can evaluate or justify why any of them equal zero. Only after determining that an event has a probability of 0 can the student provide a logical justification based on the impossibility of the event occurring within the given constraints.\"\n}",
+    "answer3": "{\n  \"top_practice\": \"Justifying and Proving\",\n  \"why\": \"A student is most likely to go wrong at the step of justifying why certain events have a probability of 0, particularly by confusing very low probability with impossibility (e.g., selecting page 231 as having probability 0 because it seems unlikely). This requires a deep conceptual understanding that probability 0 means impossible, not just rare. While procedural fluency is needed to compute probabilities, the error is less likely there because the calculations are straightforward (e.g., 0/6 for rolling a 7). The other practice used—Procedural Fluency—is more mechanical and less prone to error in this context, making Justifying and Proving the key difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.",
+          "likely_errors": "A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.",
+          "likely_errors": "A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the probability of each event by applying the definition of probability (favorable outcomes divided by total outcomes) to determine whether it equals 0."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student justifies why certain events have a probability of 0 by explaining that they are impossible given the constraints of the situation, such as a standard number cube having no face with 7 or a 400-page book not having pages beyond 400."
+        }
+      ],
+      "why": "The student must first compute the probabilities of each event using accurate procedural methods before they can evaluate or justify why any of them equal zero. Only after determining that an event has a probability of 0 can the student provide a logical justification based on the impossibility of the event occurring within the given constraints."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying why certain events have a probability of 0, particularly by confusing very low probability with impossibility (e.g., selecting page 231 as having probability 0 because it seems unlikely). This requires a deep conceptual understanding that probability 0 means impossible, not just rare. While procedural fluency is needed to compute probabilities, the error is less likely there because the calculations are straightforward (e.g., 0/6 for rolling a 7). The other practice used—Procedural Fluency—is more mechanical and less prone to error in this context, making Justifying and Proving the key difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute or evaluate the probability of each event to determine if it equals 0. This involves applying the definition of probability (favorable outcomes ÷ total outcomes) to each scenario, such as calculating the probability of rolling a 7 on a standard number cube (which has only faces 1–6), or opening a 400-page book to a page greater than 450 (impossible since the book only has 400 pages). These computations require accurate and efficient application of basic probability procedures.",
+          "likely_errors": "A student might incorrectly calculate the probability of rolling a 7 as 1/6 (confusing it with a die roll that includes 7), or believe that opening a book to a page >450 is possible, leading to a wrong selection. This is moderately likely for students who misapply probability rules or misread the context."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After computing the probabilities, the student must justify why certain events have a probability of 0. For example, they must explain that rolling a 7 on a standard number cube is impossible because the cube has no face with 7, and that opening a 400-page book to a page >450 is impossible because the book only has 400 pages. This requires making a logical claim and defending it with a clear mathematical reason based on the constraints of the situation.",
+          "likely_errors": "A student might select an event with a very low probability (like 1/400) as having probability 0, failing to distinguish between 'very unlikely' and 'impossible'. This is moderately likely, especially if they lack a strong conceptual understanding of what 'probability 0' means in a finite sample space."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Representing",
+          "why": "The item does not require the student to create, interpret, or translate between different representations (e.g., visual models, graphs, tables, or diagrams). All information is presented textually, and the task is about evaluating probability values rather than using or converting representations."
+        },
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not ask the student to identify patterns across multiple cases, extend reasoning to a broader domain, or generalize a rule (e.g., about impossible events in all probability situations). The task is focused on evaluating specific, isolated events rather than deriving or applying a general principle."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or applying a model to a real-world scenario to solve a problem. The events are abstract and self-contained; there is no need to identify a problem, mathematize a context, or check the viability of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone, individual task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s mathematical idea, so collaboration is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Procedural Fluency",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

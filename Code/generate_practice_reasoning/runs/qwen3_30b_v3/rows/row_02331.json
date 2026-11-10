@@ -1,0 +1,370 @@
+{
+  "row": 2331,
+  "problem_id": "1805",
+  "problem_text": "A company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2",
+          "started_at": "2026-11-10T01:37:02+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n    \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\",\n    \"likely_errors\": \"A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n    \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\",\n    \"likely_errors\": \"A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3918,
+            "completion_tokens": 704
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:40:33+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\n- Procedural Fluency: After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:50:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\n- Procedural Fluency: After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\n- Procedural Fluency: After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given data about the two products—950 out of 1,000 and 150 out of 200—and translates these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the decimal or percentage values of the fractions (e.g., 950 ÷ 1000 = 0.95 and 150 ÷ 200 = 0.75) and compares them to determine which product has a higher proportion of items lasting more than a year.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world data in a mathematical form (fractions or decimals) before performing any calculations. This step is essential for making the comparison possible. Only after the data is represented mathematically can the student apply procedural fluency to compute and compare the values accurately.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given data about the two products—950 out of 1,000 and 150 out of 200—and translates these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the decimal or percentage values of the fractions (e.g., 950 ÷ 1000 = 0.95 and 150 ÷ 200 = 0.75) and compares them to determine which product has a higher proportion of items lasting more than a year.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world data in a mathematical form (fractions or decimals) before performing any calculations. This step is essential for making the comparison possible. Only after the data is represented mathematically can the student apply procedural fluency to compute and compare the values accurately.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4101,
+            "completion_tokens": 281
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:52:26+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\",\n      \"likely_errors\": \"A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:01:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\",\n      \"likely_errors\": \"A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA company tests two new products to make sure they last for more than a year.\n- Product 1 had 950 out of 1,000 test items last for more than a year.\n- Product 2 had 150 out of 200 last for more than a year.\nIf you had to choose one of these two products to use for more than a year, which one is more likely to last?\n\nAnswer choices:\nA. Product 1 || Product 2\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n      \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\",\n      \"likely_errors\": \"A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly representing the data as proportions (fractions or decimals) rather than comparing raw counts, which is a common error. This step is central to the task because misrepresenting the data—such as choosing Product 2 because 150 > 950 in raw numbers—leads to an incorrect answer. While procedural fluency is involved in computing the values, the error is more likely to stem from the initial misrepresentation of the situation. The other practice, procedural fluency, is less likely to be the source of incorrect answers because even if a student computes 150/200 as 0.75, they still need to have correctly represented the data first; without that, the computation is based on a flawed foundation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly representing the data as proportions (fractions or decimals) rather than comparing raw counts, which is a common error. This step is central to the task because misrepresenting the data—such as choosing Product 2 because 150 > 950 in raw numbers—leads to an incorrect answer. While procedural fluency is involved in computing the values, the error is more likely to stem from the initial misrepresentation of the situation. The other practice, procedural fluency, is less likely to be the source of incorrect answers because even if a student computes 150/200 as 0.75, they still need to have correctly represented the data first; without that, the computation is based on a flawed foundation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4597,
+            "completion_tokens": 181
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:02:53+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.",
+              "likely_errors": "A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.",
+              "likely_errors": "A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the given data about the two products—950 out of 1,000 and 150 out of 200—and translates these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the decimal or percentage values of the fractions (e.g., 950 ÷ 1000 = 0.95 and 150 ÷ 200 = 0.75) and compares them to determine which product has a higher proportion of items lasting more than a year."
+            }
+          ],
+          "why": "The student must first represent the real-world data in a mathematical form (fractions or decimals) before performing any calculations. This step is essential for making the comparison possible. Only after the data is represented mathematically can the student apply procedural fluency to compute and compare the values accurately."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the step of correctly representing the data as proportions (fractions or decimals) rather than comparing raw counts, which is a common error. This step is central to the task because misrepresenting the data—such as choosing Product 2 because 150 > 950 in raw numbers—leads to an incorrect answer. While procedural fluency is involved in computing the values, the error is more likely to stem from the initial misrepresentation of the situation. The other practice, procedural fluency, is less likely to be the source of incorrect answers because even if a student computes 150/200 as 0.75, they still need to have correctly represented the data first; without that, the computation is based on a flawed foundation."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.",
+            "likely_errors": "A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.",
+            "likely_errors": "A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.\",\n    \"likely_errors\": \"A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.\",\n    \"likely_errors\": \"A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given data about the two products—950 out of 1,000 and 150 out of 200—and translates these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the decimal or percentage values of the fractions (e.g., 950 ÷ 1000 = 0.95 and 150 ÷ 200 = 0.75) and compares them to determine which product has a higher proportion of items lasting more than a year.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world data in a mathematical form (fractions or decimals) before performing any calculations. This step is essential for making the comparison possible. Only after the data is represented mathematically can the student apply procedural fluency to compute and compare the values accurately.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the step of correctly representing the data as proportions (fractions or decimals) rather than comparing raw counts, which is a common error. This step is central to the task because misrepresenting the data—such as choosing Product 2 because 150 > 950 in raw numbers—leads to an incorrect answer. While procedural fluency is involved in computing the values, the error is more likely to stem from the initial misrepresentation of the situation. The other practice, procedural fluency, is less likely to be the source of incorrect answers because even if a student computes 150/200 as 0.75, they still need to have correctly represented the data first; without that, the computation is based on a flawed foundation.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.",
+          "likely_errors": "A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.",
+          "likely_errors": "A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the given data about the two products—950 out of 1,000 and 150 out of 200—and translates these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the decimal or percentage values of the fractions (e.g., 950 ÷ 1000 = 0.95 and 150 ÷ 200 = 0.75) and compares them to determine which product has a higher proportion of items lasting more than a year."
+        }
+      ],
+      "why": "The student must first represent the real-world data in a mathematical form (fractions or decimals) before performing any calculations. This step is essential for making the comparison possible. Only after the data is represented mathematically can the student apply procedural fluency to compute and compare the values accurately."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the step of correctly representing the data as proportions (fractions or decimals) rather than comparing raw counts, which is a common error. This step is central to the task because misrepresenting the data—such as choosing Product 2 because 150 > 950 in raw numbers—leads to an incorrect answer. While procedural fluency is involved in computing the values, the error is more likely to stem from the initial misrepresentation of the situation. The other practice, procedural fluency, is less likely to be the source of incorrect answers because even if a student computes 150/200 as 0.75, they still need to have correctly represented the data first; without that, the computation is based on a flawed foundation."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given data about the two products—950 out of 1,000 and 150 out of 200—and translate these into mathematical representations such as fractions (950/1000 and 150/200) or decimals (0.95 and 0.75) to compare the proportions of items lasting more than a year. This aligns with the descriptor of translating between numerical and visual representations of rational numbers.",
+          "likely_errors": "A student might misrepresent the data by using raw counts (e.g., comparing 950 vs. 150) instead of proportions, or incorrectly convert the fractions to decimals (e.g., 150/200 = 0.7 instead of 0.75), which is moderately likely for students who rush or lack fluency in fraction-decimal conversion."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the data as fractions or decimals, the student must compute and compare the values accurately—either by simplifying 950/1000 to 0.95 and 150/200 to 0.75, or by computing the percentage of success for each product. This involves accurate and efficient computation of proportions, which is a core part of procedural fluency with rational numbers and percents.",
+          "likely_errors": "A student might make a computational error, such as dividing 150 by 200 and getting 0.6 or 0.8, or incorrectly simplifying 950/1000 as 0.9 instead of 0.95. These errors are moderately likely, especially without checking work or using estimation."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given data. The comparison is limited to two specific products with fixed data, so no abstraction or generalization across a broader set is needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "While the student must choose a product based on evidence, the item does not require constructing a formal justification, defending a claim with a logical argument, or providing a counterexample. The task is to select the better option based on computation, not to prove why it is better in a mathematical sense."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The situation is already mathematized—data is provided in a clear, quantitative form—and no modeling process (e.g., identifying variables, creating equations, testing assumptions) is required. The student is not asked to design a model or assess its real-world validity."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or social interaction. The student works independently and responds to a direct question without engaging with another person's mathematical thinking or building on a peer's idea."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Representing"
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "row": 649,
+  "problem_id": "154066",
+  "problem_text": "Some information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.",
+          "started_at": "2026-11-10T01:28:51+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\",\n    \"likely_errors\": \"A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\",\n    \"likely_errors\": \"Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\",\n    \"likely_errors\": \"A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\",\n    \"likely_errors\": \"A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\",\n    \"likely_errors\": \"Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\",\n    \"likely_errors\": \"A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3895,
+            "completion_tokens": 725
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:31:35+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\n- Abstracting and Generalizing: The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\n- Procedural Fluency: After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:46:48+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\n- Abstracting and Generalizing: The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\n- Procedural Fluency: After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\n- Abstracting and Generalizing: The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\n- Procedural Fluency: After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the given information about each sphere—such as diameter, radius, and volume—into mathematical forms, including converting diameter to radius and applying the volume formula V = (4/3)πr³ to represent each sphere's volume numerically or symbolically.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the volume of each sphere using the formula V = (4/3)πr³, performing accurate arithmetic including squaring and cubing radii, multiplying by π, and simplifying fractions, particularly for sphere D whose radius is double that of sphere B.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the computed volumes and recognizes the cubic relationship between radius and volume, generalizing that doubling the radius increases volume by a factor of 8, and uses this understanding to order all four spheres from least to greatest volume.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given information mathematically before performing any calculations, which is the foundation for solving the problem. Once the representations are in place, procedural fluency is required to compute the volumes accurately. Only after obtaining numerical values can the student abstract the underlying cubic relationship and generalize it to order the spheres correctly, making this the final step in the process.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the given information about each sphere—such as diameter, radius, and volume—into mathematical forms, including converting diameter to radius and applying the volume formula V = (4/3)πr³ to represent each sphere's volume numerically or symbolically.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the volume of each sphere using the formula V = (4/3)πr³, performing accurate arithmetic including squaring and cubing radii, multiplying by π, and simplifying fractions, particularly for sphere D whose radius is double that of sphere B.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the computed volumes and recognizes the cubic relationship between radius and volume, generalizing that doubling the radius increases volume by a factor of 8, and uses this understanding to order all four spheres from least to greatest volume.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given information mathematically before performing any calculations, which is the foundation for solving the problem. Once the representations are in place, procedural fluency is required to compute the volumes accurately. Only after obtaining numerical values can the student abstract the underlying cubic relationship and generalize it to order the spheres correctly, making this the final step in the process.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4119,
+            "completion_tokens": 324
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:48:08+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\",\n      \"likely_errors\": \"A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\",\n      \"likely_errors\": \"Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\",\n      \"likely_errors\": \"A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T01:56:24+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\",\n      \"likely_errors\": \"A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\",\n      \"likely_errors\": \"Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\",\n      \"likely_errors\": \"A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\",\n      \"likely_errors\": \"A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\",\n      \"likely_errors\": \"Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\",\n      \"likely_errors\": \"A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying the cubic relationship between radius and volume, which is central to ordering the spheres correctly. Misunderstanding that doubling the radius increases volume by a factor of 8 (since volume scales with the cube of the radius) leads to incorrect ordering, especially for sphere D compared to sphere B. While Representing and Procedural Fluency involve important steps, errors in these areas (like misreading diameter or arithmetic mistakes) are more likely to be caught during computation or are less conceptually deep. Abstracting and Generalizing is the top practice because it requires deep conceptual understanding of how volume scales with radius, and a failure here reflects a fundamental misconception that cannot be corrected by mere calculation accuracy.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying the cubic relationship between radius and volume, which is central to ordering the spheres correctly. Misunderstanding that doubling the radius increases volume by a factor of 8 (since volume scales with the cube of the radius) leads to incorrect ordering, especially for sphere D compared to sphere B. While Representing and Procedural Fluency involve important steps, errors in these areas (like misreading diameter or arithmetic mistakes) are more likely to be caught during computation or are less conceptually deep. Abstracting and Generalizing is the top practice because it requires deep conceptual understanding of how volume scales with radius, and a failure here reflects a fundamental misconception that cannot be corrected by mere calculation accuracy.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4594,
+            "completion_tokens": 171
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:58:01+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).",
+              "likely_errors": "A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.",
+              "likely_errors": "Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.",
+              "likely_errors": "A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the given information about each sphere—such as diameter, radius, and volume—into mathematical forms, including converting diameter to radius and applying the volume formula V = (4/3)πr³ to represent each sphere's volume numerically or symbolically."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the volume of each sphere using the formula V = (4/3)πr³, performing accurate arithmetic including squaring and cubing radii, multiplying by π, and simplifying fractions, particularly for sphere D whose radius is double that of sphere B."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student compares the computed volumes and recognizes the cubic relationship between radius and volume, generalizing that doubling the radius increases volume by a factor of 8, and uses this understanding to order all four spheres from least to greatest volume."
+            }
+          ],
+          "why": "The student must first represent the given information mathematically before performing any calculations, which is the foundation for solving the problem. Once the representations are in place, procedural fluency is required to compute the volumes accurately. Only after obtaining numerical values can the student abstract the underlying cubic relationship and generalize it to order the spheres correctly, making this the final step in the process."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing and applying the cubic relationship between radius and volume, which is central to ordering the spheres correctly. Misunderstanding that doubling the radius increases volume by a factor of 8 (since volume scales with the cube of the radius) leads to incorrect ordering, especially for sphere D compared to sphere B. While Representing and Procedural Fluency involve important steps, errors in these areas (like misreading diameter or arithmetic mistakes) are more likely to be caught during computation or are less conceptually deep. Abstracting and Generalizing is the top practice because it requires deep conceptual understanding of how volume scales with radius, and a failure here reflects a fundamental misconception that cannot be corrected by mere calculation accuracy."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).",
+            "likely_errors": "A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.",
+            "likely_errors": "Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator."
+          },
+          {
+            "order": 3,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.",
+            "likely_errors": "A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).\",\n    \"likely_errors\": \"A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.\",\n    \"likely_errors\": \"Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.\",\n    \"likely_errors\": \"A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the given information about each sphere—such as diameter, radius, and volume—into mathematical forms, including converting diameter to radius and applying the volume formula V = (4/3)πr³ to represent each sphere's volume numerically or symbolically.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the volume of each sphere using the formula V = (4/3)πr³, performing accurate arithmetic including squaring and cubing radii, multiplying by π, and simplifying fractions, particularly for sphere D whose radius is double that of sphere B.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student compares the computed volumes and recognizes the cubic relationship between radius and volume, generalizing that doubling the radius increases volume by a factor of 8, and uses this understanding to order all four spheres from least to greatest volume.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given information mathematically before performing any calculations, which is the foundation for solving the problem. Once the representations are in place, procedural fluency is required to compute the volumes accurately. Only after obtaining numerical values can the student abstract the underlying cubic relationship and generalize it to order the spheres correctly, making this the final step in the process.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing and applying the cubic relationship between radius and volume, which is central to ordering the spheres correctly. Misunderstanding that doubling the radius increases volume by a factor of 8 (since volume scales with the cube of the radius) leads to incorrect ordering, especially for sphere D compared to sphere B. While Representing and Procedural Fluency involve important steps, errors in these areas (like misreading diameter or arithmetic mistakes) are more likely to be caught during computation or are less conceptually deep. Abstracting and Generalizing is the top practice because it requires deep conceptual understanding of how volume scales with radius, and a failure here reflects a fundamental misconception that cannot be corrected by mere calculation accuracy.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).",
+          "likely_errors": "A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.",
+          "likely_errors": "Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.",
+          "likely_errors": "A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the given information about each sphere—such as diameter, radius, and volume—into mathematical forms, including converting diameter to radius and applying the volume formula V = (4/3)πr³ to represent each sphere's volume numerically or symbolically."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the volume of each sphere using the formula V = (4/3)πr³, performing accurate arithmetic including squaring and cubing radii, multiplying by π, and simplifying fractions, particularly for sphere D whose radius is double that of sphere B."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student compares the computed volumes and recognizes the cubic relationship between radius and volume, generalizing that doubling the radius increases volume by a factor of 8, and uses this understanding to order all four spheres from least to greatest volume."
+        }
+      ],
+      "why": "The student must first represent the given information mathematically before performing any calculations, which is the foundation for solving the problem. Once the representations are in place, procedural fluency is required to compute the volumes accurately. Only after obtaining numerical values can the student abstract the underlying cubic relationship and generalize it to order the spheres correctly, making this the final step in the process."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing and applying the cubic relationship between radius and volume, which is central to ordering the spheres correctly. Misunderstanding that doubling the radius increases volume by a factor of 8 (since volume scales with the cube of the radius) leads to incorrect ordering, especially for sphere D compared to sphere B. While Representing and Procedural Fluency involve important steps, errors in these areas (like misreading diameter or arithmetic mistakes) are more likely to be caught during computation or are less conceptually deep. Abstracting and Generalizing is the top practice because it requires deep conceptual understanding of how volume scales with radius, and a failure here reflects a fundamental misconception that cannot be corrected by mere calculation accuracy."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the given information about each sphere—such as diameter, radius, and volume—into mathematical forms (e.g., converting diameter to radius, using the volume formula) to compare them. This involves interpreting and creating representations like numerical values, expressions, and geometric models (e.g., sketching spheres or using the volume formula V = (4/3)πr³).",
+          "likely_errors": "A student might incorrectly convert diameter to radius (e.g., using diameter as radius), or misinterpret 'radius double that of sphere B' as doubling the diameter. This is moderately likely, especially if the student rushes or misreads the relationships."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the spheres mathematically, the student must compute the volumes using the formula V = (4/3)πr³. This includes squaring and cubing radii, multiplying by π, and simplifying fractions. The student must also compute the volume of sphere D using a radius that is double sphere B’s radius, which requires accurate arithmetic with fractions and powers.",
+          "likely_errors": "Students may make arithmetic errors when cubing the radius (e.g., 3³ = 9 instead of 27), misapply the formula (e.g., using 4πr²), or incorrectly compute the double radius (e.g., 6 instead of 12). These errors are common and moderately likely, especially without a calculator."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must compare the computed volumes and order the spheres from least to greatest, recognizing that the volume depends on the cube of the radius. They must generalize that even though sphere D has a radius twice that of B, its volume is 8 times greater, and apply this understanding to order all four spheres. This involves recognizing the cubic relationship across the set of spheres.",
+          "likely_errors": "A student might assume that doubling the radius only doubles the volume (a linear misunderstanding), leading to incorrect ordering. This is a common misconception and moderately likely, especially if the student has not internalized the cubic nature of volume scaling."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks the student to order the spheres by volume, not to defend or evaluate a claim or argument. There is no need to construct a formal justification, counterexample, or deductive proof. The task is computational and comparative, not argumentative."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model of a real-world scenario, identifying a problem from context, or checking the reasonableness of a solution in a practical setting. The spheres are abstract geometric objects, and the task is purely mathematical comparison based on given measurements."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works independently on the item, with no interaction with others. There is no dialogue, shared work, peer claims, or collaborative reasoning required. The item does not present another student’s thinking or ask the student to respond to a peer’s idea."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

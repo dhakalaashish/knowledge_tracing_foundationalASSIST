@@ -1,0 +1,370 @@
+{
+  "row": 2799,
+  "problem_id": "18501",
+  "problem_text": "For a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v3",
+  "system_prompt_1_sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526",
+  "system_prompt_2_sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d",
+  "system_prompt_3_sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No",
+          "started_at": "2026-11-10T01:40:33+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "8c12e9ed12b300b4c46ff17e67dea86f76a9a4aff720469ad4f5ebf9358df526"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\",\n      \"likely_errors\": \"A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\",\n      \"likely_errors\": \"A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required.\"\n    }\n  ]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\",\n      \"likely_errors\": \"A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\",\n      \"likely_errors\": \"A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required.\"\n    }\n  ]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 3878,
+            "completion_tokens": 607
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:43:45+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+          },
+          "user_prompt": "Item:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\n- Procedural Fluency: After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T01:52:26+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "2a5436df4d4e3a456deb31766b46646046fd1684aeac9b4984b6cc98b9f04d9d"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\n- Procedural Fluency: After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\n- Procedural Fluency: After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the real-world scenario involving weight units into a mathematical comparison by interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s 23 kg suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations—dividing 23 by 10 and multiplying the result by 22—to convert 23 kilograms to approximately 50.6 pounds, then compares this value to the 50-pound limit to determine whether the suitcase can be checked.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by converting the weight from kilograms to pounds using the given approximation, which is a prerequisite for any calculation. Only after establishing this mathematical representation can the student apply procedural fluency to carry out the conversion and comparison accurately. Thus, Representing precedes Procedural Fluency in the problem-solving sequence.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the real-world scenario involving weight units into a mathematical comparison by interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s 23 kg suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations—dividing 23 by 10 and multiplying the result by 22—to convert 23 kilograms to approximately 50.6 pounds, then compares this value to the 50-pound limit to determine whether the suitcase can be checked.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by converting the weight from kilograms to pounds using the given approximation, which is a prerequisite for any calculation. Only after establishing this mathematical representation can the student apply procedural fluency to carry out the conversion and comparison accurately. Thus, Representing precedes Procedural Fluency in the problem-solving sequence.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4013,
+            "completion_tokens": 251
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T01:54:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+          },
+          "user_prompt": "Item:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\",\n      \"likely_errors\": \"A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\",\n      \"likely_errors\": \"A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T02:02:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "d5b480c12546ca7cb39a76e1e6bbeb95a5d9762e8ab66d14795122c56a9f4fe1"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\",\n      \"likely_errors\": \"A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\",\n      \"likely_errors\": \"A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nFor a suitcase to be checked on a flight (instead of carried by hand), it can weigh at most 50 pounds. Andre’s suitcase weighs 23 kilograms.\nCan Andre check his suitcase? (Note: 10 kilograms ≈ 22 pounds)\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\",\n      \"likely_errors\": \"A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\",\n      \"likely_errors\": \"A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the calculation step of converting 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs), particularly in accurately performing the multiplication (23 × 2.2) or correctly interpreting the result in relation to the 50-pound limit. While Representing is necessary to set up the conversion, the error-prone step is the execution of the arithmetic, which is central to Procedural Fluency. The Representing step is more straightforward because the conversion ratio is provided, making it less likely to be the source of error compared to the precise computation required.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the calculation step of converting 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs), particularly in accurately performing the multiplication (23 × 2.2) or correctly interpreting the result in relation to the 50-pound limit. While Representing is necessary to set up the conversion, the error-prone step is the execution of the arithmetic, which is central to Procedural Fluency. The Representing step is more straightforward because the conversion ratio is provided, making it less likely to be the source of error compared to the precise computation required.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 4456,
+            "completion_tokens": 148
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T02:04:36+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.",
+              "likely_errors": "A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.",
+              "likely_errors": "A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the real-world scenario involving weight units into a mathematical comparison by interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s 23 kg suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the necessary calculations—dividing 23 by 10 and multiplying the result by 22—to convert 23 kilograms to approximately 50.6 pounds, then compares this value to the 50-pound limit to determine whether the suitcase can be checked."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by converting the weight from kilograms to pounds using the given approximation, which is a prerequisite for any calculation. Only after establishing this mathematical representation can the student apply procedural fluency to carry out the conversion and comparison accurately. Thus, Representing precedes Procedural Fluency in the problem-solving sequence."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong during the calculation step of converting 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs), particularly in accurately performing the multiplication (23 × 2.2) or correctly interpreting the result in relation to the 50-pound limit. While Representing is necessary to set up the conversion, the error-prone step is the execution of the arithmetic, which is central to Procedural Fluency. The Representing step is more straightforward because the conversion ratio is provided, making it less likely to be the source of error compared to the precise computation required."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.",
+            "likely_errors": "A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.",
+            "likely_errors": "A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.\",\n      \"likely_errors\": \"A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.\",\n      \"likely_errors\": \"A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required.\"\n    }\n  ]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the real-world scenario involving weight units into a mathematical comparison by interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s 23 kg suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations—dividing 23 by 10 and multiplying the result by 22—to convert 23 kilograms to approximately 50.6 pounds, then compares this value to the 50-pound limit to determine whether the suitcase can be checked.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by converting the weight from kilograms to pounds using the given approximation, which is a prerequisite for any calculation. Only after establishing this mathematical representation can the student apply procedural fluency to carry out the conversion and comparison accurately. Thus, Representing precedes Procedural Fluency in the problem-solving sequence.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the calculation step of converting 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs), particularly in accurately performing the multiplication (23 × 2.2) or correctly interpreting the result in relation to the 50-pound limit. While Representing is necessary to set up the conversion, the error-prone step is the execution of the arithmetic, which is central to Procedural Fluency. The Representing step is more straightforward because the conversion ratio is provided, making it less likely to be the source of error compared to the precise computation required.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.",
+          "likely_errors": "A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.",
+          "likely_errors": "A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the real-world scenario involving weight units into a mathematical comparison by interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s 23 kg suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the necessary calculations—dividing 23 by 10 and multiplying the result by 22—to convert 23 kilograms to approximately 50.6 pounds, then compares this value to the 50-pound limit to determine whether the suitcase can be checked."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by converting the weight from kilograms to pounds using the given approximation, which is a prerequisite for any calculation. Only after establishing this mathematical representation can the student apply procedural fluency to carry out the conversion and comparison accurately. Thus, Representing precedes Procedural Fluency in the problem-solving sequence."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong during the calculation step of converting 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs), particularly in accurately performing the multiplication (23 × 2.2) or correctly interpreting the result in relation to the 50-pound limit. While Representing is necessary to set up the conversion, the error-prone step is the execution of the arithmetic, which is central to Procedural Fluency. The Representing step is more straightforward because the conversion ratio is provided, making it less likely to be the source of error compared to the precise computation required."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the real-world situation involving weight units (kilograms and pounds) into a mathematical comparison. This involves interpreting the given conversion (10 kg ≈ 22 lbs) and representing Andre’s suitcase weight in pounds using a proportional relationship, such as setting up a ratio or multiplication to convert 23 kg to pounds.",
+          "likely_errors": "A student might incorrectly set up the proportion (e.g., using 22/10 instead of 22/10 as a rate) or misinterpret the conversion, leading to an inaccurate weight in pounds. This is moderately likely for students unfamiliar with unit conversions."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the conversion, the student must perform the calculation to convert 23 kilograms to pounds using the given approximation (10 kg ≈ 22 lbs). This requires accurate multiplication and division (e.g., (23 ÷ 10) × 22 = 50.6 lbs), and then comparing the result to the 50-pound limit.",
+          "likely_errors": "A student might make a computational error, such as miscalculating 23 × 2.2 (since 22 ÷ 10 = 2.2), or incorrectly round the result. This is common and likely, especially without a calculator."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a relationship to a broader domain. The conversion is provided directly, and the problem involves a single instance of unit conversion, not generalization of a rule or pattern."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend a claim, provide a counterexample, or construct a formal argument. The response is a yes/no decision based on a calculation, not a justification of a mathematical claim or reasoning."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the modeling is minimal and direct: the student only needs to convert units and compare to a threshold. There is no need to identify a problem, choose variables, build a model, or test its reasonableness—these steps are already provided in the problem setup."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer work, or shared reasoning. It is a solo decision based on given information, with no interaction with another student’s thinking or contribution required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}
