@@ -30,7 +30,15 @@ Each problem goes through three separate LLM calls (three fresh conversations, n
                 indented) in place of {ANALYSIS}
         model:  answer 3, a JSON object: the top practice and why. Checked the same way.
 
-Prompt 1 and prompt 3 are the same text as prompt 1 and prompt 2 of the two-prompt version (run qwen3_30b_v2).
+Example items: below each practice's descriptors are example items from Data/problems_naep_predicted.csv
+(its ground_truth column), rendered like the problems (tools/render_problems.awk; no answers): all 4 / 4 / 7 /
+3 / 4 items of Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling and
+Collaborative Mathematics, and 4 of the 14 Procedural Fluency items (data rows 23, 30, 25, 26: whole-number
+subtraction across zeros, multi-digit multiplication, a signed decimal division, a linear equation).
+The NAEP items are not in Problems.csv.
+
+Apart from the example items, prompt 1 and prompt 3 are the same text as prompt 1 and prompt 2 of the
+two-prompt version (run qwen3_30b_v2), and run qwen3_30b_v3 used these prompts without the examples.
 """
 
 PRACTICES = [
@@ -65,7 +73,8 @@ PROMPT_CONTEXT = """---
 Assess the item's practices using:
     - Practice definition: defines what the practice measures
     - Practice descriptors: non-comprehensive list of descriptions of what the practice could entail
-Both the definition and the descriptor are important in identifying which practice the item belongs to
+    - Example items: items from the NAEP mathematics framework whose main practice is this practice (shown without their answers)
+Both the definition and the descriptor are important in identifying which practice the item belongs to. The example items show what an item that mainly assesses the practice looks like; an item can still use other practices along the way.
 
 ---
 
@@ -108,6 +117,42 @@ Practice descriptors:
     - Express linear and exponential sequences in recursive or explicit forms given a table.
     - Translate between different representations of expressions using symbols, graphs, tables, diagrams, or written descriptions.
     - Use or create a graphical representation of a situation to draw conclusions.
+
+Example items:
+
+Example 1:
+    [Image: base ten blocks: 3 large cubes (each made of 10 × 10 × 10 small cubes), 2 rods (each made of 10 small cubes), and 5 single small cubes. Key: one small cube = 1]
+    Which of the following numbers is represented by the base ten blocks?
+
+    Answer choices:
+    A. 325
+    B. 370
+    C. 3,025
+    D. 3,205
+
+Example 2:
+    [Graph: MARISA’S BICYCLE TRIP. Horizontal axis: Time (minutes), 0 to 80. Vertical axis: Speed (miles per hour), 0 to 10. The speed rises steadily from 0 mph at 0 minutes to 6 mph at 20 minutes, stays at 6 mph from 20 to 60 minutes, drops to 0 mph at about 65 minutes, and stays at 0 mph after that.]
+    The graph above represents Marisa’s riding speed throughout her 80-minute bicycle trip. Use the information in the graph to describe what could have happened on the trip, including her speed throughout the trip.
+    During the first 20 minutes, Marisa ____
+    From 20 minutes to 60 minutes Marisa ____
+    From 60 minutes to 80 minutes Marisa ____
+
+Example 3:
+    Chris and Ben each walked home from school. The distance Chris walked, in miles, is represented by point C on the number line.
+    [Image: a number line from 0 to 1 divided into 8 equal parts; point C is at the 6th tick mark after 0.]
+    Ben walked 1/4 mile less than Chris.
+    Enter the distance, in miles, that Ben walked.
+    ____
+
+Example 4:
+    Which situation can be represented by this equation?
+    4 ÷ (1/8) = ☐
+
+    Answer choices:
+    A. Jack has 4 pieces of fabric. Each piece is 1/8 of a yard long. How many yards of fabric does Jack have?
+    B. Jack has 4 pieces of fabric. He gets 1/8 more yards of fabric. How many yards of fabric does Jack have now?
+    C. Jack has 4 yards of fabric. He gives away 1/8 of his pieces of fabric. How many pieces of fabric does Jack have left?
+    D. Jack has 4 yards of fabric. He cuts the fabric into 1/8 pieces of a yard long. How many pieces of fabric does Jack have?
 """
 
 PROMPT_ABSTRACTING = """
@@ -142,6 +187,36 @@ Practice descriptors:
     - Identify commonalities and compare and generalize properties within and across function families (e.g., linear, quadratic, rational, and exponential functions).
     - Develop general rules for translating functions and graphs.
     - Create connections across representations.
+
+Example items:
+
+Example 1:
+    Point O is the center of the regular hexagon shown. The shaded triangle is formed by O and two adjacent vertices of the hexagon and has an area of T.
+    [Image: a regular hexagon with center O; the triangle formed by O and the two bottom vertices is shaded.]
+    What is the area of the hexagon in terms of T?
+    Area = ____
+
+Example 2:
+    Point P is the center of a regular polygon with 10 sides. A triangle is formed by P and two adjacent vertices of the polygon and has an area of V.
+    What is the area of the polygon in terms of V?
+    Area = ____
+
+Example 3:
+    Sequence I: 3, 5, 9, 17, 33, ...
+    Sequence I, shown above, is an increasing sequence. Each term in the sequence is greater than the previous term.
+    a. Make a list of numbers that consists of the positive differences between each pair of adjacent terms in Sequence I. Label the list Sequence II.
+    b. If this same pattern of differences continues for the terms in Sequence I, what are the next two terms after 33 in Sequence I?
+    6th term ____
+    7th term ____
+    c. Write an algebraic expression (rule) that can be used to determine the nth term of Sequence II, which is the difference between the (n + 1)st term and the nth term of Sequence I.
+
+Example 4:
+    Three students each have a coin, one has a nickel, one has a dime, and the third student has a quarter. They flip their coins at the same time. Each coin can land either heads up (H) or tails up (T). List all the different possible outcomes for how the coins could land in the chart below. The list has been started for you.
+    [Table:
+    Nickel | Dime | Quarter
+    H | H | H
+    H | H | T]
+    What if a 4th student joins the group with a half-dollar coin? How many different ways could the 4 coins land? What if a 5th student joined with a penny, how many different ways could the 5 coins land?
 
 """
 
@@ -181,6 +256,59 @@ Practice descriptors:
     - Create, validate, and justify conclusions and generalizations about functional relationships.
     - Verify a conclusion using algebraic properties.
 
+Example items:
+
+Example 1:
+    Elise claims that if you multiply any whole number by 6, you will always get an even number for the answer. Provide an argument for why Elise is correct.
+
+Example 2:
+    [Figure: segment BE is horizontal, with point C on it between B and E. Segment AD crosses BE at C. Point A is below B, and AB is perpendicular to BE (right angle at B). Point D is above E, and DE is perpendicular to BE (right angle at E).]
+    Given: C is the midpoint of segment BE. ∠B and ∠E are right angles.
+    Prove that segment AC ≅ segment DC and give a reason for each statement in your proof.
+
+Example 3:
+    Question A: If x is a real number, what are all values of x for which x > −3 and x < 5?
+    Question B: If x is a real number, what are all values of x for which x > −3 or x < 5?
+    Barbara said that the answers to the two questions above are different.
+    Dave said that the answers to the two questions above are the same.
+    Which student is correct?
+    Explain why this student is correct. You may use words, symbols, or graphs in your explanation.
+
+    Answer choices:
+    A. Barbara
+    B. Dave
+
+Example 4:
+    Tracy said, “I can multiply 6 by another number and get an answer that is smaller than 6.”
+    Pat said, “No, you can’t. Multiplying 6 by another number always makes the answer 6 or larger.”
+    Who is correct? Give a reason for your answer.
+
+Example 5:
+    A student was asked to use mathematical induction to prove the following statement.
+    1/2 + 1/4 + 1/8 + ... + (1/2)^n = 1 − (1/2)^n for all positive integers n
+    The beginning of the student’s proof is shown below.
+    First, show that the statement is true for n = 1: If n = 1, (1/2)^1 = 1 − (1/2)^1, so 1/2 = 1/2.
+    Next, show that if the statement is true when n is equal to a given positive integer k, then it is also true when n is equal to the next integer, k + 1: Assume that the statement is true when n = k, so 1/2 + 1/4 + 1/8 + ... + (1/2)^k = 1 − (1/2)^k. Show that the statement is also true when n is equal to the next integer, k + 1.
+    Complete the student’s proof by showing that if the statement is true when n = k, then it is also true when n = k + 1, where k is any positive integer.
+
+Example 6:
+    [Image: two spinners. Spinner A is divided into 6 equal sections that alternate blue and white (3 blue, 3 white). Spinner B is divided into 3 equal sections: 1 blue and 2 white.]
+    Lori has a choice of two spinners. She wants the one that gives her a greater probability of landing on blue.
+    Which spinner should she choose?
+    Explain why the spinner you chose gives Lori the greater probability of landing on blue.
+
+    Answer choices:
+    A. Spinner A
+    B. Spinner B
+
+Example 7:
+    From any vertex of a 4-sided polygon, 1 diagonal can be drawn.
+    From any vertex of a 5-sided polygon, 2 diagonals can be drawn.
+    From any vertex of a 6-sided polygon, 3 diagonals can be drawn.
+    From any vertex of a 7-sided polygon, 4 diagonals can be drawn.
+    How many diagonals can be drawn from any vertex of a 20-sided polygon?
+    Answer: ____
+
 """
 
 PROMPT_MODELING = """
@@ -216,6 +344,34 @@ Practice descriptors:
     - Revise an existing algebraic model based on introducing new variables or parameters.
     - Build or apply a mathematical model of a financial situation (e.g., a monthly family budget, or a car loan).
 
+Example items:
+
+Example 1:
+    [Task is introduced through video: A school food service director states during the morning announcements that the school is planning a “Garden Bar” as an option for school lunch <video/image of a garden bar with a variety of fruits and vegetables>. The director says, “The cafeteria staff and I would like your input, so we know that the fruits and vegetables included will be eaten. To assist us in our decision-making process, we are establishing a task force to help us gather your suggestions and will take your suggestions into account when making our decision.”]
+    You volunteer for the task force.
+    At the first meeting, the team works to determine what they need to know and how to go about gathering that information. Some of the questions your team identifies are:
+    “How many students are in the school? Do students like some of these choices more than others? Do some of these choices cost more than others? If so, which ones might we have some left over, which might we run out of? Should the school’s cost of these items be considered?”
+
+Example 2:
+    A state’s tax model is described below.
+    - Individuals with an income of $10,000 or less per year pay no income tax.
+    - Individuals with income greater than $10,000 per year pay a 6% tax on all income over $10,000.
+    (1) What would a resident who made $40,000 pay in tax? What percent of this resident’s total income is paid in tax?
+    (2) What would a resident who made $50,000 pay in tax? What percent of this resident’s total income is paid in tax?
+    (3) Determine a method for calculating the percent of any resident’s total income that is paid in tax.
+    (4) Is there a highest percent of total income that a resident could pay in tax? Defend your position on this percent.
+    (5) The state is considering the new tax model described below:
+    - Individuals with an income of $10,000 or less per year pay no income tax.
+    - Individuals with an income greater than $10,000 per year pay 5% on all income over $10,000 up to $50,000, and pay 7% on all income over $50,000.
+    Explain whether or not the new tax model benefits individuals in the state who pay income tax. As part of your response, compare the new tax model to the existing tax model.
+
+Example 3:
+    The student council at a large middle school must recommend one activity to add to physical education classes next year. They plan to survey 100 students and ask each to pick a favorite among kickball, tennis, yoga, and dance.
+    (a) Write the question you would put on the survey, exactly as it would appear.
+    (b) Explain how you would choose the 100 students who answer your question.
+    (c) Make a table or graph of survey responses that would be reasonable for this situation.
+    (d) Which activity should the student council recommend adding to physical education classes next year? Use your answer to part (c) to justify your choice.
+
 """
 
 PROMPT_COLLABORATIVE = """
@@ -245,6 +401,59 @@ Practice descriptors:
     - Revoice/restate the work of others in addressing a statistical or probabilistic situation.
     - Analyze the models constructed by others to evaluate a new data set.
     - Verify the conclusions of others using algebraic or numerical properties.
+
+Example items:
+
+Example 1:
+    Chat members: You, George, Rachel, Brad. The team is choosing a place to take visitors from three options suggested by Ms. Cosmo: the museum of local history, the community market, and the electric car factory. The team’s notepad lists two goals: it gives a sense of life in our town; travel time is manageable.
+    Chat so far:
+    You: Brad, I agree we want the visitors to enjoy themselves, but let’s go over Ms. Cosmo’s options first.
+    George: Not sure. Probably any of the sites would be fine.
+    Rachel: The museum of local history would really show what life in our town is like.
+    Brad: It’s sort of boring. Also, I think it’s closed.
+    [Museum information: Location: 101 Main Street, in the center of town. Hours: Saturday 10 a.m. to 5 p.m., Sunday noon to 5 p.m. On display: clothing, furniture, and room decorations from different periods; antiques donated by local families; maps showing how the town and surrounding areas grew.]
+    Choose your next message in the chat.
+
+    Answer choices:
+    A. Does this mean we only have two options?
+    B. I don’t think it’s closed. I’ve seen ads for the museum all over town.
+    C. Rachel, the museum is only open on weekends. Let’s look at the other options.
+    D. I don’t see how we can go to the museum if it’s closed.
+
+Example 2:
+    You, George, Rachel, and Brad are choosing between the museum of local history, the community market, and the electric car factory for a visit.
+    Turn 1. George: OK, where should we begin?
+    Choose your message:
+    A) Let’s ask Ms. Cosmo what we should do.
+    B) There are three choices. Let’s just vote.
+    C) Maybe we should think about it for a while and check back later?
+    D) Let’s talk about what makes a good visit.
+    Turn 2. Brad: We’re supposed to visit someplace local.
+    Choose your message:
+    A) How does that help? Lots of places are local.
+    B) If it’s local, it could show what life is like around here.
+    C) OK, but we need to hurry and decide.
+    D) Too bad we can’t take them anywhere we want.
+
+Example 3:
+    Together, you and Connor are finding 8 × 16.
+    Connor says, “We can find the product if we multiply 8 and 15 and then add 8.”
+    Which sentence could you say to Connor to best explain that his statement is correct or incorrect?
+
+    Answer choices:
+    A. I think you are incorrect, because we should add 16 instead of 8.
+    B. I think you are correct, because 15 is an easier number to multiply by than 16.
+    C. I think you are correct, because 8 × 16 is the same as 15 groups of 8, plus 1 group of 8.
+    D. I think you are incorrect, because 8 × 16 is the same as 4 groups of 8, plus 4 groups of 8.
+
+Example 4:
+    You and Jose talk about the number of factors all whole numbers have.
+    Jose says that all whole numbers except 1 have an even number of factors because factors always come in pairs.
+    Jose’s statement is incorrect.
+    Complete the sentences to help Jose see that his statement is not always correct. Drag numbers into the empty boxes to complete the sentences.
+    Numbers to drag: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    What about the number ____?
+    It has ____ factors.
 
 """
 
@@ -278,6 +487,24 @@ Practice descriptors:
     - Evaluate expressions and functions accurately by substitution.
     - Solve equations, inequalities, and systems using appropriate and efficient procedures, from informal methods to formal symbolic manipulation.
     - Check results for accuracy (e.g., by substitution, estimation, or inverse operations) and correct procedural errors.
+
+Example items:
+
+Example 1:
+    3,020 − 687
+    ____
+
+Example 2:
+    49 × 975 = ____
+
+Example 3:
+    Compute.
+    −0.4 ÷ 8 = ____
+
+Example 4:
+    Solve each equation or write that there are no solutions or infinitely many solutions. Show your work.
+    8(2x + 9) = 56
+    x = ____
 
 """
 

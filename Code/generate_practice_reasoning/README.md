@@ -4,7 +4,9 @@ Labels each problem in `Data/Problems.csv` with an LLM's view of which mathemati
 
 ## The three prompts
 
-All prompts are in `prompts.py`. Each problem goes through three separate LLM calls, each a fresh conversation. None of them sees `predicted_practice` or any other label. Prompts 1 and 3 are word for word the two prompts of the earlier two-prompt version (run `qwen3_30b_v2`); prompt 2, the order, was added because the two-prompt version often listed the practices by importance (Procedural Fluency first) instead of in the order a student uses them.
+All prompts are in `prompts.py`. Each problem goes through three separate LLM calls, each a fresh conversation. None of them sees `predicted_practice` or any other label. Prompt 2, the order, was added because the two-prompt version (run `qwen3_30b_v2`) often listed the practices by importance (Procedural Fluency first) instead of in the order a student uses them.
+
+Each practice in the system prompts lists, below its descriptors, example items from `Data/problems_naep_predicted.csv` whose `ground_truth` is that practice, rendered like the problems and without answers: all of them for five practices (4 Representing, 4 Abstracting and Generalizing, 7 Justifying and Proving, 3 Mathematical Modeling, 4 Collaborative Mathematics) and 4 of the 14 Procedural Fluency items. Run `qwen3_30b_v3` used the same prompts without the examples, so a run with the examples needs a new `--column-prefix` (e.g. `qwen3_30b_v4`); the run folder refuses changed prompts otherwise.
 
 | | Prompt 1: practices used and not used | Prompt 2: order | Prompt 3: top practice |
 |---|---|---|---|
