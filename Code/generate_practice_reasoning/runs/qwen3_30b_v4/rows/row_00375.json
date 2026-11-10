@@ -1,0 +1,370 @@
+{
+  "row": 375,
+  "problem_id": "225766",
+  "problem_text": "A toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds",
+          "started_at": "2026-11-10T21:31:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n    \"likely_errors\": \"A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\",\n    \"likely_errors\": \"A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n    \"likely_errors\": \"A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\",\n    \"likely_errors\": \"A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7437,
+            "completion_tokens": 795
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:35:29+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Abstracting and Generalizing: After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T21:59:10+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Abstracting and Generalizing: After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\n- Abstracting and Generalizing: After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given information about the toaster's operation and translates it into a mathematical representation, such as a table or a rate, by recognizing that 35 seconds are needed for 4 slices, 70 seconds for 8 slices, and 105 seconds for 10 slices.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that each batch of 4 slices takes 35 seconds and generalizes this to determine that 20 slices require 5 batches, leading to a total time of 175 seconds.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given data in a mathematical form to make sense of the relationship between slices and time before they can identify and generalize the pattern. Without this initial representation, the abstract generalization cannot be made. Thus, Representing precedes Abstracting and Generalizing in the sequence of steps.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given information about the toaster's operation and translates it into a mathematical representation, such as a table or a rate, by recognizing that 35 seconds are needed for 4 slices, 70 seconds for 8 slices, and 105 seconds for 10 slices.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that each batch of 4 slices takes 35 seconds and generalizes this to determine that 20 slices require 5 batches, leading to a total time of 175 seconds.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given data in a mathematical form to make sense of the relationship between slices and time before they can identify and generalize the pattern. Without this initial representation, the abstract generalization cannot be made. Thus, Representing precedes Abstracting and Generalizing in the sequence of steps.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7680,
+            "completion_tokens": 235
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:01:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\",\n      \"likely_errors\": \"A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:11:56+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\",\n      \"likely_errors\": \"A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA toaster has 4 slots for bread. Once the toaster is warmed up, it takes 35 seconds to make 4 slices of toast, 70 seconds to make 8 slices, and 105 seconds to make 10 slices.\nHow long do you think it will take to make 20 slices?\n____ seconds\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n      \"likely_errors\": \"A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\",\n      \"likely_errors\": \"A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the toaster processes slices in fixed batches of 4, each taking 35 seconds, rather than assuming a linear rate per slice. This requires abstracting the pattern from the given data and generalizing it to 20 slices by dividing into 5 batches. The error of treating time as proportional per slice (e.g., 8.75 seconds per slice) is common and stems from failing to generalize the batch-based model. While Representing is important for setting up the data, the error in interpretation is more likely at the generalization step, and the procedural multiplication is simple, making Procedural Fluency less likely to cause failure.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the toaster processes slices in fixed batches of 4, each taking 35 seconds, rather than assuming a linear rate per slice. This requires abstracting the pattern from the given data and generalizing it to 20 slices by dividing into 5 batches. The error of treating time as proportional per slice (e.g., 8.75 seconds per slice) is common and stems from failing to generalize the batch-based model. While Representing is important for setting up the data, the error in interpretation is more likely at the generalization step, and the procedural multiplication is simple, making Procedural Fluency less likely to cause failure.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8207,
+            "completion_tokens": 164
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:14:16+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+              "likely_errors": "A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'",
+              "likely_errors": "A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the given information about the toaster's operation and translates it into a mathematical representation, such as a table or a rate, by recognizing that 35 seconds are needed for 4 slices, 70 seconds for 8 slices, and 105 seconds for 10 slices."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the pattern that each batch of 4 slices takes 35 seconds and generalizes this to determine that 20 slices require 5 batches, leading to a total time of 175 seconds."
+            }
+          ],
+          "why": "The student must first represent the given data in a mathematical form to make sense of the relationship between slices and time before they can identify and generalize the pattern. Without this initial representation, the abstract generalization cannot be made. Thus, Representing precedes Abstracting and Generalizing in the sequence of steps."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing that the toaster processes slices in fixed batches of 4, each taking 35 seconds, rather than assuming a linear rate per slice. This requires abstracting the pattern from the given data and generalizing it to 20 slices by dividing into 5 batches. The error of treating time as proportional per slice (e.g., 8.75 seconds per slice) is common and stems from failing to generalize the batch-based model. While Representing is important for setting up the data, the error in interpretation is more likely at the generalization step, and the procedural multiplication is simple, making Procedural Fluency less likely to cause failure."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+            "likely_errors": "A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'",
+            "likely_errors": "A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'\",\n    \"likely_errors\": \"A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'\",\n    \"likely_errors\": \"A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given information about the toaster's operation and translates it into a mathematical representation, such as a table or a rate, by recognizing that 35 seconds are needed for 4 slices, 70 seconds for 8 slices, and 105 seconds for 10 slices.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern that each batch of 4 slices takes 35 seconds and generalizes this to determine that 20 slices require 5 batches, leading to a total time of 175 seconds.\"\n    }\n  ],\n  \"why\": \"The student must first represent the given data in a mathematical form to make sense of the relationship between slices and time before they can identify and generalize the pattern. Without this initial representation, the abstract generalization cannot be made. Thus, Representing precedes Abstracting and Generalizing in the sequence of steps.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the toaster processes slices in fixed batches of 4, each taking 35 seconds, rather than assuming a linear rate per slice. This requires abstracting the pattern from the given data and generalizing it to 20 slices by dividing into 5 batches. The error of treating time as proportional per slice (e.g., 8.75 seconds per slice) is common and stems from failing to generalize the batch-based model. While Representing is important for setting up the data, the error in interpretation is more likely at the generalization step, and the procedural multiplication is simple, making Procedural Fluency less likely to cause failure.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+          "likely_errors": "A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'",
+          "likely_errors": "A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the given information about the toaster's operation and translates it into a mathematical representation, such as a table or a rate, by recognizing that 35 seconds are needed for 4 slices, 70 seconds for 8 slices, and 105 seconds for 10 slices."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the pattern that each batch of 4 slices takes 35 seconds and generalizes this to determine that 20 slices require 5 batches, leading to a total time of 175 seconds."
+        }
+      ],
+      "why": "The student must first represent the given data in a mathematical form to make sense of the relationship between slices and time before they can identify and generalize the pattern. Without this initial representation, the abstract generalization cannot be made. Thus, Representing precedes Abstracting and Generalizing in the sequence of steps."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing that the toaster processes slices in fixed batches of 4, each taking 35 seconds, rather than assuming a linear rate per slice. This requires abstracting the pattern from the given data and generalizing it to 20 slices by dividing into 5 batches. The error of treating time as proportional per slice (e.g., 8.75 seconds per slice) is common and stems from failing to generalize the batch-based model. While Representing is important for setting up the data, the error in interpretation is more likely at the generalization step, and the procedural multiplication is simple, making Procedural Fluency less likely to cause failure."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given information about the toaster's operation—time for different numbers of slices—and translate it into a mathematical representation, such as a table of values or a pattern of time per slice. This involves recognizing the relationship between the number of slices and the time required, possibly by creating a ratio or identifying a rate (e.g., 35 seconds per 4 slices). This aligns with the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers' and 'Represent problem situations with geometric models to draw conclusions or solve mathematical or real-world problems.'",
+          "likely_errors": "A student might misinterpret the pattern and think the time increases linearly with slices but incorrectly calculate the rate (e.g., assuming 35 seconds per slice instead of per 4 slices). This is moderately likely, especially if the student doesn't carefully compare the given data points."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the data, the student must identify the underlying pattern: the toaster takes 35 seconds to process 4 slices, so the time per batch is constant. The student generalizes that each batch of 4 slices takes 35 seconds, regardless of how many slices are made, and applies this to 20 slices by dividing 20 by 4 to get 5 batches. This matches the descriptor: 'Identify patterns in numbers, figures, sequences, tables, or graphs and generalize them using words, pictures, or symbols' and 'Extend a geometric relationship from one or more figures to a family of figures.'",
+          "likely_errors": "A student might incorrectly assume a linear relationship where time increases proportionally per slice (e.g., 35 seconds for 4 slices → 8.75 seconds per slice → 175 seconds for 20 slices), which is a common error. This is likely if the student fails to recognize the batch-based processing model."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify or prove a claim about the relationship. There is no assertion to evaluate or refute, nor is the student asked to provide a deductive argument or counterexample. The task is to make a prediction based on observed patterns, not to validate or defend a mathematical claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is real-world, the student is not asked to identify a problem, define variables, create a model, or check the reasonableness of the solution in context. The model (batch processing every 35 seconds for 4 slices) is already implicitly provided by the data, so the student is not constructing or refining a model from scratch."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaboration is not required."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although the final step involves multiplication (5 batches × 35 seconds), the procedural computation is straightforward and not the focus. The challenge lies in interpreting the pattern and generalizing it, not in executing a complex or non-routine calculation. The student does not need to recall or apply a complex algorithm, so procedural fluency is not the primary practice assessed."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

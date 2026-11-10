@@ -1,0 +1,370 @@
+{
+  "row": 1524,
+  "problem_id": "499326",
+  "problem_text": "Here are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %",
+          "started_at": "2026-11-10T21:39:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\",\n    \"likely_errors\": \"A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\",\n    \"likely_errors\": \"A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\",\n    \"likely_errors\": \"A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\",\n    \"likely_errors\": \"A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7435,
+            "completion_tokens": 588
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:43:50+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\n- Abstracting and Generalizing: The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:03:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\n- Abstracting and Generalizing: The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\n- Abstracting and Generalizing: The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of item costs and sales tax amounts as a proportional relationship, translating the given numerical data into a mathematical expression that represents the sales tax as a percentage of the cost.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes that the sales tax rate is consistent across all items and generalizes this by calculating the ratio of tax to cost using one pair of values, then applies the same ratio to verify consistency with the other pairs.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by interpreting the table as a proportional relationship before they can abstract and generalize the constant rate across all entries. This logical sequence ensures that the student has a clear mathematical model before making broader inferences about the rate.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of item costs and sales tax amounts as a proportional relationship, translating the given numerical data into a mathematical expression that represents the sales tax as a percentage of the cost.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes that the sales tax rate is consistent across all items and generalizes this by calculating the ratio of tax to cost using one pair of values, then applies the same ratio to verify consistency with the other pairs.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by interpreting the table as a proportional relationship before they can abstract and generalize the constant rate across all entries. This logical sequence ensures that the student has a clear mathematical model before making broader inferences about the rate.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7565,
+            "completion_tokens": 201
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:04:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\",\n      \"likely_errors\": \"A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\",\n      \"likely_errors\": \"A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:16:40+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\",\n      \"likely_errors\": \"A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\",\n      \"likely_errors\": \"A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere are the prices of some items and the amount of sales tax charged on each in Nevada.\n[Table:\ncost of items ($) | sales tax ($)\n10 | 0.46\n50 | 2.30\n5 | 0.23]\nWhat is the sales tax rate in Nevada? ____ %\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\",\n      \"likely_errors\": \"A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\",\n      \"likely_errors\": \"A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing that the sales tax rate is constant across all items and must be computed from any one pair of values, then verified for consistency. This step requires abstracting the proportional relationship and generalizing it beyond a single calculation. While misreading the table (Representing) is possible, it is less likely to be the primary source of error because the values are straightforward and clearly paired. Procedural Fluency is not the main challenge since the division involved is simple; the difficulty lies in the conceptual leap of generalizing a consistent rate from multiple data points.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing that the sales tax rate is constant across all items and must be computed from any one pair of values, then verified for consistency. This step requires abstracting the proportional relationship and generalizing it beyond a single calculation. While misreading the table (Representing) is possible, it is less likely to be the primary source of error because the values are straightforward and clearly paired. Procedural Fluency is not the main challenge since the division involved is simple; the difficulty lies in the conceptual leap of generalizing a consistent rate from multiple data points.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7997,
+            "completion_tokens": 138
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:18:59+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.",
+              "likely_errors": "A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.",
+              "likely_errors": "A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of item costs and sales tax amounts as a proportional relationship, translating the given numerical data into a mathematical expression that represents the sales tax as a percentage of the cost."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes that the sales tax rate is consistent across all items and generalizes this by calculating the ratio of tax to cost using one pair of values, then applies the same ratio to verify consistency with the other pairs."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by interpreting the table as a proportional relationship before they can abstract and generalize the constant rate across all entries. This logical sequence ensures that the student has a clear mathematical model before making broader inferences about the rate."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to fail at recognizing that the sales tax rate is constant across all items and must be computed from any one pair of values, then verified for consistency. This step requires abstracting the proportional relationship and generalizing it beyond a single calculation. While misreading the table (Representing) is possible, it is less likely to be the primary source of error because the values are straightforward and clearly paired. Procedural Fluency is not the main challenge since the division involved is simple; the difficulty lies in the conceptual leap of generalizing a consistent rate from multiple data points."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.",
+            "likely_errors": "A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.",
+            "likely_errors": "A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.\",\n    \"likely_errors\": \"A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.\",\n    \"likely_errors\": \"A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of item costs and sales tax amounts as a proportional relationship, translating the given numerical data into a mathematical expression that represents the sales tax as a percentage of the cost.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes that the sales tax rate is consistent across all items and generalizes this by calculating the ratio of tax to cost using one pair of values, then applies the same ratio to verify consistency with the other pairs.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by interpreting the table as a proportional relationship before they can abstract and generalize the constant rate across all entries. This logical sequence ensures that the student has a clear mathematical model before making broader inferences about the rate.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing that the sales tax rate is constant across all items and must be computed from any one pair of values, then verified for consistency. This step requires abstracting the proportional relationship and generalizing it beyond a single calculation. While misreading the table (Representing) is possible, it is less likely to be the primary source of error because the values are straightforward and clearly paired. Procedural Fluency is not the main challenge since the division involved is simple; the difficulty lies in the conceptual leap of generalizing a consistent rate from multiple data points.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.",
+          "likely_errors": "A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.",
+          "likely_errors": "A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of item costs and sales tax amounts as a proportional relationship, translating the given numerical data into a mathematical expression that represents the sales tax as a percentage of the cost."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes that the sales tax rate is consistent across all items and generalizes this by calculating the ratio of tax to cost using one pair of values, then applies the same ratio to verify consistency with the other pairs."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by interpreting the table as a proportional relationship before they can abstract and generalize the constant rate across all entries. This logical sequence ensures that the student has a clear mathematical model before making broader inferences about the rate."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to fail at recognizing that the sales tax rate is constant across all items and must be computed from any one pair of values, then verified for consistency. This step requires abstracting the proportional relationship and generalizing it beyond a single calculation. While misreading the table (Representing) is possible, it is less likely to be the primary source of error because the values are straightforward and clearly paired. Procedural Fluency is not the main challenge since the division involved is simple; the difficulty lies in the conceptual leap of generalizing a consistent rate from multiple data points."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of costs and sales tax amounts as a relationship between two quantities, recognizing that the sales tax is a percentage of the cost. This involves translating the given numerical data into a proportional relationship, which is a core aspect of representing mathematical situations using numbers and operations.",
+          "likely_errors": "A student might misread the table or incorrectly pair the cost with the tax (e.g., associating $50 with $0.23), leading to an incorrect rate. This is moderately likely for students who rush or don’t carefully align the values."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize that the sales tax rate is constant across all items, so they can use any pair of values (e.g., $10 and $0.46) to compute the rate. They generalize this pattern by calculating the ratio of tax to cost (0.46 ÷ 10) and apply it to the other pairs to verify consistency, which aligns with identifying and extending proportional relationships.",
+          "likely_errors": "A student might compute the rate from only one pair and not verify it with others, or incorrectly assume the rate changes. This is moderately likely if students don’t check for consistency across the data."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim, or refute a counterexample. The task is to compute a rate based on given data, not to evaluate or justify a mathematical claim about the relationship."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world pricing, the student is not asked to identify a problem, build a model, or check the reasonableness of a solution in a broader scenario. The model (sales tax as a percentage of cost) is already implied and the task is purely computational."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or interaction with another person’s mathematical thinking. The student works independently on a straightforward computation based on a table."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although the student performs division (e.g., 0.46 ÷ 10), the task does not emphasize the efficient or accurate execution of a procedure as the primary focus. The key steps are interpreting the data and recognizing the proportional relationship, not the mechanics of division per se."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

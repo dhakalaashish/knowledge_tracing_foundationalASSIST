@@ -1,0 +1,389 @@
+{
+  "row": 1671,
+  "problem_id": "344535",
+  "problem_text": "Jada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies",
+          "started_at": "2026-11-10T21:43:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\",\n    \"likely_errors\": \"A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\",\n    \"likely_errors\": \"A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\",\n    \"likely_errors\": \"A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\",\n    \"likely_errors\": \"A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\",\n    \"likely_errors\": \"A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\",\n    \"likely_errors\": \"A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7473,
+            "completion_tokens": 826
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:48:08+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\n- Abstracting and Generalizing: After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\n- Justifying and Proving: The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:04:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\n- Abstracting and Generalizing: After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\n- Justifying and Proving: The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\n- Abstracting and Generalizing: After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\n- Justifying and Proving: The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the verbal description of the cookie distribution steps into a mathematical model by representing the unknown total number of cookies as a variable and expressing each action—giving away 1/4, removing 1, delivering 2/5, giving 3, and saving 2/3—as a sequence of operations on that variable.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern in the sequence of operations and generalizes the entire process into a single algebraic equation by combining the fractional and whole-number changes into a unified expression, such as ((x - x/4 - 1) × 3/5 - 3) × 1/3 = 15.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student solves the equation and then verifies the solution by substituting the value back into each step of the original problem to confirm that the final number of cookies is indeed 15, thereby justifying the correctness of their answer.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make sense of the sequence of actions, which is the foundation for further reasoning. Once represented, they generalize the pattern across steps to form a solvable equation. Only after solving can they verify the solution by checking it against the original conditions, which is the final step in ensuring the answer is correct.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the verbal description of the cookie distribution steps into a mathematical model by representing the unknown total number of cookies as a variable and expressing each action—giving away 1/4, removing 1, delivering 2/5, giving 3, and saving 2/3—as a sequence of operations on that variable.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern in the sequence of operations and generalizes the entire process into a single algebraic equation by combining the fractional and whole-number changes into a unified expression, such as ((x - x/4 - 1) × 3/5 - 3) × 1/3 = 15.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student solves the equation and then verifies the solution by substituting the value back into each step of the original problem to confirm that the final number of cookies is indeed 15, thereby justifying the correctness of their answer.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make sense of the sequence of actions, which is the foundation for further reasoning. Once represented, they generalize the pattern across steps to form a solvable equation. Only after solving can they verify the solution by checking it against the original conditions, which is the final step in ensuring the answer is correct.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7734,
+            "completion_tokens": 344
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:06:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\",\n      \"likely_errors\": \"A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\",\n      \"likely_errors\": \"A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\",\n      \"likely_errors\": \"A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:19:00+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\",\n      \"likely_errors\": \"A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\",\n      \"likely_errors\": \"A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\",\n      \"likely_errors\": \"A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nJada and Diego baked a large batch of cookies.\n- They selected 1/4 of the cookies to give to their teachers.\n- Next, they threw away one burnt cookie.\n- They delivered 2/5 of the remaining cookies to a local nursing home.\n- Next, they gave 3 cookies to some neighborhood kids.\n- They wrapped up 2/3 of the remaining cookies to save for their friends.\nAfter all this, they had 15 cookies left. How many cookies did they bake?\n____ cookies\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\",\n      \"likely_errors\": \"A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\",\n      \"likely_errors\": \"A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\",\n      \"likely_errors\": \"A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the first step—accurately translating the verbal sequence of events into a mathematical model—because misrepresenting the order of operations or incorrectly applying fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch) is a common and persistent error in multi-step fraction problems. This step directly aligns with the practice of Representing, which requires interpreting and creating numerical representations of complex real-world situations. While Abstracting and Generalizing and Justifying and Proving are also required, they depend on a correct initial representation; if the model is flawed from the start, the subsequent steps will fail. Procedural Fluency is not the main challenge, as the complexity lies in setting up the equation, not solving it.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the first step—accurately translating the verbal sequence of events into a mathematical model—because misrepresenting the order of operations or incorrectly applying fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch) is a common and persistent error in multi-step fraction problems. This step directly aligns with the practice of Representing, which requires interpreting and creating numerical representations of complex real-world situations. While Abstracting and Generalizing and Justifying and Proving are also required, they depend on a correct initial representation; if the model is flawed from the start, the subsequent steps will fail. Procedural Fluency is not the main challenge, as the complexity lies in setting up the equation, not solving it.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8274,
+            "completion_tokens": 178
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:22:30+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.",
+              "likely_errors": "A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.",
+              "likely_errors": "A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.",
+              "likely_errors": "A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the verbal description of the cookie distribution steps into a mathematical model by representing the unknown total number of cookies as a variable and expressing each action—giving away 1/4, removing 1, delivering 2/5, giving 3, and saving 2/3—as a sequence of operations on that variable."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the pattern in the sequence of operations and generalizes the entire process into a single algebraic equation by combining the fractional and whole-number changes into a unified expression, such as ((x - x/4 - 1) × 3/5 - 3) × 1/3 = 15."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student solves the equation and then verifies the solution by substituting the value back into each step of the original problem to confirm that the final number of cookies is indeed 15, thereby justifying the correctness of their answer."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically to make sense of the sequence of actions, which is the foundation for further reasoning. Once represented, they generalize the pattern across steps to form a solvable equation. Only after solving can they verify the solution by checking it against the original conditions, which is the final step in ensuring the answer is correct."
+        },
+        {
+          "top_practice": "Representing",
+          "why": "A student is most likely to go wrong at the first step—accurately translating the verbal sequence of events into a mathematical model—because misrepresenting the order of operations or incorrectly applying fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch) is a common and persistent error in multi-step fraction problems. This step directly aligns with the practice of Representing, which requires interpreting and creating numerical representations of complex real-world situations. While Abstracting and Generalizing and Justifying and Proving are also required, they depend on a correct initial representation; if the model is flawed from the start, the subsequent steps will fail. Procedural Fluency is not the main challenge, as the complexity lies in setting up the equation, not solving it."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.",
+            "likely_errors": "A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.",
+            "likely_errors": "A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.",
+            "likely_errors": "A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.\",\n    \"likely_errors\": \"A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.\",\n    \"likely_errors\": \"A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.\",\n    \"likely_errors\": \"A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the verbal description of the cookie distribution steps into a mathematical model by representing the unknown total number of cookies as a variable and expressing each action—giving away 1/4, removing 1, delivering 2/5, giving 3, and saving 2/3—as a sequence of operations on that variable.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the pattern in the sequence of operations and generalizes the entire process into a single algebraic equation by combining the fractional and whole-number changes into a unified expression, such as ((x - x/4 - 1) × 3/5 - 3) × 1/3 = 15.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student solves the equation and then verifies the solution by substituting the value back into each step of the original problem to confirm that the final number of cookies is indeed 15, thereby justifying the correctness of their answer.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make sense of the sequence of actions, which is the foundation for further reasoning. Once represented, they generalize the pattern across steps to form a solvable equation. Only after solving can they verify the solution by checking it against the original conditions, which is the final step in ensuring the answer is correct.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Representing\",\n\"why\": \"A student is most likely to go wrong at the first step—accurately translating the verbal sequence of events into a mathematical model—because misrepresenting the order of operations or incorrectly applying fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch) is a common and persistent error in multi-step fraction problems. This step directly aligns with the practice of Representing, which requires interpreting and creating numerical representations of complex real-world situations. While Abstracting and Generalizing and Justifying and Proving are also required, they depend on a correct initial representation; if the model is flawed from the start, the subsequent steps will fail. Procedural Fluency is not the main challenge, as the complexity lies in setting up the equation, not solving it.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.",
+          "likely_errors": "A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.",
+          "likely_errors": "A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.",
+          "likely_errors": "A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the verbal description of the cookie distribution steps into a mathematical model by representing the unknown total number of cookies as a variable and expressing each action—giving away 1/4, removing 1, delivering 2/5, giving 3, and saving 2/3—as a sequence of operations on that variable."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the pattern in the sequence of operations and generalizes the entire process into a single algebraic equation by combining the fractional and whole-number changes into a unified expression, such as ((x - x/4 - 1) × 3/5 - 3) × 1/3 = 15."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student solves the equation and then verifies the solution by substituting the value back into each step of the original problem to confirm that the final number of cookies is indeed 15, thereby justifying the correctness of their answer."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically to make sense of the sequence of actions, which is the foundation for further reasoning. Once represented, they generalize the pattern across steps to form a solvable equation. Only after solving can they verify the solution by checking it against the original conditions, which is the final step in ensuring the answer is correct."
+    },
+    "answer3_json": {
+      "top_practice": "Representing",
+      "why": "A student is most likely to go wrong at the first step—accurately translating the verbal sequence of events into a mathematical model—because misrepresenting the order of operations or incorrectly applying fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch) is a common and persistent error in multi-step fraction problems. This step directly aligns with the practice of Representing, which requires interpreting and creating numerical representations of complex real-world situations. While Abstracting and Generalizing and Justifying and Proving are also required, they depend on a correct initial representation; if the model is flawed from the start, the subsequent steps will fail. Procedural Fluency is not the main challenge, as the complexity lies in setting up the equation, not solving it."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the verbal description of the sequence of events involving fractions and whole numbers into a mathematical model, such as a series of operations or an equation with variables. This involves representing the unknown total number of cookies as a variable and expressing each step (giving away 1/4, removing 1, delivering 2/5, giving 3, saving 2/3) as a mathematical expression, which aligns with creating and interpreting numerical representations of a problem situation.",
+          "likely_errors": "A student might misrepresent the order of operations or incorrectly apply fractions (e.g., subtracting 1/4 of the total instead of 1/4 of the batch), which is common when interpreting multi-step fraction problems. This error is moderately likely for students still developing fraction sense."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After representing the problem algebraically, the student must generalize the pattern of operations across the steps to build a single equation in one variable. This involves recognizing that each action reduces the remaining cookies in a consistent way and combining these reductions into a unified expression (e.g., ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15), which requires identifying and extending the structure of the operations across multiple steps.",
+          "likely_errors": "A student might fail to account for the order of operations or misapply the fractions (e.g., multiplying by 2/3 instead of 1/3 for the saved portion), which is a common error when generalizing sequences of operations. This is moderately likely, especially with nested operations and fractions."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "The student must verify that their solution satisfies the original problem conditions. This involves substituting the solved value back into the sequence of steps and checking that the final result is indeed 15 cookies, which requires justifying the correctness of their solution through reasoning and validation—matching the descriptor of justifying conclusions by testing against the original problem.",
+          "likely_errors": "A student might solve the equation incorrectly but not check their answer, leading to an incorrect final value. This is moderately likely, especially if the student lacks a habit of checking work, though it is less likely if the student is fluent in algebraic reasoning."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem involves a real-world context, the student is not required to identify the problem, choose a model, or validate its reasonableness in a broader sense. The model (algebraic equation) is already implied by the sequence of actions, and the task is to solve it, not to construct or critique a model from a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer claims, or interaction with another student’s thinking. The student works independently on a single problem, with no requirement to respond to or build on another person’s mathematical reasoning."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although the student must perform calculations (e.g., solving a multi-step equation with fractions), the core challenge lies in setting up the equation correctly through representation and generalization. The procedural steps (e.g., solving ( ( ( (x - x/4 - 1) × 3/5 ) - 3 ) × 1/3 ) = 15) are not the main focus; the item assesses reasoning over computation, and the operations are complex enough that fluency is not the primary skill being evaluated."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Representing"
+  }
+}

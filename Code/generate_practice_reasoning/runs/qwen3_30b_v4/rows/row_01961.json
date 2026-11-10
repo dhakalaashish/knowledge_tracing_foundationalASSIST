@@ -1,0 +1,370 @@
+{
+  "row": 1961,
+  "problem_id": "37467",
+  "problem_text": "A librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____",
+          "started_at": "2026-11-10T21:43:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\",\n    \"likely_errors\": \"A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\",\n    \"likely_errors\": \"A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\",\n    \"likely_errors\": \"A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\",\n    \"likely_errors\": \"A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7483,
+            "completion_tokens": 630
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:48:08+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\n- Procedural Fluency: After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:04:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\n- Procedural Fluency: After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\n- Procedural Fluency: After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of data by counting how many of the 10 patrons checked out fiction books, translating the categorical information into a numerical count to form the basis for a probability estimate.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the probability by dividing the number of fiction books checked out by the total number of patrons, simplifying the fraction, and expressing it as a decimal or percent.\"\n    }\n  ],\n  \"why\": \"The student must first interpret and organize the data from the table into a numerical form (count of fiction books) before performing any computation. Only after this representation is established can the student apply procedural skills to calculate the probability. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of data by counting how many of the 10 patrons checked out fiction books, translating the categorical information into a numerical count to form the basis for a probability estimate.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the probability by dividing the number of fiction books checked out by the total number of patrons, simplifying the fraction, and expressing it as a decimal or percent.\"\n    }\n  ],\n  \"why\": \"The student must first interpret and organize the data from the table into a numerical form (count of fiction books) before performing any computation. Only after this representation is established can the student apply procedural skills to calculate the probability. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7606,
+            "completion_tokens": 202
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:06:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\",\n      \"likely_errors\": \"A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\",\n      \"likely_errors\": \"A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:19:00+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\",\n      \"likely_errors\": \"A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\",\n      \"likely_errors\": \"A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the probability that the next patron will check out a fiction book?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\",\n      \"likely_errors\": \"A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\",\n      \"likely_errors\": \"A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing and simplifying the probability as a fraction, decimal, or percent, which requires procedural fluency in working with ratios and fractions. While interpreting the table (Representing) is necessary, the data is straightforward and clearly presented, making miscounting less likely than calculation errors. The procedural step of simplifying 5/10 to 1/2 or converting it correctly to 0.5 or 50% is the most common source of error, especially for students with weaker fluency in fraction operations, making this the primary source of incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing and simplifying the probability as a fraction, decimal, or percent, which requires procedural fluency in working with ratios and fractions. While interpreting the table (Representing) is necessary, the data is straightforward and clearly presented, making miscounting less likely than calculation errors. The procedural step of simplifying 5/10 to 1/2 or converting it correctly to 0.5 or 50% is the most common source of error, especially for students with weaker fluency in fraction operations, making this the primary source of incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8088,
+            "completion_tokens": 146
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:22:30+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.",
+              "likely_errors": "A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.",
+              "likely_errors": "A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of data by counting how many of the 10 patrons checked out fiction books, translating the categorical information into a numerical count to form the basis for a probability estimate."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the probability by dividing the number of fiction books checked out by the total number of patrons, simplifying the fraction, and expressing it as a decimal or percent."
+            }
+          ],
+          "why": "The student must first interpret and organize the data from the table into a numerical form (count of fiction books) before performing any computation. Only after this representation is established can the student apply procedural skills to calculate the probability. Thus, Representing precedes Procedural Fluency in the sequence of steps."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of accurately computing and simplifying the probability as a fraction, decimal, or percent, which requires procedural fluency in working with ratios and fractions. While interpreting the table (Representing) is necessary, the data is straightforward and clearly presented, making miscounting less likely than calculation errors. The procedural step of simplifying 5/10 to 1/2 or converting it correctly to 0.5 or 50% is the most common source of error, especially for students with weaker fluency in fraction operations, making this the primary source of incorrect answers."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.",
+            "likely_errors": "A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.",
+            "likely_errors": "A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.\",\n    \"likely_errors\": \"A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.\",\n    \"likely_errors\": \"A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of data by counting how many of the 10 patrons checked out fiction books, translating the categorical information into a numerical count to form the basis for a probability estimate.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the probability by dividing the number of fiction books checked out by the total number of patrons, simplifying the fraction, and expressing it as a decimal or percent.\"\n    }\n  ],\n  \"why\": \"The student must first interpret and organize the data from the table into a numerical form (count of fiction books) before performing any computation. Only after this representation is established can the student apply procedural skills to calculate the probability. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing and simplifying the probability as a fraction, decimal, or percent, which requires procedural fluency in working with ratios and fractions. While interpreting the table (Representing) is necessary, the data is straightforward and clearly presented, making miscounting less likely than calculation errors. The procedural step of simplifying 5/10 to 1/2 or converting it correctly to 0.5 or 50% is the most common source of error, especially for students with weaker fluency in fraction operations, making this the primary source of incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.",
+          "likely_errors": "A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.",
+          "likely_errors": "A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of data by counting how many of the 10 patrons checked out fiction books, translating the categorical information into a numerical count to form the basis for a probability estimate."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the probability by dividing the number of fiction books checked out by the total number of patrons, simplifying the fraction, and expressing it as a decimal or percent."
+        }
+      ],
+      "why": "The student must first interpret and organize the data from the table into a numerical form (count of fiction books) before performing any computation. Only after this representation is established can the student apply procedural skills to calculate the probability. Thus, Representing precedes Procedural Fluency in the sequence of steps."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of accurately computing and simplifying the probability as a fraction, decimal, or percent, which requires procedural fluency in working with ratios and fractions. While interpreting the table (Representing) is necessary, the data is straightforward and clearly presented, making miscounting less likely than calculation errors. The procedural step of simplifying 5/10 to 1/2 or converting it correctly to 0.5 or 50% is the most common source of error, especially for students with weaker fluency in fraction operations, making this the primary source of incorrect answers."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of data and translate the categorical information (item types) into a numerical form by counting how many patrons checked out fiction books out of the total 10. This involves recognizing and using a tabular representation to extract and organize data for probability calculation.",
+          "likely_errors": "A student might miscount the number of fiction books (e.g., counting 4 instead of 5) or misread the table, especially if the data is not clearly labeled. This is moderately likely for students who rush or have difficulty with data interpretation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After counting the number of fiction books (5) and knowing the total number of patrons (10), the student must compute the probability as a fraction (5/10) and simplify it to 1/2, or express it as a decimal (0.5) or percent (50%). This requires accurate and efficient computation of a ratio, which is a core procedural skill.",
+          "likely_errors": "A student might fail to simplify the fraction (e.g., writing 5/10 instead of 1/2), make a calculation error (e.g., 5/10 = 0.2), or incorrectly write the probability as a ratio (e.g., 5:10). This is likely for students with weak procedural fluency in fractions and ratios."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple data sets or extend the reasoning to a broader context (e.g., predicting for future patrons beyond the sample). It only asks for a simple estimate based on a single data set, so generalization beyond the given data is not needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The task does not require the student to justify why the probability estimate is valid, defend a claim, or evaluate another’s reasoning. The student is simply asked to compute a probability based on observed data, not to argue or prove the correctness of a method or conclusion."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is contextual, the student is not required to identify a problem, select variables, create a model, or evaluate the model’s reasonableness. The model (relative frequency) is already implied and standard; the task is purely computational based on given data."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer reasoning, and no need to respond to or build on another person’s mathematical thinking. The student works independently on a straightforward task, so collaboration is not involved."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

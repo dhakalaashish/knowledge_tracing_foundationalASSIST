@@ -1,0 +1,370 @@
+{
+  "row": 2094,
+  "problem_id": "615225",
+  "problem_text": "Here is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups",
+          "started_at": "2026-11-10T21:48:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\",\n    \"likely_errors\": \"A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\",\n    \"likely_errors\": \"A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\",\n    \"likely_errors\": \"A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\",\n    \"likely_errors\": \"A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7480,
+            "completion_tokens": 606
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:52:28+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\n- Procedural Fluency: After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:06:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\n- Procedural Fluency: After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\n- Procedural Fluency: After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"ordering\": [\n  {\"order\": 1, \"practice\": \"Representing\", \"step\": \"The student interprets the table of daily changes and translates the real-world situation into a mathematical expression by recognizing that positive values represent deliveries and negative values represent usage, creating a sum of integers to model the net change in paper cups over the week.\"},\n  {\"order\": 2, \"practice\": \"Procedural Fluency\", \"step\": \"The student computes the sum of the integers in the expression (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0) accurately and efficiently using addition and subtraction of whole numbers, arriving at the total number of paper cups left at the end of the week.\"}\n],\n\"why\": \"The student must first understand and represent the situation mathematically by interpreting the table and translating it into a numerical expression before performing any calculations. Only after this representation is established can the student apply procedural fluency to compute the result accurately. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"ordering\": [\n  {\"order\": 1, \"practice\": \"Representing\", \"step\": \"The student interprets the table of daily changes and translates the real-world situation into a mathematical expression by recognizing that positive values represent deliveries and negative values represent usage, creating a sum of integers to model the net change in paper cups over the week.\"},\n  {\"order\": 2, \"practice\": \"Procedural Fluency\", \"step\": \"The student computes the sum of the integers in the expression (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0) accurately and efficiently using addition and subtraction of whole numbers, arriving at the total number of paper cups left at the end of the week.\"}\n],\n\"why\": \"The student must first understand and represent the situation mathematically by interpreting the table and translating it into a numerical expression before performing any calculations. Only after this representation is established can the student apply procedural fluency to compute the result accurately. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7601,
+            "completion_tokens": 240
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:08:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\",\n      \"likely_errors\": \"A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\",\n      \"likely_errors\": \"A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:22:30+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\",\n      \"likely_errors\": \"A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\",\n      \"likely_errors\": \"A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nAssume the starting amount of coffee cups is 0. How many paper cups are left at the end of the week?\n____ paper cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\",\n      \"likely_errors\": \"A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\",\n      \"likely_errors\": \"A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of accurately adding and subtracting multi-digit numbers, especially when managing multiple operations and signs. While Representing requires interpreting the table correctly, the error-prone step is the computation itself, where mistakes in carrying, borrowing, or sign handling are common. The Representing step is more straightforward once the context is understood, and the item does not require deeper justification, generalization, or modeling, making Procedural Fluency the primary source of difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of accurately adding and subtracting multi-digit numbers, especially when managing multiple operations and signs. While Representing requires interpreting the table correctly, the error-prone step is the computation itself, where mistakes in carrying, borrowing, or sign handling are common. The Representing step is more straightforward once the context is understood, and the item does not require deeper justification, generalization, or modeling, making Procedural Fluency the primary source of difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8061,
+            "completion_tokens": 121
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:24:57+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.",
+              "likely_errors": "A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.",
+              "likely_errors": "A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of daily changes and translates the real-world situation into a mathematical expression by recognizing that positive values represent deliveries and negative values represent usage, creating a sum of integers to model the net change in paper cups over the week."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the sum of the integers in the expression (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0) accurately and efficiently using addition and subtraction of whole numbers, arriving at the total number of paper cups left at the end of the week."
+            }
+          ],
+          "why": "The student must first understand and represent the situation mathematically by interpreting the table and translating it into a numerical expression before performing any calculations. Only after this representation is established can the student apply procedural fluency to compute the result accurately. Thus, Representing precedes Procedural Fluency in the sequence of steps."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural step of accurately adding and subtracting multi-digit numbers, especially when managing multiple operations and signs. While Representing requires interpreting the table correctly, the error-prone step is the computation itself, where mistakes in carrying, borrowing, or sign handling are common. The Representing step is more straightforward once the context is understood, and the item does not require deeper justification, generalization, or modeling, making Procedural Fluency the primary source of difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.",
+            "likely_errors": "A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.",
+            "likely_errors": "A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.\",\n    \"likely_errors\": \"A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.\",\n    \"likely_errors\": \"A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon.\"\n  }\n]\n}",
+    "answer2": "{\n\"ordering\": [\n  {\"order\": 1, \"practice\": \"Representing\", \"step\": \"The student interprets the table of daily changes and translates the real-world situation into a mathematical expression by recognizing that positive values represent deliveries and negative values represent usage, creating a sum of integers to model the net change in paper cups over the week.\"},\n  {\"order\": 2, \"practice\": \"Procedural Fluency\", \"step\": \"The student computes the sum of the integers in the expression (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0) accurately and efficiently using addition and subtraction of whole numbers, arriving at the total number of paper cups left at the end of the week.\"}\n],\n\"why\": \"The student must first understand and represent the situation mathematically by interpreting the table and translating it into a numerical expression before performing any calculations. Only after this representation is established can the student apply procedural fluency to compute the result accurately. Thus, Representing precedes Procedural Fluency in the sequence of steps.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of accurately adding and subtracting multi-digit numbers, especially when managing multiple operations and signs. While Representing requires interpreting the table correctly, the error-prone step is the computation itself, where mistakes in carrying, borrowing, or sign handling are common. The Representing step is more straightforward once the context is understood, and the item does not require deeper justification, generalization, or modeling, making Procedural Fluency the primary source of difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.",
+          "likely_errors": "A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.",
+          "likely_errors": "A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of daily changes and translates the real-world situation into a mathematical expression by recognizing that positive values represent deliveries and negative values represent usage, creating a sum of integers to model the net change in paper cups over the week."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the sum of the integers in the expression (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0) accurately and efficiently using addition and subtraction of whole numbers, arriving at the total number of paper cups left at the end of the week."
+        }
+      ],
+      "why": "The student must first understand and represent the situation mathematically by interpreting the table and translating it into a numerical expression before performing any calculations. Only after this representation is established can the student apply procedural fluency to compute the result accurately. Thus, Representing precedes Procedural Fluency in the sequence of steps."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural step of accurately adding and subtracting multi-digit numbers, especially when managing multiple operations and signs. While Representing requires interpreting the table correctly, the error-prone step is the computation itself, where mistakes in carrying, borrowing, or sign handling are common. The Representing step is more straightforward once the context is understood, and the item does not require deeper justification, generalization, or modeling, making Procedural Fluency the primary source of difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of daily changes in paper cups and translate the word problem into a mathematical expression, recognizing that positive values represent deliveries and negative values represent usage. This involves creating a numerical representation of a real-world situation involving additive changes over time.",
+          "likely_errors": "A student might misinterpret the sign of the changes (e.g., treating -125 as +125) or fail to recognize that '0' on Sunday means no change, leading to an incorrect total. This is moderately likely for students still developing fluency with signed numbers in context."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically as a sum of integers (2,000 - 125 - 127 + 1,719 - 356 - 782 + 0), the student must compute the total accurately and efficiently using addition and subtraction of whole numbers. This includes carrying out the algorithm correctly, possibly using mental math or written steps.",
+          "likely_errors": "A student might make a computational error in one of the steps (e.g., misadding 2,000 and 1,719 or incorrectly subtracting 782), especially with multi-digit numbers. These errors are common but less likely if the student checks work or uses a calculator appropriately."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across multiple cases or generalizing a rule beyond the given data. The problem is a one-time computation based on specific values, not a pattern or sequence to be generalized."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "There is no claim to evaluate, no argument to critique, and no need to defend or prove the correctness of a solution. The task is to compute a result, not to justify reasoning or validate a mathematical assertion."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context is real-world, the problem does not require the student to identify a problem, select appropriate mathematical tools, or validate the solution’s real-world viability. The model (sum of daily changes) is fully provided, and the task is purely computational."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with others’ ideas, no need to respond to a peer’s reasoning, and no collaborative decision-making required. The item does not present another person’s work or perspective to evaluate or build upon."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

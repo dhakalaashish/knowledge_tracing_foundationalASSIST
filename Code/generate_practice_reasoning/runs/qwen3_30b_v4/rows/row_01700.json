@@ -1,0 +1,429 @@
+{
+  "row": 1700,
+  "problem_id": "202431",
+  "problem_text": "The data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells",
+          "started_at": "2026-11-10T21:43:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must first compute the mean of the data set by summing all the values (4 + 5 + 5 + 4 + 1 + 6 + 8 + 2 + 2 + 2 + 4 + 5) and dividing by the number of data points (12). This requires accurate and efficient computation with whole numbers, which aligns with the procedural fluency practice of carrying out operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make an arithmetic error in summing the numbers or in dividing by 12, such as miscounting the total or miscalculating the average. This is moderately likely, especially if the student does not double-check their work.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"Next, the student must represent the deviations of each data point from the mean by computing the absolute difference between each value and the mean. This involves translating the data set into a set of numerical expressions (e.g., |4 − mean|, |5 − mean|, etc.), which is a key aspect of representing data mathematically using numerical expressions and operations.\",\n    \"likely_errors\": \"A student might forget to take the absolute value, resulting in negative deviations, or incorrectly compute a single difference. This is moderately likely, especially if the student is not careful with signs or absolute value notation.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Finally, the student must compute the mean of the absolute deviations by summing all the individual absolute deviations and dividing by 12. This step requires accurate and efficient computation of a new mean, which again falls under procedural fluency—specifically, carrying out operations with whole numbers and fractions efficiently and accurately.\",\n    \"likely_errors\": \"A student might make another arithmetic error in summing the absolute deviations or in dividing by 12. This is moderately likely, particularly if the mean was already miscalculated in step 1.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize the concept of MAD beyond this single instance. It is a direct computation on a given data set, not a task that involves extending reasoning to broader cases or developing a general formula.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the data, explain why MAD is a valid measure of variability, or construct a logical argument about the process. The task is purely computational, not argumentative or proof-based.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context to interpret, no problem to mathematize, no model to build or validate. The data set is presented directly, and the task is to compute a standard statistical measure without modeling a scenario or checking the reasonableness of a solution in context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s reasoning, strategy, or claim. There is no dialogue, no peer contribution to evaluate, and no collaborative discussion required. The student works independently on a computational task.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must first compute the mean of the data set by summing all the values (4 + 5 + 5 + 4 + 1 + 6 + 8 + 2 + 2 + 2 + 4 + 5) and dividing by the number of data points (12). This requires accurate and efficient computation with whole numbers, which aligns with the procedural fluency practice of carrying out operations accurately and efficiently.\",\n    \"likely_errors\": \"A student might make an arithmetic error in summing the numbers or in dividing by 12, such as miscounting the total or miscalculating the average. This is moderately likely, especially if the student does not double-check their work.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"Next, the student must represent the deviations of each data point from the mean by computing the absolute difference between each value and the mean. This involves translating the data set into a set of numerical expressions (e.g., |4 − mean|, |5 − mean|, etc.), which is a key aspect of representing data mathematically using numerical expressions and operations.\",\n    \"likely_errors\": \"A student might forget to take the absolute value, resulting in negative deviations, or incorrectly compute a single difference. This is moderately likely, especially if the student is not careful with signs or absolute value notation.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Finally, the student must compute the mean of the absolute deviations by summing all the individual absolute deviations and dividing by 12. This step requires accurate and efficient computation of a new mean, which again falls under procedural fluency—specifically, carrying out operations with whole numbers and fractions efficiently and accurately.\",\n    \"likely_errors\": \"A student might make another arithmetic error in summing the absolute deviations or in dividing by 12. This is moderately likely, particularly if the mean was already miscalculated in step 1.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize the concept of MAD beyond this single instance. It is a direct computation on a given data set, not a task that involves extending reasoning to broader cases or developing a general formula.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student is not asked to defend or evaluate a claim about the data, explain why MAD is a valid measure of variability, or construct a logical argument about the process. The task is purely computational, not argumentative or proof-based.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context to interpret, no problem to mathematize, no model to build or validate. The data set is presented directly, and the task is to compute a standard statistical measure without modeling a scenario or checking the reasonableness of a solution in context.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s reasoning, strategy, or claim. There is no dialogue, no peer contribution to evaluate, and no collaborative discussion required. The student works independently on a computational task.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7432,
+            "completion_tokens": 761
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:48:08+00:00"
+        }
+      ],
+      "failed_step": 1,
+      "failure_kind": "invalid_answer",
+      "failure_reason": "answer 1: listed more than once: Procedural Fluency",
+      "parsed_answers": [],
+      "combined": null,
+      "json_extraction": []
+    },
+    {
+      "attempt": 2,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells",
+          "started_at": "2026-11-10T22:28:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 3
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\",\n    \"likely_errors\": \"A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\",\n    \"likely_errors\": \"A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\",\n    \"likely_errors\": \"A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\",\n    \"likely_errors\": \"A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7432,
+            "completion_tokens": 621
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:29:11+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\n- Procedural Fluency: The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:29:11+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\n- Procedural Fluency: The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\n- Procedural Fluency: The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 4
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student organizes the raw data into a structured format, such as a table with columns for each data point, its deviation from the mean, and the absolute deviation, to prepare for calculating the mean absolute deviation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the mean of the data set by summing all values and dividing by 12, then calculates the absolute deviation of each data point from the mean, and finally finds the average of those absolute deviations using accurate arithmetic operations.\"\n    }\n  ],\n  \"why\": \"The student must first represent the data in a structured form to make the calculation process manageable and clear, which is a prerequisite for performing the necessary computations. Only after this representation is established can the student apply procedural fluency to carry out the arithmetic steps accurately and efficiently.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student organizes the raw data into a structured format, such as a table with columns for each data point, its deviation from the mean, and the absolute deviation, to prepare for calculating the mean absolute deviation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the mean of the data set by summing all values and dividing by 12, then calculates the absolute deviation of each data point from the mean, and finally finds the average of those absolute deviations using accurate arithmetic operations.\"\n    }\n  ],\n  \"why\": \"The student must first represent the data in a structured form to make the calculation process manageable and clear, which is a prerequisite for performing the necessary computations. Only after this representation is established can the student apply procedural fluency to carry out the arithmetic steps accurately and efficiently.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7571,
+            "completion_tokens": 210
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:29:20+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\",\n      \"likely_errors\": \"A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\",\n      \"likely_errors\": \"A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:29:20+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\",\n      \"likely_errors\": \"A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\",\n      \"likely_errors\": \"A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nThe data set shows the number of shells that 12 people collected.\n4, 5, 5, 4, 1, 6, 8, 2, 2, 2, 4, 5\nWhat is the MAD (mean absolute deviation) of this data?\n____ shells\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\",\n      \"likely_errors\": \"A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\",\n      \"likely_errors\": \"A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 5
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the mean, calculate each absolute deviation, and then find the average of those deviations. Errors in arithmetic—such as misadding the data values, dividing incorrectly, or miscalculating an absolute deviation—are common and directly lead to an incorrect MAD. While organizing the data (Representing) is important, it is a preparatory step that, if done incorrectly, is often caught during computation. The procedural fluency step is the core of the task and requires precise, efficient execution of multiple operations, making it the most likely source of error for a student who answers incorrectly.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the mean, calculate each absolute deviation, and then find the average of those deviations. Errors in arithmetic—such as misadding the data values, dividing incorrectly, or miscalculating an absolute deviation—are common and directly lead to an incorrect MAD. While organizing the data (Representing) is important, it is a preparatory step that, if done incorrectly, is often caught during computation. The procedural fluency step is the core of the task and requires precise, efficient execution of multiple operations, making it the most likely source of error for a student who answers incorrectly.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8028,
+            "completion_tokens": 154
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:29:25+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.",
+              "likely_errors": "A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.",
+              "likely_errors": "A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student organizes the raw data into a structured format, such as a table with columns for each data point, its deviation from the mean, and the absolute deviation, to prepare for calculating the mean absolute deviation."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the mean of the data set by summing all values and dividing by 12, then calculates the absolute deviation of each data point from the mean, and finally finds the average of those absolute deviations using accurate arithmetic operations."
+            }
+          ],
+          "why": "The student must first represent the data in a structured form to make the calculation process manageable and clear, which is a prerequisite for performing the necessary computations. Only after this representation is established can the student apply procedural fluency to carry out the arithmetic steps accurately and efficiently."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the mean, calculate each absolute deviation, and then find the average of those deviations. Errors in arithmetic—such as misadding the data values, dividing incorrectly, or miscalculating an absolute deviation—are common and directly lead to an incorrect MAD. While organizing the data (Representing) is important, it is a preparatory step that, if done incorrectly, is often caught during computation. The procedural fluency step is the core of the task and requires precise, efficient execution of multiple operations, making it the most likely source of error for a student who answers incorrectly."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.",
+            "likely_errors": "A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.",
+            "likely_errors": "A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 2,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.\",\n    \"likely_errors\": \"A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.\",\n    \"likely_errors\": \"A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student organizes the raw data into a structured format, such as a table with columns for each data point, its deviation from the mean, and the absolute deviation, to prepare for calculating the mean absolute deviation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the mean of the data set by summing all values and dividing by 12, then calculates the absolute deviation of each data point from the mean, and finally finds the average of those absolute deviations using accurate arithmetic operations.\"\n    }\n  ],\n  \"why\": \"The student must first represent the data in a structured form to make the calculation process manageable and clear, which is a prerequisite for performing the necessary computations. Only after this representation is established can the student apply procedural fluency to carry out the arithmetic steps accurately and efficiently.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the mean, calculate each absolute deviation, and then find the average of those deviations. Errors in arithmetic—such as misadding the data values, dividing incorrectly, or miscalculating an absolute deviation—are common and directly lead to an incorrect MAD. While organizing the data (Representing) is important, it is a preparatory step that, if done incorrectly, is often caught during computation. The procedural fluency step is the core of the task and requires precise, efficient execution of multiple operations, making it the most likely source of error for a student who answers incorrectly.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.",
+          "likely_errors": "A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.",
+          "likely_errors": "A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student organizes the raw data into a structured format, such as a table with columns for each data point, its deviation from the mean, and the absolute deviation, to prepare for calculating the mean absolute deviation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the mean of the data set by summing all values and dividing by 12, then calculates the absolute deviation of each data point from the mean, and finally finds the average of those absolute deviations using accurate arithmetic operations."
+        }
+      ],
+      "why": "The student must first represent the data in a structured form to make the calculation process manageable and clear, which is a prerequisite for performing the necessary computations. Only after this representation is established can the student apply procedural fluency to carry out the arithmetic steps accurately and efficiently."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural fluency step, where they must accurately compute the mean, calculate each absolute deviation, and then find the average of those deviations. Errors in arithmetic—such as misadding the data values, dividing incorrectly, or miscalculating an absolute deviation—are common and directly lead to an incorrect MAD. While organizing the data (Representing) is important, it is a preparatory step that, if done incorrectly, is often caught during computation. The procedural fluency step is the core of the task and requires precise, efficient execution of multiple operations, making it the most likely source of error for a student who answers incorrectly."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the given list of raw data into a mathematical form suitable for calculating MAD, such as organizing the data in a table with columns for each data point, its deviation from the mean, and the absolute deviation. This involves creating a structured representation of the data to support the calculation, which is a key aspect of representing data for mathematical analysis.",
+          "likely_errors": "A student might misrepresent the data by omitting a value, misplacing a number in the table, or incorrectly calculating a deviation. These errors are moderately likely, especially if the student works quickly without organizing the data clearly."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the mean of the data set by summing all values and dividing by the number of data points, then calculate the absolute deviation of each data point from the mean, and finally compute the average of those absolute deviations. These steps involve accurate and efficient application of arithmetic operations with whole numbers, including addition, division, and absolute value, which aligns with the procedural fluency practice.",
+          "likely_errors": "A student might make a computational error in summing the data values, incorrectly dividing by the number of data points, or miscalculating an absolute deviation. These errors are common but likely to be caught with careful checking, especially if the student uses a calculator or rechecks their work."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern, generalize a rule, or make a broader inference beyond the specific data set. The task is focused on computing a single statistic for a given set of numbers, not on identifying a general principle or pattern across multiple data sets."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument about why the MAD is calculated a certain way or to prove a claim about its properties. The task is purely computational, not argumentative or proof-based."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating or evaluating a model to represent a real-world situation, identifying a problem to be solved through modeling, or interpreting results in context. The data is given directly, and the task is to compute a standard statistical measure without modeling a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a solo task with no reference to another person’s thinking, argument, or contribution. There is no dialogue, peer work, or collaborative decision-making involved, so the practice of collaborating with others in mathematical problem solving is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

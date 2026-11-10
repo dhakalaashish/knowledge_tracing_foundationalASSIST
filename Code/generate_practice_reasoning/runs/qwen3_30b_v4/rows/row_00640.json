@@ -1,0 +1,370 @@
+{
+  "row": 640,
+  "problem_id": "505561",
+  "problem_text": "A college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\",\n    \"likely_errors\": \"A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\",\n    \"likely_errors\": \"A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\",\n    \"likely_errors\": \"A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\",\n    \"likely_errors\": \"A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7421,
+            "completion_tokens": 705
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\n- Procedural Fluency: The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\n- Procedural Fluency: The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\n- Procedural Fluency: The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the real-world scenario of a loan with annual interest and translates it into a mathematical expression: $7,500 + (7,500 × 0.053), recognizing the principal and interest rate as key quantities and the need for multiplicative and additive operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the interest by converting 5.3% to 0.053, multiplies it by $7,500, and adds the result to the principal to find the total loan balance after one year.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world situation mathematically by identifying and modeling the relationship between the principal, interest rate, and final balance before performing any calculations. Only after creating this representation can the student apply procedural fluency to compute the result accurately.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the real-world scenario of a loan with annual interest and translates it into a mathematical expression: $7,500 + (7,500 × 0.053), recognizing the principal and interest rate as key quantities and the need for multiplicative and additive operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the interest by converting 5.3% to 0.053, multiplies it by $7,500, and adds the result to the principal to find the total loan balance after one year.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world situation mathematically by identifying and modeling the relationship between the principal, interest rate, and final balance before performing any calculations. Only after creating this representation can the student apply procedural fluency to compute the result accurately.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7590,
+            "completion_tokens": 227
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\",\n      \"likely_errors\": \"A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\",\n      \"likely_errors\": \"A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\",\n      \"likely_errors\": \"A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\",\n      \"likely_errors\": \"A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA college student takes out a $7,500 loan from a bank. What will the balance of the loan be after one year (assuming the student has not made any payments yet):\nIf the bank charges 5.3% interest each year?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\",\n      \"likely_errors\": \"A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\",\n      \"likely_errors\": \"A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of calculating the interest and adding it to the principal, especially by incorrectly converting 5.3% to 0.53 instead of 0.053, or by forgetting to add the interest to the original amount. This step requires accurate and efficient execution of arithmetic with decimals and percentages, which is the core of procedural fluency. While representing the situation correctly is important, the real-world context is straightforward and commonly taught, making misrepresentation less likely than procedural errors. The other practice used—Representing—is relatively simple here because the relationship is clearly described and standard for simple interest problems.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of calculating the interest and adding it to the principal, especially by incorrectly converting 5.3% to 0.53 instead of 0.053, or by forgetting to add the interest to the original amount. This step requires accurate and efficient execution of arithmetic with decimals and percentages, which is the core of procedural fluency. While representing the situation correctly is important, the real-world context is straightforward and commonly taught, making misrepresentation less likely than procedural errors. The other practice used—Representing—is relatively simple here because the relationship is clearly described and standard for simple interest problems.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8101,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.",
+              "likely_errors": "A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.",
+              "likely_errors": "A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the real-world scenario of a loan with annual interest and translates it into a mathematical expression: $7,500 + (7,500 × 0.053), recognizing the principal and interest rate as key quantities and the need for multiplicative and additive operations."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the interest by converting 5.3% to 0.053, multiplies it by $7,500, and adds the result to the principal to find the total loan balance after one year."
+            }
+          ],
+          "why": "The student must first represent the real-world situation mathematically by identifying and modeling the relationship between the principal, interest rate, and final balance before performing any calculations. Only after creating this representation can the student apply procedural fluency to compute the result accurately."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural step of calculating the interest and adding it to the principal, especially by incorrectly converting 5.3% to 0.53 instead of 0.053, or by forgetting to add the interest to the original amount. This step requires accurate and efficient execution of arithmetic with decimals and percentages, which is the core of procedural fluency. While representing the situation correctly is important, the real-world context is straightforward and commonly taught, making misrepresentation less likely than procedural errors. The other practice used—Representing—is relatively simple here because the relationship is clearly described and standard for simple interest problems."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.",
+            "likely_errors": "A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.",
+            "likely_errors": "A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.\",\n    \"likely_errors\": \"A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.\",\n    \"likely_errors\": \"A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the real-world scenario of a loan with annual interest and translates it into a mathematical expression: $7,500 + (7,500 × 0.053), recognizing the principal and interest rate as key quantities and the need for multiplicative and additive operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the interest by converting 5.3% to 0.053, multiplies it by $7,500, and adds the result to the principal to find the total loan balance after one year.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world situation mathematically by identifying and modeling the relationship between the principal, interest rate, and final balance before performing any calculations. Only after creating this representation can the student apply procedural fluency to compute the result accurately.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of calculating the interest and adding it to the principal, especially by incorrectly converting 5.3% to 0.53 instead of 0.053, or by forgetting to add the interest to the original amount. This step requires accurate and efficient execution of arithmetic with decimals and percentages, which is the core of procedural fluency. While representing the situation correctly is important, the real-world context is straightforward and commonly taught, making misrepresentation less likely than procedural errors. The other practice used—Representing—is relatively simple here because the relationship is clearly described and standard for simple interest problems.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.",
+          "likely_errors": "A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.",
+          "likely_errors": "A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the real-world scenario of a loan with annual interest and translates it into a mathematical expression: $7,500 + (7,500 × 0.053), recognizing the principal and interest rate as key quantities and the need for multiplicative and additive operations."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the interest by converting 5.3% to 0.053, multiplies it by $7,500, and adds the result to the principal to find the total loan balance after one year."
+        }
+      ],
+      "why": "The student must first represent the real-world situation mathematically by identifying and modeling the relationship between the principal, interest rate, and final balance before performing any calculations. Only after creating this representation can the student apply procedural fluency to compute the result accurately."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural step of calculating the interest and adding it to the principal, especially by incorrectly converting 5.3% to 0.53 instead of 0.053, or by forgetting to add the interest to the original amount. This step requires accurate and efficient execution of arithmetic with decimals and percentages, which is the core of procedural fluency. While representing the situation correctly is important, the real-world context is straightforward and commonly taught, making misrepresentation less likely than procedural errors. The other practice used—Representing—is relatively simple here because the relationship is clearly described and standard for simple interest problems."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the real-world scenario (a loan with annual interest) and represent it mathematically by translating the verbal description into a numerical expression: $7,500 + (7,500 × 0.053). This involves recognizing that the interest rate and principal are the key quantities and that the relationship is multiplicative and additive. The student is creating a mathematical model of the situation using numbers and operations.",
+          "likely_errors": "A student might misrepresent the situation by using subtraction instead of addition, or by applying the interest rate to the wrong base (e.g., using $7,500 as 5.3% of the final amount). This is possible but less likely if the student has experience with financial contexts or has been taught to represent such problems algebraically."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must compute the amount of interest on a $7,500 loan at 5.3% annual interest using multiplication and addition. This involves converting the percentage to a decimal (5.3% = 0.053), multiplying it by the principal ($7,500), and adding the result to the original amount to find the new balance. This is a direct application of standard arithmetic procedures for calculating simple interest.",
+          "likely_errors": "A student might incorrectly convert 5.3% to 0.53 instead of 0.053, leading to a wildly inflated balance. Alternatively, they might forget to add the interest to the principal, resulting in just the interest amount. These errors are moderately likely for students who are not fluent with percent conversions or basic interest calculations."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern, generalize a rule across multiple cases, or make a broader mathematical claim. It is a single, specific calculation based on a fixed interest rate and principal, with no need to generalize to other rates or amounts."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to justify, no proof required, and no need to explain why the method works. The task is purely computational and does not involve reasoning about validity or logical structure."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the situation is real-world, the modeling aspect is minimal. The student is not asked to identify the problem, choose variables, build a model, or evaluate its reasonableness. The model (simple interest) is fully specified, and the student only needs to apply it directly without any modeling decisions or validation steps."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s thinking, strategy, or response. There is no dialogue, no peer contribution to evaluate, and no collaborative decision-making required. The student works independently on a straightforward calculation."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

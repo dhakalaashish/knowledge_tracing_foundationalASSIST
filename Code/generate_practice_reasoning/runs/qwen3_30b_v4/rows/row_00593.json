@@ -1,0 +1,370 @@
+{
+  "row": 593,
+  "problem_id": "469613",
+  "problem_text": "How many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\",\n    \"likely_errors\": \"A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\",\n    \"likely_errors\": \"A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\",\n    \"likely_errors\": \"A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\",\n    \"likely_errors\": \"A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7390,
+            "completion_tokens": 677
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\n- Abstracting and Generalizing: The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\n- Abstracting and Generalizing: The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\n- Abstracting and Generalizing: The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the problem by representing 10^7 as a power of 10 and translates the task into a mathematical form involving exponents, recognizing that multiplying smaller powers of 10 means finding combinations of exponents that sum to 7.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying pattern that multiplying powers of 10 corresponds to adding their exponents, and generalizes the problem to finding the number of ways to write 7 as a sum of positive integers, which is equivalent to finding the number of compositions of 7.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make sense of what is being asked, which is the foundation for all further reasoning. Only after establishing this representation can the student abstract the structural pattern (exponent addition) and generalize it to a broader mathematical concept (compositions of an integer), which is necessary to solve the problem.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the problem by representing 10^7 as a power of 10 and translates the task into a mathematical form involving exponents, recognizing that multiplying smaller powers of 10 means finding combinations of exponents that sum to 7.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying pattern that multiplying powers of 10 corresponds to adding their exponents, and generalizes the problem to finding the number of ways to write 7 as a sum of positive integers, which is equivalent to finding the number of compositions of 7.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make sense of what is being asked, which is the foundation for all further reasoning. Only after establishing this representation can the student abstract the structural pattern (exponent addition) and generalize it to a broader mathematical concept (compositions of an integer), which is necessary to solve the problem.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7561,
+            "completion_tokens": 242
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\",\n      \"likely_errors\": \"A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\",\n      \"likely_errors\": \"A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\",\n      \"likely_errors\": \"A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\",\n      \"likely_errors\": \"A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHow many ways are there to make 10^7 by multiplying smaller powers of 10 together?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\",\n      \"likely_errors\": \"A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\",\n      \"likely_errors\": \"A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing that the problem reduces to finding the number of compositions of 7, where each part represents an exponent in the product of powers of 10. This requires abstracting the multiplicative structure of powers of 10 into an additive problem (summing exponents) and generalizing across all possible ordered combinations. Miscounting due to confusion between compositions and partitions—treating different orders as the same—is a common error that directly stems from failing to generalize the ordered nature of the multiplication. While Representing is important, it is less likely to cause failure because the representation of 10^7 and the exponent rule are more straightforward; the real challenge lies in the deeper structural insight needed for generalization.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing that the problem reduces to finding the number of compositions of 7, where each part represents an exponent in the product of powers of 10. This requires abstracting the multiplicative structure of powers of 10 into an additive problem (summing exponents) and generalizing across all possible ordered combinations. Miscounting due to confusion between compositions and partitions—treating different orders as the same—is a common error that directly stems from failing to generalize the ordered nature of the multiplication. While Representing is important, it is less likely to cause failure because the representation of 10^7 and the exponent rule are more straightforward; the real challenge lies in the deeper structural insight needed for generalization.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8042,
+            "completion_tokens": 171
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.",
+              "likely_errors": "A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.",
+              "likely_errors": "A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the problem by representing 10^7 as a power of 10 and translates the task into a mathematical form involving exponents, recognizing that multiplying smaller powers of 10 means finding combinations of exponents that sum to 7."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student identifies the underlying pattern that multiplying powers of 10 corresponds to adding their exponents, and generalizes the problem to finding the number of ways to write 7 as a sum of positive integers, which is equivalent to finding the number of compositions of 7."
+            }
+          ],
+          "why": "The student must first represent the problem mathematically to make sense of what is being asked, which is the foundation for all further reasoning. Only after establishing this representation can the student abstract the structural pattern (exponent addition) and generalize it to a broader mathematical concept (compositions of an integer), which is necessary to solve the problem."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to fail at recognizing that the problem reduces to finding the number of compositions of 7, where each part represents an exponent in the product of powers of 10. This requires abstracting the multiplicative structure of powers of 10 into an additive problem (summing exponents) and generalizing across all possible ordered combinations. Miscounting due to confusion between compositions and partitions—treating different orders as the same—is a common error that directly stems from failing to generalize the ordered nature of the multiplication. While Representing is important, it is less likely to cause failure because the representation of 10^7 and the exponent rule are more straightforward; the real challenge lies in the deeper structural insight needed for generalization."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.",
+            "likely_errors": "A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.",
+            "likely_errors": "A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.\",\n    \"likely_errors\": \"A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.\",\n    \"likely_errors\": \"A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the problem by representing 10^7 as a power of 10 and translates the task into a mathematical form involving exponents, recognizing that multiplying smaller powers of 10 means finding combinations of exponents that sum to 7.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student identifies the underlying pattern that multiplying powers of 10 corresponds to adding their exponents, and generalizes the problem to finding the number of ways to write 7 as a sum of positive integers, which is equivalent to finding the number of compositions of 7.\"\n    }\n  ],\n  \"why\": \"The student must first represent the problem mathematically to make sense of what is being asked, which is the foundation for all further reasoning. Only after establishing this representation can the student abstract the structural pattern (exponent addition) and generalize it to a broader mathematical concept (compositions of an integer), which is necessary to solve the problem.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing that the problem reduces to finding the number of compositions of 7, where each part represents an exponent in the product of powers of 10. This requires abstracting the multiplicative structure of powers of 10 into an additive problem (summing exponents) and generalizing across all possible ordered combinations. Miscounting due to confusion between compositions and partitions—treating different orders as the same—is a common error that directly stems from failing to generalize the ordered nature of the multiplication. While Representing is important, it is less likely to cause failure because the representation of 10^7 and the exponent rule are more straightforward; the real challenge lies in the deeper structural insight needed for generalization.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.",
+          "likely_errors": "A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.",
+          "likely_errors": "A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the problem by representing 10^7 as a power of 10 and translates the task into a mathematical form involving exponents, recognizing that multiplying smaller powers of 10 means finding combinations of exponents that sum to 7."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student identifies the underlying pattern that multiplying powers of 10 corresponds to adding their exponents, and generalizes the problem to finding the number of ways to write 7 as a sum of positive integers, which is equivalent to finding the number of compositions of 7."
+        }
+      ],
+      "why": "The student must first represent the problem mathematically to make sense of what is being asked, which is the foundation for all further reasoning. Only after establishing this representation can the student abstract the structural pattern (exponent addition) and generalize it to a broader mathematical concept (compositions of an integer), which is necessary to solve the problem."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to fail at recognizing that the problem reduces to finding the number of compositions of 7, where each part represents an exponent in the product of powers of 10. This requires abstracting the multiplicative structure of powers of 10 into an additive problem (summing exponents) and generalizing across all possible ordered combinations. Miscounting due to confusion between compositions and partitions—treating different orders as the same—is a common error that directly stems from failing to generalize the ordered nature of the multiplication. While Representing is important, it is less likely to cause failure because the representation of 10^7 and the exponent rule are more straightforward; the real challenge lies in the deeper structural insight needed for generalization."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the problem by representing 10^7 as a power of 10 and recognize that the task involves breaking it down into products of smaller powers of 10, such as 10^a × 10^b × ... = 10^7. This requires translating the verbal problem into a mathematical representation involving exponents and multiplication.",
+          "likely_errors": "A student might misrepresent the problem as adding exponents instead of multiplying powers, or incorrectly assume that only two factors are allowed. This is moderately likely for students who are still developing fluency with exponent rules."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern that multiplying powers of 10 corresponds to adding their exponents. They need to recognize that the problem reduces to finding the number of ways to write 7 as a sum of positive integers (since 10^a × 10^b × ... = 10^(a+b+...) and a+b+... = 7), which is equivalent to finding the number of compositions of 7. This requires identifying a structural pattern across cases and extending it to a broader domain.",
+          "likely_errors": "A student might fail to recognize that the exponents must sum to 7, or might incorrectly count partitions instead of compositions (e.g., treating 3+4 and 4+3 as the same). This is moderately likely, especially if the student confuses ordered vs. unordered sums."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct or evaluate a formal argument, defend a claim, or provide a proof. The task is to count the number of ways, not to justify why a particular method or result is valid or always true."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely abstract and does not involve a real-world context that needs to be interpreted, mathematized, or validated. There is no scenario to model, no measurement, no data, and no need to check the reasonableness of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, no peer contribution to evaluate or build on, and no need to engage in joint thinking or discussion."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must apply exponent rules (e.g., 10^a × 10^b = 10^(a+b)), the core of the task is not procedural computation but rather combinatorial reasoning based on exponent addition. The item does not require the student to perform repeated calculations, use algorithms, or demonstrate fluency in arithmetic or algebraic manipulation beyond recognizing the exponent rule."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

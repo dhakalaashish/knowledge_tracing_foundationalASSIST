@@ -1,0 +1,370 @@
+{
+  "row": 3101,
+  "problem_id": "386445",
+  "problem_text": "Han was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No",
+          "started_at": "2026-11-10T21:56:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\",\n    \"likely_errors\": \"A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\",\n    \"likely_errors\": \"A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\",\n    \"likely_errors\": \"A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\",\n    \"likely_errors\": \"A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7459,
+            "completion_tokens": 725
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:59:10+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\n- Justifying and Proving: After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:10:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\n- Justifying and Proving: After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\n- Justifying and Proving: After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets Han's verbal reasoning and translates it into a mathematical form by expanding and simplifying the left side of the equation, recognizing that 2(5x + 2) becomes 10x + 4 and combining like terms to rewrite the left side as 16x.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates Han’s claim that there are no solutions by recognizing that the simplified equation 16x = 16x is true for all values of x, and then justifies that Han is incorrect by explaining that the equation has infinitely many solutions, not no solutions.\"\n    }\n  ],\n  \"why\": \"The student must first represent Han's reasoning mathematically by simplifying the equation before they can evaluate the validity of his claim. Only after transforming the verbal argument into a mathematical expression can the student analyze and justify whether the conclusion about solutions is correct.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets Han's verbal reasoning and translates it into a mathematical form by expanding and simplifying the left side of the equation, recognizing that 2(5x + 2) becomes 10x + 4 and combining like terms to rewrite the left side as 16x.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates Han’s claim that there are no solutions by recognizing that the simplified equation 16x = 16x is true for all values of x, and then justifies that Han is incorrect by explaining that the equation has infinitely many solutions, not no solutions.\"\n    }\n  ],\n  \"why\": \"The student must first represent Han's reasoning mathematically by simplifying the equation before they can evaluate the validity of his claim. Only after transforming the verbal argument into a mathematical expression can the student analyze and justify whether the conclusion about solutions is correct.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7647,
+            "completion_tokens": 233
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:11:55+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\",\n      \"likely_errors\": \"A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\",\n      \"likely_errors\": \"A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:27:28+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\",\n      \"likely_errors\": \"A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\",\n      \"likely_errors\": \"A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHan was looking at the equation 6x − 4 + 2(5x + 2) = 16x.\nHe said, “I can tell right away there are no solutions, because on the left side, you will have 6x + 10x and a bunch of constants, but you have just 16x on the right side.”\nDo you agree with Han?\n\nAnswer choices:\nA. Yes || No\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\",\n      \"likely_errors\": \"A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\",\n      \"likely_errors\": \"A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of evaluating Han’s claim that there are no solutions, because they may not recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. This requires logical reasoning to refute a mathematical claim, which is the core of the 'Justifying and Proving' practice. While 'Representing' is necessary to correctly simplify the left side, the error in reasoning about the solution set is more likely to stem from a failure in justification than from a procedural mistake, especially since the algebraic steps are straightforward. The other practices are less central: 'Procedural Fluency' is not the focus, and the other practices are not used at all.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of evaluating Han’s claim that there are no solutions, because they may not recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. This requires logical reasoning to refute a mathematical claim, which is the core of the 'Justifying and Proving' practice. While 'Representing' is necessary to correctly simplify the left side, the error in reasoning about the solution set is more likely to stem from a failure in justification than from a procedural mistake, especially since the algebraic steps are straightforward. The other practices are less central: 'Procedural Fluency' is not the focus, and the other practices are not used at all.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8159,
+            "completion_tokens": 176
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:28:49+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.",
+              "likely_errors": "A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.",
+              "likely_errors": "A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets Han's verbal reasoning and translates it into a mathematical form by expanding and simplifying the left side of the equation, recognizing that 2(5x + 2) becomes 10x + 4 and combining like terms to rewrite the left side as 16x."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student evaluates Han’s claim that there are no solutions by recognizing that the simplified equation 16x = 16x is true for all values of x, and then justifies that Han is incorrect by explaining that the equation has infinitely many solutions, not no solutions."
+            }
+          ],
+          "why": "The student must first represent Han's reasoning mathematically by simplifying the equation before they can evaluate the validity of his claim. Only after transforming the verbal argument into a mathematical expression can the student analyze and justify whether the conclusion about solutions is correct."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of evaluating Han’s claim that there are no solutions, because they may not recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. This requires logical reasoning to refute a mathematical claim, which is the core of the 'Justifying and Proving' practice. While 'Representing' is necessary to correctly simplify the left side, the error in reasoning about the solution set is more likely to stem from a failure in justification than from a procedural mistake, especially since the algebraic steps are straightforward. The other practices are less central: 'Procedural Fluency' is not the focus, and the other practices are not used at all."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.",
+            "likely_errors": "A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.",
+            "likely_errors": "A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.\",\n    \"likely_errors\": \"A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.\",\n    \"likely_errors\": \"A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets Han's verbal reasoning and translates it into a mathematical form by expanding and simplifying the left side of the equation, recognizing that 2(5x + 2) becomes 10x + 4 and combining like terms to rewrite the left side as 16x.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates Han’s claim that there are no solutions by recognizing that the simplified equation 16x = 16x is true for all values of x, and then justifies that Han is incorrect by explaining that the equation has infinitely many solutions, not no solutions.\"\n    }\n  ],\n  \"why\": \"The student must first represent Han's reasoning mathematically by simplifying the equation before they can evaluate the validity of his claim. Only after transforming the verbal argument into a mathematical expression can the student analyze and justify whether the conclusion about solutions is correct.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of evaluating Han’s claim that there are no solutions, because they may not recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. This requires logical reasoning to refute a mathematical claim, which is the core of the 'Justifying and Proving' practice. While 'Representing' is necessary to correctly simplify the left side, the error in reasoning about the solution set is more likely to stem from a failure in justification than from a procedural mistake, especially since the algebraic steps are straightforward. The other practices are less central: 'Procedural Fluency' is not the focus, and the other practices are not used at all.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.",
+          "likely_errors": "A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.",
+          "likely_errors": "A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets Han's verbal reasoning and translates it into a mathematical form by expanding and simplifying the left side of the equation, recognizing that 2(5x + 2) becomes 10x + 4 and combining like terms to rewrite the left side as 16x."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student evaluates Han’s claim that there are no solutions by recognizing that the simplified equation 16x = 16x is true for all values of x, and then justifies that Han is incorrect by explaining that the equation has infinitely many solutions, not no solutions."
+        }
+      ],
+      "why": "The student must first represent Han's reasoning mathematically by simplifying the equation before they can evaluate the validity of his claim. Only after transforming the verbal argument into a mathematical expression can the student analyze and justify whether the conclusion about solutions is correct."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of evaluating Han’s claim that there are no solutions, because they may not recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. This requires logical reasoning to refute a mathematical claim, which is the core of the 'Justifying and Proving' practice. While 'Representing' is necessary to correctly simplify the left side, the error in reasoning about the solution set is more likely to stem from a failure in justification than from a procedural mistake, especially since the algebraic steps are straightforward. The other practices are less central: 'Procedural Fluency' is not the focus, and the other practices are not used at all."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret Han's verbal reasoning and translate it into a mathematical form by expanding and simplifying the left side of the equation. This involves recognizing that 2(5x + 2) expands to 10x + 4, and combining like terms to rewrite the left side as 6x − 4 + 10x + 4 = 16x. This step aligns with the practice of translating between written descriptions and algebraic expressions using symbols and operations.",
+          "likely_errors": "A student might incorrectly distribute the 2, such as writing 2(5x + 2) as 10x + 2, or fail to combine −4 and +4, leading to an incorrect simplification. This is moderately likely for students still developing fluency with algebraic expressions."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After simplifying the left side to 16x, the student must evaluate Han’s claim that there are no solutions. The student must recognize that 16x = 16x is an identity true for all x, meaning there are infinitely many solutions, not no solutions. The student must then justify why Han is incorrect by showing the equation is always true, which requires logical reasoning and evaluating a mathematical claim, matching the practice of evaluating and refuting claims using algebraic reasoning.",
+          "likely_errors": "A student might misinterpret 'no solutions' as meaning 'no solution exists' and fail to recognize that the equation is an identity. They might also accept Han’s reasoning without checking, especially if they don’t fully understand the difference between no solutions and infinitely many solutions. This is moderately likely for students who struggle with abstract algebraic reasoning."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond this specific equation. The student is only asked to analyze one equation and Han’s reasoning about it, not to generalize a property of equations or patterns in algebraic structures."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item is not about creating or applying a mathematical model to a real-world scenario. It is a purely symbolic algebraic task focused on solving and evaluating a given equation and a claim about it, not on mathematizing a contextual situation or using models to predict or solve real-world problems."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "Although Han’s reasoning is presented as a claim by another person, the student is not engaging in a dialogue or collaborative process. There is no need to build on, revoice, or critique a peer’s work in a group context; the task is individual and evaluative, not social or interactive."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must perform algebraic steps (distributing, combining like terms), the focus is not on fluency in execution but on reasoning about the validity of a claim. The procedural steps are necessary but not the main focus—what matters is the justification of Han’s conclusion, not the accuracy or efficiency of the computation itself."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

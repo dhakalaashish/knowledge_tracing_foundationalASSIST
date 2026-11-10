@@ -1,0 +1,370 @@
+{
+  "row": 588,
+  "problem_id": "454858",
+  "problem_text": "The diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\",\n    \"likely_errors\": \"A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\",\n    \"likely_errors\": \"A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7409,
+            "completion_tokens": 734
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\n- Abstracting and Generalizing: After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\n- Abstracting and Generalizing: After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\n- Abstracting and Generalizing: After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the diagram, recognizing that five small squares and a rectangle made of 10 small squares together represent 15 small squares, and that this entire visual model corresponds to the number 1,500.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the relationship between the total number of small squares (15) and the total value (1,500) by setting up the equation 15 × (value of one small square) = 1,500, then solves for the value of one small square by dividing 1,500 by 15.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the visual diagram as a mathematical representation of a number (1,500) before they can abstract the underlying numerical relationship. Only after translating the visual model into a mathematical structure can the student generalize the pattern of dividing the total by the number of units to find the unit value. This sequence reflects the logical progression from understanding the representation to applying a generalized mathematical reasoning to solve for the unknown.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the diagram, recognizing that five small squares and a rectangle made of 10 small squares together represent 15 small squares, and that this entire visual model corresponds to the number 1,500.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the relationship between the total number of small squares (15) and the total value (1,500) by setting up the equation 15 × (value of one small square) = 1,500, then solves for the value of one small square by dividing 1,500 by 15.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the visual diagram as a mathematical representation of a number (1,500) before they can abstract the underlying numerical relationship. Only after translating the visual model into a mathematical structure can the student generalize the pattern of dividing the total by the number of units to find the unit value. This sequence reflects the logical progression from understanding the representation to applying a generalized mathematical reasoning to solve for the unknown.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7613,
+            "completion_tokens": 271
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\",\n      \"likely_errors\": \"A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\",\n      \"likely_errors\": \"A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nThe diagram shows five small squares and one rectangle composed of 10 small squares.\n[image]\nAndre says this diagram can represent 1,500. What does a small square represent for Andre?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\",\n      \"likely_errors\": \"A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\",\n      \"likely_errors\": \"A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing the relationship between the total value (1,500) and the number of small squares (15) by incorrectly setting up the division (e.g., dividing 15 by 1,500 instead of 1,500 by 15). This step requires identifying a pattern (total ÷ count = unit value) and applying it abstractly, which is the essence of Abstracting and Generalizing. While Representing is necessary to interpret the diagram correctly, misinterpreting the visual model is less likely to be the primary error because the diagram is straightforward (5 + 10 = 15 squares). Procedural Fluency is not the main hurdle since the division is simple and embedded in reasoning; thus, the core difficulty lies in the abstract reasoning step, not the computation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing the relationship between the total value (1,500) and the number of small squares (15) by incorrectly setting up the division (e.g., dividing 15 by 1,500 instead of 1,500 by 15). This step requires identifying a pattern (total ÷ count = unit value) and applying it abstractly, which is the essence of Abstracting and Generalizing. While Representing is necessary to interpret the diagram correctly, misinterpreting the visual model is less likely to be the primary error because the diagram is straightforward (5 + 10 = 15 squares). Procedural Fluency is not the main hurdle since the division is simple and embedded in reasoning; thus, the core difficulty lies in the abstract reasoning step, not the computation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8118,
+            "completion_tokens": 200
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'",
+              "likely_errors": "A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'",
+              "likely_errors": "A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the diagram, recognizing that five small squares and a rectangle made of 10 small squares together represent 15 small squares, and that this entire visual model corresponds to the number 1,500."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes the relationship between the total number of small squares (15) and the total value (1,500) by setting up the equation 15 × (value of one small square) = 1,500, then solves for the value of one small square by dividing 1,500 by 15."
+            }
+          ],
+          "why": "The student must first interpret the visual diagram as a mathematical representation of a number (1,500) before they can abstract the underlying numerical relationship. Only after translating the visual model into a mathematical structure can the student generalize the pattern of dividing the total by the number of units to find the unit value. This sequence reflects the logical progression from understanding the representation to applying a generalized mathematical reasoning to solve for the unknown."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of generalizing the relationship between the total value (1,500) and the number of small squares (15) by incorrectly setting up the division (e.g., dividing 15 by 1,500 instead of 1,500 by 15). This step requires identifying a pattern (total ÷ count = unit value) and applying it abstractly, which is the essence of Abstracting and Generalizing. While Representing is necessary to interpret the diagram correctly, misinterpreting the visual model is less likely to be the primary error because the diagram is straightforward (5 + 10 = 15 squares). Procedural Fluency is not the main hurdle since the division is simple and embedded in reasoning; thus, the core difficulty lies in the abstract reasoning step, not the computation."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'",
+            "likely_errors": "A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'",
+            "likely_errors": "A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'\",\n    \"likely_errors\": \"A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'\",\n    \"likely_errors\": \"A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the diagram, recognizing that five small squares and a rectangle made of 10 small squares together represent 15 small squares, and that this entire visual model corresponds to the number 1,500.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the relationship between the total number of small squares (15) and the total value (1,500) by setting up the equation 15 × (value of one small square) = 1,500, then solves for the value of one small square by dividing 1,500 by 15.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the visual diagram as a mathematical representation of a number (1,500) before they can abstract the underlying numerical relationship. Only after translating the visual model into a mathematical structure can the student generalize the pattern of dividing the total by the number of units to find the unit value. This sequence reflects the logical progression from understanding the representation to applying a generalized mathematical reasoning to solve for the unknown.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing the relationship between the total value (1,500) and the number of small squares (15) by incorrectly setting up the division (e.g., dividing 15 by 1,500 instead of 1,500 by 15). This step requires identifying a pattern (total ÷ count = unit value) and applying it abstractly, which is the essence of Abstracting and Generalizing. While Representing is necessary to interpret the diagram correctly, misinterpreting the visual model is less likely to be the primary error because the diagram is straightforward (5 + 10 = 15 squares). Procedural Fluency is not the main hurdle since the division is simple and embedded in reasoning; thus, the core difficulty lies in the abstract reasoning step, not the computation.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'",
+          "likely_errors": "A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the diagram, recognizing that five small squares and a rectangle made of 10 small squares together represent 15 small squares, and that this entire visual model corresponds to the number 1,500."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes the relationship between the total number of small squares (15) and the total value (1,500) by setting up the equation 15 × (value of one small square) = 1,500, then solves for the value of one small square by dividing 1,500 by 15."
+        }
+      ],
+      "why": "The student must first interpret the visual diagram as a mathematical representation of a number (1,500) before they can abstract the underlying numerical relationship. Only after translating the visual model into a mathematical structure can the student generalize the pattern of dividing the total by the number of units to find the unit value. This sequence reflects the logical progression from understanding the representation to applying a generalized mathematical reasoning to solve for the unknown."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of generalizing the relationship between the total value (1,500) and the number of small squares (15) by incorrectly setting up the division (e.g., dividing 15 by 1,500 instead of 1,500 by 15). This step requires identifying a pattern (total ÷ count = unit value) and applying it abstractly, which is the essence of Abstracting and Generalizing. While Representing is necessary to interpret the diagram correctly, misinterpreting the visual model is less likely to be the primary error because the diagram is straightforward (5 + 10 = 15 squares). Procedural Fluency is not the main hurdle since the division is simple and embedded in reasoning; thus, the core difficulty lies in the abstract reasoning step, not the computation."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the diagram, which uses small squares and a rectangle made of 10 small squares, as a visual representation of a numerical value (1,500). This involves translating the visual model into a mathematical structure—recognizing that the diagram is a representation of a number and assigning a value to the unit (the small square) based on the total. This matches the descriptor: 'Recognize, translate between, interpret, and compare written, numerical, and visual representations of large numbers.'",
+          "likely_errors": "A student might miscount the total number of small squares (5 + 10 = 15) or misinterpret the rectangle as 10 units but not realize it’s composed of 10 small squares. This is moderately likely, especially for students who rush or struggle with visual modeling."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After recognizing that the diagram represents 1,500 through 15 small squares, the student must generalize the relationship: 15 small squares = 1,500. They then divide 1,500 by 15 to find the value of one small square. This involves identifying a pattern (total value ÷ number of units = unit value) and applying it to solve for an unknown unit, which aligns with the descriptor: 'Identify patterns in numbers... and generalize them using words, pictures, or symbols.'",
+          "likely_errors": "A student might divide 15 by 1,500 instead of 1,500 by 15, or incorrectly assume the rectangle represents 100 units. This is moderately likely due to confusion in setting up the division relationship."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical claim about why a statement is true or false. Andre’s claim is given as a premise, and the student is only asked to determine what a small square represents, not to justify or refute Andre’s reasoning."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve identifying a real-world problem, mathematizing a scenario, or checking the viability of a solution in a contextual setting. The diagram is purely abstract, and the task is to reverse-engineer a unit value from a visual model, not to model a real-world situation or revise a model based on feedback."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, peer reasoning, or social interaction. There is no need to respond to another student’s claim, build on their work, or engage in discussion. The student works independently on a single task based on a diagram."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student performs a division (1,500 ÷ 15), the core of the task is not about executing a procedure efficiently or flexibly. The procedural step is straightforward and embedded within a larger reasoning process. The focus is on interpreting and generalizing from a representation, not on fluency with division algorithms or choosing efficient methods."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

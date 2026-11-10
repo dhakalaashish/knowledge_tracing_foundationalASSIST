@@ -1,0 +1,370 @@
+{
+  "row": 1790,
+  "problem_id": "682",
+  "problem_text": "Diego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____",
+          "started_at": "2026-11-10T21:43:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\",\n    \"likely_errors\": \"A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\",\n    \"likely_errors\": \"If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\",\n    \"likely_errors\": \"A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\",\n    \"likely_errors\": \"If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7426,
+            "completion_tokens": 755
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:48:08+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\n- Procedural Fluency: After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:04:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\n- Procedural Fluency: After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\n- Procedural Fluency: After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem and translates the scenario into mathematical expressions, writing 11 + 5w for Diego's money and 60 - 2w for Lin's money, where w represents the number of weeks.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student evaluates the expressions at a specific time, either by solving the equation 11 + 5w = 60 - 2w to find when their money is equal or by directly stating the initial amounts (11 and 60) if interpreting 'that time' as the start.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by creating expressions that model Diego's and Lin's money over time, which is the foundational step before any computation. Only after establishing these representations can the student apply procedural fluency to compute the amounts, either by solving for a specific time or by evaluating at the initial moment. Thus, representing comes before procedural fluency in the sequence of steps.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem and translates the scenario into mathematical expressions, writing 11 + 5w for Diego's money and 60 - 2w for Lin's money, where w represents the number of weeks.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student evaluates the expressions at a specific time, either by solving the equation 11 + 5w = 60 - 2w to find when their money is equal or by directly stating the initial amounts (11 and 60) if interpreting 'that time' as the start.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by creating expressions that model Diego's and Lin's money over time, which is the foundational step before any computation. Only after establishing these representations can the student apply procedural fluency to compute the amounts, either by solving for a specific time or by evaluating at the initial moment. Thus, representing comes before procedural fluency in the sequence of steps.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7661,
+            "completion_tokens": 255
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:06:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\",\n      \"likely_errors\": \"A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\",\n      \"likely_errors\": \"If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:19:00+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\",\n      \"likely_errors\": \"A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\",\n      \"likely_errors\": \"If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nDiego has $11 and begins saving $5 each week toward buying a new phone. At the same time that Diego begins saving, Lin has $60 and begins spending $2 per week on supplies for her art class.\nHow much money do they have at that time?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\",\n      \"likely_errors\": \"A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\",\n      \"likely_errors\": \"If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of computing the correct amount of money at the specified time, especially if they misinterpret 'that time' as when their money is equal and then make an error in solving the equation 11 + 5w = 60 - 2w, such as incorrectly combining terms or handling signs. Even if the student recognizes the need to evaluate the expressions, procedural errors in arithmetic or algebraic manipulation are common. The Representing step, while important, is less likely to cause failure because the expressions are straightforward and directly derived from the problem context; errors here are more likely due to carelessness than lack of understanding. Thus, the core difficulty lies in the accurate and efficient execution of the required computations.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of computing the correct amount of money at the specified time, especially if they misinterpret 'that time' as when their money is equal and then make an error in solving the equation 11 + 5w = 60 - 2w, such as incorrectly combining terms or handling signs. Even if the student recognizes the need to evaluate the expressions, procedural errors in arithmetic or algebraic manipulation are common. The Representing step, while important, is less likely to cause failure because the expressions are straightforward and directly derived from the problem context; errors here are more likely due to carelessness than lack of understanding. Thus, the core difficulty lies in the accurate and efficient execution of the required computations.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8156,
+            "completion_tokens": 172
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:22:30+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.",
+              "likely_errors": "A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.",
+              "likely_errors": "If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the word problem and translates the scenario into mathematical expressions, writing 11 + 5w for Diego's money and 60 - 2w for Lin's money, where w represents the number of weeks."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student evaluates the expressions at a specific time, either by solving the equation 11 + 5w = 60 - 2w to find when their money is equal or by directly stating the initial amounts (11 and 60) if interpreting 'that time' as the start."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by creating expressions that model Diego's and Lin's money over time, which is the foundational step before any computation. Only after establishing these representations can the student apply procedural fluency to compute the amounts, either by solving for a specific time or by evaluating at the initial moment. Thus, representing comes before procedural fluency in the sequence of steps."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of computing the correct amount of money at the specified time, especially if they misinterpret 'that time' as when their money is equal and then make an error in solving the equation 11 + 5w = 60 - 2w, such as incorrectly combining terms or handling signs. Even if the student recognizes the need to evaluate the expressions, procedural errors in arithmetic or algebraic manipulation are common. The Representing step, while important, is less likely to cause failure because the expressions are straightforward and directly derived from the problem context; errors here are more likely due to carelessness than lack of understanding. Thus, the core difficulty lies in the accurate and efficient execution of the required computations."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.",
+            "likely_errors": "A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.",
+            "likely_errors": "If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.\",\n    \"likely_errors\": \"A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.\",\n    \"likely_errors\": \"If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem and translates the scenario into mathematical expressions, writing 11 + 5w for Diego's money and 60 - 2w for Lin's money, where w represents the number of weeks.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student evaluates the expressions at a specific time, either by solving the equation 11 + 5w = 60 - 2w to find when their money is equal or by directly stating the initial amounts (11 and 60) if interpreting 'that time' as the start.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by creating expressions that model Diego's and Lin's money over time, which is the foundational step before any computation. Only after establishing these representations can the student apply procedural fluency to compute the amounts, either by solving for a specific time or by evaluating at the initial moment. Thus, representing comes before procedural fluency in the sequence of steps.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of computing the correct amount of money at the specified time, especially if they misinterpret 'that time' as when their money is equal and then make an error in solving the equation 11 + 5w = 60 - 2w, such as incorrectly combining terms or handling signs. Even if the student recognizes the need to evaluate the expressions, procedural errors in arithmetic or algebraic manipulation are common. The Representing step, while important, is less likely to cause failure because the expressions are straightforward and directly derived from the problem context; errors here are more likely due to carelessness than lack of understanding. Thus, the core difficulty lies in the accurate and efficient execution of the required computations.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.",
+          "likely_errors": "A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.",
+          "likely_errors": "If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the word problem and translates the scenario into mathematical expressions, writing 11 + 5w for Diego's money and 60 - 2w for Lin's money, where w represents the number of weeks."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student evaluates the expressions at a specific time, either by solving the equation 11 + 5w = 60 - 2w to find when their money is equal or by directly stating the initial amounts (11 and 60) if interpreting 'that time' as the start."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by creating expressions that model Diego's and Lin's money over time, which is the foundational step before any computation. Only after establishing these representations can the student apply procedural fluency to compute the amounts, either by solving for a specific time or by evaluating at the initial moment. Thus, representing comes before procedural fluency in the sequence of steps."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of computing the correct amount of money at the specified time, especially if they misinterpret 'that time' as when their money is equal and then make an error in solving the equation 11 + 5w = 60 - 2w, such as incorrectly combining terms or handling signs. Even if the student recognizes the need to evaluate the expressions, procedural errors in arithmetic or algebraic manipulation are common. The Representing step, while important, is less likely to cause failure because the expressions are straightforward and directly derived from the problem context; errors here are more likely due to carelessness than lack of understanding. Thus, the core difficulty lies in the accurate and efficient execution of the required computations."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the word problem and translate it into mathematical representations, such as writing expressions for Diego's and Lin's money over time (e.g., 11 + 5w for Diego and 60 - 2w for Lin), where w represents weeks. This involves creating numerical and algebraic models from a real-world scenario, which aligns with the practice of representing problem situations using expressions.",
+          "likely_errors": "A student might incorrectly write the expressions (e.g., 11 + 2w for Diego or 60 - 5w for Lin) due to misreading the rates or starting amounts. This is moderately likely, especially if the student rushes through the problem."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After forming the expressions, the student must compute the amount of money each person has at a specific time. Since the question asks for how much money they have at 'that time'—referring to the same moment when both are saving/spending—the student must evaluate the expressions at the same value of w. However, the problem as written does not specify a particular week, making it ambiguous. But assuming the intent is to find the amount at a time when their money is equal (a common interpretation in such problems), the student must solve 11 + 5w = 60 - 2w, which requires procedural fluency in solving equations. Even if the intent is to find the initial amounts, the student must compute 11 and 60 directly, which is a basic procedural step.",
+          "likely_errors": "If the student tries to solve the equation, they might make a sign error (e.g., 11 + 5w = 60 + 2w) or incorrectly combine like terms. If they only compute initial amounts, they might forget to include the $11 and $60 and write 0 or misread the starting amounts. Errors are likely if the student lacks fluency with basic arithmetic or equation solving."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The problem does not require the student to identify a broader pattern, extend a sequence, or generalize a rule beyond the given scenario. It is focused on a specific instance (the amount of money at a particular time), not on identifying or extending a mathematical structure across multiple cases."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "There is no claim, conjecture, or argument for the student to evaluate or prove. The task is to compute a value, not to defend or critique a mathematical statement or reasoning."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem is contextual, it does not require the student to identify a problem, create a model from scratch, or validate the model’s reasonableness. The model (linear expressions) is already implied by the scenario, and the task is to compute a value, not to build or test a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on this item. There is no interaction with another person’s reasoning, no dialogue, no shared task, and no need to respond to or build on another’s work. The item does not present a peer’s claim or strategy to evaluate."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

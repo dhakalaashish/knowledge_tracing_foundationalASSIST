@@ -1,0 +1,370 @@
+{
+  "row": 2681,
+  "problem_id": "7452",
+  "problem_text": "Predict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to",
+          "started_at": "2026-11-10T21:52:28+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\",\n    \"likely_errors\": \"A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\",\n    \"likely_errors\": \"A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\",\n    \"likely_errors\": \"A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\",\n    \"likely_errors\": \"A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7473,
+            "completion_tokens": 599
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:56:50+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\n- Justifying and Proving: After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:08:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\n- Justifying and Proving: After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\n- Justifying and Proving: After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the histogram by translating the visual bar heights into numerical frequencies for each age interval, recognizing that each bar's height represents the number of people in that age range.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student analyzes the shape of the distribution—specifically, identifying that it is skewed right due to a longer tail on the higher end—and uses this to justify that the mean is greater than the median.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the visual data (the histogram) and convert it into a numerical understanding of the distribution before they can make a reasoned judgment about the relationship between the mean and median. Only after representing the data numerically can the student apply statistical reasoning to justify their prediction based on skewness.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the histogram by translating the visual bar heights into numerical frequencies for each age interval, recognizing that each bar's height represents the number of people in that age range.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student analyzes the shape of the distribution—specifically, identifying that it is skewed right due to a longer tail on the higher end—and uses this to justify that the mean is greater than the median.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the visual data (the histogram) and convert it into a numerical understanding of the distribution before they can make a reasoned judgment about the relationship between the mean and median. Only after representing the data numerically can the student apply statistical reasoning to justify their prediction based on skewness.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7607,
+            "completion_tokens": 203
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:10:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\",\n      \"likely_errors\": \"A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\",\n      \"likely_errors\": \"A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:24:57+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\",\n      \"likely_errors\": \"A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\",\n      \"likely_errors\": \"A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nPredict if the mean is greater than, less than, or approximately equal to the median.\nAges of 30 people at a family dinner party\n[Image: Histogram from 5 to 50 by 5’s. Age in years. Beginning at 5 up to but not including 10, height of bar at each interval is 2, 3, 1,1,2,3,2,5,11.]\n\nAnswer choices:\nA. Greater than || Less than || Equal to\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\",\n      \"likely_errors\": \"A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\",\n      \"likely_errors\": \"A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying the relationship between the mean and median based on the distribution's skewness. Misidentifying the direction of skew—such as thinking a right tail pulls the mean down instead of up—leads to an incorrect prediction. While interpreting the histogram (Representing) is necessary, it is more straightforward and less prone to error than making a logical argument about how skew affects central tendency. The other practice used, Representing, involves reading bar heights, which is a basic skill that most students can perform accurately, making it less likely to be the source of incorrect answers.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying the relationship between the mean and median based on the distribution's skewness. Misidentifying the direction of skew—such as thinking a right tail pulls the mean down instead of up—leads to an incorrect prediction. While interpreting the histogram (Representing) is necessary, it is more straightforward and less prone to error than making a logical argument about how skew affects central tendency. The other practice used, Representing, involves reading bar heights, which is a basic skill that most students can perform accurately, making it less likely to be the source of incorrect answers.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8047,
+            "completion_tokens": 145
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:27:28+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.",
+              "likely_errors": "A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.",
+              "likely_errors": "A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the histogram by translating the visual bar heights into numerical frequencies for each age interval, recognizing that each bar's height represents the number of people in that age range."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student analyzes the shape of the distribution—specifically, identifying that it is skewed right due to a longer tail on the higher end—and uses this to justify that the mean is greater than the median."
+            }
+          ],
+          "why": "The student must first interpret the visual data (the histogram) and convert it into a numerical understanding of the distribution before they can make a reasoned judgment about the relationship between the mean and median. Only after representing the data numerically can the student apply statistical reasoning to justify their prediction based on skewness."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "A student is most likely to go wrong at the step of justifying the relationship between the mean and median based on the distribution's skewness. Misidentifying the direction of skew—such as thinking a right tail pulls the mean down instead of up—leads to an incorrect prediction. While interpreting the histogram (Representing) is necessary, it is more straightforward and less prone to error than making a logical argument about how skew affects central tendency. The other practice used, Representing, involves reading bar heights, which is a basic skill that most students can perform accurately, making it less likely to be the source of incorrect answers."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.",
+            "likely_errors": "A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.",
+            "likely_errors": "A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.\",\n    \"likely_errors\": \"A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.\",\n    \"likely_errors\": \"A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the histogram by translating the visual bar heights into numerical frequencies for each age interval, recognizing that each bar's height represents the number of people in that age range.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student analyzes the shape of the distribution—specifically, identifying that it is skewed right due to a longer tail on the higher end—and uses this to justify that the mean is greater than the median.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the visual data (the histogram) and convert it into a numerical understanding of the distribution before they can make a reasoned judgment about the relationship between the mean and median. Only after representing the data numerically can the student apply statistical reasoning to justify their prediction based on skewness.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"A student is most likely to go wrong at the step of justifying the relationship between the mean and median based on the distribution's skewness. Misidentifying the direction of skew—such as thinking a right tail pulls the mean down instead of up—leads to an incorrect prediction. While interpreting the histogram (Representing) is necessary, it is more straightforward and less prone to error than making a logical argument about how skew affects central tendency. The other practice used, Representing, involves reading bar heights, which is a basic skill that most students can perform accurately, making it less likely to be the source of incorrect answers.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.",
+          "likely_errors": "A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.",
+          "likely_errors": "A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the histogram by translating the visual bar heights into numerical frequencies for each age interval, recognizing that each bar's height represents the number of people in that age range."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student analyzes the shape of the distribution—specifically, identifying that it is skewed right due to a longer tail on the higher end—and uses this to justify that the mean is greater than the median."
+        }
+      ],
+      "why": "The student must first interpret the visual data (the histogram) and convert it into a numerical understanding of the distribution before they can make a reasoned judgment about the relationship between the mean and median. Only after representing the data numerically can the student apply statistical reasoning to justify their prediction based on skewness."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "A student is most likely to go wrong at the step of justifying the relationship between the mean and median based on the distribution's skewness. Misidentifying the direction of skew—such as thinking a right tail pulls the mean down instead of up—leads to an incorrect prediction. While interpreting the histogram (Representing) is necessary, it is more straightforward and less prone to error than making a logical argument about how skew affects central tendency. The other practice used, Representing, involves reading bar heights, which is a basic skill that most students can perform accurately, making it less likely to be the source of incorrect answers."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the histogram, which is a visual representation of the distribution of ages, and translate the visual data (bar heights) into numerical frequencies for each age interval. This involves recognizing that the height of each bar corresponds to the number of people in that age range, which is a key aspect of interpreting graphical representations of data.",
+          "likely_errors": "A student might misread the bar heights, confusing the height with the age value or miscounting the frequency in an interval. This is moderately likely, especially if the student is unfamiliar with histograms or misinterprets the scale."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "After interpreting the data, the student must analyze the shape of the distribution (skewed right, left, or symmetric) to determine the relationship between the mean and median. The student must justify their prediction by reasoning about how skewness affects the mean and median—specifically, a right skew pulls the mean higher than the median. This requires making a logical argument based on the data's distribution.",
+          "likely_errors": "A student might incorrectly assume symmetry or misidentify the direction of skewness (e.g., thinking the long tail on the right means the mean is less than the median). This is moderately likely, especially if the student lacks experience with distribution shapes."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple data sets, extend a rule, or generalize a relationship beyond this specific histogram. The task is focused on analyzing one given distribution, not on identifying or extending a broader mathematical pattern."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item does not involve creating a model to represent a real-world situation, identifying variables, or revising a model based on feedback. The student is only asked to interpret a given histogram and make a prediction based on its shape, not to build or test a model for a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a standalone task with no reference to another person’s reasoning, strategy, or work. There is no dialogue, peer contribution, or need to respond to someone else’s mathematical thinking, so collaborative aspects are absent."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student may need to count frequencies or compute a mean or median, the item does not require performing any calculations. The prediction is based on distribution shape, not on computing numerical values. Therefore, procedural computation is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

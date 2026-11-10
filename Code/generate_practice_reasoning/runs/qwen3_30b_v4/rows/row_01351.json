@@ -1,0 +1,370 @@
+{
+  "row": 1351,
+  "problem_id": "181770",
+  "problem_text": "Ten students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws",
+          "started_at": "2026-11-10T21:39:35+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\",\n    \"likely_errors\": \"A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\",\n    \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\",\n    \"likely_errors\": \"A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\",\n    \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7424,
+            "completion_tokens": 631
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:43:50+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\n- Procedural Fluency: After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:03:01+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\n- Procedural Fluency: After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\n- Procedural Fluency: After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student organizes the raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) into a sorted list to create a structured numerical representation suitable for statistical analysis.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies the correct procedure to find the first quartile (Q1), third quartile (Q3), and computes the interquartile range (IQR) by subtracting Q1 from Q3.\"\n    }\n  ],\n  \"why\": \"A student must first represent the data in a meaningful, ordered form before performing any calculations. Only after organizing the data can the student accurately apply the procedural steps to find the quartiles and compute the IQR. Thus, representing the data precedes procedural fluency in this sequence.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student organizes the raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) into a sorted list to create a structured numerical representation suitable for statistical analysis.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies the correct procedure to find the first quartile (Q1), third quartile (Q3), and computes the interquartile range (IQR) by subtracting Q1 from Q3.\"\n    }\n  ],\n  \"why\": \"A student must first represent the data in a meaningful, ordered form before performing any calculations. Only after organizing the data can the student accurately apply the procedural steps to find the quartiles and compute the IQR. Thus, representing the data precedes procedural fluency in this sequence.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7591,
+            "completion_tokens": 218
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:04:54+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\",\n      \"likely_errors\": \"A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\",\n      \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:16:40+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\",\n      \"likely_errors\": \"A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\",\n      \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nTen students each attempted 10 free throws. This list shows how many free throws each student made.\n8 5 6 6 4 9 7 6 5 9\nWhat is the IQR (interquartile range)?\n____ free-throws\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\",\n      \"likely_errors\": \"A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\",\n      \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the quartiles and then subtracting them to find the IQR, as this requires following a precise algorithm (e.g., correctly identifying the median, splitting the data, and finding Q1 and Q3) and performing arithmetic without error. While organizing the data (Representing) is important, it is a simpler step that is less prone to error if the student takes time. The procedural steps for quartiles are complex and commonly misunderstood, especially with small data sets, making procedural fluency the primary source of difficulty. The other practice used—Representing—is more about initial organization and less likely to cause a major error if the student simply lists the numbers in order.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the quartiles and then subtracting them to find the IQR, as this requires following a precise algorithm (e.g., correctly identifying the median, splitting the data, and finding Q1 and Q3) and performing arithmetic without error. While organizing the data (Representing) is important, it is a simpler step that is less prone to error if the student takes time. The procedural steps for quartiles are complex and commonly misunderstood, especially with small data sets, making procedural fluency the primary source of difficulty. The other practice used—Representing—is more about initial organization and less likely to cause a major error if the student simply lists the numbers in order.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8030,
+            "completion_tokens": 167
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:18:59+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.",
+              "likely_errors": "A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.",
+              "likely_errors": "A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student organizes the raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) into a sorted list to create a structured numerical representation suitable for statistical analysis."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student applies the correct procedure to find the first quartile (Q1), third quartile (Q3), and computes the interquartile range (IQR) by subtracting Q1 from Q3."
+            }
+          ],
+          "why": "A student must first represent the data in a meaningful, ordered form before performing any calculations. Only after organizing the data can the student accurately apply the procedural steps to find the quartiles and compute the IQR. Thus, representing the data precedes procedural fluency in this sequence."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of accurately computing the quartiles and then subtracting them to find the IQR, as this requires following a precise algorithm (e.g., correctly identifying the median, splitting the data, and finding Q1 and Q3) and performing arithmetic without error. While organizing the data (Representing) is important, it is a simpler step that is less prone to error if the student takes time. The procedural steps for quartiles are complex and commonly misunderstood, especially with small data sets, making procedural fluency the primary source of difficulty. The other practice used—Representing—is more about initial organization and less likely to cause a major error if the student simply lists the numbers in order."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.",
+            "likely_errors": "A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.",
+            "likely_errors": "A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.\",\n    \"likely_errors\": \"A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.\",\n    \"likely_errors\": \"A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student organizes the raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) into a sorted list to create a structured numerical representation suitable for statistical analysis.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies the correct procedure to find the first quartile (Q1), third quartile (Q3), and computes the interquartile range (IQR) by subtracting Q1 from Q3.\"\n    }\n  ],\n  \"why\": \"A student must first represent the data in a meaningful, ordered form before performing any calculations. Only after organizing the data can the student accurately apply the procedural steps to find the quartiles and compute the IQR. Thus, representing the data precedes procedural fluency in this sequence.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the quartiles and then subtracting them to find the IQR, as this requires following a precise algorithm (e.g., correctly identifying the median, splitting the data, and finding Q1 and Q3) and performing arithmetic without error. While organizing the data (Representing) is important, it is a simpler step that is less prone to error if the student takes time. The procedural steps for quartiles are complex and commonly misunderstood, especially with small data sets, making procedural fluency the primary source of difficulty. The other practice used—Representing—is more about initial organization and less likely to cause a major error if the student simply lists the numbers in order.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.",
+          "likely_errors": "A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.",
+          "likely_errors": "A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student organizes the raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) into a sorted list to create a structured numerical representation suitable for statistical analysis."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student applies the correct procedure to find the first quartile (Q1), third quartile (Q3), and computes the interquartile range (IQR) by subtracting Q1 from Q3."
+        }
+      ],
+      "why": "A student must first represent the data in a meaningful, ordered form before performing any calculations. Only after organizing the data can the student accurately apply the procedural steps to find the quartiles and compute the IQR. Thus, representing the data precedes procedural fluency in this sequence."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of accurately computing the quartiles and then subtracting them to find the IQR, as this requires following a precise algorithm (e.g., correctly identifying the median, splitting the data, and finding Q1 and Q3) and performing arithmetic without error. While organizing the data (Representing) is important, it is a simpler step that is less prone to error if the student takes time. The procedural steps for quartiles are complex and commonly misunderstood, especially with small data sets, making procedural fluency the primary source of difficulty. The other practice used—Representing—is more about initial organization and less likely to cause a major error if the student simply lists the numbers in order."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must first interpret the list of raw data (8, 5, 6, 6, 4, 9, 7, 6, 5, 9) as a numerical data set and organize it into a meaningful form, such as a sorted list or a box plot, to identify the quartiles. This involves translating the written data into a structured numerical representation appropriate for statistical analysis, which aligns with the practice of representing data sets visually or numerically.",
+          "likely_errors": "A student might misorder the data or skip a value, leading to incorrect quartiles. This is moderately likely, especially if the student rushes or lacks attention to detail."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After organizing the data, the student must compute the first quartile (Q1), third quartile (Q3), and then calculate the IQR as Q3 − Q1 using accurate and efficient procedures. This requires applying the standard algorithm for finding quartiles (e.g., using median of lower and upper halves) and performing subtraction correctly, which falls under procedural fluency with statistical measures.",
+          "likely_errors": "A student might incorrectly determine Q1 or Q3 (e.g., by miscounting positions or using the wrong median method), or make a simple arithmetic error in subtraction. This is common, especially if the student is unfamiliar with quartile calculation methods."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify a pattern across multiple data sets, extend a statistical rule to a broader context, or generalize a relationship beyond this specific data set. The task is limited to computing a single IQR from a given data set, not making broader inferences or generalizations."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a numerical answer, not a justification or proof. There is no claim to evaluate, no argument to defend, and no need to explain why a method works. The student is not required to provide reasoning or evidence for their calculation."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The scenario is purely descriptive and does not involve identifying a real-world problem, mathematizing a context, or validating a solution in a broader situation. The data is already given and the task is a direct statistical computation, not a model built from a scenario."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with others’ ideas, claims, or work. There is no dialogue, no peer contribution to build on, and no need to evaluate or respond to another student’s reasoning."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

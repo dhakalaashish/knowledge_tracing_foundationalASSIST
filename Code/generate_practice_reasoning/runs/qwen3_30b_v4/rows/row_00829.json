@@ -1,0 +1,370 @@
+{
+  "row": 829,
+  "problem_id": "37832",
+  "problem_text": "A librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\",\n    \"likely_errors\": \"A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\",\n    \"likely_errors\": \"A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\",\n    \"likely_errors\": \"A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\",\n    \"likely_errors\": \"A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7488,
+            "completion_tokens": 660
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\n- Abstracting and Generalizing: After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\n- Abstracting and Generalizing: After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\n- Abstracting and Generalizing: After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of data to count how many of the 10 patrons checked out DVDs, translating the categorical data into a numerical count (2 DVDs).\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the observed ratio of DVDs to total patrons (2 out of 10) to estimate the number of DVDs checked out per 100 patrons by scaling the ratio proportionally (2/10 = x/100).\"\n    }\n  ],\n  \"why\": \"The student must first represent the data from the table numerically by counting the DVDs, which is a prerequisite for any further reasoning. Only after obtaining the numerical ratio (2/10) can the student abstract and generalize this relationship to a larger group, making this step logically follow the first.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of data to count how many of the 10 patrons checked out DVDs, translating the categorical data into a numerical count (2 DVDs).\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the observed ratio of DVDs to total patrons (2 out of 10) to estimate the number of DVDs checked out per 100 patrons by scaling the ratio proportionally (2/10 = x/100).\"\n    }\n  ],\n  \"why\": \"The student must first represent the data from the table numerically by counting the DVDs, which is a prerequisite for any further reasoning. Only after obtaining the numerical ratio (2/10) can the student abstract and generalize this relationship to a larger group, making this step logically follow the first.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7637,
+            "completion_tokens": 213
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\",\n      \"likely_errors\": \"A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\",\n      \"likely_errors\": \"A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\",\n      \"likely_errors\": \"A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\",\n      \"likely_errors\": \"A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA librarian is curious about the habits of the library's patrons. He records the type of item that the first 10 patrons check out from the library.\n[Table:\npatron | item type\n1 | fiction book\n2 | non-fiction book\n3 | fiction book\n4 | fiction book\n5 | audiobook\n6 | non-fiction book\n7 | DVD\n8 | non-fiction book\n9 | fiction book\n10 | DVD]\nBased on the information from these patrons, estimate the number of DVDs that will be checked out for every 100 patrons.\n____ DVDs\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\",\n      \"likely_errors\": \"A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\",\n      \"likely_errors\": \"A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing the observed ratio of DVDs (2 out of 10 patrons) to predict the number out of 100 patrons, as this requires recognizing and extending a proportional relationship. Errors here—such as adding 2 ten times instead of multiplying, or miscalculating 2 × 10—reflect a failure in abstracting the pattern and applying it to a larger context. While misreading the table (a Representing error) is possible, it is less likely to be the main cause of incorrect answers because the table is simple and the count of DVDs is straightforward. The procedural step (2 × 10) is basic and embedded, so procedural fluency is not the primary hurdle.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing the observed ratio of DVDs (2 out of 10 patrons) to predict the number out of 100 patrons, as this requires recognizing and extending a proportional relationship. Errors here—such as adding 2 ten times instead of multiplying, or miscalculating 2 × 10—reflect a failure in abstracting the pattern and applying it to a larger context. While misreading the table (a Representing error) is possible, it is less likely to be the main cause of incorrect answers because the table is simple and the count of DVDs is straightforward. The procedural step (2 × 10) is basic and embedded, so procedural fluency is not the primary hurdle.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8123,
+            "completion_tokens": 175
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.",
+              "likely_errors": "A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.",
+              "likely_errors": "A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of data to count how many of the 10 patrons checked out DVDs, translating the categorical data into a numerical count (2 DVDs)."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes the observed ratio of DVDs to total patrons (2 out of 10) to estimate the number of DVDs checked out per 100 patrons by scaling the ratio proportionally (2/10 = x/100)."
+            }
+          ],
+          "why": "The student must first represent the data from the table numerically by counting the DVDs, which is a prerequisite for any further reasoning. Only after obtaining the numerical ratio (2/10) can the student abstract and generalize this relationship to a larger group, making this step logically follow the first."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of generalizing the observed ratio of DVDs (2 out of 10 patrons) to predict the number out of 100 patrons, as this requires recognizing and extending a proportional relationship. Errors here—such as adding 2 ten times instead of multiplying, or miscalculating 2 × 10—reflect a failure in abstracting the pattern and applying it to a larger context. While misreading the table (a Representing error) is possible, it is less likely to be the main cause of incorrect answers because the table is simple and the count of DVDs is straightforward. The procedural step (2 × 10) is basic and embedded, so procedural fluency is not the primary hurdle."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.",
+            "likely_errors": "A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.",
+            "likely_errors": "A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.\",\n    \"likely_errors\": \"A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.\",\n    \"likely_errors\": \"A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of data to count how many of the 10 patrons checked out DVDs, translating the categorical data into a numerical count (2 DVDs).\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the observed ratio of DVDs to total patrons (2 out of 10) to estimate the number of DVDs checked out per 100 patrons by scaling the ratio proportionally (2/10 = x/100).\"\n    }\n  ],\n  \"why\": \"The student must first represent the data from the table numerically by counting the DVDs, which is a prerequisite for any further reasoning. Only after obtaining the numerical ratio (2/10) can the student abstract and generalize this relationship to a larger group, making this step logically follow the first.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing the observed ratio of DVDs (2 out of 10 patrons) to predict the number out of 100 patrons, as this requires recognizing and extending a proportional relationship. Errors here—such as adding 2 ten times instead of multiplying, or miscalculating 2 × 10—reflect a failure in abstracting the pattern and applying it to a larger context. While misreading the table (a Representing error) is possible, it is less likely to be the main cause of incorrect answers because the table is simple and the count of DVDs is straightforward. The procedural step (2 × 10) is basic and embedded, so procedural fluency is not the primary hurdle.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.",
+          "likely_errors": "A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.",
+          "likely_errors": "A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of data to count how many of the 10 patrons checked out DVDs, translating the categorical data into a numerical count (2 DVDs)."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes the observed ratio of DVDs to total patrons (2 out of 10) to estimate the number of DVDs checked out per 100 patrons by scaling the ratio proportionally (2/10 = x/100)."
+        }
+      ],
+      "why": "The student must first represent the data from the table numerically by counting the DVDs, which is a prerequisite for any further reasoning. Only after obtaining the numerical ratio (2/10) can the student abstract and generalize this relationship to a larger group, making this step logically follow the first."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of generalizing the observed ratio of DVDs (2 out of 10 patrons) to predict the number out of 100 patrons, as this requires recognizing and extending a proportional relationship. Errors here—such as adding 2 ten times instead of multiplying, or miscalculating 2 × 10—reflect a failure in abstracting the pattern and applying it to a larger context. While misreading the table (a Representing error) is possible, it is less likely to be the main cause of incorrect answers because the table is simple and the count of DVDs is straightforward. The procedural step (2 × 10) is basic and embedded, so procedural fluency is not the primary hurdle."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given table of data, which represents the item types checked out by 10 patrons, and translate this categorical data into a numerical form—specifically, counting how many patrons checked out DVDs. This involves recognizing and using a tabular representation to extract relevant information, which aligns with the practice of representing data sets visually and numerically.",
+          "likely_errors": "A student might miscount the number of DVDs (e.g., misreading the table and counting 1 instead of 2) or confuse DVD with another item type. This error is moderately likely, especially if the student rushes or misreads the table."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "After determining that 2 out of 10 patrons checked out DVDs, the student must generalize this ratio (2/10) to estimate the number of DVDs out of 100 patrons by scaling up the proportion (e.g., multiplying by 10). This involves recognizing a pattern (proportional relationship) and extending it to a larger group, which is a core aspect of abstracting and generalizing across cases.",
+          "likely_errors": "A student might incorrectly scale the ratio (e.g., adding 2 ten times instead of multiplying 2 by 10) or make a calculation error (e.g., 2 × 10 = 20, but writing 10). This is moderately likely, particularly if the student lacks confidence in proportional reasoning."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with logical reasoning. The task is estimation based on data, not argumentation or validation of a conjecture."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world data, the task does not require the student to identify a problem, create a model, or assess the model’s reasonableness in a broader scenario. The model (proportional scaling) is implied and straightforward, so the full process of mathematizing a situation is not required."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, and there is no interaction with another person’s reasoning, argument, or contribution. The item does not present a peer’s work to evaluate or build upon, so collaborative aspects are absent."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "Although basic computation (2 × 10 = 20) is involved, the item does not require the student to demonstrate fluency in a complex procedure such as long division, multi-step operations, or algorithmic accuracy. The arithmetic is simple and embedded within a larger reasoning task, so procedural fluency is not the primary focus."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

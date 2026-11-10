@@ -1,0 +1,370 @@
+{
+  "row": 649,
+  "problem_id": "154066",
+  "problem_text": "Some information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\",\n    \"likely_errors\": \"A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\",\n    \"likely_errors\": \"Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\",\n    \"likely_errors\": \"A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\",\n    \"likely_errors\": \"Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7447,
+            "completion_tokens": 703
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\n- Procedural Fluency: After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\n- Procedural Fluency: After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\n- Procedural Fluency: After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given information about each sphere—such as diameter, radius, and volume—and translates it into mathematical forms, like determining the radius of Sphere B from its diameter of 6, calculating the radius of Sphere D as double that of Sphere B, and recognizing Sphere C’s volume as 64π for comparison.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies the volume formula V = (4/3)πr³ to compute the volume of each sphere with known radius (A, B, and D), performs the arithmetic accurately, and compares the results to Sphere C’s given volume of 64π to determine the correct order from least to greatest volume.\"\n    }\n  ],\n  \"why\": \"The student must first represent the spheres mathematically by extracting and converting the given information (e.g., diameter to radius, doubling a radius) before any computation can occur. Only after all spheres are represented with consistent mathematical values—radii or volumes—can the student proceed to compute and compare their volumes using procedural fluency. Thus, representing comes before procedural fluency in the sequence of steps.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given information about each sphere—such as diameter, radius, and volume—and translates it into mathematical forms, like determining the radius of Sphere B from its diameter of 6, calculating the radius of Sphere D as double that of Sphere B, and recognizing Sphere C’s volume as 64π for comparison.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies the volume formula V = (4/3)πr³ to compute the volume of each sphere with known radius (A, B, and D), performs the arithmetic accurately, and compares the results to Sphere C’s given volume of 64π to determine the correct order from least to greatest volume.\"\n    }\n  ],\n  \"why\": \"The student must first represent the spheres mathematically by extracting and converting the given information (e.g., diameter to radius, doubling a radius) before any computation can occur. Only after all spheres are represented with consistent mathematical values—radii or volumes—can the student proceed to compute and compare their volumes using procedural fluency. Thus, representing comes before procedural fluency in the sequence of steps.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7642,
+            "completion_tokens": 278
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\",\n      \"likely_errors\": \"A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\",\n      \"likely_errors\": \"Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\",\n      \"likely_errors\": \"A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\",\n      \"likely_errors\": \"Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nSome information is given about each sphere. Order them from least volume to greatest volume. You may sketch a sphere to help you visualize if you prefer.\n\nItems to put in order:\n- Sphere B has a diameter of 6.\n- Sphere D has a radius double that of sphere B.\n- Sphere C has a volume of 64π.\n- Sphere A has a radius of 4.\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\",\n      \"likely_errors\": \"A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\",\n      \"likely_errors\": \"Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural step of computing the volume of each sphere using the formula V = (4/3)πr³, particularly when cubing the radius or multiplying by 4/3 and π. Errors in exponentiation (e.g., 4³ = 12 instead of 64) or misapplying the formula are common and directly lead to incorrect volume comparisons. While Representing is important for correctly interpreting diameters and radii, the errors here are more straightforward and less likely to cause a wrong answer than the complex arithmetic involved in volume computation. The item does not require justification, generalization, modeling, or collaboration, so those practices are not the source of the primary difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural step of computing the volume of each sphere using the formula V = (4/3)πr³, particularly when cubing the radius or multiplying by 4/3 and π. Errors in exponentiation (e.g., 4³ = 12 instead of 64) or misapplying the formula are common and directly lead to incorrect volume comparisons. While Representing is important for correctly interpreting diameters and radii, the errors here are more straightforward and less likely to cause a wrong answer than the complex arithmetic involved in volume computation. The item does not require justification, generalization, modeling, or collaboration, so those practices are not the source of the primary difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8124,
+            "completion_tokens": 169
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.",
+              "likely_errors": "A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.",
+              "likely_errors": "Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the given information about each sphere—such as diameter, radius, and volume—and translates it into mathematical forms, like determining the radius of Sphere B from its diameter of 6, calculating the radius of Sphere D as double that of Sphere B, and recognizing Sphere C’s volume as 64π for comparison."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student applies the volume formula V = (4/3)πr³ to compute the volume of each sphere with known radius (A, B, and D), performs the arithmetic accurately, and compares the results to Sphere C’s given volume of 64π to determine the correct order from least to greatest volume."
+            }
+          ],
+          "why": "The student must first represent the spheres mathematically by extracting and converting the given information (e.g., diameter to radius, doubling a radius) before any computation can occur. Only after all spheres are represented with consistent mathematical values—radii or volumes—can the student proceed to compute and compare their volumes using procedural fluency. Thus, representing comes before procedural fluency in the sequence of steps."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong during the procedural step of computing the volume of each sphere using the formula V = (4/3)πr³, particularly when cubing the radius or multiplying by 4/3 and π. Errors in exponentiation (e.g., 4³ = 12 instead of 64) or misapplying the formula are common and directly lead to incorrect volume comparisons. While Representing is important for correctly interpreting diameters and radii, the errors here are more straightforward and less likely to cause a wrong answer than the complex arithmetic involved in volume computation. The item does not require justification, generalization, modeling, or collaboration, so those practices are not the source of the primary difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.",
+            "likely_errors": "A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.",
+            "likely_errors": "Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.\",\n    \"likely_errors\": \"A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.\",\n    \"likely_errors\": \"Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the given information about each sphere—such as diameter, radius, and volume—and translates it into mathematical forms, like determining the radius of Sphere B from its diameter of 6, calculating the radius of Sphere D as double that of Sphere B, and recognizing Sphere C’s volume as 64π for comparison.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student applies the volume formula V = (4/3)πr³ to compute the volume of each sphere with known radius (A, B, and D), performs the arithmetic accurately, and compares the results to Sphere C’s given volume of 64π to determine the correct order from least to greatest volume.\"\n    }\n  ],\n  \"why\": \"The student must first represent the spheres mathematically by extracting and converting the given information (e.g., diameter to radius, doubling a radius) before any computation can occur. Only after all spheres are represented with consistent mathematical values—radii or volumes—can the student proceed to compute and compare their volumes using procedural fluency. Thus, representing comes before procedural fluency in the sequence of steps.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural step of computing the volume of each sphere using the formula V = (4/3)πr³, particularly when cubing the radius or multiplying by 4/3 and π. Errors in exponentiation (e.g., 4³ = 12 instead of 64) or misapplying the formula are common and directly lead to incorrect volume comparisons. While Representing is important for correctly interpreting diameters and radii, the errors here are more straightforward and less likely to cause a wrong answer than the complex arithmetic involved in volume computation. The item does not require justification, generalization, modeling, or collaboration, so those practices are not the source of the primary difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.",
+          "likely_errors": "A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.",
+          "likely_errors": "Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the given information about each sphere—such as diameter, radius, and volume—and translates it into mathematical forms, like determining the radius of Sphere B from its diameter of 6, calculating the radius of Sphere D as double that of Sphere B, and recognizing Sphere C’s volume as 64π for comparison."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student applies the volume formula V = (4/3)πr³ to compute the volume of each sphere with known radius (A, B, and D), performs the arithmetic accurately, and compares the results to Sphere C’s given volume of 64π to determine the correct order from least to greatest volume."
+        }
+      ],
+      "why": "The student must first represent the spheres mathematically by extracting and converting the given information (e.g., diameter to radius, doubling a radius) before any computation can occur. Only after all spheres are represented with consistent mathematical values—radii or volumes—can the student proceed to compute and compare their volumes using procedural fluency. Thus, representing comes before procedural fluency in the sequence of steps."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong during the procedural step of computing the volume of each sphere using the formula V = (4/3)πr³, particularly when cubing the radius or multiplying by 4/3 and π. Errors in exponentiation (e.g., 4³ = 12 instead of 64) or misapplying the formula are common and directly lead to incorrect volume comparisons. While Representing is important for correctly interpreting diameters and radii, the errors here are more straightforward and less likely to cause a wrong answer than the complex arithmetic involved in volume computation. The item does not require justification, generalization, modeling, or collaboration, so those practices are not the source of the primary difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given information about each sphere—diameters, radii, and volume—and translate it into mathematical forms such as radius values or volume expressions. For example, they must recognize that Sphere B’s diameter of 6 means its radius is 3, and that Sphere D’s radius is double that of Sphere B (so 6). They also need to interpret Sphere C’s volume of 64π as a given value to compare. This involves translating verbal and numerical descriptions into mathematical representations appropriate for volume comparison.",
+          "likely_errors": "A student might incorrectly interpret diameter as radius (e.g., using 6 as the radius for Sphere B), or misread 'radius double that of sphere B' as 'diameter double', leading to an incorrect radius of 12 instead of 6. This is moderately likely for students still developing proportional reasoning."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the spheres with their radii and volumes, the student must compute the volume of each sphere using the formula V = (4/3)πr³. They need to apply this formula accurately for Sphere A (radius 4), Sphere B (radius 3), and Sphere D (radius 6), and compare those computed volumes to Sphere C’s given volume of 64π. The student must also perform the arithmetic correctly and efficiently, including exponentiation and multiplication by fractions.",
+          "likely_errors": "Students may make calculation errors in cubing the radius (e.g., 4³ = 12 instead of 64), or incorrectly multiply by 4/3 and π. Errors in order of operations or misapplying the formula are common, especially with fractions and π, so this step is moderately to highly likely to contain errors."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases or extending a general rule beyond the given examples. The student is only comparing four specific spheres using known formulas and values, not generalizing a relationship or pattern to a broader domain."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The task is to order the spheres by volume, not to defend or evaluate a mathematical claim, provide a proof, or justify a conclusion with reasoning. There is no assertion to evaluate or a conjecture to prove, so justification is not required."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item presents a straightforward comparison of given geometric attributes without requiring the student to identify a real-world problem, mathematize a scenario, or validate a solution in context. The situation is purely mathematical and does not involve modeling a real-world situation with assumptions or checks for reasonableness."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no mention of another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s reasoning, so collaboration is not involved."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

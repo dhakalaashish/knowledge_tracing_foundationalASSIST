@@ -1,0 +1,389 @@
+{
+  "row": 1679,
+  "problem_id": "104742",
+  "problem_text": "In a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months",
+          "started_at": "2026-11-10T21:43:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\",\n    \"likely_errors\": \"A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\",\n    \"likely_errors\": \"A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\",\n    \"likely_errors\": \"A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\",\n    \"likely_errors\": \"A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\",\n    \"likely_errors\": \"A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\",\n    \"likely_errors\": \"A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7415,
+            "completion_tokens": 863
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:48:08+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\n- Abstracting and Generalizing: The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\n- Procedural Fluency: After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:04:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\n- Abstracting and Generalizing: The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\n- Procedural Fluency: After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\n- Abstracting and Generalizing: The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\n- Procedural Fluency: After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem and translates the given information—nine babies at five months and twelve at seven months—into a numerical representation of the total current age and the number of babies, creating a mathematical model using numbers and operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes that each month, every baby ages by one month, so the total age increases by 21 months per month, and thus the average age increases by 1 month per month, enabling them to model the average age as increasing linearly.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the current total age (9 × 5 + 12 × 7 = 129 months), calculates the current average age (129 ÷ 21 ≈ 6.14 months), and solves the inequality (129 + 21x) ÷ 21 > 20 to find the smallest integer x for which the average surpasses 20 months.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically to make sense of the problem, then abstract the pattern of average age increase over time to reason about the future state, and finally apply procedural skills to compute the necessary values and solve the inequality. This sequence reflects the logical progression from understanding the problem to modeling it and then performing the required calculations.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem and translates the given information—nine babies at five months and twelve at seven months—into a numerical representation of the total current age and the number of babies, creating a mathematical model using numbers and operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes that each month, every baby ages by one month, so the total age increases by 21 months per month, and thus the average age increases by 1 month per month, enabling them to model the average age as increasing linearly.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the current total age (9 × 5 + 12 × 7 = 129 months), calculates the current average age (129 ÷ 21 ≈ 6.14 months), and solves the inequality (129 + 21x) ÷ 21 > 20 to find the smallest integer x for which the average surpasses 20 months.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically to make sense of the problem, then abstract the pattern of average age increase over time to reason about the future state, and finally apply procedural skills to compute the necessary values and solve the inequality. This sequence reflects the logical progression from understanding the problem to modeling it and then performing the required calculations.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7685,
+            "completion_tokens": 352
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:06:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\",\n      \"likely_errors\": \"A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\",\n      \"likely_errors\": \"A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\",\n      \"likely_errors\": \"A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:19:00+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\",\n      \"likely_errors\": \"A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\",\n      \"likely_errors\": \"A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\",\n      \"likely_errors\": \"A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nIn a day care group, nine babies are five months old and 12 babies are seven months old. How many full months from now will the average age of the 21 babies first surpass 20 months old?\n____ months\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\",\n      \"likely_errors\": \"A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\",\n      \"likely_errors\": \"A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\",\n      \"likely_errors\": \"A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the average age increases by exactly 1 month per month, which requires abstracting the pattern that each baby ages by 1 month, so the total age increases by 21 months, and thus the average increases by 1 month per month. This insight is essential to avoid inefficient or incorrect iterative calculations. While Representing and Procedural Fluency involve critical steps, errors in those areas (like miscomputing total age or solving the inequality) are more likely to be caught through checking, whereas failing to generalize this linear increase leads to a fundamental misunderstanding of the problem's structure, making it the core difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the average age increases by exactly 1 month per month, which requires abstracting the pattern that each baby ages by 1 month, so the total age increases by 21 months, and thus the average increases by 1 month per month. This insight is essential to avoid inefficient or incorrect iterative calculations. While Representing and Procedural Fluency involve critical steps, errors in those areas (like miscomputing total age or solving the inequality) are more likely to be caught through checking, whereas failing to generalize this linear increase leads to a fundamental misunderstanding of the problem's structure, making it the core difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8253,
+            "completion_tokens": 157
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:22:30+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.",
+              "likely_errors": "A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.",
+              "likely_errors": "A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure."
+            },
+            {
+              "order": 3,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.",
+              "likely_errors": "A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the word problem and translates the given information—nine babies at five months and twelve at seven months—into a numerical representation of the total current age and the number of babies, creating a mathematical model using numbers and operations."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes that each month, every baby ages by one month, so the total age increases by 21 months per month, and thus the average age increases by 1 month per month, enabling them to model the average age as increasing linearly."
+            },
+            {
+              "order": 3,
+              "practice": "Procedural Fluency",
+              "step": "The student computes the current total age (9 × 5 + 12 × 7 = 129 months), calculates the current average age (129 ÷ 21 ≈ 6.14 months), and solves the inequality (129 + 21x) ÷ 21 > 20 to find the smallest integer x for which the average surpasses 20 months."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically to make sense of the problem, then abstract the pattern of average age increase over time to reason about the future state, and finally apply procedural skills to compute the necessary values and solve the inequality. This sequence reflects the logical progression from understanding the problem to modeling it and then performing the required calculations."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of recognizing that the average age increases by exactly 1 month per month, which requires abstracting the pattern that each baby ages by 1 month, so the total age increases by 21 months, and thus the average increases by 1 month per month. This insight is essential to avoid inefficient or incorrect iterative calculations. While Representing and Procedural Fluency involve critical steps, errors in those areas (like miscomputing total age or solving the inequality) are more likely to be caught through checking, whereas failing to generalize this linear increase leads to a fundamental misunderstanding of the problem's structure, making it the core difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.",
+            "likely_errors": "A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.",
+            "likely_errors": "A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood."
+          },
+          {
+            "order": 3,
+            "practice": "Procedural Fluency",
+            "why": "After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.",
+            "likely_errors": "A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.\",\n    \"likely_errors\": \"A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.\",\n    \"likely_errors\": \"A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.\",\n    \"likely_errors\": \"A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the word problem and translates the given information—nine babies at five months and twelve at seven months—into a numerical representation of the total current age and the number of babies, creating a mathematical model using numbers and operations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes that each month, every baby ages by one month, so the total age increases by 21 months per month, and thus the average age increases by 1 month per month, enabling them to model the average age as increasing linearly.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student computes the current total age (9 × 5 + 12 × 7 = 129 months), calculates the current average age (129 ÷ 21 ≈ 6.14 months), and solves the inequality (129 + 21x) ÷ 21 > 20 to find the smallest integer x for which the average surpasses 20 months.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically to make sense of the problem, then abstract the pattern of average age increase over time to reason about the future state, and finally apply procedural skills to compute the necessary values and solve the inequality. This sequence reflects the logical progression from understanding the problem to modeling it and then performing the required calculations.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of recognizing that the average age increases by exactly 1 month per month, which requires abstracting the pattern that each baby ages by 1 month, so the total age increases by 21 months, and thus the average increases by 1 month per month. This insight is essential to avoid inefficient or incorrect iterative calculations. While Representing and Procedural Fluency involve critical steps, errors in those areas (like miscomputing total age or solving the inequality) are more likely to be caught through checking, whereas failing to generalize this linear increase leads to a fundamental misunderstanding of the problem's structure, making it the core difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.",
+          "likely_errors": "A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.",
+          "likely_errors": "A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure."
+        },
+        {
+          "order": 3,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.",
+          "likely_errors": "A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the word problem and translates the given information—nine babies at five months and twelve at seven months—into a numerical representation of the total current age and the number of babies, creating a mathematical model using numbers and operations."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes that each month, every baby ages by one month, so the total age increases by 21 months per month, and thus the average age increases by 1 month per month, enabling them to model the average age as increasing linearly."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "step": "The student computes the current total age (9 × 5 + 12 × 7 = 129 months), calculates the current average age (129 ÷ 21 ≈ 6.14 months), and solves the inequality (129 + 21x) ÷ 21 > 20 to find the smallest integer x for which the average surpasses 20 months."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically to make sense of the problem, then abstract the pattern of average age increase over time to reason about the future state, and finally apply procedural skills to compute the necessary values and solve the inequality. This sequence reflects the logical progression from understanding the problem to modeling it and then performing the required calculations."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of recognizing that the average age increases by exactly 1 month per month, which requires abstracting the pattern that each baby ages by 1 month, so the total age increases by 21 months, and thus the average increases by 1 month per month. This insight is essential to avoid inefficient or incorrect iterative calculations. While Representing and Procedural Fluency involve critical steps, errors in those areas (like miscomputing total age or solving the inequality) are more likely to be caught through checking, whereas failing to generalize this linear increase leads to a fundamental misunderstanding of the problem's structure, making it the core difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the word problem and translate the given information—nine babies at five months and twelve at seven months—into a numerical representation of total current age and the number of babies. This involves creating a mathematical model of the situation using numbers and operations, which aligns with the practice of representing quantities and relationships in a problem context.",
+          "likely_errors": "A student might incorrectly add the number of babies (9 + 12 = 21) but misrepresent the total age by adding 5 + 7 instead of multiplying each age by the number of babies, leading to a total age of 120 months instead of 123. This is a common error due to misapplying multiplication in a composite situation."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the pattern that each month, every baby ages by one month, so the total age increases by 21 months per month. This allows them to model the average age increasing linearly by 1 month per month (since 21 ÷ 21 = 1), enabling them to reason that the average age increases by 1 month each month and thus determine when it surpasses 20 months from the current average.",
+          "likely_errors": "A student might not recognize that the average increases by exactly 1 month per month, instead trying to recalculate the average each month. This could lead to inefficiency or error in tracking the progression. This step requires abstract thinking beyond computation, so it is moderately likely to be misunderstood."
+        },
+        {
+          "order": 3,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation, the student must compute the current total age (9 × 5 + 12 × 7 = 45 + 84 = 129 months), then determine the average age (129 ÷ 21 ≈ 6.14 months). The student then sets up and solves the equation (129 + 21x) ÷ 21 > 20 to find the smallest integer x such that the average exceeds 20 months, requiring accurate arithmetic and algebraic manipulation.",
+          "likely_errors": "A student might make a computational error in multiplying 9 × 5 or 12 × 7, or incorrectly divide 129 by 21. They may also fail to solve the inequality correctly, such as by not multiplying both sides by 21 or misinterpreting the inequality direction. These are common procedural errors, especially under time pressure."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to construct a formal argument, defend a claim, or provide a proof. The solution involves computation and reasoning, but there is no need to justify why the average increases by exactly 1 month per month in a formal or deductive way. The task is to solve, not to prove or refute a mathematical claim."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "Although the problem is contextual, it does not require the student to identify a problem, choose a model, or evaluate the reasonableness of a model in a real-world sense. The model (average age increasing linearly) is straightforward and directly implied by the situation. The student is not asked to assess the model’s fit, revise it, or consider real-world constraints like varying birth rates or care schedules."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no mention of another student’s thinking, strategy, or response. There is no dialogue, shared work, or peer contribution to evaluate or build upon. The student works independently to solve the problem, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

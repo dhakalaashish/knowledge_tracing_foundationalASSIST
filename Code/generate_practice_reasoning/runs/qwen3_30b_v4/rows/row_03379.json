@@ -1,0 +1,370 @@
+{
+  "row": 3379,
+  "problem_id": "40142",
+  "problem_text": "Identify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4",
+          "started_at": "2026-11-10T21:56:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\",\n    \"likely_errors\": \"A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\",\n    \"likely_errors\": \"A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\",\n    \"likely_errors\": \"A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\",\n    \"likely_errors\": \"A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7492,
+            "completion_tokens": 935
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:59:10+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\n- Justifying and Proving: The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:10:52+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\n- Justifying and Proving: The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\n- Justifying and Proving: The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the original expression and each line of the work, translating the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing how the distributive property is applied in each step.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates the correctness of each line by checking the application of the distributive property and the simplification of like terms, ultimately identifying that Line 4 is incorrect because it omits the 4x term when combining like terms.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression and the steps mathematically to understand what is happening in each line, which is necessary before they can evaluate the validity of each step. Only after representing the work in a comprehensible form can the student justify and prove which line contains the error by analyzing the logic and correctness of the algebraic manipulations.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the original expression and each line of the work, translating the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing how the distributive property is applied in each step.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates the correctness of each line by checking the application of the distributive property and the simplification of like terms, ultimately identifying that Line 4 is incorrect because it omits the 4x term when combining like terms.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression and the steps mathematically to understand what is happening in each line, which is necessary before they can evaluate the validity of each step. Only after representing the work in a comprehensible form can the student justify and prove which line contains the error by analyzing the logic and correctness of the algebraic manipulations.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7898,
+            "completion_tokens": 225
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:11:55+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\",\n      \"likely_errors\": \"A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\",\n      \"likely_errors\": \"A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:27:28+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\",\n      \"likely_errors\": \"A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\",\n      \"likely_errors\": \"A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nIdentify the error in generating an expression equivalent to 4 + 2x − 1/2(10 − 4x).\nLine 1: 4 + 2x + (‐1)/2(10 + ‐4x) Line 2: 4 + 2x + ‐5 + 2x Line 3: 4 + 2x ‐ 5 + 2x Line 4: ‐ 1\nWhich line contains the error?\n\nAnswer choices:\nA. Line 1 || Line 2 || Line 3 || Line 4\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\",\n      \"likely_errors\": \"A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\",\n      \"likely_errors\": \"A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"The student must evaluate the validity of each algebraic step, particularly in Line 4, where the expression is incorrectly simplified to −1 instead of −1 + 4x. This requires justifying why the final simplification is wrong by checking the combination of like terms, which is a core aspect of Justifying and Proving. While Representing is involved in interpreting the expression and distributive property, the error in Line 4 is subtle and requires careful logical evaluation rather than mere translation. Procedural Fluency is not the focus because the student isn’t performing the steps but analyzing them, and the other practices are not engaged at all. Thus, the difficulty lies in justifying the correctness of the reasoning, making Justifying and Proving the top practice.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"The student must evaluate the validity of each algebraic step, particularly in Line 4, where the expression is incorrectly simplified to −1 instead of −1 + 4x. This requires justifying why the final simplification is wrong by checking the combination of like terms, which is a core aspect of Justifying and Proving. While Representing is involved in interpreting the expression and distributive property, the error in Line 4 is subtle and requires careful logical evaluation rather than mere translation. Procedural Fluency is not the focus because the student isn’t performing the steps but analyzing them, and the other practices are not engaged at all. Thus, the difficulty lies in justifying the correctness of the reasoning, making Justifying and Proving the top practice.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8402,
+            "completion_tokens": 173
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:28:49+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.",
+              "likely_errors": "A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "why": "The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.",
+              "likely_errors": "A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the original expression and each line of the work, translating the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing how the distributive property is applied in each step."
+            },
+            {
+              "order": 2,
+              "practice": "Justifying and Proving",
+              "step": "The student evaluates the correctness of each line by checking the application of the distributive property and the simplification of like terms, ultimately identifying that Line 4 is incorrect because it omits the 4x term when combining like terms."
+            }
+          ],
+          "why": "The student must first represent the expression and the steps mathematically to understand what is happening in each line, which is necessary before they can evaluate the validity of each step. Only after representing the work in a comprehensible form can the student justify and prove which line contains the error by analyzing the logic and correctness of the algebraic manipulations."
+        },
+        {
+          "top_practice": "Justifying and Proving",
+          "why": "The student must evaluate the validity of each algebraic step, particularly in Line 4, where the expression is incorrectly simplified to −1 instead of −1 + 4x. This requires justifying why the final simplification is wrong by checking the combination of like terms, which is a core aspect of Justifying and Proving. While Representing is involved in interpreting the expression and distributive property, the error in Line 4 is subtle and requires careful logical evaluation rather than mere translation. Procedural Fluency is not the focus because the student isn’t performing the steps but analyzing them, and the other practices are not engaged at all. Thus, the difficulty lies in justifying the correctness of the reasoning, making Justifying and Proving the top practice."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.",
+            "likely_errors": "A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution."
+          },
+          {
+            "order": 2,
+            "practice": "Justifying and Proving",
+            "why": "The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.",
+            "likely_errors": "A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.\",\n    \"likely_errors\": \"A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.\",\n    \"likely_errors\": \"A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the original expression and each line of the work, translating the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing how the distributive property is applied in each step.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student evaluates the correctness of each line by checking the application of the distributive property and the simplification of like terms, ultimately identifying that Line 4 is incorrect because it omits the 4x term when combining like terms.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression and the steps mathematically to understand what is happening in each line, which is necessary before they can evaluate the validity of each step. Only after representing the work in a comprehensible form can the student justify and prove which line contains the error by analyzing the logic and correctness of the algebraic manipulations.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Justifying and Proving\",\n\"why\": \"The student must evaluate the validity of each algebraic step, particularly in Line 4, where the expression is incorrectly simplified to −1 instead of −1 + 4x. This requires justifying why the final simplification is wrong by checking the combination of like terms, which is a core aspect of Justifying and Proving. While Representing is involved in interpreting the expression and distributive property, the error in Line 4 is subtle and requires careful logical evaluation rather than mere translation. Procedural Fluency is not the focus because the student isn’t performing the steps but analyzing them, and the other practices are not engaged at all. Thus, the difficulty lies in justifying the correctness of the reasoning, making Justifying and Proving the top practice.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.",
+          "likely_errors": "A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.",
+          "likely_errors": "A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the original expression and each line of the work, translating the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing how the distributive property is applied in each step."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "step": "The student evaluates the correctness of each line by checking the application of the distributive property and the simplification of like terms, ultimately identifying that Line 4 is incorrect because it omits the 4x term when combining like terms."
+        }
+      ],
+      "why": "The student must first represent the expression and the steps mathematically to understand what is happening in each line, which is necessary before they can evaluate the validity of each step. Only after representing the work in a comprehensible form can the student justify and prove which line contains the error by analyzing the logic and correctness of the algebraic manipulations."
+    },
+    "answer3_json": {
+      "top_practice": "Justifying and Proving",
+      "why": "The student must evaluate the validity of each algebraic step, particularly in Line 4, where the expression is incorrectly simplified to −1 instead of −1 + 4x. This requires justifying why the final simplification is wrong by checking the combination of like terms, which is a core aspect of Justifying and Proving. While Representing is involved in interpreting the expression and distributive property, the error in Line 4 is subtle and requires careful logical evaluation rather than mere translation. Procedural Fluency is not the focus because the student isn’t performing the steps but analyzing them, and the other practices are not engaged at all. Thus, the difficulty lies in justifying the correctness of the reasoning, making Justifying and Proving the top practice."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the original expression and the steps in the work to recognize how the distributive property is being applied. They need to translate the written expression and the algebraic manipulations into a mathematical form that can be analyzed, such as recognizing that −1/2(10 − 4x) is being rewritten as (−1)/2(10 + (−4x)) in Line 1, which is a correct translation using the definition of subtraction and negative fractions.",
+          "likely_errors": "A student might misinterpret the negative sign in front of the fraction, incorrectly distributing −1/2 as −(1/2)(10) − (1/2)(−4x), or fail to recognize that subtraction is equivalent to adding the negative. This is moderately likely, especially for students still developing fluency with signed numbers and fraction distribution."
+        },
+        {
+          "order": 2,
+          "practice": "Justifying and Proving",
+          "why": "The student must evaluate the correctness of each step in the algebraic work, particularly the application of the distributive property. They must justify why Line 2 is correct or incorrect by checking whether −1/2(10 − 4x) becomes −5 + 2x. The error occurs in Line 2: the student incorrectly distributes −1/2 to −4x as +2x, but the correct result is +2x (since −1/2 × −4x = +2x), so that part is actually correct. However, the error is in Line 2’s rewriting of the expression: −1/2(10 − 4x) should become −5 + 2x, which is correct, but the student wrote it as −5 + 2x, which matches. Wait—this suggests no error? But Line 4 says the result is −1, which is wrong. The actual error is in Line 3: the student writes 4 + 2x − 5 + 2x, which is correct, but then in Line 4 they incorrectly simplify to −1. The correct simplification is (4 − 5) + (2x + 2x) = −1 + 4x. So the error is in Line 4: they omitted the 4x term. The student must justify that Line 4 is incorrect because it fails to combine like terms properly. This requires evaluating the logic and validity of each step, which is central to Justifying and Proving.",
+          "likely_errors": "A student might incorrectly identify Line 2 as the error because they misapply the distributive property (e.g., thinking −1/2 × −4x = −2x), or they might miss that Line 4 omits the variable term. This is moderately likely, especially if students rush through simplification and don’t check their work carefully."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases, extending a rule, or generalizing a property beyond this specific expression. The task is focused on evaluating a single, concrete algebraic simplification, not on finding a broader rule or pattern."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world context, scenario, or situation to model. The task is purely symbolic manipulation and error detection in algebra, not about creating or using a model to represent or solve a practical problem."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a single student’s work and asks the student to identify the error independently. There is no interaction with another person’s reasoning, no discussion, no joint problem solving, and no need to respond to or build on another’s claim or strategy."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the item involves algebraic procedures, the focus is not on executing a procedure efficiently or accurately, but on analyzing and evaluating the correctness of a given sequence of steps. The student is not asked to perform the simplification themselves, but to detect where a mistake occurred in someone else’s work, which is a different cognitive demand than fluently carrying out the steps."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Justifying and Proving"
+  }
+}

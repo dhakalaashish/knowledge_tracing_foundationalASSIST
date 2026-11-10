@@ -1,0 +1,370 @@
+{
+  "row": 625,
+  "problem_id": "506119",
+  "problem_text": "A new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\",\n    \"likely_errors\": \"A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\",\n    \"likely_errors\": \"A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\",\n    \"likely_errors\": \"A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\",\n    \"likely_errors\": \"A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7420,
+            "completion_tokens": 704
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\n- Procedural Fluency: The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\n- Procedural Fluency: The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\n- Procedural Fluency: The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem into a mathematical representation by identifying the original price, discount rate, tax rate, and the sequence of operations, creating expressions such as 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations accurately and efficiently: computing 40% of $450, subtracting the discount from the original price, calculating 8% of the discounted price as tax, and adding the tax to the discounted price to find the final cost.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world scenario mathematically by identifying and modeling the relationships and operations involved before performing any calculations. Only after constructing this mathematical model can the student apply procedural fluency to compute the final cost accurately and efficiently.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem into a mathematical representation by identifying the original price, discount rate, tax rate, and the sequence of operations, creating expressions such as 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations accurately and efficiently: computing 40% of $450, subtracting the discount from the original price, calculating 8% of the discounted price as tax, and adding the tax to the discounted price to find the final cost.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world scenario mathematically by identifying and modeling the relationships and operations involved before performing any calculations. Only after constructing this mathematical model can the student apply procedural fluency to compute the final cost accurately and efficiently.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7618,
+            "completion_tokens": 238
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\",\n      \"likely_errors\": \"A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\",\n      \"likely_errors\": \"A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\",\n      \"likely_errors\": \"A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\",\n      \"likely_errors\": \"A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nA new phone costs $450. There is a 40% discount on the price of the phone and an 8% sales tax on the discount price. What is the final cost of the phone after the discount and the sales tax?\n$ ____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\",\n      \"likely_errors\": \"A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\",\n      \"likely_errors\": \"A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the calculation steps—particularly in accurately computing percentages and applying them in the correct order (discount first, then tax). Common errors include miscomputing 40% of 450, incorrectly applying tax to the original price instead of the discounted price, or mishandling decimal places in multiplication. While representing the problem correctly is important, the core difficulty lies in executing the arithmetic accurately and efficiently. The representing step is more about setting up the problem correctly, which is relatively straightforward given the clear sequence in the scenario. Thus, procedural fluency, which demands precise and correct execution of multi-step calculations, is the primary source of error.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the calculation steps—particularly in accurately computing percentages and applying them in the correct order (discount first, then tax). Common errors include miscomputing 40% of 450, incorrectly applying tax to the original price instead of the discounted price, or mishandling decimal places in multiplication. While representing the problem correctly is important, the core difficulty lies in executing the arithmetic accurately and efficiently. The representing step is more about setting up the problem correctly, which is relatively straightforward given the clear sequence in the scenario. Thus, procedural fluency, which demands precise and correct execution of multi-step calculations, is the primary source of error.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8099,
+            "completion_tokens": 157
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Procedural Fluency",
+              "why": "The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.",
+              "likely_errors": "A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations."
+            },
+            {
+              "order": 2,
+              "practice": "Representing",
+              "why": "The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.",
+              "likely_errors": "A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student translates the word problem into a mathematical representation by identifying the original price, discount rate, tax rate, and the sequence of operations, creating expressions such as 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the necessary calculations accurately and efficiently: computing 40% of $450, subtracting the discount from the original price, calculating 8% of the discounted price as tax, and adding the tax to the discounted price to find the final cost."
+            }
+          ],
+          "why": "The student must first represent the real-world scenario mathematically by identifying and modeling the relationships and operations involved before performing any calculations. Only after constructing this mathematical model can the student apply procedural fluency to compute the final cost accurately and efficiently."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong during the calculation steps—particularly in accurately computing percentages and applying them in the correct order (discount first, then tax). Common errors include miscomputing 40% of 450, incorrectly applying tax to the original price instead of the discounted price, or mishandling decimal places in multiplication. While representing the problem correctly is important, the core difficulty lies in executing the arithmetic accurately and efficiently. The representing step is more about setting up the problem correctly, which is relatively straightforward given the clear sequence in the scenario. Thus, procedural fluency, which demands precise and correct execution of multi-step calculations, is the primary source of error."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.",
+            "likely_errors": "A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.",
+            "likely_errors": "A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.\",\n    \"likely_errors\": \"A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.\",\n    \"likely_errors\": \"A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student translates the word problem into a mathematical representation by identifying the original price, discount rate, tax rate, and the sequence of operations, creating expressions such as 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the necessary calculations accurately and efficiently: computing 40% of $450, subtracting the discount from the original price, calculating 8% of the discounted price as tax, and adding the tax to the discounted price to find the final cost.\"\n    }\n  ],\n  \"why\": \"The student must first represent the real-world scenario mathematically by identifying and modeling the relationships and operations involved before performing any calculations. Only after constructing this mathematical model can the student apply procedural fluency to compute the final cost accurately and efficiently.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the calculation steps—particularly in accurately computing percentages and applying them in the correct order (discount first, then tax). Common errors include miscomputing 40% of 450, incorrectly applying tax to the original price instead of the discounted price, or mishandling decimal places in multiplication. While representing the problem correctly is important, the core difficulty lies in executing the arithmetic accurately and efficiently. The representing step is more about setting up the problem correctly, which is relatively straightforward given the clear sequence in the scenario. Thus, procedural fluency, which demands precise and correct execution of multi-step calculations, is the primary source of error.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Procedural Fluency",
+          "why": "The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.",
+          "likely_errors": "A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations."
+        },
+        {
+          "order": 2,
+          "practice": "Representing",
+          "why": "The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.",
+          "likely_errors": "A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student translates the word problem into a mathematical representation by identifying the original price, discount rate, tax rate, and the sequence of operations, creating expressions such as 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the necessary calculations accurately and efficiently: computing 40% of $450, subtracting the discount from the original price, calculating 8% of the discounted price as tax, and adding the tax to the discounted price to find the final cost."
+        }
+      ],
+      "why": "The student must first represent the real-world scenario mathematically by identifying and modeling the relationships and operations involved before performing any calculations. Only after constructing this mathematical model can the student apply procedural fluency to compute the final cost accurately and efficiently."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong during the calculation steps—particularly in accurately computing percentages and applying them in the correct order (discount first, then tax). Common errors include miscomputing 40% of 450, incorrectly applying tax to the original price instead of the discounted price, or mishandling decimal places in multiplication. While representing the problem correctly is important, the core difficulty lies in executing the arithmetic accurately and efficiently. The representing step is more about setting up the problem correctly, which is relatively straightforward given the clear sequence in the scenario. Thus, procedural fluency, which demands precise and correct execution of multi-step calculations, is the primary source of error."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must translate the word problem into a mathematical representation: identifying the original price, the discount rate, the tax rate, and the sequence of operations (discount first, then tax). This involves creating a numerical model of the situation—writing expressions like 450 × 0.60 for the discounted price and (450 × 0.60) × 1.08 for the final cost—thus representing the real-world scenario mathematically, which is a core part of the representing practice.",
+          "likely_errors": "A student might misrepresent the order of operations (e.g., applying tax before discount), or incorrectly represent the discount as 40% of the final price instead of the original. This is moderately likely, especially if the student does not fully interpret the sequence of events in the problem."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "The student must perform a sequence of accurate and efficient calculations: first compute 40% of $450 to find the discount amount, then subtract that from the original price to get the discounted price, and finally compute 8% of the discounted price as sales tax, and add it to the discounted price to get the final cost. This involves applying percentage operations and arithmetic with decimals, which aligns with the procedural fluency practice of carrying out computations with decimals, percentages, and operations efficiently and accurately.",
+          "likely_errors": "A student might incorrectly calculate 40% of 450 (e.g., by using 0.4 instead of 0.40, or misplacing the decimal), or forget to apply the tax to the discounted price instead of the original. These errors are common and moderately likely, especially if the student is not fluent in percent calculations."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern, extending a relationship, or making a general rule beyond the specific calculation. The problem is a single, concrete scenario with fixed values, and no generalization across cases or sequences is needed."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item asks for a final numerical answer, not a justification or argument about why a method works. There is no claim to evaluate, no proof to construct, and no need to defend reasoning about mathematical validity or structure."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the problem involves a real-world context, the modeling is minimal and direct: the steps are prescribed (discount then tax), and no choice of model, validation of reasonableness, or revision of assumptions is required. The mathematical structure is given, and the student is expected to compute, not build or test a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea, so collaborative reasoning is not required."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

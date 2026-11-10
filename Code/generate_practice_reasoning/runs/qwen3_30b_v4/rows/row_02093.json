@@ -1,0 +1,370 @@
+{
+  "row": 2093,
+  "problem_id": "615367",
+  "problem_text": "Here is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups",
+          "started_at": "2026-11-10T21:48:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\",\n    \"likely_errors\": \"A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\",\n    \"likely_errors\": \"A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\",\n    \"likely_errors\": \"A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\",\n    \"likely_errors\": \"A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7465,
+            "completion_tokens": 679
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:52:28+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\n- Procedural Fluency: After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:06:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\n- Procedural Fluency: After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\n- Procedural Fluency: After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation, recognizing that '+' and '-' signs indicate additions and subtractions to the cup count and that the numbers represent quantities of cups.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs arithmetic operations—specifically addition and subtraction of whole numbers—to compute the number of cups used on Thursday, using the Thursday entry (+1,719) and understanding that this reflects the net change in inventory due to delivery and usage.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the table as a mathematical model of the situation (Representing) before performing any calculations. Only after understanding that the Thursday entry represents a net change due to delivery and usage can the student compute the number of cups used (Procedural Fluency). This order reflects the logical sequence of making sense of the data before applying mathematical procedures.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation, recognizing that '+' and '-' signs indicate additions and subtractions to the cup count and that the numbers represent quantities of cups.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs arithmetic operations—specifically addition and subtraction of whole numbers—to compute the number of cups used on Thursday, using the Thursday entry (+1,719) and understanding that this reflects the net change in inventory due to delivery and usage.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the table as a mathematical model of the situation (Representing) before performing any calculations. Only after understanding that the Thursday entry represents a net change due to delivery and usage can the student compute the number of cups used (Procedural Fluency). This order reflects the logical sequence of making sense of the data before applying mathematical procedures.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7650,
+            "completion_tokens": 237
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:08:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\",\n      \"likely_errors\": \"A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\",\n      \"likely_errors\": \"A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:22:30+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\",\n      \"likely_errors\": \"A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\",\n      \"likely_errors\": \"A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHere is some record keeping from a coffee shop about their paper cups. Cups are delivered 2,000 at a time.\n[Table:\nday | change\nMonday | +2,000\nTuesday | -125\nWednesday | -127\nThursday | +1,719\nFriday | -356\nSaturday | -782\nSunday | 0]\nHow many cups do you think were used on Thursday?\n____ cups\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\",\n      \"likely_errors\": \"A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\",\n      \"likely_errors\": \"A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the number of cups used on Thursday, which requires subtracting the net change from the delivery amount (2,000 − 1,719). This step demands precise multi-digit subtraction with borrowing, a common source of error even for students who correctly interpret the table. While Representing is important for understanding the meaning of the data, the table is straightforward and the signs are clearly defined, making misinterpretation less likely than a computational mistake. The item does not require generalization, justification, modeling, or collaboration, so those practices are not the source of the main difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the number of cups used on Thursday, which requires subtracting the net change from the delivery amount (2,000 − 1,719). This step demands precise multi-digit subtraction with borrowing, a common source of error even for students who correctly interpret the table. While Representing is important for understanding the meaning of the data, the table is straightforward and the signs are clearly defined, making misinterpretation less likely than a computational mistake. The item does not require generalization, justification, modeling, or collaboration, so those practices are not the source of the main difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8119,
+            "completion_tokens": 152
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:24:57+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.",
+              "likely_errors": "A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.",
+              "likely_errors": "A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation, recognizing that '+' and '-' signs indicate additions and subtractions to the cup count and that the numbers represent quantities of cups."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs arithmetic operations—specifically addition and subtraction of whole numbers—to compute the number of cups used on Thursday, using the Thursday entry (+1,719) and understanding that this reflects the net change in inventory due to delivery and usage."
+            }
+          ],
+          "why": "The student must first interpret the table as a mathematical model of the situation (Representing) before performing any calculations. Only after understanding that the Thursday entry represents a net change due to delivery and usage can the student compute the number of cups used (Procedural Fluency). This order reflects the logical sequence of making sense of the data before applying mathematical procedures."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the step of accurately computing the number of cups used on Thursday, which requires subtracting the net change from the delivery amount (2,000 − 1,719). This step demands precise multi-digit subtraction with borrowing, a common source of error even for students who correctly interpret the table. While Representing is important for understanding the meaning of the data, the table is straightforward and the signs are clearly defined, making misinterpretation less likely than a computational mistake. The item does not require generalization, justification, modeling, or collaboration, so those practices are not the source of the main difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.",
+            "likely_errors": "A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.",
+            "likely_errors": "A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.\",\n    \"likely_errors\": \"A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.\",\n    \"likely_errors\": \"A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation, recognizing that '+' and '-' signs indicate additions and subtractions to the cup count and that the numbers represent quantities of cups.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs arithmetic operations—specifically addition and subtraction of whole numbers—to compute the number of cups used on Thursday, using the Thursday entry (+1,719) and understanding that this reflects the net change in inventory due to delivery and usage.\"\n    }\n  ],\n  \"why\": \"The student must first interpret the table as a mathematical model of the situation (Representing) before performing any calculations. Only after understanding that the Thursday entry represents a net change due to delivery and usage can the student compute the number of cups used (Procedural Fluency). This order reflects the logical sequence of making sense of the data before applying mathematical procedures.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the step of accurately computing the number of cups used on Thursday, which requires subtracting the net change from the delivery amount (2,000 − 1,719). This step demands precise multi-digit subtraction with borrowing, a common source of error even for students who correctly interpret the table. While Representing is important for understanding the meaning of the data, the table is straightforward and the signs are clearly defined, making misinterpretation less likely than a computational mistake. The item does not require generalization, justification, modeling, or collaboration, so those practices are not the source of the main difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.",
+          "likely_errors": "A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.",
+          "likely_errors": "A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation, recognizing that '+' and '-' signs indicate additions and subtractions to the cup count and that the numbers represent quantities of cups."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs arithmetic operations—specifically addition and subtraction of whole numbers—to compute the number of cups used on Thursday, using the Thursday entry (+1,719) and understanding that this reflects the net change in inventory due to delivery and usage."
+        }
+      ],
+      "why": "The student must first interpret the table as a mathematical model of the situation (Representing) before performing any calculations. Only after understanding that the Thursday entry represents a net change due to delivery and usage can the student compute the number of cups used (Procedural Fluency). This order reflects the logical sequence of making sense of the data before applying mathematical procedures."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the step of accurately computing the number of cups used on Thursday, which requires subtracting the net change from the delivery amount (2,000 − 1,719). This step demands precise multi-digit subtraction with borrowing, a common source of error even for students who correctly interpret the table. While Representing is important for understanding the meaning of the data, the table is straightforward and the signs are clearly defined, making misinterpretation less likely than a computational mistake. The item does not require generalization, justification, modeling, or collaboration, so those practices are not the source of the main difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table of daily changes in paper cup inventory as a mathematical representation of a real-world situation. They need to recognize that the '+' and '-' signs represent additions and subtractions to the cup count, and that the numbers represent quantities of cups. This involves translating the textual and tabular data into a mental or written mathematical model of inventory changes over time.",
+          "likely_errors": "A student might misinterpret the '+' and '-' signs as labels rather than operations, or confuse the numbers with dates or days, leading to incorrect assumptions about the sequence of events. This is moderately likely for students who struggle with reading data tables or interpreting signed numbers in context."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically, the student must perform arithmetic operations—specifically addition and subtraction of whole numbers—to determine the number of cups used on Thursday. This involves computing the net change in inventory, particularly focusing on the Thursday entry, which is +1,719, and recognizing that the number of cups used is not directly given but must be inferred from the context of the delivery and usage pattern. The student must compute the difference between the delivered cups and the net usage, though the item only asks for the number used on Thursday, which is directly tied to the change on that day.",
+          "likely_errors": "A student might incorrectly subtract instead of add, or make a computational error in the subtraction (e.g., 2,000 − 1,719 = 281, but miscomputing it as 291). This is likely if the student lacks fluency with multi-digit subtraction, especially when borrowing is involved."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require the student to identify or extend a pattern across multiple cases or generalize a rule beyond the given data. The task is focused on interpreting a single set of data and computing a specific value, not on identifying a broader mathematical structure or trend."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no reasoning to justify, and no proof required—only a computation based on the provided data."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the scenario is real-world, the item does not require the student to identify a problem, mathematize it, solve it, or validate the solution in context. The model (the table) is already provided, and the task is purely computational based on that model, not a process of creating or refining a model."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents no dialogue, no peer contributions, and no need to respond to or build on another person’s mathematical thinking. It is a solo task with no social or collaborative component."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

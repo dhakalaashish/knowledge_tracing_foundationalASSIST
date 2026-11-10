@@ -1,0 +1,389 @@
+{
+  "row": 1901,
+  "problem_id": "162174",
+  "problem_text": "Order the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)",
+          "started_at": "2026-11-10T21:43:50+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\",\n    \"likely_errors\": \"A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\",\n    \"likely_errors\": \"A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\",\n    \"likely_errors\": \"A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\",\n    \"likely_errors\": \"A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\",\n    \"likely_errors\": \"A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\",\n    \"likely_errors\": \"A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7424,
+            "completion_tokens": 751
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:48:08+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\n- Justifying and Proving: Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\n- Procedural Fluency: After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:04:54+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\n- Justifying and Proving: Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\n- Procedural Fluency: After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\n- Justifying and Proving: Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\n- Procedural Fluency: After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets and translates the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, such as decimal approximations or simplified exact values, to make them comparable for ordering.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine the numerical values of the expressions in the comparable form established during the representing step.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student verifies the correctness of the ordered sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5, using mathematical reasoning and comparisons.\"\n    }\n  ],\n  \"why\": \"The student must first represent the values in a comparable form (e.g., decimals) before performing any calculations, which requires interpreting and translating different mathematical representations. Once the values are in a common form, procedural fluency is needed to compute them accurately. Only after the values are computed can the student justify the correct order by reasoning about their relative sizes, making justification the final step in the process.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets and translates the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, such as decimal approximations or simplified exact values, to make them comparable for ordering.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine the numerical values of the expressions in the comparable form established during the representing step.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student verifies the correctness of the ordered sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5, using mathematical reasoning and comparisons.\"\n    }\n  ],\n  \"why\": \"The student must first represent the values in a comparable form (e.g., decimals) before performing any calculations, which requires interpreting and translating different mathematical representations. Once the values are in a common form, procedural fluency is needed to compute them accurately. Only after the values are computed can the student justify the correct order by reasoning about their relative sizes, making justification the final step in the process.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7649,
+            "completion_tokens": 339
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:06:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\",\n      \"likely_errors\": \"A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\",\n      \"likely_errors\": \"A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\",\n      \"likely_errors\": \"A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:19:00+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\",\n      \"likely_errors\": \"A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\",\n      \"likely_errors\": \"A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\",\n      \"likely_errors\": \"A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nOrder the following values from least to greatest:\n\nItems to put in order:\n- π\n- 3√(27)\n- √(48)\n- 3√(530)\n- 19/2\n- √(121)\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\",\n      \"likely_errors\": \"A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\",\n      \"likely_errors\": \"A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\",\n      \"likely_errors\": \"A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural fluency step, where they must accurately compute values like 3√(27), √(48), and 3√(530), or divide 19/2. Common errors—such as miscalculating 3√(27) as 9 instead of 3, or approximating √(48) incorrectly—directly lead to an incorrect ordering. While representing and justifying are important, they rely on accurate computations; if the procedural steps are flawed, the entire ordering collapses. The other practices are less likely to cause errors because representing involves recognizing forms (e.g., π ≈ 3.14), which is straightforward, and justifying depends on correct values—so if the computations are wrong, the justification fails, but the root cause is the procedural error.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural fluency step, where they must accurately compute values like 3√(27), √(48), and 3√(530), or divide 19/2. Common errors—such as miscalculating 3√(27) as 9 instead of 3, or approximating √(48) incorrectly—directly lead to an incorrect ordering. While representing and justifying are important, they rely on accurate computations; if the procedural steps are flawed, the entire ordering collapses. The other practices are less likely to cause errors because representing involves recognizing forms (e.g., π ≈ 3.14), which is straightforward, and justifying depends on correct values—so if the computations are wrong, the justification fails, but the root cause is the procedural error.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8149,
+            "completion_tokens": 199
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:22:30+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.",
+              "likely_errors": "A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.",
+              "likely_errors": "A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "why": "Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.",
+              "likely_errors": "A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets and translates the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, such as decimal approximations or simplified exact values, to make them comparable for ordering."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine the numerical values of the expressions in the comparable form established during the representing step."
+            },
+            {
+              "order": 3,
+              "practice": "Justifying and Proving",
+              "step": "The student verifies the correctness of the ordered sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5, using mathematical reasoning and comparisons."
+            }
+          ],
+          "why": "The student must first represent the values in a comparable form (e.g., decimals) before performing any calculations, which requires interpreting and translating different mathematical representations. Once the values are in a common form, procedural fluency is needed to compute them accurately. Only after the values are computed can the student justify the correct order by reasoning about their relative sizes, making justification the final step in the process."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong during the procedural fluency step, where they must accurately compute values like 3√(27), √(48), and 3√(530), or divide 19/2. Common errors—such as miscalculating 3√(27) as 9 instead of 3, or approximating √(48) incorrectly—directly lead to an incorrect ordering. While representing and justifying are important, they rely on accurate computations; if the procedural steps are flawed, the entire ordering collapses. The other practices are less likely to cause errors because representing involves recognizing forms (e.g., π ≈ 3.14), which is straightforward, and justifying depends on correct values—so if the computations are wrong, the justification fails, but the root cause is the procedural error."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.",
+            "likely_errors": "A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.",
+            "likely_errors": "A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work."
+          },
+          {
+            "order": 3,
+            "practice": "Justifying and Proving",
+            "why": "Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.",
+            "likely_errors": "A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.\",\n    \"likely_errors\": \"A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.\",\n    \"likely_errors\": \"A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work.\"\n  },\n  {\n    \"order\": 3,\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.\",\n    \"likely_errors\": \"A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets and translates the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, such as decimal approximations or simplified exact values, to make them comparable for ordering.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine the numerical values of the expressions in the comparable form established during the representing step.\"\n    },\n    {\n      \"order\": 3,\n      \"practice\": \"Justifying and Proving\",\n      \"step\": \"The student verifies the correctness of the ordered sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5, using mathematical reasoning and comparisons.\"\n    }\n  ],\n  \"why\": \"The student must first represent the values in a comparable form (e.g., decimals) before performing any calculations, which requires interpreting and translating different mathematical representations. Once the values are in a common form, procedural fluency is needed to compute them accurately. Only after the values are computed can the student justify the correct order by reasoning about their relative sizes, making justification the final step in the process.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong during the procedural fluency step, where they must accurately compute values like 3√(27), √(48), and 3√(530), or divide 19/2. Common errors—such as miscalculating 3√(27) as 9 instead of 3, or approximating √(48) incorrectly—directly lead to an incorrect ordering. While representing and justifying are important, they rely on accurate computations; if the procedural steps are flawed, the entire ordering collapses. The other practices are less likely to cause errors because representing involves recognizing forms (e.g., π ≈ 3.14), which is straightforward, and justifying depends on correct values—so if the computations are wrong, the justification fails, but the root cause is the procedural error.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.",
+          "likely_errors": "A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.",
+          "likely_errors": "A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.",
+          "likely_errors": "A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets and translates the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, such as decimal approximations or simplified exact values, to make them comparable for ordering."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine the numerical values of the expressions in the comparable form established during the representing step."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "step": "The student verifies the correctness of the ordered sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5, using mathematical reasoning and comparisons."
+        }
+      ],
+      "why": "The student must first represent the values in a comparable form (e.g., decimals) before performing any calculations, which requires interpreting and translating different mathematical representations. Once the values are in a common form, procedural fluency is needed to compute them accurately. Only after the values are computed can the student justify the correct order by reasoning about their relative sizes, making justification the final step in the process."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong during the procedural fluency step, where they must accurately compute values like 3√(27), √(48), and 3√(530), or divide 19/2. Common errors—such as miscalculating 3√(27) as 9 instead of 3, or approximating √(48) incorrectly—directly lead to an incorrect ordering. While representing and justifying are important, they rely on accurate computations; if the procedural steps are flawed, the entire ordering collapses. The other practices are less likely to cause errors because representing involves recognizing forms (e.g., π ≈ 3.14), which is straightforward, and justifying depends on correct values—so if the computations are wrong, the justification fails, but the root cause is the procedural error."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret and translate the given mathematical expressions—such as π, radicals, cube roots, and fractions—into comparable numerical forms, either decimal approximations or simplified exact values, to make them comparable. This involves recognizing and converting different representations of numbers (e.g., irrational numbers, roots, fractions) into a common form suitable for ordering.",
+          "likely_errors": "A student might misrepresent √(48) as 4√(3) without simplifying it correctly, or incorrectly approximate π as 3.14 instead of using a more precise value. These errors are moderately likely, especially if the student lacks familiarity with radical simplification or decimal approximations."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the values in comparable forms (e.g., decimal approximations), the student must perform accurate and efficient computations—such as calculating √(48), 3√(27), 3√(530), and 19/2—to determine their numerical values. This includes using procedures for simplifying radicals, computing cube roots, and dividing fractions accurately and efficiently.",
+          "likely_errors": "A student might miscalculate 3√(27) as 9 instead of 3 (since 3³ = 27), or incorrectly compute √(48) as 6.9 instead of approximately 6.928. These errors are common and moderately likely, especially if the student relies on memory without checking work."
+        },
+        {
+          "order": 3,
+          "practice": "Justifying and Proving",
+          "why": "Once the values are ordered, the student must verify the correctness of the sequence by explaining why one value is less than another, such as justifying that √(121) = 11 is greater than π ≈ 3.14 but less than 19/2 = 9.5. This involves reasoning about the relative sizes of numbers using mathematical properties and comparisons.",
+          "likely_errors": "A student might incorrectly assume that a larger number under a root always produces a larger result (e.g., thinking 3√(530) is smaller than √(48)), or fail to recognize that 19/2 = 9.5 is greater than √(121) = 11. These errors are moderately likely due to misconceptions about root behavior and fraction comparison."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying or extending a pattern across multiple cases, generalizing a rule, or making a broader claim about number relationships. The task is to order specific values, not to derive or apply a general principle."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The item is purely mathematical and does not involve modeling a real-world situation, identifying a problem from context, or applying math to a scenario with external constraints. It is a static comparison of given values."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as a solo task with no reference to another student’s thinking, argument, or work to evaluate or build upon. There is no dialogue, shared reasoning, or peer contribution to engage with."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency",
+      "Justifying and Proving"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "row": 33,
+  "problem_id": "7635",
+  "problem_text": "Han found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____",
+          "started_at": "2026-11-10T21:31:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\",\n    \"likely_errors\": \"A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\",\n    \"likely_errors\": \"A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\",\n    \"likely_errors\": \"A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\",\n    \"likely_errors\": \"A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7501,
+            "completion_tokens": 747
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:35:29+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\n- Abstracting and Generalizing: The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T21:59:10+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\n- Abstracting and Generalizing: The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\n- Abstracting and Generalizing: The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the expression 2^4 · 5 · (3 · 5)^3 and rewrites it by expanding (3 · 5)^3 into 3^3 · 5^3, then combines the powers of 2 and 5 to identify groupings that can form 10s.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the pattern from Han's example—pairing 2s and 5s to make 10s—and applies this generalized strategy to the new expression by determining how many complete 2·5 pairs can be formed and rewriting the expression in terms of 10s and remaining factors.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression in a form that makes the 2s and 5s visible and combinable (e.g., by expanding powers), which is a prerequisite for identifying the pattern. Only after restructuring the expression can the student abstract the underlying strategy of pairing 2s and 5s to form 10s and generalize it to this new case.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the expression 2^4 · 5 · (3 · 5)^3 and rewrites it by expanding (3 · 5)^3 into 3^3 · 5^3, then combines the powers of 2 and 5 to identify groupings that can form 10s.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the pattern from Han's example—pairing 2s and 5s to make 10s—and applies this generalized strategy to the new expression by determining how many complete 2·5 pairs can be formed and rewriting the expression in terms of 10s and remaining factors.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression in a form that makes the 2s and 5s visible and combinable (e.g., by expanding powers), which is a prerequisite for identifying the pattern. Only after restructuring the expression can the student abstract the underlying strategy of pairing 2s and 5s to form 10s and generalize it to this new case.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7738,
+            "completion_tokens": 271
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:01:05+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\",\n      \"likely_errors\": \"A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\",\n      \"likely_errors\": \"A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:11:56+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\",\n      \"likely_errors\": \"A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\",\n      \"likely_errors\": \"A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nHan found a way to compute complicated expressions more easily. Since 2 ⋅ 5=10, he looks for pairings of 2s and 5s that he knows equal 10. For example,\n3 · 2^4 · 5^5 = 3 · 2^4 · 5^4 · 5 = (3 · 5) · (2 · 5)^4 = 15 · 10^4 = 150,000.\nUse Han's technique to compute the following:\n2^4 · 5 · (3 · 5)^3\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\",\n      \"likely_errors\": \"A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\",\n      \"likely_errors\": \"A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the underlying structural pattern—pairing 2s and 5s to form 10s—beyond the given example. This requires abstracting the method Han used and generalizing it to a new expression with different exponents and groupings. Missteps here include miscounting available 2s and 5s or failing to rewrite (3·5)^3 as 3^3·5^3, which prevents forming the necessary 10s. While Representing is involved in rewriting the expression, the error is less likely there because the structure is more visible; the real challenge is in extending the strategy, making Abstracting and Generalizing the core difficulty.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the underlying structural pattern—pairing 2s and 5s to form 10s—beyond the given example. This requires abstracting the method Han used and generalizing it to a new expression with different exponents and groupings. Missteps here include miscounting available 2s and 5s or failing to rewrite (3·5)^3 as 3^3·5^3, which prevents forming the necessary 10s. While Representing is involved in rewriting the expression, the error is less likely there because the structure is more visible; the real challenge is in extending the strategy, making Abstracting and Generalizing the core difficulty.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8223,
+            "completion_tokens": 168
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:14:16+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.",
+              "likely_errors": "A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.",
+              "likely_errors": "A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the expression 2^4 · 5 · (3 · 5)^3 and rewrites it by expanding (3 · 5)^3 into 3^3 · 5^3, then combines the powers of 2 and 5 to identify groupings that can form 10s."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student recognizes the pattern from Han's example—pairing 2s and 5s to make 10s—and applies this generalized strategy to the new expression by determining how many complete 2·5 pairs can be formed and rewriting the expression in terms of 10s and remaining factors."
+            }
+          ],
+          "why": "The student must first represent the expression in a form that makes the 2s and 5s visible and combinable (e.g., by expanding powers), which is a prerequisite for identifying the pattern. Only after restructuring the expression can the student abstract the underlying strategy of pairing 2s and 5s to form 10s and generalize it to this new case."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to fail at recognizing and applying the underlying structural pattern—pairing 2s and 5s to form 10s—beyond the given example. This requires abstracting the method Han used and generalizing it to a new expression with different exponents and groupings. Missteps here include miscounting available 2s and 5s or failing to rewrite (3·5)^3 as 3^3·5^3, which prevents forming the necessary 10s. While Representing is involved in rewriting the expression, the error is less likely there because the structure is more visible; the real challenge is in extending the strategy, making Abstracting and Generalizing the core difficulty."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.",
+            "likely_errors": "A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.",
+            "likely_errors": "A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.\",\n    \"likely_errors\": \"A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.\",\n    \"likely_errors\": \"A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the expression 2^4 · 5 · (3 · 5)^3 and rewrites it by expanding (3 · 5)^3 into 3^3 · 5^3, then combines the powers of 2 and 5 to identify groupings that can form 10s.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student recognizes the pattern from Han's example—pairing 2s and 5s to make 10s—and applies this generalized strategy to the new expression by determining how many complete 2·5 pairs can be formed and rewriting the expression in terms of 10s and remaining factors.\"\n    }\n  ],\n  \"why\": \"The student must first represent the expression in a form that makes the 2s and 5s visible and combinable (e.g., by expanding powers), which is a prerequisite for identifying the pattern. Only after restructuring the expression can the student abstract the underlying strategy of pairing 2s and 5s to form 10s and generalize it to this new case.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to fail at recognizing and applying the underlying structural pattern—pairing 2s and 5s to form 10s—beyond the given example. This requires abstracting the method Han used and generalizing it to a new expression with different exponents and groupings. Missteps here include miscounting available 2s and 5s or failing to rewrite (3·5)^3 as 3^3·5^3, which prevents forming the necessary 10s. While Representing is involved in rewriting the expression, the error is less likely there because the structure is more visible; the real challenge is in extending the strategy, making Abstracting and Generalizing the core difficulty.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.",
+          "likely_errors": "A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.",
+          "likely_errors": "A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the expression 2^4 · 5 · (3 · 5)^3 and rewrites it by expanding (3 · 5)^3 into 3^3 · 5^3, then combines the powers of 2 and 5 to identify groupings that can form 10s."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student recognizes the pattern from Han's example—pairing 2s and 5s to make 10s—and applies this generalized strategy to the new expression by determining how many complete 2·5 pairs can be formed and rewriting the expression in terms of 10s and remaining factors."
+        }
+      ],
+      "why": "The student must first represent the expression in a form that makes the 2s and 5s visible and combinable (e.g., by expanding powers), which is a prerequisite for identifying the pattern. Only after restructuring the expression can the student abstract the underlying strategy of pairing 2s and 5s to form 10s and generalize it to this new case."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to fail at recognizing and applying the underlying structural pattern—pairing 2s and 5s to form 10s—beyond the given example. This requires abstracting the method Han used and generalizing it to a new expression with different exponents and groupings. Missteps here include miscounting available 2s and 5s or failing to rewrite (3·5)^3 as 3^3·5^3, which prevents forming the necessary 10s. While Representing is involved in rewriting the expression, the error is less likely there because the structure is more visible; the real challenge is in extending the strategy, making Abstracting and Generalizing the core difficulty."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the given expression 2^4 · 5 · (3 · 5)^3 and restructure it using Han's technique, which involves recognizing and creating groupings of 2s and 5s to form 10s. This requires translating the expression into a form that highlights the pairing of 2s and 5s, such as rewriting (3 · 5)^3 as 3^3 · 5^3, then combining powers of 2 and 5 to form 10s. This aligns with the practice of translating between different representations of expressions using symbols and operations.",
+          "likely_errors": "A student might misapply the exponent to only part of the base (e.g., treating (3 · 5)^3 as 3 · 5^3) or fail to separate the 5s from the 3s, leading to incorrect groupings. This is moderately likely for students still developing fluency with exponent rules."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must recognize the underlying pattern Han used—pairing 2s and 5s to make 10s—and apply it to a new expression. This involves generalizing the strategy beyond the example: identifying that 2^a · 5^b can be rewritten as 2^{a-b} · (2·5)^b when a ≥ b (or vice versa), and using the fact that 10^k is easy to compute. The student must extend this reasoning to the new expression, which requires identifying the structure of the problem and applying a generalized method.",
+          "likely_errors": "A student might try to apply the technique blindly without checking if there are enough 2s and 5s to pair, or incorrectly assume that all 2s and 5s can be grouped into 10s. This is moderately likely if the student hasn't internalized the structural pattern."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to justify why Han’s method works or to prove its validity. The student is only asked to apply the method, not to explain or defend it, so no reasoning about correctness or generality beyond application is needed."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "The problem is purely computational and does not involve modeling a real-world scenario. There is no context to interpret, no variables to define, and no need to check the reasonableness of a solution in a real-world setting."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item presents a solitary task with no reference to another person’s thinking or a dialogue. The student works independently to apply Han’s method, and there is no need to respond to or build on someone else’s reasoning."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student must perform calculations (e.g., computing 10^3, multiplying 16 · 125), the focus is not on executing standard algorithms efficiently or flexibly. The core challenge lies in restructuring the expression using the pattern, not in computing the final result. Thus, procedural fluency is not the main practice assessed."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

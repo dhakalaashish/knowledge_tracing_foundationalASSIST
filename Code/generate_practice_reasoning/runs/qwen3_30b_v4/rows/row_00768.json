@@ -1,0 +1,370 @@
+{
+  "row": 768,
+  "problem_id": "45665",
+  "problem_text": "Suppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____",
+          "started_at": "2026-11-10T21:35:29+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\",\n    \"likely_errors\": \"A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\",\n    \"likely_errors\": \"A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\",\n    \"likely_errors\": \"A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\",\n    \"likely_errors\": \"A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7409,
+            "completion_tokens": 706
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:39:34+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\n- Abstracting and Generalizing: The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:01:05+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\n- Abstracting and Generalizing: The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\n- Abstracting and Generalizing: The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal description of the data set (20 different numbers) and translates it into a mathematical representation by recognizing that quartiles divide the ordered data into four equal parts and identifying the positions of the first and third quartiles.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the pattern that in any ordered data set of 20 distinct values, the first quartile lies at the 5th position and the third quartile at the 15th position, and then calculates the number of values strictly between them by subtracting the positions and adjusting for inclusion.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by understanding how quartiles partition the data set, which is a prerequisite for any generalization. Only after establishing this representation can the student abstract the underlying pattern and generalize the calculation across the data set, making abstracting and generalizing the logical next step.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal description of the data set (20 different numbers) and translates it into a mathematical representation by recognizing that quartiles divide the ordered data into four equal parts and identifying the positions of the first and third quartiles.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the pattern that in any ordered data set of 20 distinct values, the first quartile lies at the 5th position and the third quartile at the 15th position, and then calculates the number of values strictly between them by subtracting the positions and adjusting for inclusion.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by understanding how quartiles partition the data set, which is a prerequisite for any generalization. Only after establishing this representation can the student abstract the underlying pattern and generalize the calculation across the data set, making abstracting and generalizing the logical next step.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7628,
+            "completion_tokens": 239
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:03:01+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\",\n      \"likely_errors\": \"A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\",\n      \"likely_errors\": \"A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:14:17+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\",\n      \"likely_errors\": \"A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\",\n      \"likely_errors\": \"A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nSuppose that there are 20 numbers in a data set and that they are all different.\nHow many of the values in this data set are between the first quartile and the third quartile?\n____\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\",\n      \"likely_errors\": \"A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\",\n      \"likely_errors\": \"A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy.\"\n    },\n    {\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing how many values lie strictly between Q1 and Q3 in a data set of 20 distinct numbers, especially by incorrectly assuming the interquartile range includes 10 values (50% of 20) without subtracting the endpoints. This error stems from failing to abstract the conceptual rule that the IQR excludes Q1 and Q3 themselves, even though they are part of the 50% of data. While Representing is important for understanding quartile positions, the error in counting values between Q1 and Q3 is more common and deeper, making Abstracting and Generalizing the core challenge. Procedural Fluency is not required since no computation is involved, and the other practices are not used at all.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing how many values lie strictly between Q1 and Q3 in a data set of 20 distinct numbers, especially by incorrectly assuming the interquartile range includes 10 values (50% of 20) without subtracting the endpoints. This error stems from failing to abstract the conceptual rule that the IQR excludes Q1 and Q3 themselves, even though they are part of the 50% of data. While Representing is important for understanding quartile positions, the error in counting values between Q1 and Q3 is more common and deeper, making Abstracting and Generalizing the core challenge. Procedural Fluency is not required since no computation is involved, and the other practices are not used at all.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8090,
+            "completion_tokens": 183
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:16:40+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.",
+              "likely_errors": "A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "why": "The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.",
+              "likely_errors": "A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy."
+            },
+            {
+              "practice": "Procedural Fluency",
+              "why": "While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the verbal description of the data set (20 different numbers) and translates it into a mathematical representation by recognizing that quartiles divide the ordered data into four equal parts and identifying the positions of the first and third quartiles."
+            },
+            {
+              "order": 2,
+              "practice": "Abstracting and Generalizing",
+              "step": "The student generalizes the pattern that in any ordered data set of 20 distinct values, the first quartile lies at the 5th position and the third quartile at the 15th position, and then calculates the number of values strictly between them by subtracting the positions and adjusting for inclusion."
+            }
+          ],
+          "why": "The student must first represent the situation mathematically by understanding how quartiles partition the data set, which is a prerequisite for any generalization. Only after establishing this representation can the student abstract the underlying pattern and generalize the calculation across the data set, making abstracting and generalizing the logical next step."
+        },
+        {
+          "top_practice": "Abstracting and Generalizing",
+          "why": "A student is most likely to go wrong at the step of generalizing how many values lie strictly between Q1 and Q3 in a data set of 20 distinct numbers, especially by incorrectly assuming the interquartile range includes 10 values (50% of 20) without subtracting the endpoints. This error stems from failing to abstract the conceptual rule that the IQR excludes Q1 and Q3 themselves, even though they are part of the 50% of data. While Representing is important for understanding quartile positions, the error in counting values between Q1 and Q3 is more common and deeper, making Abstracting and Generalizing the core challenge. Procedural Fluency is not required since no computation is involved, and the other practices are not used at all."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.",
+            "likely_errors": "A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation."
+          },
+          {
+            "order": 2,
+            "practice": "Abstracting and Generalizing",
+            "why": "The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.",
+            "likely_errors": "A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy."
+          },
+          {
+            "practice": "Procedural Fluency",
+            "why": "While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.\",\n    \"likely_errors\": \"A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.\",\n    \"likely_errors\": \"A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy.\"\n  },\n  {\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the verbal description of the data set (20 different numbers) and translates it into a mathematical representation by recognizing that quartiles divide the ordered data into four equal parts and identifying the positions of the first and third quartiles.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Abstracting and Generalizing\",\n      \"step\": \"The student generalizes the pattern that in any ordered data set of 20 distinct values, the first quartile lies at the 5th position and the third quartile at the 15th position, and then calculates the number of values strictly between them by subtracting the positions and adjusting for inclusion.\"\n    }\n  ],\n  \"why\": \"The student must first represent the situation mathematically by understanding how quartiles partition the data set, which is a prerequisite for any generalization. Only after establishing this representation can the student abstract the underlying pattern and generalize the calculation across the data set, making abstracting and generalizing the logical next step.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Abstracting and Generalizing\",\n\"why\": \"A student is most likely to go wrong at the step of generalizing how many values lie strictly between Q1 and Q3 in a data set of 20 distinct numbers, especially by incorrectly assuming the interquartile range includes 10 values (50% of 20) without subtracting the endpoints. This error stems from failing to abstract the conceptual rule that the IQR excludes Q1 and Q3 themselves, even though they are part of the 50% of data. While Representing is important for understanding quartile positions, the error in counting values between Q1 and Q3 is more common and deeper, making Abstracting and Generalizing the core challenge. Procedural Fluency is not required since no computation is involved, and the other practices are not used at all.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.",
+          "likely_errors": "A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.",
+          "likely_errors": "A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the verbal description of the data set (20 different numbers) and translates it into a mathematical representation by recognizing that quartiles divide the ordered data into four equal parts and identifying the positions of the first and third quartiles."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "step": "The student generalizes the pattern that in any ordered data set of 20 distinct values, the first quartile lies at the 5th position and the third quartile at the 15th position, and then calculates the number of values strictly between them by subtracting the positions and adjusting for inclusion."
+        }
+      ],
+      "why": "The student must first represent the situation mathematically by understanding how quartiles partition the data set, which is a prerequisite for any generalization. Only after establishing this representation can the student abstract the underlying pattern and generalize the calculation across the data set, making abstracting and generalizing the logical next step."
+    },
+    "answer3_json": {
+      "top_practice": "Abstracting and Generalizing",
+      "why": "A student is most likely to go wrong at the step of generalizing how many values lie strictly between Q1 and Q3 in a data set of 20 distinct numbers, especially by incorrectly assuming the interquartile range includes 10 values (50% of 20) without subtracting the endpoints. This error stems from failing to abstract the conceptual rule that the IQR excludes Q1 and Q3 themselves, even though they are part of the 50% of data. While Representing is important for understanding quartile positions, the error in counting values between Q1 and Q3 is more common and deeper, making Abstracting and Generalizing the core challenge. Procedural Fluency is not required since no computation is involved, and the other practices are not used at all."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the verbal description of the data set (20 different numbers) and represent it mathematically by understanding the concept of quartiles and how they divide the data. This involves recognizing that the first quartile (Q1) and third quartile (Q3) are specific positions in an ordered data set, and translating the situation into a structured representation of data distribution.",
+          "likely_errors": "A student might misinterpret the position of Q1 and Q3, such as thinking they are the 25th and 75th values instead of the 5th and 15th values in an ordered list of 20 numbers. This is moderately likely for students who are still developing understanding of quartile calculation."
+        },
+        {
+          "order": 2,
+          "practice": "Abstracting and Generalizing",
+          "why": "The student must generalize the rule for how many data values lie between Q1 and Q3 across any data set of size 20 with distinct values. They recognize that Q1 is at the 25th percentile (position 5) and Q3 at the 75th percentile (position 15), and then generalize that the number of values strictly between them is 15 − 5 − 1 = 9, or more generally, that the interquartile range contains 50% of the data, so 10 values, but since the question asks for values between Q1 and Q3 (not including them), it's 9. This step requires identifying the pattern in how quartiles partition ordered data.",
+          "likely_errors": "A student might incorrectly assume that the IQR always includes 10 values (50% of 20) and forget to exclude Q1 and Q3 themselves, leading to an answer of 10. This is common and moderately likely for students who don't fully grasp the distinction between inclusive and exclusive counting in quartile ranges."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not require the student to create, evaluate, or defend a mathematical argument or claim. It asks for a numerical answer based on standard statistical knowledge, not on constructing a proof or refuting a conjecture."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "There is no real-world scenario to model, no need to identify variables, select a model, or validate a solution in context. The task is purely computational and conceptual within a defined statistical framework."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The student works alone on the item, with no interaction with others’ reasoning or contributions. There is no dialogue, peer work, or need to respond to another person’s claim or strategy."
+        },
+        {
+          "practice": "Procedural Fluency",
+          "why": "While the student uses procedural knowledge of quartiles, the item does not require carrying out a multi-step computation or algorithm (e.g., calculating Q1 or Q3 from raw data). The focus is on conceptual understanding and generalization, not on performing arithmetic or algorithmic steps with precision."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Abstracting and Generalizing"
+    ],
+    "top_practice": "Abstracting and Generalizing"
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "row": 2136,
+  "problem_id": "131027",
+  "problem_text": "The departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches",
+  "provider": "local",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "column_prefix": "qwen3_30b_v4",
+  "system_prompt_1_sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170",
+  "system_prompt_2_sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5",
+  "system_prompt_3_sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830",
+  "generation_params": {
+    "sampling": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_tokens": 8192,
+      "seed": 0
+    },
+    "chat_template_kwargs": null,
+    "max_model_len": 32768
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "calls": [
+        {
+          "step": 1,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_1",
+            "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+          },
+          "user_prompt": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches",
+          "started_at": "2026-11-10T21:48:09+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_1",
+                  "sha256": "d488e0094ed5d651291be5db4240666bacccd86ef3424b97f44a38acc23d9170"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Using the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches"
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_1}<|im_end|>\n<|im_start|>user\nUsing the practice definitions and descriptors, tell me which practices a student needs to use to solve this item, in the order the student uses them, how the student uses each one, and what a student could get wrong at each step. Then tell me which practices the student does not use, and why.\n\nItem:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 0
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\",\n    \"likely_errors\": \"A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\",\n    \"likely_errors\": \"A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea.\"\n  }\n]\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\",\n    \"likely_errors\": \"A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\",\n    \"likely_errors\": \"A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea.\"\n  }\n]\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7464,
+            "completion_tokens": 562
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T21:52:28+00:00"
+        },
+        {
+          "step": 2,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_2",
+            "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+          },
+          "user_prompt": "Item:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\n- Procedural Fluency: After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.",
+          "started_at": "2026-11-10T22:06:53+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_2",
+                  "sha256": "ace07716d78a6b8166bb8f971615cbc25dd54a0f97fd43bb41f30f14e99f20b5"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\n- Procedural Fluency: After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_2}<|im_end|>\n<|im_start|>user\nItem:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches\n\nPractices a student uses to solve this item, each with how the student uses it (listed in a fixed order, not in the order of the steps):\n\n- Representing: The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\n- Procedural Fluency: After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\n\nUsing the practice definitions and descriptors, put these practices in the order in which a student working on this item uses them, from the first step to the last. Say what the student does at each step, and explain why the steps come in this order.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 1
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of historical average rainfall and the definition of 'departure from the average' to translate the word problem into a mathematical relationship: actual rainfall = average rainfall + departure.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the decimal addition 1.5 + (−0.36) to compute the actual rainfall, accurately aligning decimal places and handling the negative value.\"\n    }\n  ],\n  \"why\": \"The student must first understand and represent the problem mathematically by interpreting the given definition and data, which is a prerequisite for any computation. Only after establishing the correct mathematical relationship can the student apply procedural fluency to carry out the required arithmetic operation.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of historical average rainfall and the definition of 'departure from the average' to translate the word problem into a mathematical relationship: actual rainfall = average rainfall + departure.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the decimal addition 1.5 + (−0.36) to compute the actual rainfall, accurately aligning decimal places and handling the negative value.\"\n    }\n  ],\n  \"why\": \"The student must first understand and represent the problem mathematically by interpreting the given definition and data, which is a prerequisite for any computation. Only after establishing the correct mathematical relationship can the student apply procedural fluency to carry out the required arithmetic operation.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 7570,
+            "completion_tokens": 189
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:08:52+00:00"
+        },
+        {
+          "step": 3,
+          "system_prompt": {
+            "name": "SYSTEM_PROMPT_3",
+            "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+          },
+          "user_prompt": "Item:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\",\n      \"likely_errors\": \"A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\",\n      \"likely_errors\": \"A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.",
+          "started_at": "2026-11-10T22:22:30+00:00",
+          "request": {
+            "messages": [
+              {
+                "role": "system",
+                "content": {
+                  "name": "SYSTEM_PROMPT_3",
+                  "sha256": "02fbd5495a135339cbf220316d737ad2fe47a140cd2b158fdfc0314f05064830"
+                }
+              },
+              {
+                "role": "user",
+                "content": "Item:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\",\n      \"likely_errors\": \"A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\",\n      \"likely_errors\": \"A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."
+              }
+            ],
+            "rendered_prompt": "<|im_start|>system\n{SYSTEM_PROMPT_3}<|im_end|>\n<|im_start|>user\nItem:\n\nThe departure from the average is the difference between the actual amount of rain and the average amount of rain for a given month. The historical average for rainfall in Albuquerque, NM for June, July, and August is shown in the table.\n[Table:\nJune | July | August\n0.67 | 1.5 | 1.57]\nThe departure from the average rainfall last July was -0.36 inches. How much rain fell last July?\n____ inches\n\nAnalysis of the practices a student uses to solve this item:\n\n{\n  \"practices_used\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"why\": \"The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\",\n      \"likely_errors\": \"A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"why\": \"After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\",\n      \"likely_errors\": \"A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely.\"\n    }\n  ],\n  \"practices_not_used\": [\n    {\n      \"practice\": \"Abstracting and Generalizing\",\n      \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition.\"\n    },\n    {\n      \"practice\": \"Justifying and Proving\",\n      \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method.\"\n    },\n    {\n      \"practice\": \"Mathematical Modeling\",\n      \"why\": \"While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case.\"\n    },\n    {\n      \"practice\": \"Collaborative Mathematics\",\n      \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea.\"\n    }\n  ]\n}\n\nUsing the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer.<|im_end|>\n<|im_start|>assistant\n",
+            "sampling": {
+              "temperature": 0.7,
+              "top_p": 0.8,
+              "top_k": 20,
+              "min_p": 0.0,
+              "max_tokens": 8192,
+              "seed": 2
+            },
+            "chat_template_kwargs": null
+          },
+          "response_text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of adding 1.5 and −0.36, as decimal arithmetic with negative numbers is a common source of error, especially with misaligned decimal points or incorrect subtraction (e.g., 1.5 − 0.36 = 1.14, but a student might compute 1.5 − 0.36 as 1.24 or 1.86). While Representing is necessary to set up the equation, the definition is clearly provided and the relationship is straightforward, making it less likely to be the source of error. The other practice used, Representing, involves interpreting a table and a definition, which is accessible with careful reading, whereas the arithmetic step requires precise, accurate computation, making Procedural Fluency the primary barrier to success.\"\n}",
+          "reasoning_text": null,
+          "raw_response": {
+            "text": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of adding 1.5 and −0.36, as decimal arithmetic with negative numbers is a common source of error, especially with misaligned decimal points or incorrect subtraction (e.g., 1.5 − 0.36 = 1.14, but a student might compute 1.5 − 0.36 as 1.24 or 1.86). While Representing is necessary to set up the equation, the definition is clearly provided and the relationship is straightforward, making it less likely to be the source of error. The other practice used, Representing, involves interpreting a table and a definition, which is accessible with careful reading, whereas the arithmetic step requires precise, accurate computation, making Procedural Fluency the primary barrier to success.\"\n}",
+            "finish_reason": "stop",
+            "stop_reason": null
+          },
+          "usage": {
+            "prompt_tokens": 8001,
+            "completion_tokens": 193
+          },
+          "stop_reason": "stop",
+          "served_model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "finished_at": "2026-11-10T22:24:57+00:00"
+        }
+      ],
+      "failed_step": null,
+      "failure_kind": null,
+      "failure_reason": null,
+      "parsed_answers": [
+        {
+          "practices_used": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "why": "The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.",
+              "likely_errors": "A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "why": "After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.",
+              "likely_errors": "A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely."
+            }
+          ],
+          "practices_not_used": [
+            {
+              "practice": "Abstracting and Generalizing",
+              "why": "The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition."
+            },
+            {
+              "practice": "Justifying and Proving",
+              "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method."
+            },
+            {
+              "practice": "Mathematical Modeling",
+              "why": "While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case."
+            },
+            {
+              "practice": "Collaborative Mathematics",
+              "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea."
+            }
+          ]
+        },
+        {
+          "ordering": [
+            {
+              "order": 1,
+              "practice": "Representing",
+              "step": "The student interprets the table of historical average rainfall and the definition of 'departure from the average' to translate the word problem into a mathematical relationship: actual rainfall = average rainfall + departure."
+            },
+            {
+              "order": 2,
+              "practice": "Procedural Fluency",
+              "step": "The student performs the decimal addition 1.5 + (−0.36) to compute the actual rainfall, accurately aligning decimal places and handling the negative value."
+            }
+          ],
+          "why": "The student must first understand and represent the problem mathematically by interpreting the given definition and data, which is a prerequisite for any computation. Only after establishing the correct mathematical relationship can the student apply procedural fluency to carry out the required arithmetic operation."
+        },
+        {
+          "top_practice": "Procedural Fluency",
+          "why": "A student is most likely to go wrong at the procedural step of adding 1.5 and −0.36, as decimal arithmetic with negative numbers is a common source of error, especially with misaligned decimal points or incorrect subtraction (e.g., 1.5 − 0.36 = 1.14, but a student might compute 1.5 − 0.36 as 1.24 or 1.86). While Representing is necessary to set up the equation, the definition is clearly provided and the relationship is straightforward, making it less likely to be the source of error. The other practice used, Representing, involves interpreting a table and a definition, which is accessible with careful reading, whereas the arithmetic step requires precise, accurate computation, making Procedural Fluency the primary barrier to success."
+        }
+      ],
+      "combined": {
+        "practices_used": [
+          {
+            "order": 1,
+            "practice": "Representing",
+            "why": "The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.",
+            "likely_errors": "A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context."
+          },
+          {
+            "order": 2,
+            "practice": "Procedural Fluency",
+            "why": "After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.",
+            "likely_errors": "A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely."
+          }
+        ],
+        "practices_not_used": [
+          {
+            "practice": "Abstracting and Generalizing",
+            "why": "The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition."
+          },
+          {
+            "practice": "Justifying and Proving",
+            "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method."
+          },
+          {
+            "practice": "Mathematical Modeling",
+            "why": "While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case."
+          },
+          {
+            "practice": "Collaborative Mathematics",
+            "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea."
+          }
+        ]
+      },
+      "json_extraction": [
+        "exact",
+        "exact",
+        "exact"
+      ]
+    }
+  ],
+  "final": {
+    "status": "ok",
+    "attempt": 1,
+    "answer1": "{\n\"practices_used\": [\n  {\n    \"order\": 1,\n    \"practice\": \"Representing\",\n    \"why\": \"The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.\",\n    \"likely_errors\": \"A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context.\"\n  },\n  {\n    \"order\": 2,\n    \"practice\": \"Procedural Fluency\",\n    \"why\": \"After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.\",\n    \"likely_errors\": \"A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely.\"\n  }\n],\n\"practices_not_used\": [\n  {\n    \"practice\": \"Abstracting and Generalizing\",\n    \"why\": \"The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition.\"\n  },\n  {\n    \"practice\": \"Justifying and Proving\",\n    \"why\": \"The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method.\"\n  },\n  {\n    \"practice\": \"Mathematical Modeling\",\n    \"why\": \"While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case.\"\n  },\n  {\n    \"practice\": \"Collaborative Mathematics\",\n    \"why\": \"The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea.\"\n  }\n]\n}",
+    "answer2": "{\n  \"ordering\": [\n    {\n      \"order\": 1,\n      \"practice\": \"Representing\",\n      \"step\": \"The student interprets the table of historical average rainfall and the definition of 'departure from the average' to translate the word problem into a mathematical relationship: actual rainfall = average rainfall + departure.\"\n    },\n    {\n      \"order\": 2,\n      \"practice\": \"Procedural Fluency\",\n      \"step\": \"The student performs the decimal addition 1.5 + (−0.36) to compute the actual rainfall, accurately aligning decimal places and handling the negative value.\"\n    }\n  ],\n  \"why\": \"The student must first understand and represent the problem mathematically by interpreting the given definition and data, which is a prerequisite for any computation. Only after establishing the correct mathematical relationship can the student apply procedural fluency to carry out the required arithmetic operation.\"\n}",
+    "answer3": "{\n\"top_practice\": \"Procedural Fluency\",\n\"why\": \"A student is most likely to go wrong at the procedural step of adding 1.5 and −0.36, as decimal arithmetic with negative numbers is a common source of error, especially with misaligned decimal points or incorrect subtraction (e.g., 1.5 − 0.36 = 1.14, but a student might compute 1.5 − 0.36 as 1.24 or 1.86). While Representing is necessary to set up the equation, the definition is clearly provided and the relationship is straightforward, making it less likely to be the source of error. The other practice used, Representing, involves interpreting a table and a definition, which is accessible with careful reading, whereas the arithmetic step requires precise, accurate computation, making Procedural Fluency the primary barrier to success.\"\n}",
+    "answer1_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.",
+          "likely_errors": "A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.",
+          "likely_errors": "A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea."
+        }
+      ]
+    },
+    "answer2_json": {
+      "ordering": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "step": "The student interprets the table of historical average rainfall and the definition of 'departure from the average' to translate the word problem into a mathematical relationship: actual rainfall = average rainfall + departure."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "step": "The student performs the decimal addition 1.5 + (−0.36) to compute the actual rainfall, accurately aligning decimal places and handling the negative value."
+        }
+      ],
+      "why": "The student must first understand and represent the problem mathematically by interpreting the given definition and data, which is a prerequisite for any computation. Only after establishing the correct mathematical relationship can the student apply procedural fluency to carry out the required arithmetic operation."
+    },
+    "answer3_json": {
+      "top_practice": "Procedural Fluency",
+      "why": "A student is most likely to go wrong at the procedural step of adding 1.5 and −0.36, as decimal arithmetic with negative numbers is a common source of error, especially with misaligned decimal points or incorrect subtraction (e.g., 1.5 − 0.36 = 1.14, but a student might compute 1.5 − 0.36 as 1.24 or 1.86). While Representing is necessary to set up the equation, the definition is clearly provided and the relationship is straightforward, making it less likely to be the source of error. The other practice used, Representing, involves interpreting a table and a definition, which is accessible with careful reading, whereas the arithmetic step requires precise, accurate computation, making Procedural Fluency the primary barrier to success."
+    },
+    "combined_json": {
+      "practices_used": [
+        {
+          "order": 1,
+          "practice": "Representing",
+          "why": "The student must interpret the table showing the historical average rainfall for June, July, and August as numerical data and understand that 'departure from the average' is defined as the difference between actual rainfall and the average. This involves translating the word definition into a mathematical relationship: actual = average + departure.",
+          "likely_errors": "A student might misread the table or confuse the order of months, or incorrectly interpret 'departure' as absolute difference rather than signed difference. This is moderately likely for students unfamiliar with signed differences in context."
+        },
+        {
+          "order": 2,
+          "practice": "Procedural Fluency",
+          "why": "After representing the situation mathematically (actual = average + departure), the student must perform the arithmetic operation: 1.5 + (−0.36) = 1.14. This requires accurate addition of decimals, including handling negative numbers and aligning decimal places correctly.",
+          "likely_errors": "A student might make a computational error in decimal addition, such as misaligning the decimal points or incorrectly subtracting 0.36 from 1.5 (e.g., getting 1.24 or 1.86). This is common among students with weak fluency in decimal operations, so it is moderately likely."
+        }
+      ],
+      "practices_not_used": [
+        {
+          "practice": "Abstracting and Generalizing",
+          "why": "The item does not require identifying a pattern across multiple cases, extending a relationship to a broader domain, or generalizing a rule beyond this specific situation. It is a single, context-specific computation based on a given definition."
+        },
+        {
+          "practice": "Justifying and Proving",
+          "why": "The item does not ask the student to defend, evaluate, or construct a mathematical argument. There is no claim to assess, no proof to develop, and no justification required for the solution method."
+        },
+        {
+          "practice": "Mathematical Modeling",
+          "why": "While the context involves real-world data, the task is not to create or revise a model, identify variables, or evaluate model viability. The model (departure = actual − average) is provided, and the student simply applies it to one case."
+        },
+        {
+          "practice": "Collaborative Mathematics",
+          "why": "The item is presented as an individual task with no reference to another student’s thinking, argument, or contribution. There is no dialogue, peer work, or need to respond to or build on someone else’s idea."
+        }
+      ]
+    },
+    "ordering": [
+      "Representing",
+      "Procedural Fluency"
+    ],
+    "top_practice": "Procedural Fluency"
+  }
+}
