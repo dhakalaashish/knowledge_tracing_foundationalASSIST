@@ -2,6 +2,8 @@
 # Build and run the CUDA 13 container (see Dockerfile). Run from anywhere; paths are relative to this script.
 #
 #   bash docker_run.sh build              build the image (once; downloads about 10 GB)
+#   bash docker_run.sh download           download the model (~125 GB) in the background; again resumes it
+#   bash docker_run.sh check-model        is the whole model downloaded?
 #   bash docker_run.sh                    all four steps of run_gb300.sh, in the background (like nohup: it
 #                                         keeps going after you log out, and restarts up to twice if it crashes)
 #   bash docker_run.sh 1 3                only steps 1 and 3, in the background
@@ -11,7 +13,9 @@
 #   bash docker_run.sh shell              an interactive shell in the container
 #   bash docker_run.sh run <command...>   one command in the container, e.g. the dry run or the 3-row test
 #
-# Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS (see run_gb300.sh), HF_TOKEN.
+# Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS (see run_gb300.sh), HF_TOKEN,
+# HF_HUB_OFFLINE. Runs (and smoke tests) are offline by default: vLLM reads the model from the cache and never
+# contacts Hugging Face, whose anonymous API limit is shared by everyone behind the same IP address.
 # CACHE_DIR: host folder for the model download and compile caches (default ~/.cache; the model needs ~130 GB).
 # The background run keeps going after you log out; its output is in logs/step<N>.log.
 
@@ -70,9 +74,34 @@ OPTS=("${GPU_OPT[@]}" --ipc=host --ulimit memlock=-1 --ulimit stack=67108864
       -w /workspace/Code/generate_practice_reasoning)
 # the host's time zone, so the time estimates in the logs are in local time
 if [ -e /etc/localtime ]; then OPTS+=(-v /etc/localtime:/etc/localtime:ro); fi
-for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN SMOKE SMOKE_ROWS; do
+for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN HF_HUB_OFFLINE SMOKE SMOKE_ROWS; do
   if [ -n "${!v:-}" ]; then OPTS+=(-e "$v"); fi
 done
+MODEL_ID="${MODEL:-Qwen/Qwen3.5-122B-A10B-FP8}"   # the same default as run_gb300.sh
+
+# Is the whole model in the cache: config.json and every weight file its index lists (files still downloading
+# have no entry in snapshots/ yet)? Needs only the host's python3.
+model_cached() {
+  python3 - "$CACHE_DIR/huggingface/hub" "$MODEL_ID" <<'PYEOF'
+import glob, json, os, sys
+hub, model = sys.argv[1], sys.argv[2]
+snaps = sorted(glob.glob(os.path.join(hub, "models--" + model.replace("/", "--"), "snapshots", "*")))
+if not snaps:
+    print(f"model {model} not found in {hub}"); sys.exit(1)
+for s in snaps:
+    idx = os.path.join(s, "model.safetensors.index.json")
+    if not (os.path.exists(idx) and os.path.exists(os.path.join(s, "config.json"))):
+        continue
+    with open(idx) as f:
+        shards = sorted(set(json.load(f)["weight_map"].values()))
+    missing = [x for x in shards if not os.path.exists(os.path.join(s, x))]
+    if missing:
+        print(f"model {model} incomplete: {len(missing)} of {len(shards)} weight files missing"); sys.exit(1)
+    print(f"model {model} complete: {len(shards)} weight files in {s}"); sys.exit(0)
+print(f"model {model} incomplete: no config.json / weight index yet"); sys.exit(1)
+PYEOF
+}
+
 TTY=()   # interactive only when started from a terminal (not under nohup)
 if [ -t 0 ] && [ -t 1 ]; then TTY=(-it); fi
 
@@ -86,12 +115,26 @@ case "${1:-}" in
     docker run --rm ${TTY[@]+"${TTY[@]}"} "${OPTS[@]}" "$IMAGE" "$@" ;;
   stop)
     docker stop "$NAME" ;;
+  download)
+    docker rm practice-download >/dev/null 2>&1 || true
+    docker run -d --name practice-download "${OPTS[@]}" "$IMAGE" python3 -c       "from huggingface_hub import snapshot_download; print(snapshot_download('$MODEL_ID', max_workers=8)); print('DOWNLOAD DONE')" >/dev/null
+    echo "downloading $MODEL_ID in the background (container practice-download)"
+    echo "follow:  docker logs -f practice-download      size so far: du -sh $CACHE_DIR/huggingface"
+    echo "done when 'bash docker_run.sh check-model' says complete"
+    [ -n "${HF_TOKEN:-}" ] || echo "tip: with a Hugging Face token (export HF_TOKEN=...) the rate limit is yours alone, not your IP's" ;;
+  check-model)
+    model_cached ;;
   status)
     bash monitor.sh once ;;
   ""|[1-4]*)
     if docker ps -q --filter "name=^${NAME}$" | grep -q .; then
       echo "$NAME is already running (bash docker_run.sh status / stop)"; exit 1
     fi
+    if [ "${SKIP_MODEL_CHECK:-0}" != "1" ] && ! model_cached; then
+      echo "Download the model first: bash docker_run.sh download   (then: bash docker_run.sh check-model)"; exit 1
+    fi
+    # offline: load the model from the cache without asking Hugging Face anything (HF_HUB_OFFLINE=0 to allow it)
+    OPTS+=(-e "HF_HUB_OFFLINE=${HF_HUB_OFFLINE:-1}" -e "TRANSFORMERS_OFFLINE=${HF_HUB_OFFLINE:-1}")
     docker rm "$NAME" >/dev/null 2>&1 || true   # the container of an earlier, finished run
     # --restart on-failure:2: if a step crashes (e.g. a vLLM error), Docker starts run_gb300.sh again, which
     # resumes every step where it stopped. A run stopped with "docker_run.sh stop" is not restarted.
@@ -104,5 +147,5 @@ case "${1:-}" in
       echo "watch:   bash monitor.sh        or: tail -f logs/step${1:-1}.log"
     fi ;;
   *)
-    sed -n '2,15p' "$0"; exit 1 ;;
+    sed -n '2,20p' "$0"; exit 1 ;;
 esac
