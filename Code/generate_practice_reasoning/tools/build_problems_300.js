@@ -1,17 +1,17 @@
-// Build Data/problems_300.csv: Claude's and an LLM's labels for rows 1-300, plus Aashish's review columns.
+// Build Data/problems_300.csv: Claude's and the LLMs' labels for rows 1-300, plus Aashish's review columns.
 //
 // Usage (from the repo root):
 //   node Code/generate_practice_reasoning/tools/build_problems_300.js \
 //       --ordering Code/generate_practice_reasoning/tools/claude_ordering.tsv \
-//       --answers <folder with Claude's r<row>_q2.md> [--llm qwen3_30b_v3] [--reviews reviews.jsonl]
+//       --answers <folder with Claude's r<row>_q2.md> [--llm qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4] [--reviews reviews.jsonl]
 //
 //   --ordering  output of claude_ordering.awk (row <TAB> source <TAB> ordering ...)
 //   --answers   folder with Claude's answer 2 files (the reason for its top practice)
-//   --llm       column prefix of the second labeler in Problems.csv (default qwen3_30b_v3)
+//   --llm       the other labelers, comma-separated prefix:key (default qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4)
 //   --reviews   optional: the review page's saved documents, one JSON object per line
 //               ({"data": {...}} as the artifact database lists them, or the bare data). They fill the aashish_* columns.
 // Aashish's columns already in Data/problems_300.csv are kept (matched by row) unless --reviews has that row.
-// aashish_*_choice: both (Claude and the LLM agree and so does Aashish) | claude | <llm> | neither.
+// aashish_*_choice: which labelers Aashish's answer matches: all | none | keys joined with + (e.g. claude+qwen_v3).
 
 const fs = require("fs");
 const path = require("path");
@@ -19,8 +19,7 @@ const { readTable, csvField, canon, llmOrdering } = require("./csv");
 
 const args = {};
 for (let i = 2; i < process.argv.length; i += 2) args[process.argv[i].replace(/^--/, "")] = process.argv[i + 1];
-const LLM = args.llm || "qwen3_30b_v3";
-const LLM_SHORT = LLM.split(/[_\d]/)[0];           // "qwen" for the choice values
+const LLMS = (args.llm || "qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4").split(",").map(x => { const [prefix, key] = x.split(":"); return { prefix, key: key || prefix }; });
 const N = 300;
 const OUT = "Data/problems_300.csv";
 if (!args.ordering || !args.answers) { console.error("need --ordering and --answers"); process.exit(1); }
@@ -32,7 +31,7 @@ for (const line of fs.readFileSync(args.ordering, "utf8").split(/\r?\n/)) {
 }
 
 const P = readTable("Data/Problems.csv");
-for (const col of ["problem_id", "predicted_practice", "claude_top_practice", `${LLM}_reasoning`, `${LLM}_top_practice`, `${LLM}_top_practice_reasoning`])
+for (const col of ["problem_id", "predicted_practice", "claude_top_practice", ...LLMS.flatMap(L => [`${L.prefix}_reasoning`, `${L.prefix}_top_practice`, `${L.prefix}_top_practice_reasoning`])])
     if (!(col in P.h)) { console.error(`Problems.csv has no column ${col}`); process.exit(1); }
 
 // Aashish's answers: from the existing CSV, then from --reviews
@@ -52,10 +51,11 @@ if (args.reviews) {
         if (d.row) mine[+d.row] = d;
     }
 }
-const choice = (mineVal, c, l) => !mineVal ? "" : mineVal === c && mineVal === l ? "both" : mineVal === c ? "claude" : mineVal === l ? LLM_SHORT : "neither";
+// vals: [[key, value], ...] for Claude and each LLM
+const choice = (mineVal, vals) => { if (!mineVal) return ""; const ks = vals.filter(([, v]) => v === mineVal).map(([k]) => k); return ks.length === vals.length ? "all" : ks.length ? ks.join("+") : "none"; };
 
 const head = ["row", "problem_id", "predicted_practice", "claude_ordering", "claude_top_practice", "claude_top_practice_reasoning",
-    `${LLM}_ordering`, `${LLM}_top_practice`, `${LLM}_top_practice_reasoning`,
+    ...LLMS.flatMap(L => [`${L.prefix}_ordering`, `${L.prefix}_top_practice`, `${L.prefix}_top_practice_reasoning`]),
     "aashish_ordering_choice", "aashish_ordering", "aashish_top_practice_choice", "aashish_top_practice", "aashish_note", "aashish_updated"];
 const lines = [head.join(",")];
 let filled = 0;
@@ -65,16 +65,19 @@ for (let r = 1; r <= N; r++) {
     if (!ord[r]) { console.error(`no claude_ordering for row ${r}`); process.exit(1); }
     const why = slurp(path.join(args.answers, `r${r}_q2.md`));
     if (!why) { console.error(`no Claude answer 2 for row ${r}`); process.exit(1); }
-    const l = llmOrdering(p[P.h[`${LLM}_reasoning`]]);
-    if (!l) { console.error(`row ${r}: ${LLM}_reasoning is not JSON`); process.exit(1); }
     const cOrd = ord[r], cTop = canon(g("claude_top_practice"));
-    const lOrd = l.order.join(" > "), lTop = canon(g(`${LLM}_top_practice`));
+    const ls = LLMS.map(L => {
+        const l = llmOrdering(p[P.h[`${L.prefix}_reasoning`]]);
+        if (!l) { console.error(`row ${r}: ${L.prefix}_reasoning is not JSON`); process.exit(1); }
+        return { key: L.key, ord: l.order.join(" > "), top: canon(g(`${L.prefix}_top_practice`)), why: g(`${L.prefix}_top_practice_reasoning`) };
+    });
+    const ordVals = [["claude", cOrd], ...ls.map(x => [x.key, x.ord])], topVals = [["claude", cTop], ...ls.map(x => [x.key, x.top])];
     const m = mine[r];
     if (m && m.problem_id && String(m.problem_id) !== pid) { console.error(`row ${r}: review is for problem ${m.problem_id}, not ${pid}`); process.exit(1); }
     if (m) filled++;
-    lines.push([r, pid, canon(g("predicted_practice")), cOrd, cTop, why, lOrd, lTop, g(`${LLM}_top_practice_reasoning`),
-        m ? choice(m.aashish_ordering, cOrd, lOrd) : "", m ? m.aashish_ordering : "",
-        m ? choice(m.aashish_top_practice, cTop, lTop) : "", m ? m.aashish_top_practice : "",
+    lines.push([r, pid, canon(g("predicted_practice")), cOrd, cTop, why, ...ls.flatMap(x => [x.ord, x.top, x.why]),
+        m ? choice(m.aashish_ordering, ordVals) : "", m ? m.aashish_ordering : "",
+        m ? choice(m.aashish_top_practice, topVals) : "", m ? m.aashish_top_practice : "",
         m ? m.note || "" : "", m ? m.updated || "" : ""].map(csvField).join(","));
 }
 fs.writeFileSync(OUT, lines.join("\n") + "\n");

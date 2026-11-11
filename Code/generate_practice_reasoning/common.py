@@ -33,19 +33,31 @@ def sha256(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def load_prompts():
-    """The three system prompts and the three user prompt templates, all from prompts.py."""
-    if "{PROBLEM}" not in P.Q1_TEMPLATE:
-        raise ValueError("prompts.Q1_TEMPLATE must contain {PROBLEM}")
-    if "{PROBLEM}" not in P.Q2_TEMPLATE or "{PRACTICES}" not in P.Q2_TEMPLATE:
-        raise ValueError("prompts.Q2_TEMPLATE must contain {PROBLEM} and {PRACTICES}")
-    if "{PROBLEM}" not in P.Q3_TEMPLATE or "{ANALYSIS}" not in P.Q3_TEMPLATE:
-        raise ValueError("prompts.Q3_TEMPLATE must contain {PROBLEM} and {ANALYSIS}")
-    return {"system_1": P.SYSTEM_PROMPT_1, "system_2": P.SYSTEM_PROMPT_2, "system_3": P.SYSTEM_PROMPT_3,
-            "q1_template": P.Q1_TEMPLATE, "q2_template": P.Q2_TEMPLATE, "q3_template": P.Q3_TEMPLATE}
+DEFAULT_CHAPTER = os.path.join(HERE, "naep_chapter3.txt")
 
 
-PLACEHOLDER_RE = re.compile(r"\{(PROBLEM|PRACTICES|ANALYSIS)\}")
+def load_prompts(framework="standard", chapter_path=None):
+    """The four system prompts and the four user prompt templates, all from prompts.py.
+
+    framework "standard": the prompts as written in prompts.py.
+    framework "naep_ch3": the same prompts, each system prompt preceded by the text of NAEP Chapter 3
+    (chapter_path, default naep_chapter3.txt).
+    """
+    for name, keys in (("Q1_TEMPLATE", ["PROBLEM"]), ("Q2_TEMPLATE", ["PROBLEM", "PRACTICES"]),
+                       ("Q3_TEMPLATE", ["PROBLEM", "ANALYSIS"]),
+                       ("Q4_TEMPLATE", ["PROBLEM", "CORRECT", "ANALYSIS", "WRONG", "COUNT", "SHARE"])):
+        missing = [k for k in keys if "{" + k + "}" not in getattr(P, name)]
+        if missing:
+            raise ValueError(f"prompts.{name} must contain {', '.join('{' + k + '}' for k in missing)}")
+    chapter = read_text(chapter_path or DEFAULT_CHAPTER) if framework != "standard" else None
+    sp = P.system_prompts(framework, chapter)
+    return {"framework": framework, "chapter_sha256": sha256(chapter) if chapter else None,
+            "system_1": sp[1], "system_2": sp[2], "system_3": sp[3], "system_4": sp[4],
+            "q1_template": P.Q1_TEMPLATE, "q2_template": P.Q2_TEMPLATE, "q3_template": P.Q3_TEMPLATE,
+            "q4_template": P.Q4_TEMPLATE}
+
+
+PLACEHOLDER_RE = re.compile(r"\{(PROBLEM|PRACTICES|ANALYSIS|CORRECT|WRONG|COUNT|SHARE)\}")
 
 
 def fill(template, **values):
@@ -231,10 +243,11 @@ class AnswerChecker:
     order (the analysis prompt 3 gets).
     """
 
-    def __init__(self):
+    def __init__(self, no_ordering=False):
         self.parsed = []
         self.how = []
         self.combined = None
+        self.no_ordering = no_ordering   # without prompt 2, prompt 3 gets answer 1 in its own order
 
     def check(self, turn, text):
         try:
@@ -251,6 +264,66 @@ class AnswerChecker:
         self.how.append(how)
         if turn == 2:
             self.combined = combine(self.parsed[0], obj)
+        elif turn == 1 and self.no_ordering:
+            self.combined = obj
+        return None
+
+
+STATUSES = ("correct", "failed", "not_reached", "cannot_tell")
+ERROR_TYPES = ("practice", "math_fact", "guess")
+
+
+def check_diagnosis(obj, analysis):
+    """Rules for answer 4, the diagnosis of one wrong answer (see prompts.PROMPT_RESPONSE_4). Returns the first
+    failed practice (or None). Raises ValueError on the first problem."""
+    for key in ("reconstruction", "explanation"):
+        _why(obj, "answer 4", key)
+    steps = obj.get("steps")
+    if not isinstance(steps, list) or not steps:
+        raise ValueError("\"steps\" must be a non-empty list")
+    want = [it["practice"] for it in analysis["practices_used"]]
+    got = []
+    for i, st in enumerate(steps, 1):
+        where = f"steps[{i}]"
+        if not isinstance(st, dict):
+            raise ValueError(f"{where} must be an object")
+        if st.get("status") not in STATUSES:
+            raise ValueError(f"{where}: \"status\" must be one of {', '.join(STATUSES)}, got {st.get('status')!r}")
+        _why(st, where)
+        got.append(st.get("practice"))
+    if got != want:
+        raise ValueError(f"\"steps\" must list the analysis's practices in order ({', '.join(want)}), got {', '.join(map(str, got))}")
+    et = obj.get("error_type")
+    if et not in ERROR_TYPES:
+        raise ValueError(f"\"error_type\" must be one of {', '.join(ERROR_TYPES)}, got {et!r}")
+    failed = [st["practice"] for st in steps if st["status"] == "failed"]
+    if et in ("practice", "math_fact") and not failed:
+        raise ValueError(f"error_type {et} needs at least one step with status \"failed\"")
+    if et == "guess" and failed:
+        raise ValueError("error_type guess must not have a \"failed\" step")
+    if et == "math_fact" and not (isinstance(obj.get("math_fact"), str) and obj["math_fact"].strip()):
+        raise ValueError("error_type math_fact needs the fact in \"math_fact\"")
+    if obj.get("confidence") not in ("high", "medium", "low"):
+        raise ValueError(f"\"confidence\" must be high, medium or low, got {obj.get('confidence')!r}")
+    return failed[0] if failed else None
+
+
+class DiagnosisChecker:
+    """Same interface as AnswerChecker, for the single diagnosis prompt (turn 4)."""
+
+    def __init__(self, analysis):
+        self.analysis = analysis
+        self.parsed, self.how, self.failed_practice = [], [], None
+
+    def check(self, turn, text):
+        try:
+            obj, how = parse_json_answer(text)
+            failed = check_diagnosis(obj, self.analysis)
+        except ValueError as e:
+            return f"answer {turn}: {e}"
+        self.parsed.append(obj)
+        self.how.append(how)
+        self.failed_practice = failed
         return None
 
 
@@ -392,7 +465,7 @@ def merge_into_csv(run_dir, prefix, csv_path, backup_dir, replace_prefix=None):
                              f"{rec['problem_id']} in the run log")
         if "answer3_json" in final:          # three prompts
             body[i][idx[0]] = json.dumps(final["combined_json"], ensure_ascii=False)
-            body[i][idx[1]] = json.dumps(final["answer2_json"], ensure_ascii=False)
+            body[i][idx[1]] = json.dumps(final["answer2_json"], ensure_ascii=False) if final.get("answer2_json") else ""
             top = final["answer3_json"]
         else:                                # two-prompt logs (e.g. qwen3_30b_v2)
             body[i][idx[0]] = json.dumps(final["answer1_json"], ensure_ascii=False)

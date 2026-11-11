@@ -21,7 +21,7 @@ import re
 from common import now, sha256
 
 THINK_RE = re.compile(r"^\s*<think>(.*?)</think>\s*", re.S)
-SYSTEM_NAMES = {1: "SYSTEM_PROMPT_1", 2: "SYSTEM_PROMPT_2", 3: "SYSTEM_PROMPT_3"}
+SYSTEM_NAMES = {1: "SYSTEM_PROMPT_1", 2: "SYSTEM_PROMPT_2", 3: "SYSTEM_PROMPT_3", 4: "SYSTEM_PROMPT_4"}
 
 
 def split_think(text):

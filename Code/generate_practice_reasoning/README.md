@@ -138,6 +138,7 @@ Useful options:
 | `--retry-failed` | try problems that failed in an earlier invocation again, with a fresh set of attempts |
 | `--merge-only` / `--no-merge` | only write the CSV columns from the logs / don't touch the CSV |
 | `--replace-columns OLD_PREFIX` | when merging, turn the `OLD_PREFIX_*` columns into this run's columns in place (see Output columns) |
+| `--no-ordering` | skip prompt 2 (the order): prompt 3 gets answer 1 in its own order, as in the two-prompt version; `<prefix>_ordering_reasoning` stays empty |
 | `--effort` | Claude effort level (default `high`; Claude Opus 5.5 itself defaults to `medium`) |
 | `--no-fallbacks` | Claude: turn off the server-side refusal fallback (on by default; if Opus 5.5 declines a request, the API answers with a fallback model and the log's `served_model` says which) |
 | `--reasoning-effort` | OpenAI reasoning models |
@@ -169,3 +170,20 @@ git add Data/Problems.csv Code/generate_practice_reasoning/runs/openAI
 ## Tested
 
 The two-prompt version ran on the A100 (run `qwen3_30b_v2`, all 3,395 problems). The three-prompt version (prompt 2 and the merge changes) was written on the Windows machine, which has no Python, and has not been run yet: start with `--dry-run` and `--rows 1-3 --no-merge`, and look at one `rows/row_00001.json`, before a full run.
+
+## NAEP Chapter 3 version (`--framework naep_ch3`)
+
+`naep_chapter3.txt` is the text of Chapter 3 ("NAEP Mathematical Practices") of the NAEP 2026 Mathematics Framework, about 23k tokens, made from the PDF with `tools/naep_chapter_text.js` (Node). With `--framework naep_ch3`, that text is put in front of every system prompt, with a short note that Procedural Fluency comes from the NRC strands rather than NAEP. Everything after it is the same as the standard prompts, so the answers use the same six practices and formats. Figures are missing from the text and tables are flattened; the item text inside figures is partly garbled. The changed system prompts need a new `--column-prefix`.
+
+## Wrong-answer diagnosis (`diagnose.py`, prompt 4)
+
+For every wrong answer that at least `--min-students` students (default 2) gave on their first attempt without hints or answer views (`Results/practice_analysis/common_wrong_answers.csv`, from `Code/practice_analysis/wrong_answers.js`), one call asks which practice steps the student did correctly, where the student went wrong and which steps they did not reach. The prompt gets the item, its correct answer, the practice analysis from `Problems.csv` (`<practice prefix>_reasoning`, so run `generate.py` first), the wrong answer and how many students gave it.
+
+The answer: a `reconstruction` (the calculation that produces the wrong answer), a status for each practice used (`correct`, `failed`, `not_reached`, `cannot_tell`), `error_type` (`practice`, `math_fact` or `guess`), the fact for `math_fact`, an explanation and a confidence. The check requires the steps to be the analysis's practices in order, at least one `failed` step for `practice` and `math_fact`, none for `guess`. Output: `Data/wrong_answer_diagnosis_<name>.csv`, logs in `runs/<name>/items/`.
+
+```bash
+python3 diagnose.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --practice-prefix qwen35_122b \
+    --name qwen35_122b_diag --rows 1-300 --dry-run
+```
+
+Options: `--types fill,mc,all,order`, `--rows`, `--max-items` (quick tests), `--framework naep_ch3`, `--write-only` (rewrite the CSV from the logs).

@@ -63,39 +63,12 @@ DEFAULT_MODELS = {
 DEFAULT_PREFIX = {"anthropic": "claude_api", "openai": "openAI", "gemini": "gemini", "local": "qwen3_30b"}
 # Settings that must match for rows of one run (one set of CSV columns) to be comparable.
 LOCKED_KEYS = ["provider", "model", "system_prompt_1_sha256", "system_prompt_2_sha256", "system_prompt_3_sha256",
-               "q1_template_sha256", "q2_template_sha256", "q3_template_sha256", "params"]
+               "q1_template_sha256", "q2_template_sha256", "q3_template_sha256", "params", "no_ordering"]
+LOCK_DEFAULTS = {"no_ordering": False}   # runs recorded before the option existed used the order prompt
 
 
-def parse_args():
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--provider", required=True, choices=["anthropic", "openai", "gemini", "local"])
-    ap.add_argument("--model", help="model id (default depends on --provider)")
-    ap.add_argument("--rows", help="data rows of Problems.csv, e.g. '1-300' or '301-400,512' (default: all)")
-    ap.add_argument("--column-prefix", help="CSV column prefix and run folder name "
-                                            "(default: claude_api / openAI / gemini / qwen3_30b)")
-    ap.add_argument("--run-dir", help="log directory (default: runs/<prefix>)")
-    ap.add_argument("--problems-csv", default=common.DEFAULT_PROBLEMS_CSV)
-    ap.add_argument("--max-retries-per-problem", type=int, default=3,
-                    help="retries of a problem after a failed attempt (an answer that fails the JSON check, "
-                         "or a failed call, in prompt 1 or prompt 2); each retry starts again from "
-                         "prompt 1. A problem gets at most 1 + this many attempts; after that it is "
-                         "listed in failed_problems.csv")
-    ap.add_argument("--retry-failed", action="store_true",
-                    help="give problems that failed in an earlier invocation a fresh set of attempts")
-    ap.add_argument("--max-tokens", type=int, help="output token limit per call")
-    ap.add_argument("--temperature", type=float, help="sampling temperature (OpenAI, Gemini, local)")
-    ap.add_argument("--workers", type=int, default=8, help="parallel conversations for API providers")
-    ap.add_argument("--max-retries", type=int, default=8,
-                    help="API providers: HTTP retries inside one call on 429/5xx/connection errors "
-                         "(separate from --max-retries-per-problem)")
-    ap.add_argument("--dry-run", action="store_true", help="print the prompts for the selected rows and stop")
-    ap.add_argument("--merge-only", action="store_true", help="skip generation; write the CSV columns from the logs")
-    ap.add_argument("--no-merge", action="store_true", help="do not touch Problems.csv after generating")
-    ap.add_argument("--replace-columns", metavar="OLD_PREFIX",
-                    help="when merging, rename the OLD_PREFIX_* columns of Problems.csv to <prefix>_* in place and "
-                         "fill them only from this run (e.g. --replace-columns qwen3_30b_v2)")
-    ap.add_argument("--force", action="store_true",
-                    help="allow settings that differ from the ones recorded for this run directory")
+def add_provider_args(ap):
+    """Options of the four providers (also used by diagnose.py)."""
     g = ap.add_argument_group("anthropic")
     g.add_argument("--effort", default="high", choices=["low", "medium", "high", "xhigh", "max"],
                    help="output_config.effort (Claude Opus 5.5 defaults to medium if unset)")
@@ -120,6 +93,47 @@ def parse_args():
     g.add_argument("--seed", type=int, default=0)
     g.add_argument("--enable-thinking", type=lambda s: s.lower() in ("1", "true", "yes"), default=None,
                    help="pass enable_thinking to the chat template (for hybrid Qwen3 models)")
+
+
+def parse_args():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--provider", required=True, choices=["anthropic", "openai", "gemini", "local"])
+    ap.add_argument("--model", help="model id (default depends on --provider)")
+    ap.add_argument("--rows", help="data rows of Problems.csv, e.g. '1-300' or '301-400,512' (default: all)")
+    ap.add_argument("--column-prefix", help="CSV column prefix and run folder name "
+                                            "(default: claude_api / openAI / gemini / qwen3_30b)")
+    ap.add_argument("--run-dir", help="log directory (default: runs/<prefix>)")
+    ap.add_argument("--problems-csv", default=common.DEFAULT_PROBLEMS_CSV)
+    ap.add_argument("--framework", default="standard", choices=["standard", "naep_ch3"],
+                    help="standard: the prompts in prompts.py; naep_ch3: the same prompts with the text of NAEP "
+                         "Chapter 3 in front of every system prompt (needs a new --column-prefix)")
+    ap.add_argument("--chapter-file", default=common.DEFAULT_CHAPTER,
+                    help="text of NAEP Chapter 3 for --framework naep_ch3 (default naep_chapter3.txt)")
+    ap.add_argument("--max-retries-per-problem", type=int, default=3,
+                    help="retries of a problem after a failed attempt (an answer that fails the JSON check, "
+                         "or a failed call, in prompt 1 or prompt 2); each retry starts again from "
+                         "prompt 1. A problem gets at most 1 + this many attempts; after that it is "
+                         "listed in failed_problems.csv")
+    ap.add_argument("--retry-failed", action="store_true",
+                    help="give problems that failed in an earlier invocation a fresh set of attempts")
+    ap.add_argument("--max-tokens", type=int, help="output token limit per call")
+    ap.add_argument("--temperature", type=float, help="sampling temperature (OpenAI, Gemini, local)")
+    ap.add_argument("--workers", type=int, default=8, help="parallel conversations for API providers")
+    ap.add_argument("--max-retries", type=int, default=8,
+                    help="API providers: HTTP retries inside one call on 429/5xx/connection errors "
+                         "(separate from --max-retries-per-problem)")
+    ap.add_argument("--dry-run", action="store_true", help="print the prompts for the selected rows and stop")
+    ap.add_argument("--merge-only", action="store_true", help="skip generation; write the CSV columns from the logs")
+    ap.add_argument("--no-merge", action="store_true", help="do not touch Problems.csv after generating")
+    ap.add_argument("--no-ordering", action="store_true",
+                    help="skip prompt 2 (the order): prompt 3 gets answer 1 in its own order, as in the two-prompt "
+                         "version; <prefix>_ordering_reasoning stays empty (needs its own --column-prefix)")
+    ap.add_argument("--replace-columns", metavar="OLD_PREFIX",
+                    help="when merging, rename the OLD_PREFIX_* columns of Problems.csv to <prefix>_* in place and "
+                         "fill them only from this run (e.g. --replace-columns qwen3_30b_v2)")
+    ap.add_argument("--force", action="store_true",
+                    help="allow settings that differ from the ones recorded for this run directory")
+    add_provider_args(ap)
     args = ap.parse_args()
     args.model = args.model or DEFAULT_MODELS[args.provider]
     if args.provider == "openai" and args.base_url and not args.column_prefix:
@@ -134,6 +148,9 @@ def run_config(args, prompts, provider_desc):
         "provider": args.provider,
         "model": args.model,
         "column_prefix": args.column_prefix,
+        "framework": prompts["framework"],
+        "no_ordering": args.no_ordering,
+        "chapter_sha256": prompts["chapter_sha256"],
         "system_prompt_1": prompts["system_1"],
         "system_prompt_1_sha256": common.sha256(prompts["system_1"]),
         "system_prompt_2": prompts["system_2"],
@@ -164,7 +181,7 @@ def check_manifest(args, config):
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             old = json.load(f)
-        diff = [k for k in LOCKED_KEYS if old["config"].get(k) != config.get(k)]
+        diff = [k for k in LOCKED_KEYS if old["config"].get(k, LOCK_DEFAULTS.get(k)) != config.get(k)]
         if diff and not args.force:
             sys.exit(f"Settings differ from {path} in: {', '.join(diff)}.\n"
                      f"Use another --column-prefix (new columns), or --force to continue anyway.")
@@ -212,14 +229,15 @@ def finish_attempt(rec, calls, failed_step, error, invalid, checker, max_retries
            "json_extraction": checker.how}
     rec["attempts"].append(att)
     if reason is None:
+        with_order = len(calls) == 3       # without the order prompt (--no-ordering) there are two calls
         rec["final"] = {
             "status": "ok", "attempt": att["attempt"],
-            "answer1": calls[0]["response_text"], "answer2": calls[1]["response_text"],
-            "answer3": calls[2]["response_text"],
-            "answer1_json": checker.parsed[0], "answer2_json": checker.parsed[1],
-            "answer3_json": checker.parsed[2], "combined_json": checker.combined,
+            "answer1": calls[0]["response_text"], "answer2": calls[1]["response_text"] if with_order else None,
+            "answer3": calls[-1]["response_text"],
+            "answer1_json": checker.parsed[0], "answer2_json": checker.parsed[1] if with_order else None,
+            "answer3_json": checker.parsed[-1], "combined_json": checker.combined,
             "ordering": [it["practice"] for it in checker.combined["practices_used"]],
-            "top_practice": checker.parsed[2]["top_practice"],
+            "top_practice": checker.parsed[-1]["top_practice"],
         }
         return False
     n_failed = sum(1 for a in rec["attempts"] if a["failure_reason"])
@@ -253,7 +271,7 @@ def generate(args, provider, prompts, problems, rows):
     while pending:
         round_no += 1
         print(f"Round {round_no}: {len(pending)} problems", flush=True)
-        checkers = {r: common.AnswerChecker() for r in pending}
+        checkers = {r: common.AnswerChecker(no_ordering=args.no_ordering) for r in pending}
         if hasattr(provider, "attempt_of"):  # local vLLM: seed depends on the attempts already made
             provider.attempt_of = {r: len(records[r]["attempts"]) for r in pending}
         again = []
@@ -315,10 +333,11 @@ def error_text(e):
 
 
 def run_problems(args, provider, prompts, problems, rows, checkers):
-    """Run prompts 1, 2 and 3 for each row, each only after the answer before it passed.
-    Yield (row, calls, failed_step, error, invalid); failed_step is 1, 2 or 3 when the attempt failed."""
+    """Run prompts 1, 2 and 3 for each row (1 and 3 with --no-ordering), each only after the answer before it
+    passed. Yield (row, calls, failed_step, error, invalid); failed_step is 1, 2 or 3 when the attempt failed."""
     if args.provider == "local":
-        yield from run_problems_local(provider, prompts, problems, rows, checkers)
+        yield from run_problems_local(provider, prompts, problems, rows, checkers,
+                                      (1, 3) if args.no_ordering else (1, 2, 3))
         return
 
     def one(r):
@@ -329,11 +348,12 @@ def run_problems(args, provider, prompts, problems, rows, checkers):
             problem = ck.check(1, rec["response_text"])
             if problem:
                 return r, calls, 1, None, problem     # prompts 2 and 3 are never sent
-            step = 2
-            rec = provider.call(prompts["system_2"], common.build_prompt2(prompts, text, ck.parsed[0]), 2, calls)
-            problem = ck.check(2, rec["response_text"])
-            if problem:
-                return r, calls, 2, None, problem     # prompt 3 is never sent
+            if not args.no_ordering:
+                step = 2
+                rec = provider.call(prompts["system_2"], common.build_prompt2(prompts, text, ck.parsed[0]), 2, calls)
+                problem = ck.check(2, rec["response_text"])
+                if problem:
+                    return r, calls, 2, None, problem     # prompt 3 is never sent
             step = 3
             rec = provider.call(prompts["system_3"], common.build_prompt3(prompts, text, ck.combined), 3, calls)
             problem = ck.check(3, rec["response_text"])
@@ -347,15 +367,15 @@ def run_problems(args, provider, prompts, problems, rows, checkers):
             yield fut.result()
 
 
-def run_problems_local(provider, prompts, problems, rows, checkers):
+def run_problems_local(provider, prompts, problems, rows, checkers, steps=(1, 2, 3)):
     """Batched version: prompt 1 for all rows, then prompt 2 for the rows whose answer 1 passed, then
-    prompt 3 for the rows whose answer 2 passed."""
+    prompt 3 for the rows whose answer 2 passed (steps (1, 3): prompt 3 right after answer 1)."""
     calls = {r: [] for r in rows}
     build = {1: lambda r: common.build_prompt1(prompts, problems[r]["text"]),
              2: lambda r: common.build_prompt2(prompts, problems[r]["text"], checkers[r].parsed[0]),
              3: lambda r: common.build_prompt3(prompts, problems[r]["text"], checkers[r].combined)}
     todo = list(rows)
-    for step in (1, 2, 3):
+    for step in steps:
         reqs = [(r, prompts[f"system_{step}"], build[step](r), step) for r in todo]
         passed = []
         for r, rec, error in provider.call_many(reqs):
@@ -375,12 +395,13 @@ def run_problems_local(provider, prompts, problems, rows, checkers):
 
 def main():
     args = parse_args()
-    prompts = common.load_prompts()
+    prompts = common.load_prompts(args.framework, args.chapter_file)
     problems = common.load_problems()
     rows = common.parse_rows(args.rows, len(problems))
 
     if args.dry_run:
-        print(f"provider={args.provider} model={args.model} prefix={args.column_prefix} run_dir={args.run_dir}")
+        print(f"provider={args.provider} model={args.model} prefix={args.column_prefix} run_dir={args.run_dir} "
+              f"framework={args.framework}")
         print("=" * 30, "SYSTEM PROMPT 1", "=" * 30)
         print(prompts["system_1"])
         print("=" * 30, "SYSTEM PROMPT 2", "=" * 30)

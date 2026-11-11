@@ -629,3 +629,102 @@ Analysis of the practices a student uses to solve this item:
 {ANALYSIS}
 
 Using the practice definitions and descriptors and this analysis, tell me which single practice is the top practice of this item: the step where the item's difficulty lies, the one a student who answers incorrectly most likely failed at. Explain why it is the top practice and why the other practices the student uses are less likely to cause an incorrect answer."""
+
+
+# =====================================================================================================================
+# Prompt 4: diagnosis of one wrong answer (used by diagnose.py)
+# =====================================================================================================================
+
+INTRO_4 = """You are an expert in mathematics assessment. You have years of experience reviewing test items, deciding which mathematical practices each item assesses, and reading students' wrong answers to work out where their thinking went wrong.
+
+Your task: you will be given ONE item from an online k-12 mathematics item bank, its correct answer, an analysis of the practices a student uses to solve it (in order, with how each is used and what could go wrong), and ONE wrong answer that several students gave on their first attempt. Work out how a student most likely arrived at this wrong answer: which practice steps the student carried out correctly, at which step the student went wrong, and which steps the student never got to.
+
+"""
+
+PROMPT_RESPONSE_4 = """
+---
+
+How to respond
+
+Base the answer on what a student would have to do to produce exactly this wrong answer. Write the practice names exactly as: Representing, Abstracting and Generalizing, Justifying and Proving, Mathematical Modeling, Collaborative Mathematics, Procedural Fluency.
+
+- First find a "reconstruction": the calculation or line of reasoning that turns the item into this wrong answer (for example "3 × 9 = 27: used 9 as the time instead of the distance"). Prefer the simplest process that produces exactly this answer. If no reasonable process produces it, write "none".
+- Then give a status for every practice in the analysis's "practices_used", in the same order:
+  - "correct": the student carried out this step correctly. A step done correctly on a wrong earlier result is still "correct" (for example, multiplying correctly after setting up the wrong equation).
+  - "failed": the student went wrong at this step.
+  - "not_reached": the answer shows the student stopped before doing this step (for example, an intermediate result was given as the final answer).
+  - "cannot_tell": the wrong answer gives no evidence about this step.
+- Choose the "error_type":
+  - "practice": the student went wrong in a practice itself: for example set up the wrong representation, modeled the wrong quantity, applied a rule to the wrong cases, or slipped in carrying out a procedure. At least one step is "failed".
+  - "math_fact": the error comes from a wrong or missing mathematical fact: a definition or term (coefficient, variable, radius), notation (reading 6^2 as 6 × 2), a convention (order of operations), a number fact, a unit or conversion, a constant or a formula. Name the fact in "math_fact". Mark the step where the wrong fact was used as "failed".
+  - "guess": no reasonable process produces this answer from the item (a random or unrelated answer, or a guess among the choices). No step is "failed"; use "cannot_tell" or "not_reached".
+- Wrong answers are written as the student entered them, in lower case. For multiple-choice items the answer is the text of the chosen option(s); for ordering items it is the items in the student's order, separated by commas. An item with several blanks may have its answers joined by commas.
+
+Respond with exactly one JSON object in this form, and write nothing before or after it:
+
+{
+"reconstruction": "<the calculation or reasoning that produces this wrong answer, or \\"none\\">",
+"steps": [
+  {"practice": "<practice name>", "status": "<correct | failed | not_reached | cannot_tell>", "why": "<1 sentence>"}
+],
+"error_type": "<practice | math_fact | guess>",
+"math_fact": "<for math_fact: the fact the student got wrong, e.g. \\"6^2 means 6 × 6, not 6 × 2\\"; otherwise an empty string>",
+"explanation": "<1-3 sentences: how the student most likely arrived at this answer>",
+"confidence": "<high | medium | low>"
+}"""
+
+SYSTEM_PROMPT_4 = INTRO_4 + PRACTICE_DEFINITIONS + PROMPT_RESPONSE_4
+
+# User prompt 4: the problem, its correct answer, the analysis (answer 1 in the order of answer 2, JSON), the wrong answer.
+Q4_TEMPLATE = """Item:
+
+{PROBLEM}
+
+Correct answer: {CORRECT}
+
+Analysis of the practices a student uses to solve this item:
+
+{ANALYSIS}
+
+Wrong answer: {WRONG}
+({COUNT} students gave this answer on their first attempt, {SHARE} of the item's wrong answers.)
+
+Using the practice definitions and descriptors and this analysis, tell me how a student most likely arrived at this wrong answer: which practice steps the student did correctly, at which step the student went wrong, and which steps the student did not get to."""
+
+
+# =====================================================================================================================
+# NAEP Chapter 3 version (--framework naep_ch3)
+# =====================================================================================================================
+# The full text of Chapter 3 of the NAEP 2026 Mathematics Framework ("NAEP Mathematical Practices", made with
+# tools/naep_chapter_text.js into naep_chapter3.txt) is put in front of every system prompt. The rest of each system
+# prompt is unchanged, so the answers use the same six practices and formats. Putting the chapter first gives all
+# prompts the same long prefix, which vLLM's prefix cache reuses across every call.
+
+CHAPTER_INTRO = """Background reading: below is the full text of Chapter 3, "NAEP Mathematical Practices", of the Mathematics Framework for the 2026 National Assessment of Educational Progress (NAEP). It explains in depth what each NAEP mathematical practice means, how the practices differ from each other and from conceptual understanding and computational fluency, and gives example items with the practices they assess. The text was extracted from the PDF: figures are missing, tables are flattened into lines, and some item text from images may be garbled.
+
+Use the chapter to understand each practice in depth. For your answer, use the six practices, definitions and descriptors given after the chapter. Five of them are the NAEP practices; the sixth, Procedural Fluency, is not a NAEP practice: it comes from the strands of mathematical proficiency of the National Research Council (Adding It Up, 2001) and covers the computational and procedural work that the chapter calls computational or procedural fluency.
+
+<naep_chapter_3>
+"""
+
+CHAPTER_OUTRO = """
+</naep_chapter_3>
+
+---
+
+"""
+
+FRAMEWORKS = ("standard", "naep_ch3")
+
+
+def system_prompts(framework="standard", chapter_text=None):
+    """The four system prompts for a framework: {1: ..., 2: ..., 3: ..., 4: ...}."""
+    base = {1: SYSTEM_PROMPT_1, 2: SYSTEM_PROMPT_2, 3: SYSTEM_PROMPT_3, 4: SYSTEM_PROMPT_4}
+    if framework == "standard":
+        return base
+    if framework != "naep_ch3":
+        raise ValueError(f"unknown framework {framework!r}; use one of {FRAMEWORKS}")
+    if not chapter_text or len(chapter_text) < 10000:
+        raise ValueError("the naep_ch3 framework needs the chapter text (naep_chapter3.txt)")
+    prefix = CHAPTER_INTRO + chapter_text.strip() + CHAPTER_OUTRO
+    return {k: prefix + v for k, v in base.items()}
