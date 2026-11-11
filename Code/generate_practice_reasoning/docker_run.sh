@@ -5,12 +5,13 @@
 #   bash docker_run.sh                    all four steps of run_gb300.sh, in the background (like nohup: it
 #                                         keeps going after you log out, and restarts up to twice if it crashes)
 #   bash docker_run.sh 1 3                only steps 1 and 3, in the background
+#   SMOKE=1 bash docker_run.sh            the smoke test (6 problems, all four steps), in the background
 #   bash docker_run.sh status             one progress snapshot (monitor.sh once)
 #   bash docker_run.sh stop               stop the background run (starting it again resumes)
 #   bash docker_run.sh shell              an interactive shell in the container
 #   bash docker_run.sh run <command...>   one command in the container, e.g. the dry run or the 3-row test
 #
-# Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN (see run_gb300.sh) and HF_TOKEN.
+# Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS (see run_gb300.sh), HF_TOKEN.
 # CACHE_DIR: host folder for the model download and compile caches (default ~/.cache; the model needs ~130 GB).
 # The background run keeps going after you log out; its output is in logs/step<N>.log.
 
@@ -28,7 +29,9 @@ OPTS=(--gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864
       -v "$REPO:/workspace"
       -v "$CACHE_DIR:/home/app/.cache"
       -w /workspace/Code/generate_practice_reasoning)
-for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN; do
+# the host's time zone, so the time estimates in the logs are in local time
+if [ -e /etc/localtime ]; then OPTS+=(-v /etc/localtime:/etc/localtime:ro); fi
+for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN SMOKE SMOKE_ROWS; do
   if [ -n "${!v:-}" ]; then OPTS+=(-e "$v"); fi
 done
 TTY=()   # interactive only when started from a terminal (not under nohup)
@@ -54,8 +57,13 @@ case "${1:-}" in
     # --restart on-failure:2: if a step crashes (e.g. a vLLM error), Docker starts run_gb300.sh again, which
     # resumes every step where it stopped. A run stopped with "docker_run.sh stop" is not restarted.
     docker run -d --restart on-failure:2 --name "$NAME" "${OPTS[@]}" "$IMAGE" bash run_gb300.sh "$@" >/dev/null
-    echo "started $NAME (steps: ${*:-1 2 3 4})"
-    echo "watch:   bash monitor.sh        or: tail -f logs/step${1:-1}.log" ;;
+    if [ "${SMOKE:-0}" = "1" ]; then
+      echo "started the smoke test in $NAME (steps: ${*:-1 2 3 4})"
+      echo "watch:   SMOKE=1 bash monitor.sh     when done: bash smoke_check.sh"
+    else
+      echo "started $NAME (steps: ${*:-1 2 3 4})"
+      echo "watch:   bash monitor.sh        or: tail -f logs/step${1:-1}.log"
+    fi ;;
   *)
     sed -n '2,15p' "$0"; exit 1 ;;
 esac

@@ -63,6 +63,7 @@ def parse_args():
     ap.add_argument("--rows", help="data rows of Problems.csv, e.g. '1-300' (default: all)")
     ap.add_argument("--max-items", type=int, help="stop after this many wrong answers (for a quick test)")
     ap.add_argument("--problems-csv", default=common.DEFAULT_PROBLEMS_CSV)
+    ap.add_argument("--out", help="output CSV (default: Data/wrong_answer_diagnosis_<name>.csv)")
     ap.add_argument("--framework", default="standard", choices=["standard", "naep_ch3"])
     ap.add_argument("--chapter-file", default=common.DEFAULT_CHAPTER)
     ap.add_argument("--max-retries-per-problem", type=int, default=3)
@@ -214,6 +215,7 @@ def run(args, provider, prompts, items):
           f"up to {1 + args.max_retries_per_problem} attempts each.", flush=True)
     counts = {"ok": 0, "failed": 0}
     pending, round_no = sorted(records), 0
+    progress = common.Progress(len(items), len(items) - len(records), len(records), "wrong answers")
     while pending:
         round_no += 1
         print(f"Round {round_no}: {len(pending)} wrong answers", flush=True)
@@ -233,7 +235,10 @@ def run(args, provider, prompts, items):
                 again.append(k)
             else:
                 counts[f["status"]] += 1
+                progress.add()
+        progress.report(f" (end of round {round_no}; {len(again)} to retry)")
         pending = sorted(again)
+    progress.stop()
     return counts
 
 
@@ -270,7 +275,7 @@ def write_outputs(args):
         if name.endswith(".json"):
             with open(os.path.join(items_dir, name), encoding="utf-8") as f:
                 recs.append(json.load(f))
-    out = os.path.join(common.REPO_ROOT, "Data", f"wrong_answer_diagnosis_{args.name}.csv")
+    out = args.out or os.path.join(common.REPO_ROOT, "Data", f"wrong_answer_diagnosis_{args.name}.csv")
     head = ["row", "problem_id", "problem_type", "rank", "wrong_answer", "students", "share_of_wrong", "practice_prefix",
             "error_type", "failed_practice", "math_fact", "reconstruction", "explanation", "confidence", "steps",
             *[f"status_{p.replace(' ', '_').lower()}" for p in PR.PRACTICES], "diagnosis_json"]

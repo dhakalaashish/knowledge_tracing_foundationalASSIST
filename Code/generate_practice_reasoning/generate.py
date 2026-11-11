@@ -268,6 +268,7 @@ def generate(args, provider, prompts, problems, rows):
     counts = {"ok": 0, "failed": 0}
     pending = sorted(records)
     round_no = 0
+    progress = common.Progress(len(rows), len(rows) - len(records), len(records), "problems")
     while pending:
         round_no += 1
         print(f"Round {round_no}: {len(pending)} problems", flush=True)
@@ -292,7 +293,10 @@ def generate(args, provider, prompts, problems, rows):
                 again.append(r)
             else:
                 counts[f["status"]] += 1
+                progress.add()
+        progress.report(f" (end of round {round_no}; {len(again)} to retry)")
         pending = sorted(again)
+    progress.stop()
     return counts
 
 

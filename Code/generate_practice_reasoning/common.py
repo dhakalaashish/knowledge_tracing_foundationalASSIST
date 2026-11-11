@@ -9,7 +9,9 @@ import re
 import subprocess
 import sys
 import tempfile
-from datetime import datetime, timezone
+import threading
+import time
+from datetime import datetime, timedelta, timezone
 
 import prompts as P
 
@@ -486,3 +488,55 @@ def merge_into_csv(run_dir, prefix, csv_path, backup_dir, replace_prefix=None):
     os.replace(tmp, csv_path)
     return {"written": written, "skipped_unfinished": skipped, "columns": cols, "backup": backup,
             "replaced": replaced}
+
+
+# ---------------------------------------------------------------- progress and time estimate
+
+def hm(seconds):
+    """seconds -> '2h05m' or '7m'."""
+    m = int(seconds // 60)
+    return f"{m // 60}h{m % 60:02d}m" if m >= 60 else f"{m}m"
+
+
+class Progress:
+    """A PROGRESS line in the log every `every` seconds (default 10 min) and at the end of each round:
+    done / total (%), and from the speed so far, the time left and the clock time it should finish.
+
+    The clock starts when the first round starts, so model loading does not count. Results come in batches of up
+    to --batch-size, so the first estimate appears once the first batch is back, and estimates firm up over time.
+    An item counts as finished when it is ok or has failed every attempt (items waiting for a retry do not count)."""
+
+    def __init__(self, total, done_before, to_run, unit, every=600):
+        self.total, self.done_before, self.to_run, self.unit, self.every = total, done_before, to_run, unit, every
+        self.finished = 0
+        self.start = time.time()
+        self._stop = threading.Event()
+        self._thread = threading.Thread(target=self._beat, daemon=True)
+        self._thread.start()
+
+    def _beat(self):
+        while not self._stop.wait(self.every):
+            self.report()
+
+    def add(self, n=1):
+        self.finished += n
+
+    def report(self, label=""):
+        elapsed = time.time() - self.start
+        done = self.done_before + self.finished
+        pct = 100.0 * done / self.total if self.total else 100.0
+        line = (f"PROGRESS{label}: {done} of {self.total} {self.unit} done ({pct:.1f}%); "
+                f"{self.finished} finished in {hm(elapsed)} in this run")
+        left_n = self.to_run - self.finished
+        if left_n <= 0:
+            line += "; all finished"
+        elif self.finished:
+            left = elapsed / self.finished * left_n
+            line += (f"; about {hm(left)} left at this speed "
+                     f"(around {datetime.now() + timedelta(seconds=left):%a %d %b %H:%M})")
+        else:
+            line += "; no estimate yet (waiting for the first batch of results)"
+        print(line, flush=True)
+
+    def stop(self):
+        self._stop.set()

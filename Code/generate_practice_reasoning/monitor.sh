@@ -4,6 +4,7 @@
 #   bash monitor.sh                 a live view, refreshed every 60 s (Ctrl-C quits the view; the run keeps going)
 #   bash monitor.sh 300             refreshed every 300 s
 #   bash monitor.sh once            one snapshot
+#   SMOKE=1 bash monitor.sh         the smoke test instead of the real run
 #   nohup bash monitor.sh log 600 >> logs/monitor.log 2>&1 &
 #                                   a snapshot every 10 min appended to logs/monitor.log, kept after you log out
 #
@@ -26,8 +27,10 @@ case "${1:-}" in
 esac
 
 # the same names as run_gb300.sh
-STEP_DIR=([1]=runs/qwen35_122b/rows [2]=runs/qwen35_122b_ch3/rows
-          [3]=runs/qwen35_122b_diag/items [4]=runs/qwen35_122b_ch3_diag/items)
+T=""; LOGP=logs/step
+if [ "${SMOKE:-0}" = "1" ]; then T=smoke_; LOGP=logs/smoke_step; fi
+STEP_DIR=([1]=runs/${T}qwen35_122b/rows [2]=runs/${T}qwen35_122b_ch3/rows
+          [3]=runs/${T}qwen35_122b_diag/items [4]=runs/${T}qwen35_122b_ch3_diag/items)
 STEP_NAME=([1]="labels, standard prompts" [2]="labels, Chapter 3 prompts"
            [3]="diagnosis, standard prompts" [4]="diagnosis, Chapter 3 prompts")
 
@@ -40,13 +43,18 @@ hm() {  # minutes -> "2h05m"
 first_lines() { find "$2" -name '*.json' -print0 2>/dev/null | xargs -0 -r grep -h -m1 "$1" 2>/dev/null; }
 
 step_report() {
-  local n=$1 dir=${STEP_DIR[$1]} log=logs/step$1.log marker=logs/step$1.started
+  local n=$1 dir=${STEP_DIR[$1]} log=$LOGP$1.log marker=$LOGP$1.started
   [ -e "$log" ] || [ -d "$dir" ] || { echo "step $n (${STEP_NAME[$n]}): not started"; return; }
 
   local state="not started" last
   last=$(grep -a "^=== step $n " "$log" 2>/dev/null | tail -1)
   case "$last" in
-    *finished*) state="finished ${last#*finished }" ;;
+    *finished*)
+      state="finished ${last#*finished }"
+      local first s e
+      first=$(grep -a "^=== step $n started" "$log" | head -1)
+      s=$(date -d "${first#*started }" +%s 2>/dev/null); e=$(date -d "${last#*finished }" +%s 2>/dev/null)
+      if [ -n "$s" ] && [ -n "$e" ]; then state="$state (took $(hm $(( (e - s) / 60 ))))"; fi ;;
     *started*)  state="started ${last#*started }" ;;
   esac
   local running=0
@@ -60,7 +68,9 @@ step_report() {
   total=$(grep -a -o -E 'of [0-9]+ (rows|wrong answers) already done' "$log" 2>/dev/null | tail -1 | awk '{print $2}')
 
   echo "step $n (${STEP_NAME[$n]}): $state"
-  printf '  done %s of %s   ok %s   failed %s   retrying %s\n' "$done" "${total:-?}" "$ok" "$failed" "$retry"
+  local pct="?"
+  if [ -n "$total" ] && [ "$total" -gt 0 ]; then pct=$(awk -v d="$done" -v t="$total" 'BEGIN{printf "%.1f", 100*d/t}'); fi
+  printf '  done %s of %s (%s%%)   ok %s   failed %s   retrying %s\n' "$done" "${total:-?}" "$pct" "$ok" "$failed" "$retry"
 
   if [ "$running" = 1 ] && [ -e "$marker" ]; then
     local now start mins since
@@ -69,7 +79,11 @@ step_report() {
             xargs -0 -r grep -l -m1 -E '^    "status": "(ok|failed)"' 2>/dev/null | wc -l)
     if [ "$since" -gt 0 ] && [ "$mins" -gt 0 ]; then
       local left=""
-      if [ -n "$total" ]; then left="   about $(hm $(( (total - done) * mins / since ))) left"; fi
+      if [ -n "$total" ]; then
+        local lm=$(( (total - done) * mins / since ))
+        left="
+  time left: about $(hm "$lm") at this speed (finishing around $(date -d "+$lm min" '+%a %d %b %H:%M'))"
+      fi
       echo "  speed: $since finished in $(hm "$mins") since this step (re)started ($(( since * 60 / mins ))/hour)$left"
     else
       echo "  speed: no results yet, $(hm "$mins") since this step (re)started (loading the model, or the first batch)"
@@ -82,7 +96,10 @@ step_report() {
   fi
 
   if [ -e "$log" ]; then
-    local cut tb
+    local cut tb est
+    # the run's own estimate, written to the log every 10 minutes and at the end of each round
+    est=$(grep -a '^PROGRESS' "$log" | tail -1 | cut -c1-220)
+    [ "$running" = 1 ] && [ -n "$est" ] && echo "  run's own estimate${est#PROGRESS}"
     cut=$(grep -a -c 'hit max_tokens' "$log")
     tb=$(grep -a -c '^Traceback' "$log")
     [ "$cut" -gt 0 ] && echo "  answers cut off at MAX_TOKENS so far: $cut (each one is retried)"

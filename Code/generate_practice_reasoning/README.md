@@ -115,6 +115,9 @@ export GEMINI_API_KEY=...            # --provider gemini (GOOGLE_API_KEY also wo
 bash docker_run.sh build                 # once
 bash docker_run.sh run python3 -c "import torch; print(torch.cuda.device_count(), torch.cuda.get_device_name(0), 'CUDA', torch.version.cuda)"   # the GPU is visible in the container
 bash docker_run.sh run python3 generate.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --rows 1-3 --dry-run
+SMOKE=1 bash docker_run.sh               # smoke test: all four steps on 6 problems (one per question type), into runs/smoke*/
+SMOKE=1 bash monitor.sh                  # watch it; when it is done:
+bash smoke_check.sh                      # labels, diagnoses, token use, failures, and a PASSED / check-these verdict
 bash docker_run.sh                       # run_gb300.sh, all four steps, in the background
 bash docker_run.sh status                # or: tail -f logs/step1.log
 ```
