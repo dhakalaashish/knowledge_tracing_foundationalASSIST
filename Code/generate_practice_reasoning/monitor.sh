@@ -104,7 +104,10 @@ step_report() {
     tb=$(grep -a -c '^Traceback' "$log")
     [ "$cut" -gt 0 ] && echo "  answers cut off at MAX_TOKENS so far: $cut (each one is retried)"
     if [ "$tb" -gt 0 ]; then
-      echo "  PYTHON ERRORS in the log: $tb; last: $(grep -a -E '^[A-Za-z_.]*(Error|Exception)\b' "$log" | tail -1 | cut -c1-200)"
+      # the distinct error messages (also those of vLLM's engine process, whose lines carry a prefix); the root
+      # cause is usually one of the first, the generic "Engine core initialization failed" comes last
+      echo "  PYTHON ERRORS in the log: $tb tracebacks; error messages:"
+      grep -a -oE '\b[A-Za-z_.]*(Error|Exception): .{0,170}' "$log" | awk '!seen[$0]++' | tail -5 | sed 's/^/    /'
     fi
     if [ "$running" = 1 ]; then
       local prog

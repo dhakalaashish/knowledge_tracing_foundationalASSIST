@@ -37,6 +37,13 @@ RUN python3 -m pip --version >/dev/null 2>&1 || python3 -m ensurepip \
  && (python3 -m pip check || true) \
  && python3 -c "import vllm, torch, anthropic, openai; from google import genai; print('vllm', vllm.__version__, '| torch', torch.__version__, '| CUDA', torch.version.cuda)"
 
+# FlashInfer (vLLM's FP8 MoE and attention kernels on Blackwell) creates symlinks inside its own package folders
+# the first time a kernel is used. Those folders belong to root; the container runs as your user, so make them
+# writable (without this: PermissionError in .../flashinfer_cubin/cubins/flashinfer and "Engine core
+# initialization failed").
+RUN python3 -c "import importlib.util as u; [print(p) for n in ('flashinfer', 'flashinfer_cubin', 'flashinfer_jit_cache') if (s := u.find_spec(n)) and s.submodule_search_locations for p in s.submodule_search_locations]" \
+    | xargs -r -t chmod -R a+rwX
+
 # docker_run.sh runs the container as your own user id (so files written into the repository are yours, not
 # root's). That id has no account in the image: HOME and USER give it a writable home, where docker_run.sh mounts
 # the host cache folder (model downloads, torch.compile, Triton and FlashInfer caches survive between runs).
