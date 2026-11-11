@@ -107,6 +107,18 @@ export OPENAI_API_KEY=...            # --provider openai
 export GEMINI_API_KEY=...            # --provider gemini (GOOGLE_API_KEY also works)
 ```
 
+### Docker (CUDA 13, for the GB300 or any NVIDIA machine)
+
+`Dockerfile` builds on `vllm/vllm-openai:v0.20.0-cu130` (the newest vLLM release for CUDA 13; multi-arch, so arm64 on the GB300's Grace CPU) and adds git and `requirements.txt`, keeping vLLM, PyTorch and the CUDA libraries at the base image's versions. The image holds only the environment: `docker_run.sh` mounts the whole repository at `/workspace` and runs as your own user, so outputs land in your checkout, runs resume as usual, and a `git pull` needs no rebuild. The model download and compile caches go to `CACHE_DIR` (default `~/.cache`). The host needs an NVIDIA driver for CUDA 13 (580+) and the NVIDIA Container Toolkit.
+
+```bash
+bash docker_run.sh build                 # once
+bash docker_run.sh run nvidia-smi        # the GPU is visible in the container
+bash docker_run.sh run python3 generate.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --rows 1-3 --dry-run
+bash docker_run.sh                       # run_gb300.sh, all four steps, in the background
+bash docker_run.sh status                # or: tail -f logs/step1.log
+```
+
 ## Running
 
 Always start with a dry run to see the exact prompts, then a few rows:

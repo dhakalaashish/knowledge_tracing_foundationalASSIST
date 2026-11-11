@@ -24,7 +24,7 @@ Examples
     python3 diagnose.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --practice-prefix qwen35_122b \\
         --name qwen35_122b_diag --rows 1-300 --dry-run
     python3 diagnose.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --practice-prefix qwen35_122b \\
-        --name qwen35_122b_diag --max-model-len 65536
+        --name qwen35_122b_diag --max-model-len 131072 --enable-thinking true --max-tokens 32768
 """
 
 import argparse
@@ -240,9 +240,12 @@ def run(args, provider, prompts, items):
 def call_all(args, provider, prompts, items):
     """Yield (key, call record, error) for prompt 4 of each item."""
     if args.provider == "local":
-        reqs = [(it["key"], prompts["system_4"], build_prompt4(prompts, it), 4) for it in items]
-        for k, rec, error in provider.call_many(reqs):
-            yield k, rec, error
+        # in chunks of --batch-size, so each chunk is written to disk before the next one starts
+        size = max(1, provider.batch_size)
+        for start in range(0, len(items), size):
+            reqs = [(it["key"], prompts["system_4"], build_prompt4(prompts, it), 4) for it in items[start:start + size]]
+            for k, rec, error in provider.call_many(reqs):
+                yield k, rec, error
         return
 
     def one(it):

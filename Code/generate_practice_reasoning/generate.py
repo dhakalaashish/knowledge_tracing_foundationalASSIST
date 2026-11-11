@@ -368,8 +368,16 @@ def run_problems(args, provider, prompts, problems, rows, checkers):
 
 
 def run_problems_local(provider, prompts, problems, rows, checkers, steps=(1, 2, 3)):
-    """Batched version: prompt 1 for all rows, then prompt 2 for the rows whose answer 1 passed, then
-    prompt 3 for the rows whose answer 2 passed (steps (1, 3): prompt 3 right after answer 1)."""
+    """Batched version, in chunks of --batch-size rows: for each chunk, prompt 1 for all its rows, then prompt 2
+    for the rows whose answer 1 passed, then prompt 3 for the rows whose answer 2 passed (steps (1, 3): prompt 3
+    right after answer 1). Each chunk's rows are yielded (and so written to disk) before the next chunk starts,
+    so an interrupted run loses at most one chunk."""
+    size = max(1, getattr(provider, "batch_size", 512))
+    for start in range(0, len(rows), size):
+        yield from _run_chunk_local(provider, prompts, problems, rows[start:start + size], checkers, steps)
+
+
+def _run_chunk_local(provider, prompts, problems, rows, checkers, steps):
     calls = {r: [] for r in rows}
     build = {1: lambda r: common.build_prompt1(prompts, problems[r]["text"]),
              2: lambda r: common.build_prompt2(prompts, problems[r]["text"], checkers[r].parsed[0]),
