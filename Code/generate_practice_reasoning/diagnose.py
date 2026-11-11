@@ -64,7 +64,7 @@ def parse_args():
     ap.add_argument("--max-items", type=int, help="stop after this many wrong answers (for a quick test)")
     ap.add_argument("--problems-csv", default=common.DEFAULT_PROBLEMS_CSV)
     ap.add_argument("--out", help="output CSV (default: Data/wrong_answer_diagnosis_<name>.csv)")
-    ap.add_argument("--framework", default="standard", choices=["standard", "naep_ch3"])
+    ap.add_argument("--framework", default="standard", choices=list(PR.FRAMEWORKS))
     ap.add_argument("--chapter-file", default=common.DEFAULT_CHAPTER)
     ap.add_argument("--max-retries-per-problem", type=int, default=3)
     ap.add_argument("--retry-failed", action="store_true")

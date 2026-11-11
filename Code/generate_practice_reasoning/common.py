@@ -44,6 +44,7 @@ def load_prompts(framework="standard", chapter_path=None):
     framework "standard": the prompts as written in prompts.py.
     framework "naep_ch3": the same prompts, each system prompt preceded by the text of NAEP Chapter 3
     (chapter_path, default naep_chapter3.txt).
+    framework "no_examples": the prompts without the example items under the descriptors (the v3 prompts).
     """
     for name, keys in (("Q1_TEMPLATE", ["PROBLEM"]), ("Q2_TEMPLATE", ["PROBLEM", "PRACTICES"]),
                        ("Q3_TEMPLATE", ["PROBLEM", "ANALYSIS"]),
@@ -51,7 +52,7 @@ def load_prompts(framework="standard", chapter_path=None):
         missing = [k for k in keys if "{" + k + "}" not in getattr(P, name)]
         if missing:
             raise ValueError(f"prompts.{name} must contain {', '.join('{' + k + '}' for k in missing)}")
-    chapter = read_text(chapter_path or DEFAULT_CHAPTER) if framework != "standard" else None
+    chapter = read_text(chapter_path or DEFAULT_CHAPTER) if framework == "naep_ch3" else None
     sp = P.system_prompts(framework, chapter)
     return {"framework": framework, "chapter_sha256": sha256(chapter) if chapter else None,
             "system_1": sp[1], "system_2": sp[2], "system_3": sp[3], "system_4": sp[4],

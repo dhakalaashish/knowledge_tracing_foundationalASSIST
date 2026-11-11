@@ -104,9 +104,10 @@ def parse_args():
                                             "(default: claude_api / openAI / gemini / qwen3_30b)")
     ap.add_argument("--run-dir", help="log directory (default: runs/<prefix>)")
     ap.add_argument("--problems-csv", default=common.DEFAULT_PROBLEMS_CSV)
-    ap.add_argument("--framework", default="standard", choices=["standard", "naep_ch3"],
+    ap.add_argument("--framework", default="standard", choices=list(common.P.FRAMEWORKS),
                     help="standard: the prompts in prompts.py; naep_ch3: the same prompts with the text of NAEP "
-                         "Chapter 3 in front of every system prompt (needs a new --column-prefix)")
+                         "Chapter 3 in front of every system prompt; no_examples: the prompts without the example "
+                         "items (as in run qwen3_30b_v3). Each needs its own --column-prefix")
     ap.add_argument("--chapter-file", default=common.DEFAULT_CHAPTER,
                     help="text of NAEP Chapter 3 for --framework naep_ch3 (default naep_chapter3.txt)")
     ap.add_argument("--max-retries-per-problem", type=int, default=3,

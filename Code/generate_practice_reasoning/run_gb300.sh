@@ -4,14 +4,18 @@
 #   2. labeling with NAEP Chapter 3 in the prompts  -> Problems.csv columns qwen35_122b_ch3_*
 #   3. wrong-answer diagnosis, standard prompts     -> Data/wrong_answer_diagnosis_qwen35_122b_diag.csv
 #   4. wrong-answer diagnosis, Chapter 3 prompts    -> Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag.csv
-# Steps 1 and 2 use all three prompts (practices, order, top practice), like the Qwen3-30B v3/v4 runs,
-# so step 1 compares directly with v4 (the same standard prompts). Every call uses thinking.
+#   5. labeling without the example items           -> Problems.csv columns qwen35_122b_noex_*
+#   6. wrong-answer diagnosis without examples      -> Data/wrong_answer_diagnosis_qwen35_122b_noex_diag.csv
+#      (optional: not in the default run; start it with: bash run_gb300.sh 6)
+# The labeling steps (1, 5, 2) use all three prompts (practices, order, top practice), like the Qwen3-30B v3/v4
+# runs: step 1 has exactly v4's prompts (with the NAEP example items) and step 5 exactly v3's (without them), so
+# each compares directly with the 30B run of the same prompts. Every call uses thinking.
 # Every step resumes where it stopped, so after an interruption just start the script again.
 #
 # Usage (from Code/generate_practice_reasoning):
-#   bash run_gb300.sh                       all four steps
-#   bash run_gb300.sh 1 3                   only steps 1 and 3
-#   SMOKE=1 bash run_gb300.sh               smoke test: all four steps on 6 problems, one of each question type
+#   bash run_gb300.sh                       steps 1 5 2 3 4: all labeling first, then the diagnoses
+#   bash run_gb300.sh 1 3                   only steps 1 and 3 (in the order given)
+#   SMOKE=1 bash run_gb300.sh               smoke test: steps 1 5 2 3 4 on 6 problems, one of each question type
 #   MAX_TOKENS=49152 bash run_gb300.sh      a larger output limit (thinking + answer) per call
 # Logs: logs/step<N>.log (smoke test: logs/smoke_step<N>.log)
 #
@@ -32,7 +36,7 @@ MODEL="${MODEL:-Qwen/Qwen3.5-122B-A10B-FP8}"
 MAX_TOKENS="${MAX_TOKENS:-32768}"         # Qwen's recommended output length for thinking mode
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-131072}"
 SMOKE="${SMOKE:-0}"
-STEPS="${*:-1 2 3 4}"
+STEPS="${*:-1 5 2 3 4}"
 
 # thinking on, with Qwen's sampling advice for thinking mode
 COMMON=(--provider local --model "$MODEL" --num-gpus 1 --max-model-len "$MAX_MODEL_LEN"
@@ -43,7 +47,8 @@ if [ "$SMOKE" = "1" ]; then
   LOG=logs/smoke_step
   SMOKE_ROWS="${SMOKE_ROWS:-1,6,9,809,2221,2232}"
   rm -rf runs/smoke runs/smoke_qwen35_122b runs/smoke_qwen35_122b_ch3 runs/smoke_qwen35_122b_diag \
-         runs/smoke_qwen35_122b_ch3_diag logs/smoke_step*
+         runs/smoke_qwen35_122b_ch3_diag runs/smoke_qwen35_122b_noex runs/smoke_qwen35_122b_noex_diag \
+         logs/smoke_step*
   mkdir -p runs/smoke
   cp ../../Data/Problems.csv runs/smoke/Problems.csv
   GEN_EXTRA=(--rows "$SMOKE_ROWS" --problems-csv runs/smoke/Problems.csv)
@@ -69,6 +74,11 @@ for step in $STEPS; do
     4) python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
          --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag" \
          --out "$(diag_out "${TAG}qwen35_122b_ch3_diag")" ;;
+    5) python3 -u generate.py "${COMMON[@]}" ${GEN_EXTRA[@]+"${GEN_EXTRA[@]}"} --framework no_examples \
+         --column-prefix "${TAG}qwen35_122b_noex" ;;
+    6) python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework no_examples \
+         --practice-prefix "${TAG}qwen35_122b_noex" --name "${TAG}qwen35_122b_noex_diag" \
+         --out "$(diag_out "${TAG}qwen35_122b_noex_diag")" ;;
     *) echo "unknown step $step"; exit 1 ;;
   esac >> "$LOG$step.log" 2>&1
   echo "=== step $step finished $(date)" | tee -a "$LOG$step.log"

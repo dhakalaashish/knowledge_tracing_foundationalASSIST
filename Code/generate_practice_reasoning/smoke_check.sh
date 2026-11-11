@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Summary of the smoke test (SMOKE=1 bash run_gb300.sh, or SMOKE=1 bash docker_run.sh). Reading only.
 #   bash smoke_check.sh
-# Shows, for each of the four steps: whether it finished without Python errors, ok / failed counts and why
+# Shows, for each step (1, 5, 2, 3, 4): whether it finished without Python errors, ok / failed counts and why
 # anything failed, token use per prompt (and how close it came to MAX_TOKENS), the labels of each problem
 # (standard and Chapter 3 side by side), the diagnoses, and whether the labels were written into the CSV copy.
 # Needs only the host's python3 (standard library).
@@ -10,9 +10,12 @@ python3 - "$@" <<'EOF'
 import csv, glob, json, os, re, sys
 csv.field_size_limit(sys.maxsize)
 
-RUNS = {1: "runs/smoke_qwen35_122b", 2: "runs/smoke_qwen35_122b_ch3",
+RUNS = {1: "runs/smoke_qwen35_122b", 5: "runs/smoke_qwen35_122b_noex", 2: "runs/smoke_qwen35_122b_ch3",
         3: "runs/smoke_qwen35_122b_diag", 4: "runs/smoke_qwen35_122b_ch3_diag"}
-NAMES = {1: "labels, standard", 2: "labels, Chapter 3", 3: "diagnosis, standard", 4: "diagnosis, Chapter 3"}
+NAMES = {1: "labels, standard", 5: "labels, no examples", 2: "labels, Chapter 3",
+         3: "diagnosis, standard", 4: "diagnosis, Chapter 3"}
+LABEL_STEPS = (1, 5, 2)
+SUFFIXES = ("reasoning", "ordering_reasoning", "top_practice", "top_practice_reasoning")
 problems = []
 
 def load(d, sub):
@@ -46,7 +49,7 @@ for n, d in RUNS.items():
         if last:
             print(f"  last error: {last[-1][:300]}")
         problems.append(f"step {n}: Python error in {log}")
-    recs = load(d, "rows" if n <= 2 else "items")
+    recs = load(d, "rows" if n in LABEL_STEPS else "items")
     data[n] = recs
     if not recs:
         print("  no results")
@@ -81,16 +84,16 @@ for n, d in RUNS.items():
               f"{sum(v['out']) // max(1, len(v['out'])):,}, max {max(v['out']):,}"
               + (f" of {mt:,} allowed" if mt else "") + (f"; {v['cut']} cut off" if v["cut"] else ""))
 
-print("\n=== labels (standard | Chapter 3)")
-for row in sorted(set(data.get(1, {})) | set(data.get(2, {}))):
+print("\n=== labels (standard | no examples | Chapter 3)")
+for row in sorted(set().union(*(data.get(n, {}) for n in LABEL_STEPS))):
     print(f"  row {row}:")
-    for n in (1, 2):
+    for n in LABEL_STEPS:
         r = data.get(n, {}).get(row)
         f = r["final"] if r else {}
         if f.get("status") == "ok":
-            print(f"    {NAMES[n]:<18} {' > '.join(f['ordering'])}   | top: {f['top_practice']}")
+            print(f"    {NAMES[n]:<20} {' > '.join(f['ordering'])}   | top: {f['top_practice']}")
         else:
-            print(f"    {NAMES[n]:<18} {f.get('status', 'missing')}")
+            print(f"    {NAMES[n]:<20} {f.get('status', 'missing')}")
 
 print("\n=== diagnoses (standard | Chapter 3)")
 for key in sorted(set(data.get(3, {})) | set(data.get(4, {})), key=lambda k: [int(x) for x in re.findall(r"\d+", k)]):
@@ -113,7 +116,8 @@ if os.path.exists(p):
         rd = csv.reader(f)
         head = next(rd)
         rows = list(rd)
-    for prefix, n in (("smoke_qwen35_122b", 1), ("smoke_qwen35_122b_ch3", 2)):
+    for n in LABEL_STEPS:
+        prefix = os.path.basename(RUNS[n])
         col = f"{prefix}_top_practice"
         if col not in head:
             print(f"  {p}: no column {col}")
@@ -121,7 +125,7 @@ if os.path.exists(p):
             continue
         i = head.index(col)
         filled = sum(1 for r in rows if i < len(r) and r[i])
-        cols = [c for c in head if c.startswith(prefix + "_") and (prefix != "smoke_qwen35_122b" or "_ch3_" not in c)]
+        cols = [f"{prefix}_{s}" for s in SUFFIXES if f"{prefix}_{s}" in head]
         print(f"  {p}: {', '.join(cols)}; {filled} rows filled")
 for n in (3, 4):
     p = f"runs/smoke/wrong_answer_diagnosis_{os.path.basename(RUNS[n])}.csv"

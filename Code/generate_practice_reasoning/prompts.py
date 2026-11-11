@@ -714,14 +714,64 @@ CHAPTER_OUTRO = """
 
 """
 
-FRAMEWORKS = ("standard", "naep_ch3")
+# ---------------------------------------------------------------- no-examples version (framework "no_examples")
+# The prompts of run qwen3_30b_v3: the same intros, definitions, descriptors and response formats, but without the
+# example items under each practice's descriptors and with v3's shorter introduction to the definitions.
+# (Two-prompt run qwen3_30b_v2 used the same text for its prompts 1 and 2.) Checked against the system prompts
+# recorded in runs/qwen3_30b_v3/manifest.json: identical, character for character.
+
+PROMPT_CONTEXT_NO_EXAMPLES = """---
+
+Assess the item's practices using:
+    - Practice definition: defines what the practice measures
+    - Practice descriptors: non-comprehensive list of descriptions of what the practice could entail
+Both the definition and the descriptor are important in identifying which practice the item belongs to
+
+---
+
+About the items
+
+- A student works on each item alone. Practices that involve other people therefore appear through the item itself: the item shows another person's mathematical thinking (a named student's claim, strategy, answer, work, or a dialogue), and the student responds to it.
+- Figures appear only as text descriptions such as [Image: ...], or as [image] when no description is available. Judge from what the text shows.
+- Answer blanks appear as ____. For multiple-choice items the answer choices are listed; the correct answer is not shown.
+
+---
+
+The six practices:
+
+"""
+
+
+def _without_examples(block, blank_line=True):
+    """A practice block without its "Example items:" section (v3 left a blank line after all but the first)."""
+    text = block.split("\nExample items:")[0]
+    return text + "\n" if blank_line else text
+
+
+PRACTICE_DEFINITIONS_NO_EXAMPLES = (
+    PROMPT_CONTEXT_NO_EXAMPLES
+    + _without_examples(PROMPT_REPRESENTING, blank_line=False)
+    + _without_examples(PROMPT_ABSTRACTING)
+    + _without_examples(PROMPT_JUSTIFYING)
+    + _without_examples(PROMPT_MODELING)
+    + _without_examples(PROMPT_COLLABORATIVE)
+    + _without_examples(PROMPT_PROCEDURAL)
+)
+
+FRAMEWORKS = ("standard", "naep_ch3", "no_examples")
 
 
 def system_prompts(framework="standard", chapter_text=None):
-    """The four system prompts for a framework: {1: ..., 2: ..., 3: ..., 4: ...}."""
+    """The four system prompts for a framework: {1: ..., 2: ..., 3: ..., 4: ...}.
+    standard: as written above; no_examples: without the example items (the v3 prompts); naep_ch3: standard with
+    the text of NAEP Chapter 3 in front."""
     base = {1: SYSTEM_PROMPT_1, 2: SYSTEM_PROMPT_2, 3: SYSTEM_PROMPT_3, 4: SYSTEM_PROMPT_4}
     if framework == "standard":
         return base
+    if framework == "no_examples":
+        d = PRACTICE_DEFINITIONS_NO_EXAMPLES
+        return {1: INTRO_1 + d + PROMPT_RESPONSE_1, 2: INTRO_2 + d + PROMPT_RESPONSE_2,
+                3: INTRO_3 + d + PROMPT_RESPONSE_3, 4: INTRO_4 + d + PROMPT_RESPONSE_4}
     if framework != "naep_ch3":
         raise ValueError(f"unknown framework {framework!r}; use one of {FRAMEWORKS}")
     if not chapter_text or len(chapter_text) < 10000:
