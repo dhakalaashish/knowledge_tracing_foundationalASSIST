@@ -29,12 +29,11 @@ esac
 # the same names as run_gb300.sh
 T=""; LOGP=logs/step
 if [ "${SMOKE:-0}" = "1" ]; then T=smoke_; LOGP=logs/smoke_step; fi
-STEP_DIR=([1]=runs/${T}qwen35_122b/rows [2]=runs/${T}qwen35_122b_ch3/rows
-          [3]=runs/${T}qwen35_122b_diag/items [4]=runs/${T}qwen35_122b_ch3_diag/items
-          [5]=runs/${T}qwen35_122b_noex/rows [6]=runs/${T}qwen35_122b_noex_diag/items)
-STEP_NAME=([1]="labels, standard prompts" [2]="labels, Chapter 3 prompts"
-           [3]="diagnosis, standard prompts" [4]="diagnosis, Chapter 3 prompts"
-           [5]="labels, no examples (v3 prompts)" [6]="diagnosis, no examples")
+STEP_DIR=([1]=runs/${T}qwen35_122b/rows [2]=runs/${T}qwen35_122b_noex/rows [3]=runs/${T}qwen35_122b_ch3/rows
+          [4]=runs/${T}qwen35_122b_diag/items [5]=runs/${T}qwen35_122b_noex_diag/items
+          [6]=runs/${T}qwen35_122b_ch3_diag/items)
+STEP_NAME=([1]="labels, standard prompts" [2]="labels, no examples (v3 prompts)" [3]="labels, Chapter 3 prompts"
+           [4]="diagnosis, standard prompts" [5]="diagnosis, no examples" [6]="diagnosis, Chapter 3 prompts")
 
 hm() {  # minutes -> "2h05m"
   local m=$1
@@ -152,11 +151,7 @@ EOF
   fi
   echo "disk free here: $(df -h . | awk 'NR==2{print $4}')"
   echo
-  # the order run_gb300.sh runs them in; step 6 (optional) only once it has started
-  for n in 1 5 2 3 4 6; do
-    if [ "$n" = 6 ] && [ ! -e "$LOGP$n.log" ] && [ ! -d "${STEP_DIR[6]}" ]; then continue; fi
-    step_report "$n"
-  done
+  for n in 1 2 3 4 5 6; do step_report "$n"; done
   echo
 }
 

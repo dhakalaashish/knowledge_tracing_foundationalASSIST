@@ -115,10 +115,10 @@ export GEMINI_API_KEY=...            # --provider gemini (GOOGLE_API_KEY also wo
 bash docker_run.sh build                 # once
 bash docker_run.sh run python3 -c "import torch; print(torch.cuda.device_count(), torch.cuda.get_device_name(0), 'CUDA', torch.version.cuda)"   # the GPU is visible in the container
 bash docker_run.sh run python3 generate.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --rows 1-3 --dry-run
-SMOKE=1 bash docker_run.sh               # smoke test: steps 1 5 2 3 4 on 6 problems (one per question type), into runs/smoke*/
+SMOKE=1 bash docker_run.sh               # smoke test: all six steps on 6 problems (one per question type), into runs/smoke*/
 SMOKE=1 bash monitor.sh                  # watch it; when it is done:
 bash smoke_check.sh                      # labels, diagnoses, token use, failures, and a PASSED / check-these verdict
-bash docker_run.sh                       # run_gb300.sh (steps 1 5 2 3 4), in the background; step 6 with: bash docker_run.sh 6
+bash docker_run.sh                       # run_gb300.sh, all six steps, in the background
 bash docker_run.sh status                # or: tail -f logs/step1.log
 ```
 
@@ -205,4 +205,4 @@ Options: `--types fill,mc,all,order`, `--rows`, `--max-items` (quick tests), `--
 
 ## No-examples version (`--framework no_examples`)
 
-The prompts without the NAEP example items under each practice's descriptors, and with the shorter introduction to the definitions: exactly the system prompts of run `qwen3_30b_v3` (checked character for character against `runs/qwen3_30b_v3/manifest.json`). The standard prompts are exactly those of `qwen3_30b_v4`. On the GB300 this is step 5 (labels, prefix `qwen35_122b_noex`) and the optional step 6 (diagnosis), so the 122B model can be compared with the 30B model on both prompt versions.
+The prompts without the NAEP example items under each practice's descriptors, and with the shorter introduction to the definitions: exactly the system prompts of run `qwen3_30b_v3` (checked character for character against `runs/qwen3_30b_v3/manifest.json`). The standard prompts are exactly those of `qwen3_30b_v4`. On the GB300 this is step 2 (labels, prefix `qwen35_122b_noex`) and step 5 (diagnosis from those labels), so the 122B model can be compared with the 30B model on both prompt versions.

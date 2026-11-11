@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 # Summary of the smoke test (SMOKE=1 bash run_gb300.sh, or SMOKE=1 bash docker_run.sh). Reading only.
 #   bash smoke_check.sh
-# Shows, for each step (1, 5, 2, 3, 4): whether it finished without Python errors, ok / failed counts and why
-# anything failed, token use per prompt (and how close it came to MAX_TOKENS), the labels of each problem
-# (standard and Chapter 3 side by side), the diagnoses, and whether the labels were written into the CSV copy.
+# Shows, for each of the six steps: whether it finished without Python errors, ok / failed counts and why
+# anything failed, token use per prompt (and how close it came to MAX_TOKENS), the labels and the diagnoses of
+# each problem (standard, no examples and Chapter 3 side by side), and whether the outputs were written.
 # Needs only the host's python3 (standard library).
 cd "$(dirname "$0")"
 python3 - "$@" <<'EOF'
 import csv, glob, json, os, re, sys
 csv.field_size_limit(sys.maxsize)
 
-RUNS = {1: "runs/smoke_qwen35_122b", 5: "runs/smoke_qwen35_122b_noex", 2: "runs/smoke_qwen35_122b_ch3",
-        3: "runs/smoke_qwen35_122b_diag", 4: "runs/smoke_qwen35_122b_ch3_diag"}
-NAMES = {1: "labels, standard", 5: "labels, no examples", 2: "labels, Chapter 3",
-         3: "diagnosis, standard", 4: "diagnosis, Chapter 3"}
-LABEL_STEPS = (1, 5, 2)
+RUNS = {1: "runs/smoke_qwen35_122b", 2: "runs/smoke_qwen35_122b_noex", 3: "runs/smoke_qwen35_122b_ch3",
+        4: "runs/smoke_qwen35_122b_diag", 5: "runs/smoke_qwen35_122b_noex_diag", 6: "runs/smoke_qwen35_122b_ch3_diag"}
+NAMES = {1: "labels, standard", 2: "labels, no examples", 3: "labels, Chapter 3",
+         4: "diagnosis, standard", 5: "diagnosis, no examples", 6: "diagnosis, Chapter 3"}
+LABEL_STEPS = (1, 2, 3)
+DIAG_STEPS = (4, 5, 6)
 SUFFIXES = ("reasoning", "ordering_reasoning", "top_practice", "top_practice_reasoning")
 problems = []
 
@@ -95,11 +96,12 @@ for row in sorted(set().union(*(data.get(n, {}) for n in LABEL_STEPS))):
         else:
             print(f"    {NAMES[n]:<20} {f.get('status', 'missing')}")
 
-print("\n=== diagnoses (standard | Chapter 3)")
-for key in sorted(set(data.get(3, {})) | set(data.get(4, {})), key=lambda k: [int(x) for x in re.findall(r"\d+", k)]):
-    r = data.get(3, {}).get(key) or data.get(4, {}).get(key)
+print("\n=== diagnoses (standard | no examples | Chapter 3)")
+diag_keys = set().union(*(data.get(n, {}) for n in DIAG_STEPS))
+for key in sorted(diag_keys, key=lambda k: [int(x) for x in re.findall(r"\d+", k)]):
+    r = next(data[n][key] for n in DIAG_STEPS if key in data.get(n, {}))
     print(f"  {key} row {r['row']} wrong answer {r['wrong_answer'][:40]!r} ({r['students']} students):")
-    for n in (3, 4):
+    for n in DIAG_STEPS:
         x = data.get(n, {}).get(key)
         f = x["final"] if x else {}
         if f.get("status") == "ok":
@@ -127,7 +129,7 @@ if os.path.exists(p):
         filled = sum(1 for r in rows if i < len(r) and r[i])
         cols = [f"{prefix}_{s}" for s in SUFFIXES if f"{prefix}_{s}" in head]
         print(f"  {p}: {', '.join(cols)}; {filled} rows filled")
-for n in (3, 4):
+for n in DIAG_STEPS:
     p = f"runs/smoke/wrong_answer_diagnosis_{os.path.basename(RUNS[n])}.csv"
     if os.path.exists(p):
         with open(p, encoding="utf-8", newline="") as f:
