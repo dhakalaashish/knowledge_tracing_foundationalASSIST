@@ -24,8 +24,47 @@ REPO="$(cd ../.. && pwd)"
 CACHE_DIR="${CACHE_DIR:-$HOME/.cache}"
 mkdir -p "$CACHE_DIR" logs
 
-OPTS=(--gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864
-      --user "$(id -u):$(id -g)"
+# The container writes the model download into $CACHE_DIR/huggingface and results into the repository, as you.
+# Stop early, with a clear message, if a folder there belongs to someone else (e.g. root).
+for d in "$CACHE_DIR" "$CACHE_DIR/huggingface" "$CACHE_DIR/huggingface/hub" "$REPO" "$REPO/Data" "$PWD/runs"; do
+  if [ -e "$d" ] && [ ! -w "$d" ]; then
+    echo "error: you ($(id -un)) cannot write to $d (owner: $(stat -c %U "$d"))."
+    echo "Use a cache folder of your own, e.g.:  export CACHE_DIR=\$HOME/aashish/cache   then run this again."
+    exit 1
+  fi
+done
+
+# Normal Docker: run as your own user id, so files written into the repository are yours, not root's.
+# Rootless Docker: the container's root already is you on the host, and --user would map to a stranger.
+USER_OPT=(--user "$(id -u):$(id -g)")
+SECOPTS=$(docker info --format '{{.SecurityOptions}}' 2>/dev/null || true)
+case "$SECOPTS" in
+  *rootless*) USER_OPT=() ;;
+  *userns*) echo "warning: Docker uses user-namespace remapping, so the container may not be able to write" \
+                 "your files; if it fails, tell me the output of: docker info --format '{{.SecurityOptions}}'" ;;
+esac
+
+# Which GPU the container gets: GPU=<index> (as nvitop / nvidia-smi number them), or by default the one with the
+# most memory. The GB300 machine also has a small 24 GB card (GPU 0); the model must go on the GB300 (GPU 1).
+if [ -z "${GPU:-}" ]; then
+  GPU=$(python3 - 2>/dev/null <<'EOF' || true
+import pynvml as n
+n.nvmlInit()
+mem = [n.nvmlDeviceGetMemoryInfo(n.nvmlDeviceGetHandleByIndex(i)).total for i in range(n.nvmlDeviceGetCount())]
+print(max(range(len(mem)), key=mem.__getitem__))
+EOF
+)
+fi
+if [ -n "$GPU" ]; then
+  GPU_OPT=(--gpus "device=$GPU")
+  echo "using GPU $GPU (inside the container it is the only GPU, device 0)" >&2
+else
+  GPU_OPT=(--gpus all)
+  echo "warning: could not tell the GPUs apart; the container sees all of them (set GPU=<index> to choose)" >&2
+fi
+
+OPTS=("${GPU_OPT[@]}" --ipc=host --ulimit memlock=-1 --ulimit stack=67108864
+      ${USER_OPT[@]+"${USER_OPT[@]}"}
       -v "$REPO:/workspace"
       -v "$CACHE_DIR:/home/app/.cache"
       -w /workspace/Code/generate_practice_reasoning)
