@@ -110,6 +110,23 @@ snapshot() {
   if command -v nvidia-smi >/dev/null 2>&1; then
     nvidia-smi --query-gpu=name,utilization.gpu,memory.used,memory.total,temperature.gpu,power.draw \
       --format=csv,noheader 2>/dev/null | sed 's/^/GPU: /'
+  else  # no nvidia-smi (as on the GB300): ask the driver directly through pynvml
+    python3 - <<'EOF' 2>/dev/null || echo "GPU: (no nvidia-smi or pynvml; try: nvitop -1)"
+import pynvml as n
+n.nvmlInit()
+for i in range(n.nvmlDeviceGetCount()):
+    h = n.nvmlDeviceGetHandleByIndex(i)
+    name = n.nvmlDeviceGetName(h)
+    name = name.decode() if isinstance(name, bytes) else name
+    m = n.nvmlDeviceGetMemoryInfo(h)
+    try: util = f"{n.nvmlDeviceGetUtilizationRates(h).gpu} %"
+    except Exception: util = "? %"
+    try: temp = f"{n.nvmlDeviceGetTemperature(h, 0)} C"
+    except Exception: temp = "? C"
+    try: power = f"{n.nvmlDeviceGetPowerUsage(h) / 1000:.0f} W"
+    except Exception: power = "? W"
+    print(f"GPU {i}: {name}, {util}, {m.used >> 20} MiB / {m.total >> 20} MiB, {temp}, {power}")
+EOF
   fi
   echo "disk free here: $(df -h . | awk 'NR==2{print $4}')"
   echo
