@@ -72,7 +72,8 @@ else
 fi
 
 for step in $STEPS; do
-  echo "=== step $step started $(date)" | tee -a "$LOG$step.log"
+  # each marker on a line of its own: vLLM's progress bars end without a newline
+  printf '\n=== step %s started %s\n' "$step" "$(date)" | tee -a "$LOG$step.log"
   touch "$LOG$step.started"   # monitor.sh measures the speed from here
   case "$step" in
     # labeling: standard (v4 prompts), no examples (v3 prompts), NAEP Chapter 3
@@ -92,7 +93,7 @@ for step in $STEPS; do
          --out "$(diag_out "${TAG}qwen35_122b_ch3_diag")" ;;
     *) echo "unknown step $step"; exit 1 ;;
   esac >> "$LOG$step.log" 2>&1
-  echo "=== step $step finished $(date)" | tee -a "$LOG$step.log"
+  printf '\n=== step %s finished %s\n' "$step" "$(date)" | tee -a "$LOG$step.log"
 done
 
 if [ "$SMOKE" = "1" ]; then

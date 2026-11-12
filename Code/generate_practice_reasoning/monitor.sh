@@ -47,13 +47,23 @@ step_report() {
   local n=$1 dir=${STEP_DIR[$1]} log=$LOGP$1.log marker=$LOGP$1.started
   [ -e "$log" ] || [ -d "$dir" ] || { echo "step $n (${STEP_NAME[$n]}): not started"; return; }
 
+  # The log grows across restarts. What describes the current run (its estimate, vLLM's progress bar, errors,
+  # last lines) is read only from the part after the latest start marker. Markers are matched anywhere in a line:
+  # in older logs a marker can follow a progress bar, which never ends its line.
+  local cur off
+  cur=$(mktemp)
+  if [ -e "$log" ]; then
+    off=$(grep -a -b -o "=== step $n started" "$log" | tail -1 | cut -d: -f1)
+    if [ -n "$off" ]; then tail -c +"$((off + 1))" "$log" > "$cur"; else cp "$log" "$cur"; fi
+  fi
+
   local state="not started" last
-  last=$(grep -a "^=== step $n " "$log" 2>/dev/null | tail -1)
+  last=$(grep -a -oE "=== step $n (started|finished).*" "$log" 2>/dev/null | tail -1)
   case "$last" in
     *finished*)
       state="finished ${last#*finished }"
       local first s e
-      first=$(grep -a "^=== step $n started" "$log" | head -1)
+      first=$(grep -a -oE "=== step $n started.*" "$log" | head -1)
       s=$(date -d "${first#*started }" +%s 2>/dev/null); e=$(date -d "${last#*finished }" +%s 2>/dev/null)
       if [ -n "$s" ] && [ -n "$e" ]; then state="$state (took $(hm $(( (e - s) / 60 ))))"; fi ;;
     *started*)  state="started ${last#*started }" ;;
@@ -99,26 +109,27 @@ step_report() {
   if [ -e "$log" ]; then
     local cut tb est
     # the run's own estimate, written to the log every 10 minutes and at the end of each round
-    est=$(grep -a '^PROGRESS' "$log" | tail -1 | cut -c1-220)
+    est=$(grep -a -o 'PROGRESS.*' "$cur" | tail -1 | cut -c1-220)
     [ "$running" = 1 ] && [ -n "$est" ] && echo "  run's own estimate${est#PROGRESS}"
-    cut=$(grep -a -c 'hit max_tokens' "$log")
-    tb=$(grep -a -c '^Traceback' "$log")
-    [ "$cut" -gt 0 ] && echo "  answers cut off at MAX_TOKENS so far: $cut (each one is retried)"
+    cut=$(grep -a -c 'hit max_tokens' "$cur")
+    tb=$(grep -a -c 'Traceback (most recent call last)' "$cur")
+    [ "$cut" -gt 0 ] && echo "  answers cut off at MAX_TOKENS since this (re)start: $cut (each one is retried)"
     if [ "$tb" -gt 0 ]; then
       # the distinct error messages (also those of vLLM's engine process, whose lines carry a prefix); the root
       # cause is usually one of the first, the generic "Engine core initialization failed" comes last
-      echo "  PYTHON ERRORS in the log: $tb tracebacks; error messages:"
-      grep -a -oE '\b[A-Za-z_.]*(Error|Exception): .{0,170}' "$log" | awk '!seen[$0]++' | tail -5 | sed 's/^/    /'
+      echo "  PYTHON ERRORS since this (re)start: $tb tracebacks; error messages:"
+      grep -a -oE '\b[A-Za-z_.]*(Error|Exception): .{0,170}' "$cur" | awk '!seen[$0]++' | tail -5 | sed 's/^/    /'
     fi
     if [ "$running" = 1 ]; then
       local prog
-      prog=$(tail -c 50000 "$log" | tr '\r' '\n' | grep -a 'Processed prompts' | tail -1 | cut -c1-200)
+      prog=$(tail -c 50000 "$cur" | tr '\r' '\n' | grep -a -o 'Processed prompts.*' | tail -1 | cut -c1-200)
       [ -n "$prog" ] && echo "  vLLM: $prog"
       echo "  last log lines:"
-      tail -c 50000 "$log" | tr '\r' '\n' | grep -a -v -E 'Processed prompts|^[[:space:]]*$' | tail -4 |
+      tail -c 50000 "$cur" | tr '\r' '\n' | grep -a -v -E 'Processed prompts|^[[:space:]]*$' | tail -4 |
         cut -c1-200 | sed 's/^/    /'
     fi
   fi
+  rm -f "$cur"
 }
 
 snapshot() {
