@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Summary of the smoke test (SMOKE=1 bash run_gb300.sh, or SMOKE=1 bash docker_run.sh). Reading only.
 #   bash smoke_check.sh
-# Shows, for each of the six steps: whether it finished without Python errors, ok / failed counts and why
+# Shows, for each step that ran: whether it finished without Python errors, ok / failed counts and why
 # anything failed, token use per prompt (and how close it came to MAX_TOKENS), the labels and the diagnoses of
 # each problem (standard, no examples and Chapter 3 side by side), and whether the outputs were written.
 # Needs only the host's python3 (standard library).

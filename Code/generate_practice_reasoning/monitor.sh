@@ -162,7 +162,11 @@ EOF
   fi
   echo "disk free here: $(df -h . | awk 'NR==2{print $4}')"
   echo
-  for n in 1 2 3 4 5 6; do step_report "$n"; done
+  # steps 4 and 5 (diagnoses from the standard and no-examples labels) are optional: shown only once started
+  for n in 1 2 3 4 5 6; do
+    if { [ "$n" = 4 ] || [ "$n" = 5 ]; } && [ ! -e "$LOGP$n.log" ] && [ ! -d "${STEP_DIR[$n]}" ]; then continue; fi
+    step_report "$n"
+  done
   echo
 }
 

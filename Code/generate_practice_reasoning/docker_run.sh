@@ -4,10 +4,10 @@
 #   bash docker_run.sh build              build the image (once; downloads about 10 GB)
 #   bash docker_run.sh download           download the model (~125 GB) in the background; again resumes it
 #   bash docker_run.sh check-model        is the whole model downloaded?
-#   bash docker_run.sh                    run_gb300.sh (all six steps), in the background (like nohup: it
+#   bash docker_run.sh                    run_gb300.sh (steps 1 2 3 6), in the background (like nohup: it
 #                                         keeps going after you log out, and restarts up to twice if it crashes)
 #   bash docker_run.sh 1 3                only steps 1 and 3, in the background
-#   SMOKE=1 bash docker_run.sh            the smoke test (6 problems, all six steps), in the background
+#   SMOKE=1 bash docker_run.sh            the smoke test (6 problems, steps 1 2 3 6), in the background
 #   bash docker_run.sh status             one progress snapshot (monitor.sh once)
 #   bash docker_run.sh stop               stop the background run (starting it again resumes)
 #   bash docker_run.sh shell              an interactive shell in the container
@@ -140,10 +140,10 @@ case "${1:-}" in
     # resumes every step where it stopped. A run stopped with "docker_run.sh stop" is not restarted.
     docker run -d --restart on-failure:2 --name "$NAME" "${OPTS[@]}" "$IMAGE" bash run_gb300.sh "$@" >/dev/null
     if [ "${SMOKE:-0}" = "1" ]; then
-      echo "started the smoke test in $NAME (steps: ${*:-1 2 3 4 5 6})"
+      echo "started the smoke test in $NAME (steps: ${*:-1 2 3 6})"
       echo "watch:   SMOKE=1 bash monitor.sh     when done: bash smoke_check.sh"
     else
-      echo "started $NAME (steps: ${*:-1 2 3 4 5 6})"
+      echo "started $NAME (steps: ${*:-1 2 3 6})"
       echo "watch:   bash monitor.sh        or: tail -f logs/step${1:-1}.log"
     fi ;;
   *)
