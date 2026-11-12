@@ -6,6 +6,7 @@
 #   4. wrong-answer diagnosis from step 1's practices  -> Data/wrong_answer_diagnosis_qwen35_122b_diag.csv
 #   5. wrong-answer diagnosis from step 2's practices  -> Data/wrong_answer_diagnosis_qwen35_122b_noex_diag.csv
 #   6. wrong-answer diagnosis from step 3's practices  -> Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag.csv
+# The diagnoses cover wrong answers given by at least MIN_STUDENTS (default 3) students on their first attempt.
 # Each diagnosis uses the same prompt version as its labeling step. The labeling steps use all three prompts
 # (practices, order, top practice), like the Qwen3-30B v3/v4 runs: step 1 has exactly v4's prompts and step 2
 # exactly v3's, so each compares directly with the 30B run of the same prompts. Every call uses thinking.
@@ -36,6 +37,15 @@ MAX_TOKENS="${MAX_TOKENS:-32768}"         # Qwen's recommended output length for
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-131072}"
 SMOKE="${SMOKE:-0}"
 STEPS="${*:-1 2 3 4 5 6}"
+# Conversations per vLLM batch. Each batch (and each prompt within a labeling batch) waits for its slowest answer,
+# and with thinking a few answers run to 10k-32k tokens alone at the end while the GPU idles; fewer, bigger
+# batches mean fewer such waits. Results are written when a batch ends, so a crash loses at most one batch.
+# Settings for speed only: the answers do not depend on them.
+LABEL_BATCH="${LABEL_BATCH:-1024}"
+DIAG_BATCH="${DIAG_BATCH:-2048}"
+# Diagnose the wrong answers given by at least this many students (first attempts): 3 gives about 10,400 wrong
+# answers, which still cover about 94% of the students behind wrong answers given by 2 or more.
+MIN_STUDENTS="${MIN_STUDENTS:-3}"
 
 # thinking on, with Qwen's sampling advice for thinking mode
 COMMON=(--provider local --model "$MODEL" --num-gpus 1 --max-model-len "$MAX_MODEL_LEN"
@@ -56,8 +66,8 @@ if [ "$SMOKE" = "1" ]; then
 else
   TAG=
   LOG=logs/step
-  GEN_EXTRA=()
-  DIAG_EXTRA=()
+  GEN_EXTRA=(--batch-size "$LABEL_BATCH")
+  DIAG_EXTRA=(--batch-size "$DIAG_BATCH" --min-students "$MIN_STUDENTS")
   diag_out() { echo "../../Data/wrong_answer_diagnosis_$1.csv"; }
 fi
 
