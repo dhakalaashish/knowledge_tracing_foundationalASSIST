@@ -138,11 +138,19 @@ def parse_rows(spec, n_max):
 FENCE_RE = re.compile(r"^```[A-Za-z]*\s*\n(.*?)\n?```$", re.S)
 
 
+def _repair_backslashes(s):
+    """Double every backslash that does not start a JSON escape. Models write LaTeX such as \\( or \\frac inside
+    JSON strings, which is invalid JSON ("Invalid \\escape"). Backslash pairs are read left to right, so a correct
+    escape such as \\\\ or \\" is kept as it is."""
+    return re.sub(r'\\(.)', lambda m: m.group(0) if m.group(1) in '"\\/bfnrtu' else '\\\\' + m.group(1), s, flags=re.S)
+
+
 def parse_json_answer(text):
     """Parse an answer that should be exactly one JSON object.
 
     Returns (obj, how) where how is "exact" (the whole answer parsed as JSON) or "fenced" (the
-    whole answer was one ```json ... ``` block). Anything else, including text before or after
+    whole answer was one ```json ... ``` block), plus ", backslashes repaired" when the only problem was
+    backslashes that are not JSON escapes (LaTeX in a string). Anything else, including text before or after
     the object, raises ValueError.
     """
     s = (text or "").strip()
@@ -153,7 +161,13 @@ def parse_json_answer(text):
     try:
         obj = json.loads(s)
     except json.JSONDecodeError as e:
-        raise ValueError(f"not valid JSON: {e}") from None
+        if "Invalid \\escape" not in str(e):
+            raise ValueError(f"not valid JSON: {e}") from None
+        try:
+            obj = json.loads(_repair_backslashes(s))
+        except json.JSONDecodeError:
+            raise ValueError(f"not valid JSON: {e}") from None
+        how += ", backslashes repaired"
     if not isinstance(obj, dict):
         raise ValueError(f"expected a JSON object, got {type(obj).__name__}")
     return obj, how
