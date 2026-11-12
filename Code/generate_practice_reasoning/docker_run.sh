@@ -13,7 +13,7 @@
 #   bash docker_run.sh shell              an interactive shell in the container
 #   bash docker_run.sh run <command...>   one command in the container, e.g. the dry run or the 3-row test
 #
-# Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS (see run_gb300.sh), HF_TOKEN,
+# Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS, RETRY_FAILED (see run_gb300.sh), HF_TOKEN,
 # HF_HUB_OFFLINE. Runs (and smoke tests) are offline by default: vLLM reads the model from the cache and never
 # contacts Hugging Face, whose anonymous API limit is shared by everyone behind the same IP address.
 # CACHE_DIR: host folder for the model download and compile caches (default ~/.cache; the model needs ~130 GB).
@@ -74,7 +74,7 @@ OPTS=("${GPU_OPT[@]}" --ipc=host --ulimit memlock=-1 --ulimit stack=67108864
       -w /workspace/Code/generate_practice_reasoning)
 # the host's time zone, so the time estimates in the logs are in local time
 if [ -e /etc/localtime ]; then OPTS+=(-v /etc/localtime:/etc/localtime:ro); fi
-for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN HF_HUB_OFFLINE SMOKE SMOKE_ROWS; do
+for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN HF_HUB_OFFLINE SMOKE SMOKE_ROWS RETRY_FAILED; do
   if [ -n "${!v:-}" ]; then OPTS+=(-e "$v"); fi
 done
 MODEL_ID="${MODEL:-Qwen/Qwen3.5-122B-A10B-FP8}"   # the same default as run_gb300.sh

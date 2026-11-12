@@ -71,6 +71,13 @@ else
   DIAG_EXTRA=(--batch-size "$DIAG_BATCH" --min-students "$MIN_STUDENTS")
   diag_out() { echo "../../Data/wrong_answer_diagnosis_$1.csv"; }
 fi
+# RETRY_FAILED=1: give the items that failed all their attempts a fresh set of attempts (their earlier attempts
+# stay in the logs); everything already ok is skipped as usual. E.g. RETRY_FAILED=1 bash run_gb300.sh 3 6
+# relabels step 3's failed problems, then diagnoses their wrong answers and retries step 6's failed ones.
+if [ "${RETRY_FAILED:-0}" = "1" ]; then
+  GEN_EXTRA+=(--retry-failed)
+  DIAG_EXTRA+=(--retry-failed)
+fi
 
 for step in $STEPS; do
   # each marker on a line of its own: vLLM's progress bars end without a newline
