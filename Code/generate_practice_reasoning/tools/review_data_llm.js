@@ -7,6 +7,7 @@
 //   prefix: column prefix in Problems.csv; key: short id used in saved reviews; name: shown on the page
 // Each data record: {row, order: [...], top, used: [{p, why, err}], not: [{p, why}], a2, ord}
 // ord: the order answer of the three-prompt version, {steps: [{p, step}], why}, or null
+// A row the labeler has no answer for (it failed every attempt) is {row, missing: true, order: [], top: "", ...}.
 
 const { readTable, canon, llmOrdering } = require("./csv");
 const SPECS = (process.argv.length > 2 ? process.argv.slice(2) : ["qwen3_30b_v3:qwen_v3:Qwen v3", "qwen3_30b_v4:qwen_v4:Qwen v4"])
@@ -24,7 +25,13 @@ const out = SPECS.map(({ prefix, key, name }) => {
     const data = [];
     for (let r = 1; r <= N; r++) {
         const p = P.rows[r - 1];
-        const l = llmOrdering(p[P.h[`${prefix}_reasoning`]]);
+        const raw = (p[P.h[`${prefix}_reasoning`]] || "").trim();
+        if (!raw) {  // failed all its attempts for this labeler (e.g. awaiting a retry): the page shows "no answer"
+            console.error(`row ${r}: no ${prefix} answer (marked missing)`);
+            data.push({ row: r, missing: true, order: [], top: "", used: [], not: [], a2: "", ord: null });
+            continue;
+        }
+        const l = llmOrdering(raw);
         if (!l) { console.error(`row ${r}: ${prefix}_reasoning is not JSON`); process.exit(1); }
         data.push({
             row: r, order: l.order, top: canon(p[P.h[`${prefix}_top_practice`]]),

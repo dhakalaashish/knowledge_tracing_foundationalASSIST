@@ -3,10 +3,11 @@
 // Usage (from the repo root):
 //   node Code/generate_practice_reasoning/tools/build_problems_300.js \
 //       --ordering Code/generate_practice_reasoning/tools/claude_ordering.tsv \
-//       --answers <folder with Claude's r<row>_q2.md> [--llm qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4] [--reviews reviews.jsonl]
+//       [--answers <folder with Claude's r<row>_q2.md>] [--llm qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4] [--reviews reviews.jsonl]
 //
 //   --ordering  output of claude_ordering.awk (row <TAB> source <TAB> ordering ...)
-//   --answers   folder with Claude's answer 2 files (the reason for its top practice)
+//   --answers   folder with Claude's answer 2 files (the reason for its top practice); without it, that text is
+//               taken from the existing Data/problems_300.csv
 //   --llm       the other labelers, comma-separated prefix:key (default qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4)
 //   --reviews   optional: the review page's saved documents, one JSON object per line
 //               ({"data": {...}} as the artifact database lists them, or the bare data). They fill the aashish_* columns.
@@ -22,7 +23,7 @@ for (let i = 2; i < process.argv.length; i += 2) args[process.argv[i].replace(/^
 const LLMS = (args.llm || "qwen3_30b_v3:qwen_v3,qwen3_30b_v4:qwen_v4").split(",").map(x => { const [prefix, key] = x.split(":"); return { prefix, key: key || prefix }; });
 const N = 300;
 const OUT = "Data/problems_300.csv";
-if (!args.ordering || !args.answers) { console.error("need --ordering and --answers"); process.exit(1); }
+if (!args.ordering) { console.error("need --ordering"); process.exit(1); }
 
 const slurp = f => fs.existsSync(f) ? fs.readFileSync(f, "utf8").replace(/\r/g, "").replace(/\n+$/, "") : "";
 const ord = {};
@@ -34,12 +35,14 @@ const P = readTable("Data/Problems.csv");
 for (const col of ["problem_id", "predicted_practice", "claude_top_practice", ...LLMS.flatMap(L => [`${L.prefix}_reasoning`, `${L.prefix}_top_practice`, `${L.prefix}_top_practice_reasoning`])])
     if (!(col in P.h)) { console.error(`Problems.csv has no column ${col}`); process.exit(1); }
 
-// Aashish's answers: from the existing CSV, then from --reviews
-const mine = {};
+// Aashish's answers: from the existing CSV, then from --reviews. Without --answers, Claude's answer 2 also comes
+// from the existing CSV (claude_top_practice_reasoning), so the file can be rebuilt with other LLM columns.
+const mine = {}, claudeWhy = {};
 if (fs.existsSync(OUT)) {
     const old = readTable(OUT);
     for (const r of old.rows) {
         const g = c => (c in old.h ? r[old.h[c]] : "") || "";
+        claudeWhy[+g("row")] = g("claude_top_practice_reasoning");
         if (g("aashish_ordering") || g("aashish_top_practice"))
             mine[+g("row")] = { problem_id: g("problem_id"), aashish_ordering: g("aashish_ordering"), aashish_top_practice: g("aashish_top_practice"), note: g("aashish_note"), updated: g("aashish_updated") };
     }
@@ -51,8 +54,12 @@ if (args.reviews) {
         if (d.row) mine[+d.row] = d;
     }
 }
-// vals: [[key, value], ...] for Claude and each LLM
-const choice = (mineVal, vals) => { if (!mineVal) return ""; const ks = vals.filter(([, v]) => v === mineVal).map(([k]) => k); return ks.length === vals.length ? "all" : ks.length ? ks.join("+") : "none"; };
+// vals: [[key, value], ...] for Claude and each LLM; a labeler with no answer for the row (value "") is left out
+const choice = (mineVal, vals) => {
+    if (!mineVal) return "";
+    const have = vals.filter(([, v]) => v), ks = have.filter(([, v]) => v === mineVal).map(([k]) => k);
+    return ks.length === have.length ? "all" : ks.length ? ks.join("+") : "none";
+};
 
 const head = ["row", "problem_id", "predicted_practice", "claude_ordering", "claude_top_practice", "claude_top_practice_reasoning",
     ...LLMS.flatMap(L => [`${L.prefix}_ordering`, `${L.prefix}_top_practice`, `${L.prefix}_top_practice_reasoning`]),
@@ -63,11 +70,16 @@ for (let r = 1; r <= N; r++) {
     const p = P.rows[r - 1], g = c => (p[P.h[c]] || "").trim();
     const pid = g("problem_id");
     if (!ord[r]) { console.error(`no claude_ordering for row ${r}`); process.exit(1); }
-    const why = slurp(path.join(args.answers, `r${r}_q2.md`));
+    const why = args.answers ? slurp(path.join(args.answers, `r${r}_q2.md`)) : (claudeWhy[r] || "");
     if (!why) { console.error(`no Claude answer 2 for row ${r}`); process.exit(1); }
     const cOrd = ord[r], cTop = canon(g("claude_top_practice"));
     const ls = LLMS.map(L => {
-        const l = llmOrdering(p[P.h[`${L.prefix}_reasoning`]]);
+        const raw = g(`${L.prefix}_reasoning`);
+        if (!raw) {  // the problem failed all its attempts for this labeler (e.g. awaiting a retry): empty columns
+            console.error(`row ${r}: no ${L.prefix} answer (left empty)`);
+            return { key: L.key, ord: "", top: "", why: "" };
+        }
+        const l = llmOrdering(raw);
         if (!l) { console.error(`row ${r}: ${L.prefix}_reasoning is not JSON`); process.exit(1); }
         return { key: L.key, ord: l.order.join(" > "), top: canon(g(`${L.prefix}_top_practice`)), why: g(`${L.prefix}_top_practice_reasoning`) };
     });
