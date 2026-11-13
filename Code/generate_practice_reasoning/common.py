@@ -260,11 +260,16 @@ class AnswerChecker:
     order (the analysis prompt 3 gets).
     """
 
-    def __init__(self, no_ordering=False):
+    def __init__(self, no_ordering=False, skip_single_order=True):
         self.parsed = []
         self.how = []
         self.combined = None
         self.no_ordering = no_ordering   # without prompt 2, prompt 3 gets answer 1 in its own order
+        # When answer 1 lists a single practice, its order is the only possible one: prompt 2 is not asked and
+        # answer 2 is filled in here (marked "auto": true). The model tends to argue with its own one-practice
+        # answer on the order prompt (adding practices, or thinking until the token limit).
+        self.skip_single_order = skip_single_order
+        self.order_skipped = False
 
     def check(self, turn, text):
         try:
@@ -283,6 +288,17 @@ class AnswerChecker:
             self.combined = combine(self.parsed[0], obj)
         elif turn == 1 and self.no_ordering:
             self.combined = obj
+        elif turn == 1 and self.skip_single_order and len(obj["practices_used"]) == 1:
+            only = obj["practices_used"][0]
+            auto = {"ordering": [{"order": 1, "practice": only["practice"], "step": only["why"]}],
+                    "why": "Answer 1 lists a single practice, so its order is the only possible one; "
+                           "the order prompt (prompt 2) was not asked.",
+                    "auto": True}
+            check_answer2(auto, obj)   # same rules as a real answer 2
+            self.parsed.append(auto)
+            self.how.append("auto (one practice in answer 1)")
+            self.combined = combine(obj, auto)
+            self.order_skipped = True
         return None
 
 

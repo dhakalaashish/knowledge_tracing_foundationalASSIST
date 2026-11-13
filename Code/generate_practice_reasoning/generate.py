@@ -129,6 +129,9 @@ def parse_args():
     ap.add_argument("--no-ordering", action="store_true",
                     help="skip prompt 2 (the order): prompt 3 gets answer 1 in its own order, as in the two-prompt "
                          "version; <prefix>_ordering_reasoning stays empty (needs its own --column-prefix)")
+    ap.add_argument("--order-single-practice", action="store_true",
+                    help="ask the order prompt (prompt 2) even when answer 1 lists a single practice (the behaviour "
+                         "before 13 Nov 2026). By default its order is filled in without asking, marked \"auto\": true")
     ap.add_argument("--replace-columns", metavar="OLD_PREFIX",
                     help="when merging, rename the OLD_PREFIX_* columns of Problems.csv to <prefix>_* in place and "
                          "fill them only from this run (e.g. --replace-columns qwen3_30b_v2)")
@@ -151,6 +154,9 @@ def run_config(args, prompts, provider_desc):
         "column_prefix": args.column_prefix,
         "framework": prompts["framework"],
         "no_ordering": args.no_ordering,
+        # not a locked setting: runs before 13 Nov 2026 asked prompt 2 for single-practice answers too; rows
+        # where it was skipped carry final.order_prompt_skipped = true and answer 2 with "auto": true
+        "order_prompt_for_single_practice": args.order_single_practice,
         "chapter_sha256": prompts["chapter_sha256"],
         "system_prompt_1": prompts["system_1"],
         "system_prompt_1_sha256": common.sha256(prompts["system_1"]),
@@ -230,15 +236,19 @@ def finish_attempt(rec, calls, failed_step, error, invalid, checker, max_retries
            "json_extraction": checker.how}
     rec["attempts"].append(att)
     if reason is None:
-        with_order = len(calls) == 3       # without the order prompt (--no-ordering) there are two calls
+        with_order = len(checker.parsed) == 3      # without the order prompt (--no-ordering) there are two answers
+        skipped = with_order and checker.order_skipped   # answer 2 filled in, not asked (one practice in answer 1)
         rec["final"] = {
             "status": "ok", "attempt": att["attempt"],
-            "answer1": calls[0]["response_text"], "answer2": calls[1]["response_text"] if with_order else None,
+            "answer1": calls[0]["response_text"],
+            "answer2": (json.dumps(checker.parsed[1], ensure_ascii=False) if skipped
+                        else calls[1]["response_text"] if with_order else None),
             "answer3": calls[-1]["response_text"],
             "answer1_json": checker.parsed[0], "answer2_json": checker.parsed[1] if with_order else None,
             "answer3_json": checker.parsed[-1], "combined_json": checker.combined,
             "ordering": [it["practice"] for it in checker.combined["practices_used"]],
             "top_practice": checker.parsed[-1]["top_practice"],
+            "order_prompt_skipped": skipped,
         }
         return False
     n_failed = sum(1 for a in rec["attempts"] if a["failure_reason"])
@@ -273,7 +283,8 @@ def generate(args, provider, prompts, problems, rows):
     while pending:
         round_no += 1
         print(f"Round {round_no}: {len(pending)} problems", flush=True)
-        checkers = {r: common.AnswerChecker(no_ordering=args.no_ordering) for r in pending}
+        checkers = {r: common.AnswerChecker(no_ordering=args.no_ordering,
+                                            skip_single_order=not args.order_single_practice) for r in pending}
         if hasattr(provider, "attempt_of"):  # local vLLM: seed depends on the attempts already made
             provider.attempt_of = {r: len(records[r]["attempts"]) for r in pending}
         again = []
@@ -353,7 +364,7 @@ def run_problems(args, provider, prompts, problems, rows, checkers):
             problem = ck.check(1, rec["response_text"])
             if problem:
                 return r, calls, 1, None, problem     # prompts 2 and 3 are never sent
-            if not args.no_ordering:
+            if not args.no_ordering and not ck.order_skipped:
                 step = 2
                 rec = provider.call(prompts["system_2"], common.build_prompt2(prompts, text, ck.parsed[0]), 2, calls)
                 problem = ck.check(2, rec["response_text"])
@@ -389,8 +400,11 @@ def _run_chunk_local(provider, prompts, problems, rows, checkers, steps):
              3: lambda r: common.build_prompt3(prompts, problems[r]["text"], checkers[r].combined)}
     todo = list(rows)
     for step in steps:
-        reqs = [(r, prompts[f"system_{step}"], build[step](r), step) for r in todo]
         passed = []
+        if step == 2:   # rows whose answer 1 lists one practice already have answer 2 (filled in, not asked)
+            passed = [r for r in todo if checkers[r].order_skipped]
+            todo = [r for r in todo if not checkers[r].order_skipped]
+        reqs = [(r, prompts[f"system_{step}"], build[step](r), step) for r in todo]
         for r, rec, error in provider.call_many(reqs):
             calls[r].append(rec)
             if error:

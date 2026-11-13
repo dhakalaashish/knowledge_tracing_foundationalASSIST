@@ -154,6 +154,7 @@ Useful options:
 | `--merge-only` / `--no-merge` | only write the CSV columns from the logs / don't touch the CSV |
 | `--replace-columns OLD_PREFIX` | when merging, turn the `OLD_PREFIX_*` columns into this run's columns in place (see Output columns) |
 | `--no-ordering` | skip prompt 2 (the order): prompt 3 gets answer 1 in its own order, as in the two-prompt version; `<prefix>_ordering_reasoning` stays empty |
+| (default since 13 Nov 2026) | when answer 1 lists a **single** practice, prompt 2 is not asked: its order is the only possible one, so answer 2 is filled in (`"auto": true` in `<prefix>_ordering_reasoning`, `final.order_prompt_skipped` in the row log). The model tended to argue with its own one-practice answer on the order prompt (adding practices, or thinking until the token limit). Runs before this date asked prompt 2 for every problem; `--order-single-practice` restores that. Test without a model: `python3 tools/test_single_order.py` |
 | `--effort` | Claude effort level (default `high`; Claude Opus 5.5 itself defaults to `medium`) |
 | `--no-fallbacks` | Claude: turn off the server-side refusal fallback (on by default; if Opus 5.5 declines a request, the API answers with a fallback model and the log's `served_model` says which) |
 | `--reasoning-effort` | OpenAI reasoning models |
