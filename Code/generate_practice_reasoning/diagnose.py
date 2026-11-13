@@ -74,6 +74,12 @@ def parse_args():
     ap.add_argument("--max-retries", type=int, default=8)
     ap.add_argument("--dry-run", action="store_true", help="print the system prompt and two user prompts, then stop")
     ap.add_argument("--write-only", action="store_true", help="skip the LLM; write the output CSV from the logs")
+    ap.add_argument("--only-failed-in", metavar="NAME",
+                    help="diagnose only the wrong answers that failed every attempt in run NAME (runs/NAME/items), "
+                         "e.g. a fallback run with other settings")
+    ap.add_argument("--fill-from", metavar="NAME",
+                    help="when writing the CSV, take each wrong answer that failed every attempt in this run from run "
+                         "NAME instead, if it has a valid diagnosis there; the diagnosed_by column says which run")
     ap.add_argument("--force", action="store_true", help="allow settings that differ from the run's manifest")
     generate.add_provider_args(ap)
     args = ap.parse_args()
@@ -276,9 +282,21 @@ def write_outputs(args):
             with open(os.path.join(items_dir, name), encoding="utf-8") as f:
                 recs.append(json.load(f))
     out = args.out or os.path.join(common.REPO_ROOT, "Data", f"wrong_answer_diagnosis_{args.name}.csv")
+    # --fill-from: an item that failed every attempt here is taken from the fallback run, if it is ok there
+    source = {r["key"]: args.name for r in recs}
+    filled = 0
+    if args.fill_from:
+        for i, r in enumerate(recs):
+            p = os.path.join(common.RUNS_DIR, args.fill_from, "items", f"{r['key']}.json")
+            if r["final"].get("status") == "failed" and os.path.exists(p):
+                with open(p, encoding="utf-8") as f:
+                    alt = json.load(f)
+                if alt["final"].get("status") == "ok":
+                    recs[i], source[r["key"]] = alt, args.fill_from
+                    filled += 1
     head = ["row", "problem_id", "problem_type", "rank", "wrong_answer", "students", "share_of_wrong", "practice_prefix",
             "error_type", "failed_practice", "math_fact", "reconstruction", "explanation", "confidence", "steps",
-            *[f"status_{p.replace(' ', '_').lower()}" for p in PR.PRACTICES], "diagnosis_json"]
+            *[f"status_{p.replace(' ', '_').lower()}" for p in PR.PRACTICES], "diagnosis_json", "diagnosed_by"]
     n = 0
     with open(out, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
@@ -292,8 +310,10 @@ def write_outputs(args):
                         r["share"], r["practice_prefix"], a["error_type"], r["final"]["failed_practice"] or "",
                         a.get("math_fact", ""), a["reconstruction"], a["explanation"], a["confidence"],
                         " > ".join(f"{s['practice']}: {s['status']}" for s in a["steps"]),
-                        *[status.get(p, "") for p in PR.PRACTICES], json.dumps(a, ensure_ascii=False)])
+                        *[status.get(p, "") for p in PR.PRACTICES], json.dumps(a, ensure_ascii=False), source[r["key"]]])
             n += 1
+    if args.fill_from:
+        print(f"{filled} wrong answers that failed here were filled from runs/{args.fill_from}")
     failed = [r for r in recs if r["final"].get("status") == "failed"]
     fpath = os.path.join(args.run_dir, "failed_items.csv")
     with open(fpath, "w", encoding="utf-8", newline="") as f:
@@ -312,6 +332,18 @@ def main():
         write_outputs(args)
         return
     items, skipped = load_items(args)
+    if args.only_failed_in:
+        def failed_there(key):
+            p = os.path.join(common.RUNS_DIR, args.only_failed_in, "items", f"{key}.json")
+            if not os.path.exists(p):
+                return False
+            with open(p, encoding="utf-8") as f:
+                return json.load(f)["final"].get("status") == "failed"
+        items = [it for it in items if failed_there(it["key"])]
+        print(f"--only-failed-in {args.only_failed_in}: {len(items)} wrong answers failed every attempt there", flush=True)
+        if not items and not args.dry_run:
+            print("Nothing to diagnose; the model is not loaded.", flush=True)
+            return
     print(f"{len(items)} wrong answers to diagnose (min students {args.min_students}, types {args.types}); "
           f"skipped {skipped['no_analysis']} without a {args.practice_prefix} analysis", flush=True)
     if args.dry_run:

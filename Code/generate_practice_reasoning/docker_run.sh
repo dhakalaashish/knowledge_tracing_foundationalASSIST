@@ -126,7 +126,7 @@ case "${1:-}" in
     model_cached ;;
   status)
     bash monitor.sh once ;;
-  ""|[1-6]*)
+  ""|[1-7]*)
     if docker ps -q --filter "name=^${NAME}$" | grep -q .; then
       echo "$NAME is already running (bash docker_run.sh status / stop)"; exit 1
     fi

@@ -6,7 +6,10 @@
 #   4. wrong-answer diagnosis from step 1's practices  -> Data/wrong_answer_diagnosis_qwen35_122b_diag.csv
 #   5. wrong-answer diagnosis from step 2's practices  -> Data/wrong_answer_diagnosis_qwen35_122b_noex_diag.csv
 #   6. wrong-answer diagnosis from step 3's practices  -> Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag.csv
-# By default only the Chapter 3 diagnosis (step 6) runs; steps 4 and 5 run only when asked for (bash run_gb300.sh 4).
+#   7. fallback for step 6, thinking OFF: only the wrong answers that failed every attempt in step 6 (almost always
+#      thinking that ran past MAX_TOKENS), then step 6's CSV is rewritten with them filled in; its diagnosed_by
+#      column says which run diagnosed each wrong answer (qwen35_122b_ch3_diag or qwen35_122b_ch3_diag_nothink)
+# By default only the Chapter 3 diagnosis (step 6) runs; steps 4, 5 and 7 run only when asked for (bash run_gb300.sh 7).
 # The diagnoses cover wrong answers given by at least MIN_STUDENTS (default 3) students on their first attempt.
 # Each diagnosis uses the same prompt version as its labeling step. The labeling steps use all three prompts
 # (practices, order, top practice), like the Qwen3-30B v3/v4 runs: step 1 has exactly v4's prompts and step 2
@@ -51,6 +54,9 @@ MIN_STUDENTS="${MIN_STUDENTS:-3}"
 # thinking on, with Qwen's sampling advice for thinking mode
 COMMON=(--provider local --model "$MODEL" --num-gpus 1 --max-model-len "$MAX_MODEL_LEN"
         --enable-thinking true --max-tokens "$MAX_TOKENS" --temperature 0.6 --top-p 0.95)
+# step 7 only: thinking off, with Qwen's sampling advice for non-thinking mode
+NOTHINK=(--provider local --model "$MODEL" --num-gpus 1 --max-model-len "$MAX_MODEL_LEN"
+         --enable-thinking false --max-tokens 8192 --temperature 0.7 --top-p 0.8)
 
 if [ "$SMOKE" = "1" ]; then
   TAG=smoke_
@@ -99,6 +105,13 @@ for step in $STEPS; do
     6) python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
          --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag" \
          --out "$(diag_out "${TAG}qwen35_122b_ch3_diag")" ;;
+    # fallback for step 6: thinking off, only its failed wrong answers; then step 6's CSV with them filled in
+    7) python3 -u diagnose.py "${NOTHINK[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
+         --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag_nothink" \
+         --only-failed-in "${TAG}qwen35_122b_ch3_diag" --out "$(diag_out "${TAG}qwen35_122b_ch3_diag_nothink")" &&
+       python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
+         --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag" --write-only \
+         --fill-from "${TAG}qwen35_122b_ch3_diag_nothink" --out "$(diag_out "${TAG}qwen35_122b_ch3_diag")" ;;
     *) echo "unknown step $step"; exit 1 ;;
   esac >> "$LOG$step.log" 2>&1
   printf '\n=== step %s finished %s\n' "$step" "$(date)" | tee -a "$LOG$step.log"
