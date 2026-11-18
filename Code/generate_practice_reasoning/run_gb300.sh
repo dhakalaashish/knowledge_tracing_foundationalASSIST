@@ -9,7 +9,13 @@
 #   7. fallback for step 6, thinking OFF: only the wrong answers that failed every attempt in step 6 (almost always
 #      thinking that ran past MAX_TOKENS), then step 6's CSV is rewritten with them filled in; its diagnosed_by
 #      column says which run diagnosed each wrong answer (qwen35_122b_ch3_diag or qwen35_122b_ch3_diag_nothink)
-# By default only the Chapter 3 diagnosis (step 6) runs; steps 4, 5 and 7 run only when asked for (bash run_gb300.sh 7).
+#   8. v5 (label_v5.py): each common wrong answer diagnosed first (prompt 5, descriptors only, no earlier labels),
+#      then the problem's practices per skill, math facts and top practice with those diagnoses as evidence
+#      (prompt 6, which gives the practices in order and the top practice in one answer: no order prompt)
+#                                                     -> Problems.csv columns qwen35_122b_v5_*,
+#                                                        Data/wrong_answer_diagnosis_qwen35_122b_v5.csv
+#      Only rows V5_ROWS (default 1-300, the first 300 problems) until they are checked; V5_ROWS=all for every row.
+# By default only the Chapter 3 diagnosis (step 6) runs; steps 4, 5, 7 and 8 run only when asked for (bash run_gb300.sh 8).
 # The diagnoses cover wrong answers given by at least MIN_STUDENTS (default 3) students on their first attempt.
 # Each diagnosis uses the same prompt version as its labeling step. The labeling steps use all three prompts
 # (practices, order, top practice), like the Qwen3-30B v3/v4 runs: step 1 has exactly v4's prompts and step 2
@@ -64,6 +70,7 @@ if [ "$SMOKE" = "1" ]; then
   SMOKE_ROWS="${SMOKE_ROWS:-1,6,9,809,2221,2232}"
   rm -rf runs/smoke runs/smoke_qwen35_122b runs/smoke_qwen35_122b_ch3 runs/smoke_qwen35_122b_diag \
          runs/smoke_qwen35_122b_ch3_diag runs/smoke_qwen35_122b_noex runs/smoke_qwen35_122b_noex_diag \
+         runs/smoke_qwen35_122b_v5 \
          logs/smoke_step*
   mkdir -p runs/smoke
   cp ../../Data/Problems.csv runs/smoke/Problems.csv
@@ -75,6 +82,7 @@ else
   LOG=logs/step
   GEN_EXTRA=(--batch-size "$LABEL_BATCH")
   DIAG_EXTRA=(--batch-size "$DIAG_BATCH" --min-students "$MIN_STUDENTS")
+  V5_EXTRA=(--rows "${V5_ROWS:-1-300}")   # step 8: the first 300 problems until they are checked
   diag_out() { echo "../../Data/wrong_answer_diagnosis_$1.csv"; }
 fi
 # RETRY_FAILED=1: give the items that failed all their attempts a fresh set of attempts (their earlier attempts
@@ -112,6 +120,10 @@ for step in $STEPS; do
        python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
          --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag" --write-only \
          --fill-from "${TAG}qwen35_122b_ch3_diag_nothink" --out "$(diag_out "${TAG}qwen35_122b_ch3_diag")" ;;
+    # v5: wrong answers first, then the problem prompt with them as evidence
+    8) python3 -u label_v5.py "${COMMON[@]}" ${GEN_EXTRA[@]+"${GEN_EXTRA[@]}"} ${V5_EXTRA[@]+"${V5_EXTRA[@]}"} \
+         --min-students "$MIN_STUDENTS" \
+         --column-prefix "${TAG}qwen35_122b_v5" --diagnosis-out "$(diag_out "${TAG}qwen35_122b_v5")" ;;
     *) echo "unknown step $step"; exit 1 ;;
   esac >> "$LOG$step.log" 2>&1
   printf '\n=== step %s finished %s\n' "$step" "$(date)" | tee -a "$LOG$step.log"

@@ -92,16 +92,7 @@ def parse_args():
 
 # ---------------------------------------------------------------- data
 
-MONTHS = {m: i + 1 for i, m in enumerate("jan feb mar apr may jun jul aug sep oct nov dec".split())}
-
-
-def clean_answer(text):
-    """Correct answer from Problems.csv as plain text (HTML removed; spreadsheet dates such as 4-Jan back to 1/4)."""
-    t = re.sub(r"<[^>]+>", " ", text or "")
-    t = t.replace("&nbsp;", " ").replace("&gt;", ">").replace("&lt;", "<").replace("&amp;", "&")
-    t = re.sub(r"\b(\d{1,2})-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b",
-               lambda m: f"{MONTHS[m.group(2).lower()]}/{m.group(1)}", t, flags=re.I)
-    return re.sub(r"\s+", " ", t).strip()
+clean_answer = common.clean_answer      # moved to common.py (label_v5.py uses it too); same behaviour
 
 
 def load_items(args):
@@ -132,15 +123,10 @@ def load_items(args):
                 skipped["no_analysis"] += 1
                 continue
             ptype = w["problem_type"]
-            if ptype == "Order / Sort":
-                correct = "(not given: work out the correct order from the item)"
-            elif ptype.startswith("Multiple Choice"):
-                correct = clean_answer(r[h["Multiple Choice Answers"]]).replace(" || ", "; ")
-            else:
-                correct = clean_answer(r[h["Fill-in Answers"]]).replace(" || ", " or ")
+            correct = common.correct_answer(ptype, r[h["Multiple Choice Answers"]], r[h["Fill-in Answers"]])
             items.append({"key": f"r{row:05d}_w{int(w['rank']):03d}", "row": row, "problem_id": w["problem_id"],
                           "problem_type": ptype, "wrong_answer": w["wrong_answer"], "students": int(w["students"]),
-                          "share": float(w["share_of_wrong"]), "rank": int(w["rank"]), "correct": correct or "(not given)",
+                          "share": float(w["share_of_wrong"]), "rank": int(w["rank"]), "correct": correct,
                           "text": texts[row]["text"], "analysis": analysis})
     if args.max_items:
         items = items[:args.max_items]

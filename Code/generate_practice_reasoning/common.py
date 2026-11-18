@@ -60,13 +60,61 @@ def load_prompts(framework="standard", chapter_path=None):
             "q4_template": P.Q4_TEMPLATE}
 
 
-PLACEHOLDER_RE = re.compile(r"\{(PROBLEM|PRACTICES|ANALYSIS|CORRECT|WRONG|COUNT|SHARE)\}")
+PLACEHOLDER_RE = re.compile(r"\{(PROBLEM|PRACTICES|ANALYSIS|CORRECT|WRONG|COUNT|SHARE|SKILLS|EVIDENCE|COVERAGE)\}")
 
 
 def fill(template, **values):
     """Fill {PROBLEM} / {PRACTICES} / {ANALYSIS} in one pass (not str.format: problem texts contain
     braces, and text that was filled in is never searched again)."""
     return PLACEHOLDER_RE.sub(lambda m: values[m.group(1)], template)
+
+
+MONTHS = {m: i + 1 for i, m in enumerate("jan feb mar apr may jun jul aug sep oct nov dec".split())}
+
+
+def clean_answer(text):
+    """Correct answer from Problems.csv as plain text (HTML removed; spreadsheet dates such as 4-Jan back to 1/4)."""
+    t = re.sub(r"<[^>]+>", " ", text or "")
+    t = t.replace("&nbsp;", " ").replace("&gt;", ">").replace("&lt;", "<").replace("&amp;", "&")
+    t = re.sub(r"\b(\d{1,2})-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b",
+               lambda m: f"{MONTHS[m.group(2).lower()]}/{m.group(1)}", t, flags=re.I)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def correct_answer(problem_type, mc_answers, fill_answers):
+    """The correct answer as the diagnosis prompts show it: the multiple-choice answers joined by "; ", the fill-in
+    answers joined by " or "; ordering items have none in the data."""
+    if problem_type == "Order / Sort":
+        return "(not given: work out the correct order from the item)"
+    if problem_type.startswith("Multiple Choice"):
+        text = clean_answer(mc_answers).replace(" || ", "; ")
+    else:
+        text = clean_answer(fill_answers).replace(" || ", " or ")
+    return text or "(not given)"
+
+
+DEFAULT_SKILLS_CSV = os.path.join(REPO_ROOT, "Data", "Skills.csv")
+
+
+def load_skills(path=DEFAULT_SKILLS_CSV):
+    """problem_id -> [{"code", "name"}, ...]: the item's skill codes (Common Core standards), each once, in the
+    order of Skills.csv (a code can appear under several skill ids)."""
+    _raise_field_limit()
+    out = {}
+    with open(path, encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            pid, code = (r.get("problem_id") or "").strip(), (r.get("node_code") or "").strip()
+            if not pid or not code:
+                continue
+            lst = out.setdefault(pid, [])
+            if all(s["code"] != code for s in lst):
+                lst.append({"code": code, "name": (r.get("node_name") or "").strip()})
+    return out
+
+
+def skills_text(skills):
+    """The {SKILLS} block: one line per skill, "- <code>: <name>"."""
+    return "\n".join(f"- {s['code']}: {s['name']}" if s["name"] else f"- {s['code']}" for s in skills)
 
 
 def build_prompt1(prompts, problem_text):
@@ -360,6 +408,184 @@ class DiagnosisChecker:
         return None
 
 
+# ---------------------------------------------------------------- v5 answers (label_v5.py)
+
+V5_ERROR_TYPES = ("practice", "math_fact", "comprehension", "stopped_early", "unexplained")
+V5_OUTCOMES = ("correct",) + V5_ERROR_TYPES
+V5_NEEDS_PRACTICE = ("practice", "math_fact", "stopped_early")
+
+
+def _text_field(obj, key, where):
+    value = obj.get(key, "")
+    if not isinstance(value, str):
+        raise ValueError(f"{where}: \"{key}\" must be a string")
+    return value.strip()
+
+
+def _int_equal(value, want):
+    return isinstance(value, int) and not isinstance(value, bool) and value == want
+
+
+def _check_v5_failure(obj, where, outcome, solution_practices):
+    """failed_practice / math_fact / comprehension of one outcome (the whole answer, or one skill of by_skill)."""
+    fp = _text_field(obj, "failed_practice", where)
+    fact = _text_field(obj, "math_fact", where)
+    phrase = _text_field(obj, "comprehension", where)
+    if outcome in V5_NEEDS_PRACTICE:
+        if fp not in P.PRACTICES:
+            raise ValueError(f"{where}: {outcome} needs \"failed_practice\", one of the six practices, got {fp!r}")
+        if fp not in solution_practices:
+            raise ValueError(f"{where}: \"failed_practice\" {fp!r} is not the practice of any step in \"solution\"")
+    elif fp:
+        raise ValueError(f"{where}: \"failed_practice\" must be empty for {outcome}")
+    if (outcome == "math_fact") != bool(fact):
+        raise ValueError(f"{where}: \"math_fact\" must be filled in for math_fact, and only then")
+    if (outcome == "comprehension") != bool(phrase):
+        raise ValueError(f"{where}: \"comprehension\" must be filled in for comprehension, and only then")
+    return fp or None
+
+
+def check_v5_wrong(obj, skill_codes):
+    """Rules for answer 5, the diagnosis of one wrong answer (see prompts.RESPONSE_V5_WRONG). Returns the failed
+    practice (or None). Raises ValueError on the first problem."""
+    sol = obj.get("solution")
+    if not isinstance(sol, list) or not sol:
+        raise ValueError("\"solution\" must be a non-empty list")
+    practices = set()
+    for i, st in enumerate(sol, 1):
+        where = f"solution[{i}]"
+        if not isinstance(st, dict):
+            raise ValueError(f"{where} must be an object")
+        if not _int_equal(st.get("step"), i):
+            raise ValueError(f"{where}: \"step\" must be {i}")
+        if st.get("skill") not in skill_codes:
+            raise ValueError(f"{where}: \"skill\" must be one of {', '.join(skill_codes)}, got {st.get('skill')!r}")
+        if st.get("practice") not in P.PRACTICES:
+            raise ValueError(f"{where}: unknown practice {st.get('practice')!r}")
+        _why(st, where, "does")
+        practices.add(st["practice"])
+    _why(obj, "answer 5", "student_process")
+    et = obj.get("error_type")
+    if et not in V5_ERROR_TYPES:
+        raise ValueError(f"\"error_type\" must be one of {', '.join(V5_ERROR_TYPES)}, got {et!r}")
+    failed = _check_v5_failure(obj, "answer 5", et, practices)
+    by = obj.get("by_skill", [])
+    if not isinstance(by, list):
+        raise ValueError("\"by_skill\" must be a list")
+    if len(skill_codes) >= 2:
+        got = [b.get("skill") if isinstance(b, dict) else None for b in by]
+        if got != list(skill_codes):
+            raise ValueError(f"\"by_skill\" must have one entry per skill, in order ({', '.join(skill_codes)}), "
+                             f"got {', '.join(map(str, got)) or 'none'}")
+        outcomes = []
+        for b in by:
+            where = f"by_skill[{b['skill']}]"
+            oc = b.get("outcome")
+            if oc not in V5_OUTCOMES:
+                raise ValueError(f"{where}: \"outcome\" must be one of {', '.join(V5_OUTCOMES)}, got {oc!r}")
+            _check_v5_failure(b, where, oc, practices)
+            outcomes.append(oc)
+        if et not in outcomes:
+            raise ValueError(f"\"error_type\" {et!r} must be the outcome of at least one skill in \"by_skill\" "
+                             f"(got {', '.join(outcomes)})")
+    _why(obj, "answer 5", "explanation")
+    if obj.get("confidence") not in ("high", "medium", "low"):
+        raise ValueError(f"\"confidence\" must be high, medium or low, got {obj.get('confidence')!r}")
+    return failed
+
+
+def check_v5_problem(obj, skill_codes, has_evidence):
+    """Rules for answer 6, the item's labels (see prompts.RESPONSE_V5_PROBLEM). Returns the derived labels:
+    {"ordering": practices in order of first use, "practices_used": that list as answer-1-style entries,
+    "skill_practices": {code: [practice, ...]}}. Raises ValueError on the first problem."""
+    sk = obj.get("skills")
+    if not isinstance(sk, list):
+        raise ValueError("\"skills\" must be a list")
+    got = [s.get("skill") if isinstance(s, dict) else None for s in sk]
+    if got != list(skill_codes):
+        raise ValueError(f"\"skills\" must list the item's skills in order ({', '.join(skill_codes)}), "
+                         f"got {', '.join(map(str, got)) or 'none'}")
+    entries, per_skill = [], {}
+    for s in sk:
+        where = f"skills[{s['skill']}]"
+        pu = s.get("practices_used")
+        if not isinstance(pu, list):
+            raise ValueError(f"{where}: \"practices_used\" must be a list")
+        note = _text_field(s, "not_exercised", where)
+        if not pu and not note:
+            raise ValueError(f"{where}: a skill with no practices needs \"not_exercised\"")
+        if pu and note:
+            raise ValueError(f"{where}: \"not_exercised\" must be empty when the skill has practices")
+        names, last = [], 0
+        for j, it in enumerate(pu, 1):
+            w = f"{where}.practices_used[{j}]"
+            if not isinstance(it, dict):
+                raise ValueError(f"{w} must be an object")
+            if it.get("practice") not in P.PRACTICES:
+                raise ValueError(f"{w}: unknown practice {it.get('practice')!r}")
+            if it["practice"] in names:
+                raise ValueError(f"{w}: {it['practice']} is listed twice under this skill")
+            order = it.get("order")
+            if not isinstance(order, int) or isinstance(order, bool) or order <= last:
+                raise ValueError(f"{w}: \"order\" must be a whole number larger than the one before it")
+            _why(it, w)
+            _why(it, w, "likely_errors")
+            last = order
+            names.append(it["practice"])
+            entries.append((order, it))
+        per_skill[s["skill"]] = names
+    orders = sorted(o for o, _ in entries)
+    if not entries:
+        raise ValueError("no practice is used under any skill")
+    if orders != list(range(1, len(orders) + 1)):
+        raise ValueError(f"the \"order\" numbers across all skills must be 1, 2, 3, ... once each; got {orders}")
+    used, seen_items = [], {}
+    for _, it in sorted(entries, key=lambda e: e[0]):
+        if it["practice"] not in used:
+            used.append(it["practice"])
+            seen_items[it["practice"]] = it
+    facts = obj.get("math_facts", [])
+    if not isinstance(facts, list):
+        raise ValueError("\"math_facts\" must be a list")
+    for i, f in enumerate(facts, 1):
+        where = f"math_facts[{i}]"
+        if not isinstance(f, dict):
+            raise ValueError(f"{where} must be an object")
+        if f.get("skill") not in skill_codes:
+            raise ValueError(f"{where}: \"skill\" must be one of {', '.join(skill_codes)}, got {f.get('skill')!r}")
+        _why(f, where, "fact")
+    not_used = obj.get("practices_not_used")
+    if not isinstance(not_used, list):
+        raise ValueError("\"practices_not_used\" must be a list")
+    nu = []
+    for i, it in enumerate(not_used, 1):
+        where = f"practices_not_used[{i}]"
+        if not isinstance(it, dict) or it.get("practice") not in P.PRACTICES:
+            raise ValueError(f"{where}: unknown practice {it.get('practice') if isinstance(it, dict) else it!r}")
+        _why(it, where)
+        if it["practice"] in used:
+            raise ValueError(f"{where}: {it['practice']} is also used under a skill")
+        if it["practice"] in nu:
+            raise ValueError(f"{where}: {it['practice']} is listed twice")
+        nu.append(it["practice"])
+    missing = [p for p in P.PRACTICES if p not in used and p not in nu]
+    if missing:
+        raise ValueError(f"missing (neither used nor in practices_not_used): {', '.join(missing)}")
+    top = obj.get("top_practice")
+    if top not in used:
+        raise ValueError(f"\"top_practice\" must be one of the practices used ({', '.join(used)}), got {top!r}")
+    basis = obj.get("top_practice_basis")
+    if basis not in ("evidence", "judgment"):
+        raise ValueError(f"\"top_practice_basis\" must be evidence or judgment, got {basis!r}")
+    if basis == "evidence" and not has_evidence:
+        raise ValueError("\"top_practice_basis\" is evidence, but no analysis of wrong answers was given")
+    _why(obj, "answer 6", "top_practice_why")
+    _text_field(obj, "comprehension_note", "answer 6")
+    flat = [{"order": i, "practice": p, "why": seen_items[p]["why"], "likely_errors": seen_items[p]["likely_errors"]}
+            for i, p in enumerate(used, 1)]
+    return {"ordering": used, "practices_used": flat, "skill_practices": per_skill}
+
+
 # ---------------------------------------------------------------- run directory and row logs
 
 def row_path(run_dir, row):
@@ -519,6 +745,41 @@ def merge_into_csv(run_dir, prefix, csv_path, backup_dir, replace_prefix=None):
     os.replace(tmp, csv_path)
     return {"written": written, "skipped_unfinished": skipped, "columns": cols, "backup": backup,
             "replaced": replaced}
+
+
+def write_columns(csv_path, backup_dir, prefix, suffixes, values):
+    """Write the columns <prefix>_<suffix> of csv_path (label_v5.py). values: {row: (problem_id, [one value per
+    suffix])}, rows 1-based. Missing columns are added at the end; rows not in values keep what they hold. Rows are
+    matched by position and checked by problem_id. Same dialect and backup as merge_into_csv."""
+    _raise_field_limit()
+    with open(csv_path, encoding="utf-8", newline="") as f:
+        table = list(csv.reader(f))
+    header, body = table[0], table[1:]
+    for c in [f"{prefix}_{s}" for s in suffixes]:
+        if c not in header:
+            header.append(c)
+    width = len(header)
+    for r in body:
+        r.extend([""] * (width - len(r)))
+    pid_col = header.index("problem_id")
+    idx = [header.index(f"{prefix}_{s}") for s in suffixes]
+    for row, (pid, vals) in values.items():
+        r = body[row - 1]
+        if str(r[pid_col]).strip() != str(pid).strip():
+            raise ValueError(f"row {row}: problem_id {r[pid_col]} in CSV, {pid} in the run log")
+        for j, v in zip(idx, vals):
+            r[j] = v
+    os.makedirs(backup_dir, exist_ok=True)
+    backup = os.path.join(backup_dir, f"Problems.before_{prefix}.csv")
+    with open(csv_path, "rb") as src, open(backup, "wb") as dst:
+        dst.write(src.read())
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(csv_path), suffix=".tmp")
+    with os.fdopen(fd, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n", quoting=csv.QUOTE_MINIMAL)
+        w.writerow(header)
+        w.writerows(body)
+    os.replace(tmp, csv_path)
+    return {"written": len(values), "columns": [header[j] for j in idx], "backup": backup}
 
 
 # ---------------------------------------------------------------- progress and time estimate

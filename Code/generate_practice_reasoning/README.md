@@ -207,3 +207,34 @@ Options: `--types fill,mc,all,order`, `--rows`, `--max-items` (quick tests), `--
 ## No-examples version (`--framework no_examples`)
 
 The prompts without the NAEP example items under each practice's descriptors, and with the shorter introduction to the definitions: exactly the system prompts of run `qwen3_30b_v3` (checked character for character against `runs/qwen3_30b_v3/manifest.json`). The standard prompts are exactly those of `qwen3_30b_v4`. On the GB300 this is step 2 (labels, prefix `qwen35_122b_noex`) and step 5 (diagnosis from those labels), so the 122B model can be compared with the 30B model on both prompt versions.
+
+## v5: wrong answers first, then the labels (`label_v5.py`, prompts 5 and 6)
+
+v5 reverses the order of labeling and diagnosis, so students' common wrong answers inform the labels instead of being forced into labels made beforehand. Both prompts use the descriptors-only definitions (no example items, no NAEP Chapter 3), with one sentence changed: the correct answer is given. There is no order prompt: prompt 6 gives the practices in order and the top practice in one answer. By default only rows 1–300 run (`--rows all`, or `V5_ROWS=all` for step 8, runs every problem once the 300 are checked).
+
+1. **Prompt 5, the main incorrect-answer prompt** (`SYSTEM_PROMPT_V5_WRONG`, `Q5_WRONG_TEMPLATE`): one call per wrong answer given by at least `--min-students` (default 3) students. The model solves the item itself (each step with its skill and practice), reconstructs how a student produced exactly the wrong answer, and names the error:
+   - `practice`: any of the six, as long as it is a step of its own solution;
+   - `math_fact`: the fact stated correctly;
+   - `comprehension`: a short phrase on what made the item hard to understand and what that says about the student;
+   - `stopped_early`;
+   - `unexplained`.
+
+   For items with two or more skills, `by_skill` gives the same outcome types (or `correct`) for each skill.
+2. **Prompt 6, the main problem prompt** (`SYSTEM_PROMPT_V5_PROBLEM`): sent once all the item's wrong answers have a valid answer 5. Their diagnoses go in as evidence (`Q6_PROBLEM_EVIDENCE_TEMPLATE`, one line each, most students first); without common wrong answers it uses `Q6_PROBLEM_TEMPLATE`. The answer gives:
+   - the practices used per skill, numbered in one order across the item;
+   - the math facts the item relies on;
+   - the practices not used;
+   - the top practice, with `top_practice_basis` `evidence` or `judgment`.
+
+   Procedural Fluency is listed in a multi-practice item only when its computation is significant.
+
+Outputs:
+- `Problems.csv` columns `<prefix>_reasoning`, `_top_practice`, `_top_practice_reasoning`, `_skill_practices`, `_math_facts` and `_evidence_used`. `_reasoning` keeps a flat `practices_used` list, so tools reading the earlier format still work.
+- `Data/wrong_answer_diagnosis_<prefix>.csv`.
+- Logs in `runs/<prefix>/rows/`.
+
+```bash
+python3 label_v5.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --rows 1,65,260,2 --dry-run
+bash run_gb300.sh 8                      # the full v5 run on the GB300 (SMOKE=1 for the 6-problem smoke test)
+node tools/preview_v5.js                 # on Windows, no Python: Results/prompt_preview/v5_prompts.txt
+```

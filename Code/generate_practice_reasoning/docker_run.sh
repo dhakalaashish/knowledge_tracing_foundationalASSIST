@@ -74,7 +74,7 @@ OPTS=("${GPU_OPT[@]}" --ipc=host --ulimit memlock=-1 --ulimit stack=67108864
       -w /workspace/Code/generate_practice_reasoning)
 # the host's time zone, so the time estimates in the logs are in local time
 if [ -e /etc/localtime ]; then OPTS+=(-v /etc/localtime:/etc/localtime:ro); fi
-for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN HF_HUB_OFFLINE SMOKE SMOKE_ROWS RETRY_FAILED; do
+for v in MODEL MAX_TOKENS MAX_MODEL_LEN HF_TOKEN HF_HUB_OFFLINE SMOKE SMOKE_ROWS RETRY_FAILED V5_ROWS MIN_STUDENTS; do
   if [ -n "${!v:-}" ]; then OPTS+=(-e "$v"); fi
 done
 MODEL_ID="${MODEL:-Qwen/Qwen3.5-122B-A10B-FP8}"   # the same default as run_gb300.sh
@@ -126,7 +126,7 @@ case "${1:-}" in
     model_cached ;;
   status)
     bash monitor.sh once ;;
-  ""|[1-7]*)
+  ""|[1-8]*)
     if docker ps -q --filter "name=^${NAME}$" | grep -q .; then
       echo "$NAME is already running (bash docker_run.sh status / stop)"; exit 1
     fi

@@ -31,10 +31,11 @@ T=""; LOGP=logs/step
 if [ "${SMOKE:-0}" = "1" ]; then T=smoke_; LOGP=logs/smoke_step; fi
 STEP_DIR=([1]=runs/${T}qwen35_122b/rows [2]=runs/${T}qwen35_122b_noex/rows [3]=runs/${T}qwen35_122b_ch3/rows
           [4]=runs/${T}qwen35_122b_diag/items [5]=runs/${T}qwen35_122b_noex_diag/items
-          [6]=runs/${T}qwen35_122b_ch3_diag/items [7]=runs/${T}qwen35_122b_ch3_diag_nothink/items)
+          [6]=runs/${T}qwen35_122b_ch3_diag/items [7]=runs/${T}qwen35_122b_ch3_diag_nothink/items
+          [8]=runs/${T}qwen35_122b_v5/rows)
 STEP_NAME=([1]="labels, standard prompts" [2]="labels, no examples (v3 prompts)" [3]="labels, Chapter 3 prompts"
            [4]="diagnosis, standard prompts" [5]="diagnosis, no examples" [6]="diagnosis, Chapter 3 prompts"
-           [7]="fallback for step 6, thinking off")
+           [7]="fallback for step 6, thinking off" [8]="v5: wrong answers, then labels (problems)")
 
 hm() {  # minutes -> "2h05m"
   local m=$1
@@ -164,8 +165,8 @@ EOF
   echo "disk free here: $(df -h . | awk 'NR==2{print $4}')"
   echo
   # steps 4 and 5 (diagnoses from the standard and no-examples labels) are optional: shown only once started
-  for n in 1 2 3 4 5 6 7; do
-    if { [ "$n" = 4 ] || [ "$n" = 5 ] || [ "$n" = 7 ]; } && [ ! -e "$LOGP$n.log" ] && [ ! -d "${STEP_DIR[$n]}" ]; then continue; fi
+  for n in 1 2 3 4 5 6 7 8; do
+    if { [ "$n" = 4 ] || [ "$n" = 5 ] || [ "$n" = 7 ] || [ "$n" = 8 ]; } && [ ! -e "$LOGP$n.log" ] && [ ! -d "${STEP_DIR[$n]}" ]; then continue; fi
     step_report "$n"
   done
   echo
