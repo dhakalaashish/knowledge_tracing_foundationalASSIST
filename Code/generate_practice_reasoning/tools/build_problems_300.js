@@ -44,7 +44,8 @@ if (fs.existsSync(OUT)) {
         const g = c => (c in old.h ? r[old.h[c]] : "") || "";
         claudeWhy[+g("row")] = g("claude_top_practice_reasoning");
         if (g("aashish_ordering") || g("aashish_top_practice"))
-            mine[+g("row")] = { problem_id: g("problem_id"), aashish_ordering: g("aashish_ordering"), aashish_top_practice: g("aashish_top_practice"), note: g("aashish_note"), updated: g("aashish_updated") };
+            mine[+g("row")] = { problem_id: g("problem_id"), aashish_ordering: g("aashish_ordering"), aashish_top_practice: g("aashish_top_practice"), note: g("aashish_note"), updated: g("aashish_updated"),
+                diagnosis_checks: g("aashish_diagnosis_checks") ? JSON.parse(g("aashish_diagnosis_checks")) : null };
     }
 }
 if (args.reviews) {
@@ -63,7 +64,8 @@ const choice = (mineVal, vals) => {
 
 const head = ["row", "problem_id", "predicted_practice", "claude_ordering", "claude_top_practice", "claude_top_practice_reasoning",
     ...LLMS.flatMap(L => [`${L.prefix}_ordering`, `${L.prefix}_top_practice`, `${L.prefix}_top_practice_reasoning`]),
-    "aashish_ordering_choice", "aashish_ordering", "aashish_top_practice_choice", "aashish_top_practice", "aashish_note", "aashish_updated"];
+    "aashish_ordering_choice", "aashish_ordering", "aashish_top_practice_choice", "aashish_top_practice", "aashish_note", "aashish_updated",
+    "aashish_diagnosis_checks"];   // your verdict on each diagnosed wrong answer (key -> right | partly | wrong), as JSON
 const lines = [head.join(",")];
 let filled = 0;
 for (let r = 1; r <= N; r++) {
@@ -90,7 +92,8 @@ for (let r = 1; r <= N; r++) {
     lines.push([r, pid, canon(g("predicted_practice")), cOrd, cTop, why, ...ls.flatMap(x => [x.ord, x.top, x.why]),
         m ? choice(m.aashish_ordering, ordVals) : "", m ? m.aashish_ordering : "",
         m ? choice(m.aashish_top_practice, topVals) : "", m ? m.aashish_top_practice : "",
-        m ? m.note || "" : "", m ? m.updated || "" : ""].map(csvField).join(","));
+        m ? m.note || "" : "", m ? m.updated || "" : "",
+        m && m.diagnosis_checks && Object.keys(m.diagnosis_checks).length ? JSON.stringify(m.diagnosis_checks) : ""].map(csvField).join(","));
 }
 fs.writeFileSync(OUT, lines.join("\n") + "\n");
 console.error(`${N} rows written to ${OUT}; ${filled} with Aashish's review`);

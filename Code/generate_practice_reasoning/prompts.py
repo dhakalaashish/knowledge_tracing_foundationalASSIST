@@ -698,7 +698,8 @@ Using the practice definitions and descriptors and this analysis, tell me how a 
 # The full text of Chapter 3 of the NAEP 2026 Mathematics Framework ("NAEP Mathematical Practices", made with
 # tools/naep_chapter_text.js into naep_chapter3.txt) is put in front of every system prompt. The rest of each system
 # prompt is unchanged, so the answers use the same six practices and formats. Putting the chapter first gives all
-# prompts the same long prefix, which vLLM's prefix cache reuses across every call.
+# prompts the same long prefix, which vLLM's prefix cache could reuse across calls; note that vLLM switches prefix
+# caching off for hybrid-attention models such as Qwen3.5, so on the GB300 the chapter is processed on every call.
 
 CHAPTER_INTRO = """Background reading: below is the full text of Chapter 3, "NAEP Mathematical Practices", of the Mathematics Framework for the 2026 National Assessment of Educational Progress (NAEP). It explains in depth what each NAEP mathematical practice means, how the practices differ from each other and from conceptual understanding and computational fluency, and gives example items with the practices they assess. The text was extracted from the PDF: figures are missing, tables are flattened into lines, and some item text from images may be garbled.
 

@@ -67,11 +67,14 @@ console.error("loading responses ...");
 const lines = fs.readFileSync(path.join(ROOT, "Results", "practice_analysis", "cleaned_responses.tsv"), "utf8").split("\n");
 const stuIdx = new Map(), stuIds = [];
 const resp = [];                   // {s, pid, info, y, hint, saw, t(ms), day, ans}
+// a problem without a label in this column (it failed every labeling attempt) is left out, with its responses
+const unlabeled = new Set(); let unlabeledResp = 0;
 for (let i = 1; i < lines.length; i++) {
     const L = lines[i]; if (!L) continue;
     const f = L.split("\t");
     const info = prob.get(f[1]);
-    if (!info || info.p < 0) throw new Error("no practice for problem " + f[1]);
+    if (!info) throw new Error("problem " + f[1] + " is not in Problems.csv");
+    if (info.p < 0) { unlabeled.add(f[1]); unlabeledResp++; continue; }
     if (!stuIdx.has(f[0])) { stuIdx.set(f[0], stuIds.length); stuIds.push(f[0]); }
     const t = Date.parse(f[5].replace(" ", "T").replace(/\+00$/, "Z"));
     resp.push({ s: stuIdx.get(f[0]), info, p: info.p, y: Number(f[2]), hint: Number(f[3]), saw: Number(f[4]), t,
@@ -81,7 +84,9 @@ lines.length = 0;
 const N = resp.length, NS = stuIds.length;
 console.error(`${N} responses, ${NS} students`);
 R.meta = { practice_column: COL, responses: N, students: NS, problems: new Set(resp.map(x => x.info.pid)).size,
-    problem_id_label_conflicts: conflicts, practices: PR, short: SH };
+    problem_id_label_conflicts: conflicts, practices: PR, short: SH,
+    unlabeled_problems_left_out: unlabeled.size, unlabeled_responses_left_out: unlabeledResp };
+if (unlabeled.size) console.error(`left out ${unlabeled.size} problems without a label (${unlabeledResp} responses)`);
 
 // problem means (leave-one-out residuals) and student means
 const pSum = new Map(), pN = new Map();

@@ -18,7 +18,8 @@ const P = readTable("Data/Problems.csv");
 function orderAnswer(text) {
     if (!text) return null;
     const o = JSON.parse(text);
-    return { steps: (o.ordering || []).map(x => ({ p: canon(x.practice), step: (x.step || "").trim() })), why: (o.why || "").trim() };
+    return { steps: (o.ordering || []).map(x => ({ p: canon(x.practice), step: (x.step || "").trim() })), why: (o.why || "").trim(),
+        auto: !!o.auto };   // auto: the order prompt was not asked (answer 1 lists one practice)
 }
 const out = SPECS.map(({ prefix, key, name }) => {
     if (!(`${prefix}_reasoning` in P.h)) { console.error(`Problems.csv has no ${prefix}_reasoning`); process.exit(1); }
