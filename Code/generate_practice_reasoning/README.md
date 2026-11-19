@@ -238,3 +238,34 @@ python3 label_v5.py --provider local --model Qwen/Qwen3.5-122B-A10B-FP8 --rows 1
 bash run_gb300.sh 8                      # the full v5 run on the GB300 (SMOKE=1 for the 6-problem smoke test)
 node tools/preview_v5.js                 # on Windows, no Python: Results/prompt_preview/v5_prompts.txt
 ```
+
+### v5 on TACC Stampede3 (`tacc_run_v5.sh`, `config/job*.env`)
+
+Qwen3.5-122B-FP8 needs about 130 GB of GPU memory, so it runs on Stampede3's `h100` queue: one node with 4× H100 96 GB, tensor parallel. A Vista GH node (one 96 GB GPU) and a Lonestar6 `gpu-h100` node (2× 80 GB) are too small or too tight.
+
+The jobs go through the lab's TACC job wrapper (`slurm/gen_job/job_setup.sh` from the TACC-doc repository), using the job files in `config/` at the repository root:
+- `job.env`: rows 1–300, 8 h limit;
+- `job_full_a.env`: rows 301–1705, 48 h;
+- `job_full_b.env`: rows 1706–3395, 48 h.
+
+The two full parts have about the same work and can run at the same time.
+
+What `tacc_run_v5.sh` does:
+- pulls the vLLM image with Apptainer into `$SCRATCH/containers` (`v0.20.0-cu130` as on the GB300 when the driver is ≥ 580, else `v0.20.0`);
+- downloads the model into `$SCRATCH/hf_cache`;
+- runs `label_v5.py` with step 8's settings on all GPUs.
+
+Results land in the repository as on the GB300, and runs resume. Replace `ALLOCATION=YOUR_ALLOCATION` in the job files with your charge code before committing.
+
+**Automatic commit and push.**
+- The labeling stops `V5_RESERVE_MIN` minutes (default 30) before the job's time limit.
+- The job then writes the CSVs (also after a time-out or an error) and commits only the v5 outputs:
+  - `Data/Problems.csv`;
+  - `Data/wrong_answer_diagnosis_qwen35_122b_v5.csv`;
+  - `runs/qwen35_122b_v5/`.
+
+  It pushes them to the clone's branch, and if GitHub has moved on, it rebases and retries.
+- Two jobs sharing the clone take turns, using a lock file.
+- `V5_PUSH=0` in a job file turns the push off. `V5_PUSH_ROW_LOGS=0` leaves the per-row logs out of the commit.
+
+The push needs a one-time setup on the login node: `git-lfs` on `PATH`, `user.name` and `user.email` set in the clone, and a GitHub token saved with `git config credential.helper store`. A batch job cannot type a password, and `GIT_TERMINAL_PROMPT=0` makes it fail rather than hang.
