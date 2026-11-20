@@ -290,10 +290,17 @@ def diverged_users(users):
 
 
 def cmd_pick_users(args):
-    if os.path.exists(user_file(args)) and not args.force:
-        print(f"Using the students in {user_file(args)} (--force to pick again)")
+    """The first --n students of one fixed random order of the eligible paper students (seed --seed). The picks are
+    nested: a larger --n in the same folder keeps the students already there and adds the next ones, so the
+    results already computed are kept and only the new students are run (e.g. 170 now, all 490 later)."""
+    existing = B.read_user_ids(user_file(args)) if os.path.exists(user_file(args)) else []
+    if existing and len(existing) >= args.n and not args.force:
+        if len(existing) > args.n:
+            print(f"NOTE: {user_file(args)} has {len(existing)} students, more than --n {args.n}; all are used "
+                  f"(--force to pick a new, smaller list)")
+        print(f"Using the {len(existing)} students in {user_file(args)}")
         return
-    # the paper's 500 users (cached in Results/paper_reference); our own list does not exist yet, so the
+    # the paper's 500 users (cached in Results/paper_reference); our own list may not exist yet, so the
     # benchmark's arguments here carry no --user-ids-file
     paper_ids = os.path.join(B.PAPER_REF_DIR, "paper_user_ids.txt")
     if not os.path.exists(paper_ids):
@@ -302,12 +309,25 @@ def cmd_pick_users(args):
     users = B.read_user_ids(paper_ids)
     print(f"Checking which of the paper's {len(users)} students still match their published prompts ...")
     bad = diverged_users(users)
-    pool = sorted(set(users) - bad)
-    chosen = sorted(random.Random(args.seed).sample(pool, args.n))
+    order = sorted(set(users) - bad)
+    random.Random(args.seed).shuffle(order)
+    n = min(args.n, len(order))
+    if n < args.n:
+        print(f"Only {len(order)} students are eligible: using all of them")
+    if existing and not args.force:
+        have = set(existing)
+        chosen = existing + [u for u in order if u not in have][:n - len(existing)]
+        print(f"Adding {len(chosen) - len(existing)} students to the {len(existing)} already in the list")
+    else:
+        chosen = order[:n]
     os.makedirs(args.base_dir, exist_ok=True)
     with open(user_file(args), "w", encoding="utf-8") as f:
-        f.write("\n".join(chosen) + "\n")
-    print(f"{len(bad)} students left out (data no longer matches); picked {len(chosen)} of {len(pool)} "
+        f.write("\n".join(sorted(chosen)) + "\n")
+    # the staged data must be rebuilt to hold the new students (results already computed are kept)
+    marker = os.path.join(args.out_dir, "kt_data", B.STAGED_MARKER)
+    if os.path.exists(marker):
+        os.remove(marker)
+    print(f"{len(bad)} students left out (data no longer matches); {len(chosen)} of {len(order)} picked "
           f"with seed {args.seed}: {user_file(args)}")
 
 
@@ -391,8 +411,9 @@ def model_id():
 
 
 def results_path(args, which):
-    n = len(selected(args))
-    return os.path.join(args.out_dir, f"{which}_qwen3next80b_awq_n{n}_bin{B.BIN_SIZE}_hist{B.MIN_HISTORY}.jsonl")
+    """One file per condition, whatever the number of students: adding students later continues the same file
+    (kt_inference_base skips the predictions already in it)."""
+    return os.path.join(args.out_dir, f"{which}_qwen3next80b_awq_bin{B.BIN_SIZE}_hist{B.MIN_HISTORY}.jsonl")
 
 
 def kt_cmd(args, which):
@@ -457,9 +478,17 @@ def cmd_evaluate(args):
         for line, x in zip(B.iter_lines(path), r):   # keep the prediction ids for the paired comparison
             x["prediction_id"] = json.loads(line)["prediction_id"]
         recs[label] = r
-        tables.append((label, B.kt_table2(r), B.kt_table3(r)))
-    if not tables:
+    if not recs:
         return
+    # Every column counts the same predictions: those present in all the runs found (while a run is still going,
+    # or after students were added, the files can hold different students)
+    common = set.intersection(*({x["prediction_id"] for x in r} for r in recs.values()))
+    for label in recs:
+        n_all = len(recs[label])
+        recs[label] = [x for x in recs[label] if x["prediction_id"] in common]
+        if len(recs[label]) < n_all:
+            print(f"{label}: {len(recs[label]):,} of its {n_all:,} predictions are in every run; the tables use those")
+    tables = [(label, B.kt_table2(r), B.kt_table3(r)) for label, r in recs.items()]
     metrics = [
         ("Predictions", lambda t2, t3: f"{t2['n']:,}"),
         ("Parsed predictions", lambda t2, t3: B.pct(t2["parse_rate"])),
@@ -477,7 +506,9 @@ def cmd_evaluate(args):
     ]
     header = ["Metric"] + [label for label, _, _ in tables]
     rows = [[name] + [fn(t2, t3) for _, t2, t3 in tables] for name, fn in metrics]
-    report = [f"# KT and cognitive student modeling, {len(selected(args))} random paper students\n",
+    n_students = len({pid.rsplit("_", 2)[0] for pid in common})
+    report = [f"# KT and cognitive student modeling, {n_students} random paper students "
+              f"({len(common):,} predictions in every run)\n",
               B.markdown_table(header, rows)]
     # paired comparison on the same targets: baseline vs practice
     lb, lp = runs[1][0], runs[2][0]
@@ -523,7 +554,8 @@ COMMANDS = {"pick-users": cmd_pick_users, "stage": cmd_stage, "check-prompts": c
 def parse_args():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=list(COMMANDS))
-    ap.add_argument("--n", type=int, default=50, help="students to pick (default 50)")
+    ap.add_argument("--n", type=int, default=50,
+                    help="students to use (default 50); a larger --n later in the same folder adds students")
     ap.add_argument("--seed", type=int, default=2026, help="seed for picking the students")
     ap.add_argument("--students", type=int, default=0,
                     help="test run on only the first N of the picked students (separate output folder)")
