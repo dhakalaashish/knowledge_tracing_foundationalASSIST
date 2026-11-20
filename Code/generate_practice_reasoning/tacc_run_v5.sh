@@ -42,10 +42,12 @@ MIN_STUDENTS="${MIN_STUDENTS:-3}"
 BATCH="${V5_BATCH:-1024}"
 RESERVE_MIN="${V5_RESERVE_MIN:-30}"
 DIAG_OUT="../../Data/wrong_answer_diagnosis_${PREFIX}.csv"
-LOG="logs/tacc_v5_rows_${V5_ROWS}.log"
+LOG="$CODE/logs/tacc_v5_rows_${V5_ROWS}.log"   # full path: the push step works from the repository root
 EXTRA=()
 if [ "${V5_RETRY_FAILED:-0}" = "1" ]; then EXTRA+=(--retry-failed); fi
 export GIT_TERMINAL_PROMPT=0          # never wait for a password in a batch job: fail instead
+# nor for an SSH key passphrase (an ssh-agent key still works); only when no SSH command is set already
+export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -o BatchMode=yes}"
 say() { printf '%s\n' "$*" | tee -a "$LOG"; }
 
 # ---------------------------------------------------------------- 1. container
@@ -161,7 +163,8 @@ push_results() {
       [ "${PIPESTATUS[0]}" = 0 ] && { say "pushed to $branch: $n_ok problems done"; flock -u 9; return 0; }
     fi
     say "push failed (attempt $attempt); pulling the branch (rebase) and trying again"
-    if ! git pull -q --rebase origin "$branch" 2>&1 | tee -a "$LOG" || [ "${PIPESTATUS[0]}" != 0 ]; then
+    # --autostash: other uncommitted edits in the clone (e.g. parameter files) are set aside and put back
+    if ! git pull -q --rebase --autostash origin "$branch" 2>&1 | tee -a "$LOG" || [ "${PIPESTATUS[0]}" != 0 ]; then
       git rebase --abort 2>/dev/null || true
       say "pull --rebase failed (the same files changed on GitHub, or no network/login). The commit is kept in this clone; push it by hand from the login node."
       flock -u 9; return 1

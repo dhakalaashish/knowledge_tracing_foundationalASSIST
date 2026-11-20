@@ -293,11 +293,13 @@ def cmd_pick_users(args):
     if os.path.exists(user_file(args)) and not args.force:
         print(f"Using the students in {user_file(args)} (--force to pick again)")
         return
-    ba = b_args(args)
-    p = B.paths(ba)
-    if not os.path.exists(p["user_ids"]):
-        B.cmd_extract_users(ba)
-    users = B.read_user_ids(p["user_ids"])
+    # the paper's 500 users (cached in Results/paper_reference); our own list does not exist yet, so the
+    # benchmark's arguments here carry no --user-ids-file
+    paper_ids = os.path.join(B.PAPER_REF_DIR, "paper_user_ids.txt")
+    if not os.path.exists(paper_ids):
+        B.cmd_extract_users(B.resolve_defaults(B.build_parser(B.COMMANDS).parse_args(
+            ["extract-users", "--out-dir", args.out_dir, "--no-ped"]), out_dir=args.out_dir))
+    users = B.read_user_ids(paper_ids)
     print(f"Checking which of the paper's {len(users)} students still match their published prompts ...")
     bad = diverged_users(users)
     pool = sorted(set(users) - bad)
