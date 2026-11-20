@@ -3,8 +3,9 @@ Knowledge Tracing inference with Qwen3-Next-80B-A3B-Instruct, 4-bit AWQ, so it f
 (the BF16 model the paper used needs about 160 GB). Same generation settings as the paper's
 qwen3next80bvllm_instruct.py; only the checkpoint differs.
 
-The checkpoint is a community quantization (there is no official Qwen AWQ release). Override it with
-the environment variable KT_MODEL_ID, e.g. KT_MODEL_ID=cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit.
+The checkpoint is a community quantization, cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit (there is no
+official Qwen AWQ release; the older name cpatonn/... no longer exists). Override it with the environment
+variable KT_MODEL_ID=<another Hugging Face id or a local folder>.
 
 Usage (normally started by kt_practice_benchmark.py):
     python qwen3next80b_awq_instruct_vllm.py --data-dir <kt_data> --num-students 0 \
@@ -15,7 +16,7 @@ import os
 
 from kt_inference_base import run_inference
 
-MODEL_ID = os.environ.get("KT_MODEL_ID", "cpatonn/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit")
+MODEL_ID = os.environ.get("KT_MODEL_ID", "cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit")
 
 MODEL_CONFIG = {
     "model_id": MODEL_ID,

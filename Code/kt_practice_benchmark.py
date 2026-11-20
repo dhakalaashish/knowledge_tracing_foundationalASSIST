@@ -387,7 +387,7 @@ def cmd_check_length(args):
 
 
 def model_id():
-    return os.environ.get("KT_MODEL_ID", "cpatonn/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit")
+    return os.environ.get("KT_MODEL_ID", "cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit")
 
 
 def results_path(args, which):
