@@ -18,6 +18,9 @@ students, run two ways with the same model, so the only difference is the practi
               - in the system prompt: the six practices' definitions and descriptors (as in the labeling prompts)
             The added text sits right after each problem's "Skill: Undefined" line; everything else is the
             paper's prompt.
+  profile   the history replaced by a student profile that rules update after every answer, plus the last 10
+            answers in full and the new problem with its skill, prerequisites, practices and difficulty
+            (kt_student_profile.py; deck step 3)
 
 Both use Qwen3-Next-80B-A3B-Instruct in 4-bit AWQ (qwen3next80b_awq_instruct_vllm.py; fits one A100 80 GB)
 with the paper's generation settings. `evaluate` also scores the paper's own published Qwen3-Next-80B-Instruct
@@ -29,12 +32,14 @@ Subcommands (from the Code/ directory):
     stage           Stage their data (as qwen3_30b_benchmark.py stage-kt)
     check-prompts   Baseline: identical to the published prompts? Practice: identical once the added lines are
                     removed?
-    show-prompt     Print one practice prompt (--which first|longest) to read it
-    check-length    Longest practice prompt in tokens, against --max-model-len
+    show-prompt     Print one prompt (--condition practice|profile, --which first|longest) to read it
+    check-length    Longest prompt of --condition in tokens, against --max-model-len
     infer-baseline  Run the baseline (GPU, timed)
     infer-practice  Run the practice version (GPU, timed)
-    evaluate        Tables for paper reference / baseline / practice, and the paired comparison
+    infer-profile   Run the profile version (GPU, timed)
+    evaluate        Tables for paper reference / baseline / practice / profile, and the paired comparisons
     all             pick-users -> stage -> check-length -> infer-baseline -> infer-practice -> evaluate
+    profile-all     stage -> check-length (profile) -> infer-profile -> evaluate
 
 Usage:
     # quick test: 3 of the 50 students, both conditions
@@ -71,6 +76,10 @@ ADDED_PREFIXES = ("Practices (in order", "  ", "Top practice: ", "Answer analysi
 
 # ---------------------------------------------------------------------------------------------- practice text
 
+PRACTICE_DEFINITIONS = "".join(PR._without_examples(block, blank_line=True) for block in (
+    PR.PROMPT_REPRESENTING, PR.PROMPT_ABSTRACTING, PR.PROMPT_JUSTIFYING, PR.PROMPT_MODELING,
+    PR.PROMPT_COLLABORATIVE, PR.PROMPT_PROCEDURAL)).rstrip()
+
 PRACTICE_SECTION = (
     "\n\n---\n\nMathematical Practices:\n\n"
     "Every problem below also lists the mathematical practices a student needs to solve it, in the order a student "
@@ -81,9 +90,7 @@ PRACTICE_SECTION = (
     "the answer. The new problem lists only the practices it needs. Use this information about the practices, "
     "together with the rest of the student's record, to predict how the student will do. The six practices, with "
     "their definitions and descriptors:\n"
-    + "".join(PR._without_examples(block, blank_line=True) for block in (
-        PR.PROMPT_REPRESENTING, PR.PROMPT_ABSTRACTING, PR.PROMPT_JUSTIFYING, PR.PROMPT_MODELING,
-        PR.PROMPT_COLLABORATIVE, PR.PROMPT_PROCEDURAL)).rstrip()
+    + PRACTICE_DEFINITIONS
 )
 
 
@@ -115,6 +122,13 @@ def num_val(t):
 def answer_key(a):
     v = num_val(a)
     return "t:" + re.sub(r"\s+", "", a) if v is None else "n:" + repr(round(v * 1e9) / 1e9)
+
+
+def used_help(rec):
+    """The student asked for a hint or saw the answer on this interaction."""
+    hint = rec.get("hint_count")
+    saw = str(rec.get("saw_answer")).strip().lower() in ("true", "1", "1.0")
+    return saw or (hint is not None and str(hint) not in ("", "nan") and float(hint) > 0)
 
 
 class PracticeInfo:
@@ -159,22 +173,27 @@ class PracticeInfo:
             return "Practices required (in order): not labeled"
         return "Practices required (in order): " + " > ".join(p for p, _ in self.practices[pid])
 
-    def analysis(self, rec):
+    def classify(self, rec):
+        """(kind, diagnosis row): kind is correct | help (wrong after a hint or the answer) | common (a diagnosed
+        common wrong answer; the row is its diagnosis) | uncommon."""
         if float(rec.get("discrete_score") or 0) >= 1:
-            self.counts["correct"] += 1
-            return "Answer analysis: Correct: the student carried out every practice step correctly."
-        hint = rec.get("hint_count")
-        saw = str(rec.get("saw_answer")).strip().lower() in ("true", "1", "1.0")
-        if saw or (hint is not None and str(hint) not in ("", "nan") and float(hint) > 0):
-            self.counts["help"] += 1
-            return ("Answer analysis: Incorrect, given after asking for a hint or seeing the answer "
-                    "(no diagnosis: the recorded answer may not be the student's own).")
+            return "correct", None
+        if used_help(rec):
+            return "help", None
         pid = int(rec["problem_id"])
         d = self.diag.get((pid, answer_key(norm_answer(self.answer.get(str(rec.get("id")), "")))))
-        if d is None:
-            self.counts["uncommon"] += 1
+        return ("uncommon", None) if d is None else ("common", d)
+
+    def analysis(self, rec):
+        kind, d = self.classify(rec)
+        self.counts[kind] += 1
+        if kind == "correct":
+            return "Answer analysis: Correct: the student carried out every practice step correctly."
+        if kind == "help":
+            return ("Answer analysis: Incorrect, given after asking for a hint or seeing the answer "
+                    "(no diagnosis: the recorded answer may not be the student's own).")
+        if kind == "uncommon":
             return "Answer analysis: Incorrect: an uncommon answer (no diagnosis available)."
-        self.counts["common"] += 1
         et, fp, fact = d["error_type"], d["failed_practice"], one_line(d["math_fact"])
         if et == "practice":
             what = f"the {fp} step went wrong"
@@ -348,9 +367,21 @@ def selected(args):
     return B.selected_user_ids(B.paths(b_args(args)), b_args(args))
 
 
-def practice_prompts(args):
+def install_condition(kt, condition, data_dir):
+    """Install the practice or profile prompts into the paper's module; returns the PracticeInfo whose answer-analysis
+    counts the prompts update."""
+    if condition == "profile":
+        import kt_student_profile as SP
+        SP.install_profile(kt, data_dir)
+        return SP.DATA.info
+    install_practice(kt, data_dir)
+    return INFO
+
+
+def practice_prompts(args, condition="practice"):
+    """Yields (prediction_id, prompt) for the practice or profile condition; sets args.info for the counts."""
     kt = B.import_kt_base()
-    install_practice(kt, kt_data(args))
+    args.info = install_condition(kt, condition, kt_data(args))
     return B.iter_prompts(kt, kt_data(args), selected(args), kt.BASE_SYSTEM_PROMPT)
 
 
@@ -368,7 +399,7 @@ def cmd_check_prompts(args):
 def cmd_show_prompt(args):
     cmd_stage(args)
     best = None
-    for pid, prompt in practice_prompts(args):
+    for pid, prompt in practice_prompts(args, args.condition):
         if args.which == "first":
             best = (pid, prompt)
             break
@@ -390,7 +421,7 @@ def count_tokens_fn(model_id):
 def cmd_check_length(args):
     cmd_stage(args)
     longest, total, n = {}, 0, 0
-    for pid, prompt in practice_prompts(args):
+    for pid, prompt in practice_prompts(args, args.condition):
         user = pid.rsplit("_", 2)[0]
         total += len(prompt)
         n += 1
@@ -398,8 +429,9 @@ def cmd_check_length(args):
             longest[user] = prompt
     count = count_tokens_fn(model_id())
     lengths = sorted(count(p) for p in longest.values())
-    print(f"{n:,} practice prompts, {total / max(n, 1):,.0f} characters on average; answer analyses: {INFO.counts}")
-    print(f"Longest practice prompt: {lengths[-1]:,} tokens (median of the students' longest: {lengths[len(lengths) // 2]:,})")
+    print(f"{n:,} {args.condition} prompts, {total / max(n, 1):,.0f} characters on average; "
+          f"answer analyses: {args.info.counts}")
+    print(f"Longest {args.condition} prompt: {lengths[-1]:,} tokens (median of the students' longest: {lengths[len(lengths) // 2]:,})")
     need = lengths[-1] + OUTPUT_HEADROOM_TOKENS
     if args.max_model_len and need > args.max_model_len:
         raise SystemExit(f"Needs --max-model-len >= {need:,} (now {args.max_model_len:,}).")
@@ -418,7 +450,7 @@ def results_path(args, which):
 
 def kt_cmd(args, which):
     ba = b_args(args, "infer-kt")
-    head = [sys.executable, MODEL_SCRIPT] if which == "baseline" else [sys.executable, THIS_FILE, "_practice-worker"]
+    head = [sys.executable, MODEL_SCRIPT] if which == "baseline" else [sys.executable, THIS_FILE, f"_{which}-worker"]
     return head + ["--data-dir", kt_data(args), "--num-students", "0", "--bin-size", str(B.BIN_SIZE),
                    "--min-history", str(B.MIN_HISTORY), "--output", results_path(args, which)] + B.vllm_args(ba)
 
@@ -429,13 +461,13 @@ def cmd_infer(args, which):
     B.run_timed(f"kt_{which}", kt_cmd(args, which), CODE_DIR, timings)
 
 
-def practice_worker():
-    """Started by infer-practice: the paper's run_inference with the practice text installed."""
+def condition_worker(condition):
+    """Started by infer-practice / infer-profile: the paper's run_inference with that condition's prompts installed."""
     argv = sys.argv[2:]
     data_dir = argv[argv.index("--data-dir") + 1]
     sys.argv = [MODEL_SCRIPT] + argv
     kt = B.import_kt_base()
-    install_practice(kt, data_dir)
+    install_condition(kt, condition, data_dir)
     import qwen3next80b_awq_instruct_vllm as M
     kt.run_inference(M.MODEL_CONFIG)
 
@@ -465,10 +497,31 @@ def mcnemar(b, c):
     return min(1.0, 2 * sum(math.comb(n, i) for i in range(k + 1)) / 2 ** n)
 
 
+def paired_table(ra, rb, na, nb):
+    """McNemar tests of run b against run a on the targets both parsed: KT, and cognitive on truly wrong answers."""
+    a = {x["prediction_id"]: x for x in ra}
+    b = {x["prediction_id"]: x for x in rb}
+    both = [k for k in a if k in b and a[k]["predicted_question_level"] is not None
+            and b[k]["predicted_question_level"] is not None]
+    hit = lambda x: x["predicted_question_level"] == x["actual_score"]
+    only_a = sum(1 for k in both if hit(a[k]) and not hit(b[k]))
+    only_b = sum(1 for k in both if hit(b[k]) and not hit(a[k]))
+    wrong_targets = [k for k in both if B.is_truly_incorrect(a[k])]
+    cog_a = sum(1 for k in wrong_targets if B.cognitive_hit(a[k]) and not B.cognitive_hit(b[k]))
+    cog_b = sum(1 for k in wrong_targets if B.cognitive_hit(b[k]) and not B.cognitive_hit(a[k]))
+    p1, p2 = mcnemar(only_a, only_b), mcnemar(cog_a, cog_b)
+    return (f"\n## {nb.capitalize()} vs {na} on the same {len(both):,} targets (paired)\n\n"
+            + B.markdown_table(["", f"only {na} right", f"only {nb} right", "McNemar p"], [
+                ["KT (question level)", only_a, only_b, "N/A" if p1 is None else f"{p1:.3g}"],
+                [f"Cognitive, incorrect answers ({len(wrong_targets)} targets)", cog_a, cog_b,
+                 "N/A" if p2 is None else f"{p2:.3g}"]]))
+
+
 def cmd_evaluate(args):
     runs = [("Paper: Qwen3-Next-80B-Instruct (BF16, published)", paper_subset(args)),
             ("Baseline: Qwen3-Next-80B-Instruct AWQ, paper prompts", results_path(args, "baseline")),
-            ("Practice: Qwen3-Next-80B-Instruct AWQ, + practices", results_path(args, "practice"))]
+            ("Practice: Qwen3-Next-80B-Instruct AWQ, + practices", results_path(args, "practice")),
+            ("Profile: Qwen3-Next-80B-Instruct AWQ, student profile + last 10", results_path(args, "profile"))]
     tables, recs = [], {}
     for label, path in runs:
         if not os.path.exists(path):
@@ -510,25 +563,11 @@ def cmd_evaluate(args):
     report = [f"# KT and cognitive student modeling, {n_students} random paper students "
               f"({len(common):,} predictions in every run)\n",
               B.markdown_table(header, rows)]
-    # paired comparison on the same targets: baseline vs practice
-    lb, lp = runs[1][0], runs[2][0]
-    if lb in recs and lp in recs:
-        base = {x["prediction_id"]: x for x in recs[lb]}
-        prac = {x["prediction_id"]: x for x in recs[lp]}
-        both = [k for k in base if k in prac and base[k]["predicted_question_level"] is not None
-                and prac[k]["predicted_question_level"] is not None]
-        hit = lambda x: x["predicted_question_level"] == x["actual_score"]
-        only_b = sum(1 for k in both if hit(base[k]) and not hit(prac[k]))
-        only_p = sum(1 for k in both if hit(prac[k]) and not hit(base[k]))
-        wrong_targets = [k for k in both if B.is_truly_incorrect(base[k])]
-        cog_b = sum(1 for k in wrong_targets if B.cognitive_hit(base[k]) and not B.cognitive_hit(prac[k]))
-        cog_p = sum(1 for k in wrong_targets if B.cognitive_hit(prac[k]) and not B.cognitive_hit(base[k]))
-        p1, p2 = mcnemar(only_b, only_p), mcnemar(cog_b, cog_p)
-        report.append(f"\n## Practice vs baseline on the same {len(both):,} targets (paired)\n\n"
-                      + B.markdown_table(["", "only baseline right", "only practice right", "McNemar p"], [
-                          ["KT (question level)", only_b, only_p, "N/A" if p1 is None else f"{p1:.3g}"],
-                          [f"Cognitive, incorrect answers ({len(wrong_targets)} targets)", cog_b, cog_p,
-                           "N/A" if p2 is None else f"{p2:.3g}"]]))
+    # paired comparisons on the same targets
+    names = {runs[1][0]: "baseline", runs[2][0]: "practice", runs[3][0]: "profile"}
+    for la, lb in ((runs[1][0], runs[2][0]), (runs[1][0], runs[3][0]), (runs[2][0], runs[3][0])):
+        if la in recs and lb in recs:
+            report.append(paired_table(recs[la], recs[lb], names[la], names[lb]))
     text = "\n".join(report)
     print("\n" + text)
     out = os.path.join(args.out_dir, "comparison.md")
@@ -545,10 +584,20 @@ def cmd_all(args):
     cmd_evaluate(args)
 
 
+def cmd_profile_all(args):
+    """The profile condition only (the baseline and practice runs are reused from the same folder)."""
+    args.condition = "profile"
+    cmd_stage(args)
+    cmd_check_length(args)
+    cmd_infer(args, "profile")
+    cmd_evaluate(args)
+
+
 COMMANDS = {"pick-users": cmd_pick_users, "stage": cmd_stage, "check-prompts": cmd_check_prompts,
             "show-prompt": cmd_show_prompt, "check-length": cmd_check_length,
             "infer-baseline": lambda a: cmd_infer(a, "baseline"), "infer-practice": lambda a: cmd_infer(a, "practice"),
-            "evaluate": cmd_evaluate, "all": cmd_all}
+            "infer-profile": lambda a: cmd_infer(a, "profile"),
+            "evaluate": cmd_evaluate, "all": cmd_all, "profile-all": cmd_profile_all}
 
 
 def parse_args():
@@ -562,6 +611,8 @@ def parse_args():
     ap.add_argument("--out-dir", default=None, help=f"default {DEFAULT_OUT} (+ _testN with --students)")
     ap.add_argument("--force", action="store_true", help="pick the students again")
     ap.add_argument("--which", choices=["first", "longest"], default="first", help="show-prompt: which prompt")
+    ap.add_argument("--condition", choices=["practice", "profile"], default="practice",
+                    help="show-prompt / check-length: which condition's prompts (default practice)")
     ap.add_argument("--num-gpus", type=int, default=1)
     ap.add_argument("--gpu-memory-utilization", type=float, default=0.9)
     ap.add_argument("--max-model-len", type=int, default=None)
@@ -576,8 +627,8 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "_practice-worker":
-        practice_worker()
+    if len(sys.argv) > 1 and sys.argv[1] in ("_practice-worker", "_profile-worker"):
+        condition_worker(sys.argv[1][1:].split("-")[0])
     else:
         sys.stdout.reconfigure(line_buffering=True)
         a = parse_args()
