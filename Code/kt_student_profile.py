@@ -428,7 +428,7 @@ def item_text(d, h, rec):
     return s
 
 
-def build_prompt(d, profile, student_history, records, new_problem, target):
+def build_prompt(d, profile, student_history, records, new_problem, target, lookup=None):
     pid = int(target["problem_id"])
     p = USER_INTRO + "\n" + profile.render(target, to_date(new_problem.get("timestamp"))) + "\n\n"
     start = max(0, len(student_history) - RECENT_ITEMS)
@@ -446,6 +446,8 @@ def build_prompt(d, profile, student_history, records, new_problem, target):
     p += f"Skill: {d.skills_line(pid)}\n"
     p += "Prerequisite skills: " + ("; ".join(d.label(c) for c in prereq) if prereq else "none in the skill graph") + "\n"
     p += f"{d.info.required(pid)}\n{d.diff_text(pid)}\n"
+    if lookup is not None:
+        p += lookup.text(pid) + "\n"
     return p
 
 
@@ -455,11 +457,16 @@ def build_prompt(d, profile, student_history, records, new_problem, target):
 DATA = None
 CURRENT_RECORDS = None
 PROFILE = None
+LOOKUP = None   # kt_wrong_lookup.Lookup when the condition has the common-wrong-answer lookup table
 
 
-def install_profile(kt, kt_data_dir):
-    global DATA
+def install_profile(kt, kt_data_dir, lookup=False):
+    global DATA, LOOKUP
     DATA = ProfileData(kt_data_dir)
+    LOOKUP = None
+    if lookup:
+        import kt_wrong_lookup as WL
+        LOOKUP = WL.Lookup(kt, DATA.info)
     if getattr(kt, "_profile_installed", False):
         return
     if getattr(kt, "_practice_installed", False):
@@ -485,7 +492,7 @@ def install_profile(kt, kt_data_dir):
         if PROFILE.applied != n:
             raise RuntimeError("profile and history out of step")
         target = find_target(new_problem, n)
-        return build_prompt(DATA, PROFILE, student_history, CURRENT_RECORDS, new_problem, target)
+        return build_prompt(DATA, PROFILE, student_history, CURRENT_RECORDS, new_problem, target, LOOKUP)
 
     def make_with_profile(system_prompt):
         inner = original_make(system_prompt)
@@ -499,3 +506,6 @@ def install_profile(kt, kt_data_dir):
     kt.create_user_prompt = create_with_profile
     kt.make_process_single_user = make_with_profile
     kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + PROFILE_SECTION
+    if lookup:
+        import kt_wrong_lookup as WL
+        kt.BASE_SYSTEM_PROMPT += WL.LOOKUP_SECTION

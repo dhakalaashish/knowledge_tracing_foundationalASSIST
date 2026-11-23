@@ -21,6 +21,9 @@ students, run two ways with the same model, so the only difference is the practi
   profile   the history replaced by a student profile that rules update after every answer, plus the last 10
             answers in full and the new problem with its skill, prerequisites, practices and difficulty
             (kt_student_profile.py; deck step 3)
+  practice_lookup / profile_lookup
+            the same, plus the new problem's diagnosed common wrong answers (shuffled, without counts, each with
+            its diagnosis) to choose from when predicting a wrong answer (kt_wrong_lookup.py; deck idea 2)
 
 Both use Qwen3-Next-80B-A3B-Instruct in 4-bit AWQ (qwen3next80b_awq_instruct_vllm.py; fits one A100 80 GB)
 with the paper's generation settings. `evaluate` also scores the paper's own published Qwen3-Next-80B-Instruct
@@ -40,6 +43,9 @@ Subcommands (from the Code/ directory):
     evaluate        Tables for paper reference / baseline / practice / profile, and the paired comparisons
     all             pick-users -> stage -> check-length -> infer-baseline -> infer-practice -> evaluate
     profile-all     stage -> check-length (profile) -> infer-profile -> evaluate
+    infer-profile-lookup / infer-practice-lookup   the two conditions with the lookup table
+    lookup-all      stage -> check-length (both lookup conditions) -> profile + lookup -> practice + lookup -> evaluate
+    evaluate reads each run's .jsonl, or its prompt-free copy <name>_slim.jsonl.gz when the .jsonl is not there
 
 Usage:
     # quick test: 3 of the 50 students, both conditions
@@ -213,9 +219,16 @@ INFO = None
 CURRENT_RECORDS = None
 
 
-def install_practice(kt, kt_data_dir):
-    global INFO
+LOOKUP = None   # kt_wrong_lookup.Lookup when the condition has the common-wrong-answer lookup table
+
+
+def install_practice(kt, kt_data_dir, lookup=False):
+    global INFO, LOOKUP
     INFO = PracticeInfo(kt_data_dir)
+    LOOKUP = None
+    if lookup:
+        import kt_wrong_lookup as WL
+        LOOKUP = WL.Lookup(kt, INFO)
     if getattr(kt, "_practice_installed", False):   # wrap the paper's functions only once per process
         return
     kt._practice_installed = True
@@ -236,7 +249,9 @@ def install_practice(kt, kt_data_dir):
             pid = int(rec["problem_id"])
             history.append({**item, "node_name": f"{item.get('node_name') or 'Undefined'}\n{INFO.block(pid)}\n{INFO.analysis(rec)}"})
         target = find_target(new_problem, len(student_history))
-        new = {**new_problem, "node_name": f"{new_problem.get('node_name') or 'Undefined'}\n{INFO.required(int(target['problem_id']))}"}
+        tpid = int(target["problem_id"])
+        added = INFO.required(tpid) + (f"\n{LOOKUP.text(tpid)}" if LOOKUP else "")
+        new = {**new_problem, "node_name": f"{new_problem.get('node_name') or 'Undefined'}\n{added}"}
         return original_create(history, new, problem_df)
 
     def make_with_practice(system_prompt):
@@ -251,6 +266,9 @@ def install_practice(kt, kt_data_dir):
     kt.create_user_prompt = create_with_practice
     kt.make_process_single_user = make_with_practice
     kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + PRACTICE_SECTION
+    if lookup:
+        import kt_wrong_lookup as WL
+        kt.BASE_SYSTEM_PROMPT += WL.LOOKUP_SECTION
 
 
 def strip_added(prompt):
@@ -367,19 +385,27 @@ def selected(args):
     return B.selected_user_ids(B.paths(b_args(args)), b_args(args))
 
 
+CONDITIONS = ["practice", "profile", "practice_lookup", "profile_lookup"]
+
+
 def install_condition(kt, condition, data_dir):
-    """Install the practice or profile prompts into the paper's module; returns the PracticeInfo whose answer-analysis
-    counts the prompts update."""
-    if condition == "profile":
+    """Install the prompts of a condition (practice / profile, each optionally + the common-wrong-answer lookup table)
+    into the paper's module; returns the PracticeInfo whose answer-analysis counts the prompts update."""
+    if condition not in CONDITIONS:
+        raise SystemExit(f"unknown condition {condition}")
+    lookup = condition.endswith("_lookup")
+    if condition.startswith("profile"):
         import kt_student_profile as SP
-        SP.install_profile(kt, data_dir)
+        SP.install_profile(kt, data_dir, lookup=lookup)
         return SP.DATA.info
-    install_practice(kt, data_dir)
+    install_practice(kt, data_dir, lookup=lookup)
     return INFO
 
 
 def practice_prompts(args, condition="practice"):
-    """Yields (prediction_id, prompt) for the practice or profile condition; sets args.info for the counts."""
+    """Yields (prediction_id, prompt) for a condition; sets args.info for the counts. Each call imports a fresh copy
+    of the paper's module, so two conditions in one process (lookup-all) never wrap each other's functions."""
+    sys.modules.pop("kt_inference_base", None)
     kt = B.import_kt_base()
     args.info = install_condition(kt, condition, kt_data(args))
     return B.iter_prompts(kt, kt_data(args), selected(args), kt.BASE_SYSTEM_PROMPT)
@@ -474,17 +500,59 @@ def condition_worker(condition):
 
 # ---------------------------------------------------------------------------------------------- evaluate
 
+def result_file(path):
+    """A run's results: the full .jsonl, or else its copy without prompts, <stem>_slim.jsonl.gz (e.g. copied from
+    another machine). None when neither exists."""
+    if path and os.path.exists(path):
+        return path
+    slim = path[:-len(".jsonl")] + "_slim.jsonl.gz" if path else None
+    return slim if slim and os.path.exists(slim) else None
+
+
+def iter_result_lines(path):
+    if path.endswith(".gz"):
+        import gzip
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    yield line
+    else:
+        yield from B.iter_lines(path)
+
+
+def load_records(path):
+    """The fields the tables need (as qwen3_30b_benchmark.load_kt_records), plus the prediction id; .gz too."""
+    out = []
+    for line in iter_result_lines(path):
+        r = json.loads(line)
+        correct = r.get("correct_answer")
+        if B.is_missing(correct) and r.get("prompt"):
+            correct = B.correct_answer_from_prompt(r["prompt"])
+        out.append({"prediction_id": r["prediction_id"], "prediction_type": r.get("prediction_type"),
+                    "problem_id": r.get("problem_id"), "problem_type": r.get("problem_type"),
+                    "actual_score": r.get("actual_score"), "actual_answer": r.get("actual_answer"),
+                    "correct_answer": correct, "predicted_question_level": r.get("predicted_question_level"),
+                    "predicted_student_answer": r.get("predicted_student_answer")})
+    return out
+
+
 def paper_subset(args):
+    """The paper's published predictions for these students: an existing extract (or its slim copy), else written
+    from the published zip; None when neither is there."""
     users = set(selected(args))
     path = os.path.join(args.out_dir, f"paper_qwen3next80b_instruct_bf16_n{len(users)}.jsonl")
-    if not os.path.exists(path):
-        n = 0
-        with open(path, "w", encoding="utf-8") as f:
-            for line in B.iter_lines(f"{B.PAPER_ZIP}::{PAPER_MEMBER}"):
-                if B.line_user_id(line) in users:
-                    f.write(line if line.endswith("\n") else line + "\n")
-                    n += 1
-        print(f"Wrote the paper's {n:,} published predictions for these students to {path}")
+    if result_file(path):
+        return result_file(path)
+    if not os.path.exists(B.PAPER_ZIP):
+        print(f"(the paper's published predictions are not here: no {path} or {B.PAPER_ZIP})")
+        return None
+    n = 0
+    with open(path, "w", encoding="utf-8") as f:
+        for line in B.iter_lines(f"{B.PAPER_ZIP}::{PAPER_MEMBER}"):
+            if B.line_user_id(line) in users:
+                f.write(line if line.endswith("\n") else line + "\n")
+                n += 1
+    print(f"Wrote the paper's {n:,} published predictions for these students to {path}")
     return path
 
 
@@ -510,64 +578,78 @@ def paired_table(ra, rb, na, nb):
     cog_a = sum(1 for k in wrong_targets if B.cognitive_hit(a[k]) and not B.cognitive_hit(b[k]))
     cog_b = sum(1 for k in wrong_targets if B.cognitive_hit(b[k]) and not B.cognitive_hit(a[k]))
     p1, p2 = mcnemar(only_a, only_b), mcnemar(cog_a, cog_b)
-    return (f"\n## {nb.capitalize()} vs {na} on the same {len(both):,} targets (paired)\n\n"
+    return (f"\n## {nb} vs {na} on the same {len(both):,} targets (paired)\n\n"
             + B.markdown_table(["", f"only {na} right", f"only {nb} right", "McNemar p"], [
                 ["KT (question level)", only_a, only_b, "N/A" if p1 is None else f"{p1:.3g}"],
                 [f"Cognitive, incorrect answers ({len(wrong_targets)} targets)", cog_a, cog_b,
                  "N/A" if p2 is None else f"{p2:.3g}"]]))
 
 
+def cog_when_predicted_wrong(records):
+    """Cognitive accuracy on truly wrong answers, counting only the predictions that said 'incorrect': does the model
+    name the student's wrong answer once it expects one?"""
+    pick = [x for x in records if B.is_truly_incorrect(x) and not B.is_missing(x["predicted_question_level"])
+            and int(float(x["predicted_question_level"])) == 0]
+    return (sum(B.cognitive_hit(x) for x in pick) / len(pick), len(pick)) if pick else (None, 0)
+
+
+RUNS = [("paper", "Paper: Qwen3-Next-80B-Instruct (BF16, published)"),
+        ("baseline", "Baseline: AWQ, paper prompts"),
+        ("practice", "Practice: AWQ, full history + practices"),
+        ("profile", "Profile: AWQ, student profile + last 10"),
+        ("practice_lookup", "Practice + lookup: full history + practices + common wrong answers"),
+        ("profile_lookup", "Profile + lookup: profile + last 10 + common wrong answers")]
+PAIRS = [("baseline", "practice"), ("baseline", "profile"), ("practice", "profile"),
+         ("baseline", "practice_lookup"), ("practice", "practice_lookup"),
+         ("baseline", "profile_lookup"), ("profile", "profile_lookup")]
+
+
 def cmd_evaluate(args):
-    runs = [("Paper: Qwen3-Next-80B-Instruct (BF16, published)", paper_subset(args)),
-            ("Baseline: Qwen3-Next-80B-Instruct AWQ, paper prompts", results_path(args, "baseline")),
-            ("Practice: Qwen3-Next-80B-Instruct AWQ, + practices", results_path(args, "practice")),
-            ("Profile: Qwen3-Next-80B-Instruct AWQ, student profile + last 10", results_path(args, "profile"))]
-    tables, recs = [], {}
-    for label, path in runs:
-        if not os.path.exists(path):
-            print(f"missing (not run yet): {path}")
+    recs, labels = {}, {}
+    for key, label in RUNS:
+        path = paper_subset(args) if key == "paper" else result_file(results_path(args, key))
+        if not path:
+            print(f"missing (not run yet): {key}")
             continue
-        r = B.load_kt_records(path)
-        for line, x in zip(B.iter_lines(path), r):   # keep the prediction ids for the paired comparison
-            x["prediction_id"] = json.loads(line)["prediction_id"]
-        recs[label] = r
+        recs[key], labels[key] = load_records(path), label
+        print(f"{key}: {len(recs[key]):,} predictions from {path}")
     if not recs:
         return
     # Every column counts the same predictions: those present in all the runs found (while a run is still going,
     # or after students were added, the files can hold different students)
     common = set.intersection(*({x["prediction_id"] for x in r} for r in recs.values()))
-    for label in recs:
-        n_all = len(recs[label])
-        recs[label] = [x for x in recs[label] if x["prediction_id"] in common]
-        if len(recs[label]) < n_all:
-            print(f"{label}: {len(recs[label]):,} of its {n_all:,} predictions are in every run; the tables use those")
-    tables = [(label, B.kt_table2(r), B.kt_table3(r)) for label, r in recs.items()]
+    for key in recs:
+        n_all = len(recs[key])
+        recs[key] = [x for x in recs[key] if x["prediction_id"] in common]
+        if len(recs[key]) < n_all:
+            print(f"{key}: {len(recs[key]):,} of its {n_all:,} predictions are in every run; the tables use those")
+    tables = [(key, B.kt_table2(r), B.kt_table3(r), cog_when_predicted_wrong(r)) for key, r in recs.items()]
     metrics = [
-        ("Predictions", lambda t2, t3: f"{t2['n']:,}"),
-        ("Parsed predictions", lambda t2, t3: B.pct(t2["parse_rate"])),
-        ("KT accuracy (question level)", lambda t2, t3: B.pct(t2["fkt_acc"])),
-        ("KT AUC", lambda t2, t3: "N/A" if t2["fkt_auc"] is None else f"{t2['fkt_auc']:.3f}"),
-        ("KT accuracy when the student was correct", lambda t2, t3: B.pct(t2["correct"]["fkt_acc"])),
-        ("KT accuracy when the student was incorrect", lambda t2, t3: B.pct(t2["incorrect"]["fkt_acc"])),
-        ("Predicted 'correct' rate", lambda t2, t3: B.pct(t2["predicted_correct_rate"])),
-        ("All-correct baseline", lambda t2, t3: B.pct(t2["all_correct_baseline"])),
-        ("Cognitive accuracy, correct answers", lambda t2, t3: B.pct(t2["correct"]["cog_acc"])),
-        ("Cognitive accuracy, incorrect answers", lambda t2, t3: B.pct(t2["incorrect"]["cog_acc"])),
-        ("  MC (select 1)", lambda t2, t3: B.pct(t3[B.MC_SELECT_1]["cog_acc"]) if B.MC_SELECT_1 in t3 else "N/A"),
-        ("  MC (select all)", lambda t2, t3: B.pct(t3[B.MC_SELECT_ALL]["cog_acc"]) if B.MC_SELECT_ALL in t3 else "N/A"),
-        ("  Fill-in", lambda t2, t3: B.pct(t3[B.FILL_IN]["cog_acc"]) if B.FILL_IN in t3 else "N/A"),
+        ("Predictions", lambda t2, t3, cw: f"{t2['n']:,}"),
+        ("Parsed predictions", lambda t2, t3, cw: B.pct(t2["parse_rate"])),
+        ("KT accuracy (question level)", lambda t2, t3, cw: B.pct(t2["fkt_acc"])),
+        ("KT AUC", lambda t2, t3, cw: "N/A" if t2["fkt_auc"] is None else f"{t2['fkt_auc']:.3f}"),
+        ("KT accuracy when the student was correct", lambda t2, t3, cw: B.pct(t2["correct"]["fkt_acc"])),
+        ("KT accuracy when the student was incorrect", lambda t2, t3, cw: B.pct(t2["incorrect"]["fkt_acc"])),
+        ("Predicted 'correct' rate", lambda t2, t3, cw: B.pct(t2["predicted_correct_rate"])),
+        ("All-correct baseline", lambda t2, t3, cw: B.pct(t2["all_correct_baseline"])),
+        ("Cognitive accuracy, correct answers", lambda t2, t3, cw: B.pct(t2["correct"]["cog_acc"])),
+        ("Cognitive accuracy, incorrect answers", lambda t2, t3, cw: B.pct(t2["incorrect"]["cog_acc"])),
+        ("  MC (select 1)", lambda t2, t3, cw: B.pct(t3[B.MC_SELECT_1]["cog_acc"]) if B.MC_SELECT_1 in t3 else "N/A"),
+        ("  MC (select all)", lambda t2, t3, cw: B.pct(t3[B.MC_SELECT_ALL]["cog_acc"]) if B.MC_SELECT_ALL in t3 else "N/A"),
+        ("  Fill-in", lambda t2, t3, cw: B.pct(t3[B.FILL_IN]["cog_acc"]) if B.FILL_IN in t3 else "N/A"),
+        ("Cognitive accuracy, incorrect answers, when it predicted 'incorrect'",
+         lambda t2, t3, cw: "N/A" if cw[0] is None else f"{B.pct(cw[0])} (of {cw[1]:,})"),
     ]
-    header = ["Metric"] + [label for label, _, _ in tables]
-    rows = [[name] + [fn(t2, t3) for _, t2, t3 in tables] for name, fn in metrics]
+    header = ["Metric"] + [labels[key] for key, *_ in tables]
+    rows = [[name] + [fn(t2, t3, cw) for _, t2, t3, cw in tables] for name, fn in metrics]
     n_students = len({pid.rsplit("_", 2)[0] for pid in common})
     report = [f"# KT and cognitive student modeling, {n_students} random paper students "
               f"({len(common):,} predictions in every run)\n",
               B.markdown_table(header, rows)]
-    # paired comparisons on the same targets
-    names = {runs[1][0]: "baseline", runs[2][0]: "practice", runs[3][0]: "profile"}
-    for la, lb in ((runs[1][0], runs[2][0]), (runs[1][0], runs[3][0]), (runs[2][0], runs[3][0])):
-        if la in recs and lb in recs:
-            report.append(paired_table(recs[la], recs[lb], names[la], names[lb]))
+    for a, b in PAIRS:   # paired comparisons on the same targets
+        if a in recs and b in recs:
+            report.append(paired_table(recs[a], recs[b], a, b))
     text = "\n".join(report)
     print("\n" + text)
     out = os.path.join(args.out_dir, "comparison.md")
@@ -593,11 +675,25 @@ def cmd_profile_all(args):
     cmd_evaluate(args)
 
 
+def cmd_lookup_all(args):
+    """Both conditions with the common-wrong-answer lookup table: profile + lookup first (short prompts, fast), then
+    practice + lookup (full history); then the tables (with whatever other runs are in the folder)."""
+    cmd_stage(args)
+    for condition in ("profile_lookup", "practice_lookup"):
+        args.condition = condition
+        cmd_check_length(args)
+    for condition in ("profile_lookup", "practice_lookup"):
+        cmd_infer(args, condition)
+    cmd_evaluate(args)
+
+
 COMMANDS = {"pick-users": cmd_pick_users, "stage": cmd_stage, "check-prompts": cmd_check_prompts,
             "show-prompt": cmd_show_prompt, "check-length": cmd_check_length,
             "infer-baseline": lambda a: cmd_infer(a, "baseline"), "infer-practice": lambda a: cmd_infer(a, "practice"),
             "infer-profile": lambda a: cmd_infer(a, "profile"),
-            "evaluate": cmd_evaluate, "all": cmd_all, "profile-all": cmd_profile_all}
+            "infer-practice-lookup": lambda a: cmd_infer(a, "practice_lookup"),
+            "infer-profile-lookup": lambda a: cmd_infer(a, "profile_lookup"),
+            "evaluate": cmd_evaluate, "all": cmd_all, "profile-all": cmd_profile_all, "lookup-all": cmd_lookup_all}
 
 
 def parse_args():
@@ -611,7 +707,7 @@ def parse_args():
     ap.add_argument("--out-dir", default=None, help=f"default {DEFAULT_OUT} (+ _testN with --students)")
     ap.add_argument("--force", action="store_true", help="pick the students again")
     ap.add_argument("--which", choices=["first", "longest"], default="first", help="show-prompt: which prompt")
-    ap.add_argument("--condition", choices=["practice", "profile"], default="practice",
+    ap.add_argument("--condition", choices=CONDITIONS, default="practice",
                     help="show-prompt / check-length: which condition's prompts (default practice)")
     ap.add_argument("--num-gpus", type=int, default=1)
     ap.add_argument("--gpu-memory-utilization", type=float, default=0.9)
@@ -627,8 +723,8 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] in ("_practice-worker", "_profile-worker"):
-        condition_worker(sys.argv[1][1:].split("-")[0])
+    if len(sys.argv) > 1 and sys.argv[1] in [f"_{c}-worker" for c in CONDITIONS]:
+        condition_worker(sys.argv[1][1:-len("-worker")])
     else:
         sys.stdout.reconfigure(line_buffering=True)
         a = parse_args()

@@ -12,6 +12,11 @@
 #   bash docker_run.sh stop               stop the background run (starting it again resumes)
 #   bash docker_run.sh shell              an interactive shell in the container
 #   bash docker_run.sh run <command...>   one command in the container, e.g. the dry run or the 3-row test
+#   bash docker_run.sh kt <args...>       the KT benchmark in the background (container practice-kt, from Code/):
+#                                         python3 kt_practice_benchmark.py <args...>; log: Code/kt_gb300.log.
+#                                         Model: MODEL, default cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit
+#                                         (MODEL=<that id> bash docker_run.sh download  first)
+#   bash docker_run.sh kt-stop            stop the KT run (starting it again resumes)
 #
 # Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS, RETRY_FAILED (see run_gb300.sh), HF_TOKEN,
 # HF_HUB_OFFLINE. Runs (and smoke tests) are offline by default: vLLM reads the model from the cache and never
@@ -126,6 +131,27 @@ case "${1:-}" in
     model_cached ;;
   status)
     bash monitor.sh once ;;
+  kt)
+    shift
+    KT_NAME=practice-kt
+    MODEL_ID="${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}"
+    if docker ps -q --filter "name=^${KT_NAME}$" | grep -q .; then
+      echo "$KT_NAME is already running (tail -f ../kt_gb300.log; bash docker_run.sh kt-stop)"; exit 1
+    fi
+    if [ "${SKIP_MODEL_CHECK:-0}" != "1" ] && ! model_cached; then
+      echo "Download the model first: MODEL=$MODEL_ID bash docker_run.sh download   (then: MODEL=$MODEL_ID bash docker_run.sh check-model)"; exit 1
+    fi
+    docker rm "$KT_NAME" >/dev/null 2>&1 || true
+    # offline, as the labeling runs; the paper's sampling path as on the A100 (FlashInfer sampler off); the KT run
+    # resumes by itself, so a crash restarts it (up to twice); -w: the KT scripts live in Code/
+    docker run -d --restart on-failure:2 --name "$KT_NAME" "${OPTS[@]}" -w /workspace/Code \
+      -e "HF_HUB_OFFLINE=${HF_HUB_OFFLINE:-1}" -e "TRANSFORMERS_OFFLINE=${HF_HUB_OFFLINE:-1}" \
+      -e VLLM_USE_FLASHINFER_SAMPLER=0 -e "KT_MODEL_ID=$MODEL_ID" \
+      "$IMAGE" bash -c 'python3 -u kt_practice_benchmark.py "$@" >> kt_gb300.log 2>&1' kt "$@" >/dev/null
+    echo "started $KT_NAME: kt_practice_benchmark.py $*"
+    echo "watch:   tail -f ../kt_gb300.log      stop: bash docker_run.sh kt-stop" ;;
+  kt-stop)
+    docker stop practice-kt ;;
   ""|[1-8]*)
     if docker ps -q --filter "name=^${NAME}$" | grep -q .; then
       echo "$NAME is already running (bash docker_run.sh status / stop)"; exit 1
