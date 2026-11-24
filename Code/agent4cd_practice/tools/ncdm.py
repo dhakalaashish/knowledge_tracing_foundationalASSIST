@@ -163,4 +163,18 @@ def train_ncdm(records, cfg, seed):
         "best_epoch": best["epoch"],
         "val_auc": best["auc"],
         "val_acc": best["acc"],
+        "net": net,                           # the best epoch's network (kt_benchmark.py refits students on it)
+        "kn_matrix": kn_matrix,
+        "device": device,
     }
+
+
+def forward_theta(net, theta, exer_id, kn_emb):
+    """Net.forward with a given mastery vector theta (in [0, 1], one row per record) instead of the student
+    embedding, in eval mode (no dropout): the exercise parameters and the prediction network as trained."""
+    k_difficulty = torch.sigmoid(net.k_difficulty(exer_id))
+    e_discrimination = torch.sigmoid(net.e_discrimination(exer_id)) * 10
+    input_x = e_discrimination * (theta - k_difficulty) * kn_emb
+    input_x = torch.sigmoid(net.prednet_full1(input_x))
+    input_x = torch.sigmoid(net.prednet_full2(input_x))
+    return torch.sigmoid(net.prednet_full3(input_x)).view(-1)

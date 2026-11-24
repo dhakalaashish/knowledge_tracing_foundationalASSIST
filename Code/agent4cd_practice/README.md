@@ -141,6 +141,39 @@ The standard split has about 66 test records per learner, so 300 learners give a
 
 The progress lines print the real rate.
 
+## KT benchmark mode (FoundationalASSIST paper students, + cognitive student modeling)
+
+This mode runs Agent4CD on the knowledge-tracing benchmark of `../kt_practice_benchmark.py`:
+- the same 100 paper students, records and 5,501 targets (50 answers of history, then bins of 10, the first correct and the first incorrect answer of each bin);
+- the same Qwen3-Next-80B AWQ 4-bit model.
+
+Its predictions are scored in the same tables as the other runs (run `agent4cd`). Agent4CD's temperature stays 0.
+
+**What it adds:** cognitive student modeling.
+- Memory records show the student's answers.
+- A Task 3b asks for the exact answer the student will give.
+- The JSON is `{task1, task2, student_answer, task3}`.
+- Reflections compare the predicted answer with the real one.
+
+**Leak-free inputs** (`kt_benchmark.py` → `data/kt/kt_data.pkl`):
+- **Concepts:** Data/Skills.csv skills.
+- **KC relations and NCDM:** from the students outside the paper's 500.
+- **Profile:** from each student's first 50 answers. IRT ability uses `Results/kt_profile/problem_irt.json`.
+- **NCDM mastery:** re-fitted per bin on only the history before that bin, with the network frozen.
+
+**The run** (`run_kt_agent.py`), per student:
+1. Memory gets the first 50 answers, then SR_0 is written.
+2. For each bin, predict its targets with the bin's mastery.
+3. Then reveal the bin's 10 answers one at a time, each with a reflection (`kt.reflect_every_answer`).
+
+**Output:** per-student JSONL files in `results/kt/<run>/students/`, then `Results/kt_practice_main/agent4cd_qwen3next80b_awq_bin10_hist50.jsonl`, written only when every student is done.
+
+**On the GB300:**
+```bash
+bash docker_run.sh agent4cd-after --out-dir /workspace/Results/kt_practice_main --n 100
+```
+This builds the inputs and a dry run (`logs/kt_dry_run.txt`), waits until `kt-filtered` or `kt-irt` has finished, then starts its own vLLM server and runs the agents (`run_kt_gb300.sh`). It ends with the tables.
+
 ## Where this differs from the paper, and why
 - **Data.** These are FoundationalASSIST math items with maca_cd's split (80/20 records, plus 10 points of the training part held out for validation), not PISA. All four maca_cd splits (`standard`, `cold`, `zeroshot`, `colditem`) work.
 - **Output format.** The agent answers with a schema-constrained JSON object instead of "Task1:/Task2:/Task3:" lines, so every answer parses. If an answer is cut off, it is retried with twice the tokens. If it still fails, the step uses the tool's own prediction and is counted in `metrics.json` (`fallbacks`).

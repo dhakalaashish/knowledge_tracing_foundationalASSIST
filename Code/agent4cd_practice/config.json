@@ -49,5 +49,22 @@
         "concurrency": 64,
         "max_attempts": 5
     },
-    "__comment_llm__": "vLLM OpenAI-compatible server; temperature 0 as in the paper; concurrency = requests in flight (each student runs its records one after another)"
+    "__comment_llm__": "vLLM OpenAI-compatible server; temperature 0 as in the paper; concurrency = requests in flight (each student runs its records one after another)",
+
+    "kt": {
+        "run_name": "qwen3next80b_awq",
+        "reflect_every_answer": true,
+        "theta_fit": {"steps": 200, "lr": 0.05},
+        "llm": {
+            "base_url": "http://localhost:8000/v1",
+            "model": "cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit",
+            "temperature": 0.0,
+            "max_tokens_predict": 1024,
+            "max_tokens_reflect": 1024,
+            "top_logprobs": 5,
+            "concurrency": 128,
+            "max_attempts": 5
+        }
+    },
+    "__comment_kt__": "The FoundationalASSIST KT benchmark (kt_benchmark.py, run_kt_agent.py): the 100 paper students of kt_practice_benchmark.py, the same 4-bit model as its runs, temperature 0 (Agent4CD); reflect_every_answer: reflect after each of a bin's 10 revealed answers (false: once per bin); theta_fit: Adam steps / lr of the per-bin NCDM mastery fit"
 }

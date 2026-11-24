@@ -28,6 +28,12 @@
 #                                         KT_PAIR=filtered: the filtered and IRT runs instead (containers kt-filtered,
 #                                         kt-irt; logs kt_both_filtered.log, kt_filtered.log, kt_irt.log); before the
 #                                         GPU starts, every prompt of both is built and its length checked
+#   bash docker_run.sh agent4cd-after <args...>   Agent4CD + cognitive student modeling on the KT benchmark
+#                                         (Code/agent4cd_practice), in the background: inputs + a dry run now, then
+#                                         wait until kt-filtered or kt-irt has finished, then the agents (container
+#                                         kt-agent4cd, its own vLLM server with KT_UTIL of the GPU memory), then the
+#                                         tables. Progress: Code/kt_both_agent4cd.log; agents: Code/kt_agent4cd.log.
+#                                         Stop: agent4cd-stop (starting again resumes)
 #
 # Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS, RETRY_FAILED (see run_gb300.sh), HF_TOKEN,
 # HF_HUB_OFFLINE. Runs (and smoke tests) are offline by default: vLLM reads the model from the cache and never
@@ -243,6 +249,60 @@ case "${1:-}" in
     done
     docker run --rm "${OPTS[@]}" -w /workspace/Code "$IMAGE" python3 -u kt_practice_benchmark.py evaluate "$@"
     echo "=== kt-both finished $(date)" ;;
+  agent4cd-after)
+    shift
+    MODEL_ID="${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}"
+    if [ "${SKIP_MODEL_CHECK:-0}" != "1" ] && ! model_cached; then
+      echo "Download the model first: MODEL=$MODEL_ID bash docker_run.sh download"; exit 1
+    fi
+    if docker ps -q --filter "name=^kt-agent4cd$" | grep -q . || pgrep -f "docker_run.sh _agent4cd-after" >/dev/null; then
+      echo "Agent4CD is already running or waiting (bash docker_run.sh agent4cd-stop)"; exit 1
+    fi
+    nohup bash "$PWD/$(basename "$0")" _agent4cd-after "$@" >> ../kt_both_agent4cd.log 2>&1 &
+    echo "started in the background (pid $!): inputs + dry run -> wait for kt-filtered or kt-irt to finish -> Agent4CD -> tables"
+    echo "progress: tail -f ../kt_both_agent4cd.log     agents (once started): tail -f ../kt_agent4cd.log"
+    echo "stop: bash docker_run.sh agent4cd-stop   (starting it again resumes)" ;;
+  _agent4cd-after)
+    shift
+    UTIL="${KT_UTIL:-0.45}"
+    MODEL_ID="${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}"
+    echo "=== agent4cd-after started $(date); arguments: $*; GPU memory: $UTIL"
+    # 1. the inputs (NCDM on the other students, mastery per bin, profiles) and one student's prompts, no LLM:
+    #    a mistake stops here, before any waiting
+    if ! docker run --rm "${OPTS[@]}" -w /workspace/Code/agent4cd_practice "$IMAGE" bash -c \
+         'mkdir -p logs && python3 -u kt_benchmark.py "$@" && python3 -u run_kt_agent.py --dry-run "$@" > logs/kt_dry_run.txt && head -3 logs/kt_dry_run.txt' kt "$@"; then
+      echo "inputs or dry run failed: nothing started ($(date))"; exit 1
+    fi
+    echo "dry run OK; one student's prompts: Code/agent4cd_practice/logs/kt_dry_run.txt"
+    # 2. wait until one of the two runs has finished (a restart after a crash counts as running)
+    running() {
+      case "$(docker inspect -f '{{.State.Status}} {{.State.Restarting}}' "$1" 2>/dev/null || echo gone)" in
+        running*|*true) return 0 ;;
+        *) return 1 ;;
+      esac
+    }
+    echo "waiting for kt-filtered or kt-irt to finish ($(date))"
+    while running kt-filtered && running kt-irt; do sleep 60; done
+    echo "a GPU slot is free ($(date))"
+    # 3. the agents: their own vLLM server for the same model, then run_kt_agent.py (resumes after a crash)
+    docker rm kt-agent4cd >/dev/null 2>&1 || true
+    docker run -d --restart on-failure:2 --name kt-agent4cd "${OPTS[@]}" -w /workspace/Code/agent4cd_practice \
+      -e "HF_HUB_OFFLINE=${HF_HUB_OFFLINE:-1}" -e "TRANSFORMERS_OFFLINE=${HF_HUB_OFFLINE:-1}" \
+      -e VLLM_USE_FLASHINFER_SAMPLER=0 -e "KT_MODEL_ID=$MODEL_ID" -e "KT_UTIL=$UTIL" \
+      "$IMAGE" bash -c 'bash run_kt_gb300.sh "$@" >> ../kt_agent4cd.log 2>&1' kt "$@" >/dev/null
+    echo "started kt-agent4cd ($(date)); log: Code/kt_agent4cd.log"
+    while running kt-agent4cd; do sleep 60; done
+    code=$(docker inspect -f '{{.State.ExitCode}}' kt-agent4cd 2>/dev/null || echo "?")
+    echo "kt-agent4cd finished ($(date)), exit code $code"
+    # 4. the tables, with the runs that are complete
+    if [ "$code" = "0" ]; then
+      docker run --rm "${OPTS[@]}" -w /workspace/Code "$IMAGE" python3 -u kt_practice_benchmark.py evaluate "$@" \
+        --runs paper,baseline,practice,profile,profile_lookup,agent4cd
+    fi
+    echo "=== agent4cd-after finished $(date)" ;;
+  agent4cd-stop)
+    pkill -f "docker_run.sh _agent4cd-after" 2>/dev/null || true
+    docker stop kt-agent4cd 2>/dev/null || true ;;
   kt-both-stop)
     kt_pair
     pkill -f "docker_run.sh _kt-both" 2>/dev/null || true

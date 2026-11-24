@@ -641,13 +641,15 @@ RUNS = [("paper", "Paper: Qwen3-Next-80B-Instruct (BF16, published)"),
         ("practice_lookup_all", "Practice + all wrong answers: full history + practices + every diagnosed wrong answer"),
         ("profile_lookup_all", "Profile + all wrong answers: profile + last 10 + every diagnosed wrong answer"),
         ("filtered", "Filtered: profile + matched problems + session + practices + common wrong answers"),
-        ("irt", "IRT: filtered + IRT difficulty and discrimination")]
+        ("irt", "IRT: filtered + IRT difficulty and discrimination"),
+        ("agent4cd", "Agent4CD + cognitive: agent with profile, memory, NCDM mastery, reflection; also predicts the answer")]
 PAIRS = [("baseline", "practice"), ("baseline", "profile"), ("practice", "profile"),
          ("baseline", "practice_lookup"), ("practice", "practice_lookup"),
          ("baseline", "profile_lookup"), ("profile", "profile_lookup"),
          ("baseline", "practice_lookup_all"), ("practice_lookup", "practice_lookup_all"),
          ("baseline", "profile_lookup_all"), ("profile_lookup", "profile_lookup_all"),
-         ("baseline", "filtered"), ("profile_lookup", "filtered"), ("baseline", "irt"), ("filtered", "irt")]
+         ("baseline", "filtered"), ("profile_lookup", "filtered"), ("baseline", "irt"), ("filtered", "irt"),
+         ("baseline", "agent4cd"), ("profile_lookup", "agent4cd")]
 
 
 def common_wrong_table(recs, labels):

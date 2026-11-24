@@ -35,14 +35,15 @@ class Memory:
         """R(C_a, C_b) = 1."""
         return not self.neighborhood(concepts_a).isdisjoint(concepts_b)
 
-    def add(self, exercise, concepts, correct):
-        """Eq. 4: reinforce the related records, then store the new one (count 1)."""
+    def add(self, exercise, concepts, correct, **extra):
+        """Eq. 4: reinforce the related records, then store the new one (count 1). extra: more fields of the
+        record (the KT benchmark keeps the student's answer and the hint / answer-view flags)."""
         near = self.neighborhood(concepts)
         for fact in self.facts:
             if not near.isdisjoint(fact["concepts"]):
                 fact["count"] += 1
         self.facts.append({"exercise": exercise, "concepts": list(concepts), "correct": int(correct),
-                           "count": 1, "step": len(self.facts)})
+                           "count": 1, "step": len(self.facts), **extra})
 
     def short_term(self):
         return self.facts[-self.short_term_size:] if self.short_term_size > 0 else []
