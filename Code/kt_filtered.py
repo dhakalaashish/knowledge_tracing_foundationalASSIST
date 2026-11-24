@@ -25,7 +25,13 @@ irt       filtered + the IRT difficulty and discrimination of the new problem an
           out as a sentence (2PL fitted to the students outside the paper's 500: Code/tools/fit_irt.js ->
           Results/kt_profile/problem_irt.json).
 
-Both use the common wrong answers (kt_practice_benchmark.DIAG_CSV) for the answer analyses and the lookup list.
+filtered_practice
+          the selected problems only, each with its practices (with the reason for each), top practice and answer
+          analysis, and the new problem with the practices it needs: no profile, no lookup list, no difficulty or
+          IRT. The check of whether choosing the history by skill and practice beats the whole history (the
+          baseline and practice runs show every previous problem).
+
+All use the common wrong answers (kt_practice_benchmark.DIAG_CSV) for the answer analyses (and the lookup list).
 """
 
 import json
@@ -87,6 +93,27 @@ def user_intro(irt):
                     f"requires, its difficulty{extra}, and its common wrong answers.\n"))
 
 
+# filtered_practice: the selected problems with their practices only (no profile, no lookup, no difficulty / IRT)
+_PROFILE_LINE = ("    - A Student Profile built from all of this student's previous answers: counts by skill and by practice, "
+                 "the failed steps of their diagnosed wrong answers, habits, the hardest problem solved on each skill, and "
+                 "the skills the new problem's skill builds on.\n")
+assert _PROFILE_LINE in SP.USER_INTRO
+PRACTICE_ONLY_INTRO = SP.USER_INTRO.replace(_PROFILE_LINE, "").replace(_RECENT_LINE, (
+    "    - Selected previous problems of this student (matched to the new problem by skill and practice, and every "
+    "problem of the current session), each with: Timestamp, Problem, Problem Type, Options, Correct Answer, Student's "
+    "First Answer, UsedHint, SawAnswer, Skill, the practices it requires (with the reason for each) and its top "
+    "practice, an analysis of the student's answer, and why it was selected.\n")).replace(
+    _NEW_LINE, "    - The new problem (with optional answer choices), its skill and the practices it requires.\n")
+assert "Student Profile" not in PRACTICE_ONLY_INTRO and "Selected previous problems" in PRACTICE_ONLY_INTRO
+PRACTICE_ONLY_SECTION = (
+    "\n\n---\n\nSelected Previous Problems:\n\n"
+    "Instead of every previous problem, you receive selected previous problems of this student, in full:\n"
+    + SELECTION_TEXT.split(":\n", 1)[1].replace(" The profile still counts all of the student's answers.", "")
+    + KP.PRACTICE_SECTION
+)
+assert "Matched problems" in PRACTICE_ONLY_SECTION and "profile" not in PRACTICE_ONLY_SECTION.lower()
+
+
 # ---------------------------------------------------------------------------------------------- IRT
 
 def load_irt():
@@ -144,8 +171,9 @@ def irt_short(b, a):
 # ---------------------------------------------------------------------------------------------- data
 
 class FilteredData(SP.ProfileData):
-    def __init__(self, kt_data_dir, irt=False):
+    def __init__(self, kt_data_dir, irt=False, practice_only=False):
         super().__init__(kt_data_dir, every_wrong=False)
+        self.practice_only = practice_only   # filtered_practice: no profile, no lookup, no difficulty
         self.children = {}
         for child, parents in self.parents.items():
             for p in parents:
@@ -238,7 +266,9 @@ def example_text(d, h, rec, why):
     s += f"Student's First Answer: {h['student_answer']}\n"
     s += f"UsedHint: {h['used_hint']}\n"
     s += f"SawAnswer: {h['saw_answer']}\n"
-    s += f"Skill: {d.skills_line(pid)}\n{d.info.block(pid)}\n{d.diff_text(pid)}\n"
+    s += f"Skill: {d.skills_line(pid)}\n{d.info.block(pid)}\n"
+    if not d.practice_only:
+        s += f"{d.diff_text(pid)}\n"
     if d.irt is not None:
         s += d.irt_text(pid, full=False) + "\n"
     s += f"{d.info.analysis(rec)}\nWhy selected: {'; '.join(why)}.\n---\n\n"
@@ -248,7 +278,10 @@ def example_text(d, h, rec, why):
 def build_prompt(d, profile, student_history, records, new_problem, target, lookup):
     pid = int(target["problem_id"])
     n = len(student_history)
-    p = user_intro(d.irt is not None) + "\n" + profile.render(target, SP.to_date(new_problem.get("timestamp"))) + "\n\n"
+    if d.practice_only:
+        p = PRACTICE_ONLY_INTRO + "\n"
+    else:
+        p = user_intro(d.irt is not None) + "\n" + profile.render(target, SP.to_date(new_problem.get("timestamp"))) + "\n\n"
     picks = select(d, records, n, target, new_problem.get("timestamp"))
     in_session = sum(1 for why in picks.values() if "answered in the current session" in why)
     p += (f"**Selected Previous Problems ({len(picks)} of the student's {n} previous answers: matched problems and the "
@@ -266,6 +299,8 @@ def build_prompt(d, profile, student_history, records, new_problem, target, look
         p += f"Answer Options:\n{new_problem['answer_options_formatted']}\n"
     p += f"Correct Answer: {new_problem['correct_answer']}\n"
     p += f"Skill: {d.skills_line(pid)}\n"
+    if d.practice_only:
+        return p + f"{d.info.required(pid)}\n"
     p += "Prerequisite skills: " + ("; ".join(d.label(c) for c in prereq) if prereq else "none in the skill graph") + "\n"
     p += f"{d.info.required(pid)}\n{d.diff_text(pid)}\n"
     if d.irt is not None:
@@ -282,9 +317,9 @@ PROFILE = None
 LOOKUP = None
 
 
-def install_filtered(kt, kt_data_dir, irt=False):
+def install_filtered(kt, kt_data_dir, irt=False, practice_only=False):
     global DATA, LOOKUP
-    DATA = FilteredData(kt_data_dir, irt)
+    DATA = FilteredData(kt_data_dir, irt, practice_only)
     LOOKUP = WL.Lookup(kt, DATA.info)
     if getattr(kt, "_filtered_installed", False):
         return
@@ -324,4 +359,7 @@ def install_filtered(kt, kt_data_dir, irt=False):
 
     kt.create_user_prompt = create_filtered
     kt.make_process_single_user = make_filtered
-    kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + FILTERED_SECTION + (IRT_SECTION if irt else "") + WL.LOOKUP_SECTION
+    if practice_only:
+        kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + PRACTICE_ONLY_SECTION
+    else:
+        kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + FILTERED_SECTION + (IRT_SECTION if irt else "") + WL.LOOKUP_SECTION

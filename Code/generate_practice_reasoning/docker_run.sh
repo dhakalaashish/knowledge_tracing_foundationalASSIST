@@ -34,6 +34,10 @@
 #                                         kt-agent4cd, its own vLLM server with KT_UTIL of the GPU memory), then the
 #                                         tables. Progress: Code/kt_both_agent4cd.log; agents: Code/kt_agent4cd.log.
 #                                         Stop: agent4cd-stop (starting again resumes)
+#   bash docker_run.sh kt-after <condition> <args...>   one KT condition (e.g. filtered_practice) that starts when
+#                                         kt-filtered AND kt-irt have both finished (prompts checked first); log
+#                                         Code/kt_after_<condition>.log, run log Code/kt_<condition>.log.
+#                                         Stop: kt-after-stop <condition>
 #
 # Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS, RETRY_FAILED (see run_gb300.sh), HF_TOKEN,
 # HF_HUB_OFFLINE. Runs (and smoke tests) are offline by default: vLLM reads the model from the cache and never
@@ -158,6 +162,14 @@ kt_pair() {
   fi
 }
 
+# Is a container running (a restart after a crash counts as running)?
+running() {
+  case "$(docker inspect -f '{{.State.Status}} {{.State.Restarting}}' "$1" 2>/dev/null || echo gone)" in
+    running*|*true) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 TTY=()   # interactive only when started from a terminal (not under nohup)
 if [ -t 0 ] && [ -t 1 ]; then TTY=(-it); fi
 
@@ -275,12 +287,6 @@ case "${1:-}" in
     fi
     echo "dry run OK; one student's prompts: Code/agent4cd_practice/logs/kt_dry_run.txt"
     # 2. wait until one of the two runs has finished (a restart after a crash counts as running)
-    running() {
-      case "$(docker inspect -f '{{.State.Status}} {{.State.Restarting}}' "$1" 2>/dev/null || echo gone)" in
-        running*|*true) return 0 ;;
-        *) return 1 ;;
-      esac
-    }
     echo "waiting for kt-filtered or kt-irt to finish ($(date))"
     while running kt-filtered && running kt-irt; do sleep 60; done
     echo "a GPU slot is free ($(date))"
@@ -300,6 +306,50 @@ case "${1:-}" in
         --runs paper,baseline,practice,profile,profile_lookup,agent4cd
     fi
     echo "=== agent4cd-after finished $(date)" ;;
+  kt-after)
+    # one KT condition that waits until kt-filtered AND kt-irt have both finished (the second free GPU slot):
+    # bash docker_run.sh kt-after filtered_practice <kt_practice_benchmark.py args...>
+    shift
+    COND="${1:?which condition, e.g. filtered_practice}"; shift
+    MODEL_ID="${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}"
+    if [ "${SKIP_MODEL_CHECK:-0}" != "1" ] && ! model_cached; then
+      echo "Download the model first: MODEL=$MODEL_ID bash docker_run.sh download"; exit 1
+    fi
+    if running "kt-${COND//_/-}" || pgrep -f "docker_run.sh _kt-after $COND " >/dev/null; then
+      echo "$COND is already running or waiting (bash docker_run.sh kt-after-stop $COND)"; exit 1
+    fi
+    nohup bash "$PWD/$(basename "$0")" _kt-after "$COND" "$@" >> "../kt_after_${COND}.log" 2>&1 &
+    echo "started in the background (pid $!): check-length -> wait for kt-filtered and kt-irt to finish -> $COND -> tables"
+    echo "progress: tail -f ../kt_after_${COND}.log     the run (once started): tail -f ../kt_${COND}.log"
+    echo "stop: bash docker_run.sh kt-after-stop $COND   (starting it again resumes)" ;;
+  _kt-after)
+    shift
+    COND="$1"; shift
+    NAME_C="kt-${COND//_/-}"
+    UTIL="${KT_UTIL:-0.45}"
+    echo "=== kt-after $COND started $(date); arguments: $*; GPU memory: $UTIL"
+    # 1. build every prompt and check its length on the CPU first, so a mistake stops here, before any waiting
+    if ! docker run --rm "${OPTS[@]}" -w /workspace/Code -e HF_HUB_OFFLINE=1 -e TRANSFORMERS_OFFLINE=1 \
+           -e "KT_MODEL_ID=${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}" "$IMAGE" \
+           python3 -u kt_practice_benchmark.py check-length --condition "$COND" "$@"; then
+      echo "check-length --condition $COND failed: nothing started ($(date))"; exit 1
+    fi
+    # 2. wait for the second free GPU slot: both kt-filtered and kt-irt finished
+    echo "waiting for kt-filtered and kt-irt to finish ($(date))"
+    while running kt-filtered || running kt-irt; do sleep 60; done
+    echo "both finished ($(date))"
+    # 3. the run (the same container setup as kt-both), then the tables with every run that is complete
+    kt_start "$NAME_C" "kt_${COND}.log" "infer-${COND//_/-}" "$@" --gpu-memory-utilization "$UTIL"
+    while running "$NAME_C"; do sleep 60; done
+    echo "$NAME_C finished ($(date)), exit code $(docker inspect -f '{{.State.ExitCode}}' "$NAME_C" 2>/dev/null)"
+    docker run --rm "${OPTS[@]}" -w /workspace/Code "$IMAGE" python3 -u kt_practice_benchmark.py evaluate "$@" \
+      --runs "paper,baseline,practice,profile,profile_lookup,filtered,irt,agent4cd,$COND"
+    echo "=== kt-after $COND finished $(date)" ;;
+  kt-after-stop)
+    shift
+    COND="${1:?which condition}"
+    pkill -f "docker_run.sh _kt-after $COND " 2>/dev/null || true
+    docker stop "kt-${COND//_/-}" 2>/dev/null || true ;;
   agent4cd-stop)
     pkill -f "docker_run.sh _agent4cd-after" 2>/dev/null || true
     docker stop kt-agent4cd 2>/dev/null || true ;;

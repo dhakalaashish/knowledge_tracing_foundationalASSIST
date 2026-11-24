@@ -55,6 +55,7 @@ Subcommands (from the Code/ directory):
     lookup-all      stage -> check-length (both lookup conditions) -> profile + lookup -> practice + lookup -> evaluate
                     (--wrong-answers all: the _all conditions)
     infer-filtered / infer-irt   the filtered and IRT conditions
+    infer-filtered-practice      the selected problems with practices only (no profile, no lookup)
     filtered-all    stage -> check-length (filtered, irt) -> filtered -> irt -> evaluate
     evaluate --runs a,b,...   only those runs (e.g. --runs baseline,profile,profile_lookup); the tables are then saved
                     as comparison_<runs>.md instead of comparison.md
@@ -419,7 +420,7 @@ def selected(args):
 
 
 CONDITIONS = ["practice", "profile", "practice_lookup", "profile_lookup", "practice_lookup_all", "profile_lookup_all",
-              "filtered", "irt"]
+              "filtered", "irt", "filtered_practice"]
 
 
 def install_condition(kt, condition, data_dir):
@@ -427,9 +428,9 @@ def install_condition(kt, condition, data_dir):
     into the paper's module; returns the PracticeInfo whose answer-analysis counts the prompts update."""
     if condition not in CONDITIONS:
         raise SystemExit(f"unknown condition {condition}")
-    if condition in ("filtered", "irt"):
+    if condition in ("filtered", "irt", "filtered_practice"):
         import kt_filtered as KF
-        KF.install_filtered(kt, data_dir, irt=condition == "irt")
+        KF.install_filtered(kt, data_dir, irt=condition == "irt", practice_only=condition == "filtered_practice")
         return KF.DATA.info
     lookup = "_lookup" in condition
     every_wrong = condition.endswith("_all")   # every diagnosed wrong answer, not only the common ones
@@ -642,14 +643,16 @@ RUNS = [("paper", "Paper: Qwen3-Next-80B-Instruct (BF16, published)"),
         ("profile_lookup_all", "Profile + all wrong answers: profile + last 10 + every diagnosed wrong answer"),
         ("filtered", "Filtered: profile + matched problems + session + practices + common wrong answers"),
         ("irt", "IRT: filtered + IRT difficulty and discrimination"),
-        ("agent4cd", "Agent4CD + cognitive: agent with profile, memory, NCDM mastery, reflection; also predicts the answer")]
+        ("agent4cd", "Agent4CD + cognitive: agent with profile, memory, NCDM mastery, reflection; also predicts the answer"),
+        ("filtered_practice", "Filtered + practice: selected past problems with practices only (no profile, no lookup)")]
 PAIRS = [("baseline", "practice"), ("baseline", "profile"), ("practice", "profile"),
          ("baseline", "practice_lookup"), ("practice", "practice_lookup"),
          ("baseline", "profile_lookup"), ("profile", "profile_lookup"),
          ("baseline", "practice_lookup_all"), ("practice_lookup", "practice_lookup_all"),
          ("baseline", "profile_lookup_all"), ("profile_lookup", "profile_lookup_all"),
          ("baseline", "filtered"), ("profile_lookup", "filtered"), ("baseline", "irt"), ("filtered", "irt"),
-         ("baseline", "agent4cd"), ("profile_lookup", "agent4cd")]
+         ("baseline", "agent4cd"), ("profile_lookup", "agent4cd"),
+         ("baseline", "filtered_practice"), ("practice", "filtered_practice"), ("filtered_practice", "filtered")]
 
 
 def common_wrong_table(recs, labels):
@@ -814,6 +817,7 @@ COMMANDS = {"pick-users": cmd_pick_users, "stage": cmd_stage, "check-prompts": c
             "infer-practice-lookup-all": lambda a: cmd_infer(a, "practice_lookup_all"),
             "infer-profile-lookup-all": lambda a: cmd_infer(a, "profile_lookup_all"),
             "infer-filtered": lambda a: cmd_infer(a, "filtered"), "infer-irt": lambda a: cmd_infer(a, "irt"),
+            "infer-filtered-practice": lambda a: cmd_infer(a, "filtered_practice"),
             "evaluate": cmd_evaluate, "all": cmd_all, "profile-all": cmd_profile_all, "lookup-all": cmd_lookup_all,
             "filtered-all": cmd_filtered_all}
 
