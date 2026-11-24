@@ -15,7 +15,13 @@
 #                                                     -> Problems.csv columns qwen35_122b_v5_*,
 #                                                        Data/wrong_answer_diagnosis_qwen35_122b_v5.csv
 #      Only rows V5_ROWS (default 1-300, the first 300 problems) until they are checked; V5_ROWS=all for every row.
-# By default only the Chapter 3 diagnosis (step 6) runs; steps 4, 5, 7 and 8 run only when asked for (bash run_gb300.sh 8).
+#   9. every remaining wrong answer (given by 1 or more students: Results/practice_analysis/all_wrong_answers.csv), with
+#      the prompts, model and run folder of step 6, so the 12,841 wrong answers step 6 diagnosed are skipped; then
+#      step 7's thinking-off fallback for the new ones that failed every attempt; then one file with every diagnosis
+#                                                     -> Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag_all.csv
+#      (step 6's own file is not touched.) It stops at once if step 6's run folder is not here (it would diagnose
+#      everything again); ALLOW_FRESH=1 to run anyway.
+# By default only the Chapter 3 diagnosis (step 6) runs; steps 4, 5, 7, 8 and 9 run only when asked for (bash run_gb300.sh 9).
 # The diagnoses cover wrong answers given by at least MIN_STUDENTS (default 3) students on their first attempt.
 # Each diagnosis uses the same prompt version as its labeling step. The labeling steps use all three prompts
 # (practices, order, top practice), like the Qwen3-30B v3/v4 runs: step 1 has exactly v4's prompts and step 2
@@ -124,6 +130,24 @@ for step in $STEPS; do
     8) python3 -u label_v5.py "${COMMON[@]}" ${GEN_EXTRA[@]+"${GEN_EXTRA[@]}"} ${V5_EXTRA[@]+"${V5_EXTRA[@]}"} \
          --min-students "$MIN_STUDENTS" \
          --column-prefix "${TAG}qwen35_122b_v5" --diagnosis-out "$(diag_out "${TAG}qwen35_122b_v5")" ;;
+    # every remaining wrong answer (1+ students), Chapter 3 + 122B, in step 6's run folder (its items are skipped)
+    9) ALL_WRONG=../../Results/practice_analysis/all_wrong_answers.csv
+       if [ "$SMOKE" != "1" ] && [ "${ALLOW_FRESH:-0}" != "1" ] && \
+          [ "$(ls runs/qwen35_122b_ch3_diag/items 2>/dev/null | wc -l)" -lt 12000 ]; then
+         echo "runs/qwen35_122b_ch3_diag/items has fewer than 12,000 diagnoses: step 6's run folder is missing, so" \
+              "step 9 would diagnose every wrong answer again. Stopping (ALLOW_FRESH=1 to run anyway)."; exit 1
+       fi
+       python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
+         --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag" --wrong-answers "$ALL_WRONG" \
+         --min-students 1 --force --out "$(diag_out "${TAG}qwen35_122b_ch3_diag_all")" &&
+       python3 -u diagnose.py "${NOTHINK[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
+         --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag_nothink" --wrong-answers "$ALL_WRONG" \
+         --min-students 1 --force --only-failed-in "${TAG}qwen35_122b_ch3_diag" \
+         --out "$(diag_out "${TAG}qwen35_122b_ch3_diag_nothink_all")" &&
+       python3 -u diagnose.py "${COMMON[@]}" ${DIAG_EXTRA[@]+"${DIAG_EXTRA[@]}"} --framework naep_ch3 \
+         --practice-prefix "${TAG}qwen35_122b_ch3" --name "${TAG}qwen35_122b_ch3_diag" --wrong-answers "$ALL_WRONG" \
+         --min-students 1 --force --write-only --fill-from "${TAG}qwen35_122b_ch3_diag_nothink" \
+         --out "$(diag_out "${TAG}qwen35_122b_ch3_diag_all")" ;;
     *) echo "unknown step $step"; exit 1 ;;
   esac >> "$LOG$step.log" 2>&1
   printf '\n=== step %s finished %s\n' "$step" "$(date)" | tee -a "$LOG$step.log"

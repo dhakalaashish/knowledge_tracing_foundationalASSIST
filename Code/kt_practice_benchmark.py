@@ -24,6 +24,12 @@ students, run two ways with the same model, so the only difference is the practi
   practice_lookup / profile_lookup
             the same, plus the new problem's diagnosed common wrong answers (shuffled, without counts, each with
             its diagnosis) to choose from when predicting a wrong answer (kt_wrong_lookup.py; deck idea 2)
+  filtered  profile + lookup + practices, with only selected previous problems instead of the last 10: for each
+            practice the new problem needs, the most recent right and wrong answer on same skill + same practice,
+            same skill + other practice, other skill + same practice, linked skill + same practice; plus every
+            problem of the current session (kt_filtered.py)
+  irt       filtered + the IRT difficulty and discrimination of each problem, in words (kt_filtered.py;
+            Results/kt_profile/problem_irt.json from Code/tools/fit_irt.js)
 
 Both use Qwen3-Next-80B-A3B-Instruct in 4-bit AWQ (qwen3next80b_awq_instruct_vllm.py; fits one A100 80 GB)
 with the paper's generation settings. `evaluate` also scores the paper's own published Qwen3-Next-80B-Instruct
@@ -44,7 +50,14 @@ Subcommands (from the Code/ directory):
     all             pick-users -> stage -> check-length -> infer-baseline -> infer-practice -> evaluate
     profile-all     stage -> check-length (profile) -> infer-profile -> evaluate
     infer-profile-lookup / infer-practice-lookup   the two conditions with the lookup table
+    infer-profile-lookup-all / infer-practice-lookup-all   the same with every diagnosed wrong answer
+                    (needs Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag_all.csv: run_gb300.sh step 9)
     lookup-all      stage -> check-length (both lookup conditions) -> profile + lookup -> practice + lookup -> evaluate
+                    (--wrong-answers all: the _all conditions)
+    infer-filtered / infer-irt   the filtered and IRT conditions
+    filtered-all    stage -> check-length (filtered, irt) -> filtered -> irt -> evaluate
+    evaluate --runs a,b,...   only those runs (e.g. --runs baseline,profile,profile_lookup); the tables are then saved
+                    as comparison_<runs>.md instead of comparison.md
     evaluate reads each run's .jsonl, or its prompt-free copy <name>_slim.jsonl.gz when the .jsonl is not there
 
 Usage:
@@ -76,6 +89,8 @@ MODEL_SCRIPT = "qwen3next80b_awq_instruct_vllm.py"
 DEFAULT_OUT = os.path.join(REPO_DIR, "Results", "kt_practice_random50")
 LABEL_PREFIX = "qwen35_122b_noex"
 DIAG_CSV = os.path.join(REPO_DIR, "Data", "wrong_answer_diagnosis_qwen35_122b_ch3_diag.csv")
+# the "_all" conditions: every wrong answer given by 1 or more students, diagnosed the same way (run_gb300.sh step 9)
+DIAG_CSV_ALL = os.path.join(REPO_DIR, "Data", "wrong_answer_diagnosis_qwen35_122b_ch3_diag_all.csv")
 PAPER_MEMBER = "inference_data_kt_results/qwen3next80binstruct_n500_bin10_hist50.jsonl"
 OUTPUT_HEADROOM_TOKENS = 4096
 ADDED_PREFIXES = ("Practices (in order", "  ", "Top practice: ", "Answer analysis: ", "Practices required")
@@ -98,6 +113,13 @@ PRACTICE_SECTION = (
     "their definitions and descriptors:\n"
     + PRACTICE_DEFINITIONS
 )
+# the "_all" conditions: every wrong first answer without help has a diagnosis, however rare
+PRACTICE_SECTION_ALL = PRACTICE_SECTION.replace(
+    "a common wrong answer, with the step or math fact that went wrong and how students most likely arrived at it; "
+    "an uncommon wrong answer with no diagnosis;",
+    "a wrong answer, with the step or math fact that went wrong and how students most likely arrived at it (a "
+    "wrong answer that could not be diagnosed says so);")
+assert PRACTICE_SECTION_ALL != PRACTICE_SECTION
 
 
 def one_line(text):
@@ -140,8 +162,14 @@ def used_help(rec):
 class PracticeInfo:
     """The labels, diagnoses and original answers the practice prompts need."""
 
-    def __init__(self, kt_data_dir):
+    def __init__(self, kt_data_dir, every_wrong=False):
+        """every_wrong: the diagnoses of every wrong answer (DIAG_CSV_ALL) instead of the common ones (DIAG_CSV)."""
         B.csv.field_size_limit(sys.maxsize)
+        self.every_wrong = every_wrong
+        diag_csv = DIAG_CSV_ALL if every_wrong else DIAG_CSV
+        if not os.path.exists(diag_csv):
+            raise SystemExit(f"{diag_csv} is missing" + (": diagnose every wrong answer first (run_gb300.sh step 9)"
+                                                         if every_wrong else ""))
         self.practices, self.top = {}, {}
         with open(os.path.join(B.DATA_DIR, "Problems.csv"), newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
@@ -155,7 +183,7 @@ class PracticeInfo:
                 self.practices[pid] = [(u["practice"], one_line(u.get("why"))) for u in sorted(used, key=lambda u: u["order"])]
                 self.top[pid] = (r.get(f"{LABEL_PREFIX}_top_practice") or "").strip()
         self.diag = {}
-        with open(DIAG_CSV, newline="", encoding="utf-8") as f:
+        with open(diag_csv, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
                 self.diag[(int(r["problem_id"]), answer_key(norm_answer(r["wrong_answer"])))] = r
         self.answer = {}   # interaction id -> the answer as the student entered it (MC: option text, not a letter)
@@ -199,6 +227,8 @@ class PracticeInfo:
             return ("Answer analysis: Incorrect, given after asking for a hint or seeing the answer "
                     "(no diagnosis: the recorded answer may not be the student's own).")
         if kind == "uncommon":
+            if self.every_wrong:
+                return "Answer analysis: Incorrect: no diagnosis available for this answer."
             return "Answer analysis: Incorrect: an uncommon answer (no diagnosis available)."
         et, fp, fact = d["error_type"], d["failed_practice"], one_line(d["math_fact"])
         if et == "practice":
@@ -207,6 +237,9 @@ class PracticeInfo:
             what = f"a wrong or missing math fact at the {fp} step: {fact.rstrip('.')}"
         else:
             what = "no reasonable process gives this answer (a guess)"
+        if self.every_wrong:   # no counts: every wrong answer has a diagnosis, rare or not
+            return (f"Answer analysis: Incorrect. Error: {what}. "
+                    f"How students most likely got it: {one_line(d['reconstruction'])}. {one_line(d['explanation'])}")
         return (f"Answer analysis: Incorrect: a common wrong answer (given by {d['students']} students). Error: {what}. "
                 f"How students most likely got it: {one_line(d['reconstruction'])}. {one_line(d['explanation'])}")
 
@@ -222,13 +255,13 @@ CURRENT_RECORDS = None
 LOOKUP = None   # kt_wrong_lookup.Lookup when the condition has the common-wrong-answer lookup table
 
 
-def install_practice(kt, kt_data_dir, lookup=False):
+def install_practice(kt, kt_data_dir, lookup=False, every_wrong=False):
     global INFO, LOOKUP
-    INFO = PracticeInfo(kt_data_dir)
+    INFO = PracticeInfo(kt_data_dir, every_wrong)
     LOOKUP = None
     if lookup:
         import kt_wrong_lookup as WL
-        LOOKUP = WL.Lookup(kt, INFO)
+        LOOKUP = WL.Lookup(kt, INFO, every_wrong)
     if getattr(kt, "_practice_installed", False):   # wrap the paper's functions only once per process
         return
     kt._practice_installed = True
@@ -250,7 +283,7 @@ def install_practice(kt, kt_data_dir, lookup=False):
             history.append({**item, "node_name": f"{item.get('node_name') or 'Undefined'}\n{INFO.block(pid)}\n{INFO.analysis(rec)}"})
         target = find_target(new_problem, len(student_history))
         tpid = int(target["problem_id"])
-        added = INFO.required(tpid) + (f"\n{LOOKUP.text(tpid)}" if LOOKUP else "")
+        added = INFO.required(tpid) + (f"\n{LOOKUP.text(tpid, target.get('user_id'))}" if LOOKUP else "")
         new = {**new_problem, "node_name": f"{new_problem.get('node_name') or 'Undefined'}\n{added}"}
         return original_create(history, new, problem_df)
 
@@ -265,10 +298,10 @@ def install_practice(kt, kt_data_dir, lookup=False):
 
     kt.create_user_prompt = create_with_practice
     kt.make_process_single_user = make_with_practice
-    kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + PRACTICE_SECTION
+    kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + (PRACTICE_SECTION_ALL if every_wrong else PRACTICE_SECTION)
     if lookup:
         import kt_wrong_lookup as WL
-        kt.BASE_SYSTEM_PROMPT += WL.LOOKUP_SECTION
+        kt.BASE_SYSTEM_PROMPT += WL.LOOKUP_SECTION_ALL if every_wrong else WL.LOOKUP_SECTION
 
 
 def strip_added(prompt):
@@ -385,7 +418,8 @@ def selected(args):
     return B.selected_user_ids(B.paths(b_args(args)), b_args(args))
 
 
-CONDITIONS = ["practice", "profile", "practice_lookup", "profile_lookup"]
+CONDITIONS = ["practice", "profile", "practice_lookup", "profile_lookup", "practice_lookup_all", "profile_lookup_all",
+              "filtered", "irt"]
 
 
 def install_condition(kt, condition, data_dir):
@@ -393,12 +427,17 @@ def install_condition(kt, condition, data_dir):
     into the paper's module; returns the PracticeInfo whose answer-analysis counts the prompts update."""
     if condition not in CONDITIONS:
         raise SystemExit(f"unknown condition {condition}")
-    lookup = condition.endswith("_lookup")
+    if condition in ("filtered", "irt"):
+        import kt_filtered as KF
+        KF.install_filtered(kt, data_dir, irt=condition == "irt")
+        return KF.DATA.info
+    lookup = "_lookup" in condition
+    every_wrong = condition.endswith("_all")   # every diagnosed wrong answer, not only the common ones
     if condition.startswith("profile"):
         import kt_student_profile as SP
-        SP.install_profile(kt, data_dir, lookup=lookup)
+        SP.install_profile(kt, data_dir, lookup=lookup, every_wrong=every_wrong)
         return SP.DATA.info
-    install_practice(kt, data_dir, lookup=lookup)
+    install_practice(kt, data_dir, lookup=lookup, every_wrong=every_wrong)
     return INFO
 
 
@@ -598,15 +637,74 @@ RUNS = [("paper", "Paper: Qwen3-Next-80B-Instruct (BF16, published)"),
         ("practice", "Practice: AWQ, full history + practices"),
         ("profile", "Profile: AWQ, student profile + last 10"),
         ("practice_lookup", "Practice + lookup: full history + practices + common wrong answers"),
-        ("profile_lookup", "Profile + lookup: profile + last 10 + common wrong answers")]
+        ("profile_lookup", "Profile + lookup: profile + last 10 + common wrong answers"),
+        ("practice_lookup_all", "Practice + all wrong answers: full history + practices + every diagnosed wrong answer"),
+        ("profile_lookup_all", "Profile + all wrong answers: profile + last 10 + every diagnosed wrong answer"),
+        ("filtered", "Filtered: profile + matched problems + session + practices + common wrong answers"),
+        ("irt", "IRT: filtered + IRT difficulty and discrimination")]
 PAIRS = [("baseline", "practice"), ("baseline", "profile"), ("practice", "profile"),
          ("baseline", "practice_lookup"), ("practice", "practice_lookup"),
-         ("baseline", "profile_lookup"), ("profile", "profile_lookup")]
+         ("baseline", "profile_lookup"), ("profile", "profile_lookup"),
+         ("baseline", "practice_lookup_all"), ("practice_lookup", "practice_lookup_all"),
+         ("baseline", "profile_lookup_all"), ("profile_lookup", "profile_lookup_all"),
+         ("baseline", "filtered"), ("profile_lookup", "filtered"), ("baseline", "irt"), ("filtered", "irt")]
+
+
+def common_wrong_table(recs, labels):
+    """Table 3 split by whether the student's wrong answer is one of the problem's common wrong answers (the ones a
+    lookup list shows: DIAG_CSV) or another answer, by problem type, for every run: is a common wrong answer easier to
+    predict, and does the list help? Same targets and exact matching as Table 3. "Picked from the list": the
+    predicted answer is one of the common wrong answers (the student's or another), among the 'incorrect' predictions."""
+    import kt_wrong_lookup as WL
+    listed = WL.ListedAnswers()
+    keys = list(recs)
+    targets = [x for x in recs[keys[0]] if B.is_truly_incorrect(x, match=B.exact_match)]
+    common = {x["prediction_id"] for x in targets if listed.is_listed(x["problem_id"], x["actual_answer"])}
+    by_id = {k: {x["prediction_id"]: x for x in recs[k]} for k in keys}
+
+    def said_wrong(x):
+        return not B.is_missing(x["predicted_question_level"]) and int(float(x["predicted_question_level"])) == 0
+
+    def share(k, ids, fn):
+        return "N/A" if not ids else B.pct(sum(bool(fn(by_id[k][i])) for i in ids) / len(ids))
+
+    exact = lambda x: B.cognitive_hit(x, match=B.exact_match)
+    picked = lambda x: listed.is_listed(x["problem_id"], x["predicted_student_answer"])
+    rows = []
+    for name, types in (("MC (select 1)", [B.MC_SELECT_1]), ("MC (select all)", [B.MC_SELECT_ALL]),
+                        ("Fill-in-blank", [B.FILL_IN]), ("All problem types", None)):
+        ids = [x["prediction_id"] for x in targets if types is None or x["problem_type"] in types]
+        for group, sel in (("common wrong answer", [i for i in ids if i in common]),
+                           ("other wrong answer", [i for i in ids if i not in common])):
+            rows.append([f"{name}, {group} (n={len(sel):,})"] + [share(k, sel, exact) for k in keys])
+    for group in ("common", "other"):
+        sel = [x["prediction_id"] for x in targets if (x["prediction_id"] in common) == (group == "common")]
+        rows.append([f"{group.capitalize()} wrong answers: predicted 'incorrect'"] + [share(k, sel, said_wrong) for k in keys])
+        cells_exact, cells_picked = [], []
+        for k in keys:
+            sw = [i for i in sel if said_wrong(by_id[k][i])]
+            cells_exact.append(f"{share(k, sw, exact)} (of {len(sw):,})")
+            cells_picked.append(share(k, sw, picked))
+        rows.append([f"{group.capitalize()} wrong answers: exact answer, when it predicted 'incorrect'"] + cells_exact)
+        rows.append([f"{group.capitalize()} wrong answers: answer picked from the common list, when it predicted 'incorrect'"]
+                    + cells_picked)
+    with_list = sum(1 for x in targets if not B.is_missing(x["problem_id"]) and int(float(x["problem_id"])) in listed.listed)
+    return ("\n## Table 3b. Cognitive accuracy on incorrect answers: common vs other wrong answers\n\n"
+            f"Truly wrong targets: {len(targets):,}. {len(common):,} gave one of the problem's common wrong answers "
+            f"(the answers a lookup list shows) and {len(targets) - len(common):,} another answer; {with_list:,} are on a "
+            "problem that has a list. Exact matching, as Table 3.\n\n"
+            + B.markdown_table(["Targets"] + [labels[k] for k in keys], rows))
 
 
 def cmd_evaluate(args):
     recs, labels = {}, {}
+    wanted = [r.strip() for r in args.runs.split(",") if r.strip()] if args.runs else None
+    unknown = set(wanted or []) - {k for k, _ in RUNS}
+    if unknown:
+        raise SystemExit(f"unknown runs: {', '.join(sorted(unknown))} (known: {', '.join(k for k, _ in RUNS)})")
     for key, label in RUNS:
+        if wanted is not None and key not in wanted:
+            continue
         path = paper_subset(args) if key == "paper" else result_file(results_path(args, key))
         if not path:
             print(f"missing (not run yet): {key}")
@@ -650,9 +748,13 @@ def cmd_evaluate(args):
     for a, b in PAIRS:   # paired comparisons on the same targets
         if a in recs and b in recs:
             report.append(paired_table(recs[a], recs[b], a, b))
+    report.append(common_wrong_table(recs, labels))
+    for key, t2, t3, _ in tables:   # the paper's Table 2 and Table 3, each run beside the paper's published models
+        if key != "paper":
+            report.append(f"\n## {labels[key]}: the paper's Table 2 and Table 3\n\n" + B.render_tables(labels[key], t2, t3, None))
     text = "\n".join(report)
     print("\n" + text)
-    out = os.path.join(args.out_dir, "comparison.md")
+    out = os.path.join(args.out_dir, "comparison.md" if not wanted else f"comparison_{'_'.join(wanted)}.md")
     with open(out, "w", encoding="utf-8") as f:
         f.write(text + "\n")
     print(f"\nSaved {out}")
@@ -676,13 +778,27 @@ def cmd_profile_all(args):
 
 
 def cmd_lookup_all(args):
-    """Both conditions with the common-wrong-answer lookup table: profile + lookup first (short prompts, fast), then
-    practice + lookup (full history); then the tables (with whatever other runs are in the folder)."""
+    """Both conditions with the lookup table: profile + lookup first (short prompts, fast), then practice + lookup
+    (full history); then the tables (with whatever other runs are in the folder). --wrong-answers all: the "_all"
+    conditions (every diagnosed wrong answer, in the history and in the lookup) instead of the common ones."""
+    suffix = "_all" if args.wrong_answers == "all" else ""
     cmd_stage(args)
-    for condition in ("profile_lookup", "practice_lookup"):
+    for condition in ("profile_lookup" + suffix, "practice_lookup" + suffix):
         args.condition = condition
         cmd_check_length(args)
-    for condition in ("profile_lookup", "practice_lookup"):
+    for condition in ("profile_lookup" + suffix, "practice_lookup" + suffix):
+        cmd_infer(args, condition)
+    cmd_evaluate(args)
+
+
+def cmd_filtered_all(args):
+    """The filtered and IRT conditions one after the other on one GPU (the GB300 runs them side by side instead:
+    KT_PAIR=filtered bash docker_run.sh kt-both)."""
+    cmd_stage(args)
+    for condition in ("filtered", "irt"):
+        args.condition = condition
+        cmd_check_length(args)
+    for condition in ("filtered", "irt"):
         cmd_infer(args, condition)
     cmd_evaluate(args)
 
@@ -693,7 +809,11 @@ COMMANDS = {"pick-users": cmd_pick_users, "stage": cmd_stage, "check-prompts": c
             "infer-profile": lambda a: cmd_infer(a, "profile"),
             "infer-practice-lookup": lambda a: cmd_infer(a, "practice_lookup"),
             "infer-profile-lookup": lambda a: cmd_infer(a, "profile_lookup"),
-            "evaluate": cmd_evaluate, "all": cmd_all, "profile-all": cmd_profile_all, "lookup-all": cmd_lookup_all}
+            "infer-practice-lookup-all": lambda a: cmd_infer(a, "practice_lookup_all"),
+            "infer-profile-lookup-all": lambda a: cmd_infer(a, "profile_lookup_all"),
+            "infer-filtered": lambda a: cmd_infer(a, "filtered"), "infer-irt": lambda a: cmd_infer(a, "irt"),
+            "evaluate": cmd_evaluate, "all": cmd_all, "profile-all": cmd_profile_all, "lookup-all": cmd_lookup_all,
+            "filtered-all": cmd_filtered_all}
 
 
 def parse_args():
@@ -709,6 +829,10 @@ def parse_args():
     ap.add_argument("--which", choices=["first", "longest"], default="first", help="show-prompt: which prompt")
     ap.add_argument("--condition", choices=CONDITIONS, default="practice",
                     help="show-prompt / check-length: which condition's prompts (default practice)")
+    ap.add_argument("--wrong-answers", choices=["common", "all"], default="common",
+                    help="lookup-all: the common diagnosed wrong answers, or every diagnosed wrong answer (the _all runs)")
+    ap.add_argument("--runs", default=None,
+                    help="evaluate: only these runs, comma-separated (e.g. baseline,profile,profile_lookup)")
     ap.add_argument("--num-gpus", type=int, default=1)
     ap.add_argument("--gpu-memory-utilization", type=float, default=0.9)
     ap.add_argument("--max-model-len", type=int, default=None)

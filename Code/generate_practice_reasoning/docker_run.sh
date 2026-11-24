@@ -7,6 +7,7 @@
 #   bash docker_run.sh                    run_gb300.sh (steps 1 2 3 6), in the background (like nohup: it
 #                                         keeps going after you log out, and restarts up to twice if it crashes)
 #   bash docker_run.sh 1 3                only steps 1 and 3, in the background
+#   bash docker_run.sh 9                  step 9: diagnose every remaining wrong answer (122B, Chapter 3)
 #   SMOKE=1 bash docker_run.sh            the smoke test (6 problems, steps 1 2 3 6), in the background
 #   bash docker_run.sh status             one progress snapshot (monitor.sh once)
 #   bash docker_run.sh stop               stop the background run (starting it again resumes)
@@ -22,6 +23,11 @@
 #                                         stage, profile + lookup, then (once its model is loaded) practice +
 #                                         lookup, each with KT_UTIL (default 0.45) of the GPU memory; evaluate when
 #                                         both are done. Progress: Code/kt_both.log.  Stop: kt-both-stop
+#                                         KT_SET=all: the runs with every diagnosed wrong answer (after step 9);
+#                                         logs then end in _all (kt_both_all.log, ...)
+#                                         KT_PAIR=filtered: the filtered and IRT runs instead (containers kt-filtered,
+#                                         kt-irt; logs kt_both_filtered.log, kt_filtered.log, kt_irt.log); before the
+#                                         GPU starts, every prompt of both is built and its length checked
 #
 # Passed into the container when set: MODEL, MAX_TOKENS, MAX_MODEL_LEN, SMOKE, SMOKE_ROWS, RETRY_FAILED (see run_gb300.sh), HF_TOKEN,
 # HF_HUB_OFFLINE. Runs (and smoke tests) are offline by default: vLLM reads the model from the cache and never
@@ -132,6 +138,20 @@ kt_start() {
   echo "started $name: kt_practice_benchmark.py $*  (log: Code/$log)"
 }
 
+# The two runs of kt-both: KT_PAIR=lookup (default; KT_SET=all for the _all runs) or KT_PAIR=filtered
+kt_pair() {
+  KS=""; KD=""; if [ "${KT_SET:-common}" = "all" ]; then KS="_all"; KD="-all"; fi
+  if [ "${KT_PAIR:-lookup}" = "filtered" ]; then
+    A_NAME=kt-filtered; A_CMD=infer-filtered; A_LOG=kt_filtered.log; A_COND=filtered; A_DESC="filtered"
+    B_NAME=kt-irt; B_CMD=infer-irt; B_LOG=kt_irt.log; B_COND=irt; B_DESC="IRT"
+    BOTH_LOG=kt_both_filtered.log
+  else
+    A_NAME=kt-profile; A_CMD=infer-profile-lookup${KD}; A_LOG=kt_profile_lookup${KS}.log; A_COND=""; A_DESC="profile + lookup"
+    B_NAME=kt-practice; B_CMD=infer-practice-lookup${KD}; B_LOG=kt_practice_lookup${KS}.log; B_COND=""; B_DESC="practice + lookup"
+    BOTH_LOG=kt_both${KS}.log
+  fi
+}
+
 TTY=()   # interactive only when started from a terminal (not under nohup)
 if [ -t 0 ] && [ -t 1 ]; then TTY=(-it); fi
 
@@ -162,45 +182,61 @@ case "${1:-}" in
     kt_start "${KT_NAME:-practice-kt}" "${KT_LOG:-kt_gb300.log}" "$@"
     echo "watch:   tail -f ../${KT_LOG:-kt_gb300.log}      stop: KT_NAME=${KT_NAME:-practice-kt} bash docker_run.sh kt-stop" ;;
   kt-both)
+    kt_pair
     # both lookup runs side by side on the one GPU, from one command; the rest runs in the background (survives
     # logging out): stage once -> profile + lookup -> (when its model is loaded) practice + lookup -> wait for both
-    # -> evaluate. Progress: ../kt_both.log; each run: ../kt_profile_lookup.log, ../kt_practice_lookup.log
+    # -> evaluate. Progress: ../kt_both${KS}.log; each run: ../kt_profile_lookup${KS}.log, ../kt_practice_lookup${KS}.log
     shift
     MODEL_ID="${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}"
     if [ "${SKIP_MODEL_CHECK:-0}" != "1" ] && ! model_cached; then
       echo "Download the model first: MODEL=$MODEL_ID bash docker_run.sh download   (then: MODEL=$MODEL_ID bash docker_run.sh check-model)"; exit 1
     fi
-    for n in kt-profile kt-practice; do
+    if [ -n "$KS" ] && [ ! -f ../../Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag_all.csv ]; then
+      echo "Data/wrong_answer_diagnosis_qwen35_122b_ch3_diag_all.csv is missing: diagnose every wrong answer first (bash docker_run.sh 9)"; exit 1
+    fi
+    if [ "${KT_PAIR:-lookup}" = "filtered" ] && [ ! -f ../../Results/kt_profile/problem_irt.json ]; then
+      echo "Results/kt_profile/problem_irt.json is missing: git pull (or node Code/tools/fit_irt.js)"; exit 1
+    fi
+    for n in "$A_NAME" "$B_NAME"; do
       if docker ps -q --filter "name=^${n}$" | grep -q .; then echo "$n is already running (bash docker_run.sh kt-both-stop)"; exit 1; fi
     done
-    nohup bash "$PWD/$(basename "$0")" _kt-both "$@" >> ../kt_both.log 2>&1 &
-    echo "started both lookup runs in the background (pid $!): stage -> profile + lookup -> practice + lookup -> evaluate"
-    echo "progress: tail -f ../kt_both.log     each run: tail -f ../kt_profile_lookup.log  /  ../kt_practice_lookup.log"
-    echo "stop both: bash docker_run.sh kt-both-stop   (starting kt-both again resumes both)" ;;
+    nohup bash "$PWD/$(basename "$0")" _kt-both "$@" >> ../$BOTH_LOG 2>&1 &
+    echo "started both runs in the background (pid $!): stage -> $A_DESC -> $B_DESC -> evaluate"
+    echo "progress: tail -f ../$BOTH_LOG     each run: tail -f ../$A_LOG  /  ../$B_LOG"
+    echo "stop both: ${KT_PAIR:+KT_PAIR=$KT_PAIR }bash docker_run.sh kt-both-stop   (starting kt-both again resumes both)" ;;
   _kt-both)
     shift
+    kt_pair
     UTIL="${KT_UTIL:-0.45}"   # each run's share of the GPU memory
-    echo "=== kt-both started $(date); arguments: $*; GPU memory per run: $UTIL"
+    echo "=== kt-both started $(date); runs: $A_DESC, $B_DESC; arguments: $*; GPU memory per run: $UTIL"
     # 1. stage once, before either run (both would otherwise write the staged data at the same time)
     docker run --rm "${OPTS[@]}" -w /workspace/Code "$IMAGE" python3 -u kt_practice_benchmark.py stage "$@"
-    # 2. profile + lookup, then wait until its model is loaded (two vLLM engines that start at the same moment can
-    #    both misjudge the free memory), or until it has stopped (e.g. nothing left to do)
-    LOG_START=$(stat -c %s ../kt_profile_lookup.log 2>/dev/null || echo 0)   # only this start's lines count
-    kt_start kt-profile kt_profile_lookup.log infer-profile-lookup "$@" --gpu-memory-utilization "$UTIL"
-    for i in $(seq 1 120); do
-      if tail -c +$((LOG_START + 1)) ../kt_profile_lookup.log 2>/dev/null | \
-           grep -qE "GPU KV cache size|Maximum concurrency|Processed prompts|All predictions already completed"; then
-        echo "profile + lookup: model loaded ($(date))"; break
+    # 1b. new conditions: build every prompt of both and check its length on the CPU first, so a mistake stops here
+    for c in $A_COND $B_COND; do
+      if ! docker run --rm "${OPTS[@]}" -w /workspace/Code -e HF_HUB_OFFLINE=1 -e TRANSFORMERS_OFFLINE=1 \
+             -e "KT_MODEL_ID=${MODEL:-cyankiwi/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit}" "$IMAGE" \
+             python3 -u kt_practice_benchmark.py check-length --condition "$c" "$@"; then
+        echo "check-length --condition $c failed: nothing started ($(date))"; exit 1
       fi
-      if [ "$(docker inspect -f '{{.State.Running}}' kt-profile 2>/dev/null)" != "true" ]; then
-        echo "profile + lookup: container stopped before loading; see ../kt_profile_lookup.log"; break
+    done
+    # 2. the first run, then wait until its model is loaded (two vLLM engines that start at the same moment can
+    #    both misjudge the free memory), or until it has stopped (e.g. nothing left to do)
+    LOG_START=$(stat -c %s ../$A_LOG 2>/dev/null || echo 0)   # only this start's lines count
+    kt_start "$A_NAME" "$A_LOG" "$A_CMD" "$@" --gpu-memory-utilization "$UTIL"
+    for i in $(seq 1 120); do
+      if tail -c +$((LOG_START + 1)) ../$A_LOG 2>/dev/null | \
+           grep -qE "GPU KV cache size|Maximum concurrency|Processed prompts|All predictions already completed"; then
+        echo "$A_DESC: model loaded ($(date))"; break
+      fi
+      if [ "$(docker inspect -f '{{.State.Running}}' "$A_NAME" 2>/dev/null)" != "true" ]; then
+        echo "$A_DESC: container stopped before loading; see ../$A_LOG"; break
       fi
       sleep 15
     done
-    # 3. practice + lookup
-    kt_start kt-practice kt_practice_lookup.log infer-practice-lookup "$@" --gpu-memory-utilization "$UTIL"
+    # 3. the second run
+    kt_start "$B_NAME" "$B_LOG" "$B_CMD" "$@" --gpu-memory-utilization "$UTIL"
     # 4. wait for both to finish (a restart after a crash counts as still running), then the tables
-    for n in kt-profile kt-practice; do
+    for n in "$A_NAME" "$B_NAME"; do
       while [ "$(docker inspect -f '{{.State.Status}}' "$n" 2>/dev/null)" = "running" ] || \
             [ "$(docker inspect -f '{{.State.Restarting}}' "$n" 2>/dev/null)" = "true" ]; do sleep 60; done
       echo "$n finished ($(date)), exit code $(docker inspect -f '{{.State.ExitCode}}' "$n" 2>/dev/null)"
@@ -208,11 +244,12 @@ case "${1:-}" in
     docker run --rm "${OPTS[@]}" -w /workspace/Code "$IMAGE" python3 -u kt_practice_benchmark.py evaluate "$@"
     echo "=== kt-both finished $(date)" ;;
   kt-both-stop)
+    kt_pair
     pkill -f "docker_run.sh _kt-both" 2>/dev/null || true
-    docker stop kt-profile kt-practice 2>/dev/null || true ;;
+    docker stop "$A_NAME" "$B_NAME" 2>/dev/null || true ;;
   kt-stop)
     docker stop "${KT_NAME:-practice-kt}" ;;
-  ""|[1-8]*)
+  ""|[1-9]*)
     if docker ps -q --filter "name=^${NAME}$" | grep -q .; then
       echo "$NAME is already running (bash docker_run.sh status / stop)"; exit 1
     fi

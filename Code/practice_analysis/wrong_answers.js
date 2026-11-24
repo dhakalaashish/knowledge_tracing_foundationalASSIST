@@ -5,6 +5,10 @@
 // Writes:
 //   Results/practice_analysis/common_wrong_answers.csv   one line per (problem, wrong answer) given by >= 2 students
 //   Results/practice_analysis/wrong_answers_summary.json counts by question type and by threshold
+// Options: --min N (default 2): keep wrong answers given by >= N students; --out FILE (default common_wrong_answers.csv)
+//   e.g. --min 1 --out all_wrong_answers.csv: every wrong answer. The ranks are the same as in the default file (wrong
+//   answers sorted by students, most first), so a wrong answer keeps its key r<row>_w<rank> in diagnose.py.
+//   Column only_student: the student who gave it, when exactly one student did (else empty).
 //
 // Rules
 //   - first attempts only (cleaned data), and only those without a hint or an answer view: otherwise the logged
@@ -19,6 +23,8 @@ const path = require("path");
 const { readTable, csvField } = require("../generate_practice_reasoning/tools/csv.js");
 const ROOT = process.cwd();
 const OUT = path.join(ROOT, "Results", "practice_analysis");
+const argOf = (n, d) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : d; };
+const MIN = Number(argOf("--min", 2)), OUT_FILE = argOf("--out", "common_wrong_answers.csv");
 
 const P = readTable(path.join(ROOT, "Data", "Problems.csv"));
 const prob = new Map();
@@ -51,18 +57,18 @@ for (let i = 1; i < lines.length; i++) {
     if (f[4] === "1" || f[3] !== "0") { p.help++; continue; }
     const a = norm(f[6] || ""); if (!a) { p.empty++; continue; }
     const k = key(a);
-    if (!p.ans.has(k)) p.ans.set(k, { n: 0, spell: new Map() });
-    const e = p.ans.get(k); e.n++; e.spell.set(a, (e.spell.get(a) || 0) + 1);
+    if (!p.ans.has(k)) p.ans.set(k, { n: 0, spell: new Map(), who: new Set() });
+    const e = p.ans.get(k); e.n++; e.spell.set(a, (e.spell.get(a) || 0) + 1); e.who.add(f[0]);
 }
 lines.length = 0;
 
 const TH = [2, 3, 5, 10, 20];
-const csv = [["row", "problem_id", "problem_type", "answer_type", "responses", "pct_correct", "wrong_without_help", "rank", "wrong_answer", "students", "share_of_wrong", "spellings"].join(",")];
+const csv = [["row", "problem_id", "problem_type", "answer_type", "responses", "pct_correct", "wrong_without_help", "rank", "wrong_answer", "students", "share_of_wrong", "spellings", "only_student"].join(",")];
 const sum = {};                               // by type
 for (const p of prob.values()) {
     if (!p.n) continue;
     const correct = fixDate(norm(p.correct)).split(" || ").map(key);
-    const wrong = [...p.ans.entries()].filter(([k]) => !correct.includes(k)).map(([k, e]) => ({ k, n: e.n, spell: [...e.spell].sort((a, b) => b[1] - a[1]) }))
+    const wrong = [...p.ans.entries()].filter(([k]) => !correct.includes(k)).map(([k, e]) => ({ k, n: e.n, who: e.who, spell: [...e.spell].sort((a, b) => b[1] - a[1]) }))
         .sort((a, b) => b.n - a.n);
     const nw = wrong.reduce((s, x) => s + x.n, 0);
     const t = p.type;
@@ -72,8 +78,8 @@ for (const p of prob.values()) {
     if (nw) { S.with_wrong++; S.top_share.push(wrong[0].n / nw); }
     for (const h of TH) { const c = wrong.filter(x => x.n >= h); const B = S.by_threshold[h];
         if (c.length) B.problems_with_any++; B.answers += c.length; B.responses_covered += c.reduce((s, x) => s + x.n, 0); B.per_problem.push(c.length); }
-    wrong.filter(x => x.n >= 2).forEach((x, i) => csv.push([p.row, p.pid, p.type, p.at, p.n, (p.ok / p.n).toFixed(3), nw, i + 1, x.spell[0][0], x.n,
-        (x.n / nw).toFixed(3), x.spell.slice(0, 4).map(([s, c]) => `${s} (${c})`).join(" | ")].map(csvField).join(",")));
+    wrong.forEach((x, i) => x.n >= MIN && csv.push([p.row, p.pid, p.type, p.at, p.n, (p.ok / p.n).toFixed(3), nw, i + 1, x.spell[0][0], x.n,
+        (x.n / nw).toFixed(3), x.spell.slice(0, 4).map(([s, c]) => `${s} (${c})`).join(" | "), x.n === 1 && x.who.size === 1 ? [...x.who][0] : ""].map(csvField).join(",")));
 }
 const q = (a, f) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y); return s[Math.min(s.length - 1, Math.floor(f * s.length))]; };
 for (const S of Object.values(sum)) {
@@ -84,6 +90,6 @@ for (const S of Object.values(sum)) {
     }
     S.median_top_wrong_share = S.top_share.length ? +q(S.top_share, 0.5).toFixed(3) : null; delete S.top_share;
 }
-fs.writeFileSync(path.join(OUT, "common_wrong_answers.csv"), csv.join("\n") + "\n");
+fs.writeFileSync(path.join(OUT, OUT_FILE), csv.join("\n") + "\n");
 fs.writeFileSync(path.join(OUT, "wrong_answers_summary.json"), JSON.stringify(sum, null, 1));
 console.log(JSON.stringify(sum, null, 1));

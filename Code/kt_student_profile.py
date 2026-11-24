@@ -68,6 +68,12 @@ PROFILE_SECTION = (
     "student will do. The six practices, with their definitions and descriptors:\n"
     + KP.PRACTICE_DEFINITIONS
 )
+# the "_all" conditions: every wrong first answer without help has a diagnosis, however rare
+PROFILE_SECTION_ALL = PROFILE_SECTION.replace(
+    "comes from the diagnosis of a common wrong answer (one that several students gave)",
+    "comes from the diagnosis of the student's wrong answer").replace(
+    "Uncommon wrong answers and answers given after a hint", "Wrong answers that could not be diagnosed and answers given after a hint")
+assert PROFILE_SECTION_ALL.count("could not be diagnosed") == 1 and "several students gave" not in PROFILE_SECTION_ALL
 
 # The paper's task description (kt_inference_base.create_user_prompt), with "Provided Data" describing the profile
 USER_INTRO = """Task Description:
@@ -180,8 +186,9 @@ def load_difficulty():
 class ProfileData:
     """Everything the profiles and prompts read, loaded once."""
 
-    def __init__(self, kt_data_dir):
-        self.info = KP.PracticeInfo(kt_data_dir)
+    def __init__(self, kt_data_dir, every_wrong=False):
+        self.every_wrong = every_wrong
+        self.info = KP.PracticeInfo(kt_data_dir, every_wrong)
         self.skills, self.names = load_skills()
         self.parents, self.in_graph = load_graph()
         self.diff = load_difficulty()
@@ -341,7 +348,7 @@ class StudentProfile:
             out.append("  Failed steps in its diagnosed wrong answers: " + "; ".join(parts) + ".")
         elif s.right < s.n:
             out.append("  No diagnosed failed step.")
-        other = [f"{v} {name}" for v, name in ((s.uncommon, "uncommon answers (no diagnosis)"),
+        other = [f"{v} {name}" for v, name in ((s.uncommon, "without a diagnosis" if self.d.every_wrong else "uncommon answers (no diagnosis)"),
                                                (s.help_wrong, "after a hint or seeing the answer"),
                                                (s.guess, "guesses (no reasonable process)")) if v]
         if other:
@@ -369,9 +376,12 @@ class StudentProfile:
         wrong = self.n - self.right
         L += ["", "Habits:",
               f"- Asked for a hint or saw the answer on {self.help} of {self.n} answers ({round(100 * self.help / self.n)}%).",
-              f"- Wrong first answers: {wrong}. Of these, {self.wrong['common']} are common wrong answers with a "
-              f"diagnosis, {self.wrong['uncommon']} are uncommon answers (no diagnosis), {self.wrong['help']} came "
-              f"after a hint or seeing the answer."]
+              (f"- Wrong first answers: {wrong}. Of these, {self.wrong['common']} have a diagnosis, "
+               f"{self.wrong['uncommon']} have none, {self.wrong['help']} came after a hint or seeing the answer."
+               if d.every_wrong else
+               f"- Wrong first answers: {wrong}. Of these, {self.wrong['common']} are common wrong answers with a "
+               f"diagnosis, {self.wrong['uncommon']} are uncommon answers (no diagnosis), {self.wrong['help']} came "
+               f"after a hint or seeing the answer.")]
         if self.easy[0]:
             L.append(f"- Easy problems ({round(100 * EASY)}% or more of other students right): {self.easy[1]} wrong of "
                      f"{self.easy[0]} (slips).")
@@ -447,7 +457,7 @@ def build_prompt(d, profile, student_history, records, new_problem, target, look
     p += "Prerequisite skills: " + ("; ".join(d.label(c) for c in prereq) if prereq else "none in the skill graph") + "\n"
     p += f"{d.info.required(pid)}\n{d.diff_text(pid)}\n"
     if lookup is not None:
-        p += lookup.text(pid) + "\n"
+        p += lookup.text(pid, target.get("user_id")) + "\n"
     return p
 
 
@@ -460,13 +470,13 @@ PROFILE = None
 LOOKUP = None   # kt_wrong_lookup.Lookup when the condition has the common-wrong-answer lookup table
 
 
-def install_profile(kt, kt_data_dir, lookup=False):
+def install_profile(kt, kt_data_dir, lookup=False, every_wrong=False):
     global DATA, LOOKUP
-    DATA = ProfileData(kt_data_dir)
+    DATA = ProfileData(kt_data_dir, every_wrong)
     LOOKUP = None
     if lookup:
         import kt_wrong_lookup as WL
-        LOOKUP = WL.Lookup(kt, DATA.info)
+        LOOKUP = WL.Lookup(kt, DATA.info, every_wrong)
     if getattr(kt, "_profile_installed", False):
         return
     if getattr(kt, "_practice_installed", False):
@@ -505,7 +515,7 @@ def install_profile(kt, kt_data_dir, lookup=False):
 
     kt.create_user_prompt = create_with_profile
     kt.make_process_single_user = make_with_profile
-    kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + PROFILE_SECTION
+    kt.BASE_SYSTEM_PROMPT = kt.BASE_SYSTEM_PROMPT + (PROFILE_SECTION_ALL if every_wrong else PROFILE_SECTION)
     if lookup:
         import kt_wrong_lookup as WL
-        kt.BASE_SYSTEM_PROMPT += WL.LOOKUP_SECTION
+        kt.BASE_SYSTEM_PROMPT += WL.LOOKUP_SECTION_ALL if every_wrong else WL.LOOKUP_SECTION
